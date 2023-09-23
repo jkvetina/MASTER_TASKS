@@ -189,6 +189,22 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE init_projects
+    AS
+    BEGIN
+        -- save selected client as current
+        IF core.get_number_item('CLIENT_ID') IS NOT NULL THEN
+            tsk_app.set_user_preferences (
+                in_user_id          => core.get_user_id(),
+                in_client_id        => core.get_number_item('CLIENT_ID'),
+                in_project_id       => NULL,
+                in_board_id         => NULL
+            );
+        END IF;
+    END;
+
 END;
 /
 

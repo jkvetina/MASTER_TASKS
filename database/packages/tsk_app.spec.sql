@@ -77,6 +77,10 @@ CREATE OR REPLACE PACKAGE tsk_app AS
         io_swimlane_id      IN OUT NOCOPY   tsk_swimlanes.swimlane_id%TYPE
     );
 
+
+
+    PROCEDURE init_projects;
+
 END;
 /
 
