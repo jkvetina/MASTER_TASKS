@@ -93,6 +93,11 @@ regions:
       lost-update-type: Row Values
       add-row-if-empty: false
 
+    edit-authorization: 
+      add: MASTER - IS_ADMIN # 70314575553792528
+      update: MASTER - IS_ADMIN # 70314575553792528
+      delete: MASTER - IS_ADMIN # 70314575553792528
+
     performance: 
       lazy-loading: false
 
@@ -832,6 +837,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: true
 
+  security: 
+    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_FILTERS =====================
   id: 22779959075601029
@@ -909,4 +917,7 @@ processes:
 
   server-side-condition: 
     execution-scope: For Created and Modified Rows
+
+  security: 
+    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
 
