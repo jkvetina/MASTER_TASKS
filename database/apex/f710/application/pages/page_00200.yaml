@@ -184,11 +184,6 @@ regions:
         alias: 347276
 
   column-groups: 
-  - # ====== Column Group: Flags =================================
-    id: 112525478813274359
-    heading: 
-      heading: Flags
-
   - # ====== Column Group: Counts ================================
     id: 112525641644274360
     heading: 
@@ -239,56 +234,6 @@ regions:
     enable-users-to: 
       sort: true
       control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: IS_CURRENT ==================================
-    id: 112525182195274356
-    identification: 
-      column-name: IS_CURRENT
-      type: Display Only
-
-    heading: 
-      heading: Current
-      alignment: center
-
-    settings: 
-      format: HTML
-
-    layout: 
-      sequence: 60
-      column-alignment: center
-      group: Flags # 112525478813274359
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: IS_CURRENT
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: false
       hide: true
 
   - # ====== Column: COUNT_PROJECTS ==============================
@@ -374,64 +319,6 @@ regions:
     column-filter: 
       enabled: true
       lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: IS_ACTIVE ===================================
-    id: 112525694538274361
-    identification: 
-      column-name: IS_ACTIVE
-      type: Checkbox
-
-    heading: 
-      heading: Active
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 70
-      column-alignment: center
-      group: Flags # 112525478813274359
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_ACTIVE
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Static
-      static-value: Y
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
 
     export-/-printing: 
       include-in-export-/-print: true

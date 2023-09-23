@@ -1,10 +1,5 @@
 CREATE OR REPLACE FORCE VIEW tsk_clients_v AS
-WITH x AS (
-    SELECT /*+ MATERIALIZE */
-        tsk_app.get_client_id()         AS curr_client_id
-    FROM DUAL
-),
-c AS (
+WITH c AS (
     SELECT /*+ MATERIALIZE */
         t.client_id,
         --
@@ -13,6 +8,8 @@ c AS (
         COUNT(*)                        AS count_tasks
         --
     FROM tsk_tasks t
+    JOIN tsk_available_clients_v a
+        ON a.client_id  = t.client_id
     GROUP BY
         t.client_id
 )
@@ -22,18 +19,11 @@ SELECT
     t.client_id,
     t.client_name,
     --
-    CASE WHEN t.client_id = x.curr_client_id THEN 'Y' END AS is_current,
-    --
-    t.is_active,
-    --
     c.count_projects,
     c.count_boards,
     c.count_tasks
     --
-FROM tsk_clients t
-JOIN tsk_available_clients_v a
-    ON a.client_id      = t.client_id
-CROSS JOIN x
+FROM tsk_available_clients_v t
 LEFT JOIN c
     ON c.client_id      = t.client_id;
 --
