@@ -122,7 +122,7 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
 
 
     PROCEDURE user_fav_boards (
-        rec                     IN OUT NOCOPY   tsk_user_fav_boards%ROWTYPE,
+        rec                     IN OUT NOCOPY   tsk_boards_fav%ROWTYPE,
         in_action                               CHAR                                := NULL
     );
 
@@ -195,21 +195,6 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
     PROCEDURE repo_endpoints_d (
         in_repo_id              tsk_repo_endpoints.repo_id%TYPE,
         in_owner_id             tsk_repo_endpoints.owner_id%TYPE
-    );
-
-
-
-    PROCEDURE roles (
-        rec                     IN OUT NOCOPY tsk_roles%ROWTYPE,
-        --
-        in_action               CHAR                        := NULL,
-        in_role_id              tsk_roles.role_id%TYPE      := NULL
-    );
-
-
-
-    PROCEDURE roles_d (
-        in_role_id              tsk_roles.role_id%TYPE
     );
 
 END;

@@ -9,14 +9,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
     BEGIN
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.client_id,       -- lets check against new values
-            in_project_id       => NULL
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.clients_d(NVL(in_client_id, rec.client_id));
@@ -87,15 +79,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action            CONSTANT CHAR                       := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.project_id,
-            in_project_id       => rec.client_id
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.projects_d (
@@ -146,15 +129,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         --PRAGMA AUTONOMOUS_TRANSACTION;
     BEGIN
         -- need to be sorted properly
-        DELETE FROM tsk_auth_roles                  WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_boards                      WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_categories                  WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_projects                    WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_repos                       WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_statuses                    WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_swimlanes                   WHERE client_id = in_client_id AND project_id = in_project_id;
-        --DELETE FROM tsk_tasks                       WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_user_fav_boards             WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_boards          WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_categories      WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_projects        WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_repos           WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_statuses        WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_swimlanes       WHERE client_id = in_client_id AND project_id = in_project_id;
+        --DELETE FROM tsk_tasks           WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_boards_fav      WHERE client_id = in_client_id AND project_id = in_project_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -173,15 +155,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action            CONSTANT CHAR                   := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.project_id,
-            in_project_id       => rec.client_id
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.boards_d (
@@ -225,9 +198,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         --PRAGMA AUTONOMOUS_TRANSACTION;
     BEGIN
         -- need to be sorted properly
-        DELETE FROM tsk_boards                      WHERE board_id = in_board_id;
-        DELETE FROM tsk_user_fav_boards             WHERE board_id = in_board_id;
-        --DELETE FROM tsk_tasks                       WHERE board_id = in_board_id;
+        DELETE FROM tsk_boards          WHERE board_id = in_board_id;
+        DELETE FROM tsk_boards_fav      WHERE board_id = in_board_id;
+        --DELETE FROM tsk_tasks           WHERE board_id = in_board_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -248,15 +221,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.project_id,
-            in_project_id       => rec.client_id
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.statuses_d (
@@ -342,15 +306,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.project_id,
-            in_project_id       => rec.client_id
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.swimlanes_d (
@@ -404,9 +359,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         --PRAGMA AUTONOMOUS_TRANSACTION;
     BEGIN
         -- need to be sorted properly
-        DELETE FROM tsk_swimlanes                   WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
-        DELETE FROM tsk_user_fav_boards             WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
-        --DELETE FROM tsk_tasks                       WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
+        DELETE FROM tsk_swimlanes       WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
+        DELETE FROM tsk_boards_fav      WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
+        --DELETE FROM tsk_tasks           WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -427,15 +382,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.project_id,
-            in_project_id       => rec.client_id
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.categories_d (
@@ -517,14 +463,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
     BEGIN
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.client_id,       -- lets check against new values
-            in_project_id       => rec.project_id
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tasks_delete(rec.task_id);
@@ -600,23 +538,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
 
     PROCEDURE user_fav_boards (
-        rec                     IN OUT NOCOPY   tsk_user_fav_boards%ROWTYPE,
+        rec                     IN OUT NOCOPY   tsk_boards_fav%ROWTYPE,
         in_action                               CHAR                                := NULL
     )
     AS
         c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
     BEGIN
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => tsk_app.get_client_id(),     -- lets check against context
-            in_project_id       => tsk_app.get_project_id()
-        );
-
         -- delete record
         IF c_action = 'D' THEN
-            DELETE FROM tsk_user_fav_boards b
+            DELETE FROM tsk_boards_fav b
             WHERE b.user_id     = rec.user_id
                 AND b.board_id  = rec.board_id;
             --
@@ -629,7 +559,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- proceed with update or insert
         BEGIN
-            INSERT INTO tsk_user_fav_boards VALUES rec;
+            INSERT INTO tsk_boards_fav VALUES rec;
         EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN
             NULL;
@@ -651,14 +581,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
     BEGIN
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => NULL,
-            in_project_id       => NULL
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             DELETE FROM tsk_commits t
@@ -696,14 +618,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
     BEGIN
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => NULL,
-            in_project_id       => NULL
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             DELETE FROM tsk_task_commits t
@@ -743,15 +657,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR                               := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => NULL,
-            in_project_id       => NULL
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             DELETE FROM tsk_task_comments
@@ -798,15 +703,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action            CONSTANT CHAR                           := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => NULL,
-            in_project_id       => NULL
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             DELETE FROM tsk_task_files
@@ -852,15 +748,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR                       := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => rec.project_id,
-            in_project_id       => rec.client_id
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.repos_d (
@@ -940,15 +827,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
         c_action                CONSTANT CHAR                               := gen_tapi.get_action(in_action);
     BEGIN
-        -- evaluate access to this table
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => NULL,
-            in_project_id       => NULL
-        );
-
         -- delete record
         IF c_action = 'D' THEN
             tsk_tapi.repo_endpoints_d (
@@ -991,80 +869,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     BEGIN
         -- need to be sorted properly
         DELETE FROM tsk_repo_endpoints              WHERE repo_id = in_repo_id AND owner_id = in_owner_id;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-    PROCEDURE roles (
-        rec                     IN OUT NOCOPY tsk_roles%ROWTYPE,
-        --
-        in_action               CHAR                        := NULL,
-        in_role_id              tsk_roles.role_id%TYPE      := NULL
-    )
-    AS
-        c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
-    BEGIN
-        tsk_auth.check_allowed_dml (
-            in_table_name       => gen_tapi.get_table_name(),
-            in_action           => c_action,
-            in_user_id          => core.get_user_id(),
-            in_client_id        => NULL,
-            in_project_id       => NULL
-        );
-
-        -- delete record
-        IF c_action = 'D' THEN
-            tsk_tapi.roles_d(NVL(in_role_id, rec.role_id));
-            --
-            RETURN;
-        END IF;
-
-        -- overwrite some values
-        rec.updated_by := core.get_user_id();
-        rec.updated_at := SYSDATE;
-
-        -- are we renaming the primary key?
-        IF c_action = 'U' AND in_role_id != rec.role_id THEN
-            gen_tapi.rename_primary_key (
-                in_column_name  => 'ROLE_ID',
-                in_old_key      => in_role_id,
-                in_new_key      => rec.role_id
-            );
-        END IF;
-
-        -- upsert record
-        UPDATE tsk_roles t
-        SET ROW             = rec
-        WHERE t.role_id     = rec.role_id;
-        --
-        IF SQL%ROWCOUNT = 0 THEN
-            INSERT INTO tsk_roles VALUES rec;
-        END IF;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-    PROCEDURE roles_d (
-        in_role_id              tsk_roles.role_id%TYPE
-    )
-    AS
-    BEGIN
-        DELETE FROM tsk_auth_pages          WHERE role_id = in_role_id;
-        DELETE FROM tsk_auth_components     WHERE role_id = in_role_id;
-        DELETE FROM tsk_auth_tables         WHERE role_id = in_role_id;
-        DELETE FROM tsk_auth_procedures     WHERE role_id = in_role_id;
-        DELETE FROM tsk_auth_roles          WHERE role_id = in_role_id;
-        DELETE FROM tsk_roles               WHERE role_id = in_role_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
