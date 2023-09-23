@@ -1,7 +1,7 @@
-prompt --application/shared_components/user_interface/lovs/lov_clients_all
+prompt --application/shared_components/user_interface/lovs/lov_projects
 begin
 --   Manifest
---     LOV_CLIENTS #ALL
+--     LOV_PROJECTS
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -12,14 +12,15 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(19917139722955396)  -- LOV_CLIENTS #ALL
-,p_lov_name=>'LOV_CLIENTS #ALL'
+ p_id=>wwv_flow_imp.id(23314637906165586)  -- LOV_PROJECTS
+,p_lov_name=>'LOV_PROJECTS'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
 ,p_use_local_sync_table=>false
-,p_query_table=>'TSK_LOV_CLIENTS_V'
-,p_return_column_name=>'CLIENT_ID'
-,p_display_column_name=>'CLIENT_NAME'
+,p_query_table=>'TSK_LOV_PROJECTS_V'
+,p_return_column_name=>'PROJECT_ID'
+,p_display_column_name=>'PROJECT_NAME'
+,p_group_column_name=>'CLIENT_NAME'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'ORDER#'
 ,p_default_sort_direction=>'ASC'

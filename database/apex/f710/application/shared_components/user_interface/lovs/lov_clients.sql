@@ -1,7 +1,7 @@
-prompt --application/shared_components/user_interface/lovs/lov_projects_page_items
+prompt --application/shared_components/user_interface/lovs/lov_clients
 begin
 --   Manifest
---     LOV_PROJECTS #PAGE_ITEMS
+--     LOV_CLIENTS
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -12,18 +12,16 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(19917758183955396)  -- LOV_PROJECTS #PAGE_ITEMS
-,p_lov_name=>'LOV_PROJECTS #PAGE_ITEMS'
+ p_id=>wwv_flow_imp.id(19917139722955396)  -- LOV_CLIENTS
+,p_lov_name=>'LOV_CLIENTS'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
 ,p_use_local_sync_table=>false
-,p_query_table=>'TSK_LOV_PROJECTS_V'
-,p_query_where=>'is_page_client = ''Y'''
-,p_return_column_name=>'PROJECT_ID'
-,p_display_column_name=>'PROJECT_NAME'
-,p_group_column_name=>'CLIENT_NAME'
+,p_query_table=>'TSK_LOV_CLIENTS_V'
+,p_return_column_name=>'CLIENT_ID'
+,p_display_column_name=>'CLIENT_NAME'
 ,p_group_sort_direction=>'ASC'
-,p_default_sort_column_name=>'PROJECT_R#'
+,p_default_sort_column_name=>'ORDER#'
 ,p_default_sort_direction=>'ASC'
 );
 wwv_flow_imp.component_end;

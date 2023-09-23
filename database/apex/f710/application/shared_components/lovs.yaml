@@ -18,10 +18,10 @@
     group: PROJECT_NAME
     group-sort-direction: Ascending (Nulls Last)
 
-- # ====== List of Values: LOV_CLIENTS #ALL ====================
+- # ====== List of Values: LOV_CLIENTS =========================
   id: 19917139722955396
   identification: 
-    name: 'LOV_CLIENTS #ALL'
+    name: LOV_CLIENTS
 
   source: 
     location: Local Database
@@ -34,26 +34,6 @@
     display: CLIENT_NAME
     default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
-
-- # ====== List of Values: LOV_PROJECTS #PAGE_ITEMS ============
-  id: 19917758183955396
-  identification: 
-    name: 'LOV_PROJECTS #PAGE_ITEMS'
-
-  source: 
-    location: Local Database
-    type: Table / View
-    table-owner: Parsing Schema
-    table-name: TSK_LOV_PROJECTS_V
-    where-clause: is_page_client = 'Y'
-
-  column-mapping: 
-    return: PROJECT_ID
-    display: PROJECT_NAME
-    default-sort: PROJECT_R#
-    sort-direction: Ascending (Nulls Last)
-    group: CLIENT_NAME
-    group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_STATUSES ========================
   id: 19918350743955397
@@ -105,4 +85,23 @@
     display: USER_NAME
     default-sort: USER_NAME
     sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_PROJECTS ========================
+  id: 23314637906165586
+  identification: 
+    name: LOV_PROJECTS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_PROJECTS_V
+
+  column-mapping: 
+    return: PROJECT_ID
+    display: PROJECT_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: CLIENT_NAME
+    group-sort-direction: Ascending (Nulls Last)
 

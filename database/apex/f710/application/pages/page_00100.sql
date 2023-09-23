@@ -1052,7 +1052,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
 ,p_prompt=>'Client'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_CLIENTS #ALL'
+,p_named_lov=>'LOV_CLIENTS'
 ,p_lov_display_null=>'YES'
 ,p_cHeight=>1
 ,p_colspan=>2
@@ -1083,7 +1083,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
 ,p_prompt=>'Project'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_PROJECTS #PAGE_ITEMS'
+,p_named_lov=>'LOV_PROJECTS'
 ,p_lov_display_null=>'YES'
 ,p_cHeight=>1
 ,p_begin_on_new_line=>'N'
