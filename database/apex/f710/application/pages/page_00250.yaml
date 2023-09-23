@@ -788,7 +788,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: 'LOV_CLIENTS #ALL' # 19917139722955396
+    list-of-values: LOV_CLIENTS # 19917139722955396
     display-extra-values: false
     display-null-value: true
 

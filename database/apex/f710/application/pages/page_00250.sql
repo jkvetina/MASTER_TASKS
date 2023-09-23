@@ -542,7 +542,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(113516914262057947)
 ,p_prompt=>'Client Id'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_CLIENTS #ALL'
+,p_named_lov=>'LOV_CLIENTS'
 ,p_lov_display_null=>'YES'
 ,p_cHeight=>1
 ,p_colspan=>2
