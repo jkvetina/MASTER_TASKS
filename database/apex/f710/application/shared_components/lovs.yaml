@@ -1,0 +1,108 @@
+---
+- # ====== List of Values: LOV_BOARDS #PAGE_ITEMS ==============
+  id: 19916565304955390
+  identification: 
+    name: 'LOV_BOARDS #PAGE_ITEMS'
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_BOARDS_V
+
+  column-mapping: 
+    return: BOARD_ID
+    display: BOARD_NAME
+    default-sort: BOARD_R#
+    sort-direction: Ascending (Nulls Last)
+    group: PROJECT_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_CLIENTS #ALL ====================
+  id: 19917139722955396
+  identification: 
+    name: 'LOV_CLIENTS #ALL'
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_CLIENTS_V
+
+  column-mapping: 
+    return: CLIENT_ID
+    display: CLIENT_NAME
+    default-sort: CLIENT_R#
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_PROJECTS #PAGE_ITEMS ============
+  id: 19917758183955396
+  identification: 
+    name: 'LOV_PROJECTS #PAGE_ITEMS'
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_PROJECTS_V
+    where-clause: is_page_client = 'Y'
+
+  column-mapping: 
+    return: PROJECT_ID
+    display: PROJECT_NAME
+    default-sort: PROJECT_R#
+    sort-direction: Ascending (Nulls Last)
+    group: CLIENT_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_STATUSES ========================
+  id: 19918350743955397
+  identification: 
+    name: LOV_STATUSES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_STATUSES_V
+
+  column-mapping: 
+    return: STATUS_ID
+    display: STATUS_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_SWIMLANES =======================
+  id: 19919016269955397
+  identification: 
+    name: LOV_SWIMLANES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_SWIMLANES_V
+
+  column-mapping: 
+    return: SWIMLANE_ID
+    display: SWIMLANE_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_USERS #PAGE/#SETT ===============
+  id: 19920099360955398
+  identification: 
+    name: 'LOV_USERS #PAGE/#SETT'
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_USERS_V
+
+  column-mapping: 
+    return: USER_ID
+    display: USER_NAME
+    default-sort: USER_NAME
+    sort-direction: Ascending (Nulls Last)
+

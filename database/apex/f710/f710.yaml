@@ -1,0 +1,154 @@
+---
+# ====== Application: Tasks II. ==============================
+id: 710
+identification: 
+  name: Tasks II.
+  alias: TASKS
+  version: 2023-09-20
+  application-group: LAUNCHPAD # 14521045818542929
+
+row-search: 
+  tokenize: true
+
+availability: 
+  status: Available with Developer Toolbar
+  build-status: Run and Build Application
+
+error-handling: 
+  default-display-location: Inline with Field and in Notification
+  error-handling-function: core.handle_apex_error
+
+report-printing: 
+  type: Native Printing
+
+advanced: 
+  friendly-urls: true
+  allow-feedback: false
+  logging: true
+  debugging: true
+  compatibility-mode: 21.2 / 22.1 / 22.2
+
+authentication: 
+  public-user: APEX_PUBLIC_USER
+  authentication-scheme: MASTER - OPEN_DOOR (TESTING ONLY) # 70311275564704853
+
+authorization: 
+  source-for-role-or-group-schemes: Custom Code
+
+session-management: 
+  rejoin-sessions: Disabled
+  maximum-session-length: 86400
+  session-timeout-url: '#LOGOUT_URL#'
+  maximum-session-idle-time: 14400
+  session-idle-timeout-url: '#LOGOUT_URL#'
+  session-timeout-warning: 0
+
+session-state-protection: 
+  enabled: true
+
+security: 
+  deep-linking: Enabled
+  browser-cache: Disabled
+  embed-in-frames: Deny
+  referrer-policy: strict-origin
+  html-escaping-mode: Extended
+
+advanced: 
+  pass-ecid: Y
+
+database-session: 
+  parsing-schema: APPS
+
+globalization: 
+  primary-language: English (en)
+  document-direction: Left-To-Right
+  language-derived-from: Application Primary Language
+  automatic-time-zone: false
+  automatic-csv-encoding: false
+
+application-format-masks: 
+  date: '&FORMAT_DATE.'
+  date-time: '&FORMAT_DATE_TIME.'
+  timestamp: DS
+  timestamp-time-zone: DS
+
+character-value-comparison: 
+  behavior: Database session NLS setting (default)
+
+logo: 
+  type: Text
+  text: '&APP_NAME.'
+
+progressive-web-app: 
+  enable: true
+  installable: false
+  display: Standalone
+  screen-orientation: Any
+  ios-status-bar-style: Default
+  enable-push-notifications: false
+
+navigation: 
+  home-url: 
+    url: 'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
+    page: HOME
+
+  login-url: 
+    url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
+    page: LOGIN
+
+navigation-menu: 
+  list-template: Top Navigation Menu # 34014612441153815
+  template-options: 
+  - '#DEFAULT#'
+  - js-tabLike
+  list-position: Top
+
+navigation-bar: 
+  implementation: List
+  list: NAVIGATION # 33790933661125336
+  list-template: Navigation Bar Q # 34008808952153812
+  template-options: 
+  - '#DEFAULT#'
+
+javascript: 
+  file-urls: 
+  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
+  include-jquery-migrate: false
+
+css: 
+  file-urls: 
+  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
+
+attributes: 
+  theme: Universal Theme # 800
+  global-page: 0
+  enable-end-users-to-choose-theme-style: false
+  add-"built-with-apex"-to-footer: false
+
+substitutions: 
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  value: 
+    static-value: Tasks II.
+
+- # ====== Substitution: APP_DESC ==============================
+  id: 2
+  identification: 
+    name: APP_DESC
+
+  value: 
+    static-value: Simple tasks management, kanban style board, checklists/acceptance criteria...
+
+- # ====== Substitution: APP_PREFIX ============================
+  id: 3
+  identification: 
+    name: APP_PREFIX
+
+  value: 
+    static-value: TSK_
+

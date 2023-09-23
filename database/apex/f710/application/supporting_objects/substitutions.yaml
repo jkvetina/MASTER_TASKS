@@ -1,0 +1,25 @@
+---
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: APP_DESC ==============================
+  id: 2
+  identification: 
+    name: APP_DESC
+
+  installation: 
+    prompt-substitution: false
+
+- # ====== Substitution: APP_PREFIX ============================
+  id: 3
+  identification: 
+    name: APP_PREFIX
+
+  installation: 
+    prompt-substitution: false
+

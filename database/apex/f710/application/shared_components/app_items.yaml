@@ -1,0 +1,121 @@
+---
+- # ====== Application Item: G_TODAY ===========================
+  id: 33754766784347945
+  identification: 
+    name: G_TODAY
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: G_CONTEXT_ID ======================
+  id: 33754956944348792
+  identification: 
+    name: G_CONTEXT_ID
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: G_LOCKED_APP_ID ===================
+  id: 33755427457356295
+  identification: 
+    name: G_LOCKED_APP_ID
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_NUMBER_CURRENCY ============
+  id: 33755988873385874
+  identification: 
+    name: FORMAT_NUMBER_CURRENCY
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_INTEGER_CURRENCY ===========
+  id: 33756272303386830
+  identification: 
+    name: FORMAT_INTEGER_CURRENCY
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_NUMBER =====================
+  id: 33756430775388227
+  identification: 
+    name: FORMAT_NUMBER
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_INTEGER ====================
+  id: 33756628790391138
+  identification: 
+    name: FORMAT_INTEGER
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_TIME =======================
+  id: 33756869949392881
+  identification: 
+    name: FORMAT_TIME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_TIME_SHORT =================
+  id: 33757006163393852
+  identification: 
+    name: FORMAT_TIME_SHORT
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_DATE =======================
+  id: 33757242584395109
+  identification: 
+    name: FORMAT_DATE
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_DATE_SHORT =================
+  id: 33757407442395722
+  identification: 
+    name: FORMAT_DATE_SHORT
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: FORMAT_DATE_TIME ==================
+  id: 33757672807397914
+  identification: 
+    name: FORMAT_DATE_TIME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
