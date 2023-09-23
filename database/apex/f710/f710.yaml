@@ -89,8 +89,8 @@ progressive-web-app:
 
 navigation: 
   home-url: 
-    url: 'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
-    page: HOME
+    url: 'f?p=&APP_ID.:100:&APP_SESSION.::&DEBUG.:::'
+    page: 100 # Tasks
 
   login-url: 
     url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'

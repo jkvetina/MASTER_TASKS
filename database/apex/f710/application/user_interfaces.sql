@@ -14,7 +14,7 @@ wwv_flow_imp.component_begin (
 wwv_flow_imp_shared.create_user_interface(
  p_id=>wwv_flow_imp.id(710)
 ,p_theme_id=>800
-,p_home_url=>'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
+,p_home_url=>'f?p=&APP_ID.:100:&APP_SESSION.::&DEBUG.:::'
 ,p_login_url=>'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
 ,p_theme_style_by_user_pref=>false
 ,p_built_with_love=>false
