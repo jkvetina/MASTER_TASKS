@@ -14,7 +14,7 @@ wwv_flow_imp.component_begin (
 wwv_flow_imp_page.create_page(
  p_id=>100
 ,p_name=>'Tasks'
-,p_alias=>'TASKS'
+,p_alias=>'HOME'
 ,p_step_title=>'Tasks'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(78006013489194627)  --  MAIN
@@ -31,6 +31,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(33881254928153735)
 ,p_plug_display_sequence=>10
+,p_plug_display_condition_type=>'NEVER'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );

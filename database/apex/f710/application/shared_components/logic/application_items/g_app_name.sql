@@ -1,7 +1,7 @@
-prompt --application/shared_components/logic/application_items/g_locked_app_id
+prompt --application/shared_components/logic/application_items/g_app_name
 begin
 --   Manifest
---     APPLICATION ITEM: G_LOCKED_APP_ID
+--     APPLICATION ITEM: G_APP_NAME
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -12,8 +12,8 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(33755427457356295)
-,p_name=>'G_LOCKED_APP_ID'
+ p_id=>wwv_flow_imp.id(23262049997827324)
+,p_name=>'G_APP_NAME'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
 );

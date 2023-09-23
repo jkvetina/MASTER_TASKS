@@ -3,7 +3,7 @@
 id: 100
 identification: 
   name: Tasks
-  alias: TASKS
+  alias: HOME
   title: Tasks
   page-group: ' MAIN' # 78006013489194627
 
@@ -165,6 +165,9 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Never
 
   server-cache: 
     caching: Disabled

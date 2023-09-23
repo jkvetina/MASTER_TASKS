@@ -1,4 +1,14 @@
 ---
+- # ====== Application Item: G_APP_NAME ========================
+  id: 23262049997827324
+  identification: 
+    name: G_APP_NAME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
 - # ====== Application Item: G_TODAY ===========================
   id: 33754766784347945
   identification: 
@@ -19,10 +29,10 @@
     session-state-protection: Restricted - May not be set from browser
     escape-special-characters: true
 
-- # ====== Application Item: G_LOCKED_APP_ID ===================
+- # ====== Application Item: G_APP_ID ==========================
   id: 33755427457356295
   identification: 
-    name: G_LOCKED_APP_ID
+    name: G_APP_ID
     scope: Global
 
   security: 

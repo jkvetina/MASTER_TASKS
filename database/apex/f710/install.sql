@@ -30,8 +30,9 @@ prompt --install
 @@application/shared_components/logic/application_items/format_number_currency.sql
 @@application/shared_components/logic/application_items/format_time.sql
 @@application/shared_components/logic/application_items/format_time_short.sql
+@@application/shared_components/logic/application_items/g_app_id.sql
+@@application/shared_components/logic/application_items/g_app_name.sql
 @@application/shared_components/logic/application_items/g_context_id.sql
-@@application/shared_components/logic/application_items/g_locked_app_id.sql
 @@application/shared_components/logic/application_items/g_today.sql
 @@application/shared_components/logic/application_settings.sql
 @@application/shared_components/navigation/tabs/standard.sql

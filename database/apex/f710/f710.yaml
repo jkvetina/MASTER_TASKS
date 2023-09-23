@@ -117,8 +117,8 @@ javascript:
 
 css: 
   file-urls: 
-  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
-  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
   - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
 
 attributes: 
