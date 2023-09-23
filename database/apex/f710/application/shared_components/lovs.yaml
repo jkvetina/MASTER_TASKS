@@ -32,7 +32,7 @@
   column-mapping: 
     return: CLIENT_ID
     display: CLIENT_NAME
-    default-sort: CLIENT_R#
+    default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_PROJECTS #PAGE_ITEMS ============
