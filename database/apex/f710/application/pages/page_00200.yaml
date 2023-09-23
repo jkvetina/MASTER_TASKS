@@ -39,49 +39,8 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Clients =====================================
-  id: 136799133959925374
-  identification: 
-    title: Clients
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: No Parent
-    position: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Hero # 33914493478153754
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
 - # ====== Region: Clients [GRID] ==============================
-  id: 205493312926872623
+  id: 22781973600601049
   identification: 
     title: Clients [GRID]
     type: Interactive Grid
@@ -124,7 +83,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 205493449741872624
+    id: 23263639567120016
     edit: 
       enabled: true
       allowed-operations: 
@@ -183,158 +142,20 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 206386189478888419
+      id: 23271332260122956
       identification: 
         name: Primary Report
-        alias: 347276
+        alias: 232714
 
   column-groups: 
   - # ====== Column Group: Counts ================================
-    id: 112525641644274360
+    id: 23262159387120001
     heading: 
       heading: Counts
 
   columns: 
-  - # ====== Column: COUNT_TASKS =================================
-    id: 112197169406957937
-    identification: 
-      column-name: COUNT_TASKS
-      type: Display Only
-
-    heading: 
-      heading: Tasks
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 100
-      column-alignment: end
-      group: Counts # 112525641644274360
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_TASKS
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COUNT_PROJECTS ==============================
-    id: 112525360044274357
-    identification: 
-      column-name: COUNT_PROJECTS
-      type: Display Only
-
-    heading: 
-      heading: Projects
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 80
-      column-alignment: end
-      group: Counts # 112525641644274360
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_PROJECTS
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COUNT_BOARDS ================================
-    id: 112525402068274358
-    identification: 
-      column-name: COUNT_BOARDS
-      type: Display Only
-
-    heading: 
-      heading: Boards
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 90
-      column-alignment: end
-      group: Counts # 112525641644274360
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_BOARDS
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
   - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 115218431355318522
+    id: 23263735744120017
     identification: 
       column-name: OLD_CLIENT_ID
       type: Hidden
@@ -367,17 +188,8 @@ regions:
     enable-users-to: 
       sort: false
 
-  - # ====== Column: APEX$ROW_ACTION =============================
-    id: 136799427454925377
-    identification: 
-      column-name: APEX$ROW_ACTION
-      type: Actions Menu
-
-    layout: 
-      sequence: 20
-
   - # ====== Column: CLIENT_ID ===================================
-    id: 205493465812872625
+    id: 23263865084120018
     identification: 
       column-name: CLIENT_ID
       type: Text Field
@@ -424,7 +236,7 @@ regions:
       exact-match: true
 
     export-/-printing: 
-      include-in-export-/-print: false
+      include-in-export-/-print: true
 
     enable-users-to: 
       sort: true
@@ -432,7 +244,7 @@ regions:
       hide: true
 
   - # ====== Column: CLIENT_NAME =================================
-    id: 205493647358872626
+    id: 23263925221120019
     identification: 
       column-name: CLIENT_NAME
       type: Text Field
@@ -486,6 +298,167 @@ regions:
       control-break/aggregate: true
       hide: true
 
+  - # ====== Column: COUNT_PROJECTS ==============================
+    id: 23264089038120020
+    identification: 
+      column-name: COUNT_PROJECTS
+      type: Display Only
+
+    heading: 
+      heading: Projects
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 60
+      column-alignment: end
+      group: Counts # 23262159387120001
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_PROJECTS
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_BOARDS ================================
+    id: 23264157467120021
+    identification: 
+      column-name: COUNT_BOARDS
+      type: Display Only
+
+    heading: 
+      heading: Boards
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 70
+      column-alignment: end
+      group: Counts # 23262159387120001
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_BOARDS
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_TASKS =================================
+    id: 23264217293120022
+    identification: 
+      column-name: COUNT_TASKS
+      type: Display Only
+
+    heading: 
+      heading: Tasks
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 80
+      column-alignment: end
+      group: Counts # 23262159387120001
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_TASKS
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: APEX$ROW_ACTION =============================
+    id: 23264390646120023
+    identification: 
+      column-name: APEX$ROW_ACTION
+      type: Actions Menu
+
+    layout: 
+      sequence: 20
+
+  - # ====== Column: APEX$ROW_SELECTOR ===========================
+    id: 23264465844120024
+    identification: 
+      column-name: APEX$ROW_SELECTOR
+      type: Row Selector
+
+    settings: 
+      enable-multi-select: true
+      show-select-all: true
+      hide-control: false
+
+    layout: 
+      sequence: 10
+
   printing: 
     page: 
       size: Letter
@@ -525,6 +498,47 @@ regions:
       font-color: '#000000'
       alignment: center
 
+- # ====== Region: Clients =====================================
+  id: 136799133959925374
+  identification: 
+    title: Clients
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 33914493478153754
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 buttons: 
 - # ====== Button: ADD_CLIENT_WIZARD ===========================
   id: 23210328798405169
@@ -557,12 +571,12 @@ buttons:
 
 processes: 
 - # ====== Process: SAVE_CLIENTS ===============================
-  id: 23216329008405175
+  id: 23264570806120025
   identification: 
     name: SAVE_CLIENTS
     type: Invoke API
     execution-chain: None
-    editable-region: Clients [GRID] # 205493312926872623
+    editable-region: Clients [GRID] # 22781973600601049
 
   settings: 
     type: PL/SQL Package
