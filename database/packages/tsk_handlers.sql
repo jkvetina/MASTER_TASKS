@@ -118,6 +118,223 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE save_statuses
+    AS
+        rec                     tsk_statuses%ROWTYPE;
+        in_action               CONSTANT CHAR := core.get_grid_action();
+    BEGIN
+        -- change record in table
+        rec.status_id           := core.get_grid_data('STATUS_ID');
+        rec.status_name         := core.get_grid_data('STATUS_NAME');
+        rec.client_id           := core.get_grid_data('CLIENT_ID');
+        rec.project_id          := core.get_grid_data('PROJECT_ID');
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
+        rec.is_default          := core.get_grid_data('IS_DEFAULT');
+        rec.is_colored          := core.get_grid_data('IS_COLORED');
+        rec.is_show_user        := core.get_grid_data('IS_SHOW_USER');
+        rec.is_show_swimlane    := core.get_grid_data('IS_SHOW_SWIMLANE');
+        rec.order#              := core.get_grid_data('ORDER#');
+        --
+        tsk_tapi.statuses (rec,
+            in_action               => in_action,
+            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
+            in_project_id           => NVL(core.get_grid_data('OLD_PROJECT_ID'), rec.project_id),
+            in_status_id            => NVL(core.get_grid_data('OLD_STATUS_ID'), rec.status_id)
+        );
+        --
+        IF in_action = 'D' THEN
+            RETURN;     -- exit this procedure
+        END IF;
+
+        -- update primary key back to APEX grid for proper row refresh
+        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
+        core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
+        core.set_grid_data('OLD_STATUS_ID',         rec.status_id);
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE save_swimlanes
+    AS
+        rec                     tsk_swimlanes%ROWTYPE;
+        in_action               CONSTANT CHAR := core.get_grid_action();
+    BEGIN
+        -- change record in table
+        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
+        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
+        rec.client_id           := core.get_grid_data('CLIENT_ID');
+        rec.project_id          := core.get_grid_data('PROJECT_ID');
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
+        rec.order#              := core.get_grid_data('ORDER#');
+        --
+        tsk_tapi.swimlanes (rec,
+            in_action               => in_action,
+            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
+            in_project_id           => NVL(core.get_grid_data('OLD_PROJECT_ID'), rec.project_id),
+            in_swimlane_id          => NVL(core.get_grid_data('OLD_SWIMLANE_ID'), rec.swimlane_id)
+        );
+        --
+        IF in_action = 'D' THEN
+            RETURN;     -- exit this procedure
+        END IF;
+
+        -- update primary key back to APEX grid for proper row refresh
+        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
+        core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
+        core.set_grid_data('OLD_SWIMLANE_ID',       rec.swimlane_id);
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE save_categories
+    AS
+        rec                     tsk_categories%ROWTYPE;
+        in_action               CONSTANT CHAR := core.get_grid_action();
+    BEGIN
+        -- change record in table
+        rec.category_id         := core.get_grid_data('CATEGORY_ID');
+        rec.category_name       := core.get_grid_data('CATEGORY_NAME');
+        rec.client_id           := core.get_grid_data('CLIENT_ID');
+        rec.project_id          := core.get_grid_data('PROJECT_ID');
+        rec.color_bg            := core.get_grid_data('COLOR_BG');
+        rec.color_fg            := core.get_grid_data('COLOR_FG');
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
+        rec.is_default          := core.get_grid_data('IS_DEFAULT');
+        rec.order#              := core.get_grid_data('ORDER#');
+        --
+        tsk_tapi.categories (rec,
+            in_action               => in_action,
+            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
+            in_project_id           => NVL(core.get_grid_data('OLD_PROJECT_ID'), rec.project_id),
+            in_category_id          => NVL(core.get_grid_data('OLD_CATEGORY_ID'), rec.category_id)
+        );
+        --
+        IF in_action = 'D' THEN
+            RETURN;     -- exit this procedure
+        END IF;
+
+        -- update primary key back to APEX grid for proper row refresh
+        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
+        core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
+        core.set_grid_data('OLD_CATEGORY_ID',       rec.category_id);
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_statuses
+    AS
+        in_client_id            CONSTANT tsk_tasks.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_tasks.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        FOR s IN (
+            SELECT
+                t.status_id,
+                t.client_id,
+                t.project_id,
+                --
+                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.status_name, t.status_id) * 10 AS order#
+            FROM tsk_statuses t
+            WHERE 1 = 1
+                AND (t.client_id    = in_client_id  OR in_client_id  IS NULL)
+                AND (t.project_id   = in_project_id OR in_project_id IS NULL)
+        ) LOOP
+            UPDATE tsk_statuses t
+            SET t.order#            = s.order#
+            WHERE t.status_id       = s.status_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id
+                AND (t.order#       != s.order# OR t.order# IS NULL);
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_swimlanes
+    AS
+        in_client_id            CONSTANT tsk_tasks.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_tasks.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        FOR s IN (
+            SELECT
+                t.swimlane_id,
+                t.client_id,
+                t.project_id,
+                --
+                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.swimlane_name, t.swimlane_id) * 10 AS order#
+            FROM tsk_swimlanes t
+            WHERE 1 = 1
+                AND (t.client_id    = in_client_id  OR in_client_id  IS NULL)
+                AND (t.project_id   = in_project_id OR in_project_id IS NULL)
+        ) LOOP
+            UPDATE tsk_swimlanes t
+            SET t.order#            = s.order#
+            WHERE t.swimlane_id     = s.swimlane_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id
+                AND (t.order#       != s.order# OR t.order# IS NULL);
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_categories
+    AS
+        in_client_id            CONSTANT tsk_tasks.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_tasks.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        FOR s IN (
+            SELECT
+                t.category_id,
+                t.client_id,
+                t.project_id,
+                --
+                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.category_name, t.category_id) * 10 AS order#
+            FROM tsk_categories t
+            WHERE 1 = 1
+                AND (t.client_id    = in_client_id  OR in_client_id  IS NULL)
+                AND (t.project_id   = in_project_id OR in_project_id IS NULL)
+        ) LOOP
+            UPDATE tsk_categories t
+            SET t.order#            = s.order#
+            WHERE t.category_id     = s.category_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id
+                AND (t.order#       != s.order# OR t.order# IS NULL);
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 
