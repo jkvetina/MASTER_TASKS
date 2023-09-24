@@ -81,17 +81,6 @@ SELECT
     t.board_id,
     t.board_name,
     --
-    CASE WHEN t.board_id = x.board_id
-        THEN '<span class="fa fa-check-square"></span>'
-        ELSE '<a href="' ||
-            core.get_page_url (
-                in_page_id      => 100,
-                in_app_id       => core.get_app_id(),
-                in_names        => 'P100_CLIENT_ID,P100_PROJECT_ID,P100_BOARD_ID',
-                in_values       => t.client_id || ',' || t.project_id || ',' || t.board_id
-            ) || '">SET</a>'
-        END AS is_current,
-    --
     CASE WHEN f.board_id IS NOT NULL THEN 'Y' END AS is_favorite,
     --
     t.is_active,

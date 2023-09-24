@@ -351,7 +351,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_SINGLE_CHECKBOX'
-,p_heading=>'Is Active'
+,p_heading=>'Active'
 ,p_heading_alignment=>'CENTER'
 ,p_display_sequence=>100
 ,p_value_alignment=>'CENTER'

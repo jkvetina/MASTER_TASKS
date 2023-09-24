@@ -681,7 +681,7 @@ regions:
       type: Checkbox
 
     heading: 
-      heading: Is Active
+      heading: Active
       alignment: center
 
     settings: 

@@ -384,7 +384,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 90
+      sequence: 100
       column-alignment: end
       group: Counts # 22781819608601048
       use-group-for: Both
@@ -430,7 +430,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 100
+      sequence: 110
       column-alignment: end
       group: Counts # 22781819608601048
       use-group-for: Both
@@ -476,7 +476,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 110
+      sequence: 120
       column-alignment: end
       group: Counts # 22781819608601048
       use-group-for: Both
@@ -522,7 +522,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: end
       group: Counts # 22781819608601048
       use-group-for: Both
@@ -568,7 +568,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 130
+      sequence: 140
       column-alignment: end
       group: Counts # 22781819608601048
       use-group-for: Both
@@ -614,7 +614,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 140
+      sequence: 150
       column-alignment: end
       group: Counts # 22781819608601048
       use-group-for: Both
@@ -678,7 +678,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 80
+      sequence: 90
 
     accessibility: 
       value-identifies-row: false
@@ -701,6 +701,60 @@ regions:
 
     enable-users-to: 
       sort: false
+
+  - # ====== Column: IS_DEFAULT ==================================
+    id: 23518475405581615
+    identification: 
+      column-name: IS_DEFAULT
+      type: Checkbox
+
+    heading: 
+      heading: Default
+      alignment: center
+
+    settings: 
+      use-defaults: false
+      checked-value: Y
+
+    layout: 
+      sequence: 80
+      column-alignment: center
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: IS_DEFAULT
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
 
   printing: 
     page: 
@@ -741,10 +795,10 @@ regions:
       font-color: '#000000'
       alignment: center
 
-- # ====== Region: Projects for &P250_CLIENT_ID. ===============
+- # ====== Region: Projects for &P0_CLIENT_NAME. ===============
   id: 113516914262057947
   identification: 
-    title: Projects for &P250_CLIENT_ID.
+    title: Projects for &P0_CLIENT_NAME.
     type: Static Content
 
   layout: 
@@ -761,8 +815,6 @@ regions:
     template: Hero # 33914493478153754
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - FILTERS
     render-components: Above Content
 
   accessibility: 
@@ -784,66 +836,6 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-page-items: 
-- # ====== Page Item: P250_CLIENT_ID ===========================
-  id: 22779899914601028
-  identification: 
-    name: P250_CLIENT_ID
-    type: Select List
-
-  label: 
-    label: Client Id
-    alignment: Left
-
-  settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
-
-  layout: 
-    sequence: 10
-    region: Projects for &P250_CLIENT_ID. # 113516914262057947
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_CLIENTS # 19917139722955396
-    display-extra-values: false
-    display-null-value: false
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
-    restricted-characters: All characters can be saved.
-
 buttons: 
 - # ====== Button: ADD_PROJECT_WIZARD ==========================
   id: 23203588835393964
@@ -853,7 +845,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: Projects for &P250_CLIENT_ID. # 113516914262057947
+    region: Projects for &P0_CLIENT_NAME. # 113516914262057947
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -873,40 +865,6 @@ buttons:
 
   security: 
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
-
-dynamic-actions: 
-- # ====== Dynamic Action: CHANGED_FILTERS =====================
-  id: 22779959075601029
-  identification: 
-    name: CHANGED_FILTERS
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P250_CLIENT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Submit Page =================================
-    id: 22780093781601030
-    identification: 
-      action: Submit Page
-
-    settings: 
-      show-processing: true
-
-    execution: 
-      sequence: 10
-      event: CHANGED_FILTERS # 22779959075601029
-      fire-when-event-result-is: True
-      fire-on-initialization: false
 
 processes: 
 - # ====== Process: INIT_DEFAULTS ==============================
