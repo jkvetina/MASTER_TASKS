@@ -76,6 +76,7 @@ SELECT
     t.project_id,
     t.project_name,
     t.is_active,
+    t.is_default,
     --
     c.count_categories,
     s.count_statuses,

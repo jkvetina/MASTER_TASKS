@@ -3,6 +3,7 @@ CREATE TABLE tsk_projects (
     project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_project_id NOT NULL,
     project_name                    VARCHAR2(64)    CONSTRAINT nn_tsk_project_name NOT NULL,
     is_active                       CHAR(1),
+    is_default                      CHAR(1),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
@@ -11,6 +12,9 @@ CREATE TABLE tsk_projects (
     --
     CONSTRAINT pk_tsk_projects
         PRIMARY KEY (client_id, project_id),
+    --
+    CONSTRAINT ch_tsk_projects_default
+        CHECK (is_default = 'Y' OR is_default IS NULL),
     --
     CONSTRAINT fk_tsk_projects_client
         FOREIGN KEY (client_id)
@@ -24,4 +28,5 @@ COMMENT ON COLUMN tsk_projects.client_id        IS '';
 COMMENT ON COLUMN tsk_projects.project_id       IS '';
 COMMENT ON COLUMN tsk_projects.project_name     IS '';
 COMMENT ON COLUMN tsk_projects.is_active        IS '';
+COMMENT ON COLUMN tsk_projects.is_default       IS '';
 

@@ -95,6 +95,7 @@ SELECT
     CASE WHEN f.board_id IS NOT NULL THEN 'Y' END AS is_favorite,
     --
     t.is_active,
+    t.is_default,
     t.order#,
     --
     g.count_status_1,

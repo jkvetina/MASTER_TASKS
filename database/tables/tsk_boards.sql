@@ -4,6 +4,7 @@ CREATE TABLE tsk_boards (
     client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_boards_client NOT NULL,
     project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_boards_project NOT NULL,
     is_active                       CHAR(1),
+    is_default                      CHAR(1),
     order#                          NUMBER(4,0),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
@@ -16,6 +17,9 @@ CREATE TABLE tsk_boards (
     --
     CONSTRAINT uq_tsk_boards
         UNIQUE (client_id, project_id, board_name),
+    --
+    CONSTRAINT ch_tsk_boards_default
+        CHECK (is_default = 'Y' OR is_default IS NULL),
     --
     CONSTRAINT fk_tsk_boards_project
         FOREIGN KEY (client_id, project_id)
@@ -30,5 +34,6 @@ COMMENT ON COLUMN tsk_boards.board_name     IS '';
 COMMENT ON COLUMN tsk_boards.client_id      IS '';
 COMMENT ON COLUMN tsk_boards.project_id     IS '';
 COMMENT ON COLUMN tsk_boards.is_active      IS '';
+COMMENT ON COLUMN tsk_boards.is_default     IS '';
 COMMENT ON COLUMN tsk_boards.order#         IS '';
 
