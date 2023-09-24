@@ -211,8 +211,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -245,8 +244,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -279,8 +277,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -313,8 +310,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -347,8 +343,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -381,8 +376,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -415,8 +409,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -449,8 +442,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -483,8 +475,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -517,8 +508,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 10
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 

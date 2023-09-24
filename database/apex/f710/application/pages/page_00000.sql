@@ -80,8 +80,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_CLIENT_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -92,8 +90,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_CLIENT_NAME'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -104,8 +100,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_PROJECT_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -116,8 +110,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_BOARD_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -128,8 +120,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_PROJECT_NAME'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -140,8 +130,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_BOARD_NAME'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -152,8 +140,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_SWIMLANE_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -164,8 +150,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_OWNER_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -176,8 +160,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_SWIMLANE_NAME'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -188,8 +170,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_OWNER_NAME'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_source=>'10'
-,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
