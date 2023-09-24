@@ -75,6 +75,7 @@ SELECT
     t.client_id,
     t.project_id,
     t.project_name,
+    t.is_active,
     --
     c.count_categories,
     s.count_statuses,

@@ -117,15 +117,11 @@ SELECT
     MAX(g.status_name_7) OVER() AS status_name_7,
     MAX(g.status_name_8) OVER() AS status_name_8
     --
-FROM tsk_boards t
-JOIN tsk_available_boards_v a
-    ON a.client_id      = t.client_id
-    AND a.project_id    = t.project_id
-    AND a.board_id      = t.board_id
+FROM tsk_available_boards_v t
 JOIN x
-    ON x.client_id      = a.client_id
-    AND x.project_id    = a.project_id
-    AND x.board_id      = a.board_id
+    ON x.client_id      = t.client_id
+    AND x.project_id    = t.project_id
+    AND x.board_id      = t.board_id
 LEFT JOIN g
     ON g.client_id      = t.client_id
     AND g.project_id    = t.project_id

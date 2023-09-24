@@ -18,6 +18,7 @@ SELECT
     --
     t.client_id,
     t.client_name,
+    t.is_active,
     --
     c.count_projects,
     c.count_boards,

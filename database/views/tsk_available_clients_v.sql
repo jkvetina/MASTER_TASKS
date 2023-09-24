@@ -3,7 +3,8 @@ SELECT
     u.app_id,
     u.user_id,
     c.client_id,
-    c.client_name
+    c.client_name,
+    c.is_active
     --
 FROM tsk_clients c
 CROSS JOIN app_user_v u

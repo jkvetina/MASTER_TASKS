@@ -6,6 +6,7 @@ SELECT
     a.project_name,
     b.board_id,
     b.board_name,
+    b.is_active,
     b.order#,
     --
     CASE WHEN f.board_id IS NOT NULL THEN 'Y' END AS is_favorite

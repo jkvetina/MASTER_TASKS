@@ -313,7 +313,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 60
+      sequence: 70
       column-alignment: end
       group: Counts # 23262159387120001
       use-group-for: Both
@@ -359,7 +359,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 70
+      sequence: 80
       column-alignment: end
       group: Counts # 23262159387120001
       use-group-for: Both
@@ -405,7 +405,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 80
+      sequence: 90
       column-alignment: end
       group: Counts # 23262159387120001
       use-group-for: Both
@@ -458,6 +458,40 @@ regions:
 
     layout: 
       sequence: 10
+
+  - # ====== Column: IS_ACTIVE ===================================
+    id: 23265803948120038
+    identification: 
+      column-name: IS_ACTIVE
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 60
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: IS_ACTIVE
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
 
   printing: 
     page: 

@@ -5,7 +5,8 @@ SELECT
     a.client_id,
     a.client_name,
     p.project_id,
-    p.project_name
+    p.project_name,
+    p.is_active
     --
 FROM tsk_available_clients_v a
 JOIN tsk_projects p
