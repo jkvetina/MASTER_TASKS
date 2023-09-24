@@ -52,6 +52,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.project_id      := core.get_grid_data('PROJECT_ID');
         rec.project_name    := core.get_grid_data('PROJECT_NAME');
         rec.is_active       := core.get_grid_data('IS_ACTIVE');
+        rec.is_default      := core.get_grid_data('IS_DEFAULT');
         --
         tsk_tapi.projects (rec,
             in_action           => in_action,
@@ -131,6 +132,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.client_id       := core.get_grid_data('CLIENT_ID');
         rec.project_id      := core.get_grid_data('PROJECT_ID');
         rec.is_active       := core.get_grid_data('IS_ACTIVE');
+        rec.is_default      := core.get_grid_data('IS_DEFAULT');
         rec.order#          := core.get_grid_data('ORDER#');
         --
         tsk_tapi.boards (rec,
