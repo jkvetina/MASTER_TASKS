@@ -13,19 +13,13 @@ COMPOUND TRIGGER
     BEGIN
         -- populate audit columns
         IF NOT DELETING THEN
-            :NEW.updated_by := core.get_user_id();
-            :NEW.updated_at := SYSDATE;
-            --
-            IF :NEW.is_default = 'Y' THEN
+            IF :NEW.is_default = 'Y' AND :NEW.is_default != NVL(:OLD.is_default, 'N') AND NVL(:NEW.updated_by, '?') != 'STOP' THEN
                 v_client_id     := :NEW.client_id;
                 v_project_id    := :NEW.project_id;
             END IF;
             --
-        ELSE
-            IF :OLD.is_default = 'Y' THEN
-                v_client_id     := :OLD.client_id;
-                v_project_id    := :OLD.project_id;
-            END IF;
+            :NEW.updated_by := core.get_user_id();
+            :NEW.updated_at := SYSDATE;
             --
         END IF;
         --
@@ -52,7 +46,8 @@ COMPOUND TRIGGER
                 AND t.is_default    = 'Y';
             --
             UPDATE tsk_projects t
-            SET t.is_default        = 'Y'
+            SET t.is_default        = 'Y',
+                t.updated_by        = 'STOP'        -- a hacky way how to stop recursion
             WHERE t.client_id       = v_client_id
                 AND t.project_id    = v_project_id;
         END IF;
