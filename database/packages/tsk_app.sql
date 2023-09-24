@@ -42,6 +42,62 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     BEGIN
         RETURN core.get_item('P0_OWNER_ID');
     END;
+
+
+
+    PROCEDURE set_context (
+        in_client_id        tsk_tasks.client_id%TYPE        := NULL,
+        in_project_id       tsk_tasks.project_id%TYPE       := NULL,
+        in_board_id         tsk_tasks.board_id%TYPE         := NULL,
+        in_swimlane_id      tsk_tasks.swimlane_id%TYPE      := NULL,
+        in_owner_id         tsk_tasks.owner_id%TYPE         := NULL
+    )
+    AS
+        rec                 tsk_tasks%ROWTYPE;
+    BEGIN
+        rec.client_id       := in_client_id;
+        rec.project_id      := in_project_id;
+        rec.board_id        := in_board_id;
+        rec.swimlane_id     := in_swimlane_id;
+        rec.owner_id        := in_owner_id;
+
+        -- verify inputs
+        -- check also against available views
+        -- get from recent table, fallback on LOV views
+        --
+        IF rec.client_id IS NOT NULL THEN
+            -- switching client = get recent project, board, swimlane, owners
+            SELECT MIN(t.project_id) INTO rec.project_id
+            FROM tsk_projects t
+            --FROM tsk_recent
+            WHERE t.client_id = rec.client_id;
+        END IF;
+
+        -- set verified values
+        -- @TODO: with menu links remove p$
+        core.set_item('$CLIENT_ID',     rec.client_id);         core.set_item('P0_CLIENT_ID',     rec.client_id);
+        core.set_item('$PROJECT_ID',    rec.project_id);        core.set_item('P0_PROJECT_ID',    rec.project_id);
+        core.set_item('$BOARD_ID',      rec.board_id);          core.set_item('P0_BOARD_ID',      rec.board_id);
+        core.set_item('$SWIMLANE_ID',   rec.swimlane_id);       core.set_item('P0_SWIMLANE_ID',   rec.swimlane_id);
+        core.set_item('$OWNER_ID',      rec.owner_id);          core.set_item('P0_OWNER_ID',      rec.owner_id);
+        --
+        FOR c IN (
+            SELECT
+                t.client_name,
+                t.project_name,
+                t.board_name
+            FROM tsk_available_boards_v t
+        ) LOOP
+            core.set_item('P0_CLIENT_NAME',     c.client_name);
+            core.set_item('P0_PROJECT_NAME',    c.project_name);
+            core.set_item('P0_BOARD_NAME',      c.board_name);
+        END LOOP;
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
     END;
 
 
