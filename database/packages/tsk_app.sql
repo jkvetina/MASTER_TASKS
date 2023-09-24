@@ -4,7 +4,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     RETURN tsk_clients.client_id%TYPE
     AS
     BEGIN
-        RETURN APEX_UTIL.GET_PREFERENCE('CLIENT_ID');
+        RETURN core.get_item('P0_CLIENT_ID');
     END;
 
 
@@ -13,7 +13,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     RETURN tsk_projects.project_id%TYPE
     AS
     BEGIN
-        RETURN APEX_UTIL.GET_PREFERENCE('PROJECT_ID');
+        RETURN core.get_item('P0_PROJECT_ID');
     END;
 
 
@@ -22,7 +22,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     RETURN tsk_boards.board_id%TYPE
     AS
     BEGIN
-        RETURN TO_NUMBER(APEX_UTIL.GET_PREFERENCE('BOARD_ID'));
+        RETURN core.get_number_item('P0_BOARD_ID');
     END;
 
 
@@ -31,7 +31,17 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     RETURN tsk_swimlanes.swimlane_id%TYPE
     AS
     BEGIN
-        RETURN APEX_UTIL.GET_PREFERENCE('SWIMLANE_ID');
+        RETURN core.get_item('P0_SWIMLANE_ID');
+    END;
+
+
+
+    FUNCTION get_owner_id
+    RETURN tsk_tasks.owner_id%TYPE
+    AS
+    BEGIN
+        RETURN core.get_item('P0_OWNER_ID');
+    END;
     END;
 
 

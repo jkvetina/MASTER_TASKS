@@ -51,6 +51,11 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
+    FUNCTION get_owner_id
+    RETURN tsk_tasks.owner_id%TYPE;
+
+
+
     FUNCTION get_task_link (
         in_task_id          tsk_tasks.task_id%TYPE,
         in_external         CHAR                        := NULL
