@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Swimlanes ===================================
+- # ====== Region: Swimlanes for &P0_PROJECT_NAME. =============
   id: 182644162005569913
   identification: 
-    title: Swimlanes
+    title: Swimlanes for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
@@ -825,7 +825,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: Swimlanes # 182644162005569913
+    region: Swimlanes for &P0_PROJECT_NAME. # 182644162005569913
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true

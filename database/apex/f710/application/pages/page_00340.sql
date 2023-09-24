@@ -27,7 +27,7 @@ wwv_flow_imp_page.create_page(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(182644162005569913)
-,p_plug_name=>'Swimlanes'
+,p_plug_name=>'Swimlanes for &P0_PROJECT_NAME.'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(33914493478153754)
 ,p_plug_display_sequence=>10

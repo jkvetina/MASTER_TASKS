@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Categories ==================================
+- # ====== Region: Categories for &P0_PROJECT_NAME. ============
   id: 206633426891101885
   identification: 
-    title: Categories
+    title: Categories for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
@@ -879,7 +879,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: Categories # 206633426891101885
+    region: Categories for &P0_PROJECT_NAME. # 206633426891101885
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true

@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Statuses ====================================
+- # ====== Region: Statuses for &P0_PROJECT_NAME. ==============
   id: 159208933043047760
   identification: 
-    title: Statuses
+    title: Statuses for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
@@ -1073,7 +1073,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: Statuses # 159208933043047760
+    region: Statuses for &P0_PROJECT_NAME. # 159208933043047760
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1101,7 +1101,7 @@ buttons:
 
   layout: 
     sequence: 20
-    region: Statuses # 159208933043047760
+    region: Statuses for &P0_PROJECT_NAME. # 159208933043047760
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
