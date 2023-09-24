@@ -142,7 +142,6 @@ prompt --install
 @@application/user_interfaces/combined_files.sql
 @@application/pages/page_00000.sql
 @@application/pages/page_00100.sql
-@@application/pages/page_00105.sql
 @@application/pages/page_00200.sql
 @@application/pages/page_00250.sql
 @@application/pages/page_00300.sql

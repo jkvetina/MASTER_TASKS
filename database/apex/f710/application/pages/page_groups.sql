@@ -12,8 +12,16 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(78006013489194627)  --  MAIN
-,p_group_name=>' MAIN'
+ p_id=>wwv_flow_imp.id(23490192563159466)  --    MAIN - TASKS
+,p_group_name=>'   MAIN - TASKS'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(23490292620162217)  --   MAIN - BOARDS
+,p_group_name=>'  MAIN - BOARDS'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(78006013489194627)  --  MAIN - PROJECTS
+,p_group_name=>' MAIN - PROJECTS'
 );
 wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(34426432007203133)  -- __ INTERNAL
