@@ -1,8 +1,8 @@
 ---
-- # ====== List of Values: LOV_BOARDS #PAGE_ITEMS ==============
+- # ====== List of Values: LOV_BOARDS ==========================
   id: 19916565304955390
   identification: 
-    name: 'LOV_BOARDS #PAGE_ITEMS'
+    name: LOV_BOARDS
 
   source: 
     location: Local Database
@@ -13,7 +13,7 @@
   column-mapping: 
     return: BOARD_ID
     display: BOARD_NAME
-    default-sort: BOARD_R#
+    default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
     group: PROJECT_NAME
     group-sort-direction: Ascending (Nulls Last)
@@ -69,20 +69,20 @@
     default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
 
-- # ====== List of Values: LOV_USERS #PAGE/#SETT ===============
+- # ====== List of Values: LOV_OWNERS ==========================
   id: 19920099360955398
   identification: 
-    name: 'LOV_USERS #PAGE/#SETT'
+    name: LOV_OWNERS
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: TSK_LOV_USERS_V
+    table-name: TSK_LOV_OWNERS_V
 
   column-mapping: 
     return: USER_ID
-    display: USER_NAME
+    display: USER_NAME__
     default-sort: USER_NAME
     sort-direction: Ascending (Nulls Last)
 
@@ -104,4 +104,38 @@
     sort-direction: Ascending (Nulls Last)
     group: CLIENT_NAME
     group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_CATEGORIES ======================
+  id: 23488253257018677
+  identification: 
+    name: LOV_CATEGORIES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_CATEGORIES_V
+
+  column-mapping: 
+    return: CATEGORY_ID
+    display: CATEGORY_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_USERS ===========================
+  id: 23489673221151564
+  identification: 
+    name: LOV_USERS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_USERS_V
+
+  column-mapping: 
+    return: USER_ID
+    display: USER_NAME__
+    default-sort: USER_NAME
+    sort-direction: Ascending (Nulls Last)
 

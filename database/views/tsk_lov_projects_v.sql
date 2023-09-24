@@ -5,7 +5,7 @@ SELECT
     t.project_id,
     t.project_name,
     --
-    ROW_NUMBER() OVER (ORDER BY t.project_name, t.project_id) AS order#
+    ROW_NUMBER() OVER (PARTITION BY t.client_id ORDER BY t.project_name, t.project_id) AS order#
     --
 FROM tsk_available_projects_v t;
 --

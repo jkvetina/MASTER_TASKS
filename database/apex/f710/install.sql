@@ -37,12 +37,14 @@ prompt --install
 @@application/shared_components/logic/application_settings.sql
 @@application/shared_components/navigation/tabs/standard.sql
 @@application/shared_components/navigation/tabs/parent.sql
-@@application/shared_components/user_interface/lovs/lov_boards_page_items.sql
+@@application/shared_components/user_interface/lovs/lov_boards.sql
+@@application/shared_components/user_interface/lovs/lov_categories.sql
 @@application/shared_components/user_interface/lovs/lov_clients.sql
+@@application/shared_components/user_interface/lovs/lov_owners.sql
 @@application/shared_components/user_interface/lovs/lov_projects.sql
 @@application/shared_components/user_interface/lovs/lov_statuses.sql
 @@application/shared_components/user_interface/lovs/lov_swimlanes.sql
-@@application/shared_components/user_interface/lovs/lov_users_page_sett.sql
+@@application/shared_components/user_interface/lovs/lov_users.sql
 @@application/pages/page_groups.sql
 @@application/comments.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
