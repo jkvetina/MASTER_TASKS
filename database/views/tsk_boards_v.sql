@@ -111,7 +111,6 @@ FROM tsk_available_boards_v t
 JOIN x
     ON x.client_id      = t.client_id
     AND x.project_id    = t.project_id
-    AND x.board_id      = t.board_id
 LEFT JOIN g
     ON g.client_id      = t.client_id
     AND g.project_id    = t.project_id
