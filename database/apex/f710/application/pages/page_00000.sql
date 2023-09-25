@@ -88,7 +88,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23266918615120049)
 ,p_name=>'P0_CLIENT_NAME'
-,p_item_sequence=>10
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -98,7 +98,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23267008283120050)
 ,p_name=>'P0_PROJECT_ID'
-,p_item_sequence=>10
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -108,7 +108,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23517052206581601)
 ,p_name=>'P0_BOARD_ID'
-,p_item_sequence=>10
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -118,7 +118,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23517110906581602)
 ,p_name=>'P0_PROJECT_NAME'
-,p_item_sequence=>10
+,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -128,7 +128,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23517261622581603)
 ,p_name=>'P0_BOARD_NAME'
-,p_item_sequence=>10
+,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -137,8 +137,8 @@ wwv_flow_imp_page.create_page_item(
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23517310108581604)
-,p_name=>'P0_SWIMLANE_ID'
-,p_item_sequence=>10
+,p_name=>'P0_SWIMLANES'
+,p_item_sequence=>70
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -147,28 +147,8 @@ wwv_flow_imp_page.create_page_item(
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23517486092581605)
-,p_name=>'P0_OWNER_ID'
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(23517536187581606)
-,p_name=>'P0_SWIMLANE_NAME'
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(23517698176581607)
-,p_name=>'P0_OWNER_NAME'
-,p_item_sequence=>10
+,p_name=>'P0_OWNERS'
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -180,7 +160,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_AJAX_PING_INTERVAL'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
-,p_source=>'6'
+,p_source=>'3'
 ,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
