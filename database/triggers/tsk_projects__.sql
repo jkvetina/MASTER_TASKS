@@ -25,6 +25,20 @@ COMPOUND TRIGGER
         --
         IF INSERTING THEN
             :NEW.is_active := 'Y';
+
+            -- make sure every project has at leats one default board
+            BEGIN
+                INSERT INTO tsk_boards (board_name, client_id, project_id, is_active)
+                VALUES (
+                    'DEFAULT',
+                    :NEW.client_id,
+                    :NEW.project_id,
+                    'Y'
+                );
+            EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                NULL;
+            END;
         END IF;
         --
     EXCEPTION
