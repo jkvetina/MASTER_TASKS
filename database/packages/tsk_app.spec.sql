@@ -31,6 +31,12 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
+    PROCEDURE init_defaults;
+    --
+    PROCEDURE init_defaults_p100;
+
+
+
     FUNCTION get_client_id
     RETURN tsk_clients.client_id%TYPE;
 
