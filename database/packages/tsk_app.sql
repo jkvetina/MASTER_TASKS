@@ -46,47 +46,90 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
     PROCEDURE set_context (
-        in_client_id        tsk_tasks.client_id%TYPE        := NULL,
-        in_project_id       tsk_tasks.project_id%TYPE       := NULL,
-        in_board_id         tsk_tasks.board_id%TYPE         := NULL,
-        in_swimlane_id      tsk_tasks.swimlane_id%TYPE      := NULL,
-        in_owner_id         tsk_tasks.owner_id%TYPE         := NULL
+        in_client_id        tsk_recent.client_id%TYPE       := NULL,
+        in_project_id       tsk_recent.project_id%TYPE      := NULL,
+        in_board_id         tsk_recent.board_id%TYPE        := NULL,
+        in_swimlanes        tsk_recent.swimlanes%TYPE       := NULL,
+        in_owners           tsk_recent.owners%TYPE          := NULL
     )
     AS
-        rec                 tsk_tasks%ROWTYPE;
+        rec                 tsk_recent%ROWTYPE;
     BEGIN
         rec.client_id       := in_client_id;
         rec.project_id      := in_project_id;
         rec.board_id        := in_board_id;
-        rec.swimlane_id     := in_swimlane_id;
-        rec.owner_id        := in_owner_id;
+        rec.swimlanes       := in_swimlanes;
+        rec.owners          := in_owners;
 
         -- verify inputs
         -- check also against available views
-        -- get from recent table, fallback on LOV views
+        -- get from recent table first, fallback on LOV views
         --
         IF rec.client_id IS NOT NULL THEN
-            -- switching client = get recent project, board, swimlane, owners
-            SELECT MIN(t.project_id) INTO rec.project_id
-            FROM tsk_projects t
-            --FROM tsk_recent
-            WHERE t.client_id = rec.client_id;
+            -- switching client = get recent project, board, swimlanes, owners
+            --
+            -- @TODO: create this as a function, because we might need to run it multiple times
+            -- when we fail to evaluate if something is not available to user (anymore)
+            --
+            BEGIN
+                SELECT
+                    t.project_id,
+                    t.board_id,
+                    t.swimlanes,
+                    t.owners
+                INTO
+                    rec.project_id,
+                    rec.board_id,
+                    rec.swimlanes,
+                    rec.owners
+                FROM tsk_recent t
+                WHERE t.user_id         = core.get_user_id()
+                    AND t.client_id     = rec.client_id;
+            EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                BEGIN
+                    SELECT t.project_id INTO rec.project_id
+                    FROM tsk_available_projects_v t
+                    WHERE t.client_id       = rec.client_id
+                        AND t.is_default    = 'Y';
+                EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    NULL;
+                END;
+                --
+                BEGIN
+                    SELECT t.board_id INTO rec.board_id
+                    FROM tsk_available_boards_v t
+                    WHERE t.client_id       = rec.client_id
+                        AND t.project_id    = rec.project_id
+                        AND t.is_default    = 'Y';
+                EXCEPTION
+                WHEN NO_DATA_FOUND THEN
+                    NULL;
+                END;
+            END;
         END IF;
 
         -- set verified values
         -- @TODO: with menu links remove p$
-        core.set_item('$CLIENT_ID',     rec.client_id);         core.set_item('P0_CLIENT_ID',     rec.client_id);
-        core.set_item('$PROJECT_ID',    rec.project_id);        core.set_item('P0_PROJECT_ID',    rec.project_id);
-        core.set_item('$BOARD_ID',      rec.board_id);          core.set_item('P0_BOARD_ID',      rec.board_id);
-        core.set_item('$SWIMLANE_ID',   rec.swimlane_id);       core.set_item('P0_SWIMLANE_ID',   rec.swimlane_id);
-        core.set_item('$OWNER_ID',      rec.owner_id);          core.set_item('P0_OWNER_ID',      rec.owner_id);
+        core.set_item('$CLIENT_ID',     rec.client_id);     core.set_item('P0_CLIENT_ID',     rec.client_id);
+        core.set_item('$PROJECT_ID',    rec.project_id);    core.set_item('P0_PROJECT_ID',    rec.project_id);
+        core.set_item('$BOARD_ID',      rec.board_id);      core.set_item('P0_BOARD_ID',      rec.board_id);
+        core.set_item('$SWIMLANES',     rec.swimlanes);     core.set_item('P0_SWIMLANES',     rec.swimlanes);
+        core.set_item('$OWNERS',        rec.owners);        core.set_item('P0_OWNERS',        rec.owners);
         --
         FOR c IN (
             SELECT
-                t.client_name,
-                t.project_name,
-                t.board_name
-            FROM tsk_available_boards_v t
+                p.client_name,
+                p.project_name,
+                b.board_name
+            FROM tsk_available_projects_v p
+            LEFT JOIN tsk_available_boards_v b
+                ON b.client_id      = p.client_id
+                AND b.project_id    = p.project_id
+                AND b.board_id      = rec.board_id
+            WHERE p.client_id       = rec.client_id
+                AND p.project_id    = rec.project_id
         ) LOOP
             core.set_item('P0_CLIENT_NAME',     c.client_name);
             core.set_item('P0_PROJECT_NAME',    c.project_name);

@@ -57,11 +57,11 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
     PROCEDURE set_context (
-        in_client_id        tsk_tasks.client_id%TYPE        := NULL,
-        in_project_id       tsk_tasks.project_id%TYPE       := NULL,
-        in_board_id         tsk_tasks.board_id%TYPE         := NULL,
-        in_swimlane_id      tsk_tasks.swimlane_id%TYPE      := NULL,
-        in_owner_id         tsk_tasks.owner_id%TYPE         := NULL
+        in_client_id        tsk_recent.client_id%TYPE       := NULL,
+        in_project_id       tsk_recent.project_id%TYPE      := NULL,
+        in_board_id         tsk_recent.board_id%TYPE        := NULL,
+        in_swimlanes        tsk_recent.swimlanes%TYPE       := NULL,
+        in_owners           tsk_recent.owners%TYPE          := NULL
     );
 
 
