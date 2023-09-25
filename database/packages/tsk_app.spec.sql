@@ -42,13 +42,34 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
+    FUNCTION get_client_name (
+        in_client_id        tsk_clients.client_id%TYPE
+    )
+    RETURN tsk_clients.client_name%TYPE;
+
+
+
     FUNCTION get_project_id
     RETURN tsk_projects.project_id%TYPE;
 
 
 
+    FUNCTION get_project_name (
+        in_project_id       tsk_projects.project_id%TYPE
+    )
+    RETURN tsk_projects.project_name%TYPE;
+
+
+
     FUNCTION get_board_id
     RETURN tsk_boards.board_id%TYPE;
+
+
+
+    FUNCTION get_board_name (
+        in_board_id         tsk_boards.board_id%TYPE
+    )
+    RETURN tsk_boards.board_name%TYPE;
 
 
 

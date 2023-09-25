@@ -48,6 +48,25 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
 
+    FUNCTION get_client_name (
+        in_client_id        tsk_clients.client_id%TYPE
+    )
+    RETURN tsk_clients.client_name%TYPE
+    AS
+        out_name            tsk_clients.client_name%TYPE;
+    BEGIN
+        SELECT t.client_name INTO out_name
+        FROM tsk_clients t
+        WHERE t.client_id   = in_client_id;
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
     FUNCTION get_project_id
     RETURN tsk_projects.project_id%TYPE
     AS
@@ -57,11 +76,49 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
 
+    FUNCTION get_project_name (
+        in_project_id       tsk_projects.project_id%TYPE
+    )
+    RETURN tsk_projects.project_name%TYPE
+    AS
+        out_name            tsk_projects.project_name%TYPE;
+    BEGIN
+        SELECT t.project_name INTO out_name
+        FROM tsk_projects t
+        WHERE t.project_id  = in_project_id;
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
     FUNCTION get_board_id
     RETURN tsk_boards.board_id%TYPE
     AS
     BEGIN
         RETURN core.get_number_item('P0_BOARD_ID');
+    END;
+
+
+
+    FUNCTION get_board_name (
+        in_board_id         tsk_boards.board_id%TYPE
+    )
+    RETURN tsk_boards.board_name%TYPE
+    AS
+        out_name            tsk_boards.board_name%TYPE;
+    BEGIN
+        SELECT t.board_name INTO out_name
+        FROM tsk_boards t
+        WHERE t.board_id    = in_board_id;
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
     END;
 
 
