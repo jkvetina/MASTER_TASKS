@@ -246,6 +246,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     AS
         rec                 tsk_recent%ROWTYPE;
     BEGIN
+        rec.user_id         := core.get_user_id();
         rec.client_id       := in_client_id;
         rec.project_id      := in_project_id;
         rec.board_id        := in_board_id;
@@ -286,23 +287,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.set_item('$SWIMLANES',     rec.swimlanes);     core.set_item('P0_SWIMLANES',     rec.swimlanes);
         core.set_item('$OWNERS',        rec.owners);        core.set_item('P0_OWNERS',        rec.owners);
         --
-        FOR c IN (
-            SELECT
-                p.client_name,
-                p.project_name,
-                b.board_name
-            FROM tsk_available_projects_v p
-            LEFT JOIN tsk_available_boards_v b
-                ON b.client_id      = p.client_id
-                AND b.project_id    = p.project_id
-                AND b.board_id      = rec.board_id
-            WHERE p.client_id       = rec.client_id
-                AND p.project_id    = rec.project_id
-        ) LOOP
-            core.set_item('P0_CLIENT_NAME',     c.client_name);
-            core.set_item('P0_PROJECT_NAME',    c.project_name);
-            core.set_item('P0_BOARD_NAME',      c.board_name);
-        END LOOP;
+        core.set_item('P0_CLIENT_NAME',     tsk_app.get_client_name(rec.client_id));
+        core.set_item('P0_PROJECT_NAME',    tsk_app.get_project_name(rec.project_id));
+        core.set_item('P0_BOARD_NAME',      tsk_app.get_board_name(rec.board_id));
+        --
+        tsk_tapi.save_recent(rec);
         --
     EXCEPTION
     WHEN core.app_exception THEN

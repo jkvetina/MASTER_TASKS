@@ -197,6 +197,12 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
         in_owner_id             tsk_repo_endpoints.owner_id%TYPE
     );
 
+
+
+    PROCEDURE save_recent (
+        rec                 IN OUT NOCOPY   tsk_recent%ROWTYPE
+    );
+
 END;
 /
 

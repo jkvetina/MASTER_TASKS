@@ -876,6 +876,31 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE save_recent (
+        rec                 IN OUT NOCOPY   tsk_recent%ROWTYPE
+    )
+    AS
+    BEGIN
+        -- upsert record
+        UPDATE tsk_recent t
+        SET ROW = rec
+        WHERE t.user_id             = rec.user_id
+            AND t.client_id         = rec.client_id
+            AND t.project_id        = rec.project_id;
+        --
+        IF SQL%ROWCOUNT = 0 THEN
+            INSERT INTO tsk_recent
+            VALUES rec;
+        END IF;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 
