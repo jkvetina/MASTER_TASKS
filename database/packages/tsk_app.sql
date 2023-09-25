@@ -141,6 +141,101 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
 
+    PROCEDURE find_project (
+        io_client_id        IN OUT NOCOPY tsk_recent.client_id%TYPE,
+        io_project_id       IN OUT NOCOPY tsk_recent.project_id%TYPE,
+        io_board_id         IN OUT NOCOPY tsk_recent.board_id%TYPE
+    )
+    AS
+        in_user_id          CONSTANT app_users.user_id%TYPE := core.get_user_id();
+    BEGIN
+        -- get requested project
+        SELECT MIN(t.project_id) INTO io_project_id
+        FROM tsk_available_projects_v t
+        WHERE t.client_id       = io_client_id
+            AND t.project_id    = io_project_id;
+        --
+        IF io_project_id IS NOT NULL THEN
+            RETURN;
+        END IF;
+
+        -- get recent project
+        SELECT MIN(t.project_id) KEEP (DENSE_RANK FIRST ORDER BY t.updated_at DESC)
+        INTO io_project_id
+        FROM tsk_recent t
+        JOIN tsk_available_projects_v a
+            ON a.client_id      = t.client_id
+            AND a.project_id    = t.project_id
+        WHERE t.client_id       = io_client_id;
+        --
+        IF io_project_id IS NOT NULL THEN
+            RETURN;
+        END IF;
+
+        -- get default (or the most recent) project
+        SELECT MIN(t.project_id) KEEP (DENSE_RANK FIRST ORDER BY t.is_default NULLS LAST, t.project_id DESC)
+        INTO io_project_id
+        FROM tsk_available_projects_v t
+        WHERE t.client_id       = io_client_id;
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE find_board (
+        io_client_id        IN OUT NOCOPY tsk_recent.client_id%TYPE,
+        io_project_id       IN OUT NOCOPY tsk_recent.project_id%TYPE,
+        io_board_id         IN OUT NOCOPY tsk_recent.board_id%TYPE
+    )
+    AS
+        in_user_id          CONSTANT app_users.user_id%TYPE := core.get_user_id();
+    BEGIN
+        -- get requested board
+        SELECT MIN(t.board_id) INTO io_board_id
+        FROM tsk_available_boards_v t
+        WHERE t.client_id       = io_client_id
+            AND t.project_id    = io_project_id
+            AND t.board_id      = io_board_id;
+        --
+        IF io_board_id IS NOT NULL THEN
+            RETURN;
+        END IF;
+
+        -- get recent board
+        SELECT MIN(t.board_id) INTO io_board_id
+        FROM tsk_recent t
+        JOIN tsk_available_boards_v a
+            ON a.client_id      = t.client_id
+            AND a.project_id    = t.project_id
+            AND a.board_id      = t.board_id
+        WHERE t.client_id       = io_client_id
+            AND t.project_id    = io_project_id;
+        --
+        IF io_board_id IS NOT NULL THEN
+            RETURN;
+        END IF;
+
+        -- get default (or the most recent) board
+        SELECT MIN(t.board_id) KEEP (DENSE_RANK FIRST ORDER BY t.is_default NULLS LAST, t.board_id DESC)
+        INTO io_board_id
+        FROM tsk_available_boards_v t
+        WHERE t.client_id       = io_client_id
+            AND t.project_id    = io_project_id;
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE set_context (
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
@@ -157,53 +252,30 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         rec.swimlanes       := in_swimlanes;
         rec.owners          := in_owners;
 
-        -- verify inputs
-        -- check also against available views
-        -- get from recent table first, fallback on LOV views
+        -- possible actions
+        -- switch client    = verify client, get recent project
+        -- switch project   = verify project, get recent board, swimlanes, owners
+        -- switch board     = verify board
         --
-        IF rec.client_id IS NOT NULL THEN
-            -- switching client = get recent project, board, swimlanes, owners
-            --
-            -- @TODO: create this as a function, because we might need to run it multiple times
-            -- when we fail to evaluate if something is not available to user (anymore)
-            --
-            BEGIN
-                SELECT
-                    t.project_id,
-                    t.board_id,
-                    t.swimlanes,
-                    t.owners
-                INTO
-                    rec.project_id,
-                    rec.board_id,
-                    rec.swimlanes,
-                    rec.owners
-                FROM tsk_recent t
-                WHERE t.user_id         = core.get_user_id()
-                    AND t.client_id     = rec.client_id;
-            EXCEPTION
-            WHEN NO_DATA_FOUND THEN
-                BEGIN
-                    SELECT t.project_id INTO rec.project_id
-                    FROM tsk_available_projects_v t
-                    WHERE t.client_id       = rec.client_id
-                        AND t.is_default    = 'Y';
-                EXCEPTION
-                WHEN NO_DATA_FOUND THEN
-                    NULL;
-                END;
-                --
-                BEGIN
-                    SELECT t.board_id INTO rec.board_id
-                    FROM tsk_available_boards_v t
-                    WHERE t.client_id       = rec.client_id
-                        AND t.project_id    = rec.project_id
-                        AND t.is_default    = 'Y';
-                EXCEPTION
-                WHEN NO_DATA_FOUND THEN
-                    NULL;
-                END;
-            END;
+        IF (rec.project_id IS NOT NULL OR rec.client_id IS NOT NULL) THEN
+            tsk_app.find_project (
+                io_client_id        => rec.client_id,
+                io_project_id       => rec.project_id,
+                io_board_id         => rec.board_id
+            );
+            tsk_app.find_board (
+                io_client_id        => rec.client_id,
+                io_project_id       => rec.project_id,
+                io_board_id         => rec.board_id
+            );
+        END IF;
+        --
+        IF rec.board_id IS NOT NULL THEN
+            tsk_app.find_board (
+                io_client_id        => rec.client_id,
+                io_project_id       => rec.project_id,
+                io_board_id         => rec.board_id
+            );
         END IF;
 
         -- set verified values

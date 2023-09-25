@@ -83,6 +83,22 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
+    PROCEDURE find_project (
+        io_client_id        IN OUT NOCOPY tsk_recent.client_id%TYPE,
+        io_project_id       IN OUT NOCOPY tsk_recent.project_id%TYPE,
+        io_board_id         IN OUT NOCOPY tsk_recent.board_id%TYPE
+    );
+
+
+
+    PROCEDURE find_board (
+        io_client_id        IN OUT NOCOPY tsk_recent.client_id%TYPE,
+        io_project_id       IN OUT NOCOPY tsk_recent.project_id%TYPE,
+        io_board_id         IN OUT NOCOPY tsk_recent.board_id%TYPE
+    );
+
+
+
     PROCEDURE set_context (
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
