@@ -290,7 +290,112 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.set_item('P0_OWNERS',          rec.owners);
         --
         tsk_tapi.save_recent(rec);
+
+        -- temp message
+        app.ajax_message('Context: Client=' || rec.client_id || ' | Project=' || rec.project_id || ' | Board=' || rec.board_id);
         --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION generate_menu_favorites
+    RETURN VARCHAR2             -- 32k limit!
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        o := o || '<a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-heart-o"></span> &' || 'nbsp; <span style="">Favorites</span></a>';
+        --
+        FOR c IN (
+            SELECT DISTINCT
+                c.client_id,
+                c.client_name
+            FROM tsk_available_boards_v c
+        ) LOOP
+            o := o || tsk_app.get_link('<span style="padding-left: 1.2rem;">&' || 'mdash;&' || 'nbsp; ' || c.client_name || '</span>', c.client_id);
+            --
+            FOR p IN (
+                SELECT DISTINCT
+                    p.project_name,
+                    p.client_id,
+                    p.project_id
+                FROM tsk_available_boards_v p
+                WHERE p.client_id = c.client_id
+            ) LOOP
+                o := o || tsk_app.get_link('<span style="padding-left: 2.4rem; font-size: 0.85rem;">&' || 'mdash;&' || 'nbsp; ' || p.project_name || '</span>', p.client_id, p.project_id);
+            END LOOP;
+        END LOOP;
+        --
+        RETURN o;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION generate_menu_current
+    RETURN VARCHAR2             -- 32k limit!
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        o := o || '<a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-tasks"></span> &' || 'nbsp; <span>' || tsk_app.get_client_name() || '</span></a>';
+        --
+        FOR p IN (
+            SELECT DISTINCT
+                p.project_name,
+                p.client_id,
+                p.project_id
+            FROM tsk_available_boards_v p
+            WHERE p.client_id = tsk_app.get_client_id()
+        ) LOOP
+            o := o || tsk_app.get_link('<span style="padding-left: 1.2rem;">&' || 'mdash;&' || 'nbsp; ' || p.project_name || '</span>', p.client_id, p.project_id);
+            --
+            FOR b IN (
+                SELECT b.*
+                FROM tsk_available_boards_v b
+                WHERE b.client_id       = p.client_id
+                    AND b.project_id    = p.project_id
+            ) LOOP
+                o := o || tsk_app.get_link('<span style="padding-left: 2.4rem; font-size: 0.85rem;">&' || 'mdash;&' || 'nbsp; ' || b.board_name || '</span>', b.client_id, b.project_id, b.board_id);
+            END LOOP;
+        END LOOP;
+        --
+        RETURN o;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION get_link (
+        in_content          VARCHAR2,
+        in_client_id        tsk_recent.client_id%TYPE       := NULL,
+        in_project_id       tsk_recent.project_id%TYPE      := NULL,
+        in_board_id         tsk_recent.board_id%TYPE        := NULL,
+        in_task_id          tsk_tasks.task_id%TYPE          := NULL
+    )
+    RETURN VARCHAR2
+    AS
+    BEGIN
+        RETURN '<a href="' || APEX_PAGE.GET_URL (
+            p_application       => core.get_app_id(),
+            p_session           => core.get_session_id(),
+            p_page              => 100,
+            p_clear_cache       => 100,
+            p_items             => 'P0_CLIENT_ID,P0_PROJECT_ID,P0_BOARD_ID',
+            p_values            => in_client_id || ',' || in_project_id || ',' || in_board_id,
+            p_plain_url         => TRUE
+        ) || '">' || in_content || '</a>';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -458,15 +563,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     PROCEDURE init_projects
     AS
     BEGIN
-        -- save selected client as current
-        IF core.get_number_item('CLIENT_ID') IS NOT NULL THEN
-            tsk_app.set_user_preferences (
-                in_user_id          => core.get_user_id(),
-                in_client_id        => core.get_number_item('CLIENT_ID'),
-                in_project_id       => NULL,
-                in_board_id         => NULL
-            );
-        END IF;
+        NULL;       --remove
     END;
 
 END;
