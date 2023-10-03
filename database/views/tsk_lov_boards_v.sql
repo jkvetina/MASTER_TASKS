@@ -16,7 +16,9 @@ SELECT
     --
     ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order#, t.board_name) AS order#,
     --
-    t.is_favorite
+    t.is_favorite,
+    --
+    CASE WHEN t.board_id = x.board_id THEN 'Y' END AS is_current
     --
 FROM tsk_available_boards_v t
 JOIN x
