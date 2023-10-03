@@ -1,4 +1,22 @@
 ---
+- # ====== Static Application File: tsk_app.css ================
+  id: 23860725472439775
+  identification: 
+    file-name: tsk_app.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: tsk_app.min.css ============
+  id: 23861772043440153
+  identification: 
+    file-name: tsk_app.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
 - # ====== Static Application File: icons/app-icon-144-rounded.p
   id: 33783227850336513
   identification: 
