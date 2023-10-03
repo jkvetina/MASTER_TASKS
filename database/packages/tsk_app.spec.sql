@@ -43,7 +43,7 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
     FUNCTION get_client_name (
-        in_client_id        tsk_clients.client_id%TYPE
+        in_client_id        tsk_clients.client_id%TYPE := NULL
     )
     RETURN tsk_clients.client_name%TYPE;
 
@@ -55,7 +55,7 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
     FUNCTION get_project_name (
-        in_project_id       tsk_projects.project_id%TYPE
+        in_project_id       tsk_projects.project_id%TYPE := NULL
     )
     RETURN tsk_projects.project_name%TYPE;
 
@@ -67,7 +67,7 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
     FUNCTION get_board_name (
-        in_board_id         tsk_boards.board_id%TYPE
+        in_board_id         tsk_boards.board_id%TYPE := NULL
     )
     RETURN tsk_boards.board_name%TYPE;
 

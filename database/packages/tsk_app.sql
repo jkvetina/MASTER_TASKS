@@ -49,7 +49,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
     FUNCTION get_client_name (
-        in_client_id        tsk_clients.client_id%TYPE
+        in_client_id        tsk_clients.client_id%TYPE := NULL
     )
     RETURN tsk_clients.client_name%TYPE
     AS
@@ -57,7 +57,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     BEGIN
         SELECT t.client_name INTO out_name
         FROM tsk_clients t
-        WHERE t.client_id   = in_client_id;
+        WHERE t.client_id   = COALESCE(in_client_id, tsk_app.get_client_id());
         --
         RETURN out_name;
     EXCEPTION
@@ -77,7 +77,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
     FUNCTION get_project_name (
-        in_project_id       tsk_projects.project_id%TYPE
+        in_project_id       tsk_projects.project_id%TYPE := NULL
     )
     RETURN tsk_projects.project_name%TYPE
     AS
@@ -85,7 +85,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     BEGIN
         SELECT t.project_name INTO out_name
         FROM tsk_projects t
-        WHERE t.project_id  = in_project_id;
+        WHERE t.project_id  = COALESCE(in_project_id, tsk_app.get_project_id());
         --
         RETURN out_name;
     EXCEPTION
@@ -105,7 +105,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
     FUNCTION get_board_name (
-        in_board_id         tsk_boards.board_id%TYPE
+        in_board_id         tsk_boards.board_id%TYPE := NULL
     )
     RETURN tsk_boards.board_name%TYPE
     AS
@@ -113,7 +113,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     BEGIN
         SELECT t.board_name INTO out_name
         FROM tsk_boards t
-        WHERE t.board_id    = in_board_id;
+        WHERE t.board_id    = COALESCE(in_board_id, tsk_app.get_board_id());
         --
         RETURN out_name;
     EXCEPTION
