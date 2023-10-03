@@ -130,7 +130,6 @@ prompt --install
 @@application/shared_components/logic/build_options.sql
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
-@@application/shared_components/security/authentications/master_apex_accounts.sql
 @@application/shared_components/security/authentications/master_open_door_testing_only.sql
 @@application/shared_components/plugins/template_component/theme_800_avatar.sql
 @@application/shared_components/plugins/template_component/theme_800_badge.sql

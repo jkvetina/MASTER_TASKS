@@ -65,6 +65,15 @@ const wait_for_element = function(search, start, fn, disconnect) {
 
 
 //
+// WAIT FOR SPECIFIC AMOUNT OF TIME
+//
+function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time));
+}
+
+
+
+//
 // COPY TO CLIPBOARD
 //
 const copy_to_clipboard = function (text) {
@@ -150,6 +159,8 @@ var init_page = function() {
                     for (var i = 0 ; i <= ping_loop; i++) {
                         clearTimeout(i); 
                     }
+                    // also redirect to login page
+                    window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
                 }
             }
 

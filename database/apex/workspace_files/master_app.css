@@ -36,13 +36,21 @@ body {
 
 /* HERO REGION */
 .t-HeroRegion {
-    padding             : 1.5rem 0.5rem 1.5rem;
+    padding             : 0.75rem 0.5rem 1.75rem;
 }
 .t-HeroRegion.SHORTER {
     padding-bottom      : 1rem;
 }
+.t-HeroRegion.SECOND {
+    margin-top          : 3rem;
+}
 h1.t-HeroRegion-title {
+    font-size           : 1.8rem;
     line-height         : 150%;
+}
+
+/* HERO REGION - BOLD ON MOBILE */
+@media only screen and (max-width: 600px) {
 }
 
 /* HERO REGION - HIDE ICON */
@@ -82,6 +90,9 @@ BUTTON .BADGE {
 }
 
 /* OVERRIDE MENU BADGES WITH SAME STYLE */
+#t_Header > #top_header > nav ul li.RED {
+    background          : red;
+}
 #t_Header > #top_header > nav ul li a > span.BADGE {
     position            : relative;
     top                 : -0.65rem;
@@ -93,7 +104,7 @@ BUTTON .BADGE {
     font-family         : 'Roboto', sans-serif;
     font-weight         : 500;
     font-size           : 0.75rem;
-    line-height         : 1.2rem;
+    line-height         : 1.15rem;
 }
 
 
@@ -349,5 +360,36 @@ button .a-Button-label,
 #t_Footer .t-Footer-version {
     font-size           : 0.85rem;
     color               : #555;
+}
+#t_Footer .BUTTON {
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.85rem;
+    width               : auto;
+    margin-right        : 0.25rem;
+}
+
+
+
+/* HIDE BOTTOM IMAGE ON BREADCRUMB BAR */
+#t_Body_title.t-Body-title {
+    border              : 0;
+}
+#t_Body_title.t-Body-title::after {
+    background-image    : none;
+    display             : none !important;
+}
+
+
+
+/* ADJUST DRAWER HEADER */
+.DRAWER .ui-dialog-titlebar {
+    display             : none;
+}
+.DRAWER h1.t-HeroRegion-title {
+    margin-top          : -1.6rem;  /* CANT GO HIGHER DUE TO CLOSE BUTTONS */
+    font-size           : 1.8rem;
+}
+.DRAWER .t-HeroRegion {
+    padding-bottom      : 0;
 }
 
