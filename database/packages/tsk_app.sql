@@ -24,7 +24,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     AS
     BEGIN
         core.set_item('P100_HEADER',
-            core.get_item('P0_CLIENT_NAME')     || ' &' || 'ndash; ' ||
+            --core.get_item('P0_CLIENT_NAME')     || ' &' || 'ndash; ' ||
             core.get_item('P0_PROJECT_NAME')    || ' &' || 'ndash; ' ||
             core.get_item('P0_BOARD_NAME')
         );
@@ -280,16 +280,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         END IF;
 
         -- set verified values
-        -- @TODO: with menu links remove p$
-        core.set_item('$CLIENT_ID',     rec.client_id);     core.set_item('P0_CLIENT_ID',     rec.client_id);
-        core.set_item('$PROJECT_ID',    rec.project_id);    core.set_item('P0_PROJECT_ID',    rec.project_id);
-        core.set_item('$BOARD_ID',      rec.board_id);      core.set_item('P0_BOARD_ID',      rec.board_id);
-        core.set_item('$SWIMLANES',     rec.swimlanes);     core.set_item('P0_SWIMLANES',     rec.swimlanes);
-        core.set_item('$OWNERS',        rec.owners);        core.set_item('P0_OWNERS',        rec.owners);
-        --
+        core.set_item('P0_CLIENT_ID',       rec.client_id);
         core.set_item('P0_CLIENT_NAME',     tsk_app.get_client_name(rec.client_id));
+        core.set_item('P0_PROJECT_ID',      rec.project_id);
         core.set_item('P0_PROJECT_NAME',    tsk_app.get_project_name(rec.project_id));
+        core.set_item('P0_BOARD_ID',        rec.board_id);
         core.set_item('P0_BOARD_NAME',      tsk_app.get_board_name(rec.board_id));
+        core.set_item('P0_SWIMLANES',       rec.swimlanes);
+        core.set_item('P0_OWNERS',          rec.owners);
         --
         tsk_tapi.save_recent(rec);
         --
