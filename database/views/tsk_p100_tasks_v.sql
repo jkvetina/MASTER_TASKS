@@ -1,19 +1,28 @@
-CREATE OR REPLACE FORCE VIEW tsk_tasks_grid_v AS
-WITH x AS (
-    -- get page filters
+CREATE OR REPLACE FORCE VIEW tsk_p100_tasks_v AS
+WITH t AS (
     SELECT /*+ MATERIALIZE */
-        tsk_app.get_client_id()     AS client_id,
-        tsk_app.get_project_id()    AS project_id,
-        tsk_app.get_board_id()      AS board_id
-    FROM DUAL
+       t.*
+       --
+       -- @TODO: limit columns
+       --
+    FROM tsk_tasks t
+    JOIN tsk_auth_context_v x
+        ON x.client_id      = t.client_id
+        AND x.project_id    = t.project_id
+        AND x.board_id      = t.board_id
+        --
+        AND (x.swimlane_id  = t.swimlane_id OR x.swimlane_id IS NULL)
+        AND (x.owner_id     = t.owner_id    OR x.owner_id IS NULL)
 ),
 p AS (
-    -- @TODO: create as get_task_progress() fn.
+    -- to calculate tasks progress
     SELECT /*+ MATERIALIZE */
-        l.task_id,
-        NULLIF(SUM(CASE WHEN l.checklist_done = 'Y' THEN 1 ELSE 0 END) || '/' || COUNT(l.checklist_id), '0/0') AS task_progress
-    FROM tsk_task_checklist l
-    GROUP BY l.task_id
+        p.task_id,
+        NULLIF(SUM(CASE WHEN p.checklist_done = 'Y' THEN 1 ELSE 0 END) || '/' || COUNT(p.checklist_id), '0/0') AS task_progress
+    FROM tsk_task_checklist p
+    JOIN t
+        ON t.task_id        = p.task_id
+    GROUP BY p.task_id
 )
 SELECT
     t.task_id,
@@ -60,15 +69,7 @@ SELECT
     --
     ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.task_id) AS order#
     --
-FROM tsk_tasks t
-JOIN tsk_available_boards_v b
-    ON b.client_id      = t.client_id
-    AND b.project_id    = t.project_id
-    AND b.board_id      = t.board_id
-JOIN x
-    ON x.client_id      = b.client_id
-    AND x.project_id    = b.project_id
-    AND x.board_id      = b.board_id
+FROM t
 JOIN tsk_lov_statuses_v s
     ON s.status_id      = t.status_id
 JOIN tsk_lov_swimlanes_v w
@@ -79,5 +80,5 @@ LEFT JOIN tsk_lov_categories_v g
 LEFT JOIN p
     ON p.task_id        = t.task_id;
 --
-COMMENT ON TABLE tsk_tasks_grid_v IS '';
+COMMENT ON TABLE tsk_p100_tasks_v IS '';
 

@@ -39,16 +39,16 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: &P100_HEADER. ===============================
+- # ====== Region: &P100_HEADER!RAW. ===========================
   id: 74502100937114588
   identification: 
-    title: '&P100_HEADER.'
+    title: '&P100_HEADER!RAW.'
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Tasks # 74880602381611275
-    position: SUB_REGIONS
+    parent-region: No Parent
+    position: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -59,8 +59,6 @@ regions:
     template: Hero # 33914493478153754
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - FILTERS
     render-components: Above Content
 
   accessibility: 
@@ -99,9 +97,9 @@ regions:
     - P100_OWNER_ID
 
   layout: 
-    sequence: 10
-    parent-region: TASKS # 85694680081665719
-    position: SUB_REGIONS
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -132,53 +130,12 @@ regions:
   customization: 
     customizable: Not Customizable By End Users
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
   attributes: 
     performance: 
       lazy-loading: false
-
-- # ====== Region: Tasks =======================================
-  id: 74880602381611275
-  identification: 
-    title: Tasks
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: No Parent
-    position: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-side-condition: 
-    type: Never
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
 
 - # ====== Region: Tasks [GRID] ================================
   id: 83848777350252285
@@ -190,13 +147,13 @@ regions:
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: TSK_P100_TASKS_GRID_V
+    table-name: TSK_P100_TASKS_V
     include-rowid-column: false
 
   layout: 
-    sequence: 20
-    parent-region: TASKS # 85694680081665719
-    position: SUB_REGIONS
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -216,10 +173,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_SHOW_GRID
 
   server-cache: 
     caching: Disabled
@@ -913,15 +866,11 @@ regions:
     id: 88263021305877596
     identification: 
       column-name: CATEGORY_ID
-      type: Text Field
+      type: Select List
 
     heading: 
       heading: Category
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 180
@@ -933,7 +882,12 @@ regions:
 
     validation: 
       value-required: false
-      maximum-length: 32
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_CATEGORIES # 23488253257018677
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -953,7 +907,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -987,7 +941,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: 'LOV_USERS #PAGE/#SETT' # 19920099360955398
+      list-of-values: LOV_OWNERS # 19920099360955398
       display-extra-values: true
       display-null-value: true
 
@@ -1308,51 +1262,6 @@ regions:
       font-color: '#000000'
       alignment: center
 
-- # ====== Region: TASKS =======================================
-  id: 85694680081665719
-  identification: 
-    title: TASKS
-    type: Static Content
-
-  layout: 
-    sequence: 20
-    parent-region: Tasks # 74880602381611275
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_BOARD_ID
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
 page-items: 
 - # ====== Page Item: P100_CLIENT_ID ===========================
   id: 74668596757790651
@@ -1370,7 +1279,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1393,14 +1302,15 @@ page-items:
     type: Shared Component
     list-of-values: LOV_CLIENTS # 19917139722955396
     display-extra-values: false
-    display-null-value: true
+    display-null-value: false
 
   advanced: 
     warn-on-unsaved-changes: Ignore
 
   source: 
-    type: Null
-    used: Only when current value in session state is null
+    type: Item
+    item: P0_CLIENT_ID
+    used: Always, replacing any existing value in session state
 
   session-state: 
     storage: Per Session (Persistent)
@@ -1412,6 +1322,9 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Page Item: P100_PROJECT_ID ==========================
   id: 74669066922790652
@@ -1429,7 +1342,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1452,14 +1365,22 @@ page-items:
     type: Shared Component
     list-of-values: LOV_PROJECTS # 23314637906165586
     display-extra-values: false
-    display-null-value: true
+    display-null-value: false
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P100_CLIENT_ID
+    items-to-submit: 
+    - P100_CLIENT_ID
+    parent-required: true
 
   advanced: 
     warn-on-unsaved-changes: Ignore
 
   source: 
-    type: Null
-    used: Only when current value in session state is null
+    type: Item
+    item: P0_PROJECT_ID
+    used: Always, replacing any existing value in session state
 
   session-state: 
     storage: Per Session (Persistent)
@@ -1471,6 +1392,9 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Page Item: P100_BOARD_ID ============================
   id: 74669448576790652
@@ -1488,7 +1412,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1509,16 +1433,25 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: 'LOV_BOARDS #PAGE_ITEMS' # 19916565304955390
+    list-of-values: LOV_BOARDS # 19916565304955390
     display-extra-values: false
-    display-null-value: true
+    display-null-value: false
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P100_PROJECT_ID
+    items-to-submit: 
+    - P100_PROJECT_ID
+    - P100_CLIENT_ID
+    parent-required: true
 
   advanced: 
     warn-on-unsaved-changes: Ignore
 
   source: 
-    type: Null
-    used: Only when current value in session state is null
+    type: Item
+    item: P0_BOARD_ID
+    used: Always, replacing any existing value in session state
 
   session-state: 
     storage: Per Session (Persistent)
@@ -1531,6 +1464,9 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Page Item: P100_HEADER ==============================
   id: 74882513732611307
   identification: 
@@ -1541,8 +1477,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
-    region: Tasks # 74880602381611275
+    sequence: 70
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
   advanced: 
@@ -1581,7 +1517,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1619,10 +1555,17 @@ page-items:
   quick-picks: 
     show-quick-picks: false
 
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P100_BOARD_ID
+
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Page Item: P100_SHOW_GRID ===========================
   id: 83851260871252322
@@ -1634,8 +1577,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
-    region: Tasks # 74880602381611275
+    sequence: 80
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
   advanced: 
@@ -1664,8 +1607,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
-    region: Tasks # 74880602381611275
+    sequence: 90
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
   advanced: 
@@ -1703,7 +1646,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1735,10 +1678,17 @@ page-items:
   quick-picks: 
     show-quick-picks: false
 
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P100_BOARD_ID
+
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Page Item: P100_TASKS_LINK ==========================
   id: 84044013145168999
@@ -1750,8 +1700,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
-    region: Tasks # 74880602381611275
+    sequence: 100
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
   advanced: 
@@ -1780,8 +1730,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
-    region: Tasks # 74880602381611275
+    sequence: 110
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
   advanced: 
@@ -1816,7 +1766,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1837,16 +1787,9 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: 'LOV_USERS #PAGE/#SETT' # 19920099360955398
+    list-of-values: LOV_OWNERS # 19920099360955398
     display-extra-values: false
     display-null-value: true
-
-  cascading-list-of-values: 
-    parent-item(s): 
-    - P100_CLIENT_ID
-    items-to-submit: 
-    - P100_CLIENT_ID
-    parent-required: true
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -1861,10 +1804,17 @@ page-items:
   quick-picks: 
     show-quick-picks: false
 
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P100_BOARD_ID
+
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 buttons: 
 - # ====== Button: REFRESH_TASKS ===============================
@@ -1875,7 +1825,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1910,7 +1860,7 @@ buttons:
 
   layout: 
     sequence: 20
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1920,7 +1870,7 @@ buttons:
 
   appearance: 
     button-template: Text # 34021473197153827
-    hot: true
+    hot: false
     template-options: 
     - '#DEFAULT#'
     icon: fa-plus
@@ -1929,7 +1879,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_SOURCE_PAGE:100'
-      page: 105 # MODAL DIALOG TEMPLATE
+      page: 105 # Task Detail
       clear-cache: 105
       values: 
         p105_source_page: 100
@@ -1948,7 +1898,7 @@ buttons:
 
   layout: 
     sequence: 30
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1980,6 +1930,9 @@ buttons:
       :P100_SHOW_GRID IS NULL
       AND :P100_BOARD_ID IS NOT NULL
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Button: SHOW_COLUMNS ================================
   id: 19887298031955346
   identification: 
@@ -1988,7 +1941,7 @@ buttons:
 
   layout: 
     sequence: 40
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -2019,6 +1972,9 @@ buttons:
       :P100_SHOW_GRID IS NOT NULL
       AND :P100_BOARD_ID IS NOT NULL
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Button: BULK_OPERATIONS =============================
   id: 19887658798955346
   identification: 
@@ -2027,7 +1983,7 @@ buttons:
 
   layout: 
     sequence: 50
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -2055,6 +2011,9 @@ buttons:
     type: Item is NOT NULL
     item: P100_BOARD_ID
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Button: SEARCH ======================================
   id: 19888030133955347
   identification: 
@@ -2063,7 +2022,7 @@ buttons:
 
   layout: 
     sequence: 60
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -2091,6 +2050,9 @@ buttons:
     type: Item is NOT NULL
     item: P100_BOARD_ID
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Button: ADD_TO_FAVORITES ============================
   id: 19888405606955347
   identification: 
@@ -2099,7 +2061,7 @@ buttons:
 
   layout: 
     sequence: 70
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -2126,6 +2088,9 @@ buttons:
       :P100_IS_FAVORITE IS NULL
       AND :P100_BOARD_ID IS NOT NULL
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Button: REMOVE_FROM_FAVORITES =======================
   id: 19888851952955348
   identification: 
@@ -2134,7 +2099,7 @@ buttons:
 
   layout: 
     sequence: 80
-    region: '&P100_HEADER.' # 74502100937114588
+    region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -2161,196 +2126,10 @@ buttons:
       :P100_IS_FAVORITE IS NOT NULL
       AND :P100_BOARD_ID IS NOT NULL
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 dynamic-actions: 
-- # ====== Dynamic Action: CHANGED_CLIENT ======================
-  id: 19904239205955376
-  identification: 
-    name: CHANGED_CLIENT
-
-  execution: 
-    sequence: 20
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_CLIENT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Hide ========================================
-    id: 19904770899955377
-    identification: 
-      action: Hide
-
-    affected-elements: 
-      selection-type: Region
-      region: TASKS # 85694680081665719
-
-    execution: 
-      sequence: 10
-      event: CHANGED_CLIENT # 19904239205955376
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-  - # ====== Action: Set Value ===================================
-    id: 19905279079955378
-    identification: 
-      action: Set Value
-
-    settings: 
-      set-type: Static Assignment
-      suppress-change-event: false
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_PROJECT_ID
-      - P100_BOARD_ID
-
-    execution: 
-      sequence: 20
-      event: CHANGED_CLIENT # 19904239205955376
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Execute Server-side Code ====================
-    id: 19905717096955378
-    identification: 
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: NULL;
-      items-to-submit: 
-      - P100_CLIENT_ID
-      - P100_PROJECT_ID
-      - P100_BOARD_ID
-      - P100_SWIMLANE_ID
-
-    execution: 
-      sequence: 30
-      event: CHANGED_CLIENT # 19904239205955376
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Refresh =====================================
-    id: 19906211044955378
-    identification: 
-      action: Refresh
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_PROJECT_ID
-
-    execution: 
-      sequence: 50
-      event: CHANGED_CLIENT # 19904239205955376
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CHANGED_PROJECT =====================
-  id: 19906607650955379
-  identification: 
-    name: CHANGED_PROJECT
-
-  execution: 
-    sequence: 30
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_PROJECT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Hide ========================================
-    id: 19907199804955379
-    identification: 
-      action: Hide
-
-    affected-elements: 
-      selection-type: Region
-      region: TASKS # 85694680081665719
-
-    execution: 
-      sequence: 10
-      event: CHANGED_PROJECT # 19906607650955379
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-  - # ====== Action: Set Value ===================================
-    id: 19907634632955379
-    identification: 
-      action: Set Value
-
-    settings: 
-      set-type: Static Assignment
-      suppress-change-event: false
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_BOARD_ID
-
-    execution: 
-      sequence: 20
-      event: CHANGED_PROJECT # 19906607650955379
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Execute Server-side Code ====================
-    id: 19908145403955380
-    identification: 
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: NULL;
-      items-to-submit: 
-      - P100_CLIENT_ID
-      - P100_PROJECT_ID
-      - P100_BOARD_ID
-      - P100_SWIMLANE_ID
-
-    execution: 
-      sequence: 30
-      event: CHANGED_PROJECT # 19906607650955379
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Refresh =====================================
-    id: 19908605230955380
-    identification: 
-      action: Refresh
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_BOARD_ID
-
-    execution: 
-      sequence: 40
-      event: CHANGED_PROJECT # 19906607650955379
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
 - # ====== Dynamic Action: OPEN_DETAIL =========================
   id: 19909045649955380
   identification: 
@@ -2421,80 +2200,6 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-- # ====== Dynamic Action: CHANGED_BOARD =======================
-  id: 19910881484955381
-  identification: 
-    name: CHANGED_BOARD
-
-  execution: 
-    sequence: 60
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_BOARD_ID
-
-  client-side-condition: 
-    type: Item is not null
-    item: P100_BOARD_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Hide ========================================
-    id: 19911363898955382
-    identification: 
-      action: Hide
-
-    affected-elements: 
-      selection-type: Region
-      region: TASKS # 85694680081665719
-
-    execution: 
-      sequence: 10
-      event: CHANGED_BOARD # 19910881484955381
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-  - # ====== Action: Set Value ===================================
-    id: 19911898380955383
-    identification: 
-      action: Set Value
-
-    settings: 
-      set-type: Static Assignment
-      suppress-change-event: false
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_TASK_ID
-
-    execution: 
-      sequence: 20
-      event: CHANGED_BOARD # 19910881484955381
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Submit Page =================================
-    id: 19912351062955383
-    identification: 
-      action: Submit Page
-
-    settings: 
-      show-processing: true
-
-    execution: 
-      sequence: 30
-      event: CHANGED_BOARD # 19910881484955381
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
 - # ====== Dynamic Action: CHANGED_SWIMLANE ====================
   id: 19912785042955384
   identification: 
@@ -2514,21 +2219,6 @@ dynamic-actions:
     type: Immediate
 
   actions: 
-  - # ====== Action: Hide ========================================
-    id: 19913219968955384
-    identification: 
-      action: Hide
-
-    affected-elements: 
-      selection-type: Region
-      region: TASKS # 85694680081665719
-
-    execution: 
-      sequence: 10
-      event: CHANGED_SWIMLANE # 19912785042955384
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
   - # ====== Action: Set Value ===================================
     id: 19913704647955384
     identification: 
@@ -2584,21 +2274,6 @@ dynamic-actions:
     type: Immediate
 
   actions: 
-  - # ====== Action: Hide ========================================
-    id: 19915115830955385
-    identification: 
-      action: Hide
-
-    affected-elements: 
-      selection-type: Region
-      region: TASKS # 85694680081665719
-
-    execution: 
-      sequence: 10
-      event: CHANGED_OWNER # 19914683734955385
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
   - # ====== Action: Set Value ===================================
     id: 19915696111955385
     identification: 
@@ -2634,6 +2309,194 @@ dynamic-actions:
       event: CHANGED_OWNER # 19914683734955385
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+- # ====== Dynamic Action: CHANGED_CLIENT ======================
+  id: 23517813165581609
+  identification: 
+    name: CHANGED_CLIENT
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P100_CLIENT_ID
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: SET_CONTEXT =================================
+    id: 23518097952581611
+    identification: 
+      name: SET_CONTEXT
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        tsk_app.set_context (
+            in_client_id    => :P100_CLIENT_ID
+        );
+      items-to-submit: 
+      - P100_CLIENT_ID
+      items-to-return: 
+      - P100_CLIENT_ID
+      - P100_PROJECT_ID
+      - P100_BOARD_ID
+      - P0_CLIENT_ID
+      - P0_PROJECT_ID
+      - P0_BOARD_ID
+      suppress-change-event: true
+
+    execution: 
+      sequence: 10
+      event: CHANGED_CLIENT # 23517813165581609
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: REFRESH_NEXT_LOV ============================
+    id: 23519200597581623
+    identification: 
+      name: REFRESH_NEXT_LOV
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P100_PROJECT_ID
+      - P100_BOARD_ID
+
+    execution: 
+      sequence: 20
+      event: CHANGED_CLIENT # 23517813165581609
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CHANGED_PROJECT =====================
+  id: 23518648461581617
+  identification: 
+    name: CHANGED_PROJECT
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P100_PROJECT_ID
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: SET_CONTEXT =================================
+    id: 23518789258581618
+    identification: 
+      name: SET_CONTEXT
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        tsk_app.set_context (
+            in_client_id    => :P100_CLIENT_ID,
+            in_project_id   => :P100_PROJECT_ID
+        );
+      items-to-submit: 
+      - P100_CLIENT_ID
+      - P100_PROJECT_ID
+      items-to-return: 
+      - P100_PROJECT_ID
+      - P100_BOARD_ID
+      - P0_CLIENT_ID
+      - P0_PROJECT_ID
+      - P0_BOARD_ID
+      suppress-change-event: true
+
+    execution: 
+      sequence: 10
+      event: CHANGED_PROJECT # 23518648461581617
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: REFRESH_NEXT_LOV ============================
+    id: 23519348726581624
+    identification: 
+      name: REFRESH_NEXT_LOV
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P100_BOARD_ID
+
+    execution: 
+      sequence: 20
+      event: CHANGED_PROJECT # 23518648461581617
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CHANGED_BOARD =======================
+  id: 23518831139581619
+  identification: 
+    name: CHANGED_BOARD
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P100_BOARD_ID
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: SET_CONTEXT =================================
+    id: 23518921839581620
+    identification: 
+      name: SET_CONTEXT
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        tsk_app.set_context (
+            in_client_id    => :P100_CLIENT_ID,
+            in_project_id   => :P100_PROJECT_ID,
+            in_board_id     => :P100_BOARD_ID
+        );
+      items-to-submit: 
+      - P100_CLIENT_ID
+      - P100_PROJECT_ID
+      - P100_BOARD_ID
+      items-to-return: 
+      - P100_BOARD_ID
+      - P0_CLIENT_ID
+      - P0_PROJECT_ID
+      - P0_BOARD_ID
+      suppress-change-event: true
+
+    execution: 
+      sequence: 10
+      event: CHANGED_BOARD # 23518831139581619
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
 
 processes: 
 - # ====== Process: SAVE_TASKS =================================
@@ -2677,33 +2540,6 @@ processes:
     sequence: 10
     point: Ajax Callback
     run-process: Once Per Page Visit (default)
-
-- # ====== Process: SAVE_FILTERS ===============================
-  id: 19903087797955375
-  identification: 
-    name: SAVE_FILTERS
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: |
-      tsk_app.set_user_preferences (
-          in_user_id          => core.get_user_id(),
-          in_client_id        => :P100_CLIENT_ID,
-          in_project_id       => :P100_PROJECT_ID,
-          in_board_id         => :P100_BOARD_ID,
-          in_swimlane_id      => :P100_SWIMLANE_ID
-      );
-
-  execution: 
-    sequence: 10
-    point: After Submit
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
 
 - # ====== Process: ADD_TO_FAVORITES ===========================
   id: 19903402079955375
