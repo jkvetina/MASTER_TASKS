@@ -884,15 +884,17 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     AS
     BEGIN
         -- upsert record
-        UPDATE tsk_recent t
-        SET ROW = rec
-        WHERE t.user_id             = rec.user_id
-            AND t.client_id         = rec.client_id
-            AND t.project_id        = rec.project_id;
-        --
-        IF SQL%ROWCOUNT = 0 THEN
-            INSERT INTO tsk_recent
-            VALUES rec;
+        IF rec.client_id IS NOT NULL AND rec.project_id IS NOT NULL THEN
+            UPDATE tsk_recent t
+            SET ROW = rec
+            WHERE t.user_id             = rec.user_id
+                AND t.client_id         = rec.client_id
+                AND t.project_id        = rec.project_id;
+            --
+            IF SQL%ROWCOUNT = 0 THEN
+                INSERT INTO tsk_recent
+                VALUES rec;
+            END IF;
         END IF;
     EXCEPTION
     WHEN core.app_exception THEN
