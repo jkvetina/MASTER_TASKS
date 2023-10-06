@@ -35,6 +35,7 @@ body.t-Dialog-page .t-HeroRegion-col--beforeIcon,
 body.t-Drawer-page .t-HeroRegion-col--beforeIcon {
     order               : 5;
     margin              : 0;
+    gap                 : 0.13rem;  /* TO FIX BUTTON SPACING IN HERO.UP REGION */
 }
 body.t-Dialog-page .t-HeroRegion-col--beforeIcon button,
 body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {

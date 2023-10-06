@@ -35,7 +35,8 @@ const dragstart = function(e) {
     //
     // DRAGGING START
     //
-    //console.log('START', e.target.id);
+    (e.originalEvent || e).dataTransfer.effectAllowed = 'move';  // get rid of the copy cursor
+    //console.log('START', e.target.id, this);
     if (!e.target.classList.contains('TASK')) {
         // when clicking direcly on link, find parent element (card/task)
         if (e.target.parentElement.classList.contains('TASK')) {
@@ -46,7 +47,6 @@ const dragstart = function(e) {
             return;
         }
     }
-
     //e.dataTransfer.setData("draggedItem", e.target.id);
     e.target.classList.add('DRAGGING');
 };
