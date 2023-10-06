@@ -107,7 +107,7 @@ h1.t-HeroRegion-title button:first-child {
 
 
 /* BUTTON BADGES */
-BUTTON .BADGE {
+button .BADGE {
     display             : block;
     float               : right;
     position            : absolute;
@@ -130,7 +130,8 @@ BUTTON .BADGE {
 #t_Header > #top_header > nav ul li.RED {
     background          : red;
 }
-#t_Header > #top_header > nav ul li a > span.BADGE {
+#t_Header > #top_header > nav ul li a > span.BADGE,
+span.BADGE {
     position            : relative;
     top                 : -0.65rem;
     padding             : 0.1rem 0.45rem 0;
@@ -142,6 +143,13 @@ BUTTON .BADGE {
     font-weight         : 500;
     font-size           : 0.75rem;
     line-height         : 1.15rem;
+}
+span.BADGE {
+    padding             : 0.25rem 0.45rem 0.2rem;
+    background          : red;
+}
+span.BADGE.DECENT {
+    background          : #888;
 }
 
 
