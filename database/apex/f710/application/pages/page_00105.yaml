@@ -9,12 +9,12 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Theme Default
+  dialog-template: Modal Dialog # 33859121557153720
   template-options: 
   - '#DEFAULT#'
 
 dialog: 
-  width: 1280
+  width: 85%
   chained: false
 
 navigation-menu: 
@@ -119,18 +119,18 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Comments [FORM] =============================
-  id: 80056238690629281
+- # ====== Region: Checklist &P105_BADGE_CHECKLIST. ============
+  id: 25064699187730026
   identification: 
-    title: Comments [FORM]
+    title: Checklist &P105_BADGE_CHECKLIST.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Comments &P105_BADGE_COMMENTS. # 89196447107141476
+    parent-region: RIGHT # 25065087108730030
     position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -160,14 +160,55 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: [TABS] ======================================
-  id: 89196208953141473
+- # ====== Region: Comments ====================================
+  id: 25064723919730027
   identification: 
-    title: '[TABS]'
+    title: Comments
     type: Static Content
 
   layout: 
     sequence: 30
+    parent-region: RIGHT # 25065087108730030
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: LEFT ========================================
+  id: 25064882953730028
+  identification: 
+    title: LEFT
+    type: Static Content
+
+  layout: 
+    sequence: 20
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -180,7 +221,6 @@ regions:
     template: Tabs Container # 33957611184153776
     template-options: 
     - '#DEFAULT#'
-    - js-useLocalStorage
     - t-TabsRegion-mod--simple
     render-components: Above Content
 
@@ -189,47 +229,6 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    region-display-selector: true
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Status ======================================
-  id: 89196275411141474
-  identification: 
-    title: Status
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: '[TABS]' # 89196208953141473
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -244,51 +243,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Comments &P105_BADGE_COMMENTS. ==============
-  id: 89196447107141476
+- # ====== Region: RIGHT =======================================
+  id: 25065087108730030
   identification: 
-    title: Comments &P105_BADGE_COMMENTS.
-    type: Static Content
-
-  layout: 
-    sequence: 20
-    parent-region: '[TABS_RIGHT]' # 89197105366141482
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: [TABS_RIGHT] ================================
-  id: 89197105366141482
-  identification: 
-    title: '[TABS_RIGHT]'
+    title: RIGHT
     type: Static Content
 
   layout: 
@@ -305,7 +263,6 @@ regions:
     template: Tabs Container # 33957611184153776
     template-options: 
     - '#DEFAULT#'
-    - js-useLocalStorage
     - t-TabsRegion-mod--simple
     render-components: Above Content
 
@@ -314,7 +271,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    region-display-selector: true
+    region-display-selector: false
     exclude-title-from-translation: false
 
   server-cache: 
@@ -328,15 +285,56 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Checklist &P105_BADGE_CHECKLIST. ============
-  id: 89197294196141484
+- # ====== Region: Attachements ================================
+  id: 25065282126730032
   identification: 
-    title: Checklist &P105_BADGE_CHECKLIST.
+    title: Attachements
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: LEFT # 25064882953730028
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Description =================================
+  id: 25066083083730040
+  identification: 
+    title: Description
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: '[TABS_RIGHT]' # 89197105366141482
+    parent-region: LEFT # 25064882953730028
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -369,98 +367,15 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Description &P105_BADGE_DESC. ===============
-  id: 89197338774141485
+- # ====== Region: Commits =====================================
+  id: 89197294196141484
   identification: 
-    title: Description &P105_BADGE_DESC.
+    title: Commits
     type: Static Content
 
   layout: 
-    sequence: 20
-    parent-region: '[TABS]' # 89196208953141473
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Attachements &P105_BADGE_FILES. =============
-  id: 89197452839141486
-  identification: 
-    title: Attachements &P105_BADGE_FILES.
-    type: Static Content
-
-  layout: 
-    sequence: 30
-    parent-region: '[TABS]' # 89196208953141473
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    static-id: ATTACHEMENTS
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Commits &P105_BADGE_COMMITS. ================
-  id: 89197603822141487
-  identification: 
-    title: Commits &P105_BADGE_COMMITS.
-    type: Static Content
-
-  layout: 
-    sequence: 30
-    parent-region: '[TABS_RIGHT]' # 89197105366141482
+    sequence: 60
+    parent-region: RIGHT # 25065087108730030
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -514,8 +429,8 @@ regions:
     order-by-clause: COMMENT_ID DESC
 
   layout: 
-    sequence: 20
-    parent-region: Comments &P105_BADGE_COMMENTS. # 89196447107141476
+    sequence: 10
+    parent-region: Comments # 25064723919730027
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1020,10 +935,10 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Attachements &P105_BADGE_FILES. # 89197452839141486
+    parent-region: Attachements # 25065282126730032
     position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1091,16 +1006,13 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Commits &P105_BADGE_COMMITS. # 89197603822141487
+    parent-region: Commits # 89197294196141484
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
-    column-attributes: 
-    - 'style="margin-top:'
-    - 0.5rem;"
 
   appearance: 
     template: Cards Container # 33888340216153739
@@ -1143,7 +1055,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Attachements &P105_BADGE_FILES. # 89197452839141486
+    parent-region: Attachements # 25065282126730032
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1193,7 +1105,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Checklist &P105_BADGE_CHECKLIST. # 89197294196141484
+    parent-region: Checklist &P105_BADGE_CHECKLIST. # 25064699187730026
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1205,6 +1117,8 @@ regions:
     template: Interactive Report # 33938051529153767
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - ORIGINAL
     render-components: Above Content
 
   accessibility: 
@@ -1245,9 +1159,6 @@ regions:
 
     toolbar: 
       show: true
-      controls: 
-      - Actions Menu
-      - Save Button
 
     enable-users-to: 
       save-public-report: false
@@ -1500,110 +1411,6 @@ regions:
     session-state: 
       data-type: VARCHAR2
 
-- # ====== Region: Tags &P105_BADGE_TAGS. ======================
-  id: 92842272098190341
-  identification: 
-    title: Tags &P105_BADGE_TAGS.
-    type: Static Content
-
-  layout: 
-    sequence: 40
-    parent-region: '[TABS_RIGHT]' # 89197105366141482
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Tasks with same tags [LIST] =================
-  id: 92842407292190342
-  identification: 
-    title: Tasks with same tags [LIST]
-    type: List View
-
-  source: 
-    location: Local Database
-    type: Table / View
-    table-owner: Parsing Schema
-    table-name: TSK_P105_TAGS_V
-    include-rowid-column: false
-
-  order-by: 
-    type: None
-
-  layout: 
-    sequence: 10
-    parent-region: Tags &P105_BADGE_TAGS. # 92842272098190341
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    column-attributes: 
-    - 'style="margin-top:'
-    - 0.5rem;"
-
-  appearance: 
-    template: Cards Container # 33888340216153739
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  security: 
-    escape-special-characters: true
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      text-column: LIST_TEXT
-      supplemental-information-column: LIST_SUPPLEMENTAL
-      counter-column: LIST_COUNTER
-      link-target: '&LIST_LINK.'
-
-    layout: 
-      number-of-rows-type: Static Value
-      number-of-rows: 15
-
 - # ====== Region: &P105_HEADER. ===============================
   id: 108316517171408030
   identification: 
@@ -1611,11 +1418,11 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 20
+    sequence: 10
     parent-region: No Parent
-    position: BODY
+    position: REGION_POSITION_01
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1631,7 +1438,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    region-display-selector: true
+    region-display-selector: false
     exclude-title-from-translation: false
 
   server-cache: 
@@ -1660,12 +1467,12 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Status # 89196275411141474
+    parent-region: Description # 25066083083730040
     position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
@@ -1708,7 +1515,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
+    sequence: 30
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1753,7 +1560,7 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 20
+    sequence: 40
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1810,7 +1617,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 50
+    sequence: 60
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1869,42 +1676,15 @@ page-items:
   id: 79916787074307147
   identification: 
     name: P105_CLIENT_ID
-    type: Select List
-
-  label: 
-    label: Client
-    alignment: Left
+    type: Hidden
 
   settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
+    value-protected: true
 
   layout: 
-    sequence: 30
+    sequence: 10
     region: '[FORM]' # 108316672484408031
     position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: true
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_CLIENTS # 19917139722955396
-    display-extra-values: true
-    display-null-value: false
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1917,10 +1697,8 @@ page-items:
     primary-key: false
 
   session-state: 
+    data-type: VARCHAR2
     storage: Per Request (Memory Only)
-
-  quick-picks: 
-    show-quick-picks: false
 
   security: 
     session-state-protection: Unrestricted
@@ -1931,49 +1709,15 @@ page-items:
   id: 79916923377307148
   identification: 
     name: P105_PROJECT_ID
-    type: Select List
-
-  label: 
-    label: Project
-    alignment: Left
+    type: Hidden
 
   settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
+    value-protected: true
 
   layout: 
-    sequence: 40
+    sequence: 20
     region: '[FORM]' # 108316672484408031
     position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: true
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_PROJECTS # 23314637906165586
-    display-extra-values: true
-    display-null-value: false
-
-  cascading-list-of-values: 
-    parent-item(s): 
-    - P105_CLIENT_ID
-    items-to-submit: 
-    - P105_CLIENT_ID
-    parent-required: true
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1986,10 +1730,8 @@ page-items:
     primary-key: false
 
   session-state: 
+    data-type: VARCHAR2
     storage: Per Request (Memory Only)
-
-  quick-picks: 
-    show-quick-picks: false
 
   security: 
     session-state-protection: Unrestricted
@@ -2016,7 +1758,7 @@ page-items:
     position: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -2082,7 +1824,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 60
+    sequence: 80
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2175,34 +1917,15 @@ page-items:
   id: 79917302890307152
   identification: 
     name: P105_AUDIT
-    type: Display Only
-
-  label: 
-    label: Last Change
-    alignment: Left
+    type: Hidden
 
   settings: 
-    format: Plain Text
-    based-on: Item Value
-    show-line-breaks: true
-    send-on-page-submit: true
+    value-protected: true
 
   layout: 
-    sequence: 120
+    sequence: 130
     region: '[FORM]' # 108316672484408031
     position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -2270,8 +1993,8 @@ page-items:
     allow-custom-html: false
 
   layout: 
-    sequence: 10
-    region: Description &P105_BADGE_DESC. # 89197338774141485
+    sequence: 50
+    region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -2302,64 +2025,6 @@ page-items:
   session-state: 
     data-type: VARCHAR2
     storage: Per Request (Memory Only)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P105_COMMENT =============================
-  id: 80057701338629315
-  identification: 
-    name: P105_COMMENT
-    type: Textarea
-
-  label: 
-    label: Comment
-    alignment: Left
-
-  settings: 
-    resizable: true
-    auto-height: false
-    character-counter: false
-    trim-spaces: Leading and Trailing
-
-  layout: 
-    sequence: 10
-    region: Comments [FORM] # 80056238690629281
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    - margin-bottom-md
-    width: 30
-    height: 5
-
-  validation: 
-    value-required: false
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
 
   security: 
     session-state-protection: Unrestricted
@@ -2766,12 +2431,12 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 80
+    sequence: 100
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -2835,12 +2500,12 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 90
+    sequence: 110
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -2911,7 +2576,7 @@ page-items:
     maximum-date: None
 
   layout: 
-    sequence: 100
+    sequence: 120
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2939,66 +2604,6 @@ page-items:
     form-region: '[FORM]' # 108316672484408031
     column: DEADLINE_AT
     data-type: DATE
-    query-only: false
-    primary-key: false
-
-  session-state: 
-    storage: Per Request (Memory Only)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P105_TAGS ================================
-  id: 92697292044795653
-  identification: 
-    name: P105_TAGS
-    type: Text Field
-
-  label: 
-    label: Tags
-    alignment: Left
-
-  settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
-
-  layout: 
-    sequence: 110
-    region: '[FORM]' # 108316672484408031
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    width: 30
-
-  validation: 
-    value-required: false
-    maximum-length: 256
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    form-region: '[FORM]' # 108316672484408031
-    column: TAGS
-    data-type: VARCHAR2
     query-only: false
     primary-key: false
 
@@ -3074,15 +2679,15 @@ page-items:
     restricted-characters: All characters can be saved.
 
 buttons: 
-- # ====== Button: CREATE_TASK =================================
-  id: 25255622728844562
+- # ====== Button: ADD_COMMENT =================================
+  id: 25065437466730034
   identification: 
-    button-name: CREATE_TASK
-    label: Create Task
+    button-name: ADD_COMMENT
+    label: Add Comment
 
   layout: 
     sequence: 10
-    region: '&P105_HEADER.' # 108316517171408030
+    region: Comments # 25064723919730027
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -3091,26 +2696,22 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Icon # 34020683404153823
     hot: false
     template-options: 
     - '#DEFAULT#'
+    icon: fa-plus
 
   behavior: 
     action: Submit Page
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
-    database-action: SQL INSERT action
-
-  server-side-condition: 
-    type: Item is NULL
-    item: P105_TASK_ID
 
 - # ====== Button: CREATE_ANOTHER ==============================
   id: 25256044784844563
   identification: 
     button-name: CREATE_ANOTHER
-    label: Create and
+    label: Create and Another
 
   layout: 
     sequence: 20
@@ -3123,11 +2724,10 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Icon # 34020683404153823
     hot: false
     template-options: 
     - '#DEFAULT#'
-    - t-Button--iconRight
     icon: fa-plus
 
   behavior: 
@@ -3147,7 +2747,7 @@ buttons:
     label: Create and Close
 
   layout: 
-    sequence: 30
+    sequence: 10
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3179,41 +2779,6 @@ buttons:
     label: Update
 
   layout: 
-    sequence: 40
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text # 34021473197153827
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-    database-action: SQL UPDATE action
-
-  advanced: 
-    static-id: UPDATE_ONLY
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_TASK_ID
-
-- # ====== Button: UPDATE_AND_CLOSE ============================
-  id: 25257240911844563
-  identification: 
-    button-name: UPDATE_AND_CLOSE
-    label: Update and Close
-
-  layout: 
     sequence: 50
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
@@ -3235,6 +2800,9 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
 
+  advanced: 
+    static-id: UPDATE_ONLY
+
   server-side-condition: 
     type: Item is NOT NULL
     item: P105_TASK_ID
@@ -3246,7 +2814,7 @@ buttons:
     label: Move Task to Top
 
   layout: 
-    sequence: 60
+    sequence: 70
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3279,7 +2847,7 @@ buttons:
     label: Split Task
 
   layout: 
-    sequence: 70
+    sequence: 80
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3315,7 +2883,7 @@ buttons:
     label: Join Task
 
   layout: 
-    sequence: 80
+    sequence: 90
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3353,7 +2921,7 @@ buttons:
     label: Delete Task
 
   layout: 
-    sequence: 90
+    sequence: 100
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3390,7 +2958,7 @@ buttons:
     label: Copy link to clipboard
 
   layout: 
-    sequence: 100
+    sequence: 110
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3607,21 +3175,6 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-computations: 
-- # ====== Computation: P105_TAGS ==============================
-  id: 25264715119844586
-  identification: 
-    item-name: P105_TAGS
-
-  execution: 
-    sequence: 10
-    point: After Header
-
-  computation: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: "LTRIM(RTRIM(REPLACE(:P105_TAGS, ':', ' ')))"
-
 processes: 
 - # ====== Process: SAVE_CHECKLIST =============================
   id: 25240280109844543
@@ -3701,9 +3254,6 @@ processes:
 
   error: 
     display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: UPDATE_AND_CLOSE # 25257240911844563
 
 - # ====== Process: CLOSE_DIALOG_DELETE ========================
   id: 25265465111844587
