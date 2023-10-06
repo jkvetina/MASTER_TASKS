@@ -14,7 +14,7 @@ wwv_flow_imp.component_begin (
 wwv_flow_imp_shared.create_user_interface(
  p_id=>wwv_flow_imp.id(710)
 ,p_theme_id=>800
-,p_home_url=>'f?p=&APP_ID.:100:&APP_SESSION.::&DEBUG.:::'
+,p_home_url=>'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
 ,p_login_url=>'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
 ,p_theme_style_by_user_pref=>false
 ,p_built_with_love=>false
@@ -27,7 +27,9 @@ wwv_flow_imp_shared.create_user_interface(
 '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#',
 '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#',
 '#APP_FILES#tsk_app#MIN#.css?version=#APP_VERSION#'))
-,p_javascript_file_urls=>'#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
+,p_javascript_file_urls=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#',
+'#APP_FILES#tsk_app#MIN#.js?version=#APP_VERSION#'))
 ,p_nav_bar_type=>'LIST'
 ,p_nav_bar_list_id=>wwv_flow_imp.id(33790933661125336)
 ,p_nav_bar_list_template_id=>wwv_flow_imp.id(34008808952153812)
