@@ -117,6 +117,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: BOARD
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -1534,11 +1535,11 @@ buttons:
       :P100_SHOW_GRID IS NOT NULL
       AND :P100_BOARD_ID IS NOT NULL
 
-- # ====== Button: BULK_OPERATIONS =============================
-  id: 19887658798955346
+- # ====== Button: REFRESH =====================================
+  id: 25478645147860915
   identification: 
-    button-name: BULK_OPERATIONS
-    label: Bulk Operations
+    button-name: REFRESH
+    label: Refresh
 
   layout: 
     sequence: 40
@@ -1555,16 +1556,11 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
-    icon: fa-bolt
+    icon: fa-refresh
 
   behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:110:&SESSION.::&DEBUG.:110::'
-      page: 110
-      clear-cache: 110
-
-    warn-on-unsaved-changes: Do Not Check
+    action: Defined by Dynamic Action
+    execute-validations: false
 
   server-side-condition: 
     type: Item is NOT NULL
@@ -1577,7 +1573,7 @@ dynamic-actions:
     name: OPEN_DETAIL
 
   execution: 
-    sequence: 40
+    sequence: 10
 
   when: 
     event: EVENT.EVENT.BROWSER.READY
@@ -1612,7 +1608,7 @@ dynamic-actions:
     name: DIALOG_CLOSED
 
   execution: 
-    sequence: 50
+    sequence: 10
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
@@ -1647,7 +1643,7 @@ dynamic-actions:
     name: CHANGED_SWIMLANE
 
   execution: 
-    sequence: 70
+    sequence: 50
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -1702,7 +1698,7 @@ dynamic-actions:
     name: CHANGED_OWNER
 
   execution: 
-    sequence: 80
+    sequence: 60
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -1893,7 +1889,7 @@ dynamic-actions:
     name: CHANGED_BOARD
 
   execution: 
-    sequence: 30
+    sequence: 40
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -1938,6 +1934,101 @@ dynamic-actions:
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
+
+- # ====== Dynamic Action: STICKY_HEADERS ======================
+  id: 25478332234860912
+  identification: 
+    name: STICKY_HEADERS
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 25478459793860913
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        //$('.STICKY').stickyWidget({ toggleWidth: true });
+        
+
+    execution: 
+      sequence: 10
+      event: STICKY_HEADERS # 25478332234860912
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: REFRESH_GRID ========================
+  id: 25478734766860916
+  identification: 
+    name: REFRESH_GRID
+
+  execution: 
+    sequence: 70
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: REFRESH # 25478645147860915
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 25478884606860917
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Tasks [CONTENT] # 74502154509114589
+
+    execution: 
+      sequence: 10
+      event: REFRESH_GRID # 25478734766860916
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: INIT_GRID ===========================
+  id: 25478913059860918
+  identification: 
+    name: INIT_GRID
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 25479070871860919
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        init_grid();
+        
+
+    execution: 
+      sequence: 10
+      event: INIT_GRID # 25478913059860918
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_TASKS =================================
