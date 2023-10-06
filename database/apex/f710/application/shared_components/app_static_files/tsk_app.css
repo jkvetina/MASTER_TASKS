@@ -9,6 +9,9 @@
     grid-column-gap         : 1rem;
     grid-row-gap            : 1rem;
     padding                 : 0;
+    -webkit-user-select     : none;
+    -ms-user-select         : none;
+    user-select             : none;
 }
 .TARGET {
     min-height                  : 3rem;
