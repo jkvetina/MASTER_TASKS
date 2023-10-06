@@ -89,8 +89,8 @@ progressive-web-app:
 
 navigation: 
   home-url: 
-    url: 'f?p=&APP_ID.:100:&APP_SESSION.::&DEBUG.:::'
-    page: 100 # Tasks
+    url: 'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
+    page: HOME
 
   login-url: 
     url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
@@ -112,7 +112,8 @@ navigation-bar:
 
 javascript: 
   file-urls: 
-  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
+  - '#APP_FILES#tsk_app#MIN#.js?version=#APP_VERSION#'
   include-jquery-migrate: false
 
 css: 

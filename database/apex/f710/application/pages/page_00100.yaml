@@ -90,11 +90,11 @@ regions:
     language: PL/SQL
     pl/sql-function-body-returning-a-clob: RETURN tsk_p100.generate_board();
     page-items-to-submit: 
-    - P100_CLIENT_ID
-    - P100_PROJECT_ID
-    - P100_BOARD_ID
-    - P100_SWIMLANE_ID
-    - P100_OWNER_ID
+    - P0_CLIENT_ID
+    - P0_PROJECT_ID
+    - P0_BOARD_ID
+    - P0_SWIMLANES
+    - P0_OWNERS
 
   layout: 
     sequence: 20
@@ -129,9 +129,6 @@ regions:
 
   customization: 
     customizable: Not Customizable By End Users
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
 
   attributes: 
     performance: 
@@ -174,6 +171,10 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P100_SHOW_GRID
+
   server-cache: 
     caching: Disabled
 
@@ -185,11 +186,9 @@ regions:
     edit: 
       enabled: true
       allowed-operations: 
-      - Add Row
       - Update Row
       - Delete Row
       lost-update-type: Row Values
-      add-row-if-empty: false
 
     performance: 
       lazy-loading: false
@@ -1263,210 +1262,6 @@ regions:
       alignment: center
 
 page-items: 
-- # ====== Page Item: P100_CLIENT_ID ===========================
-  id: 74668596757790651
-  identification: 
-    name: P100_CLIENT_ID
-    type: Select List
-
-  label: 
-    label: Client
-    alignment: Left
-
-  settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
-
-  layout: 
-    sequence: 10
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_CLIENTS # 19917139722955396
-    display-extra-values: false
-    display-null-value: false
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Item
-    item: P0_CLIENT_ID
-    used: Always, replacing any existing value in session state
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Page Item: P100_PROJECT_ID ==========================
-  id: 74669066922790652
-  identification: 
-    name: P100_PROJECT_ID
-    type: Select List
-
-  label: 
-    label: Project
-    alignment: Left
-
-  settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
-
-  layout: 
-    sequence: 20
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_PROJECTS # 23314637906165586
-    display-extra-values: false
-    display-null-value: false
-
-  cascading-list-of-values: 
-    parent-item(s): 
-    - P100_CLIENT_ID
-    items-to-submit: 
-    - P100_CLIENT_ID
-    parent-required: true
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Item
-    item: P0_PROJECT_ID
-    used: Always, replacing any existing value in session state
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Page Item: P100_BOARD_ID ============================
-  id: 74669448576790652
-  identification: 
-    name: P100_BOARD_ID
-    type: Select List
-
-  label: 
-    label: Board
-    alignment: Left
-
-  settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
-
-  layout: 
-    sequence: 30
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_BOARDS # 19916565304955390
-    display-extra-values: false
-    display-null-value: false
-
-  cascading-list-of-values: 
-    parent-item(s): 
-    - P100_PROJECT_ID
-    items-to-submit: 
-    - P100_PROJECT_ID
-    - P100_CLIENT_ID
-    parent-required: true
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Item
-    item: P0_BOARD_ID
-    used: Always, replacing any existing value in session state
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
 - # ====== Page Item: P100_HEADER ==============================
   id: 74882513732611307
   identification: 
@@ -1477,7 +1272,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 70
+    sequence: 20
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
@@ -1501,72 +1296,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P100_SWIMLANE_ID =========================
-  id: 74890930033611353
-  identification: 
-    name: P100_SWIMLANE_ID
-    type: Select List
-
-  label: 
-    label: Swimlane
-    alignment: Left
-
-  settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
-
-  layout: 
-    sequence: 40
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_SWIMLANES # 19919016269955397
-    display-extra-values: false
-    display-null-value: true
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_BOARD_ID
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
 - # ====== Page Item: P100_SHOW_GRID ===========================
   id: 83851260871252322
   identification: 
@@ -1577,7 +1306,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 80
+    sequence: 10
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
@@ -1607,7 +1336,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 90
+    sequence: 40
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
@@ -1627,69 +1356,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P100_TASK_ID =============================
-  id: 83935934312589035
-  identification: 
-    name: P100_TASK_ID
-    type: Text Field
-
-  label: 
-    label: Quick Task Search
-    alignment: Left
-
-  settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: true
-    disabled: false
-
-  layout: 
-    sequence: 60
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    width: 30
-
-  validation: 
-    value-required: false
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Null
-    used: Always, replacing any existing value in session state
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_BOARD_ID
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
 - # ====== Page Item: P100_TASKS_LINK ==========================
   id: 84044013145168999
   identification: 
@@ -1700,7 +1366,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 100
+    sequence: 50
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
@@ -1730,7 +1396,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 110
+    sequence: 60
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: BODY
 
@@ -1750,108 +1416,7 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P100_OWNER_ID ============================
-  id: 88267828069877619
-  identification: 
-    name: P100_OWNER_ID
-    type: Select List
-
-  label: 
-    label: Owner
-    alignment: Left
-
-  settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
-
-  layout: 
-    sequence: 50
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: LOV_OWNERS # 19920099360955398
-    display-extra-values: false
-    display-null-value: true
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  quick-picks: 
-    show-quick-picks: false
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_BOARD_ID
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
 buttons: 
-- # ====== Button: REFRESH_TASKS ===============================
-  id: 19886011598955344
-  identification: 
-    button-name: REFRESH_TASKS
-    label: Refresh Tasks
-
-  layout: 
-    sequence: 10
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-refresh
-
-  behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:::'
-      page: 100 # Tasks
-
-    warn-on-unsaved-changes: Do Not Check
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_BOARD_ID
-
 - # ====== Button: ADD_TASK ====================================
   id: 19886491257955346
   identification: 
@@ -1859,7 +1424,7 @@ buttons:
     label: Add Task
 
   layout: 
-    sequence: 20
+    sequence: 30
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1888,7 +1453,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P100_BOARD_ID
+    item: P0_BOARD_ID
 
 - # ====== Button: SHOW_LIST ===================================
   id: 19886880314955346
@@ -1897,7 +1462,7 @@ buttons:
     label: Show as List
 
   layout: 
-    sequence: 30
+    sequence: 10
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1930,9 +1495,6 @@ buttons:
       :P100_SHOW_GRID IS NULL
       AND :P100_BOARD_ID IS NOT NULL
 
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
 - # ====== Button: SHOW_COLUMNS ================================
   id: 19887298031955346
   identification: 
@@ -1940,7 +1502,7 @@ buttons:
     label: Show as Columns
 
   layout: 
-    sequence: 40
+    sequence: 20
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1972,9 +1534,6 @@ buttons:
       :P100_SHOW_GRID IS NOT NULL
       AND :P100_BOARD_ID IS NOT NULL
 
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
 - # ====== Button: BULK_OPERATIONS =============================
   id: 19887658798955346
   identification: 
@@ -1982,7 +1541,7 @@ buttons:
     label: Bulk Operations
 
   layout: 
-    sequence: 50
+    sequence: 40
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -2009,125 +1568,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P100_BOARD_ID
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Button: SEARCH ======================================
-  id: 19888030133955347
-  identification: 
-    button-name: SEARCH
-    label: Search
-
-  layout: 
-    sequence: 60
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-search
-
-  behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:115:&SESSION.::&DEBUG.:115::'
-      page: 115
-      clear-cache: 115
-
-    warn-on-unsaved-changes: Do Not Check
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_BOARD_ID
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Button: ADD_TO_FAVORITES ============================
-  id: 19888405606955347
-  identification: 
-    button-name: ADD_TO_FAVORITES
-    label: Add to Favorites
-
-  layout: 
-    sequence: 70
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-bookmark-o
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: |
-      :P100_IS_FAVORITE IS NULL
-      AND :P100_BOARD_ID IS NOT NULL
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Button: REMOVE_FROM_FAVORITES =======================
-  id: 19888851952955348
-  identification: 
-    button-name: REMOVE_FROM_FAVORITES
-    label: Remove from Favorites
-
-  layout: 
-    sequence: 80
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-bookmark
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: |
-      :P100_IS_FAVORITE IS NOT NULL
-      AND :P100_BOARD_ID IS NOT NULL
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
+    item: P0_BOARD_ID
 
 dynamic-actions: 
 - # ====== Dynamic Action: OPEN_DETAIL =========================
@@ -2540,52 +1981,4 @@ processes:
     sequence: 10
     point: Ajax Callback
     run-process: Once Per Page Visit (default)
-
-- # ====== Process: ADD_TO_FAVORITES ===========================
-  id: 19903402079955375
-  identification: 
-    name: ADD_TO_FAVORITES
-    type: Invoke API
-    execution-chain: None
-
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_P100
-    procedure-or-function: ADD_TO_FAVORITES
-
-  execution: 
-    sequence: 20
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: ADD_TO_FAVORITES # 19888405606955347
-
-- # ====== Process: REMOVE_FROM_FAVORITES ======================
-  id: 19903874975955375
-  identification: 
-    name: REMOVE_FROM_FAVORITES
-    type: Invoke API
-    execution-chain: None
-
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_P100
-    procedure-or-function: REMOVE_FROM_FAVORITES
-
-  execution: 
-    sequence: 30
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: REMOVE_FROM_FAVORITES # 19888851952955348
 
