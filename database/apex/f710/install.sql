@@ -5,8 +5,8 @@ prompt --install
 @@application/user_interfaces.sql
 @@application/shared_components/navigation/lists/navigation.sql
 @@application/shared_components/files/tsk_app_css.sql
-@@application/shared_components/files/tsk_app_min_css.sql
 @@application/shared_components/files/tsk_app_js.sql
+@@application/shared_components/files/tsk_app_min_css.sql
 @@application/shared_components/files/tsk_app_min_js.sql
 @@application/shared_components/files/icons_app_icon_144_rounded_png.sql
 @@application/shared_components/files/icons_app_icon_256_rounded_png.sql
