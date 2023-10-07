@@ -291,7 +291,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Client
+      heading: Clients
       alignment: end
 
     settings: 
@@ -337,7 +337,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Project
+      heading: Projects
       alignment: end
 
     settings: 
@@ -383,7 +383,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Board
+      heading: Boards
       alignment: end
 
     settings: 

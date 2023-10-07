@@ -143,7 +143,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
-,p_heading=>'Client'
+,p_heading=>'Clients'
 ,p_heading_alignment=>'RIGHT'
 ,p_display_sequence=>170
 ,p_value_alignment=>'RIGHT'
@@ -170,7 +170,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
-,p_heading=>'Project'
+,p_heading=>'Projects'
 ,p_heading_alignment=>'RIGHT'
 ,p_display_sequence=>160
 ,p_value_alignment=>'RIGHT'
@@ -197,7 +197,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
-,p_heading=>'Board'
+,p_heading=>'Boards'
 ,p_heading_alignment=>'RIGHT'
 ,p_display_sequence=>150
 ,p_value_alignment=>'RIGHT'

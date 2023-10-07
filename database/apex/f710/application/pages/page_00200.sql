@@ -202,14 +202,14 @@ wwv_flow_imp_page.create_region_column(
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(23264217293120022)
-,p_name=>'COUNT_TASKS'
+,p_name=>'COUNT_CARDS'
 ,p_source_type=>'DB_COLUMN'
-,p_source_expression=>'COUNT_TASKS'
+,p_source_expression=>'COUNT_CARDS'
 ,p_data_type=>'NUMBER'
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
 ,p_item_type=>'NATIVE_DISPLAY_ONLY'
-,p_heading=>'Tasks'
+,p_heading=>'Cards'
 ,p_heading_alignment=>'RIGHT'
 ,p_display_sequence=>90
 ,p_value_alignment=>'RIGHT'

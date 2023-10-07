@@ -188,6 +188,12 @@ regions:
         name: Primary Report
         alias: 347682
 
+  column-groups: 
+  - # ====== Column Group: Counts ================================
+    id: 25482069312860949
+    heading: 
+      heading: Counts
+
   columns: 
   - # ====== Column: APEX$ROW_ACTION =============================
     id: 23265220247120032
@@ -219,7 +225,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Count Board
+      heading: Boards
       alignment: end
 
     settings: 
@@ -229,6 +235,8 @@ regions:
     layout: 
       sequence: 120
       column-alignment: end
+      group: Counts # 25482069312860949
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -263,7 +271,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Count Project
+      heading: Projects
       alignment: end
 
     settings: 
@@ -273,6 +281,8 @@ regions:
     layout: 
       sequence: 130
       column-alignment: end
+      group: Counts # 25482069312860949
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -307,7 +317,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Count Client
+      heading: Clients
       alignment: end
 
     settings: 
@@ -317,6 +327,8 @@ regions:
     layout: 
       sequence: 140
       column-alignment: end
+      group: Counts # 25482069312860949
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 

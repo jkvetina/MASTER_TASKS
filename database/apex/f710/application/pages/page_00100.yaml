@@ -1,11 +1,11 @@
 ---
-# ====== Page: Tasks =========================================
+# ====== Page: Cards =========================================
 id: 100
 identification: 
-  name: Tasks
+  name: Cards
   alias: HOME
-  title: Tasks
-  page-group: '   MAIN - TASKS' # 23490192563159466
+  title: Cards
+  page-group: '   MAIN - CARDS' # 23490192563159466
 
 appearance: 
   page-mode: Normal
@@ -80,10 +80,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Tasks [CONTENT] =============================
+- # ====== Region: Cards [CONTENT] =============================
   id: 74502154509114589
   identification: 
-    title: Tasks [CONTENT]
+    title: Cards [CONTENT]
     type: Dynamic Content
 
   source: 
@@ -135,17 +135,17 @@ regions:
     performance: 
       lazy-loading: false
 
-- # ====== Region: Tasks [GRID] ================================
+- # ====== Region: Cards [GRID] ================================
   id: 83848777350252285
   identification: 
-    title: Tasks [GRID]
+    title: Cards [GRID]
     type: Interactive Grid
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: TSK_P100_TASKS_V
+    table-name: TSK_P100_CARDS_V
     include-rowid-column: false
 
   layout: 
@@ -241,34 +241,38 @@ regions:
         alias: 441174
 
   columns: 
-  - # ====== Column: TASK_ID =====================================
-    id: 83848937925252287
+  - # ====== Column: CARD_PROGRESS ===============================
+    id: 25480553532860934
     identification: 
-      column-name: TASK_ID
-      type: Link
+      column-name: CARD_PROGRESS
+      type: Text Field
 
     heading: 
-      heading: Task Id
+      heading: Card Progress
       alignment: start
 
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
     layout: 
-      sequence: 60
+      sequence: 100
       column-alignment: start
       stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
 
-    link: 
-      target: '&TASK_LINK.'
-      link-text: '&TASK_ID.'
+    validation: 
+      value-required: false
+      maximum-length: 81
 
     source: 
       type: Database Column
-      database-column: TASK_ID
+      database-column: CARD_PROGRESS
       data-type: VARCHAR2
       query-only: false
-      primary-key: true
+      primary-key: false
 
     default: 
       duplicate-copies-existing-value: true
@@ -285,23 +289,21 @@ regions:
       exact-match: true
 
     export-/-printing: 
-      include-in-export-/-print: false
+      include-in-export-/-print: true
 
     enable-users-to: 
-      sort: false
+      sort: true
+      control-break/aggregate: true
       hide: true
 
-    security: 
-      escape-special-characters: true
-
-  - # ====== Column: TASK_NAME ===================================
-    id: 83849033307252288
+  - # ====== Column: CARD_NUMBER =================================
+    id: 25480619614860935
     identification: 
-      column-name: TASK_NAME
+      column-name: CARD_NUMBER
       type: Text Field
 
     heading: 
-      heading: Task Name
+      heading: Card Number
       alignment: start
 
     settings: 
@@ -317,12 +319,113 @@ regions:
       value-identifies-row: false
 
     validation: 
+      value-required: false
+      maximum-length: 16
+
+    source: 
+      type: Database Column
+      database-column: CARD_NUMBER
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: CARD_ID =====================================
+    id: 83848937925252287
+    identification: 
+      column-name: CARD_ID
+      type: Link
+
+    heading: 
+      heading: Card Id
+      alignment: start
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    link: 
+      target: '&CARD_LINK.'
+      link-text: '&CARD_ID.'
+
+    source: 
+      type: Database Column
+      database-column: CARD_ID
+      data-type: NUMBER
+      query-only: false
+      primary-key: true
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: CARD_NAME ===================================
+    id: 83849033307252288
+    identification: 
+      column-name: CARD_NAME
+      type: Text Field
+
+    heading: 
+      heading: Card Name
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
       value-required: true
       maximum-length: 128
 
     source: 
       type: Database Column
-      database-column: TASK_NAME
+      database-column: CARD_NAME
       data-type: VARCHAR2
       query-only: false
       primary-key: false
@@ -348,24 +451,24 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: TASK_LINK ===================================
+  - # ====== Column: CARD_LINK ===================================
     id: 83850101293252298
     identification: 
-      column-name: TASK_LINK
+      column-name: CARD_LINK
       type: Hidden
 
     settings: 
       value-protected: true
 
     layout: 
-      sequence: 80
+      sequence: 90
 
     accessibility: 
       value-identifies-row: false
 
     source: 
       type: Database Column
-      database-column: TASK_LINK
+      database-column: CARD_LINK
       data-type: VARCHAR2
       query-only: false
       primary-key: false
@@ -382,60 +485,6 @@ regions:
     enable-users-to: 
       sort: false
 
-  - # ====== Column: TASK_PROGRESS ===============================
-    id: 83850129943252299
-    identification: 
-      column-name: TASK_PROGRESS
-      type: Display Only
-
-    heading: 
-      heading: Task Progress
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 110
-      column-alignment: end
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: TASK_PROGRESS
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
   - # ====== Column: STATUS_ID ===================================
     id: 83850257236252300
     identification: 
@@ -447,7 +496,7 @@ regions:
       alignment: start
 
     layout: 
-      sequence: 90
+      sequence: 140
       column-alignment: start
       stretch: Use Report Setting
 
@@ -503,7 +552,7 @@ regions:
       alignment: start
 
     layout: 
-      sequence: 100
+      sequence: 120
       column-alignment: start
       stretch: Use Report Setting
 
@@ -572,7 +621,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: end
       stretch: Use Report Setting
 
@@ -619,7 +668,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 130
+      sequence: 150
       column-alignment: end
       stretch: Use Report Setting
 
@@ -651,14 +700,14 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: TASK_ORDER# =================================
+  - # ====== Column: CARD_ORDER# =================================
     id: 85274950051510284
     identification: 
-      column-name: TASK_ORDER#
+      column-name: CARD_ORDER#
       type: Number Field
 
     heading: 
-      heading: Task Order#
+      heading: Card Order#
       alignment: end
 
     settings: 
@@ -666,7 +715,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 140
+      sequence: 110
       column-alignment: end
       stretch: Use Report Setting
 
@@ -678,7 +727,7 @@ regions:
 
     source: 
       type: Database Column
-      database-column: TASK_ORDER#
+      database-column: CARD_ORDER#
       data-type: NUMBER
       query-only: false
       primary-key: false
@@ -698,25 +747,25 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: PREV_TASK ===================================
+  - # ====== Column: PREV_CARD ===================================
     id: 86977158510625200
     identification: 
-      column-name: PREV_TASK
+      column-name: PREV_CARD
       type: Hidden
 
     settings: 
       value-protected: true
 
     layout: 
-      sequence: 150
+      sequence: 170
 
     accessibility: 
       value-identifies-row: false
 
     source: 
       type: Database Column
-      database-column: PREV_TASK
-      data-type: VARCHAR2
+      database-column: PREV_CARD
+      data-type: NUMBER
       query-only: true
       primary-key: false
 
@@ -729,25 +778,25 @@ regions:
     enable-users-to: 
       sort: false
 
-  - # ====== Column: NEXT_TASK ===================================
+  - # ====== Column: NEXT_CARD ===================================
     id: 86977293354625201
     identification: 
-      column-name: NEXT_TASK
+      column-name: NEXT_CARD
       type: Hidden
 
     settings: 
       value-protected: true
 
     layout: 
-      sequence: 160
+      sequence: 180
 
     accessibility: 
       value-identifies-row: false
 
     source: 
       type: Database Column
-      database-column: NEXT_TASK
-      data-type: VARCHAR2
+      database-column: NEXT_CARD
+      data-type: NUMBER
       query-only: true
       primary-key: false
 
@@ -873,7 +922,7 @@ regions:
       alignment: start
 
     layout: 
-      sequence: 180
+      sequence: 190
       column-alignment: start
       stretch: Use Report Setting
 
@@ -929,7 +978,7 @@ regions:
       alignment: start
 
     layout: 
-      sequence: 190
+      sequence: 200
       column-alignment: start
       stretch: Use Report Setting
 
@@ -993,7 +1042,7 @@ regions:
       use-defaults: true
 
     layout: 
-      sequence: 200
+      sequence: 210
       column-alignment: center
       stretch: Use Report Setting
 
@@ -1044,7 +1093,7 @@ regions:
       text-case: NO CHANGE
 
     layout: 
-      sequence: 210
+      sequence: 220
       column-alignment: start
       stretch: Use Report Setting
 
@@ -1093,7 +1142,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 220
+      sequence: 230
 
     accessibility: 
       value-identifies-row: false
@@ -1124,7 +1173,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 230
+      sequence: 240
 
     accessibility: 
       value-identifies-row: false
@@ -1155,7 +1204,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 240
+      sequence: 250
 
     accessibility: 
       value-identifies-row: false
@@ -1191,7 +1240,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 250
+      sequence: 260
       column-alignment: end
       stretch: Use Report Setting
 
@@ -1239,7 +1288,7 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
-      page-header-text: Tasks [GRID]
+      page-header-text: Cards [GRID]
 
     column-headings: 
       font: Helvetica
@@ -1286,7 +1335,7 @@ page-items:
 
   default: 
     type: Static
-    static-value: Tasks
+    static-value: Cards
 
   session-state: 
     data-type: VARCHAR2
@@ -1327,10 +1376,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P100_TASK_LINK ===========================
+- # ====== Page Item: P100_CARD_LINK ===========================
   id: 83932226906589036
   identification: 
-    name: P100_TASK_LINK
+    name: P100_CARD_LINK
     type: Hidden
 
   settings: 
@@ -1357,10 +1406,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P100_TASKS_LINK ==========================
+- # ====== Page Item: P100_CARDS_LINK ==========================
   id: 84044013145168999
   identification: 
-    name: P100_TASKS_LINK
+    name: P100_CARDS_LINK
     type: Hidden
 
   settings: 
@@ -1418,11 +1467,11 @@ page-items:
     restricted-characters: All characters can be saved.
 
 buttons: 
-- # ====== Button: ADD_TASK ====================================
+- # ====== Button: ADD_CARD ====================================
   id: 19886491257955346
   identification: 
-    button-name: ADD_TASK
-    label: Add Task
+    button-name: ADD_CARD
+    label: Add Card
 
   layout: 
     sequence: 30
@@ -1483,7 +1532,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:Y'
-      page: 100 # Tasks
+      page: 100 # Cards
       values: 
         p100_show_grid: Y
 
@@ -1523,7 +1572,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:'
-      page: 100 # Tasks
+      page: 100 # Cards
       values: 
 
     warn-on-unsaved-changes: Do Not Check
@@ -1583,7 +1632,7 @@ dynamic-actions:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P100_TASK_LINK
+    item: P100_CARD_LINK
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -1593,7 +1642,7 @@ dynamic-actions:
 
     settings: 
       code: |
-        window.location.href = apex.item('P100_TASK_LINK').getValue();
+        window.location.href = apex.item('P100_CARD_LINK').getValue();
         
 
     execution: 
@@ -1628,341 +1677,12 @@ dynamic-actions:
     settings: 
       code: |
         //location.reload();  // dont work properly
-        window.location = apex.item('P100_TASKS_LINK').getValue();
+        window.location = apex.item('P100_CARDS_LINK').getValue();
         
 
     execution: 
       sequence: 10
       event: DIALOG_CLOSED # 19909981721955381
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CHANGED_SWIMLANE ====================
-  id: 19912785042955384
-  identification: 
-    name: CHANGED_SWIMLANE
-
-  execution: 
-    sequence: 50
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_SWIMLANE_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Set Value ===================================
-    id: 19913704647955384
-    identification: 
-      action: Set Value
-
-    settings: 
-      set-type: Static Assignment
-      suppress-change-event: false
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_TASK_ID
-
-    execution: 
-      sequence: 20
-      event: CHANGED_SWIMLANE # 19912785042955384
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Submit Page =================================
-    id: 19914245021955385
-    identification: 
-      action: Submit Page
-
-    settings: 
-      show-processing: true
-
-    execution: 
-      sequence: 30
-      event: CHANGED_SWIMLANE # 19912785042955384
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CHANGED_OWNER =======================
-  id: 19914683734955385
-  identification: 
-    name: CHANGED_OWNER
-
-  execution: 
-    sequence: 60
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_OWNER_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Set Value ===================================
-    id: 19915696111955385
-    identification: 
-      action: Set Value
-
-    settings: 
-      set-type: Static Assignment
-      suppress-change-event: false
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_TASK_ID
-
-    execution: 
-      sequence: 20
-      event: CHANGED_OWNER # 19914683734955385
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Submit Page =================================
-    id: 19916195807955386
-    identification: 
-      action: Submit Page
-
-    settings: 
-      show-processing: true
-
-    execution: 
-      sequence: 30
-      event: CHANGED_OWNER # 19914683734955385
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CHANGED_CLIENT ======================
-  id: 23517813165581609
-  identification: 
-    name: CHANGED_CLIENT
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_CLIENT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: SET_CONTEXT =================================
-    id: 23518097952581611
-    identification: 
-      name: SET_CONTEXT
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: |
-        tsk_app.set_context (
-            in_client_id    => :P100_CLIENT_ID
-        );
-      items-to-submit: 
-      - P100_CLIENT_ID
-      items-to-return: 
-      - P100_CLIENT_ID
-      - P100_PROJECT_ID
-      - P100_BOARD_ID
-      - P0_CLIENT_ID
-      - P0_PROJECT_ID
-      - P0_BOARD_ID
-      suppress-change-event: true
-
-    execution: 
-      sequence: 10
-      event: CHANGED_CLIENT # 23517813165581609
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: REFRESH_NEXT_LOV ============================
-    id: 23519200597581623
-    identification: 
-      name: REFRESH_NEXT_LOV
-      action: Refresh
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_PROJECT_ID
-      - P100_BOARD_ID
-
-    execution: 
-      sequence: 20
-      event: CHANGED_CLIENT # 23517813165581609
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CHANGED_PROJECT =====================
-  id: 23518648461581617
-  identification: 
-    name: CHANGED_PROJECT
-
-  execution: 
-    sequence: 20
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_PROJECT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: SET_CONTEXT =================================
-    id: 23518789258581618
-    identification: 
-      name: SET_CONTEXT
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: |
-        tsk_app.set_context (
-            in_client_id    => :P100_CLIENT_ID,
-            in_project_id   => :P100_PROJECT_ID
-        );
-      items-to-submit: 
-      - P100_CLIENT_ID
-      - P100_PROJECT_ID
-      items-to-return: 
-      - P100_PROJECT_ID
-      - P100_BOARD_ID
-      - P0_CLIENT_ID
-      - P0_PROJECT_ID
-      - P0_BOARD_ID
-      suppress-change-event: true
-
-    execution: 
-      sequence: 10
-      event: CHANGED_PROJECT # 23518648461581617
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: REFRESH_NEXT_LOV ============================
-    id: 23519348726581624
-    identification: 
-      name: REFRESH_NEXT_LOV
-      action: Refresh
-
-    affected-elements: 
-      selection-type: Item(s)
-      item(s): 
-      - P100_BOARD_ID
-
-    execution: 
-      sequence: 20
-      event: CHANGED_PROJECT # 23518648461581617
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CHANGED_BOARD =======================
-  id: 23518831139581619
-  identification: 
-    name: CHANGED_BOARD
-
-  execution: 
-    sequence: 40
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P100_BOARD_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: SET_CONTEXT =================================
-    id: 23518921839581620
-    identification: 
-      name: SET_CONTEXT
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: |
-        tsk_app.set_context (
-            in_client_id    => :P100_CLIENT_ID,
-            in_project_id   => :P100_PROJECT_ID,
-            in_board_id     => :P100_BOARD_ID
-        );
-      items-to-submit: 
-      - P100_CLIENT_ID
-      - P100_PROJECT_ID
-      - P100_BOARD_ID
-      items-to-return: 
-      - P100_BOARD_ID
-      - P0_CLIENT_ID
-      - P0_PROJECT_ID
-      - P0_BOARD_ID
-      suppress-change-event: true
-
-    execution: 
-      sequence: 10
-      event: CHANGED_BOARD # 23518831139581619
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-- # ====== Dynamic Action: STICKY_HEADERS ======================
-  id: 25478332234860912
-  identification: 
-    name: STICKY_HEADERS
-
-  execution: 
-    sequence: 30
-
-  when: 
-    event: EVENT.EVENT.BROWSER.READY
-
-  execution: 
-    event-scope: Static
-
-  actions: 
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 25478459793860913
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: |
-        //$('.STICKY').stickyWidget({ toggleWidth: true });
-        
-
-    execution: 
-      sequence: 10
-      event: STICKY_HEADERS # 25478332234860912
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -1991,7 +1711,7 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Tasks [CONTENT] # 74502154509114589
+      region: Cards [CONTENT] # 74502154509114589
 
     execution: 
       sequence: 10
@@ -2031,19 +1751,19 @@ dynamic-actions:
       fire-on-initialization: false
 
 processes: 
-- # ====== Process: SAVE_TASKS =================================
+- # ====== Process: SAVE_CARDS =================================
   id: 19902156987955369
   identification: 
-    name: SAVE_TASKS
+    name: SAVE_CARDS
     type: Invoke API
     execution-chain: None
-    editable-region: Tasks [GRID] # 83848777350252285
+    editable-region: Cards [GRID] # 83848777350252285
 
   settings: 
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_P105
-    procedure-or-function: SAVE_TASK
+    procedure-or-function: SAVE_CARD
 
   execution: 
     sequence: 10
@@ -2056,17 +1776,17 @@ processes:
   server-side-condition: 
     execution-scope: For Created and Modified Rows
 
-- # ====== Process: UPDATE_TASK ================================
+- # ====== Process: UPDATE_CARD ================================
   id: 19902606994955374
   identification: 
-    name: UPDATE_TASK
+    name: UPDATE_CARD
     type: Execute Code
     execution-chain: None
 
   source: 
     location: Local Database
     language: PL/SQL
-    pl/sql-code: tsk_p100.ajax_update_task_on_drag();
+    pl/sql-code: tsk_p100.ajax_update_card_on_drag();
 
   execution: 
     sequence: 10

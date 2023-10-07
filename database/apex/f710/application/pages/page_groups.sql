@@ -12,8 +12,8 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(23490192563159466)  --    MAIN - TASKS
-,p_group_name=>'   MAIN - TASKS'
+ p_id=>wwv_flow_imp.id(23490192563159466)  --    MAIN - CARDS
+,p_group_name=>'   MAIN - CARDS'
 );
 wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(23490292620162217)  --   MAIN - BOARDS

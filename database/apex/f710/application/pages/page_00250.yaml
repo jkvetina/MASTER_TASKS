@@ -553,14 +553,14 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: COUNT_TASKS =================================
+  - # ====== Column: COUNT_CARDS =================================
     id: 22781340163601043
     identification: 
-      column-name: COUNT_TASKS
+      column-name: COUNT_CARDS
       type: Display Only
 
     heading: 
-      heading: Tasks
+      heading: Cards
       alignment: end
 
     settings: 
@@ -579,7 +579,7 @@ regions:
 
     source: 
       type: Database Column
-      database-column: COUNT_TASKS
+      database-column: COUNT_CARDS
       data-type: NUMBER
       query-only: true
       primary-key: false

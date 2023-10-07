@@ -5,7 +5,7 @@ identification:
   name: Card Detail
   alias: CARD
   title: Card Detail
-  page-group: '   MAIN - TASKS' # 23490192563159466
+  page-group: '   MAIN - CARDS' # 23490192563159466
 
 appearance: 
   page-mode: Modal Dialog
@@ -26,10 +26,10 @@ navigation:
 
 javascript: 
   function-and-global-variable-declaration: |
-    var delete_comment = function (task_id, comment_id) {
+    var delete_comment = function (card_id, comment_id) {
         apex.server.process('AJAX_DELETE_COMMENT',
             {
-                x01: task_id,
+                x01: card_id,
                 x02: comment_id
             },
             {
@@ -83,10 +83,10 @@ javascript:
 css: 
   inline: |
     /* HIDE DESC LABEL */
-    #P105_TASK_DESC_CONTAINER .t-Form-labelContainer {
+    #P105_CARD_DESC_CONTAINER .t-Form-labelContainer {
       display: none;
     }
-    #P105_TASK_DESC_CONTAINER .t-Form-itemWrapper {
+    #P105_CARD_DESC_CONTAINER .t-Form-itemWrapper {
       margin: 0 !important;
     }
     
@@ -502,9 +502,7 @@ regions:
     table-owner: Parsing Schema
     table-name: TSK_P105_COMMENTS_V
     include-rowid-column: false
-    where-clause: 'task_id = :P105_TASK_ID'
-    page-items-to-submit: 
-    - P105_TASK_ID
+    where-clause: 'card_id = :P105_CARD_ID'
 
   order-by: 
     type: Static Value
@@ -579,38 +577,6 @@ regions:
       enabled: false
 
   columns: 
-  - # ====== Column: TASK_ID =====================================
-    id: 25231028300844524
-    identification: 
-      column-name: TASK_ID
-      type: Plain Text
-
-    heading: 
-      heading: Task Id
-      alignment: center
-
-    layout: 
-      sequence: 10
-      column-alignment: start
-
-    accessibility: 
-      value-identifies-row: false
-
-    sorting: 
-      sortable: false
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    advanced: 
-      compute-sum: false
-
-    ui-defaults-reference: 
-      table-owner: Parsing Schema
-
-    security: 
-      escape-special-characters: true
-
   - # ====== Column: COMMENT_ID ==================================
     id: 25231474251844525
     identification: 
@@ -661,7 +627,7 @@ regions:
       value-identifies-row: false
 
     link: 
-      target: "javascript: { delete_comment('#TASK_ID#', '#COMMENT_ID#'); $('#UPDATE_ONLY').click(); }"
+      target: "javascript: { delete_comment('#CARD_ID#', '#COMMENT_ID#'); $('#UPDATE_ONLY').click(); }"
       link-text: '#ACTIONS#'
 
     sorting: 
@@ -999,6 +965,38 @@ regions:
     security: 
       escape-special-characters: true
 
+  - # ====== Column: CARD_ID =====================================
+    id: 25481314572860942
+    identification: 
+      column-name: CARD_ID
+      type: Plain Text
+
+    heading: 
+      heading: Card Id
+      alignment: end
+
+    layout: 
+      sequence: 10
+      column-alignment: end
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
 - # ====== Region: Files [LIST] ================================
   id: 90385894728021382
   identification: 
@@ -1182,8 +1180,6 @@ regions:
     table-owner: Parsing Schema
     table-name: TSK_P105_CHECKLIST_V
     include-rowid-column: false
-    page-items-to-submit: 
-    - P105_TASK_ID
 
   layout: 
     sequence: 10
@@ -1417,10 +1413,10 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: TASK_ID =====================================
+  - # ====== Column: CARD_ID =====================================
     id: 91364077807871266
     identification: 
-      column-name: TASK_ID
+      column-name: CARD_ID
       type: Hidden
 
     settings: 
@@ -1434,7 +1430,7 @@ regions:
 
     source: 
       type: Database Column
-      database-column: TASK_ID
+      database-column: CARD_ID
       data-type: VARCHAR2
       query-only: false
       primary-key: false
@@ -1544,7 +1540,7 @@ regions:
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: TSK_TASKS
+    table-name: TSK_CARDS
     include-rowid-column: false
 
   layout: 
@@ -1587,14 +1583,14 @@ regions:
       lost-update-type: Row Values
 
 page-items: 
-- # ====== Page Item: P105_TASK_NUMBER =========================
+- # ====== Page Item: P105_CARD_NUMBER =========================
   id: 25478579834860914
   identification: 
-    name: P105_TASK_NUMBER
+    name: P105_CARD_NUMBER
     type: Text Field
 
   label: 
-    label: Task Number
+    label: Card Number
     alignment: Left
 
   settings: 
@@ -1605,7 +1601,7 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 130
+    sequence: 120
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1624,17 +1620,20 @@ page-items:
 
   validation: 
     value-required: false
-    maximum-length: 128
+    maximum-length: 16
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Null
-    used: Only when current value in session state is null
+    form-region: '[FORM]' # 108316672484408031
+    column: CARD_NUMBER
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
 
   session-state: 
-    storage: Per Session (Persistent)
+    storage: Per Request (Memory Only)
 
   quick-picks: 
     show-quick-picks: false
@@ -1662,7 +1661,7 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 20
+    sequence: 30
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1701,20 +1700,20 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_TASK_ID =============================
-  id: 79916401806307143
+- # ====== Page Item: P105_CARD_ID =============================
+  id: 25481403010860943
   identification: 
-    name: P105_TASK_ID
+    name: P105_CARD_ID
     type: Hidden
 
   settings: 
     value-protected: true
 
   layout: 
-    sequence: 60
+    sequence: 10
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1723,14 +1722,10 @@ page-items:
 
   source: 
     form-region: '[FORM]' # 108316672484408031
-    column: TASK_ID
-    data-type: VARCHAR2
+    column: CARD_ID
+    data-type: NUMBER
     query-only: false
     primary-key: true
-
-  default: 
-    type: Sequence
-    sequence: TSK_TASK_ID
 
   session-state: 
     data-type: VARCHAR2
@@ -1741,14 +1736,134 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_TASK_NAME ===========================
+- # ====== Page Item: P105_CARD_DESC ===========================
+  id: 25481752154860946
+  identification: 
+    name: P105_CARD_DESC
+    type: Rich Text Editor
+
+  label: 
+    label: Card Desc
+    alignment: Left
+
+  settings: 
+    library: TinyMCE
+    format: Markdown
+    minimum-height: 400
+
+  layout: 
+    sequence: 10
+    region: DETAILS # 25479533757860924
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: '[FORM]' # 108316672484408031
+    column: CARD_DESC
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_CREATED_BY ==========================
+  id: 25481821114860947
+  identification: 
+    name: P105_CREATED_BY
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 150
+    region: '[FORM]' # 108316672484408031
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: '[FORM]' # 108316672484408031
+    column: CREATED_BY
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_CREATED_AT ==========================
+  id: 25481975929860948
+  identification: 
+    name: P105_CREATED_AT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 160
+    region: '[FORM]' # 108316672484408031
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: '[FORM]' # 108316672484408031
+    column: CREATED_AT
+    data-type: DATE
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_CARD_NAME ===========================
   id: 79916493298307144
   identification: 
-    name: P105_TASK_NAME
+    name: P105_CARD_NAME
     type: Text Field
 
   label: 
-    label: Task Name
+    label: Card Name
     alignment: Left
 
   settings: 
@@ -1759,7 +1874,7 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 10
+    sequence: 20
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1785,7 +1900,7 @@ page-items:
 
   source: 
     form-region: '[FORM]' # 108316672484408031
-    column: TASK_NAME
+    column: CARD_NAME
     data-type: VARCHAR2
     query-only: false
     primary-key: false
@@ -1816,7 +1931,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 70
+    sequence: 60
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1952,7 +2067,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 80
+    sequence: 70
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2023,7 +2138,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 90
+    sequence: 80
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2089,7 +2204,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 160
+    sequence: 170
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2129,7 +2244,7 @@ page-items:
     send-on-page-submit: true
 
   layout: 
-    sequence: 140
+    sequence: 130
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2171,7 +2286,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 150
+    sequence: 140
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2182,60 +2297,6 @@ page-items:
     form-region: '[FORM]' # 108316672484408031
     column: ORDER#
     data-type: NUMBER
-    query-only: false
-    primary-key: false
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Request (Memory Only)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P105_TASK_DESC ===========================
-  id: 79926546911307155
-  identification: 
-    name: P105_TASK_DESC
-    type: Rich Text Editor
-
-  label: 
-    label: Description
-    alignment: Left
-
-  settings: 
-    library: TinyMCE
-    format: Markdown
-    minimum-height: 400
-
-  layout: 
-    sequence: 10
-    region: DETAILS # 25479533757860924
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-
-  validation: 
-    value-required: false
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    form-region: '[FORM]' # 108316672484408031
-    column: TASK_DESC
-    data-type: VARCHAR2
     query-only: false
     primary-key: false
 
@@ -2428,10 +2489,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_PREV_TASK_ID ========================
+- # ====== Page Item: P105_PREV_CARD_ID ========================
   id: 89307285138478252
   identification: 
-    name: P105_PREV_TASK_ID
+    name: P105_PREV_CARD_ID
     type: Hidden
 
   settings: 
@@ -2458,10 +2519,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_NEXT_TASK_ID ========================
+- # ====== Page Item: P105_NEXT_CARD_ID ========================
   id: 89307452409478253
   identification: 
-    name: P105_NEXT_TASK_ID
+    name: P105_NEXT_CARD_ID
     type: Hidden
 
   settings: 
@@ -2488,10 +2549,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_TASK_LINK ===========================
+- # ====== Page Item: P105_CARD_LINK ===========================
   id: 89307848415478257
   identification: 
-    name: P105_TASK_LINK
+    name: P105_CARD_LINK
     type: Hidden
 
   settings: 
@@ -2610,7 +2671,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 170
+    sequence: 180
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2648,7 +2709,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 100
+    sequence: 90
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2717,7 +2778,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 110
+    sequence: 100
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2793,7 +2854,7 @@ page-items:
     maximum-date: None
 
   layout: 
-    sequence: 120
+    sequence: 110
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2955,7 +3016,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NULL
-    item: P105_TASK_ID
+    item: P105_CARD_ID
 
 - # ====== Button: CREATE_CARD =================================
   id: 25256418258844563
@@ -2987,7 +3048,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NULL
-    item: P105_TASK_ID
+    item: P105_CARD_ID
 
 - # ====== Button: UPDATE_CARD =================================
   id: 25256870991844563
@@ -3022,7 +3083,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_TASK_ID
+    item: P105_CARD_ID
 
 - # ====== Button: MOVE_TO_TOP =================================
   id: 25257614657844564
@@ -3057,13 +3118,13 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_TASK_ID
+    item: P105_CARD_ID
 
-- # ====== Button: SPLIT_TASK ==================================
+- # ====== Button: SPLIT_CARD ==================================
   id: 25258087987844564
   identification: 
-    button-name: SPLIT_TASK
-    label: Split Task
+    button-name: SPLIT_CARD
+    label: Split Card
 
   layout: 
     sequence: 20
@@ -3090,7 +3151,7 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
   confirmation: 
-    message: Do you want to move unchecked items to the new task?
+    message: Do you want to move unchecked items to the new card?
     style: Default
 
   advanced: 
@@ -3103,11 +3164,11 @@ buttons:
     type: Item is NOT NULL
     item: P105_SHOW_SPLIT
 
-- # ====== Button: JOIN_TASK ===================================
+- # ====== Button: JOIN_CARD ===================================
   id: 25258454823844564
   identification: 
-    button-name: JOIN_TASK
-    label: Join Task
+    button-name: JOIN_CARD
+    label: Join Card
 
   layout: 
     sequence: 10
@@ -3131,11 +3192,11 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:108:&SESSION.::&DEBUG.:108:P108_TASK_ID:&P105_TASK_ID.'
+      url: 'f?p=&APP_ID.:108:&SESSION.::&DEBUG.:108:P108_CARD_ID:&P105_CARD_ID.'
       page: 108
       clear-cache: 108
       values: 
-        p108_task_id: '&P105_TASK_ID.'
+        p108_card_id: '&P105_CARD_ID.'
 
     warn-on-unsaved-changes: Do Not Check
 
@@ -3189,7 +3250,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_TASK_ID
+    item: P105_CARD_ID
 
 - # ====== Button: COPY_LINK ===================================
   id: 25259296786844565
@@ -3222,7 +3283,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_TASK_ID
+    item: P105_CARD_ID
 
 - # ====== Button: CLOSE_DIALOG ================================
   id: 25259633374844566
@@ -3251,11 +3312,11 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
-- # ====== Button: GOTO_NEXT_TASK ==============================
+- # ====== Button: GOTO_NEXT_CARD ==============================
   id: 25260022178844566
   identification: 
-    button-name: GOTO_NEXT_TASK
-    label: Save changes and go to next task
+    button-name: GOTO_NEXT_CARD
+    label: Save changes and go to next card
 
   layout: 
     sequence: 50
@@ -3284,13 +3345,13 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_NEXT_TASK_ID
+    item: P105_NEXT_CARD_ID
 
-- # ====== Button: GOTO_PREV_TASK ==============================
+- # ====== Button: GOTO_PREV_CARD ==============================
   id: 25260460384844566
   identification: 
-    button-name: GOTO_PREV_TASK
-    label: Save changes and go to previous task
+    button-name: GOTO_PREV_CARD
+    label: Save changes and go to previous card
 
   layout: 
     sequence: 40
@@ -3319,7 +3380,7 @@ buttons:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_PREV_TASK_ID
+    item: P105_PREV_CARD_ID
 
 dynamic-actions: 
 - # ====== Dynamic Action: CLOSE_DIALOG ========================
@@ -3376,7 +3437,7 @@ dynamic-actions:
 
     settings: 
       code: |
-        copy_to_clipboard(apex.item('P105_TASK_LINK').getValue());
+        copy_to_clipboard(apex.item('P105_CARD_LINK').getValue());
         apex.message.showPageSuccess('Link copied to clipboard');
         
 
@@ -3397,7 +3458,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Button
-    button: JOIN_TASK # 25258454823844564
+    button: JOIN_CARD # 25258454823844564
 
   execution: 
     event-scope: Static
@@ -3456,21 +3517,20 @@ processes:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_TASK_ID
+    item: P105_CARD_ID
 
 - # ====== Process: SAVE_FORM ==================================
   id: 25252582106844557
   identification: 
     name: SAVE_FORM
-    type: Form - Automatic Row Processing (DML)
+    type: Invoke API
     execution-chain: None
-    form-region: '[FORM]' # 108316672484408031
 
   settings: 
-    target-type: PL/SQL Code
-    pl/sql-code-to-insert/update/delete: tsk_p105.save_task();
-    prevent-lost-updates: true
-    lock-row: No
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_P105
+    procedure-or-function: SAVE_CARD
 
   execution: 
     sequence: 10
@@ -3595,7 +3655,7 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SPLIT_TASK # 25258087987844564
+    when-button-pressed: SPLIT_CARD # 25258087987844564
 
 - # ====== Process: SAVE_ATTACHEMENTS ==========================
   id: 25267470295844588
@@ -3633,7 +3693,7 @@ processes:
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_P105
-    procedure-or-function: MOVE_TASK_TO_TOP
+    procedure-or-function: MOVE_CARD_TO_TOP
 
   execution: 
     sequence: 60
@@ -3684,10 +3744,10 @@ branches:
   server-side-condition: 
     when-button-pressed: CREATE_ANOTHER # 25256044784844563
 
-- # ====== Branch: GOTO_PREV_TASK ==============================
+- # ====== Branch: GOTO_PREV_CARD ==============================
   id: 25271848504844595
   identification: 
-    name: GOTO_PREV_TASK
+    name: GOTO_PREV_CARD
 
   execution: 
     sequence: 10
@@ -3696,19 +3756,19 @@ branches:
   behavior: 
     type: Page or URL (Redirect)
     target: 
-      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P105_PREV_TASK_ID.&success_msg=#SUCCESS_MSG#'
+      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_CARD_ID:&P105_PREV_CARD_ID.&success_msg=#SUCCESS_MSG#'
       page: 105 # Card Detail
       clear-cache: 105
       values: 
-        p105_task_id: '&P105_PREV_TASK_ID.'
+        p105_card_id: '&P105_PREV_CARD_ID.'
 
   server-side-condition: 
-    when-button-pressed: GOTO_PREV_TASK # 25260460384844566
+    when-button-pressed: GOTO_PREV_CARD # 25260460384844566
 
-- # ====== Branch: GOTO_NEXT_TASK ==============================
+- # ====== Branch: GOTO_NEXT_CARD ==============================
   id: 25272243040844596
   identification: 
-    name: GOTO_NEXT_TASK
+    name: GOTO_NEXT_CARD
 
   execution: 
     sequence: 20
@@ -3717,19 +3777,19 @@ branches:
   behavior: 
     type: Page or URL (Redirect)
     target: 
-      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P105_NEXT_TASK_ID.&success_msg=#SUCCESS_MSG#'
+      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_CARD_ID:&P105_NEXT_CARD_ID.&success_msg=#SUCCESS_MSG#'
       page: 105 # Card Detail
       clear-cache: 105
       values: 
-        p105_task_id: '&P105_NEXT_TASK_ID.'
+        p105_card_id: '&P105_NEXT_CARD_ID.'
 
   server-side-condition: 
-    when-button-pressed: GOTO_NEXT_TASK # 25260022178844566
+    when-button-pressed: GOTO_NEXT_CARD # 25260022178844566
 
-- # ====== Branch: GOTO_SPLIT_TASK =============================
+- # ====== Branch: GOTO_SPLIT_CARD =============================
   id: 25272614518844596
   identification: 
-    name: GOTO_SPLIT_TASK
+    name: GOTO_SPLIT_CARD
 
   execution: 
     sequence: 40
@@ -3738,12 +3798,12 @@ branches:
   behavior: 
     type: Page or URL (Redirect)
     target: 
-      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P105_TASK_ID.&success_msg=#SUCCESS_MSG#'
+      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_CARD_ID:&P105_CARD_ID.&success_msg=#SUCCESS_MSG#'
       page: 105 # Card Detail
       clear-cache: 105
       values: 
-        p105_task_id: '&P105_TASK_ID.'
+        p105_card_id: '&P105_CARD_ID.'
 
   server-side-condition: 
-    when-button-pressed: SPLIT_TASK # 25258087987844564
+    when-button-pressed: SPLIT_CARD # 25258087987844564
 

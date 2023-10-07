@@ -27,6 +27,7 @@ p AS (
 SELECT
     t.card_id,
     t.card_name,
+    t.card_number,
     --
     APEX_PAGE.GET_URL (
         p_page          => 105,
