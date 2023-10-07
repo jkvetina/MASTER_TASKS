@@ -1,10 +1,10 @@
 ---
-# ====== Page: Categories ====================================
+# ====== Page: Statuses ======================================
 id: 320
 identification: 
-  name: Categories
-  alias: CATEGORIES
-  title: Categories
+  name: Statuses
+  alias: STATUSES
+  title: Statuses
   page-group: '  MAIN - BOARDS' # 23490292620162217
 
 appearance: 
@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Categories for &P0_PROJECT_NAME. ============
-  id: 206633426891101885
+- # ====== Region: Statuses for &P0_PROJECT_NAME. ==============
+  id: 185644520286242871
   identification: 
-    title: Categories for &P0_PROJECT_NAME.
+    title: Statuses for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
@@ -80,17 +80,17 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Categories [GRID] ===========================
-  id: 241424806970090701
+- # ====== Region: Statuses [GRID] =============================
+  id: 220435900365231687
   identification: 
-    title: Categories [GRID]
+    title: Statuses [GRID]
     type: Interactive Grid
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: TSK_CATEGORIES_V
+    table-name: TSK_STATUSES_V
     include-rowid-column: false
 
   layout: 
@@ -124,7 +124,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 241425129022090704
+    id: 220436222417231690
     edit: 
       enabled: true
       allowed-operations: 
@@ -183,30 +183,25 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 241447622031263685
+      id: 220458715426404671
       identification: 
         name: Primary Report
         alias: 347675
 
   column-groups: 
-  - # ====== Column Group: Colors ================================
-    id: 90464804940052230
-    heading: 
-      heading: Colors
-
   - # ====== Column Group: Flags =================================
-    id: 136552499790965184
+    id: 115563593186106170
     heading: 
       heading: Flags
 
   - # ====== Column Group: Counts ================================
-    id: 136552527078965185
+    id: 115563620474106171
     heading: 
       heading: Counts
 
   columns: 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 23264910101120029
+    id: 49700225597315137
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -215,7 +210,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 23265007950120030
+    id: 49700350704315138
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -228,133 +223,24 @@ regions:
     layout: 
       sequence: 10
 
-  - # ====== Column: CATEGORY_ID =================================
-    id: 90464399057052226
+  - # ====== Column: IS_BADGE ====================================
+    id: 51914870703056032
     identification: 
-      column-name: CATEGORY_ID
-      type: Text Field
+      column-name: IS_BADGE
+      type: Checkbox
 
     heading: 
-      heading: Category Id
-      alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
-
-    layout: 
-      sequence: 80
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-      maximum-length: 32
-
-    source: 
-      type: Database Column
-      database-column: CATEGORY_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: CATEGORY_NAME ===============================
-    id: 90464470722052227
-    identification: 
-      column-name: CATEGORY_NAME
-      type: Text Field
-
-    heading: 
-      heading: Category Name
-      alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
-
-    layout: 
-      sequence: 90
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-      maximum-length: 64
-
-    source: 
-      type: Database Column
-      database-column: CATEGORY_NAME
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COLOR_BG ====================================
-    id: 90464519562052228
-    identification: 
-      column-name: COLOR_BG
-      type: Color Picker
-
-    heading: 
-      heading: Background
+      heading: Badge
       alignment: center
 
     settings: 
-      use-defaults: true
+      use-defaults: false
+      checked-value: Y
 
     layout: 
-      sequence: 100
+      sequence: 140
       column-alignment: center
-      group: Colors # 90464804940052230
+      group: Flags # 115563593186106170
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -363,11 +249,10 @@ regions:
 
     validation: 
       value-required: false
-      maximum-length: 8
 
     source: 
       type: Database Column
-      database-column: COLOR_BG
+      database-column: IS_BADGE
       data-type: VARCHAR2
       query-only: false
       primary-key: false
@@ -394,53 +279,43 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: COLOR_FG ====================================
-    id: 90464621394052229
+  - # ====== Column: COUNT_CLIENT ================================
+    id: 115147205844950768
     identification: 
-      column-name: COLOR_FG
-      type: Color Picker
+      column-name: COUNT_CLIENT
+      type: Display Only
 
     heading: 
-      heading: Text
-      alignment: center
+      heading: Clients
+      alignment: end
 
     settings: 
-      use-defaults: true
+      format: Plain Text
+      based-on: Item Value
 
     layout: 
-      sequence: 110
-      column-alignment: center
-      group: Colors # 90464804940052230
+      sequence: 170
+      column-alignment: end
+      group: Counts # 115563620474106171
       use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
 
-    validation: 
-      value-required: false
-      maximum-length: 8
-
     source: 
       type: Database Column
-      database-column: COLOR_FG
-      data-type: VARCHAR2
-      query-only: false
+      database-column: COUNT_CLIENT
+      data-type: NUMBER
+      query-only: true
       primary-key: false
 
-    default: 
-      duplicate-copies-existing-value: true
+    session-state: 
+      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
+      lov-type: None
 
     export-/-printing: 
       include-in-export-/-print: true
@@ -450,110 +325,100 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 92204983336453349
+  - # ====== Column: COUNT_PROJECT ===============================
+    id: 115147277690950769
     identification: 
-      column-name: OLD_CLIENT_ID
-      type: Hidden
+      column-name: COUNT_PROJECT
+      type: Display Only
+
+    heading: 
+      heading: Projects
+      alignment: end
 
     settings: 
-      value-protected: true
+      format: Plain Text
+      based-on: Item Value
 
     layout: 
-      sequence: 30
+      sequence: 160
+      column-alignment: end
+      group: Counts # 115563620474106171
+      use-group-for: Both
+      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
 
     source: 
       type: Database Column
-      database-column: OLD_CLIENT_ID
-      data-type: VARCHAR2
-      query-only: false
+      database-column: COUNT_PROJECT
+      data-type: NUMBER
+      query-only: true
       primary-key: false
 
-    default: 
-      duplicate-copies-existing-value: true
-
     session-state: 
       data-type: VARCHAR2
 
+    column-filter: 
+      enabled: true
+      lov-type: None
+
     export-/-printing: 
-      include-in-export-/-print: false
+      include-in-export-/-print: true
 
     enable-users-to: 
-      sort: false
+      sort: true
+      control-break/aggregate: true
+      hide: true
 
-  - # ====== Column: OLD_PROJECT_ID ==============================
-    id: 92205079305453350
+  - # ====== Column: COUNT_BOARD =================================
+    id: 115147343133950770
     identification: 
-      column-name: OLD_PROJECT_ID
-      type: Hidden
+      column-name: COUNT_BOARD
+      type: Display Only
+
+    heading: 
+      heading: Boards
+      alignment: end
 
     settings: 
-      value-protected: true
+      format: Plain Text
+      based-on: Item Value
 
     layout: 
-      sequence: 40
+      sequence: 150
+      column-alignment: end
+      group: Counts # 115563620474106171
+      use-group-for: Both
+      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
 
     source: 
       type: Database Column
-      database-column: OLD_PROJECT_ID
-      data-type: VARCHAR2
-      query-only: false
+      database-column: COUNT_BOARD
+      data-type: NUMBER
+      query-only: true
       primary-key: false
 
-    default: 
-      duplicate-copies-existing-value: true
-
     session-state: 
       data-type: VARCHAR2
 
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: OLD_CATEGORY_ID =============================
-    id: 92205191183453351
-    identification: 
-      column-name: OLD_CATEGORY_ID
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 50
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: OLD_CATEGORY_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: true
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    session-state: 
-      data-type: VARCHAR2
+    column-filter: 
+      enabled: true
+      lov-type: None
 
     export-/-printing: 
-      include-in-export-/-print: false
+      include-in-export-/-print: true
 
     enable-users-to: 
-      sort: false
+      sort: true
+      control-break/aggregate: true
+      hide: true
 
   - # ====== Column: IS_DEFAULT ==================================
-    id: 136551757785965177
+    id: 115562851181106163
     identification: 
       column-name: IS_DEFAULT
       type: Checkbox
@@ -567,9 +432,9 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 130
+      sequence: 120
       column-alignment: center
-      group: Flags # 136552499790965184
+      group: Flags # 115563593186106170
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -608,8 +473,166 @@ regions:
       control-break/aggregate: true
       hide: true
 
+  - # ====== Column: IS_COLORED ==================================
+    id: 117372295934741689
+    identification: 
+      column-name: IS_COLORED
+      type: Checkbox
+
+    heading: 
+      heading: Colored
+      alignment: center
+
+    settings: 
+      use-defaults: false
+      checked-value: Y
+
+    layout: 
+      sequence: 130
+      column-alignment: center
+      group: Flags # 115563593186106170
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: IS_COLORED
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: OLD_CLIENT_ID ===============================
+    id: 118587937032466787
+    identification: 
+      column-name: OLD_CLIENT_ID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 30
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: OLD_CLIENT_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: OLD_PROJECT_ID ==============================
+    id: 118588069301466788
+    identification: 
+      column-name: OLD_PROJECT_ID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 40
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: OLD_PROJECT_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: OLD_STATUS_ID ===============================
+    id: 118588122659466789
+    identification: 
+      column-name: OLD_STATUS_ID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 50
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: OLD_STATUS_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: true
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
   - # ====== Column: CLIENT_ID ===================================
-    id: 241425412384090707
+    id: 220436505779231693
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -668,7 +691,7 @@ regions:
       hide: true
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 241425507928090708
+    id: 220436601323231694
     identification: 
       column-name: PROJECT_ID
       type: Select List
@@ -727,7 +750,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 241425574209090709
+    id: 220436667604231695
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -741,9 +764,9 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 120
+      sequence: 110
       column-alignment: center
-      group: Flags # 136552499790965184
+      group: Flags # 115563593186106170
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -784,8 +807,118 @@ regions:
       control-break/aggregate: true
       hide: true
 
+  - # ====== Column: STATUS_ID ===================================
+    id: 220436995468231698
+    identification: 
+      column-name: STATUS_ID
+      type: Text Field
+
+    heading: 
+      heading: Status Id
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 32
+
+    source: 
+      type: Database Column
+      database-column: STATUS_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: STATUS_NAME =================================
+    id: 220437070098231699
+    identification: 
+      column-name: STATUS_NAME
+      type: Text Field
+
+    heading: 
+      heading: Status Name
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 64
+
+    source: 
+      type: Database Column
+      database-column: STATUS_NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
   - # ====== Column: ORDER# ======================================
-    id: 241478431132394015
+    id: 220489524527535001
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -799,7 +932,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 140
+      sequence: 100
       column-alignment: end
       stretch: Use Report Setting
 
@@ -847,7 +980,7 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
-      page-header-text: Categories [GRID]
+      page-header-text: Statuses [GRID]
 
     column-headings: 
       font: Helvetica
@@ -871,15 +1004,15 @@ regions:
       alignment: center
 
 buttons: 
-- # ====== Button: REORDER_CATEGORIES ==========================
-  id: 23372393282382352
+- # ====== Button: REORDER_STATUSES ============================
+  id: 26436128392195113
   identification: 
-    button-name: REORDER_CATEGORIES
-    label: Reorder Categories
+    button-name: REORDER_STATUSES
+    label: Reorder Statuses
 
   layout: 
     sequence: 10
-    region: Categories for &P0_PROJECT_NAME. # 206633426891101885
+    region: Statuses for &P0_PROJECT_NAME. # 185644520286242871
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -899,20 +1032,58 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
-processes: 
-- # ====== Process: SAVE_CATEGORIES ============================
-  id: 23265171032120031
+- # ====== Button: COPY_STATUSES ===============================
+  id: 26436576838195113
   identification: 
-    name: SAVE_CATEGORIES
+    button-name: COPY_STATUSES
+    label: Copy Statuses
+
+  layout: 
+    sequence: 20
+    region: Statuses for &P0_PROJECT_NAME. # 185644520286242871
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-wizard
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:235:&SESSION.::&DEBUG.:235::'
+      page: 235
+      clear-cache: 235
+
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Never
+
+  security: 
+    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+
+processes: 
+- # ====== Process: SAVE_STATUSES ==============================
+  id: 26446143688195122
+  identification: 
+    name: SAVE_STATUSES
     type: Invoke API
     execution-chain: None
-    editable-region: Categories [GRID] # 241424806970090701
+    editable-region: Statuses [GRID] # 220435900365231687
 
   settings: 
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_HANDLERS
-    procedure-or-function: SAVE_CATEGORIES
+    procedure-or-function: SAVE_STATUSES
 
   execution: 
     sequence: 10
@@ -928,10 +1099,10 @@ processes:
   security: 
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
 
-- # ====== Process: REORDER_CATEGORIES =========================
-  id: 23380850640382361
+- # ====== Process: REORDER_STATUSES ===========================
+  id: 26446697326195123
   identification: 
-    name: REORDER_CATEGORIES
+    name: REORDER_STATUSES
     type: Invoke API
     execution-chain: None
 
@@ -939,7 +1110,7 @@ processes:
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_HANDLERS
-    procedure-or-function: REORDER_CATEGORIES
+    procedure-or-function: REORDER_STATUSES
 
   execution: 
     sequence: 20
@@ -950,5 +1121,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_CATEGORIES # 23372393282382352
+    when-button-pressed: REORDER_STATUSES # 26436128392195113
 

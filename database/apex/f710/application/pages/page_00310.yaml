@@ -1,10 +1,10 @@
 ---
-# ====== Page: Statuses ======================================
-id: 330
+# ====== Page: Swimlanes =====================================
+id: 310
 identification: 
-  name: Statuses
-  alias: STATUSES
-  title: Statuses
+  name: Swimlanes
+  alias: SWIMLANES
+  title: Swimlanes
   page-group: '  MAIN - BOARDS' # 23490292620162217
 
 appearance: 
@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Statuses for &P0_PROJECT_NAME. ==============
-  id: 159208933043047760
+- # ====== Region: Swimlanes for &P0_PROJECT_NAME. =============
+  id: 209055488592754200
   identification: 
-    title: Statuses for &P0_PROJECT_NAME.
+    title: Swimlanes for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
@@ -80,17 +80,17 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Statuses [GRID] =============================
-  id: 194000313122036576
+- # ====== Region: Swimlanes [GRID] ============================
+  id: 243852029908743762
   identification: 
-    title: Statuses [GRID]
+    title: Swimlanes [GRID]
     type: Interactive Grid
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: TSK_STATUSES_V
+    table-name: TSK_SWIMLANES_V
     include-rowid-column: false
 
   layout: 
@@ -124,7 +124,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 194000635174036579
+    id: 243853176501743773
     edit: 
       enabled: true
       allowed-operations: 
@@ -183,30 +183,20 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 194023128183209560
+      id: 243875319769916745
       identification: 
         name: Primary Report
-        alias: 347675
+        alias: 347682
 
   column-groups: 
-  - # ====== Column Group: Flags =================================
-    id: 89128005942911059
-    heading: 
-      heading: Flags
-
   - # ====== Column Group: Counts ================================
-    id: 89128033230911060
+    id: 51893395900045236
     heading: 
       heading: Counts
 
-  - # ====== Column Group: Show ==================================
-    id: 91700334509122977
-    heading: 
-      heading: Show
-
   columns: 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 23264638354120026
+    id: 49676546834304319
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -215,7 +205,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 23264763461120027
+    id: 49676712665304320
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -228,156 +218,8 @@ regions:
     layout: 
       sequence: 10
 
-  - # ====== Column: IS_BADGE ====================================
-    id: 25479283459860921
-    identification: 
-      column-name: IS_BADGE
-      type: Checkbox
-
-    heading: 
-      heading: Badge
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 140
-      column-alignment: center
-      group: Flags # 89128005942911059
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_BADGE
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COUNT_CLIENT ================================
-    id: 88711618601755657
-    identification: 
-      column-name: COUNT_CLIENT
-      type: Display Only
-
-    heading: 
-      heading: Clients
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 170
-      column-alignment: end
-      group: Counts # 89128033230911060
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_CLIENT
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COUNT_PROJECT ===============================
-    id: 88711690447755658
-    identification: 
-      column-name: COUNT_PROJECT
-      type: Display Only
-
-    heading: 
-      heading: Projects
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 160
-      column-alignment: end
-      group: Counts # 89128033230911060
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_PROJECT
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
   - # ====== Column: COUNT_BOARD =================================
-    id: 88711755890755659
+    id: 138539897671459474
     identification: 
       column-name: COUNT_BOARD
       type: Display Only
@@ -391,9 +233,9 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 150
+      sequence: 120
       column-alignment: end
-      group: Counts # 89128033230911060
+      group: Counts # 51893395900045236
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -422,53 +264,43 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: IS_DEFAULT ==================================
-    id: 89127263937911052
+  - # ====== Column: COUNT_PROJECT ===============================
+    id: 138539936365459475
     identification: 
-      column-name: IS_DEFAULT
-      type: Checkbox
+      column-name: COUNT_PROJECT
+      type: Display Only
 
     heading: 
-      heading: Default
-      alignment: center
+      heading: Projects
+      alignment: end
 
     settings: 
-      use-defaults: false
-      checked-value: Y
+      format: Plain Text
+      based-on: Item Value
 
     layout: 
-      sequence: 120
-      column-alignment: center
-      group: Flags # 89128005942911059
+      sequence: 130
+      column-alignment: end
+      group: Counts # 51893395900045236
       use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
 
-    validation: 
-      value-required: false
-
     source: 
       type: Database Column
-      database-column: IS_DEFAULT
-      data-type: VARCHAR2
-      query-only: false
+      database-column: COUNT_PROJECT
+      data-type: NUMBER
+      query-only: true
       primary-key: false
 
-    default: 
-      duplicate-copies-existing-value: true
+    session-state: 
+      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
+      lov-type: None
 
     export-/-printing: 
       include-in-export-/-print: true
@@ -478,53 +310,43 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: IS_COLORED ==================================
-    id: 90936708691546578
+  - # ====== Column: COUNT_CLIENT ================================
+    id: 138540063894459476
     identification: 
-      column-name: IS_COLORED
-      type: Checkbox
+      column-name: COUNT_CLIENT
+      type: Display Only
 
     heading: 
-      heading: Colored
-      alignment: center
+      heading: Clients
+      alignment: end
 
     settings: 
-      use-defaults: false
-      checked-value: Y
+      format: Plain Text
+      based-on: Item Value
 
     layout: 
-      sequence: 130
-      column-alignment: center
-      group: Flags # 89128005942911059
+      sequence: 140
+      column-alignment: end
+      group: Counts # 51893395900045236
       use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
 
-    validation: 
-      value-required: false
-
     source: 
       type: Database Column
-      database-column: IS_COLORED
-      data-type: VARCHAR2
-      query-only: false
+      database-column: COUNT_CLIENT
+      data-type: NUMBER
+      query-only: true
       primary-key: false
 
-    default: 
-      duplicate-copies-existing-value: true
+    session-state: 
+      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
+      lov-type: None
 
     export-/-printing: 
       include-in-export-/-print: true
@@ -535,7 +357,7 @@ regions:
       hide: true
 
   - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 92152349789271676
+    id: 141980648946975493
     identification: 
       column-name: OLD_CLIENT_ID
       type: Hidden
@@ -569,7 +391,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_PROJECT_ID ==============================
-    id: 92152482058271677
+    id: 141980753977975494
     identification: 
       column-name: OLD_PROJECT_ID
       type: Hidden
@@ -602,10 +424,10 @@ regions:
     enable-users-to: 
       sort: false
 
-  - # ====== Column: OLD_STATUS_ID ===============================
-    id: 92152535416271678
+  - # ====== Column: OLD_SWIMLANE_ID =============================
+    id: 141980812316975495
     identification: 
-      column-name: OLD_STATUS_ID
+      column-name: OLD_SWIMLANE_ID
       type: Hidden
 
     settings: 
@@ -619,7 +441,7 @@ regions:
 
     source: 
       type: Database Column
-      database-column: OLD_STATUS_ID
+      database-column: OLD_SWIMLANE_ID
       data-type: VARCHAR2
       query-only: false
       primary-key: true
@@ -636,8 +458,118 @@ regions:
     enable-users-to: 
       sort: false
 
+  - # ====== Column: SWIMLANE_ID =================================
+    id: 243853232581743774
+    identification: 
+      column-name: SWIMLANE_ID
+      type: Text Field
+
+    heading: 
+      heading: Swimlane Id
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 32
+
+    source: 
+      type: Database Column
+      database-column: SWIMLANE_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: false
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: SWIMLANE_NAME ===============================
+    id: 243853390536743775
+    identification: 
+      column-name: SWIMLANE_NAME
+      type: Text Field
+
+    heading: 
+      heading: Swimlane Name
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 64
+
+    source: 
+      type: Database Column
+      database-column: SWIMLANE_NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
   - # ====== Column: CLIENT_ID ===================================
-    id: 194000918536036582
+    id: 243853473910743776
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -696,7 +628,7 @@ regions:
       hide: true
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 194001014080036583
+    id: 243853514190743777
     identification: 
       column-name: PROJECT_ID
       type: Select List
@@ -755,7 +687,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 194001080361036584
+    id: 243853657530743778
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -769,10 +701,8 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 110
+      sequence: 100
       column-alignment: center
-      group: Flags # 89128005942911059
-      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -812,118 +742,8 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: STATUS_ID ===================================
-    id: 194001408225036587
-    identification: 
-      column-name: STATUS_ID
-      type: Text Field
-
-    heading: 
-      heading: Status Id
-      alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
-
-    layout: 
-      sequence: 80
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-      maximum-length: 32
-
-    source: 
-      type: Database Column
-      database-column: STATUS_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: STATUS_NAME =================================
-    id: 194001482855036588
-    identification: 
-      column-name: STATUS_NAME
-      type: Text Field
-
-    heading: 
-      heading: Status Name
-      alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
-
-    layout: 
-      sequence: 90
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-      maximum-length: 64
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
   - # ====== Column: ORDER# ======================================
-    id: 194053937284339890
+    id: 243905580669047075
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -937,7 +757,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 100
+      sequence: 110
       column-alignment: end
       stretch: Use Report Setting
 
@@ -985,7 +805,7 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
-      page-header-text: Statuses [GRID]
+      page-header-text: Swimlanes [GRID]
 
     column-headings: 
       font: Helvetica
@@ -1009,15 +829,15 @@ regions:
       alignment: center
 
 buttons: 
-- # ====== Button: REORDER_STATUSES ============================
-  id: 23320904264200707
+- # ====== Button: REORDER_SWIMLANES ===========================
+  id: 26411984077184313
   identification: 
-    button-name: REORDER_STATUSES
-    label: Reorder Statuses
+    button-name: REORDER_SWIMLANES
+    label: Reorder Swimlanes
 
   layout: 
     sequence: 10
-    region: Statuses for &P0_PROJECT_NAME. # 159208933043047760
+    region: Swimlanes for &P0_PROJECT_NAME. # 209055488592754200
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1037,58 +857,20 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
-- # ====== Button: COPY_STATUSES ===============================
-  id: 23321364803200708
-  identification: 
-    button-name: COPY_STATUSES
-    label: Copy Statuses
-
-  layout: 
-    sequence: 20
-    region: Statuses for &P0_PROJECT_NAME. # 159208933043047760
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-wizard
-
-  behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:235:&SESSION.::&DEBUG.:235::'
-      page: 235
-      clear-cache: 235
-
-    warn-on-unsaved-changes: Do Not Check
-
-  server-side-condition: 
-    type: Never
-
-  security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
-
 processes: 
-- # ====== Process: SAVE_STATUSES ==============================
-  id: 23264810980120028
+- # ====== Process: SAVE_SWIMLANES =============================
+  id: 26419537861184339
   identification: 
-    name: SAVE_STATUSES
+    name: SAVE_SWIMLANES
     type: Invoke API
     execution-chain: None
-    editable-region: Statuses [GRID] # 194000313122036576
+    editable-region: Swimlanes [GRID] # 243852029908743762
 
   settings: 
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_HANDLERS
-    procedure-or-function: SAVE_STATUSES
+    procedure-or-function: SAVE_SWIMLANES
 
   execution: 
     sequence: 10
@@ -1104,10 +886,10 @@ processes:
   security: 
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
 
-- # ====== Process: REORDER_STATUSES ===========================
-  id: 23331472576200719
+- # ====== Process: REORDER_SWIMLANES ==========================
+  id: 26420001261184355
   identification: 
-    name: REORDER_STATUSES
+    name: REORDER_SWIMLANES
     type: Invoke API
     execution-chain: None
 
@@ -1115,7 +897,7 @@ processes:
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_HANDLERS
-    procedure-or-function: REORDER_STATUSES
+    procedure-or-function: REORDER_SWIMLANES
 
   execution: 
     sequence: 20
@@ -1126,5 +908,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_STATUSES # 23320904264200707
+    when-button-pressed: REORDER_SWIMLANES # 26411984077184313
 
