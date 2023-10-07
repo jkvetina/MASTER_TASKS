@@ -941,7 +941,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25478579834860914)
 ,p_name=>'P105_CARD_NUMBER'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>120
+,p_item_sequence=>130
 ,p_item_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_item_source_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_prompt=>'Card Number'
@@ -950,6 +950,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cSize=>30
 ,p_cMaxlength=>16
+,p_begin_on_new_line=>'N'
 ,p_grid_column=>4
 ,p_field_template=>wwv_flow_imp.id(34018942203153820)
 ,p_item_template_options=>'#DEFAULT#'
@@ -1034,7 +1035,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25481821114860947)
 ,p_name=>'P105_CREATED_BY'
 ,p_source_data_type=>'VARCHAR2'
-,p_item_sequence=>130
+,p_item_sequence=>140
 ,p_item_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_item_source_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_source=>'CREATED_BY'
@@ -1048,7 +1049,7 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25481975929860948)
 ,p_name=>'P105_CREATED_AT'
 ,p_source_data_type=>'DATE'
-,p_item_sequence=>140
+,p_item_sequence=>150
 ,p_item_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_item_source_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_prompt=>'Created by &P105_CREATED_BY.'
@@ -1066,6 +1067,23 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'VALUE'
 ,p_attribute_04=>'Y'
 ,p_attribute_05=>'PLAIN'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(26394353637631604)
+,p_name=>'P105_SEQUENCE'
+,p_item_sequence=>120
+,p_item_plug_id=>wwv_flow_imp.id(108316672484408031)
+,p_prompt=>'Sequence'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_named_lov=>'LOV_SEQUENCES'
+,p_lov_display_null=>'YES'
+,p_cHeight=>1
+,p_field_template=>wwv_flow_imp.id(34018942203153820)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'NONE'
+,p_attribute_02=>'N'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(79916493298307144)
@@ -1199,7 +1217,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P105_UPDATED_BY'
 ,p_source_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
-,p_item_sequence=>150
+,p_item_sequence=>160
 ,p_item_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_item_source_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_source=>'UPDATED_BY'
@@ -1334,7 +1352,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P105_UPDATED_AT'
 ,p_source_data_type=>'DATE'
 ,p_is_query_only=>true
-,p_item_sequence=>160
+,p_item_sequence=>170
 ,p_item_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_item_source_plug_id=>wwv_flow_imp.id(108316672484408031)
 ,p_prompt=>'Updated by &P105_UPDATED_BY.'

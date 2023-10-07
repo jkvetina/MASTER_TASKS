@@ -1608,12 +1608,12 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 120
+    sequence: 130
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: 4
     new-column: true
     column-span: Automatic
@@ -1810,7 +1810,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 130
+    sequence: 140
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1850,7 +1850,7 @@ page-items:
     send-on-page-submit: true
 
   layout: 
-    sequence: 140
+    sequence: 150
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1880,6 +1880,65 @@ page-items:
   session-state: 
     data-type: VARCHAR2
     storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_SEQUENCE ============================
+  id: 26394353637631604
+  identification: 
+    name: P105_SEQUENCE
+    type: Select List
+
+  label: 
+    label: Sequence
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 120
+    region: '[FORM]' # 108316672484408031
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_SEQUENCES # 26408996815154587
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
 
   security: 
     session-state-protection: Unrestricted
@@ -2234,7 +2293,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 150
+    sequence: 160
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2659,7 +2718,7 @@ page-items:
     send-on-page-submit: true
 
   layout: 
-    sequence: 160
+    sequence: 170
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
