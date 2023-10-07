@@ -1,11 +1,11 @@
-CREATE OR REPLACE FORCE VIEW tsk_p100_tasks_v AS
+CREATE OR REPLACE FORCE VIEW tsk_p100_cards_v AS
 WITH t AS (
     SELECT /*+ MATERIALIZE */
        t.*
        --
        -- @TODO: limit columns
        --
-    FROM tsk_tasks t
+    FROM tsk_cards t
     JOIN tsk_auth_context_v x
         ON x.client_id      = t.client_id
         AND x.project_id    = t.project_id
@@ -15,27 +15,27 @@ WITH t AS (
         AND (x.owner_id     = t.owner_id    OR x.owner_id IS NULL)
 ),
 p AS (
-    -- to calculate tasks progress
+    -- to calculate cards progress
     SELECT /*+ MATERIALIZE */
-        p.task_id,
-        NULLIF(SUM(CASE WHEN p.checklist_done = 'Y' THEN 1 ELSE 0 END) || '/' || COUNT(p.checklist_id), '0/0') AS task_progress
-    FROM tsk_task_checklist p
+        p.card_id,
+        NULLIF(SUM(CASE WHEN p.checklist_done = 'Y' THEN 1 ELSE 0 END) || '/' || COUNT(p.checklist_id), '0/0') AS card_progress
+    FROM tsk_card_checklist p
     JOIN t
-        ON t.task_id        = p.task_id
-    GROUP BY p.task_id
+        ON t.card_id        = p.card_id
+    GROUP BY p.card_id
 )
 SELECT
-    t.task_id,
-    t.task_name,
+    t.card_id,
+    t.card_name,
     --
     APEX_PAGE.GET_URL (
         p_page          => 105,
         p_clear_cache   => 105,
-        p_items         => 'P105_TASK_ID,P105_SOURCE_PAGE',
-        p_values        => '' || t.task_id || ',100'
-    ) AS task_link,
+        p_items         => 'P105_CARD_ID,P105_SOURCE_PAGE',
+        p_values        => '' || t.card_id || ',100'
+    ) AS card_link,
     --
-    p.task_progress,
+    p.card_progress,
     --
     t.client_id,
     t.project_id,
@@ -53,21 +53,21 @@ SELECT
     t.updated_by,
     t.updated_at,
     --
-    LAG(t.task_id) OVER (
+    LAG(t.card_id) OVER (
         PARTITION BY t.client_id, t.project_id, t.board_id
         ORDER BY w.order# NULLS LAST, s.order# NULLS LAST, t.order# NULLS LAST
-    ) AS prev_task,
+    ) AS prev_card,
     --
-    LEAD(t.task_id) OVER (
+    LEAD(t.card_id) OVER (
         PARTITION BY t.client_id, t.project_id, t.board_id
         ORDER BY w.order# NULLS LAST, s.order# NULLS LAST, t.order# NULLS LAST
-    ) AS next_task,
+    ) AS next_card,
     --
     w.order#            AS swimlane_order#,
     s.order#            AS status_order#,
-    t.order#            AS task_order#,
+    t.order#            AS card_order#,
     --
-    ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.task_id) AS order#
+    ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.card_id) AS order#
     --
 FROM t
 JOIN tsk_lov_statuses_v s
@@ -78,7 +78,7 @@ LEFT JOIN tsk_lov_categories_v g
     ON g.category_id    = t.category_id
     AND g.color_bg      IS NOT NULL
 LEFT JOIN p
-    ON p.task_id        = t.task_id;
+    ON p.card_id        = t.card_id;
 --
-COMMENT ON TABLE tsk_p100_tasks_v IS '';
+COMMENT ON TABLE tsk_p100_cards_v IS '';
 

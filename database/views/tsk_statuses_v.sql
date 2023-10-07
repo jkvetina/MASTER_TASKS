@@ -13,7 +13,7 @@ c AS (
         SUM(CASE WHEN t.board_id    = x.board_id    THEN 1 ELSE 0 END) AS count_board,
         SUM(CASE WHEN t.project_id  = x.project_id  THEN 1 ELSE 0 END) AS count_project,
         SUM(CASE WHEN t.client_id   = x.client_id   THEN 1 ELSE 0 END) AS count_client
-    FROM tsk_tasks t
+    FROM tsk_cards t
     JOIN tsk_available_projects_v a
         ON a.client_id      = t.client_id
         AND a.project_id    = t.project_id

@@ -5,9 +5,9 @@ WITH c AS (
         --
         COUNT(DISTINCT t.project_id)    AS count_projects,
         COUNT(DISTINCT t.board_id)      AS count_boards,
-        COUNT(*)                        AS count_tasks
+        COUNT(*)                        AS count_cards
         --
-    FROM tsk_tasks t
+    FROM tsk_cards t
     JOIN tsk_available_clients_v a
         ON a.client_id  = t.client_id
     GROUP BY
@@ -22,7 +22,7 @@ SELECT
     --
     c.count_projects,
     c.count_boards,
-    c.count_tasks
+    c.count_cards
     --
 FROM tsk_available_clients_v t
 LEFT JOIN c

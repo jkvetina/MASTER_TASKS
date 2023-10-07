@@ -12,7 +12,7 @@ SELECT
     u.user_name__
     --
 FROM tsk_lov_users_v u
-JOIN tsk_tasks t
+JOIN tsk_cards t
     ON t.owner_id       = u.user_id
 JOIN tsk_available_projects_v a
     ON a.client_id      = t.client_id

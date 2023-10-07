@@ -1,9 +1,9 @@
 CREATE OR REPLACE FORCE VIEW tsk_p105_commits_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        t.task_id
-    FROM tsk_p100_tasks_v t
-    WHERE t.task_id = core.get_item('P105_TASK_ID')
+        t.card_id
+    FROM tsk_p100_cards_v t
+    WHERE t.card_id = core.get_item('P105_CARD_ID')
 )
 SELECT
     t.commit_id,
@@ -19,7 +19,7 @@ SELECT
     --
 FROM tsk_p500_commits_v t
 JOIN x
-    ON x.task_id        = t.task_id;
+    ON x.card_id        = t.card_id;
 --
 COMMENT ON TABLE tsk_p105_commits_v IS '';
 

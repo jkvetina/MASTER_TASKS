@@ -1,35 +1,35 @@
 CREATE OR REPLACE FORCE VIEW tsk_p105_badges_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        t.task_id
-    FROM tsk_p100_tasks_v t
-    WHERE t.task_id = core.get_item('P105_TASK_ID')
+        t.card_id
+    FROM tsk_p100_cards_v t
+    WHERE t.card_id = core.get_item('P105_CARD_ID')
 )
 SELECT
     'P105_BADGE_CHECKLIST'              AS item_name,
     CASE WHEN COUNT(*) > 0
         THEN '<span class="BADGE">' || COUNT(*) || '</span>'
         END AS badge
-FROM tsk_task_checklist c
+FROM tsk_card_checklist c
 JOIN x
-    ON x.task_id            = c.task_id
+    ON x.card_id            = c.card_id
 WHERE c.checklist_done      IS NULL
 --
 UNION ALL
 SELECT
     'P105_BADGE_COMMENTS'               AS item_name,
     tsk_p105.get_badge_icon(COUNT(*))   AS badge
-FROM tsk_task_comments c
+FROM tsk_card_comments c
 JOIN x
-    ON x.task_id            = c.task_id
+    ON x.card_id            = c.card_id
 --
 UNION ALL
 SELECT
     'P105_BADGE_COMMITS'                AS item_name,
     tsk_p105.get_badge_icon(COUNT(*))   AS badge
-FROM tsk_task_commits c
+FROM tsk_card_commits c
 JOIN x
-    ON x.task_id            = c.task_id
+    ON x.card_id            = c.card_id
 --
 UNION ALL
 SELECT
@@ -41,9 +41,9 @@ UNION ALL
 SELECT
     'P105_BADGE_FILES'                  AS item_name,
     tsk_p105.get_badge_icon(COUNT(*))   AS badge
-FROM tsk_task_files c
+FROM tsk_card_files c
 JOIN x
-    ON x.task_id            = c.task_id;
+    ON x.card_id            = c.card_id;
 --
 COMMENT ON TABLE tsk_p105_badges_v IS '';
 

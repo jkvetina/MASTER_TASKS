@@ -1,9 +1,9 @@
 CREATE OR REPLACE FORCE VIEW tsk_p105_files_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        t.task_id
-    FROM tsk_p100_tasks_v t
-    WHERE t.task_id = core.get_item('P105_TASK_ID')
+        t.card_id
+    FROM tsk_p100_cards_v t
+    WHERE t.card_id = core.get_item('P105_CARD_ID')
 )
 SELECT
     f.file_id,
@@ -15,9 +15,9 @@ SELECT
     NULL AS download_link,
     NULL AS delete_link
     --
-FROM tsk_task_files f
+FROM tsk_card_files f
 JOIN x
-    ON x.task_id = f.task_id;
+    ON x.card_id = f.card_id;
 --
 COMMENT ON TABLE tsk_p105_files_v IS '';
 

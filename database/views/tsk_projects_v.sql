@@ -9,9 +9,9 @@ b AS (
         t.project_id,
         --
         COUNT(DISTINCT t.board_id)  AS count_boards,
-        COUNT(*)                    AS count_tasks
+        COUNT(*)                    AS count_cards
         --
-    FROM tsk_tasks t
+    FROM tsk_cards t
     JOIN tsk_available_projects_v a
         ON a.client_id      = t.client_id
         AND a.project_id    = t.project_id
@@ -82,7 +82,7 @@ SELECT
     s.count_statuses,
     w.count_swimlanes,
     b.count_boards,
-    b.count_tasks,
+    b.count_cards,
     u.count_users
     --
 FROM tsk_available_projects_v t

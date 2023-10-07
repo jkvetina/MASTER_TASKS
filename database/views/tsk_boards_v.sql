@@ -18,9 +18,9 @@ s AS (
         --
         ROW_NUMBER() OVER (PARTITION BY s.is_active ORDER BY s.order# NULLS LAST, s.status_id) AS r#,
         --
-        COUNT(t.task_id)    AS count_tasks
+        COUNT(t.card_id)    AS count_cards
         --
-    FROM tsk_tasks t
+    FROM tsk_cards t
     JOIN tsk_available_projects_v a
         ON a.client_id      = t.client_id
         AND a.project_id    = t.project_id
@@ -46,17 +46,17 @@ g AS (
         s.project_id,
         s.board_id,
         --
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 1 THEN s.count_tasks END) AS count_status_1,
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 2 THEN s.count_tasks END) AS count_status_2,
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 3 THEN s.count_tasks END) AS count_status_3,
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 4 THEN s.count_tasks END) AS count_status_4,
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 5 THEN s.count_tasks END) AS count_status_5,
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 6 THEN s.count_tasks END) AS count_status_6,
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 7 THEN s.count_tasks END) AS count_status_7,
-        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 8 THEN s.count_tasks END) AS count_status_8,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 1 THEN s.count_cards END) AS count_status_1,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 2 THEN s.count_cards END) AS count_status_2,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 3 THEN s.count_cards END) AS count_status_3,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 4 THEN s.count_cards END) AS count_status_4,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 5 THEN s.count_cards END) AS count_status_5,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 6 THEN s.count_cards END) AS count_status_6,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 7 THEN s.count_cards END) AS count_status_7,
+        MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 8 THEN s.count_cards END) AS count_status_8,
         --
-        SUM(CASE WHEN s.is_active IS NULL THEN s.count_tasks END) AS count_inactive,
-        SUM(s.count_tasks) AS count_total,
+        SUM(CASE WHEN s.is_active IS NULL THEN s.count_cards END) AS count_inactive,
+        SUM(s.count_cards) AS count_total,
         --
         MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 1 THEN s.status_name END) AS status_name_1,
         MAX(CASE WHEN s.is_active = 'Y' AND s.r# = 2 THEN s.status_name END) AS status_name_2,

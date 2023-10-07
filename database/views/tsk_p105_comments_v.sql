@@ -1,14 +1,14 @@
 CREATE OR REPLACE FORCE VIEW tsk_p105_comments_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        t.task_id,
+        t.card_id,
         core.get_user_id()              AS user_id
-    FROM tsk_p100_tasks_v t
-    WHERE t.task_id = core.get_item('P105_TASK_ID')
+    FROM tsk_p100_cards_v t
+    WHERE t.card_id = core.get_item('P105_CARD_ID')
 )
 SELECT
     -- https://apex.oracle.com/pls/apex/apex_pm/r/ut/comments-report
-    c.task_id,
+    c.card_id,
     c.comment_id,
     --
     CASE
@@ -45,11 +45,11 @@ SELECT
         ELSE INITCAP(c.updated_by)
         END AS user_name
     --
-FROM tsk_task_comments c
+FROM tsk_card_comments c
 JOIN x
-    ON x.task_id = c.task_id
+    ON x.card_id = c.card_id
 ORDER BY
-    c.task_id,
+    c.card_id,
     c.comment_id DESC;
 --
 COMMENT ON TABLE tsk_p105_comments_v IS '';
