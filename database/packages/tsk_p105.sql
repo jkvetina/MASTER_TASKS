@@ -79,7 +79,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         core.set_item('P105_TAGS',          LTRIM(RTRIM(REPLACE(rec.tags, ':', ' '))));
 
         -- calculate page header
-        core.set_item('P105_HEADER', CASE WHEN rec.card_id IS NOT NULL THEN 'Update Card ' || tsk_p100.c_card_prefix || rec.card_id ELSE core.get_page_name(105) END);
+        core.set_item('P105_HEADER', CASE WHEN rec.card_id IS NOT NULL THEN 'Update Card ' || NVL(rec.card_number, tsk_p100.c_card_prefix || rec.card_id) ELSE core.get_page_name(105) END);
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

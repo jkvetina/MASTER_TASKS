@@ -218,6 +218,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 FOR t IN (
                     SELECT
                         t.card_id,
+                        t.card_number,
                         t.card_name,
                         t.deadline_at,
                         t.card_link,
@@ -234,13 +235,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     clob_append(out_clob,
                         '<div class="CARD" draggable="true" id="CARD_' || t.card_id || '" style="' ||
                             CASE WHEN s.is_colored = 'Y' AND t.color_bg IS NOT NULL             THEN 'border-left: 8px solid ' || t.color_bg || '; ' END ||
-                            CASE WHEN s.is_colored = 'Y' AND t.deadline_at <= TRUNC(SYSDATE)    THEN 'border-left: 8px solid ' || '#111' || '; ' END ||
+                            CASE WHEN s.is_colored = 'Y' AND t.deadline_at <= TRUNC(SYSDATE)    THEN 'border-right: 8px solid #222; ' END ||
                             '">' ||
                         '<a href="' || t.card_link || '">' ||
                         CASE WHEN t.card_progress IS NOT NULL
                             THEN '<span class="PROGRESS">' || t.card_progress || '</span>'
                             END ||
-                        '<span class="CARD_ID">' || c_card_prefix || t.card_id || '</span>' ||
+                        '<span class="CARD_ID">' || NVL(t.card_number, c_card_prefix || t.card_id) || '</span>' ||
                         '<span style="color: #888;"> &' || 'ndash; </span>' || t.card_name ||
                         '</a></div>'
                     );
