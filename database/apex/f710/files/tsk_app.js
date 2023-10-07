@@ -1,4 +1,6 @@
 const init_grid = function() {
+    $('#BOARD .STICKY').stickyWidget();
+    //
     $('#BOARD').on('dragover',  '.TARGET',  dragover);
     $('#BOARD').on('dragstart', '.TASK',    dragstart);
     $('#BOARD').on('dragend',   '.TASK',    dragend);

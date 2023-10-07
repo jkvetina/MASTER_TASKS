@@ -31,6 +31,7 @@
 }
 .TARGET_LIKE,
 .TARGET_LIKE h3 {
+    margin          : 0;
     padding         : 0.5rem 0.5rem 0;
     border          : 0;
     box-shadow      : none;
@@ -40,11 +41,17 @@
 .TARGET_LIKE {
     border-top-left-radius  : 12px;
     border-top-right-radius : 12px;
-    margin-bottom           : -1rem;
 }
-.TARGET_LIKE h3 {
-    margin          : 0;
+
+/* FIX WEIRD OFFSET ON STICKY HEADER */
+#BOARD .STICKY {
+    width           : 100%;
 }
+#BOARD .STICKY.js-stickyWidget-toggle.is-stuck {
+    padding-right   : 2rem !important;
+}
+
+
 
 /* INDIVIDUAL CARDS */
 .TASK {
@@ -62,6 +69,12 @@
     color           : #000;
     text-decoration : none;
     outline         : none !important;
+}
+.TASK .PROGRESS {
+    margin          : -0.5rem -0.45rem 0 0;
+    float           : right;
+    font-size       : 85%;
+    color           : #888;
 }
 
 /* INDIVIDUAL CARDS DURING DRAGGING */

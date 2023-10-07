@@ -144,11 +144,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             AND s.is_active     = 'Y';
         --
         clob_append(out_clob,
+            '<div class="STICKY">' ||
             '<div class="BOARD" style="' ||
             'grid-template-columns: repeat(' || v_statuses || ', minmax(300px, 1fr)); ' ||
             '">');
-
-        -- generate grid
+        --
         FOR w IN (
             SELECT
                 w.*,
@@ -185,7 +185,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                         AND t.status_id     = s.status_id
                         AND t.swimlane_id   = w.swimlane_id;
                     --
-                    clob_append(out_clob, '<div class="TARGET_LIKE STICKY">');
+                    clob_append(out_clob, '<div class="TARGET_LIKE">');
                     clob_append(out_clob, '<h3>' || s.status_name ||
                         CASE WHEN s.is_show_user        = 'Y' THEN RTRIM(' @' || s.user_name, ' @') END ||
                         CASE WHEN s.is_show_swimlane    = 'Y' THEN RTRIM(' @' || NULLIF(w.swimlane_name, '-'), ' @') END ||
@@ -194,7 +194,26 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     clob_append(out_clob, '</div>');
                 END IF;
             END LOOP;
+        END LOOP;
 
+        -- generate grid
+        clob_append(out_clob,
+            '</div></div>' ||
+            '<div class="BOARD" style="' ||
+            'grid-template-columns: repeat(' || v_statuses || ', minmax(300px, 1fr)); ' ||
+            '">');
+        --
+        FOR w IN (
+            SELECT
+                w.*,
+                ROW_NUMBER() OVER (ORDER BY CASE WHEN w.swimlane_id = '-' THEN NULL ELSE w.order# END NULLS LAST) AS r#
+            FROM tsk_swimlanes w
+            WHERE w.client_id       = in_client_id
+                AND w.project_id    = in_project_id
+                AND (w.swimlane_id  = in_swimlane_id OR in_swimlane_id IS NULL)
+                AND w.is_active     = 'Y'
+            ORDER BY r#
+        ) LOOP
             -- create swimlanes
             FOR s IN (
                 SELECT
@@ -223,14 +242,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 ) LOOP
                     clob_append(out_clob,
                         '<div class="TASK" draggable="true" id="TASK_' || t.task_id || '" style="' ||
-                            CASE WHEN s.is_colored = 'Y' AND t.color_bg IS NOT NULL             THEN 'border-left: 5px solid ' || t.color_bg || '; ' END ||
-                            CASE WHEN s.is_colored = 'Y' AND t.deadline_at <= TRUNC(SYSDATE)    THEN 'border-left: 5px solid ' || '#111' || '; ' END ||
+                            CASE WHEN s.is_colored = 'Y' AND t.color_bg IS NOT NULL             THEN 'border-left: 8px solid ' || t.color_bg || '; ' END ||
+                            CASE WHEN s.is_colored = 'Y' AND t.deadline_at <= TRUNC(SYSDATE)    THEN 'border-left: 8px solid ' || '#111' || '; ' END ||
                             '">' ||
                         '<a href="' || t.task_link || '">' ||
                         CASE WHEN t.task_progress IS NOT NULL
-                            THEN '<span style="float: right;">' || t.task_progress || '</span>'
+                            THEN '<span class="PROGRESS">' || t.task_progress || '</span>'
                             END ||
-                        c_task_prefix || t.task_id || ' ' || t.task_name ||
+                        '<span class="TASK_ID">' || c_task_prefix || t.task_id || '</span>' ||
+                        '<span style="color: #888;"> &' || 'ndash; </span>' || t.task_name ||
                         '</a></div>'
                     );
                 END LOOP;
