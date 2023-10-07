@@ -135,7 +135,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         DELETE FROM tsk_repos           WHERE client_id = in_client_id AND project_id = in_project_id;
         DELETE FROM tsk_statuses        WHERE client_id = in_client_id AND project_id = in_project_id;
         DELETE FROM tsk_swimlanes       WHERE client_id = in_client_id AND project_id = in_project_id;
-        --DELETE FROM tsk_tasks           WHERE client_id = in_client_id AND project_id = in_project_id;
+        --DELETE FROM tsk_cards           WHERE client_id = in_client_id AND project_id = in_project_id;
         DELETE FROM tsk_boards_fav      WHERE client_id = in_client_id AND project_id = in_project_id;
     EXCEPTION
     WHEN core.app_exception THEN
@@ -200,7 +200,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         -- need to be sorted properly
         DELETE FROM tsk_boards          WHERE board_id = in_board_id;
         DELETE FROM tsk_boards_fav      WHERE board_id = in_board_id;
-        --DELETE FROM tsk_tasks           WHERE board_id = in_board_id;
+        --DELETE FROM tsk_cards           WHERE board_id = in_board_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -285,7 +285,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     BEGIN
         -- need to be sorted properly
         DELETE FROM tsk_statuses                    WHERE client_id = in_client_id AND project_id = in_project_id AND status_id = in_status_id;
-        --DELETE FROM tsk_tasks                       WHERE client_id = in_client_id AND project_id = in_project_id AND status_id = in_status_id;
+        --DELETE FROM tsk_cards                       WHERE client_id = in_client_id AND project_id = in_project_id AND status_id = in_status_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -361,7 +361,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         -- need to be sorted properly
         DELETE FROM tsk_swimlanes       WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
         DELETE FROM tsk_boards_fav      WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
-        --DELETE FROM tsk_tasks           WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
+        --DELETE FROM tsk_cards           WHERE client_id = in_client_id AND project_id = in_project_id AND swimlane_id = in_swimlane_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -446,7 +446,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     BEGIN
         -- need to be sorted properly
         DELETE FROM tsk_categories                  WHERE client_id = in_client_id AND project_id = in_project_id AND category_id = in_category_id;
-        --DELETE FROM tsk_tasks                       WHERE client_id = in_client_id AND project_id = in_project_id AND category_id = in_category_id;
+        --DELETE FROM tsk_cards                       WHERE client_id = in_client_id AND project_id = in_project_id AND category_id = in_category_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -456,8 +456,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
 
 
-    PROCEDURE tasks (
-        rec                     IN OUT NOCOPY   tsk_tasks%ROWTYPE,
+    PROCEDURE cards (
+        rec                     IN OUT NOCOPY   tsk_cards%ROWTYPE,
         in_action                               CHAR                                := NULL
     )
     AS
@@ -465,7 +465,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
-            tasks_delete(rec.task_id);
+            cards_delete(rec.card_id);
             --
             RETURN;
         END IF;
@@ -476,15 +476,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         rec.tags        := NULLIF(':' || SUBSTR(REGEXP_REPLACE(LOWER(rec.tags), '[^a-z0-9]+', ':'), 1, 256) || ':', '::');
 
         -- proceed with update or insert
-        IF rec.task_id IS NULL THEN
-            rec.task_id := tsk_task_id.NEXTVAL;
+        IF rec.card_id IS NULL THEN
+            rec.card_id := tsk_card_id.NEXTVAL;
             --
-            INSERT INTO tsk_tasks
+            INSERT INTO tsk_cards
             VALUES rec;
         ELSE
-            UPDATE tsk_tasks t
+            UPDATE tsk_cards t
             SET ROW = rec
-            WHERE t.task_id = rec.task_id;
+            WHERE t.card_id = rec.card_id;
             --
             IF SQL%ROWCOUNT = 0 THEN
                 core.raise_error('UPDATE_FAILED');
@@ -499,8 +499,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
 
 
-    PROCEDURE tasks_delete (
-        in_task_id              tsk_tasks.task_id%TYPE
+    PROCEDURE cards_delete (
+        in_card_id              tsk_cards.card_id%TYPE
     )
     AS
     BEGIN
@@ -510,24 +510,24 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         FROM user_tab_cols c
         JOIN user_tables t
             ON t.table_name = c.table_name
-        WHERE c.column_name = 'TASK_ID'
+        WHERE c.column_name = 'CARD_ID'
         ORDER BY 1;
         */
 
-        DELETE FROM tsk_task_comments t
-        WHERE t.task_id = in_task_id;
+        DELETE FROM tsk_card_comments t
+        WHERE t.card_id = in_card_id;
         --
-        DELETE FROM tsk_task_commits t
-        WHERE t.task_id = in_task_id;
+        DELETE FROM tsk_card_commits t
+        WHERE t.card_id = in_card_id;
         --
-        DELETE FROM tsk_task_checklist t
-        WHERE t.task_id = in_task_id;
+        DELETE FROM tsk_card_checklist t
+        WHERE t.card_id = in_card_id;
         --
-        DELETE FROM tsk_task_files t
-        WHERE t.task_id = in_task_id;
+        DELETE FROM tsk_card_files t
+        WHERE t.card_id = in_card_id;
         --
-        DELETE FROM tsk_tasks t
-        WHERE t.task_id = in_task_id;
+        DELETE FROM tsk_cards t
+        WHERE t.card_id = in_card_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -608,20 +608,20 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
 
 
-    PROCEDURE task_commits (
-        rec                     IN OUT NOCOPY   tsk_task_commits%ROWTYPE,
+    PROCEDURE card_commits (
+        rec                     IN OUT NOCOPY   tsk_card_commits%ROWTYPE,
         --
         in_action               CHAR                            := NULL,
-        in_commit_id            tsk_task_commits.commit_id%TYPE := NULL,
-        in_task_id              tsk_task_commits.task_id%TYPE   := NULL
+        in_commit_id            tsk_card_commits.commit_id%TYPE := NULL,
+        in_card_id              tsk_card_commits.card_id%TYPE   := NULL
     )
     AS
         c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
-            DELETE FROM tsk_task_commits t
-            WHERE t.task_id         = NVL(in_task_id,       rec.task_id)
+            DELETE FROM tsk_card_commits t
+            WHERE t.card_id         = NVL(in_card_id,       rec.card_id)
                 AND t.commit_id     = NVL(in_commit_id,     rec.commit_id);
             --
             RETURN;
@@ -633,7 +633,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- upsert record
         BEGIN
-            INSERT INTO tsk_task_commits VALUES rec;
+            INSERT INTO tsk_card_commits VALUES rec;
         EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN
             NULL;
@@ -647,20 +647,20 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
 
 
-    PROCEDURE task_comments (
-        rec                     IN OUT NOCOPY   tsk_task_comments%ROWTYPE,
+    PROCEDURE card_comments (
+        rec                     IN OUT NOCOPY   tsk_card_comments%ROWTYPE,
         --
         in_action               CHAR                                        := NULL,
-        in_task_id              tsk_task_comments.task_id%TYPE              := NULL,
-        in_comment_id           tsk_task_comments.comment_id%TYPE           := NULL
+        in_card_id              tsk_card_comments.card_id%TYPE              := NULL,
+        in_comment_id           tsk_card_comments.comment_id%TYPE           := NULL
     )
     AS
         c_action                CONSTANT CHAR                               := gen_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
-            DELETE FROM tsk_task_comments
-            WHERE task_id       = NVL(in_task_id, rec.task_id)
+            DELETE FROM tsk_card_comments
+            WHERE card_id       = NVL(in_card_id, rec.card_id)
                 AND comment_id  = NVL(in_comment_id, rec.comment_id);
             --
             RETURN;  -- exit procedure
@@ -676,13 +676,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         rec.updated_at          := SYSDATE;
 
         -- upsert record
-        UPDATE tsk_task_comments t
+        UPDATE tsk_card_comments t
         SET ROW = rec
-        WHERE t.task_id                 = rec.task_id
+        WHERE t.card_id                 = rec.card_id
             AND t.comment_id            = rec.comment_id;
         --
         IF SQL%ROWCOUNT = 0 THEN
-            INSERT INTO tsk_task_comments
+            INSERT INTO tsk_card_comments
             VALUES rec;
         END IF;
     EXCEPTION
@@ -694,18 +694,18 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
 
 
-    PROCEDURE task_files (
-        rec                 IN OUT NOCOPY   tsk_task_files%ROWTYPE,
+    PROCEDURE card_files (
+        rec                 IN OUT NOCOPY   tsk_card_files%ROWTYPE,
         --
         in_action           CHAR                                    := NULL,
-        in_file_id          tsk_task_files.file_id%TYPE             := NULL
+        in_file_id          tsk_card_files.file_id%TYPE             := NULL
     )
     AS
         c_action            CONSTANT CHAR                           := gen_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
-            DELETE FROM tsk_task_files
+            DELETE FROM tsk_card_files
             WHERE file_id = NVL(in_file_id, rec.file_id);
             --
             RETURN;  -- exit procedure
@@ -721,12 +721,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         rec.updated_at      := SYSDATE;
 
         -- upsert record
-        UPDATE tsk_task_files t
+        UPDATE tsk_card_files t
         SET ROW = rec
         WHERE t.file_id             = rec.file_id;
         --
         IF SQL%ROWCOUNT = 0 THEN
-            INSERT INTO tsk_task_files
+            INSERT INTO tsk_card_files
             VALUES rec;
         END IF;
     EXCEPTION

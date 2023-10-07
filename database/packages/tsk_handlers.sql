@@ -284,8 +284,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_statuses
     AS
-        in_client_id            CONSTANT tsk_tasks.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_tasks.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
     BEGIN
         FOR s IN (
             SELECT
@@ -317,8 +317,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_swimlanes
     AS
-        in_client_id            CONSTANT tsk_tasks.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_tasks.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
     BEGIN
         FOR s IN (
             SELECT
@@ -350,8 +350,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_categories
     AS
-        in_client_id            CONSTANT tsk_tasks.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_tasks.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
     BEGIN
         FOR s IN (
             SELECT

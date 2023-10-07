@@ -2,7 +2,7 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
     /**
      * This package is part of the TASKS project under MIT licence.
-     * https://github.com/jkvetina/tasks
+     * https://github.com/jkvetina/
      *
      * Copyright (c) Jan Kvetina, 2023
      *
@@ -79,7 +79,7 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
     FUNCTION get_owner_id
-    RETURN tsk_tasks.owner_id%TYPE;
+    RETURN tsk_cards.owner_id%TYPE;
 
 
 
@@ -124,14 +124,14 @@ CREATE OR REPLACE PACKAGE tsk_app AS
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
         in_board_id         tsk_recent.board_id%TYPE        := NULL,
-        in_task_id          tsk_tasks.task_id%TYPE          := NULL
+        in_card_id          tsk_cards.card_id%TYPE          := NULL
     )
     RETURN VARCHAR2;
 
 
 
-    FUNCTION get_task_link (
-        in_task_id          tsk_tasks.task_id%TYPE,
+    FUNCTION get_card_link (
+        in_card_id          tsk_cards.card_id%TYPE,
         in_external         CHAR                        := NULL
     )
     RETURN VARCHAR2;

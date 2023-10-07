@@ -2,16 +2,16 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
 
     PROCEDURE init_defaults
     AS
-        v_client_id         tsk_tasks.client_id%TYPE    := tsk_app.get_client_id();
-        v_project_id        tsk_tasks.project_id%TYPE   := tsk_app.get_project_id();
-        v_board_id          tsk_tasks.board_id%TYPE     := tsk_app.get_board_id();
-        v_swimlane_id       tsk_tasks.swimlane_id%TYPE  := tsk_app.get_swimlane_id();
-        v_task_id           tsk_tasks.task_id%TYPE;
+        v_client_id         tsk_cards.client_id%TYPE    := tsk_app.get_client_id();
+        v_project_id        tsk_cards.project_id%TYPE   := tsk_app.get_project_id();
+        v_board_id          tsk_cards.board_id%TYPE     := tsk_app.get_board_id();
+        v_swimlane_id       tsk_cards.swimlane_id%TYPE  := tsk_app.get_swimlane_id();
+        v_card_id           tsk_cards.card_id%TYPE;
     BEGIN
-        -- check if specific task was requested
-        v_task_id := core.get_item('P100_TASK_ID');
+        -- check if specific card was requested
+        v_card_id := core.get_item('P100_CARD_ID');
         --
-        IF v_task_id IS NOT NULL THEN
+        IF v_card_id IS NOT NULL THEN
             BEGIN
                 SELECT
                     t.client_id,
@@ -21,14 +21,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     v_client_id,
                     v_project_id,
                     v_board_id
-                FROM tsk_tasks t
-                WHERE t.task_id = v_task_id;
+                FROM tsk_cards t
+                WHERE t.card_id = v_card_id;
             EXCEPTION
             WHEN NO_DATA_FOUND THEN
-                core.raise_error('INVALID_TASK');
+                core.raise_error('INVALID_CARD');
             END;
 
-            -- update also board below task detail
+            -- update also board below card detail
             tsk_app.set_user_preferences (
                 in_user_id          => core.get_user_id(),
                 in_client_id        => v_client_id,
@@ -37,9 +37,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 in_swimlane_id      => v_swimlane_id
             );
 
-            -- generate task link
-            IF v_task_id IS NOT NULL THEN
-                core.set_item('P100_TASK_LINK', tsk_app.get_task_link(v_task_id));
+            -- generate card link
+            IF v_card_id IS NOT NULL THEN
+                core.set_item('P100_CARD_LINK', tsk_app.get_card_link(v_card_id));
             END IF;
             --
         ELSE
@@ -63,7 +63,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         core.set_item('P100_CLIENT_ID',     v_client_id);
         core.set_item('P100_PROJECT_ID',    v_project_id);
         core.set_item('P100_BOARD_ID',      v_board_id);
-        core.set_item('P100_TASKS_LINK',    core.get_page_url(100, in_reset => NULL));
+        core.set_item('P100_CARDS_LINK',    core.get_page_url(100, in_reset => NULL));
         --
         FOR c IN (
             WITH d AS (
@@ -74,7 +74,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 -- calculate page header
                 SELECT
                     'HEADER'            AS item_name,
-                    'Tasks for ' || p.project_name || ' - ' || b.board_name AS item_value
+                    'Cards for ' || p.project_name || ' - ' || b.board_name AS item_value
                 FROM tsk_boards b
                 JOIN tsk_projects p
                     ON b.project_id     = p.project_id
@@ -124,11 +124,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
     FUNCTION generate_board
     RETURN CLOB
     AS
-        in_client_id        CONSTANT tsk_tasks.client_id%TYPE       := tsk_app.get_client_id();
-        in_project_id       CONSTANT tsk_tasks.project_id%TYPE      := tsk_app.get_project_id();
-        in_board_id         CONSTANT tsk_tasks.board_id%TYPE        := tsk_app.get_board_id();
-        in_swimlane_id      CONSTANT tsk_tasks.swimlane_id%TYPE     := core.get_item('P100_SWIMLANE_ID');
-        in_owner_id         CONSTANT tsk_tasks.owner_id%TYPE        := core.get_item('P100_OWNER_ID');
+        in_client_id        CONSTANT tsk_cards.client_id%TYPE       := tsk_app.get_client_id();
+        in_project_id       CONSTANT tsk_cards.project_id%TYPE      := tsk_app.get_project_id();
+        in_board_id         CONSTANT tsk_cards.board_id%TYPE        := tsk_app.get_board_id();
+        in_swimlane_id      CONSTANT tsk_cards.swimlane_id%TYPE     := core.get_item('P100_SWIMLANE_ID');
+        in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_item('P100_OWNER_ID');
         --
         v_statuses          PLS_INTEGER;
         out_clob            CLOB;
@@ -178,13 +178,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             ) LOOP
                 FOR d IN (
                     SELECT
-                        COUNT(DISTINCT t.task_id)       AS count_tasks,
+                        COUNT(DISTINCT t.card_id)       AS count_cards,
                         COUNT(NVL(l.checklist_id, 0))   AS count_checks,
                         COUNT(l.checklist_done)         AS count_done
                         --
-                    FROM tsk_p100_tasks_v t
-                    LEFT JOIN tsk_task_checklist l
-                        ON l.task_id        = t.task_id
+                    FROM tsk_p100_cards_v t
+                    LEFT JOIN tsk_card_checklist l
+                        ON l.card_id        = t.card_id
                     WHERE t.client_id       = in_client_id
                         AND t.project_id    = in_project_id
                         AND t.board_id      = in_board_id
@@ -193,8 +193,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 ) LOOP
                     clob_append(out_clob, '<div class="TARGET_LIKE">');
                     clob_append(out_clob, '<h3>' || s.status_name ||
-                        CASE WHEN d.count_tasks > 0 THEN '<span class="BADGE' || CASE WHEN s.is_badge IS NULL THEN ' DECENT' END || '">' || d.count_tasks || '</span>' END ||
-                        CASE WHEN d.count_tasks > 0 THEN '<span class="PROGRESS">' || d.count_done || '/' || d.count_checks || '</span>' END ||
+                        CASE WHEN d.count_cards > 0 THEN '<span class="BADGE' || CASE WHEN s.is_badge IS NULL THEN ' DECENT' END || '">' || d.count_cards || '</span>' END ||
+                        CASE WHEN d.count_cards > 0 THEN '<span class="PROGRESS">' || d.count_done || '/' || d.count_checks || '</span>' END ||
                         '</h3>' ||
                         '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(d.count_done / NULLIF(d.count_checks, 0) * 100), 0) || '%;"></div></div>'
                     );
@@ -217,13 +217,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 --
                 FOR t IN (
                     SELECT
-                        t.task_id,
-                        t.task_name,
+                        t.card_id,
+                        t.card_name,
                         t.deadline_at,
-                        t.task_link,
-                        t.task_progress,
+                        t.card_link,
+                        t.card_progress,
                         t.color_bg
-                    FROM tsk_p100_tasks_v t
+                    FROM tsk_p100_cards_v t
                     WHERE t.client_id       = in_client_id
                         AND t.project_id    = in_project_id
                         AND t.board_id      = in_board_id
@@ -232,16 +232,16 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     ORDER BY t.order#
                 ) LOOP
                     clob_append(out_clob,
-                        '<div class="TASK" draggable="true" id="TASK_' || t.task_id || '" style="' ||
+                        '<div class="CARD" draggable="true" id="CARD_' || t.card_id || '" style="' ||
                             CASE WHEN s.is_colored = 'Y' AND t.color_bg IS NOT NULL             THEN 'border-left: 8px solid ' || t.color_bg || '; ' END ||
                             CASE WHEN s.is_colored = 'Y' AND t.deadline_at <= TRUNC(SYSDATE)    THEN 'border-left: 8px solid ' || '#111' || '; ' END ||
                             '">' ||
-                        '<a href="' || t.task_link || '">' ||
-                        CASE WHEN t.task_progress IS NOT NULL
-                            THEN '<span class="PROGRESS">' || t.task_progress || '</span>'
+                        '<a href="' || t.card_link || '">' ||
+                        CASE WHEN t.card_progress IS NOT NULL
+                            THEN '<span class="PROGRESS">' || t.card_progress || '</span>'
                             END ||
-                        '<span class="TASK_ID">' || c_task_prefix || t.task_id || '</span>' ||
-                        '<span style="color: #888;"> &' || 'ndash; </span>' || t.task_name ||
+                        '<span class="CARD_ID">' || c_card_prefix || t.card_id || '</span>' ||
+                        '<span style="color: #888;"> &' || 'ndash; </span>' || t.card_name ||
                         '</a></div>'
                     );
                 END LOOP;
@@ -262,31 +262,31 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
 
 
 
-    PROCEDURE ajax_update_task_on_drag
+    PROCEDURE ajax_update_card_on_drag
     AS
     BEGIN
-        -- update task status (column)
-        UPDATE tsk_tasks t
+        -- update card status (column)
+        UPDATE tsk_cards t
         SET t.status_id     = APEX_APPLICATION.G_X02,
             t.swimlane_id   = APEX_APPLICATION.G_X03
-        WHERE t.task_id     = APEX_APPLICATION.G_X01;
+        WHERE t.card_id     = APEX_APPLICATION.G_X01;
         --
         IF SQL%ROWCOUNT = 1 THEN
-            -- update order of passed tasks
+            -- update order of passed cards
             FOR s IN (
                 SELECT
-                    COLUMN_VALUE    AS task_id,
+                    COLUMN_VALUE    AS card_id,
                     ROWNUM * 10     AS order#
                 FROM APEX_STRING.SPLIT(APEX_APPLICATION.G_X04, ':')
             ) LOOP
-                UPDATE tsk_tasks t
+                UPDATE tsk_cards t
                 SET t.order#        = s.order#
-                WHERE t.task_id     = s.task_id
+                WHERE t.card_id     = s.card_id
                     AND (t.order#   != s.order# OR t.order# IS NULL);
             END LOOP;
 
             -- message for app
-            HTP.P('Task ' || c_task_prefix || APEX_APPLICATION.G_X01 || ' updated');
+            HTP.P('Card ' || c_card_prefix || APEX_APPLICATION.G_X01 || ' updated');
         END IF;
     EXCEPTION
     WHEN core.app_exception THEN

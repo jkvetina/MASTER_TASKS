@@ -66,7 +66,7 @@ SELECT                      -- append extras
         '<div class="COL_1">' || tsk_app.generate_menu_favorites() || '</div>' ||
         '<div class="COL_2">' || tsk_app.generate_menu_current() || '</div>' ||
         --'<div class="COL_3"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-filter"></span>&' || 'nbsp; <span style="">Filters</span></a></div>' ||
-        '<div class="COL_4 NO_HOVER" style="padding-left: 2rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Tasks</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>' ||
+        '<div class="COL_4 NO_HOVER" style="padding-left: 2rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>' ||
     '</div>' AS attribute08,
     --
     NULL AS attribute09,

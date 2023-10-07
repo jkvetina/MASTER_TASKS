@@ -1,6 +1,6 @@
 CREATE OR REPLACE PACKAGE tsk_p100 AS
 
-    c_task_prefix           CONSTANT VARCHAR2(8) := '#';
+    c_card_prefix           CONSTANT VARCHAR2(8) := '#';
 
 
 
@@ -13,7 +13,7 @@ CREATE OR REPLACE PACKAGE tsk_p100 AS
 
 
 
-    PROCEDURE ajax_update_task_on_drag;
+    PROCEDURE ajax_update_card_on_drag;
 
 
 

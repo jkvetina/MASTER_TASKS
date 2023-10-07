@@ -133,7 +133,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
     FUNCTION get_owner_id
-    RETURN tsk_tasks.owner_id%TYPE
+    RETURN tsk_cards.owner_id%TYPE
     AS
     BEGIN
         RETURN core.get_item('P0_OWNER_ID');
@@ -292,7 +292,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         tsk_tapi.save_recent(rec);
 
         -- temp message
-        app.ajax_message('Context: Client=' || rec.client_id || ' | Project=' || rec.project_id || ' | Board=' || rec.board_id);
+        IF core.get_page_id() = 100 THEN
+            app.ajax_message('Context: Client=' || rec.client_id || ' | Project=' || rec.project_id || ' | Board=' || rec.board_id);
+        END IF;
         --
     EXCEPTION
     WHEN core.app_exception THEN
@@ -382,7 +384,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
         in_board_id         tsk_recent.board_id%TYPE        := NULL,
-        in_task_id          tsk_tasks.task_id%TYPE          := NULL
+        in_card_id          tsk_cards.card_id%TYPE          := NULL
     )
     RETURN VARCHAR2
     AS
@@ -405,8 +407,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
 
-    FUNCTION get_task_link (
-        in_task_id          tsk_tasks.task_id%TYPE,
+    FUNCTION get_card_link (
+        in_card_id          tsk_cards.card_id%TYPE,
         in_external         CHAR                        := NULL
     )
     RETURN VARCHAR2
@@ -420,26 +422,26 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
                     p_session           => core.get_session_id(),
                     p_page              => 100,
                     p_clear_cache       => 100,
-                    p_items             => 'P100_TASK_ID',
-                    p_values            => in_task_id,
+                    p_items             => 'P100_CARD_ID',
+                    p_values            => in_card_id,
                     p_plain_url         => TRUE
                 );
         END IF;
         --
         FOR c IN (
             SELECT
-                t.task_id,
+                t.card_id,
                 t.client_id,
                 t.project_id,
                 t.board_id
-            FROM tsk_tasks t
-            WHERE t.task_id = in_task_id
+            FROM tsk_cards t
+            WHERE t.card_id = in_card_id
         ) LOOP
             RETURN APEX_PAGE.GET_URL (
                 p_page              => 105,
                 p_clear_cache       => 105,
-                p_items             => 'P105_TASK_ID',
-                p_values            => c.task_id
+                p_items             => 'P105_CARD_ID',
+                p_values            => c.card_id
             );
         END LOOP;
         --
@@ -461,7 +463,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         in_swimlane_id      tsk_swimlanes.swimlane_id%TYPE      := NULL
     )
     AS
-        rec                 tsk_tasks%ROWTYPE;  -- used just for validations
+        rec                 tsk_cards%ROWTYPE;  -- used just for validations
     BEGIN
         rec.client_id       := in_client_id;
         rec.project_id      := in_project_id;

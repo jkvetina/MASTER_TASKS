@@ -108,15 +108,15 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
 
 
 
-    PROCEDURE tasks (
-        rec                     IN OUT NOCOPY   tsk_tasks%ROWTYPE,
+    PROCEDURE cards (
+        rec                     IN OUT NOCOPY   tsk_cards%ROWTYPE,
         in_action                               CHAR                                := NULL
     );
 
 
 
-    PROCEDURE tasks_delete (
-        in_task_id              tsk_tasks.task_id%TYPE
+    PROCEDURE cards_delete (
+        in_card_id              tsk_cards.card_id%TYPE
     );
 
 
@@ -136,31 +136,31 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
 
 
 
-    PROCEDURE task_commits (
-        rec                     IN OUT NOCOPY   tsk_task_commits%ROWTYPE,
+    PROCEDURE card_commits (
+        rec                     IN OUT NOCOPY   tsk_card_commits%ROWTYPE,
         --
         in_action               CHAR                            := NULL,
-        in_commit_id            tsk_task_commits.commit_id%TYPE := NULL,
-        in_task_id              tsk_task_commits.task_id%TYPE   := NULL
+        in_commit_id            tsk_card_commits.commit_id%TYPE := NULL,
+        in_card_id              tsk_card_commits.card_id%TYPE   := NULL
     );
 
 
 
-    PROCEDURE task_comments (
-        rec                     IN OUT NOCOPY   tsk_task_comments%ROWTYPE,
+    PROCEDURE card_comments (
+        rec                     IN OUT NOCOPY   tsk_card_comments%ROWTYPE,
         --
         in_action               CHAR                                        := NULL,
-        in_task_id              tsk_task_comments.task_id%TYPE              := NULL,
-        in_comment_id           tsk_task_comments.comment_id%TYPE           := NULL
+        in_card_id              tsk_card_comments.card_id%TYPE              := NULL,
+        in_comment_id           tsk_card_comments.comment_id%TYPE           := NULL
     );
 
 
 
-    PROCEDURE task_files (
-        rec                 IN OUT NOCOPY   tsk_task_files%ROWTYPE,
+    PROCEDURE card_files (
+        rec                 IN OUT NOCOPY   tsk_card_files%ROWTYPE,
         --
         in_action           CHAR                                    := NULL,
-        in_file_id          tsk_task_files.file_id%TYPE             := NULL
+        in_file_id          tsk_card_files.file_id%TYPE             := NULL
     );
 
 

@@ -4,7 +4,7 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
 
 
 
-    PROCEDURE save_task;
+    PROCEDURE save_card;
 
 
 
@@ -40,12 +40,12 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
 
 
     PROCEDURE download_attachement (
-        in_file_id              tsk_task_files.file_id%TYPE
+        in_file_id              tsk_card_files.file_id%TYPE
     );
 
 
 
-    PROCEDURE move_task_to_top;
+    PROCEDURE move_card_to_top;
 
 END;
 /
