@@ -1,10 +1,10 @@
 ---
-# ====== Page: Task Detail ===================================
+# ====== Page: Card Detail ===================================
 id: 105
 identification: 
-  name: Task Detail
-  alias: TASK-DETAIL
-  title: Task Detail
+  name: Card Detail
+  alias: CARD
+  title: Card Detail
   page-group: '   MAIN - TASKS' # 23490192563159466
 
 appearance: 
@@ -14,7 +14,7 @@ appearance:
   - '#DEFAULT#'
 
 dialog: 
-  width: 85%
+  width: 80%
   chained: false
 
 navigation-menu: 
@@ -127,7 +127,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: RIGHT # 25065087108730030
+    parent-region: RIGHT # 25479617265860925
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -167,8 +167,8 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 30
-    parent-region: RIGHT # 25065087108730030
+    sequence: 20
+    parent-region: RIGHT # 25479617265860925
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -243,48 +243,6 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: RIGHT =======================================
-  id: 25065087108730030
-  identification: 
-    title: RIGHT
-    type: Static Content
-
-  layout: 
-    sequence: 40
-    parent-region: No Parent
-    position: BODY
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Tabs Container # 33957611184153776
-    template-options: 
-    - '#DEFAULT#'
-    - t-TabsRegion-mod--simple
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
 - # ====== Region: Attachements ================================
   id: 25065282126730032
   identification: 
@@ -292,7 +250,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 40
+    sequence: 30
     parent-region: LEFT # 25064882953730028
     position: SUB_REGIONS
     start-new-layout: false
@@ -326,10 +284,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Description =================================
+- # ====== Region: Info ========================================
   id: 25066083083730040
   identification: 
-    title: Description
+    title: Info
     type: Static Content
 
   layout: 
@@ -367,6 +325,130 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
+- # ====== Region: Description =================================
+  id: 25479496737860923
+  identification: 
+    title: Description
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: LEFT # 25064882953730028
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: DETAILS =====================================
+  id: 25479533757860924
+  identification: 
+    title: DETAILS
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: Description # 25479496737860923
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: RIGHT =======================================
+  id: 25479617265860925
+  identification: 
+    title: RIGHT
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container # 33957611184153776
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 - # ====== Region: Commits =====================================
   id: 89197294196141484
   identification: 
@@ -374,8 +456,8 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 60
-    parent-region: RIGHT # 25065087108730030
+    sequence: 30
+    parent-region: RIGHT # 25479617265860925
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1467,7 +1549,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Description # 25066083083730040
+    parent-region: Info # 25066083083730040
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1505,6 +1587,123 @@ regions:
       lost-update-type: Row Values
 
 page-items: 
+- # ====== Page Item: P105_TASK_NUMBER =========================
+  id: 25478579834860914
+  identification: 
+    name: P105_TASK_NUMBER
+    type: Text Field
+
+  label: 
+    label: Task Number
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 130
+    region: '[FORM]' # 108316672484408031
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 128
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_TAGS ================================
+  id: 25479757064860926
+  identification: 
+    name: P105_TAGS
+    type: Text Field
+
+  label: 
+    label: Tags
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 20
+    region: '[FORM]' # 108316672484408031
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 256
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: '[FORM]' # 108316672484408031
+    column: TAGS
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P105_TASK_ID =============================
   id: 79916401806307143
   identification: 
@@ -1515,7 +1714,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 30
+    sequence: 60
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1560,7 +1759,7 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 40
+    sequence: 10
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1617,7 +1816,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 60
+    sequence: 70
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1682,7 +1881,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
+    sequence: 40
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1715,7 +1914,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 20
+    sequence: 50
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1753,7 +1952,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 70
+    sequence: 80
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1824,12 +2023,12 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 80
+    sequence: 90
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1890,7 +2089,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 150
+    sequence: 160
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1917,15 +2116,34 @@ page-items:
   id: 79917302890307152
   identification: 
     name: P105_AUDIT
-    type: Hidden
+    type: Display Only
+
+  label: 
+    label: New
+    alignment: Left
 
   settings: 
-    value-protected: true
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
 
   layout: 
-    sequence: 130
+    sequence: 140
     region: '[FORM]' # 108316672484408031
     position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1953,7 +2171,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 140
+    sequence: 150
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1987,14 +2205,13 @@ page-items:
     alignment: Left
 
   settings: 
-    library: CKEditor [Deprecated]
+    library: TinyMCE
     format: Markdown
-    minimum-height: 300
-    allow-custom-html: false
+    minimum-height: 400
 
   layout: 
-    sequence: 50
-    region: '[FORM]' # 108316672484408031
+    sequence: 10
+    region: DETAILS # 25479533757860924
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -2393,7 +2610,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 160
+    sequence: 170
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2436,7 +2653,7 @@ page-items:
     position: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -2505,7 +2722,7 @@ page-items:
     position: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -2740,11 +2957,11 @@ buttons:
     type: Item is NULL
     item: P105_TASK_ID
 
-- # ====== Button: CREATE_AND_CLOSE ============================
+- # ====== Button: CREATE_CARD =================================
   id: 25256418258844563
   identification: 
-    button-name: CREATE_AND_CLOSE
-    label: Create and Close
+    button-name: CREATE_CARD
+    label: Create New Card
 
   layout: 
     sequence: 10
@@ -2772,11 +2989,11 @@ buttons:
     type: Item is NULL
     item: P105_TASK_ID
 
-- # ====== Button: UPDATE_ONLY =================================
+- # ====== Button: UPDATE_CARD =================================
   id: 25256870991844563
   identification: 
-    button-name: UPDATE_ONLY
-    label: Update
+    button-name: UPDATE_CARD
+    label: Update Card
 
   layout: 
     sequence: 50
@@ -2807,11 +3024,11 @@ buttons:
     type: Item is NOT NULL
     item: P105_TASK_ID
 
-- # ====== Button: MOVE_TASK_TO_TOP ============================
+- # ====== Button: MOVE_TO_TOP =================================
   id: 25257614657844564
   identification: 
-    button-name: MOVE_TASK_TO_TOP
-    label: Move Task to Top
+    button-name: MOVE_TO_TOP
+    label: Move Card to Top
 
   layout: 
     sequence: 70
@@ -2828,6 +3045,8 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - TRANSPARENT
     icon: fa-page-top
 
   behavior: 
@@ -2847,6 +3066,99 @@ buttons:
     label: Split Task
 
   layout: 
+    sequence: 20
+    region: Checklist [GRID] # 91363554227871261
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-pullRight
+    icon: fa-accessor-more
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+  confirmation: 
+    message: Do you want to move unchecked items to the new task?
+    style: Default
+
+  advanced: 
+    custom-attributes: 
+    - 'style="margin-top:'
+    - 1rem
+    - '!important;"'
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P105_SHOW_SPLIT
+
+- # ====== Button: JOIN_TASK ===================================
+  id: 25258454823844564
+  identification: 
+    button-name: JOIN_TASK
+    label: Join Task
+
+  layout: 
+    sequence: 10
+    region: Checklist [GRID] # 91363554227871261
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-pullRight
+    icon: fa-accessor-more fa-flip-horizontal
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:108:&SESSION.::&DEBUG.:108:P108_TASK_ID:&P105_TASK_ID.'
+      page: 108
+      clear-cache: 108
+      values: 
+        p108_task_id: '&P105_TASK_ID.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+  advanced: 
+    custom-attributes: 
+    - 'style="margin:'
+    - 1rem
+    - 0.5rem
+    - 0
+    - 0
+    - '!important;"'
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P105_SHOW_SPLIT
+
+- # ====== Button: DELETE_CARD =================================
+  id: 25258805949844565
+  identification: 
+    button-name: DELETE_CARD
+    label: Delete Card
+
+  layout: 
     sequence: 80
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
@@ -2861,80 +3173,8 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
-    icon: fa-accessor-more
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-
-  confirmation: 
-    message: Do you want to move unchecked items to the new task?
-    style: Default
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_SHOW_SPLIT
-
-- # ====== Button: JOIN_TASK ===================================
-  id: 25258454823844564
-  identification: 
-    button-name: JOIN_TASK
-    label: Join Task
-
-  layout: 
-    sequence: 90
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-accessor-more fa-flip-horizontal
-
-  behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:108:&SESSION.::&DEBUG.:108:P108_TASK_ID:&P105_TASK_ID.'
-      page: 108
-      clear-cache: 108
-      values: 
-        p108_task_id: '&P105_TASK_ID.'
-
-    warn-on-unsaved-changes: Do Not Check
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_SHOW_SPLIT
-
-- # ====== Button: DELETE_TASK =================================
-  id: 25258805949844565
-  identification: 
-    button-name: DELETE_TASK
-    label: Delete Task
-
-  layout: 
-    sequence: 100
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
+    css-classes: 
+    - DECENT
     icon: fa-trash-o
 
   behavior: 
@@ -2944,7 +3184,7 @@ buttons:
     database-action: SQL DELETE action
 
   confirmation: 
-    message: Do you want to delete this task?
+    message: Do you want to delete this card?
     style: Default
 
   server-side-condition: 
@@ -2958,9 +3198,9 @@ buttons:
     label: Copy link to clipboard
 
   layout: 
-    sequence: 110
+    sequence: 20
     region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2972,6 +3212,8 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - TRANSPARENT
     icon: fa-copy
 
   behavior: 
@@ -2989,9 +3231,9 @@ buttons:
     label: Close Dialog
 
   layout: 
-    sequence: 120
+    sequence: 60
     region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -3003,8 +3245,6 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - u-pullRight
     icon: fa-times
 
   behavior: 
@@ -3018,9 +3258,9 @@ buttons:
     label: Save changes and go to next task
 
   layout: 
-    sequence: 130
+    sequence: 50
     region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -3033,7 +3273,7 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     css-classes: 
-    - u-pullRight
+    - TRANSPARENT
     icon: fa-arrow-right
 
   behavior: 
@@ -3053,9 +3293,9 @@ buttons:
     label: Save changes and go to previous task
 
   layout: 
-    sequence: 140
+    sequence: 40
     region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -3068,7 +3308,7 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     css-classes: 
-    - u-pullRight
+    - TRANSPARENT
     icon: fa-arrow-left
 
   behavior: 
@@ -3271,7 +3511,7 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: DELETE_TASK # 25258805949844565
+    when-button-pressed: DELETE_CARD # 25258805949844565
 
 - # ====== Process: CLOSE_DIALOG_CREATE ========================
   id: 25265822843844587
@@ -3289,7 +3529,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: CREATE_AND_CLOSE # 25256418258844563
+    when-button-pressed: CREATE_CARD # 25256418258844563
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Process: SAVE_COMMENT ===============================
   id: 25266295708844587
@@ -3401,7 +3644,7 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: MOVE_TASK_TO_TOP # 25257614657844564
+    when-button-pressed: MOVE_TO_TOP # 25257614657844564
 
 - # ====== Process: CLOSE_DIALOG_MOVE_TO_TOP ===================
   id: 25268238551844589
@@ -3419,7 +3662,7 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: MOVE_TASK_TO_TOP # 25257614657844564
+    when-button-pressed: MOVE_TO_TOP # 25257614657844564
 
 branches: 
 - # ====== Branch: CREATE_ANOTHER ==============================
@@ -3435,7 +3678,7 @@ branches:
     type: Page or URL (Redirect)
     target: 
       url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105::&success_msg=#SUCCESS_MSG#'
-      page: 105 # Task Detail
+      page: 105 # Card Detail
       clear-cache: 105
 
   server-side-condition: 
@@ -3454,7 +3697,7 @@ branches:
     type: Page or URL (Redirect)
     target: 
       url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P105_PREV_TASK_ID.&success_msg=#SUCCESS_MSG#'
-      page: 105 # Task Detail
+      page: 105 # Card Detail
       clear-cache: 105
       values: 
         p105_task_id: '&P105_PREV_TASK_ID.'
@@ -3475,7 +3718,7 @@ branches:
     type: Page or URL (Redirect)
     target: 
       url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P105_NEXT_TASK_ID.&success_msg=#SUCCESS_MSG#'
-      page: 105 # Task Detail
+      page: 105 # Card Detail
       clear-cache: 105
       values: 
         p105_task_id: '&P105_NEXT_TASK_ID.'
@@ -3496,7 +3739,7 @@ branches:
     type: Page or URL (Redirect)
     target: 
       url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P105_TASK_ID.&success_msg=#SUCCESS_MSG#'
-      page: 105 # Task Detail
+      page: 105 # Card Detail
       clear-cache: 105
       values: 
         p105_task_id: '&P105_TASK_ID.'

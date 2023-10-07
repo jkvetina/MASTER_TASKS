@@ -7,7 +7,9 @@ WITH x AS (
 )
 SELECT
     'P105_BADGE_CHECKLIST'              AS item_name,
-    tsk_p105.get_badge_icon(COUNT(*))   AS badge
+    CASE WHEN COUNT(*) > 0
+        THEN '<span class="BADGE">' || COUNT(*) || '</span>'
+        END AS badge
 FROM tsk_task_checklist c
 JOIN x
     ON x.task_id            = c.task_id
