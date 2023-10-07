@@ -1,8 +1,8 @@
-CREATE OR REPLACE TRIGGER tsk_task_checklist__
-FOR UPDATE OR INSERT OR DELETE ON tsk_task_checklist
+CREATE OR REPLACE TRIGGER tsk_card_checklist__
+FOR UPDATE OR INSERT OR DELETE ON tsk_card_checklist
 COMPOUND TRIGGER
 
-    c_table_name CONSTANT VARCHAR2(128) := 'TSK_TASK_CHECKLIST';
+    c_table_name CONSTANT VARCHAR2(128) := 'TSK_CARD_CHECKLIST';
 
 
 

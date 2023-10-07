@@ -1,8 +1,8 @@
-CREATE OR REPLACE TRIGGER tsk_tasks__
-FOR UPDATE OR INSERT OR DELETE ON tsk_tasks
+CREATE OR REPLACE TRIGGER tsk_cards__
+FOR UPDATE OR INSERT OR DELETE ON tsk_cards
 COMPOUND TRIGGER
 
-    c_table_name CONSTANT VARCHAR2(128) := 'TSK_TASKS';
+    c_table_name CONSTANT VARCHAR2(128) := 'TSK_CARDS';
 
 
 
@@ -12,6 +12,8 @@ COMPOUND TRIGGER
         IF NOT DELETING THEN
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
+            :NEW.created_by := NVL(:NEW.created_by, :NEW.updated_by);
+            :NEW.created_at := NVL(:NEW.created_at, :NEW.updated_at);
         END IF;
         --
     EXCEPTION

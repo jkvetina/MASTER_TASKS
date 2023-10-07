@@ -1,8 +1,8 @@
-CREATE OR REPLACE TRIGGER tsk_task_comments__
-FOR UPDATE OR INSERT OR DELETE ON tsk_task_comments
+CREATE OR REPLACE TRIGGER tsk_card_commits__
+FOR UPDATE OR INSERT OR DELETE ON tsk_card_commits
 COMPOUND TRIGGER
 
-    c_table_name CONSTANT VARCHAR2(128) := 'TSK_TASK_COMMENTS';
+    c_table_name CONSTANT VARCHAR2(128) := 'TSK_CARD_COMMITS';
 
 
 
