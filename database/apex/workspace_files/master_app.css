@@ -145,6 +145,10 @@ span.BADGE {
     font-size           : 0.75rem;
     line-height         : 1.15rem;
 }
+ul.t-Tabs span.BADGE {
+    margin-left         : 0;
+    line-height         : 0.7rem;
+}
 span.BADGE {
     padding             : 0.25rem 0.45rem 0.2rem;
     background          : red;
@@ -169,20 +173,22 @@ ul.t-Tabs li.t-Tabs-item a.t-Tabs-link {
 ul.t-Tabs {
     margin-bottom       : 0.5rem;
 }
+ul.t-Tabs::selection {
+    user-select         : none;
+}
 ul.t-Tabs .t-Tabs-link {
     padding-bottom      : 0.5rem;
     background          : transparent;
+    font-size           : 1rem;
 }
-ul.t-Tabs .is-active .t-Tabs-link {
+ul.t-Tabs .is-active .t-Tabs-link,
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover {
     outline             : none;
     box-shadow          : none;
-    border-bottom       : 5px solid #555;
     font-weight         : 600;
-}
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover {
+    color               : #000;
     background          : transparent;
-    border-bottom       : 5px solid #555 !important;
-    font-weight         : 600;
+    border-bottom       : 8px solid #615d51 !important;
 }
 .t-TabsRegion-items > div {
     display             : none;
@@ -406,5 +412,9 @@ button .a-Button-label,
 button.DECENT {
     background          : transparent;
     color               : #999;
+}
+button.TRANSPARENT {
+    background          : transparent;
+    color               : #222;
 }
 

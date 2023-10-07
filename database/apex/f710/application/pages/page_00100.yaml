@@ -1445,7 +1445,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_SOURCE_PAGE:100'
-      page: 105 # Task Detail
+      page: 105 # Card Detail
       clear-cache: 105
       values: 
         p105_source_page: 100

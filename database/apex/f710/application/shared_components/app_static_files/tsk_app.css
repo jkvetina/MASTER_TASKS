@@ -66,15 +66,15 @@
 .TARGET_LIKE .PROGRESS {
     color: #555;
 }
-.TARGET_LIKE .PROGRESS_BAR {
-    background      : #ddd;
-    border-radius   : 3px;
+.TARGET_LIKE .PROGRESS_BAR,
+.TARGET_LIKE .PROGRESS_BAR > * {
+    height          : 8px;
+    border-radius   : 4px;
     margin          : 0.5rem 0 0;
+    background      : #ddd;
 }
 .TARGET_LIKE .PROGRESS_BAR > * {
-    height          : 6px;
     background      : #555 !important;
-    border-radius   : 3px;
 }
 .TARGET_LIKE .BADGE.DECENT {
     background      : transparent;
