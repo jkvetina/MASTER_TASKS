@@ -2,8 +2,8 @@ const init_grid = function() {
     $('#BOARD .STICKY').stickyWidget();
     //
     $('#BOARD').on('dragover',  '.TARGET',  dragover);
-    $('#BOARD').on('dragstart', '.TASK',    dragstart);
-    $('#BOARD').on('dragend',   '.TASK',    dragend);
+    $('#BOARD').on('dragstart', '.CARD',    dragstart);
+    $('#BOARD').on('dragend',   '.CARD',    dragend);
 };
 
 const dragover = function(e) {
@@ -12,24 +12,24 @@ const dragover = function(e) {
     //
     e.preventDefault();
     const zone = e.target;
-    const curr_task = document.querySelector('#BOARD div.DRAGGING');
-    const last_task = insertAboveTask(zone, e.clientY);
+    const curr_card = document.querySelector('#BOARD div.DRAGGING');
+    const last_card = insert_above(zone, e.clientY);
 
     // check source and target
-    if (!curr_task.classList.contains('TASK')) {
+    if (!curr_card.classList.contains('CARD')) {
         return;
     }
     if (!zone.classList.contains('TARGET')) {
         return;
     }
     //
-    //console.log('DRAGGING', 'CURR:', curr_task.getAttribute('id'), curr_task, 'ZONE:', zone.getAttribute('id'), last_task);
+    //console.log('DRAGGING', 'CURR:', curr_card.getAttribute('id'), curr_card, 'ZONE:', zone.getAttribute('id'), last_card);
     //
-    if (!curr_task) {
-        zone.appendChild(curr_task);
+    if (!curr_card) {
+        zone.appendChild(curr_card);
     }
     else {
-        zone.insertBefore(curr_task, last_task);
+        zone.insertBefore(curr_card, last_card);
     }
 };
 
@@ -39,9 +39,9 @@ const dragstart = function(e) {
     //
     (e.originalEvent || e).dataTransfer.effectAllowed = 'move';  // get rid of the copy cursor
     //console.log('START', e.target.id, this);
-    if (!e.target.classList.contains('TASK')) {
-        // when clicking direcly on link, find parent element (card/task)
-        if (e.target.parentElement.classList.contains('TASK')) {
+    if (!e.target.classList.contains('CARD')) {
+        // when clicking direcly on link, find parent element (card/card)
+        if (e.target.parentElement.classList.contains('CARD')) {
             e.target.parentElement.classList.add('DRAGGING');
         }
         else {
@@ -58,38 +58,38 @@ const dragend = function(e) {
     // DRAGGING END
     //
     //console.log('STOP', e.dataTransfer.getData("draggedItem"));
-    const task = document.querySelector('#BOARD div.DRAGGING');
-    if (!task) {
+    const card = document.querySelector('#BOARD div.DRAGGING');
+    if (!card) {
         e.preventDefault();
         return;
     }
-    task.classList.remove('DRAGGING');
+    card.classList.remove('DRAGGING');
     //
     const target_primary    = e.target.parentElement.getAttribute('id');
     const target_alt        = e.target.parentElement.parentElement.getAttribute('id');
-    const target            = target_primary.indexOf('TASK_') === 0 ? target_alt : target_primary;
-    const task_id           = task.getAttribute('id').replace('TASK_', '');
+    const target            = target_primary.indexOf('CARD_') === 0 ? target_alt : target_primary;
+    const card_id           = card.getAttribute('id').replace('CARD_', '');
     const status_id         = target.replace('STATUS_', '').split('_SWIMLANE_')[0];
     const swimlane_id       = target.replace('STATUS_', '').split('_SWIMLANE_')[1];
-    const cards             = document.getElementById(target).querySelectorAll('.TASK');
+    const cards             = document.getElementById(target).querySelectorAll('.CARD');
     //
     var sorted = [];
-    cards.forEach(function(task) {
-        sorted.push(task.getAttribute('id').replace('TASK_', ''));
+    cards.forEach(function(card) {
+        sorted.push(card.getAttribute('id').replace('CARD_', ''));
     });
     sorted = sorted.join(':');
     //
-    console.group('TASK_MOVED');
-    console.log('TASK     :', task_id);
+    console.group('CARD_MOVED');
+    console.log('CARD     :', card_id);
     console.log('TARGET   :', target, target_primary, target_alt);
     console.log('STATUS   :', status_id);
     console.log('SWIMLANE :', swimlane_id);
     console.log('SORTED   :', sorted);
     console.groupEnd();
     //
-    apex.server.process('UPDATE_TASK',
+    apex.server.process('UPDATE_CARD',
         {
-            x01: task_id,
+            x01: card_id,
             x02: status_id,
             x03: swimlane_id,
             x04: sorted
@@ -118,21 +118,21 @@ const dragend = function(e) {
 //
 // REORDER ELEMENTS IN SAME ZONE
 //
-const insertAboveTask = (zone, mouseY) => {
-    let closest_task   = null;
+const insert_above = (zone, mouseY) => {
+    let closest_card   = null;
     let closest_offset = Number.NEGATIVE_INFINITY;
     //
-    const cards = zone.querySelectorAll('.TASK:not(.DRAGGING)');
-    cards.forEach((task) => {
-        const { top } = task.getBoundingClientRect();
+    const cards = zone.querySelectorAll('.CARD:not(.DRAGGING)');
+    cards.forEach((card) => {
+        const { top } = card.getBoundingClientRect();
         const offset  = mouseY - top;
         //
         if (offset < 0 && offset > closest_offset) {
             closest_offset = offset;
-            closest_task   = task;
+            closest_card   = card;
         }
     });
     //
-    return closest_task;
+    return closest_card;
 };
 

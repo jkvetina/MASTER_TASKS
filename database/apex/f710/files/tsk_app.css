@@ -13,20 +13,20 @@
     -ms-user-select         : none;
     user-select             : none;
 }
-.TARGET {
+.BOARD .TARGET {
     min-height                  : 3rem;
     border-bottom-left-radius   : 12px;
     border-bottom-right-radius  : 12px;
     border-bottom               : 0.5rem solid #e9e7e7;
     margin-bottom               : 1rem;
 }
-.TARGET,
-.TARGET_LIKE {
+.BOARD .TARGET,
+.BOARD .TARGET_LIKE {
     background      : #e9e7e7;
     min-height      : 3rem;
 }
-.TARGET_LIKE,
-.TARGET_LIKE h3 {
+.BOARD .TARGET_LIKE,
+.BOARD .TARGET_LIKE h3 {
     margin          : 0;
     padding         : 0.45rem 0.5rem 0.1rem;
     border          : 0;
@@ -34,13 +34,13 @@
     text-align      : left;
     font-size       : 100%;
 }
-.TARGET_LIKE {
+.BOARD .TARGET_LIKE {
     border-top-left-radius  : 12px;
     border-top-right-radius : 12px;
 }
 
 /* INDIVIDUAL CARDS */
-.TASK {
+.BOARD .CARD {
     margin          : 0.5rem;
     padding         : 0.8rem;
     border-radius   : 6px;
@@ -49,49 +49,49 @@
     background      : #fff;
     color           : #000;
 }
-.TASK a,
-.TASK a:hover {
+.BOARD .CARD a,
+.BOARD .CARD a:hover {
     color           : #000;
     text-decoration : none;
     outline         : none !important;
 }
-.TASK .PROGRESS,
-.TARGET_LIKE .PROGRESS {
+.BOARD .CARD .PROGRESS,
+.BOARD .TARGET_LIKE .PROGRESS {
     float           : right;
     margin          : -0.5rem -0.45rem 0 0;
     font-size       : 85%;
     font-weight     : normal;
     color           : #888;
 }
-.TARGET_LIKE .PROGRESS {
+.BOARD .TARGET_LIKE .PROGRESS {
     color: #555;
 }
-.TARGET_LIKE .PROGRESS_BAR,
-.TARGET_LIKE .PROGRESS_BAR > * {
+.BOARD .TARGET_LIKE .PROGRESS_BAR,
+.BOARD .TARGET_LIKE .PROGRESS_BAR > * {
     height          : 8px;
     border-radius   : 4px;
     margin          : 0.5rem 0 0;
     background      : #ddd;
 }
-.TARGET_LIKE .PROGRESS_BAR > * {
+.BOARD .TARGET_LIKE .PROGRESS_BAR > * {
     background      : #555 !important;
 }
-.TARGET_LIKE .BADGE.DECENT {
+.BOARD .TARGET_LIKE .BADGE.DECENT {
     background      : transparent;
     color           : #222;
 }
 
 /* INDIVIDUAL CARDS DURING DRAGGING */
-div.DRAGGING {
+.BOARD div.DRAGGING {
     background      : rgb(64, 64, 64);
     color           : #fff !important;
 }
-div.DRAGGING a {
+.BOARD div.DRAGGING a {
     color           : #fff !important;
 }
 
 /* SWIMLANE NAMES */
-.SWIMLANE > * {
+.BOARD .SWIMLANE > * {
     writing-mode        : tb;
     text-orientation    : sideways;
     transform           : rotate(180deg);
