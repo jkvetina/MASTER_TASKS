@@ -99,6 +99,13 @@ css:
         margin-top: -1.2rem;
     }
     
+    /* HIDE DISPLAY ONLY ITEM BORDERS */
+    .t-Form-itemWrapper .display_only.apex-item-display-only {
+        border: 0;
+        color: #555;
+    }
+    
+    
 
 security: 
   authorization-scheme: MASTER - IS_USER # 70314822393792529
@@ -1607,7 +1614,7 @@ page-items:
     alignment: Left
     start-new-layout: false
     start-new-row: true
-    column: Automatic
+    column: 4
     new-column: true
     column-span: Automatic
     label-column-span: Page Template Default
@@ -1702,6 +1709,9 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Page Item: P105_CARD_ID =============================
   id: 25481403010860943
@@ -1800,7 +1810,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 150
+    sequence: 130
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1827,15 +1837,35 @@ page-items:
   id: 25481975929860948
   identification: 
     name: P105_CREATED_AT
-    type: Hidden
+    type: Display Only
+
+  label: 
+    label: Created by &P105_CREATED_BY.
+    alignment: Left
 
   settings: 
-    value-protected: true
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
 
   layout: 
-    sequence: 160
+    sequence: 140
     region: '[FORM]' # 108316672484408031
     position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: 'YYYY-MM-DD HH24:MI'
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -2204,7 +2234,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 170
+    sequence: 150
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2227,55 +2257,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_AUDIT ===============================
-  id: 79917302890307152
-  identification: 
-    name: P105_AUDIT
-    type: Display Only
-
-  label: 
-    label: New
-    alignment: Left
-
-  settings: 
-    format: Plain Text
-    based-on: Item Value
-    show-line-breaks: true
-    send-on-page-submit: true
-
-  layout: 
-    sequence: 130
-    region: '[FORM]' # 108316672484408031
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: false
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 34018942203153820
-    template-options: 
-    - '#DEFAULT#'
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P105_ORDER ===============================
   id: 79917442348307153
   identification: 
@@ -2286,7 +2267,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 140
+    sequence: 180
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2319,7 +2300,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 30
+    sequence: 20
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2349,7 +2330,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 40
+    sequence: 30
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2379,7 +2360,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 70
+    sequence: 60
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2409,7 +2390,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 60
+    sequence: 50
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2439,7 +2420,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 80
+    sequence: 70
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2469,7 +2450,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 50
+    sequence: 40
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2499,7 +2480,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 100
+    sequence: 90
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2529,7 +2510,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 110
+    sequence: 100
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2559,7 +2540,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 120
+    sequence: 110
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2641,7 +2622,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 130
+    sequence: 120
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2665,15 +2646,35 @@ page-items:
   id: 91013637748105144
   identification: 
     name: P105_UPDATED_AT
-    type: Hidden
+    type: Display Only
+
+  label: 
+    label: Updated by &P105_UPDATED_BY.
+    alignment: Left
 
   settings: 
-    value-protected: true
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
 
   layout: 
-    sequence: 180
+    sequence: 160
     region: '[FORM]' # 108316672484408031
     position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
+    format-mask: 'YYYY-MM-DD HH24:MI'
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -2906,7 +2907,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 90
+    sequence: 80
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2936,7 +2937,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 20
+    sequence: 10
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -3806,4 +3807,27 @@ branches:
 
   server-side-condition: 
     when-button-pressed: SPLIT_CARD # 25258087987844564
+
+- # ====== Branch: GOTO_CARDS_ON_AUTH_FAIL =====================
+  id: 26394256764631603
+  identification: 
+    name: GOTO_CARDS_ON_AUTH_FAIL
+
+  execution: 
+    sequence: 10
+    point: Before Header
+
+  behavior: 
+    type: Page or URL (Redirect)
+    target: 
+      url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
+      page: 100 # Cards
+
+  server-side-condition: 
+    type: No Rows returned
+    sql-query: |
+      SELECT 1
+      FROM tsk_p100_cards_v
+      WHERE ROWNUM = 1
+          AND (card_id = :P105_CARD_ID OR :P105_CARD_ID IS NULL);
 
