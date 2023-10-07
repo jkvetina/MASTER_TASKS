@@ -35,8 +35,7 @@ SELECT
     t.is_active,
     t.is_default,
     t.is_colored,
-    t.is_show_user,
-    t.is_show_swimlane,
+    t.is_badge,
     --
     c.count_board,
     c.count_project,

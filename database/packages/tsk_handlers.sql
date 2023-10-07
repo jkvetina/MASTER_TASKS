@@ -178,8 +178,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');
-        rec.is_show_user        := core.get_grid_data('IS_SHOW_USER');
-        rec.is_show_swimlane    := core.get_grid_data('IS_SHOW_SWIMLANE');
+        rec.is_badge            := core.get_grid_data('IS_BADGE');
         rec.order#              := core.get_grid_data('ORDER#');
         --
         tsk_tapi.statuses (rec,

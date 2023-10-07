@@ -228,6 +228,62 @@ regions:
     layout: 
       sequence: 10
 
+  - # ====== Column: IS_BADGE ====================================
+    id: 25479283459860921
+    identification: 
+      column-name: IS_BADGE
+      type: Checkbox
+
+    heading: 
+      heading: Badge
+      alignment: center
+
+    settings: 
+      use-defaults: false
+      checked-value: Y
+
+    layout: 
+      sequence: 140
+      column-alignment: center
+      group: Flags # 89128005942911059
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: IS_BADGE
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
   - # ====== Column: COUNT_CLIENT ================================
     id: 88711618601755657
     identification: 
@@ -243,7 +299,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 160
+      sequence: 170
       column-alignment: end
       group: Counts # 89128033230911060
       use-group-for: Both
@@ -289,7 +345,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 150
+      sequence: 160
       column-alignment: end
       group: Counts # 89128033230911060
       use-group-for: Both
@@ -335,7 +391,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 140
+      sequence: 150
       column-alignment: end
       group: Counts # 89128033230911060
       use-group-for: Both
@@ -452,118 +508,6 @@ regions:
     source: 
       type: Database Column
       database-column: IS_COLORED
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: IS_SHOW_USER ================================
-    id: 91700219030122975
-    identification: 
-      column-name: IS_SHOW_USER
-      type: Checkbox
-
-    heading: 
-      heading: User
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 170
-      column-alignment: center
-      group: Show # 91700334509122977
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_SHOW_USER
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: IS_SHOW_SWIMLANE ============================
-    id: 91700324124122976
-    identification: 
-      column-name: IS_SHOW_SWIMLANE
-      type: Checkbox
-
-    heading: 
-      heading: Swimlane
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 180
-      column-alignment: center
-      group: Show # 91700334509122977
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_SHOW_SWIMLANE
       data-type: VARCHAR2
       query-only: false
       primary-key: false

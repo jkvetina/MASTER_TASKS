@@ -28,7 +28,7 @@
 .TARGET_LIKE,
 .TARGET_LIKE h3 {
     margin          : 0;
-    padding         : 0.5rem 0.5rem 0;
+    padding         : 0.45rem 0.5rem 0.1rem;
     border          : 0;
     box-shadow      : none;
     text-align      : left;
@@ -67,7 +67,7 @@
     color: #555;
 }
 .TARGET_LIKE .PROGRESS_BAR {
-    background      : #ccc;
+    background      : #ddd;
     border-radius   : 3px;
     margin          : 0.5rem 0 0;
 }
@@ -75,6 +75,10 @@
     height          : 6px;
     background      : #555 !important;
     border-radius   : 3px;
+}
+.TARGET_LIKE .BADGE.DECENT {
+    background      : transparent;
+    color           : #222;
 }
 
 /* INDIVIDUAL CARDS DURING DRAGGING */

@@ -168,8 +168,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 SELECT
                     s.status_id,
                     s.status_name,
-                    s.is_show_user,
-                    s.is_show_swimlane,
+                    s.is_badge,
                     SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS user_name,
                     ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST) AS r#
                 FROM tsk_lov_statuses_v s
@@ -194,9 +193,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 ) LOOP
                     clob_append(out_clob, '<div class="TARGET_LIKE">');
                     clob_append(out_clob, '<h3>' || s.status_name ||
-                        CASE WHEN s.is_show_user        = 'Y' THEN RTRIM(' @' || s.user_name, ' @') END ||
-                        CASE WHEN s.is_show_swimlane    = 'Y' THEN RTRIM(' @' || NULLIF(w.swimlane_name, '-'), ' @') END ||
-                        CASE WHEN d.count_tasks > 0 THEN '<span class="BADGE">' || d.count_tasks || '</span>' END ||
+                        CASE WHEN d.count_tasks > 0 THEN '<span class="BADGE' || CASE WHEN s.is_badge IS NULL THEN ' DECENT' END || '">' || d.count_tasks || '</span>' END ||
                         CASE WHEN d.count_tasks > 0 THEN '<span class="PROGRESS">' || d.count_done || '/' || d.count_checks || '</span>' END ||
                         '</h3>' ||
                         '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(d.count_done / NULLIF(d.count_checks, 0) * 100), 0) || '%;"></div></div>'

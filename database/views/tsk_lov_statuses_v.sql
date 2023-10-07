@@ -4,8 +4,7 @@ SELECT
     t.status_name,
     t.is_default,
     t.is_colored,
-    t.is_show_user,
-    t.is_show_swimlane,
+    t.is_badge,
     --
     ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.status_id) AS order#
     --
