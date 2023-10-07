@@ -142,11 +142,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         WHERE s.client_id       = in_client_id
             AND s.project_id    = in_project_id
             AND s.is_active     = 'Y';
-        --
+
+        -- generate grid
         clob_append(out_clob,
-            '<div class="STICKY">' ||
             '<div class="BOARD" style="' ||
-            'grid-template-columns: repeat(' || v_statuses || ', minmax(300px, 1fr)); ' ||
+            'grid-template-columns: 0 repeat(' || v_statuses || ', minmax(300px, 1fr));' ||
             '">');
         --
         FOR w IN (
@@ -160,7 +160,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 AND w.is_active     = 'Y'
             ORDER BY r#
         ) LOOP
-            -- create column names
+            -- add swimlane spacer to headers
+            clob_append(out_clob, '<div class="SPACER"></div>');
+
+            -- create headers for each swimlane
             FOR s IN (
                 SELECT
                     s.status_id,
@@ -175,46 +178,28 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     ON u.user_id        = in_owner_id
                 ORDER BY s.order#
             ) LOOP
-                IF w.r# = 1 THEN
-                    SELECT COUNT(*)
-                    INTO s.count_tasks
-                    FROM tsk_p100_tasks_v t
-                    WHERE t.client_id       = in_client_id
-                        AND t.project_id    = in_project_id
-                        AND t.board_id      = in_board_id
-                        AND t.status_id     = s.status_id
-                        AND t.swimlane_id   = w.swimlane_id;
-                    --
-                    clob_append(out_clob, '<div class="TARGET_LIKE">');
-                    clob_append(out_clob, '<h3>' || s.status_name ||
-                        CASE WHEN s.is_show_user        = 'Y' THEN RTRIM(' @' || s.user_name, ' @') END ||
-                        CASE WHEN s.is_show_swimlane    = 'Y' THEN RTRIM(' @' || NULLIF(w.swimlane_name, '-'), ' @') END ||
-                        CASE WHEN s.count_tasks > 0 THEN '<span class="BADGE">' || s.count_tasks || '</span>' END ||
-                        '</h3>');
-                    clob_append(out_clob, '</div>');
-                END IF;
+                SELECT COUNT(*)
+                INTO s.count_tasks
+                FROM tsk_p100_tasks_v t
+                WHERE t.client_id       = in_client_id
+                    AND t.project_id    = in_project_id
+                    AND t.board_id      = in_board_id
+                    AND t.status_id     = s.status_id
+                    AND t.swimlane_id   = w.swimlane_id;
+                --
+                clob_append(out_clob, '<div class="TARGET_LIKE">');
+                clob_append(out_clob, '<h3>' || s.status_name ||
+                    CASE WHEN s.is_show_user        = 'Y' THEN RTRIM(' @' || s.user_name, ' @') END ||
+                    CASE WHEN s.is_show_swimlane    = 'Y' THEN RTRIM(' @' || NULLIF(w.swimlane_name, '-'), ' @') END ||
+                    CASE WHEN s.count_tasks > 0 THEN '<span class="BADGE">' || s.count_tasks || '</span>' END ||
+                    '</h3>');
+                clob_append(out_clob, '</div>');
             END LOOP;
-        END LOOP;
 
-        -- generate grid
-        clob_append(out_clob,
-            '</div></div>' ||
-            '<div class="BOARD" style="' ||
-            'grid-template-columns: repeat(' || v_statuses || ', minmax(300px, 1fr)); ' ||
-            '">');
-        --
-        FOR w IN (
-            SELECT
-                w.*,
-                ROW_NUMBER() OVER (ORDER BY CASE WHEN w.swimlane_id = '-' THEN NULL ELSE w.order# END NULLS LAST) AS r#
-            FROM tsk_swimlanes w
-            WHERE w.client_id       = in_client_id
-                AND w.project_id    = in_project_id
-                AND (w.swimlane_id  = in_swimlane_id OR in_swimlane_id IS NULL)
-                AND w.is_active     = 'Y'
-            ORDER BY r#
-        ) LOOP
-            -- create swimlanes
+            -- add swimlane name
+            clob_append(out_clob, '<div class="SWIMLANE" id="SWIMLANE_' || w.swimlane_id || '"><span>' || w.swimlane_name || '</span></div>');
+
+            -- create status columns (card holders) for each swimlanes
             FOR s IN (
                 SELECT
                     s.status_id,
@@ -222,7 +207,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 FROM tsk_lov_statuses_v s
                 ORDER BY s.order#
             ) LOOP
-                clob_append(out_clob, '<div class="TARGET' || CASE WHEN w.r# > 1 THEN ' TARGET2' END || '" id="STATUS_' || s.status_id || '_SWIMLANE_' || w.swimlane_id || '">');
+                clob_append(out_clob, '<div class="TARGET" id="STATUS_' || s.status_id || '_SWIMLANE_' || w.swimlane_id || '">');
                 --
                 FOR t IN (
                     SELECT
