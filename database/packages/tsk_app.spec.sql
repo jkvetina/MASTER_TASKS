@@ -160,6 +160,14 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
     PROCEDURE init_projects;
 
+
+
+    FUNCTION get_card_next_sequence (
+        in_sequence_id      tsk_sequences.sequence_id%TYPE,
+        in_client_id        tsk_sequences.client_id%TYPE        := NULL
+    )
+    RETURN tsk_cards.card_number%TYPE;
+
 END;
 /
 

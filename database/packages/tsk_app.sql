@@ -568,6 +568,28 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         NULL;       --remove
     END;
 
+
+
+    FUNCTION get_card_next_sequence (
+        in_sequence_id      tsk_sequences.sequence_id%TYPE,
+        in_client_id        tsk_sequences.client_id%TYPE        := NULL
+    )
+    RETURN tsk_cards.card_number%TYPE
+    AS
+        v_max               tsk_cards.card_number%TYPE;
+        v_value             tsk_cards.card_number%TYPE;
+    BEGIN
+        SELECT
+            MAX(t.card_number),
+            REGEXP_SUBSTR(REPLACE(MAX(t.card_number), in_sequence_id, ''), '\d+$')
+        INTO v_max, v_value
+        FROM tsk_cards t
+        WHERE t.client_id       = COALESCE(in_client_id, tsk_app.get_client_id())
+            AND t.card_number   LIKE in_sequence_id || '%';
+        --
+        RETURN REPLACE(v_max, v_value, LPAD(TO_NUMBER(v_value) + 1, LENGTH(v_value), '0'));
+    END;
+
 END;
 /
 

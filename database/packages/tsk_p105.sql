@@ -93,6 +93,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
     AS
         rec                 tsk_cards%ROWTYPE;
         v_is_detail         CONSTANT BOOLEAN := core.get_page_id() = 105;
+        v_sequence          tsk_sequences.sequence_id%TYPE;
     BEGIN
         rec.card_id         := CASE WHEN v_is_detail THEN core.get_item('P105_CARD_ID')     ELSE core.get_grid_data('CARD_ID') END;
         rec.card_number     := CASE WHEN v_is_detail THEN core.get_item('P105_CARD_NUMBER') ELSE core.get_grid_data('CARD_NUMBER') END;
@@ -109,7 +110,18 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         rec.order#          := CASE WHEN v_is_detail THEN core.get_item('P105_ORDER')       ELSE core.get_grid_data('ORDER#') END;
         --
         rec.deadline_at     := core.get_date(CASE WHEN v_is_detail THEN core.get_item('P105_DEADLINE_AT') ELSE core.get_grid_data('DEADLINE_AT') END);
+
+        -- calculate next card_number
+        v_sequence          := CASE WHEN v_is_detail THEN core.get_item('P105_SEQUENCE') ELSE core.get_grid_data('SEQUENCE') END;
         --
+        IF rec.card_number IS NULL AND v_sequence IS NOT NULL THEN
+            rec.card_number := tsk_app.get_card_next_sequence (
+                in_sequence_id  => v_sequence,
+                in_client_id    => rec.client_id
+            );
+        END IF;
+
+        -- create/update record
         tsk_tapi.cards(rec,
             in_action => CASE WHEN core.get_page_id() = 105 THEN SUBSTR(core.get_request(), 1, 1) END
         );
