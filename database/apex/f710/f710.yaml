@@ -1,9 +1,9 @@
 ---
-# ====== Application: Tasks II. ==============================
+# ====== Application: Card Crunchers =========================
 id: 710
 identification: 
-  name: Tasks II.
-  alias: TASKS
+  name: Card Crunchers
+  alias: CARDS
   version: 2023-09-20
   application-group: LAUNCHPAD # 14521045818542929
 
@@ -136,7 +136,7 @@ substitutions:
     name: APP_NAME
 
   value: 
-    static-value: Tasks II.
+    static-value: Card Crunchers
 
 - # ====== Substitution: APP_DESC ==============================
   id: 2
@@ -144,7 +144,7 @@ substitutions:
     name: APP_DESC
 
   value: 
-    static-value: Simple tasks management, kanban style board, checklists/acceptance criteria...
+    static-value: Simple tasks/cards management on kanban style board with checklists/acceptance criteria and more...
 
 - # ====== Substitution: APP_PREFIX ============================
   id: 3

@@ -14,8 +14,8 @@ wwv_flow_imp.component_begin (
 wwv_imp_workspace.create_flow(
  p_id=>wwv_flow.g_flow_id
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'APPS')
-,p_name=>nvl(wwv_flow_application_install.get_application_name,'Tasks II.')
-,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'TASKS')
+,p_name=>nvl(wwv_flow_application_install.get_application_name,'Card Crunchers')
+,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'CARDS')
 ,p_application_group=>wwv_flow_imp.id(14521045818542929)
 ,p_application_group_name=>'LAUNCHPAD'
 ,p_application_group_comment=>'Apps visible in Launchpad'
@@ -61,9 +61,9 @@ wwv_imp_workspace.create_flow(
 ,p_auto_time_zone=>'N'
 ,p_error_handling_function=>'core.handle_apex_error'
 ,p_substitution_string_01=>'APP_NAME'
-,p_substitution_value_01=>'Tasks II.'
+,p_substitution_value_01=>'Card Crunchers'
 ,p_substitution_string_02=>'APP_DESC'
-,p_substitution_value_02=>'Simple tasks management, kanban style board, checklists/acceptance criteria...'
+,p_substitution_value_02=>'Simple tasks/cards management on kanban style board with checklists/acceptance criteria and more...'
 ,p_substitution_string_03=>'APP_PREFIX'
 ,p_substitution_value_03=>'TSK_'
 ,p_last_updated_by=>'DEV'
