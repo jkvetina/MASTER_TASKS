@@ -456,6 +456,39 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
 
 
+    PROCEDURE sequences (
+        rec                     IN OUT NOCOPY   tsk_sequences%ROWTYPE,
+        --
+        in_action               CHAR                                    := NULL,
+        in_client_id            tsk_sequences.client_id%TYPE            := NULL,
+        in_sequence_id          tsk_sequences.sequence_id%TYPE          := NULL
+    )
+    AS
+        c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
+    BEGIN
+        -- overwrite some values
+        rec.updated_by          := core.get_user_id();
+        rec.updated_at          := SYSDATE;
+
+        -- upsert record
+        UPDATE tsk_sequences t
+        SET ROW = rec
+        WHERE t.client_id       = rec.client_id
+            AND t.sequence_id   = rec.sequence_id;
+        --
+        IF SQL%ROWCOUNT = 0 THEN
+            INSERT INTO tsk_sequences
+            VALUES rec;
+        END IF;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE cards (
         rec                     IN OUT NOCOPY   tsk_cards%ROWTYPE,
         in_action                               CHAR                                := NULL

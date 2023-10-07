@@ -108,6 +108,16 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
 
 
 
+    PROCEDURE sequences (
+        rec                     IN OUT NOCOPY   tsk_sequences%ROWTYPE,
+        --
+        in_action               CHAR                                    := NULL,
+        in_client_id            tsk_sequences.client_id%TYPE            := NULL,
+        in_sequence_id          tsk_sequences.sequence_id%TYPE          := NULL
+    );
+
+
+
     PROCEDURE cards (
         rec                     IN OUT NOCOPY   tsk_cards%ROWTYPE,
         in_action                               CHAR                                := NULL

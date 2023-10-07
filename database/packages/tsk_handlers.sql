@@ -282,6 +282,40 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
+    PROCEDURE save_sequences
+    AS
+        rec                     tsk_sequences%ROWTYPE;
+        in_action               CONSTANT CHAR := core.get_grid_action();
+    BEGIN
+        -- change record in table
+        rec.client_id           := core.get_grid_data('CLIENT_ID');
+        rec.sequence_id         := core.get_grid_data('SEQUENCE_ID');
+        rec.sequence_desc       := core.get_grid_data('SEQUENCE_DESC');
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
+        rec.order#              := core.get_grid_data('ORDER#');
+        --
+        tsk_tapi.sequences (rec,
+            in_action               => in_action,
+            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
+            in_sequence_id          => NVL(core.get_grid_data('OLD_SEQUENCE_ID'), rec.sequence_id)
+        );
+        --
+        IF in_action = 'D' THEN
+            RETURN;     -- exit this procedure
+        END IF;
+
+        -- update primary key back to APEX grid for proper row refresh
+        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
+        core.set_grid_data('OLD_SEQUENCE_ID',       rec.sequence_id);
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE reorder_statuses
     AS
         in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();

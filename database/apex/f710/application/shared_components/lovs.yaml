@@ -135,3 +135,20 @@
     default-sort: USER_NAME
     sort-direction: Ascending (Nulls Last)
 
+- # ====== List of Values: LOV_SEQUENCES =======================
+  id: 26408996815154587
+  identification: 
+    name: LOV_SEQUENCES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_SEQUENCES_V
+
+  column-mapping: 
+    return: SEQUENCE_ID
+    display: SEQUENCE_ID
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+
