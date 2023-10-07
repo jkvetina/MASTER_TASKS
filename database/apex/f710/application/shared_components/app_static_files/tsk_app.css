@@ -68,8 +68,8 @@
 }
 .BOARD .TARGET_LIKE .PROGRESS_BAR,
 .BOARD .TARGET_LIKE .PROGRESS_BAR > * {
-    height          : 8px;
-    border-radius   : 4px;
+    height          : 7px;
+    border-radius   : 3px;
     margin          : 0.5rem 0 0;
     background      : #ddd;
 }
