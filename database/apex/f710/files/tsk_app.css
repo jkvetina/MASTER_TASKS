@@ -55,11 +55,26 @@
     text-decoration : none;
     outline         : none !important;
 }
-.TASK .PROGRESS {
-    margin          : -0.5rem -0.45rem 0 0;
+.TASK .PROGRESS,
+.TARGET_LIKE .PROGRESS {
     float           : right;
+    margin          : -0.5rem -0.45rem 0 0;
     font-size       : 85%;
+    font-weight     : normal;
     color           : #888;
+}
+.TARGET_LIKE .PROGRESS {
+    color: #555;
+}
+.TARGET_LIKE .PROGRESS_BAR {
+    background      : #ccc;
+    border-radius   : 3px;
+    margin          : 0.5rem 0 0;
+}
+.TARGET_LIKE .PROGRESS_BAR > * {
+    height          : 6px;
+    background      : #555 !important;
+    border-radius   : 3px;
 }
 
 /* INDIVIDUAL CARDS DURING DRAGGING */

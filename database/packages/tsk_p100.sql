@@ -171,29 +171,38 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     s.is_show_user,
                     s.is_show_swimlane,
                     SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS user_name,
-                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST) AS r#,
-                    0 AS count_tasks
+                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST) AS r#
                 FROM tsk_lov_statuses_v s
                 LEFT JOIN app_users_v u
                     ON u.user_id        = in_owner_id
                 ORDER BY s.order#
             ) LOOP
-                SELECT COUNT(*)
-                INTO s.count_tasks
-                FROM tsk_p100_tasks_v t
-                WHERE t.client_id       = in_client_id
-                    AND t.project_id    = in_project_id
-                    AND t.board_id      = in_board_id
-                    AND t.status_id     = s.status_id
-                    AND t.swimlane_id   = w.swimlane_id;
-                --
-                clob_append(out_clob, '<div class="TARGET_LIKE">');
-                clob_append(out_clob, '<h3>' || s.status_name ||
-                    CASE WHEN s.is_show_user        = 'Y' THEN RTRIM(' @' || s.user_name, ' @') END ||
-                    CASE WHEN s.is_show_swimlane    = 'Y' THEN RTRIM(' @' || NULLIF(w.swimlane_name, '-'), ' @') END ||
-                    CASE WHEN s.count_tasks > 0 THEN '<span class="BADGE">' || s.count_tasks || '</span>' END ||
-                    '</h3>');
-                clob_append(out_clob, '</div>');
+                FOR d IN (
+                    SELECT
+                        COUNT(DISTINCT t.task_id)       AS count_tasks,
+                        COUNT(NVL(l.checklist_id, 0))   AS count_checks,
+                        COUNT(l.checklist_done)         AS count_done
+                        --
+                    FROM tsk_p100_tasks_v t
+                    LEFT JOIN tsk_task_checklist l
+                        ON l.task_id        = t.task_id
+                    WHERE t.client_id       = in_client_id
+                        AND t.project_id    = in_project_id
+                        AND t.board_id      = in_board_id
+                        AND t.status_id     = s.status_id
+                        AND t.swimlane_id   = w.swimlane_id
+                ) LOOP
+                    clob_append(out_clob, '<div class="TARGET_LIKE">');
+                    clob_append(out_clob, '<h3>' || s.status_name ||
+                        CASE WHEN s.is_show_user        = 'Y' THEN RTRIM(' @' || s.user_name, ' @') END ||
+                        CASE WHEN s.is_show_swimlane    = 'Y' THEN RTRIM(' @' || NULLIF(w.swimlane_name, '-'), ' @') END ||
+                        CASE WHEN d.count_tasks > 0 THEN '<span class="BADGE">' || d.count_tasks || '</span>' END ||
+                        CASE WHEN d.count_tasks > 0 THEN '<span class="PROGRESS">' || d.count_done || '/' || d.count_checks || '</span>' END ||
+                        '</h3>' ||
+                        '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(d.count_done / NULLIF(d.count_checks, 0) * 100), 0) || '%;"></div></div>'
+                    );
+                    clob_append(out_clob, '</div>');
+                END LOOP;
             END LOOP;
 
             -- add swimlane name
