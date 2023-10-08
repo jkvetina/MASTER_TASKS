@@ -1,11 +1,11 @@
 ---
-# ====== Page: Cards =========================================
+# ====== Page: &APP_NAME. ====================================
 id: 100
 identification: 
-  name: Cards
+  name: '&APP_NAME.'
   alias: HOME
-  title: Cards
-  page-group: '   MAIN - CARDS' # 23490192563159466
+  title: '&APP_NAME.'
+  page-group: 1) CARDS # 23490192563159466
 
 appearance: 
   page-mode: Normal
@@ -1532,7 +1532,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:Y'
-      page: 100 # Cards
+      page: 100 # &APP_NAME.
       values: 
         p100_show_grid: Y
 
@@ -1572,7 +1572,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:'
-      page: 100 # Cards
+      page: 100 # &APP_NAME.
       values: 
 
     warn-on-unsaved-changes: Do Not Check

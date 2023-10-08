@@ -1,11 +1,11 @@
 ---
 # ====== Page: Sequences =====================================
-id: 350
+id: 210
 identification: 
   name: Sequences
   alias: SEQUENCES
   title: Sequences
-  page-group: '  MAIN - BOARDS' # 23490292620162217
+  page-group: 2) CLIENTS # 26770108974455615
 
 appearance: 
   page-mode: Normal
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Sequences for &P0_CLIENT_NAME. ==============
-  id: 212094778156447091
+  id: 238866536822945997
   identification: 
     title: Sequences for &P0_CLIENT_NAME.
     type: Static Content
@@ -81,7 +81,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Sequences [GRID] ============================
-  id: 246886158235435907
+  id: 273657916901934813
   identification: 
     title: Sequences [GRID]
     type: Interactive Grid
@@ -124,7 +124,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 246886480287435910
+    id: 273658238953934816
     edit: 
       enabled: true
       allowed-operations: 
@@ -183,14 +183,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 246908973296608891
+      id: 273680731963107797
       identification: 
         name: Primary Report
         alias: 347675
 
   columns: 
   - # ====== Column: OLD_SEQUENCE_ID =============================
-    id: 26394424169631605
+    id: 53166182836130511
     identification: 
       column-name: OLD_SEQUENCE_ID
       type: Hidden
@@ -224,7 +224,7 @@ regions:
       sort: false
 
   - # ====== Column: SEQUENCE_ID =================================
-    id: 26394528974631606
+    id: 53166287641130512
     identification: 
       column-name: SEQUENCE_ID
       type: Text Field
@@ -279,7 +279,7 @@ regions:
       hide: true
 
   - # ====== Column: SEQUENCE_DESC ===============================
-    id: 26394655137631607
+    id: 53166413804130513
     identification: 
       column-name: SEQUENCE_DESC
       type: Text Field
@@ -332,7 +332,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 76150483467519357
+    id: 102922242134018263
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -341,7 +341,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 76150608574519358
+    id: 102922367241018264
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -355,7 +355,7 @@ regions:
       sequence: 10
 
   - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 145038194902671007
+    id: 171809953569169913
     identification: 
       column-name: OLD_CLIENT_ID
       type: Hidden
@@ -389,7 +389,7 @@ regions:
       sort: false
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 246886763649435913
+    id: 273658522315934819
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -448,7 +448,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 246886925474435915
+    id: 273658684140934821
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -504,7 +504,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 246939782397739221
+    id: 273711541064238127
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -591,14 +591,14 @@ regions:
 
 buttons: 
 - # ====== Button: REORDER_SEQUENCES ===========================
-  id: 26460363672204230
+  id: 26777443235498955
   identification: 
     button-name: REORDER_SEQUENCES
     label: Reorder Sequences
 
   layout: 
     sequence: 10
-    region: Sequences for &P0_CLIENT_NAME. # 212094778156447091
+    region: Sequences for &P0_CLIENT_NAME. # 238866536822945997
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -623,12 +623,12 @@ buttons:
 
 processes: 
 - # ====== Process: SAVE_SEQUENCES =============================
-  id: 26459671202204229
+  id: 26776714562498952
   identification: 
     name: SAVE_SEQUENCES
     type: Invoke API
     execution-chain: None
-    editable-region: Sequences [GRID] # 246886158235435907
+    editable-region: Sequences [GRID] # 273657916901934813
 
   settings: 
     type: PL/SQL Package
@@ -651,7 +651,7 @@ processes:
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
 
 - # ====== Process: REORDER_SEQUENCES ==========================
-  id: 26461385491204231
+  id: 26778080441498973
   identification: 
     name: REORDER_SEQUENCES
     type: Invoke API
@@ -672,6 +672,6 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_SEQUENCES # 26460363672204230
+    when-button-pressed: REORDER_SEQUENCES # 26777443235498955
     type: Never
 

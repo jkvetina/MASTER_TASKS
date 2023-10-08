@@ -13,11 +13,11 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_page.create_page(
  p_id=>100
-,p_name=>'Cards'
+,p_name=>'&APP_NAME.'
 ,p_alias=>'HOME'
-,p_step_title=>'Cards'
+,p_step_title=>'&APP_NAME.'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(23490192563159466)  --    MAIN - CARDS
+,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_protection_level=>'C'

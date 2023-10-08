@@ -17,7 +17,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'CLIENTS'
 ,p_step_title=>'Clients'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(78006013489194627)  --  MAIN - PROJECTS
+,p_group_id=>wwv_flow_imp.id(26770108974455615)  -- 2) CLIENTS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_protection_level=>'C'

@@ -12,16 +12,20 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(23490192563159466)  --    MAIN - CARDS
-,p_group_name=>'   MAIN - CARDS'
+ p_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
+,p_group_name=>'1) CARDS'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(23490292620162217)  --   MAIN - BOARDS
-,p_group_name=>'  MAIN - BOARDS'
+ p_id=>wwv_flow_imp.id(26770108974455615)  -- 2) CLIENTS
+,p_group_name=>'2) CLIENTS'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(78006013489194627)  --  MAIN - PROJECTS
-,p_group_name=>' MAIN - PROJECTS'
+ p_id=>wwv_flow_imp.id(78006013489194627)  -- 3) PROJECTS
+,p_group_name=>'3) PROJECTS'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(23490292620162217)  -- 4) BOARDS
+,p_group_name=>'4) BOARDS'
 );
 wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(34426432007203133)  -- __ INTERNAL
