@@ -109,16 +109,6 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
-    FUNCTION generate_menu_favorites
-    RETURN VARCHAR2;
-
-
-
-    FUNCTION generate_menu_current
-    RETURN VARCHAR2;
-
-
-
     FUNCTION get_link (
         in_content          VARCHAR2,
         in_client_id        tsk_recent.client_id%TYPE       := NULL,

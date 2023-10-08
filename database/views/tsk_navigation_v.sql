@@ -34,10 +34,12 @@ SELECT
     n.order#
 FROM app_navigation_v n
 CROSS JOIN curr
+WHERE (n.app_id != curr.app_id OR n.lvl = 1)    -- show just main pages
 UNION ALL
+--
 SELECT                      -- append extras
     curr.app_id,
-    100                     AS page_id,
+    t.page_id,
     NULL                    AS parent_id,
     NULL                    AS auth_scheme,
     NULL                    AS procedure_name,
@@ -46,7 +48,6 @@ SELECT                      -- append extras
     --
     NULL AS label,
     '#'  AS target,
-    --
     NULL AS is_current_list_entry,
     NULL AS image,
     NULL AS image_attribute,
@@ -56,25 +57,22 @@ SELECT                      -- append extras
     NULL AS attribute02,
     NULL AS attribute03,
     NULL AS attribute04,
-    --
     ' style="display: none !important;"' AS attribute05,
-    --
     NULL AS attribute06,
     NULL AS attribute07,
-    --
-    '<div style="display: flex; padding-bottom: 1.5rem;">' ||
-        '<div class="COL_1">' || tsk_app.generate_menu_favorites() || '</div>' ||
-        '<div class="COL_2">' || tsk_app.generate_menu_current() || '</div>' ||
-        --'<div class="COL_3"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-filter"></span>&' || 'nbsp; <span style="">Filters</span></a></div>' ||
-        '<div class="COL_4 NO_HOVER" style="padding-left: 2rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>' ||
-    '</div>' AS attribute08,
-    --
+    '<div style="display: flex; padding-bottom: 1rem;">' || t.payload || '</div>' AS attribute08,
     NULL AS attribute09,
     NULL AS attribute10,
     --
-    '/100.100/' AS order#
+    '/' || t.page_id || '.' || t.page_id || '/' AS order#
     --
-FROM DUAL
+FROM (
+    SELECT 100 AS page_id, tsk_nav.get_home()       AS payload FROM DUAL UNION ALL
+    SELECT 200 AS page_id, tsk_nav.get_clients()    AS payload FROM DUAL UNION ALL
+    SELECT 300 AS page_id, tsk_nav.get_projects()   AS payload FROM DUAL UNION ALL
+    SELECT 400 AS page_id, tsk_nav.get_boards()     AS payload FROM DUAL UNION ALL
+    SELECT 500 AS page_id, tsk_nav.get_commits()    AS payload FROM DUAL
+) t
 CROSS JOIN curr;
 --
 COMMENT ON TABLE tsk_navigation_v IS '';
