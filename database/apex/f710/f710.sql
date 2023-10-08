@@ -33,7 +33,7 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   18:11 Neděle Říjen 8, 2023
+--   Date and Time:   21:32 Neděle Říjen 8, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -41,7 +41,7 @@ prompt APPLICATION 710 - Card Crunchers
 --       Items:                   62
 --       Processes:               30
 --       Regions:                 46
---       Buttons:                 25
+--       Buttons:                 26
 --       Dynamic Actions:         10
 --     Shared Components:
 --       Logic:
@@ -20978,6 +20978,21 @@ wwv_flow_imp_page.create_page_button(
 ,p_database_action=>'UPDATE'
 );
 wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(26839989070020938)
+,p_button_sequence=>60
+,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
+,p_button_name=>'UPDATE_AND_REFRESH'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'Update and Refresh'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_condition=>'P105_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_icon_css_classes=>'fa-refresh'
+,p_database_action=>'UPDATE'
+);
+wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25257614657844564)
 ,p_button_sequence=>70
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
@@ -20989,27 +21004,8 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_button_condition=>'P105_CARD_ID'
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
-,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-page-top'
 ,p_database_action=>'UPDATE'
-);
-wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(25258805949844565)
-,p_button_sequence=>80
-,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
-,p_button_name=>'DELETE_CARD'
-,p_button_action=>'SUBMIT'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
-,p_button_image_alt=>'Delete Card'
-,p_button_position=>'RIGHT_OF_TITLE'
-,p_button_execute_validations=>'N'
-,p_confirm_message=>'Do you want to delete this card?'
-,p_button_condition=>'P105_CARD_ID'
-,p_button_condition_type=>'ITEM_IS_NOT_NULL'
-,p_button_css_classes=>'DECENT'
-,p_icon_css_classes=>'fa-trash-o'
-,p_database_action=>'DELETE'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25259296786844565)
@@ -21029,6 +21025,24 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-copy'
 );
 wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(25258805949844565)
+,p_button_sequence=>30
+,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
+,p_button_name=>'DELETE_CARD'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'Delete Card'
+,p_button_position=>'UP'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'Do you want to delete this card?'
+,p_button_condition=>'P105_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_button_css_classes=>'DECENT'
+,p_icon_css_classes=>'fa-trash-o'
+,p_database_action=>'DELETE'
+);
+wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260460384844566)
 ,p_button_sequence=>40
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
@@ -21040,7 +21054,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'UP'
 ,p_button_condition=>'P105_PREV_CARD_ID'
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
-,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-arrow-left'
 ,p_database_action=>'UPDATE'
 );
@@ -21056,7 +21069,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'UP'
 ,p_button_condition=>'P105_NEXT_CARD_ID'
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
-,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-arrow-right'
 ,p_database_action=>'UPDATE'
 );
@@ -21174,6 +21186,9 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'BOTH'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25481403010860943)
 ,p_name=>'P105_CARD_ID'
@@ -21190,9 +21205,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25481752154860946)
 ,p_name=>'P105_CARD_DESC'
@@ -21800,6 +21812,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'CLOSE_DIALOG_UPDATE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(25256870991844563)
 ,p_internal_uid=>25265086706844586
 );
 wwv_flow_imp_page.create_page_process(
