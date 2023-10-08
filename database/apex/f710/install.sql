@@ -46,6 +46,8 @@ prompt --install
 @@application/shared_components/user_interface/lovs/lov_clients.sql
 @@application/shared_components/user_interface/lovs/lov_owners.sql
 @@application/shared_components/user_interface/lovs/lov_projects.sql
+@@application/shared_components/user_interface/lovs/lov_repos.sql
+@@application/shared_components/user_interface/lovs/lov_repo_owners.sql
 @@application/shared_components/user_interface/lovs/lov_sequences.sql
 @@application/shared_components/user_interface/lovs/lov_statuses.sql
 @@application/shared_components/user_interface/lovs/lov_swimlanes.sql
@@ -154,6 +156,9 @@ prompt --install
 @@application/pages/page_00320.sql
 @@application/pages/page_00340.sql
 @@application/pages/page_00400.sql
+@@application/pages/page_00500.sql
+@@application/pages/page_00510.sql
+@@application/pages/page_00515.sql
 @@application/deployment/definition.sql
 @@application/deployment/checks.sql
 @@application/deployment/buildoptions.sql

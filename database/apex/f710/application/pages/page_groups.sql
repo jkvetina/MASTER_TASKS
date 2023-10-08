@@ -28,6 +28,10 @@ wwv_flow_imp_page.create_page_group(
 ,p_group_name=>'4) BOARDS'
 );
 wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(26927386398126716)  -- 5) COMMITS
+,p_group_name=>'5) COMMITS'
+);
+wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(34426432007203133)  -- __ INTERNAL
 ,p_group_name=>'__ INTERNAL'
 );
