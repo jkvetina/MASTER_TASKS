@@ -5,7 +5,7 @@ identification:
   name: Card Detail
   alias: CARD
   title: Card Detail
-  page-group: '   MAIN - CARDS' # 23490192563159466
+  page-group: 1) CARDS # 23490192563159466
 
 appearance: 
   page-mode: Modal Dialog
@@ -3880,13 +3880,16 @@ branches:
     type: Page or URL (Redirect)
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
-      page: 100 # Cards
+      page: 100 # &APP_NAME.
 
   server-side-condition: 
     type: No Rows returned
     sql-query: |
       SELECT 1
-      FROM tsk_p100_cards_v
-      WHERE ROWNUM = 1
-          AND (card_id = :P105_CARD_ID OR :P105_CARD_ID IS NULL);
+      FROM DUAL
+      WHERE (:P105_CARD_ID IS NULL OR EXISTS (
+          SELECT 1
+          FROM tsk_p100_cards_v t
+          WHERE t.card_id = :P105_CARD_ID
+      ));
 

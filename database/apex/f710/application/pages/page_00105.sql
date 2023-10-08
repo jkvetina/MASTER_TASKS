@@ -19,7 +19,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Card Detail'
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(23490192563159466)  --    MAIN - CARDS
+,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
 ,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'var delete_comment = function (card_id, comment_id) {',
 '    apex.server.process(''AJAX_DELETE_COMMENT'',',
@@ -933,9 +933,12 @@ wwv_flow_imp_page.create_page_branch(
 ,p_branch_condition_type=>'NOT_EXISTS'
 ,p_branch_condition=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT 1',
-'FROM tsk_p100_cards_v',
-'WHERE ROWNUM = 1',
-'    AND (card_id = :P105_CARD_ID OR :P105_CARD_ID IS NULL);'))
+'FROM DUAL',
+'WHERE (:P105_CARD_ID IS NULL OR EXISTS (',
+'    SELECT 1',
+'    FROM tsk_p100_cards_v t',
+'    WHERE t.card_id = :P105_CARD_ID',
+'));'))
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25478579834860914)
