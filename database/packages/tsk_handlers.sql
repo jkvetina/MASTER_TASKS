@@ -131,6 +131,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.board_name      := core.get_grid_data('BOARD_NAME');
         rec.client_id       := core.get_grid_data('CLIENT_ID');
         rec.project_id      := core.get_grid_data('PROJECT_ID');
+        rec.sequence_id     := core.get_grid_data('SEQUENCE_ID');
         rec.is_active       := core.get_grid_data('IS_ACTIVE');
         rec.is_default      := core.get_grid_data('IS_DEFAULT');
         rec.order#          := core.get_grid_data('ORDER#');

@@ -71,6 +71,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             ) LOOP
                 core.set_item('P105_CATEGORY_ID', c.category_id);
             END LOOP;
+            --
+            FOR c IN (
+                SELECT t.sequence_id
+                FROM tsk_boards_v t
+                WHERE t.board_id = tsk_app.get_board_id()
+            ) LOOP
+                core.set_item('P105_SEQUENCE', c.sequence_id);
+            END LOOP;
         END IF;
 
         -- overwrite some page items
