@@ -20,7 +20,11 @@ COMPOUND TRIGGER
             --
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
-            --
+
+            -- check project name
+            IF NOT REGEXP_LIKE(:NEW.project_id, '^[A-Za-z0-9_-]{1,32}$') THEN
+                core.raise_error('WRONG_PROJECT', :NEW.project_id);
+            END IF;
         END IF;
         --
         IF INSERTING THEN

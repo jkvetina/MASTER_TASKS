@@ -1,8 +1,8 @@
-CREATE OR REPLACE TRIGGER tsk_statuses__
-FOR UPDATE OR INSERT OR DELETE ON tsk_statuses
+CREATE OR REPLACE TRIGGER tsk_sequences__
+FOR UPDATE OR INSERT OR DELETE ON tsk_sequences
 COMPOUND TRIGGER
 
-    c_table_name CONSTANT VARCHAR2(128) := 'TSK_STATUSES';
+    c_table_name CONSTANT VARCHAR2(128) := 'TSK_SEQUENCES';
 
 
 
@@ -12,17 +12,14 @@ COMPOUND TRIGGER
         IF NOT DELETING THEN
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
+            --:NEW.created_by := COALESCE(:NEW.created_by, :NEW.updated_by);
+            --:NEW.created_at := COALESCE(:NEW.created_at, :NEW.updated_at);
 
-            -- check status name
-            IF NOT REGEXP_LIKE(:NEW.status_id, '^[A-Za-z0-9_-]{1,32}$') THEN
-                core.raise_error('WRONG_STATUS', :NEW.status_id);
+            -- check sequence name
+            IF NOT REGEXP_LIKE(:NEW.sequence_id, '^[A-Za-z0-9_-]{1,32}$') THEN
+                core.raise_error('WRONG_SEQUENCE', :NEW.sequence_id);
             END IF;
         END IF;
-        --
-        IF INSERTING THEN
-            :NEW.is_active := 'Y';
-        END IF;
-        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

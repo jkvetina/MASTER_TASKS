@@ -12,6 +12,11 @@ COMPOUND TRIGGER
         IF NOT DELETING THEN
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
+
+            -- check swimlane name
+            IF NOT REGEXP_LIKE(:NEW.swimlane_id, '^[A-Za-z0-9_-]{1,32}$') THEN
+                core.raise_error('WRONG_SWIMLANE', :NEW.swimlane_id);
+            END IF;
         END IF;
         --
         IF INSERTING THEN
