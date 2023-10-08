@@ -60,7 +60,7 @@ SELECT                      -- append extras
     ' style="display: none !important;"' AS attribute05,
     NULL AS attribute06,
     NULL AS attribute07,
-    '<div style="display: flex; padding-bottom: 1rem;">' || t.payload || '</div>' AS attribute08,
+    '<div style="display: flex; padding-bottom: 1.5rem;">' || t.payload || '</div>' AS attribute08,
     NULL AS attribute09,
     NULL AS attribute10,
     --
