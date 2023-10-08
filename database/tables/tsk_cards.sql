@@ -21,9 +21,6 @@ CREATE TABLE tsk_cards (
     CONSTRAINT pk_tsk_cards
         PRIMARY KEY (card_id),
     --
-    CONSTRAINT uq_tsk_cards_card_number
-        UNIQUE (card_number),
-    --
     CONSTRAINT fk_tsk_cards_board
         FOREIGN KEY (board_id)
         REFERENCES tsk_boards (board_id)
