@@ -80,6 +80,7 @@ SELECT
     t.project_id,
     t.board_id,
     t.board_name,
+    t.sequence_id,
     --
     CASE WHEN f.board_id IS NOT NULL THEN 'Y' END AS is_favorite,
     --

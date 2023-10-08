@@ -3,6 +3,7 @@ CREATE TABLE tsk_boards (
     board_name                      VARCHAR2(64)    CONSTRAINT nn_tsk_boards_name NOT NULL,
     client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_boards_client NOT NULL,
     project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_boards_project NOT NULL,
+    sequence_id                     VARCHAR2(32),
     is_active                       CHAR(1),
     is_default                      CHAR(1),
     order#                          NUMBER(4,0),
@@ -24,6 +25,11 @@ CREATE TABLE tsk_boards (
     CONSTRAINT fk_tsk_boards_project
         FOREIGN KEY (client_id, project_id)
         REFERENCES tsk_projects (client_id, project_id)
+        DEFERRABLE INITIALLY DEFERRED,
+    --
+    CONSTRAINT fk_tsk_boards_sequence
+        FOREIGN KEY (client_id, sequence_id)
+        REFERENCES tsk_sequences (client_id, sequence_id)
         DEFERRABLE INITIALLY DEFERRED
 );
 --
@@ -33,6 +39,7 @@ COMMENT ON COLUMN tsk_boards.board_id       IS '';
 COMMENT ON COLUMN tsk_boards.board_name     IS '';
 COMMENT ON COLUMN tsk_boards.client_id      IS '';
 COMMENT ON COLUMN tsk_boards.project_id     IS '';
+COMMENT ON COLUMN tsk_boards.sequence_id    IS '';
 COMMENT ON COLUMN tsk_boards.is_active      IS '';
 COMMENT ON COLUMN tsk_boards.is_default     IS '';
 COMMENT ON COLUMN tsk_boards.order#         IS '';

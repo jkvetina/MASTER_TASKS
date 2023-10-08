@@ -202,7 +202,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 110
+      sequence: 120
       column-alignment: center
       group: Flags # 89343440478210844
       use-group-for: Both
@@ -233,6 +233,62 @@ regions:
       - Regular Expression
       text-case: Mixed
       lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: SEQUENCE_ID =================================
+    id: 26394719308631608
+    identification: 
+      column-name: SEQUENCE_ID
+      type: Select List
+
+    heading: 
+      heading: Sequence Id
+      alignment: start
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_SEQUENCES # 26408996815154587
+      display-extra-values: false
+      display-null-value: true
+
+    source: 
+      type: Database Column
+      database-column: SEQUENCE_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -472,7 +528,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: center
       group: Flags # 89343440478210844
       use-group-for: Both
@@ -530,7 +586,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 100
+      sequence: 110
       column-alignment: center
       group: Flags # 89343440478210844
       use-group-for: Both
@@ -586,7 +642,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 130
+      sequence: 140
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -636,7 +692,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 140
+      sequence: 150
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -686,7 +742,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 150
+      sequence: 160
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -736,7 +792,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 160
+      sequence: 170
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -786,7 +842,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 170
+      sequence: 180
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -836,7 +892,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 180
+      sequence: 190
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -886,7 +942,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 190
+      sequence: 200
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -936,7 +992,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 200
+      sequence: 210
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -986,7 +1042,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 210
+      sequence: 220
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -1032,7 +1088,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 220
+      sequence: 230
       column-alignment: end
       group: Counts # 89342580630210835
       use-group-for: Both
@@ -1078,7 +1134,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 90
+      sequence: 100
       column-alignment: end
       group: Board Info # 89431640139192343
       use-group-for: Both
@@ -1122,7 +1178,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 230
+      sequence: 240
 
     accessibility: 
       value-identifies-row: false
@@ -1153,7 +1209,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 240
+      sequence: 250
 
     accessibility: 
       value-identifies-row: false
@@ -1184,7 +1240,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 250
+      sequence: 260
 
     accessibility: 
       value-identifies-row: false
@@ -1215,7 +1271,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 260
+      sequence: 270
 
     accessibility: 
       value-identifies-row: false
@@ -1246,7 +1302,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 270
+      sequence: 280
 
     accessibility: 
       value-identifies-row: false
@@ -1277,7 +1333,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 280
+      sequence: 290
 
     accessibility: 
       value-identifies-row: false
@@ -1308,7 +1364,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 290
+      sequence: 300
 
     accessibility: 
       value-identifies-row: false
@@ -1339,7 +1395,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 300
+      sequence: 310
 
     accessibility: 
       value-identifies-row: false

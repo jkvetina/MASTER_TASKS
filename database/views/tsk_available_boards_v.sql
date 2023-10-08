@@ -6,6 +6,7 @@ SELECT
     a.project_name,
     b.board_id,
     b.board_name,
+    b.sequence_id,
     b.is_active,
     b.is_default,
     b.order#,
