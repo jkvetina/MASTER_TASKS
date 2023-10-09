@@ -539,6 +539,31 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
             AND t.card_number   LIKE in_sequence_id || '%';
         --
         RETURN REPLACE(v_max, v_value, LPAD(TO_NUMBER(v_value) + 1, LENGTH(v_value), '0'));
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
+    FUNCTION get_card_sequence (
+        in_card_number      tsk_cards.card_number%TYPE,
+        in_client_id        tsk_cards.client_id%TYPE        := NULL
+    )
+    RETURN tsk_sequences.sequence_id%TYPE
+    AS
+        v_sequence_id       tsk_sequences.sequence_id%TYPE;
+    BEGIN
+        SELECT MAX(t.sequence_id)
+        INTO v_sequence_id
+        FROM tsk_sequences t
+        WHERE t.client_id   = COALESCE(in_client_id, tsk_app.get_client_id())
+            AND REGEXP_REPLACE(in_card_number, '\d+$', '') LIKE t.sequence_id || '%';
+        --
+        RETURN v_sequence_id;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
     END;
 
 END;
