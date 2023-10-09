@@ -51,6 +51,8 @@ SELECT
     LTRIM(RTRIM(REPLACE(t.tags, ':', ' '))) AS tags,
     --
     g.color_bg,
+    t.created_by,
+    t.created_at,
     t.updated_by,
     t.updated_at,
     --
