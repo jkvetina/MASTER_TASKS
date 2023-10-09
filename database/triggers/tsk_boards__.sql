@@ -14,6 +14,10 @@ COMPOUND TRIGGER
     BEGIN
         -- populate audit columns
         IF NOT DELETING THEN
+            IF :NEW.board_id IS NULL THEN
+                :NEW.board_id := tsk_board_id.NEXTVAL;
+            END IF;
+            --
             IF :NEW.is_default = 'Y' AND :NEW.is_default != NVL(:OLD.is_default, 'N') AND NVL(:NEW.updated_by, '?') != 'STOP' THEN
                 v_client_id     := :NEW.client_id;
                 v_project_id    := :NEW.project_id;
