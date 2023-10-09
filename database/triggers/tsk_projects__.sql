@@ -32,15 +32,16 @@ COMPOUND TRIGGER
 
             -- make sure every project has at leats one default board
             BEGIN
-                INSERT INTO tsk_boards (board_name, client_id, project_id, is_active)
+                INSERT INTO tsk_boards (board_name, client_id, project_id, is_active, is_default)
                 VALUES (
                     'DEFAULT',
                     :NEW.client_id,
                     :NEW.project_id,
+                    'Y',
                     'Y'
                 );
             EXCEPTION
-            WHEN NO_DATA_FOUND THEN
+            WHEN DUP_VAL_ON_INDEX THEN
                 NULL;
             END;
         END IF;
