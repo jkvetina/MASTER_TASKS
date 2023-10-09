@@ -4,32 +4,52 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     RETURN VARCHAR2             -- 32k limit!
     AS
         o VARCHAR2(32767);
+        r VARCHAR2(32767);
     BEGIN
-        o := o || '<a href="#" style="height: 3rem; padding-top: 1rem !important; padding-right: 1rem;"><span class="fa fa-heart-o"></span> &' || 'nbsp; <span style="">Favorites</span></a>';
+        o := o || '<a href="#" class="M1"><span class="fa fa-heart-o"></span> &' || 'nbsp; <span style="">Favorites</span></a>';
         --
         FOR c IN (
-            SELECT DISTINCT
+            SELECT
                 c.client_id,
                 c.client_name
-            FROM tsk_available_boards_v c
+            FROM tsk_available_clients_v c
         ) LOOP
-            o := o || tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || c.client_name || '</span>', c.client_id);
+            o := o || tsk_app.get_link('<span>&' || 'mdash;&' || 'nbsp; ' || c.client_name || '</span>', c.client_id, in_class => 'M2');
             --
             FOR p IN (
-                SELECT DISTINCT
+                SELECT
                     p.project_name,
                     p.client_id,
                     p.project_id
-                FROM tsk_available_boards_v p
+                FROM tsk_available_projects_v p
                 WHERE p.client_id = c.client_id
             ) LOOP
-                o := o || tsk_app.get_link('<span style="padding-left: 2.4rem; padding-right: 1rem; font-size: 0.85rem;">&' || 'mdash;&' || 'nbsp; ' || p.project_name || '</span>', p.client_id, p.project_id);
+                o := o || tsk_app.get_link('<span>&' || 'mdash;&' || 'nbsp; ' || p.project_name || '</span>', p.client_id, p.project_id, in_class => 'M3');
             END LOOP;
         END LOOP;
+
+        -- add recent tasks
+        FOR t IN (
+            SELECT
+                t.card_id,
+                t.card_number,
+                t.card_name
+            FROM tsk_p100_cards_v t
+            ORDER BY t.created_at DESC
+            FETCH FIRST 10 ROWS ONLY
+        ) LOOP
+            r := r || '<a href="#" class="M2"><span>&' || 'mdash;&' || 'nbsp; ' || NVL(t.card_number, '#' || t.card_id) || ' - ' || SUBSTR(t.card_name, 1, 30) || '</span></a>';
+        END LOOP;
+
+        -- add extra pages
+        o := '<div class="COL_1">' || o || '</div>' ||
+            '<div class="COL_2">' ||
+                '<a href="#" class="M1"><span class="fa fa-alarm-clock"></span> &' || 'nbsp; <span style="">Recent Tasks</span></a>' ||
+                r ||
+            '</div>' ||
+            '<div class="COL_3 NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
         --
-        RETURN
-            '<div class="COL_1">' || o || '</div>' ||
-            '<div class="COL_2 NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -44,38 +64,59 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
-        o := o || '<a href="#" style="height: 3rem; padding-top: 1rem !important; padding-right: 1rem;"><span class="fa fa-filter"></span> &' || 'nbsp; <span>Filters</span></a>';
+        o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Client</span></div>';
+        o := o || '<div>';      -- class=ROW
         --
         FOR c IN (
             SELECT DISTINCT
                 c.client_id,
-                c.client_name
+                c.client_name,
+                c.is_current
             FROM tsk_available_clients_v c
-            --
-            -- @TODO: 1 column per client
-            --
+            ORDER BY c.client_name
         ) LOOP
-            o := o || tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || c.client_name || '</span>', c.client_id);
+            o := o || tsk_app.get_link (
+                CASE WHEN c.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || c.client_name || '</span>',
+                c.client_id,
+                in_class => 'M2' || REPLACE(c.is_current, 'Y', ' ACTIVE')
+            );
             --
             FOR p IN (
                 SELECT DISTINCT
+                    p.client_id,
                     p.project_id,
-                    p.project_name
+                    p.project_name,
+                    p.is_current
                 FROM tsk_available_projects_v p
                 WHERE p.client_id       = c.client_id
+                    AND c.is_current    = 'Y'       -- current client
             ) LOOP
-                o := o || tsk_app.get_link('<span style="padding-left: 2.4rem; padding-right: 1rem; font-size: 0.85rem;">&' || 'mdash;&' || 'nbsp; ' || p.project_name || '</span>', c.client_id, p.project_id);
+                o := o || tsk_app.get_link (
+                    CASE WHEN p.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                    '&' || 'nbsp; ' || p.project_name || '</span>',
+                    c.client_id,
+                    p.project_id,
+                    in_class => 'M3'
+                );
             END LOOP;
         END LOOP;
+        --
+        o := o || '</div>';
 
         -- add setup links
+        IF tsk_app.get_client_id() IS NULL THEN
+            RETURN
+                '<div>' || o || '</div>';
+        END IF;
+        --
         RETURN
-            '<div class="COL_1">' || o || '</div>' ||
-            '<div class="COL_2">' ||
-                '<a href="#" style="height: 3rem; padding-top: 1rem !important; padding-right: 1rem;"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></a>' ||
-                tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || 'Projects' || '</span>', NULL) ||
-                tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || 'Repositories' || '</span>', NULL) ||
-                tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || 'Sequences' || '</span>', NULL) ||
+            '<div>' || o || '</div>' ||
+            '<div>' ||
+                '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
+                tsk_app.get_page_link(300, '<span>&' || 'mdash;&' || 'nbsp; Projects</span>', 'M2') ||
+                tsk_app.get_page_link(510, '<span>&' || 'mdash;&' || 'nbsp; Repositories</span>', 'M2') ||
+                tsk_app.get_page_link(210, '<span>&' || 'mdash;&' || 'nbsp; Sequences</span>', 'M2') ||
             '</div>';
     EXCEPTION
     WHEN core.app_exception THEN
@@ -91,40 +132,73 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
-        o := o || '<a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-filter"></span> &' || 'nbsp; <span>Filters</span></a>';
+        IF tsk_app.get_client_id() IS NULL THEN
+            RETURN NULL;
+        END IF;
+        --
+        o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Project</span></div>';
+        o := o || '<div>';      -- class=ROW
         --
         FOR p IN (
             SELECT DISTINCT
                 p.client_id,
                 p.project_id,
-                p.project_name
-            FROM tsk_available_boards_v p
+                p.project_name,
+                p.is_current
+            FROM tsk_available_projects_v p
             WHERE p.client_id = tsk_app.get_client_id()
-            --
-            -- @TODO: 1 column per project
-            --
+            ORDER BY p.project_name
         ) LOOP
-            o := o || tsk_app.get_link('<span style="padding-left: 1.2rem;">&' || 'mdash;&' || 'nbsp; ' || p.project_name || '</span>', p.client_id, p.project_id);
+            --o := o || '<div>';
+            o := o || tsk_app.get_link (
+                CASE WHEN p.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || p.project_name || '</span>',
+                p.client_id,
+                p.project_id,
+                in_class => 'M2' || REPLACE(p.is_current, 'Y', ' ACTIVE')
+            );
             --
             FOR b IN (
-                SELECT b.*
+                SELECT
+                    b.client_id,
+                    b.project_id,
+                    b.board_id,
+                    b.board_name,
+                    b.is_current
                 FROM tsk_available_boards_v b
                 WHERE b.client_id       = p.client_id
                     AND b.project_id    = p.project_id
+                    AND p.is_current    = 'Y'       -- current project
+                ORDER BY b.order#
             ) LOOP
-                o := o || tsk_app.get_link('<span style="padding-left: 2.4rem; font-size: 0.85rem;">&' || 'mdash;&' || 'nbsp; ' || b.board_name || '</span>', b.client_id, b.project_id, b.board_id);
+                o := o || tsk_app.get_link (
+                    CASE WHEN b.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                    '&' || 'nbsp; ' || b.board_name || '</span>',
+                    b.client_id,
+                    b.project_id,
+                    b.board_id,
+                    in_class => 'M3'
+                );
             END LOOP;
+            --o := o || '</div>';
         END LOOP;
+        --
+        o := o || '</div>';
 
         -- add setup links
+        IF tsk_app.get_project_id() IS NULL THEN
+            RETURN
+                '<div>' || o || '</div>';
+        END IF;
+        --
         RETURN
-            '<div class="COL_1">' || o || '</div>' ||
-            '<div class="COL_2">' ||
-                '<a href="#" style="height: 3rem; padding-top: 1rem !important; padding-right: 1rem;"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></a>' ||
-                tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || 'Boards' || '</span>', NULL) ||
-                tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || 'Swimlanes' || '</span>', NULL) ||
-                tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || 'Statuses' || '</span>', NULL) ||
-                tsk_app.get_link('<span style="padding-left: 1.2rem; padding-right: 1rem;">&' || 'mdash;&' || 'nbsp; ' || 'Categories' || '</span>', NULL) ||
+            '<div>' || o || '</div>' ||
+            '<div>' ||
+                '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
+                tsk_app.get_page_link(400, '<span>&' || 'mdash;&' || 'nbsp; Boards</span>', 'M2') ||
+                tsk_app.get_page_link(310, '<span>&' || 'mdash;&' || 'nbsp; Swimlanes</span>', 'M2') ||
+                tsk_app.get_page_link(320, '<span>&' || 'mdash;&' || 'nbsp; Statuses</span>', 'M2') ||
+                tsk_app.get_page_link(340, '<span>&' || 'mdash;&' || 'nbsp; Categories</span>', 'M2') ||
             '</div>';
     EXCEPTION
     WHEN core.app_exception THEN
@@ -140,8 +214,39 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
+        IF tsk_app.get_project_id() IS NULL THEN
+            RETURN NULL;
+        END IF;
         --
-        RETURN o;
+        o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Board</span></div>';
+        o := o || '<div>';      -- class=ROW
+        --
+        FOR b IN (
+            SELECT
+                b.client_id,
+                b.project_id,
+                b.board_id,
+                b.board_name,
+                b.is_current
+            FROM tsk_available_boards_v b
+            WHERE b.client_id       = tsk_app.get_client_id()
+                AND b.project_id    = tsk_app.get_project_id()
+            ORDER BY b.order#
+        ) LOOP
+            o := o || tsk_app.get_link (
+                CASE WHEN b.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || b.board_name || '</span>',
+                b.client_id,
+                b.project_id,
+                b.board_id,
+                in_class => 'M2' || REPLACE(b.is_current, 'Y', ' ACTIVE')
+            );
+        END LOOP;
+        --
+        o := o || '</div>';
+        --
+        RETURN
+            '<div>' || o || '</div>';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
