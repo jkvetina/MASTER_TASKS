@@ -114,7 +114,17 @@ CREATE OR REPLACE PACKAGE tsk_app AS
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
         in_board_id         tsk_recent.board_id%TYPE        := NULL,
-        in_card_id          tsk_cards.card_id%TYPE          := NULL
+        in_card_id          tsk_cards.card_id%TYPE          := NULL,
+        in_class            VARCHAR2                        := NULL
+    )
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_page_link (
+        in_page_id          NUMBER,
+        in_content          VARCHAR2,
+        in_class            VARCHAR2        := NULL
     )
     RETURN VARCHAR2;
 

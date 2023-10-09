@@ -310,7 +310,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
         in_board_id         tsk_recent.board_id%TYPE        := NULL,
-        in_card_id          tsk_cards.card_id%TYPE          := NULL
+        in_card_id          tsk_cards.card_id%TYPE          := NULL,
+        in_class            VARCHAR2                        := NULL
     )
     RETURN VARCHAR2
     AS
@@ -323,7 +324,31 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
             p_items             => 'P0_CLIENT_ID,P0_PROJECT_ID,P0_BOARD_ID',
             p_values            => in_client_id || ',' || in_project_id || ',' || in_board_id,
             p_plain_url         => TRUE
-        ) || '">' || in_content || '</a>';
+        ) || '" class="' || in_class || '">' || in_content || '</a>';
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION get_page_link (
+        in_page_id          NUMBER,
+        in_content          VARCHAR2,
+        in_class            VARCHAR2        := NULL
+    )
+    RETURN VARCHAR2
+    AS
+    BEGIN
+        RETURN '<a href="' || APEX_PAGE.GET_URL (
+            p_page              => in_page_id,
+            p_clear_cache       => in_page_id,
+            p_items             => '',
+            p_values            => '',
+            p_plain_url         => TRUE
+        ) || '" class="' || in_class || CASE WHEN in_page_id = core.get_page_id() THEN ' ACTIVE' END || '">' || in_content || '</a>';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
