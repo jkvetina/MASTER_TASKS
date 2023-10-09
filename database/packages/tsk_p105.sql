@@ -296,7 +296,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         FROM tsk_cards t
         WHERE t.card_id = v_source_card_id;
         --
-        rec.card_id := tsk_card_id.NEXTVAL;
+        rec.card_id         := tsk_card_id.NEXTVAL;
+        rec.card_number     := tsk_app.get_card_next_sequence (
+                                    in_sequence_id  => tsk_app.get_card_sequence (
+                                                            in_card_number  => rec.card_number,
+                                                            in_client_id    => rec.client_id
+                                                        ),
+                                    in_client_id    => rec.client_id
+                                );
         --
         INSERT INTO tsk_cards VALUES rec;
         --
