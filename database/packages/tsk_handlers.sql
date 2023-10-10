@@ -23,15 +23,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         -- update primary key back to APEX grid for proper row refresh
         core.set_grid_data('OLD_CLIENT_ID',     rec.client_id);
 
-        -- just for the new records
+        -- for the new records
         IF in_action = 'C' THEN
-            -- overwrite user settings
-            tsk_app.set_user_preferences (
-                in_user_id          => core.get_user_id(),
-                in_client_id        => rec.client_id,
-                in_project_id       => NULL,
-                in_board_id         => NULL
-            );
+            -- @TODO: make new client active
+            NULL;
         END IF;
     EXCEPTION
     WHEN core.app_exception THEN
@@ -69,20 +64,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
         core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
 
-        -- just for the new records
+        -- for the new records
         IF in_action = 'C' THEN
             create_default_swimlane (
                 in_client_id        => rec.client_id,
                 in_project_id       => rec.project_id
             );
 
-            -- overwrite user settings
-            tsk_app.set_user_preferences (
-                in_user_id          => core.get_user_id(),
-                in_client_id        => rec.client_id,
-                in_project_id       => rec.project_id,
-                in_board_id         => NULL
-            );
+            -- @TODO: make new board active
+            NULL;
         END IF;
     EXCEPTION
     WHEN core.app_exception THEN
@@ -148,15 +138,31 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         -- update primary key back to APEX grid for proper row refresh
         core.set_grid_data('OLD_BOARD_ID',          rec.board_id);
 
-        -- for new records overwrite user settings
+        -- for new records
         IF in_action = 'C' THEN
-            tsk_app.set_user_preferences (
-                in_user_id          => core.get_user_id(),
-                in_client_id        => rec.client_id,
-                in_project_id       => rec.project_id,
-                in_board_id         => rec.board_id
+            -- @TODO: make new board active
+            NULL;
+        END IF;
+
+        -- add board to favorites
+        DELETE FROM tsk_boards_fav t
+        WHERE t.user_id         = core.get_user_id()
+            AND t.client_id     = rec.client_id
+            AND t.project_id    = rec.project_id
+            AND t.board_id      = NVL(core.get_grid_data('OLD_BOARD_ID'), rec.board_id);
+        --
+        IF core.get_grid_data('IS_FAVORITE') = 'Y' THEN
+            INSERT INTO tsk_boards_fav (user_id, client_id, project_id, board_id, swimlane_id, owner_id)
+            VALUES (
+                core.get_user_id(),
+                rec.client_id,
+                rec.project_id,
+                rec.board_id,
+                NULL,
+                NULL
             );
         END IF;
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
