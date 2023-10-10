@@ -210,27 +210,30 @@
     font-size       : 1rem;
 }
 #t_Header > #top_header > nav ul li.MANUAL .M2 {
-    padding-left    : 1.6rem !important;
+    padding-left    : 2.5rem !important;
     padding-right   : 2rem !important;
 }
 #t_Header > #top_header > nav ul li.MANUAL .M3,
 #t_Header > #top_header > nav ul li.MANUAL .M4 {
-    padding-left    : 2.8rem !important;
+    padding-left    : 3.7rem !important;
     padding-right   : 1.5rem !important;
-    font-size       : 0.85rem;
+}
+#t_Header > #top_header > nav ul li.MANUAL .M2 span {
+    font-size       : 0.85rem !important;
+}
+#t_Header > #top_header > nav ul li.MANUAL .M3 span,
+#t_Header > #top_header > nav ul li.MANUAL .M4 span {
+    font-size       : 0.85rem !important;
 }
 #t_Header > #top_header > nav ul li.MANUAL .M4 {
-    padding-left    : 4rem !important;
+    padding-left    : 4.9rem !important;
 }
 
 #t_Header > #top_header > nav ul li.MANUAL a.ACTIVE {
     background      :#222;
 }
 
-#t_Header > #top_header > nav ul li.MANUAL .M1 span.fa,
-#t_Header > #top_header > nav ul li.MANUAL .M2 span.fa,
-#t_Header > #top_header > nav ul li.MANUAL .M3 span.fa,
-#t_Header > #top_header > nav ul li.MANUAL .M4 span.fa {
+#t_Header > #top_header > nav ul li.MANUAL .M1 span.fa {
     padding-top     : 0.15rem !important;
 }
 
