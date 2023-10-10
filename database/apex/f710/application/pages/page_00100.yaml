@@ -487,15 +487,11 @@ regions:
     id: 26837678279020915
     identification: 
       column-name: CLIENT_ID
-      type: Text Field
+      type: Select List
 
     heading: 
       heading: Client Id
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 70
@@ -507,7 +503,12 @@ regions:
 
     validation: 
       value-required: true
-      maximum-length: 32
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_CLIENTS # 19917139722955396
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -527,7 +528,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -542,15 +543,11 @@ regions:
     id: 26837773764020916
     identification: 
       column-name: PROJECT_ID
-      type: Text Field
+      type: Select List
 
     heading: 
       heading: Project Id
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 80
@@ -562,7 +559,12 @@ regions:
 
     validation: 
       value-required: true
-      maximum-length: 32
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_PROJECTS # 23314637906165586
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -582,7 +584,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -597,19 +599,15 @@ regions:
     id: 26837819646020917
     identification: 
       column-name: BOARD_ID
-      type: Number Field
+      type: Select List
 
     heading: 
       heading: Board Id
-      alignment: end
-
-    settings: 
-      number-alignment: Start
-      virtual-keyboard: Decimal
+      alignment: start
 
     layout: 
       sequence: 90
-      column-alignment: end
+      column-alignment: start
       stretch: Use Report Setting
 
     accessibility: 
@@ -617,6 +615,12 @@ regions:
 
     validation: 
       value-required: true
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_BOARDS # 19916565304955390
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -630,7 +634,14 @@ regions:
 
     column-filter: 
       enabled: true
-      lov-type: Distinct Column
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Use List of Values
+      exact-match: true
 
     export-/-printing: 
       include-in-export-/-print: true
@@ -644,15 +655,11 @@ regions:
     id: 26837915599020918
     identification: 
       column-name: STATUS_ID
-      type: Text Field
+      type: Select List
 
     heading: 
       heading: Status Id
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 100
@@ -664,7 +671,12 @@ regions:
 
     validation: 
       value-required: true
-      maximum-length: 32
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_STATUSES # 19918350743955397
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -684,7 +696,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -699,15 +711,11 @@ regions:
     id: 26838097792020919
     identification: 
       column-name: SWIMLANE_ID
-      type: Text Field
+      type: Select List
 
     heading: 
       heading: Swimlane Id
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 110
@@ -719,7 +727,12 @@ regions:
 
     validation: 
       value-required: true
-      maximum-length: 32
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_SWIMLANES # 19919016269955397
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -739,7 +752,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -754,15 +767,11 @@ regions:
     id: 26838124829020920
     identification: 
       column-name: CATEGORY_ID
-      type: Text Field
+      type: Select List
 
     heading: 
       heading: Category Id
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 120
@@ -774,7 +783,12 @@ regions:
 
     validation: 
       value-required: false
-      maximum-length: 32
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_CATEGORIES # 23488253257018677
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -794,7 +808,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -809,15 +823,11 @@ regions:
     id: 26838248070020921
     identification: 
       column-name: OWNER_ID
-      type: Text Field
+      type: Select List
 
     heading: 
       heading: Owner Id
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 130
@@ -829,7 +839,12 @@ regions:
 
     validation: 
       value-required: false
-      maximum-length: 128
+
+    list-of-values: 
+      type: Shared Component
+      list-of-values: LOV_OWNERS # 19920099360955398
+      display-extra-values: true
+      display-null-value: true
 
     source: 
       type: Database Column
@@ -849,7 +864,7 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Distinct Column
+      lov-type: Use List of Values
       exact-match: true
 
     export-/-printing: 
@@ -979,7 +994,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 170
+      sequence: 210
 
     accessibility: 
       value-identifies-row: false
@@ -1010,7 +1025,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 180
+      sequence: 220
 
     accessibility: 
       value-identifies-row: false
@@ -1041,7 +1056,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 190
+      sequence: 230
 
     accessibility: 
       value-identifies-row: false
@@ -1072,7 +1087,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 200
+      sequence: 240
 
     accessibility: 
       value-identifies-row: false
@@ -1103,7 +1118,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 210
+      sequence: 250
 
     accessibility: 
       value-identifies-row: false
@@ -1139,7 +1154,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 220
+      sequence: 170
       column-alignment: end
       stretch: Use Report Setting
 
@@ -1183,7 +1198,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 230
+      sequence: 180
       column-alignment: end
       stretch: Use Report Setting
 
@@ -1227,7 +1242,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 240
+      sequence: 190
       column-alignment: end
       stretch: Use Report Setting
 
@@ -1271,7 +1286,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 250
+      sequence: 200
       column-alignment: end
       stretch: Use Report Setting
 
@@ -1733,9 +1748,27 @@ dynamic-actions:
 
     settings: 
       code: |
-        //location.reload();  // dont work properly
-        window.location = apex.item('P100_CARDS_LINK').getValue();
+        location.reload();  // dont work properly
+        //window.location = apex.item('P100_CARDS_LINK').getValue();
         
+
+    execution: 
+      sequence: 20
+      event: DIALOG_CLOSED # 19909981721955381
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    server-side-condition: 
+      type: Never
+
+  - # ====== Action: Refresh =====================================
+    id: 26840022289020939
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Cards [CONTENT] # 74502154509114589
 
     execution: 
       sequence: 10
