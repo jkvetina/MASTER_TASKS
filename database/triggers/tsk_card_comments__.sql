@@ -10,6 +10,10 @@ COMPOUND TRIGGER
     BEGIN
         -- populate audit columns
         IF NOT DELETING THEN
+            IF :NEW.comment_id IS NULL THEN
+                :NEW.comment_id := tsk_comment_id.NEXTVAL;
+            END IF;
+            --
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
         END IF;
