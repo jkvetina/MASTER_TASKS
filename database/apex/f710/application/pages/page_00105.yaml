@@ -1945,6 +1945,36 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P105_CATEGORY_JSON =======================
+  id: 27231799786725505
+  identification: 
+    name: P105_CATEGORY_JSON
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Info # 25066083083730040
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P105_CARD_NAME ===========================
   id: 79916493298307144
   identification: 
@@ -3152,7 +3182,7 @@ buttons:
     label: Move Card to Top
 
   layout: 
-    sequence: 70
+    sequence: 60
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3443,7 +3473,7 @@ buttons:
     label: Update and Refresh
 
   layout: 
-    sequence: 60
+    sequence: 70
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3460,9 +3490,8 @@ buttons:
     icon: fa-refresh
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
 
   server-side-condition: 
@@ -3562,6 +3591,105 @@ dynamic-actions:
       event: CLOSE_DIALOG_ON_JOIN # 25270477386844593
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+- # ====== Dynamic Action: UPDATE_AND_REFRESH ==================
+  id: 26840185339020940
+  identification: 
+    name: UPDATE_AND_REFRESH
+
+  execution: 
+    sequence: 50
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: UPDATE_AND_REFRESH # 26839989070020938
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 26840253093020941
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.submit('submit');
+        
+
+    execution: 
+      sequence: 10
+      event: UPDATE_AND_REFRESH # 26840185339020940
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CHANGED_CATEGORY ====================
+  id: 27231404553725502
+  identification: 
+    name: CHANGED_CATEGORY
+
+  execution: 
+    sequence: 60
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P105_CATEGORY_ID
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 27231537526725503
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        // change styles
+        var color_map   = JSON.parse(apex.item('P105_CATEGORY_JSON').getValue())[0];
+        var category_id = apex.item('P105_CATEGORY_ID').getValue();
+        var color       = color_map[category_id];
+        //
+        if (color && color.length > 0) {
+            $('select#P105_CATEGORY_ID').css('border-left', '8px solid ' + color);
+            $('label#P105_CATEGORY_ID_LABEL').css('padding-left', '0.95rem');
+        }
+        else {
+            $('select#P105_CATEGORY_ID').css('border-left', '1px solid var(--a-field-input-state-border-color,var(--a-field-input-border-color))');
+            $('label#P105_CATEGORY_ID_LABEL').css('padding-left', '0.5rem');
+        }
+        
+
+    execution: 
+      sequence: 10
+      event: CHANGED_CATEGORY # 27231404553725502
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+computations: 
+- # ====== Computation: P105_CATEGORY_JSON =====================
+  id: 27231876014725506
+  identification: 
+    item-name: P105_CATEGORY_JSON
+
+  execution: 
+    sequence: 10
+    point: Before Regions
+
+  computation: 
+    type: SQL Query (return single value)
+    sql-query: |
+      SELECT JSON_ARRAY(JSON_OBJECTAGG (
+              KEY t.category_id VALUE t.color_bg
+          ))
+      FROM tsk_lov_categories_v t;
 
 processes: 
 - # ====== Process: SAVE_CHECKLIST =============================
