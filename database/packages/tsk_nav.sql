@@ -5,27 +5,64 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
         r VARCHAR2(32767);
+        --
+        last_client     tsk_projects.client_id%TYPE     := '-';
+        last_project    tsk_projects.project_id%TYPE    := '-';
     BEGIN
         o := o || '<a href="#" class="M1"><span class="fa fa-heart-o"></span> &' || 'nbsp; <span style="">Favorites</span></a>';
         --
-        FOR c IN (
+        FOR b IN (
             SELECT
-                c.client_id,
-                c.client_name
-            FROM tsk_available_clients_v c
+                b.client_id,
+                b.client_name,
+                b.project_id,
+                b.project_name,
+                b.board_id,
+                b.board_name,
+                b.is_current,
+                --
+                COUNT(b.board_id) OVER (PARTITION BY b.client_id, b.project_id) AS boards
+                --
+            FROM tsk_available_boards_v b
+            WHERE b.is_favorite = 'Y'
+            ORDER BY b.client_name, b.project_name, b.board_name
         ) LOOP
-            o := o || tsk_app.get_link('<span>&' || 'mdash;&' || 'nbsp; ' || c.client_name || '</span>', c.client_id, in_class => 'M2');
-            --
-            FOR p IN (
-                SELECT
-                    p.project_name,
-                    p.client_id,
-                    p.project_id
-                FROM tsk_available_projects_v p
-                WHERE p.client_id = c.client_id
-            ) LOOP
-                o := o || tsk_app.get_link('<span>&' || 'mdash;&' || 'nbsp; ' || p.project_name || '</span>', p.client_id, p.project_id, in_class => 'M3');
-            END LOOP;
+            -- render client
+            IF b.client_id != last_client THEN
+                o := o || tsk_app.get_link (
+                    CASE WHEN b.client_id = tsk_app.get_client_id() THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                    '&' || 'nbsp; ' || b.client_name || '</span>',
+                    b.client_id,
+                    in_class => 'M2'
+                );
+                --
+                last_client := b.client_id;
+            END IF;
+
+            -- render project
+            IF b.project_id != last_project THEN
+                o := o || tsk_app.get_link (
+                    CASE WHEN b.project_id = tsk_app.get_project_id() THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                    '&' || 'nbsp; ' || b.project_name || '</span>',
+                    b.client_id,
+                    b.project_id,
+                    in_class => 'M3' || CASE WHEN b.boards = 1 THEN REPLACE(b.is_current, 'Y', ' ACTIVE') END
+                );
+                --
+                last_project := b.project_id;
+            END IF;
+
+            -- render board
+            IF b.boards > 1 THEN
+                o := o || tsk_app.get_link (
+                    CASE WHEN b.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                    '&' || 'nbsp; ' || b.board_name || '</span>',
+                    b.client_id,
+                    b.project_id,
+                    b.board_id,
+                    in_class => 'M4' || REPLACE(b.is_current, 'Y', ' ACTIVE')
+                );
+            END IF;
         END LOOP;
 
         -- add recent tasks
