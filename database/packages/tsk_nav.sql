@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE BODY tsk_nav AS
 
     FUNCTION get_home
-    RETURN VARCHAR2             -- 32k limit!
+    RETURN VARCHAR2             -- 32k limit! - well, actually 4k limit on NAV view
     AS
         o VARCHAR2(32767);
         r VARCHAR2(32767);
@@ -70,12 +70,25 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             SELECT
                 t.card_id,
                 t.card_number,
-                t.card_name
+                t.card_name,
+                --
+                CASE WHEN s.status_id IS NOT NULL
+                    THEN ROW_NUMBER() OVER (PARTITION BY t.status_id ORDER BY t.order#)
+                    END AS badge
+                --
             FROM tsk_p100_cards_v t
-            ORDER BY t.created_at DESC
+            LEFT JOIN tsk_statuses s
+                ON s.client_id      = t.client_id
+                AND s.project_id    = t.project_id
+                AND s.status_id     = t.status_id
+                AND s.is_badge      = 'Y'
+            WHERE t.owner_id        = core.get_user_id()
+            ORDER BY t.updated_at DESC
             FETCH FIRST 10 ROWS ONLY
         ) LOOP
-            r := r || '<a href="#" class="M2"><span>&' || 'mdash;&' || 'nbsp; ' || NVL(t.card_number, '#' || t.card_id) || ' - ' || SUBSTR(t.card_name, 1, 30) || '</span></a>';
+            r := r || '<a href="#" class="M2">' ||
+                CASE WHEN t.badge BETWEEN 1 AND 5 THEN '<span class="fa fa-number-' || t.badge || '"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || NVL(t.card_number, '#' || t.card_id) || ' - ' || SUBSTR(t.card_name, 1, 30) || '</span></a>';
         END LOOP;
 
         -- add extra pages
