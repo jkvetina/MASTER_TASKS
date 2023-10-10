@@ -5,7 +5,7 @@ WITH x AS (
         tsk_app.get_project_id()    AS project_id
     FROM DUAL
 )
-SELECT
+SELECT DISTINCT
     u.user_id,
     u.user_mail,
     u.user_name,
