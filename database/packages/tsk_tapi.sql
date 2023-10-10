@@ -137,6 +137,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         DELETE FROM tsk_swimlanes       WHERE client_id = in_client_id AND project_id = in_project_id;
         --DELETE FROM tsk_cards           WHERE client_id = in_client_id AND project_id = in_project_id;
         DELETE FROM tsk_boards_fav      WHERE client_id = in_client_id AND project_id = in_project_id;
+        DELETE FROM tsk_recent          WHERE client_id = in_client_id AND project_id = in_project_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -200,6 +201,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         -- need to be sorted properly
         DELETE FROM tsk_boards          WHERE board_id = in_board_id;
         DELETE FROM tsk_boards_fav      WHERE board_id = in_board_id;
+        DELETE FROM tsk_recent          WHERE board_id = in_board_id;
         --DELETE FROM tsk_cards           WHERE board_id = in_board_id;
     EXCEPTION
     WHEN core.app_exception THEN
