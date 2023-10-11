@@ -513,6 +513,54 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE copy_categories
+    AS
+        rec                     tsk_categories%ROWTYPE;
+        v_affected              PLS_INTEGER := 0;
+    BEGIN
+        IF core.get_grid_action() = 'D' THEN
+            RETURN;
+        END IF;
+
+        -- change record in table
+        rec.category_id         := core.get_grid_data('CATEGORY_ID');
+        rec.category_name       := core.get_grid_data('CATEGORY_NAME');
+        rec.client_id           := tsk_app.get_client_id();
+        rec.project_id          := tsk_app.get_project_id();
+        rec.color_bg            := core.get_grid_data('COLOR_BG');
+        rec.color_fg            := core.get_grid_data('COLOR_FG');
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
+        rec.is_default          := core.get_grid_data('IS_DEFAULT');
+        rec.order#              := core.get_grid_data('ORDER#');
+        --
+        BEGIN
+            INSERT INTO tsk_categories
+            VALUES rec;
+            --
+            v_affected := v_affected + SQL%ROWCOUNT;
+            --
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            UPDATE tsk_categories t
+            SET ROW = rec
+            WHERE t.category_id     = rec.category_id
+                AND t.client_id     = rec.client_id
+                AND t.project_id    = rec.project_id;
+            --
+            v_affected := v_affected + SQL%ROWCOUNT;
+        END;
+        --
+        app.ajax_message(v_affected || ' rows affected.');
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 

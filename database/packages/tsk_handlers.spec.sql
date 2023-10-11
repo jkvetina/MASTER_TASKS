@@ -53,6 +53,10 @@ CREATE OR REPLACE PACKAGE tsk_handlers AS
 
     PROCEDURE reorder_categories;
 
+
+
+    PROCEDURE copy_categories;
+
 END;
 /
 
