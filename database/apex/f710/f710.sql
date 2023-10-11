@@ -33,17 +33,17 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   16:37 Středa Říjen 11, 2023
+--   Date and Time:   18:09 Středa Říjen 11, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     16
---       Items:                   73
+--       Items:                   71
 --       Computations:             4
 --       Processes:               37
 --       Regions:                 55
 --       Buttons:                 35
---       Dynamic Actions:         24
+--       Dynamic Actions:         25
 --     Shared Components:
 --       Logic:
 --         Items:                 13
@@ -19058,9 +19058,20 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(27418598780258603)
+,p_name=>'P0_SUCCESS_MESSAGE'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
+,p_use_cache_before_default=>'NO'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'For passing messages from modal dialogs'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(34569222036312886)
 ,p_name=>'P0_AJAX_PING_INTERVAL'
-,p_item_sequence=>10
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
 ,p_source=>'3'
 ,p_source_type=>'STATIC'
@@ -19068,6 +19079,28 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27418866630258606)
+,p_name=>'DIALOG_CLOSED'
+,p_event_sequence=>10
+,p_triggering_element_type=>'JAVASCRIPT_EXPRESSION'
+,p_triggering_element=>'window'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27418949430258607)
+,p_event_id=>wwv_flow_imp.id(27418866630258606)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if (this.data && this.data.successMessage && this.data.successMessage.text) {',
+'    show_success(this.data.successMessage.text);',
+'}'))
 );
 end;
 /
@@ -24161,6 +24194,7 @@ wwv_flow_imp_page.create_page(
 ,p_dialog_width=>'80%'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
+,p_page_component_map=>'21'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
@@ -24613,16 +24647,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'N'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(132536519783032316)
-,p_name=>'P312_MESSAGE'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(175299468068538086)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_warn_on_unsaved_changes=>'I'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(175316849886538201)
 ,p_name=>'P312_HEADER'
 ,p_item_sequence=>20
@@ -24661,7 +24685,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
-,p_attribute_01=>'P312_MESSAGE'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(27370180281524205)
@@ -24739,6 +24762,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'CLOSE_DIALOG'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>27367953698524202
 );
 end;
@@ -26098,16 +26122,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'N'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(105170897568508117)
-,p_name=>'P322_MESSAGE'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(147941539070013900)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_warn_on_unsaved_changes=>'I'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(147951227672014002)
 ,p_name=>'P322_HEADER'
 ,p_item_sequence=>20
@@ -26181,7 +26195,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
-,p_attribute_01=>'P322_MESSAGE'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(27234021447725528)
@@ -26224,6 +26237,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'CLOSE_DIALOG'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>27234806626725536
 );
 end;
@@ -26915,6 +26929,7 @@ wwv_flow_imp_page.create_page(
 ,p_dialog_width=>'80%'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
+,p_page_component_map=>'21'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
@@ -27478,16 +27493,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'N'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(132562679151298364)
-,p_name=>'P342_MESSAGE'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(175325559712804136)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_warn_on_unsaved_changes=>'I'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(175343009254804249)
 ,p_name=>'P342_HEADER'
 ,p_item_sequence=>20
@@ -27526,7 +27531,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
-,p_attribute_01=>'P342_MESSAGE'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(27396263837790252)
@@ -27604,6 +27608,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'CLOSE_DIALOG'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>27394040668790250
 );
 end;

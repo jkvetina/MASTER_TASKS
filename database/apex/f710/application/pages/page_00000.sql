@@ -156,9 +156,20 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(27418598780258603)
+,p_name=>'P0_SUCCESS_MESSAGE'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
+,p_use_cache_before_default=>'NO'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'For passing messages from modal dialogs'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(34569222036312886)
 ,p_name=>'P0_AJAX_PING_INTERVAL'
-,p_item_sequence=>10
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
 ,p_source=>'3'
 ,p_source_type=>'STATIC'
@@ -166,6 +177,28 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27418866630258606)
+,p_name=>'DIALOG_CLOSED'
+,p_event_sequence=>10
+,p_triggering_element_type=>'JAVASCRIPT_EXPRESSION'
+,p_triggering_element=>'window'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27418949430258607)
+,p_event_id=>wwv_flow_imp.id(27418866630258606)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if (this.data && this.data.successMessage && this.data.successMessage.text) {',
+'    show_success(this.data.successMessage.text);',
+'}'))
 );
 wwv_flow_imp.component_end;
 end;

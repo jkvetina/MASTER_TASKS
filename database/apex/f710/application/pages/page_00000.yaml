@@ -457,6 +457,39 @@ page-items:
   comments: 
     comments: Interval in seconds to fire AJAX_PING process
 
+- # ====== Page Item: P0_SUCCESS_MESSAGE =======================
+  id: 27418598780258603
+  identification: 
+    name: P0_SUCCESS_MESSAGE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: ITEMS # 34569381861312888
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: For passing messages from modal dialogs
+
 - # ====== Page Item: P0_AJAX_PING_INTERVAL ====================
   id: 34569222036312886
   identification: 
@@ -467,7 +500,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 10
+    sequence: 20
     region: ITEMS # 34569381861312888
     position: BODY
 
@@ -490,4 +523,40 @@ page-items:
 
   comments: 
     comments: Interval in seconds to fire AJAX_PING process
+
+dynamic-actions: 
+- # ====== Dynamic Action: DIALOG_CLOSED =======================
+  id: 27418866630258606
+  identification: 
+    name: DIALOG_CLOSED
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: JavaScript Expression
+    javascript-expression: window
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 27418949430258607
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        if (this.data && this.data.successMessage && this.data.successMessage.text) {
+            show_success(this.data.successMessage.text);
+        }
+
+    execution: 
+      sequence: 10
+      event: DIALOG_CLOSED # 27418866630258606
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 

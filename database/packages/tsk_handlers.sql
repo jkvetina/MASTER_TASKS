@@ -393,7 +393,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
             v_affected := v_affected + SQL%ROWCOUNT;
         END;
         --
-        APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := v_affected || ' rows affected.';
+        core.set_item('P0_SUCCESS_MESSAGE', CASE WHEN SQL%ROWCOUNT = 1 THEN v_affected || ' rows affected.' END);
         --
     EXCEPTION
     WHEN core.app_exception THEN
@@ -471,7 +471,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
             v_affected := v_affected + SQL%ROWCOUNT;
         END;
         --
-        app.ajax_message(v_affected || ' rows affected.');
+        core.set_item('P0_SUCCESS_MESSAGE', CASE WHEN SQL%ROWCOUNT = 1 THEN v_affected || ' rows affected.' END);
         --
     EXCEPTION
     WHEN core.app_exception THEN
@@ -552,7 +552,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
             v_affected := v_affected + SQL%ROWCOUNT;
         END;
         --
-        app.ajax_message(v_affected || ' rows affected.');
+        core.set_item('P0_SUCCESS_MESSAGE', CASE WHEN SQL%ROWCOUNT = 1 THEN v_affected || ' rows affected.' END);
         --
     EXCEPTION
     WHEN core.app_exception THEN

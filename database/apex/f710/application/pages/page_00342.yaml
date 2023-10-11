@@ -884,36 +884,6 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P342_MESSAGE =============================
-  id: 132562679151298364
-  identification: 
-    name: P342_MESSAGE
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 30
-    region: '&P342_HEADER.' # 175325559712804136
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P342_HEADER ==============================
   id: 175343009254804249
   identification: 
@@ -1058,10 +1028,6 @@ dynamic-actions:
     identification: 
       action: Close Dialog
 
-    settings: 
-      items-to-return: 
-      - P342_MESSAGE
-
     execution: 
       sequence: 10
       event: CLOSE_DIALOG # 27395381248790251
@@ -1171,6 +1137,9 @@ processes:
     sequence: 20
     point: Processing
     run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: '&P0_SUCCESS_MESSAGE.'
 
   error: 
     display-location: Inline in Notification
