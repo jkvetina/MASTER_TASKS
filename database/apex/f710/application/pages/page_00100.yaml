@@ -1381,6 +1381,36 @@ regions:
       alignment: center
 
 page-items: 
+- # ====== Page Item: P100_BOOKMARK_ICON =======================
+  id: 27232166472725509
+  identification: 
+    name: P100_BOOKMARK_ICON
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P100_HEADER ==============================
   id: 74882513732611307
   identification: 
@@ -1581,9 +1611,9 @@ buttons:
     label: Show as List
 
   layout: 
-    sequence: 20
+    sequence: 10
     region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1621,9 +1651,9 @@ buttons:
     label: Show as Columns
 
   layout: 
-    sequence: 30
+    sequence: 20
     region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1660,7 +1690,7 @@ buttons:
     label: Refresh
 
   layout: 
-    sequence: 50
+    sequence: 20
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1686,6 +1716,34 @@ buttons:
     pl/sql-expression: |
       :P100_SHOW_GRID IS NULL
       AND :P0_BOARD_ID IS NOT NULL
+
+- # ====== Button: BOOKMARK_CURRENT ============================
+  id: 27231996116725507
+  identification: 
+    button-name: BOOKMARK_CURRENT
+    label: Bookmark Current
+
+  layout: 
+    sequence: 30
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: UP
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: '&P100_BOOKMARK_ICON.'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: OPEN_DETAIL =========================
@@ -1753,7 +1811,7 @@ dynamic-actions:
         
 
     execution: 
-      sequence: 20
+      sequence: 30
       event: DIALOG_CLOSED # 19909981721955381
       fire-when-event-result-is: True
       fire-on-initialization: false
@@ -1772,6 +1830,20 @@ dynamic-actions:
 
     execution: 
       sequence: 10
+      event: DIALOG_CLOSED # 19909981721955381
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 27235290151725540
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: show_success('Cards refreshed');
+
+    execution: 
+      sequence: 20
       event: DIALOG_CLOSED # 19909981721955381
       fire-when-event-result-is: True
       fire-on-initialization: false
@@ -1805,6 +1877,20 @@ dynamic-actions:
 
     execution: 
       sequence: 10
+      event: REFRESH_GRID # 25478734766860916
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 27235157231725539
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: show_success('Cards refreshed');
+
+    execution: 
+      sequence: 20
       event: REFRESH_GRID # 25478734766860916
       fire-when-event-result-is: True
       fire-on-initialization: false
@@ -1882,4 +1968,28 @@ processes:
 
   server-side-condition: 
     execution-scope: For Created and Modified Rows
+
+- # ====== Process: BOOKMARK_CURRENT ===========================
+  id: 27232047770725508
+  identification: 
+    name: BOOKMARK_CURRENT
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_P100
+    procedure-or-function: BOOKMARK_CURRENT
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: BOOKMARK_CURRENT # 27231996116725507
 

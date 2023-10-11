@@ -17,11 +17,7 @@ CREATE OR REPLACE PACKAGE tsk_p100 AS
 
 
 
-    PROCEDURE add_to_favorites;
-
-
-
-    PROCEDURE remove_from_favorites;
+    PROCEDURE bookmark_current;
 
 END;
 /

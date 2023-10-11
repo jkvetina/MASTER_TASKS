@@ -98,6 +98,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 ON t.item_name = d.item_name
         ) LOOP
             core.set_item('P100_' || c.item_name, c.item_value);
+            --
+            IF c.item_name = 'IS_FAVORITE' THEN
+                core.set_item('P100_BOOKMARK_ICON', 'fa-bookmark' || CASE WHEN c.item_value IS NULL THEN '-o' END);
+            END IF;
         END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
@@ -298,39 +302,34 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
 
 
 
-    PROCEDURE add_to_favorites
+    PROCEDURE bookmark_current
     AS
         rec                 tsk_boards_fav%ROWTYPE;
     BEGIN
         rec.user_id         := core.get_user_id();
-        rec.client_id       := core.get_item('$CLIENT_ID');
-        rec.project_id      := core.get_item('$PROJECT_ID');
-        rec.board_id        := core.get_item('$BOARD_ID');
-        rec.swimlane_id     := core.get_item('$SWIMLANE_ID');
-        rec.owner_id        := core.get_item('$OWNER_ID');
+        rec.client_id       := tsk_app.get_client_id();
+        rec.project_id      := tsk_app.get_project_id();
+        rec.board_id        := tsk_app.get_board_id();
         --
-        tsk_tapi.user_fav_boards(rec, 'C');
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-    PROCEDURE remove_from_favorites
-    AS
-        rec                 tsk_boards_fav%ROWTYPE;
-    BEGIN
-        rec.user_id         := core.get_user_id();
-        rec.client_id       := core.get_item('$CLIENT_ID');
-        rec.project_id      := core.get_item('$PROJECT_ID');
-        rec.board_id        := core.get_item('$BOARD_ID');
+        BEGIN
+            SELECT t.*
+            INTO rec
+            FROM tsk_boards_fav t
+            WHERE t.user_id         = rec.user_id
+                AND t.client_id     = rec.client_id
+                AND t.project_id    = rec.project_id
+                AND t.board_id      = rec.board_id;
+            --
+            tsk_tapi.user_fav_boards(rec, 'D');     -- remove
+            --
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            --rec.swimlanes     := core.get_item('$SWIMLANE_ID');
+            --rec.owners        := core.get_item('$OWNER_ID');
+            --
+            tsk_tapi.user_fav_boards(rec, 'C');     -- add
+        END;
         --
-        tsk_tapi.user_fav_boards(rec, 'D');
-        --
-        core.set_item('P100_IS_FAVORITE', '');
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
