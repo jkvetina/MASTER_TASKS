@@ -33,7 +33,7 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   18:09 Středa Říjen 11, 2023
+--   Date and Time:   18:19 Středa Říjen 11, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -20227,19 +20227,10 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_region_id=>wwv_flow_imp.id(74502154509114589)
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(27235290151725540)
-,p_event_id=>wwv_flow_imp.id(19909981721955381)
-,p_event_result=>'TRUE'
-,p_action_sequence=>20
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>'show_success(''Cards refreshed'');'
-);
-wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(19910402431955381)
 ,p_event_id=>wwv_flow_imp.id(19909981721955381)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>30
+,p_action_sequence=>20
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -22016,6 +22007,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_CREATE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25256418258844563)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_required_patch=>wwv_flow_imp.id(33790501555120051)
 ,p_internal_uid=>25265822843844587
 );
@@ -22027,6 +22019,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_UPDATE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25256870991844563)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25265086706844586
 );
 wwv_flow_imp_page.create_page_process(
@@ -22037,6 +22030,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_MOVE_TO_TOP'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25257614657844564)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25268238551844589
 );
 wwv_flow_imp_page.create_page_process(
@@ -22047,6 +22041,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_DELETE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25258805949844565)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25265465111844587
 );
 wwv_flow_imp_page.create_page_process(

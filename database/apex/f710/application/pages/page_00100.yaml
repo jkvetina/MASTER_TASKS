@@ -1811,7 +1811,7 @@ dynamic-actions:
         
 
     execution: 
-      sequence: 30
+      sequence: 20
       event: DIALOG_CLOSED # 19909981721955381
       fire-when-event-result-is: True
       fire-on-initialization: false
@@ -1830,20 +1830,6 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: DIALOG_CLOSED # 19909981721955381
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 27235290151725540
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: show_success('Cards refreshed');
-
-    execution: 
-      sequence: 20
       event: DIALOG_CLOSED # 19909981721955381
       fire-when-event-result-is: True
       fire-on-initialization: false

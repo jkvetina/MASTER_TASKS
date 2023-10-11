@@ -1701,6 +1701,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_CREATE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25256418258844563)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_required_patch=>wwv_flow_imp.id(33790501555120051)
 ,p_internal_uid=>25265822843844587
 );
@@ -1712,6 +1713,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_UPDATE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25256870991844563)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25265086706844586
 );
 wwv_flow_imp_page.create_page_process(
@@ -1722,6 +1724,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_MOVE_TO_TOP'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25257614657844564)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25268238551844589
 );
 wwv_flow_imp_page.create_page_process(
@@ -1732,6 +1735,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG_DELETE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25258805949844565)
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25265465111844587
 );
 wwv_flow_imp_page.create_page_process(

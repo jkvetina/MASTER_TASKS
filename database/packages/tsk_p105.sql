@@ -135,6 +135,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         );
         --
         core.set_item('P105_CARD_ID', rec.card_id);
+        core.set_item('P0_SUCCESS_MESSAGE', 'Card ' || NVL(rec.card_number, '#' || rec.card_id) || ' updated.');
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
