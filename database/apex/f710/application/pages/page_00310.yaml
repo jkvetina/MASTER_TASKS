@@ -857,6 +857,75 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
+- # ====== Button: COPY_SWIMLANES ==============================
+  id: 27356171265493241
+  identification: 
+    button-name: COPY_SWIMLANES
+    label: Copy Swimlanes
+
+  layout: 
+    sequence: 20
+    region: Swimlanes for &P0_PROJECT_NAME. # 209055488592754200
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-download
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:312:&SESSION.::&DEBUG.:312::'
+      page: 312 # Copy Swimlanes from Project
+      clear-cache: 312
+
+    warn-on-unsaved-changes: Do Not Check
+
+  security: 
+    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+
+dynamic-actions: 
+- # ====== Dynamic Action: REFRESH =============================
+  id: 27381516762735348
+  identification: 
+    name: REFRESH
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: JavaScript Expression
+    javascript-expression: window
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 27381999332735349
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Swimlanes [GRID] # 243852029908743762
+
+    execution: 
+      sequence: 10
+      event: REFRESH # 27381516762735348
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 processes: 
 - # ====== Process: SAVE_SWIMLANES =============================
   id: 26419537861184339

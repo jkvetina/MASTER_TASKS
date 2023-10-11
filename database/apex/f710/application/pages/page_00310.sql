@@ -590,6 +590,40 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_icon_css_classes=>'fa-sequence'
 );
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(27356171265493241)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(209055488592754200)
+,p_button_name=>'COPY_SWIMLANES'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'Copy Swimlanes'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_redirect_url=>'f?p=&APP_ID.:312:&SESSION.::&DEBUG.:312::'
+,p_icon_css_classes=>'fa-download'
+,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27381516762735348)
+,p_name=>'REFRESH'
+,p_event_sequence=>10
+,p_triggering_element_type=>'JAVASCRIPT_EXPRESSION'
+,p_triggering_element=>'window'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27381999332735349)
+,p_event_id=>wwv_flow_imp.id(27381516762735348)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(243852029908743762)
+);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(26419537861184339)
 ,p_process_sequence=>10

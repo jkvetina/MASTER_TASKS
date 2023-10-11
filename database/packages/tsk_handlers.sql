@@ -437,6 +437,51 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
+    PROCEDURE copy_swimlanes
+    AS
+        rec                     tsk_swimlanes%ROWTYPE;
+        v_affected              PLS_INTEGER := 0;
+    BEGIN
+        IF core.get_grid_action() = 'D' THEN
+            RETURN;
+        END IF;
+
+        -- change record in table
+        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
+        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
+        rec.client_id           := tsk_app.get_client_id();
+        rec.project_id          := tsk_app.get_project_id();
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
+        rec.order#              := core.get_grid_data('ORDER#');
+        --
+        BEGIN
+            INSERT INTO tsk_swimlanes
+            VALUES rec;
+            --
+            v_affected := v_affected + SQL%ROWCOUNT;
+            --
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            UPDATE tsk_swimlanes t
+            SET ROW = rec
+            WHERE t.swimlane_id     = rec.swimlane_id
+                AND t.client_id     = rec.client_id
+                AND t.project_id    = rec.project_id;
+            --
+            v_affected := v_affected + SQL%ROWCOUNT;
+        END;
+        --
+        app.ajax_message(v_affected || ' rows affected.');
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE reorder_categories
     AS
         in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
