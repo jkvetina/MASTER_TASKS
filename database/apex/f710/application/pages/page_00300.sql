@@ -595,11 +595,12 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_plug_id=>wwv_flow_imp.id(140318868333565921)
 ,p_button_name=>'ADD_PROJECT_WIZARD'
 ,p_button_action=>'DEFINED_BY_DA'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(34021473197153827)
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>wwv_flow_imp.id(34021523429153827)
 ,p_button_image_alt=>'Add Project Wizard'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_warn_on_unsaved_changes=>null
+,p_icon_css_classes=>'fa-wizard'
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 );
 wwv_flow_imp_page.create_page_process(

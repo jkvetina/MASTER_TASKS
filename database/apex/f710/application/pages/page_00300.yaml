@@ -854,10 +854,12 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text with Icon # 34021523429153827
     hot: false
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-wizard
 
   behavior: 
     action: Defined by Dynamic Action

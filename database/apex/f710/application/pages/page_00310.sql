@@ -615,6 +615,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_04=>'REORDER_SWIMLANES'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(26411984077184313)
+,p_process_success_message=>'Sorted'
 ,p_internal_uid=>26420001261184355
 );
 wwv_flow_imp.component_end;
