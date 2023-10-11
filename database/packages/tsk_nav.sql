@@ -9,7 +9,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         last_client     tsk_projects.client_id%TYPE     := '-';
         last_project    tsk_projects.project_id%TYPE    := '-';
     BEGIN
-        o := o || '<a href="#" class="M1"><span class="fa fa-heart-o"></span> &' || 'nbsp; <span style="">Favorites</span></a>';
+        o := o || '<div class="M1"><span class="fa fa-heart-o"></span> &' || 'nbsp; <span>Favorites</span></div>';
+        o := o || '<div>';      -- class=ROW
         --
         FOR b IN (
             SELECT
@@ -64,6 +65,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 );
             END IF;
         END LOOP;
+        --
+        o := o || '</div>';
+        o := o || '<div>';      -- class=ROW
 
         -- add recent tasks
         FOR t IN (
@@ -86,20 +90,26 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             ORDER BY t.updated_at DESC
             FETCH FIRST 10 ROWS ONLY
         ) LOOP
-            r := r || '<a href="#" class="M2">' ||
+            t.card_name := CASE WHEN LENGTH(t.card_name) > 30 THEN SUBSTR(TRIM(t.card_name), 1, 27) || '...' ELSE t.card_name END;
+            r := r || '<a href="' ||
+                tsk_app.get_card_link(t.card_id) ||
+                '" class="M2">' ||
                 CASE WHEN t.badge BETWEEN 1 AND 5 THEN '<span class="fa fa-number-' || t.badge || '"></span><span>' ELSE '<span>&' || 'mdash;' END ||
-                '&' || 'nbsp; ' || NVL(t.card_number, '#' || t.card_id) || ' - ' || SUBSTR(t.card_name, 1, 30) || '</span></a>';
+                '&' || 'nbsp; ' || NVL(t.card_number, '#' || t.card_id) || ' - ' || t.card_name || '</span></a>';
         END LOOP;
+        --
+        o := o || '</div>';
 
         -- add extra pages
-        o := '<div class="COL_1">' || o || '</div>' ||
-            '<div class="COL_2">' ||
-                '<a href="#" class="M1"><span class="fa fa-alarm-clock"></span> &' || 'nbsp; <span style="">Recent Tasks</span></a>' ||
+        RETURN
+            '<div>' || o || '</div>' ||
+            '<div>' ||
+                '<div class="M1"><span class="fa fa-alarm-clock"></span> &' || 'nbsp; <span>Recent Tasks</span></div>' ||
+                '<div>' ||
                 r ||
+                '</div>' ||
             '</div>' ||
-            '<div class="COL_3 NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
-        --
-        RETURN o;
+            '<div class="NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -126,7 +136,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             ORDER BY c.client_name
         ) LOOP
             o := o || tsk_app.get_link (
-                CASE WHEN c.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                CASE WHEN c.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
                 '&' || 'nbsp; ' || c.client_name || '</span>',
                 c.client_id,
                 in_class => 'M2' || REPLACE(c.is_current, 'Y', ' ACTIVE')
@@ -143,7 +153,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     AND c.is_current    = 'Y'       -- current client
             ) LOOP
                 o := o || tsk_app.get_link (
-                    CASE WHEN p.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                    CASE WHEN p.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
                     '&' || 'nbsp; ' || p.project_name || '</span>',
                     c.client_id,
                     p.project_id,
@@ -201,7 +211,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         ) LOOP
             --o := o || '<div>';
             o := o || tsk_app.get_link (
-                CASE WHEN p.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                CASE WHEN p.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
                 '&' || 'nbsp; ' || p.project_name || '</span>',
                 p.client_id,
                 p.project_id,
@@ -222,7 +232,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 ORDER BY b.order#
             ) LOOP
                 o := o || tsk_app.get_link (
-                    CASE WHEN b.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                    CASE WHEN b.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
                     '&' || 'nbsp; ' || b.board_name || '</span>',
                     b.client_id,
                     b.project_id,
@@ -268,28 +278,27 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             RETURN NULL;
         END IF;
         --
+        o := o || '<div class="ROW">';
+        o := o || '<div>';
         o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Board</span></div>';
-        o := o || '<div>';      -- class=ROW
         --
-        FOR b IN (
+        FOR t IN (
             SELECT
-                b.client_id,
-                b.project_id,
-                b.board_id,
-                b.board_name,
-                b.is_current
-            FROM tsk_available_boards_v b
-            WHERE b.client_id       = tsk_app.get_client_id()
-                AND b.project_id    = tsk_app.get_project_id()
-            ORDER BY b.order#
+                t.client_id,
+                t.project_id,
+                t.board_id,
+                t.board_name,
+                t.is_current
+            FROM tsk_lov_boards_v t
+            ORDER BY t.order#
         ) LOOP
             o := o || tsk_app.get_link (
-                CASE WHEN b.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right" style="padding-top: 0rem !important;"></span><span>' ELSE '<span>&' || 'mdash;' END ||
-                '&' || 'nbsp; ' || b.board_name || '</span>',
-                b.client_id,
-                b.project_id,
-                b.board_id,
-                in_class => 'M2' || REPLACE(b.is_current, 'Y', ' ACTIVE')
+                CASE WHEN t.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || t.board_name || '</span>',
+                t.client_id,
+                t.project_id,
+                t.board_id,
+                in_class => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE')
             );
         END LOOP;
         --
