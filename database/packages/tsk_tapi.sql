@@ -582,8 +582,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         -- delete record
         IF c_action = 'D' THEN
             DELETE FROM tsk_boards_fav b
-            WHERE b.user_id     = rec.user_id
-                AND b.board_id  = rec.board_id;
+            WHERE b.user_id         = rec.user_id
+                AND b.client_id     = rec.client_id
+                AND b.project_id    = rec.project_id
+                AND b.board_id      = rec.board_id;
             --
             RETURN;
         END IF;

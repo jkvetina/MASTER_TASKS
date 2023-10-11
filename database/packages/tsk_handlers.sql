@@ -356,6 +356,54 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
+    PROCEDURE copy_statuses
+    AS
+        rec                     tsk_statuses%ROWTYPE;
+        v_affected              PLS_INTEGER := 0;
+    BEGIN
+        IF core.get_grid_action() = 'D' THEN
+            RETURN;
+        END IF;
+
+        -- change record in table
+        rec.status_id           := core.get_grid_data('STATUS_ID');
+        rec.status_name         := core.get_grid_data('STATUS_NAME');
+        rec.client_id           := tsk_app.get_client_id();
+        rec.project_id          := tsk_app.get_project_id();
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
+        rec.is_default          := core.get_grid_data('IS_DEFAULT');
+        rec.is_colored          := core.get_grid_data('IS_COLORED');
+        rec.is_badge            := core.get_grid_data('IS_BADGE');
+        rec.order#              := core.get_grid_data('ORDER#');
+        --
+        BEGIN
+            INSERT INTO tsk_statuses
+            VALUES rec;
+            --
+            v_affected := v_affected + SQL%ROWCOUNT;
+            --
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            UPDATE tsk_statuses t
+            SET ROW = rec
+            WHERE t.status_id       = rec.status_id
+                AND t.client_id     = rec.client_id
+                AND t.project_id    = rec.project_id;
+            --
+            v_affected := v_affected + SQL%ROWCOUNT;
+        END;
+        --
+        APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := v_affected || ' rows affected.';
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE reorder_swimlanes
     AS
         in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();

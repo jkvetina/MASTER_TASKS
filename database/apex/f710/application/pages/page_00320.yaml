@@ -1053,22 +1053,53 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
-    icon: fa-wizard
+    icon: fa-download
 
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:235:&SESSION.::&DEBUG.:235::'
-      page: 235
-      clear-cache: 235
+      url: 'f?p=&APP_ID.:322:&SESSION.::&DEBUG.:322::'
+      page: 322 # Copy Statuses from Project
+      clear-cache: 322
 
     warn-on-unsaved-changes: Do Not Check
 
-  server-side-condition: 
-    type: Never
-
   security: 
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+
+dynamic-actions: 
+- # ====== Dynamic Action: REFRESH =============================
+  id: 27234970604725537
+  identification: 
+    name: REFRESH
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: JavaScript Expression
+    javascript-expression: window
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 27235002856725538
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Statuses [GRID] # 220435900365231687
+
+    execution: 
+      sequence: 10
+      event: REFRESH # 27234970604725537
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_STATUSES ==============================
@@ -1116,6 +1147,9 @@ processes:
     sequence: 20
     point: Processing
     run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Sorted
 
   error: 
     display-location: Inline in Notification
