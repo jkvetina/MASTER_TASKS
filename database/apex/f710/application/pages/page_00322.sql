@@ -18,7 +18,7 @@ wwv_flow_imp_page.create_page(
 ,p_page_mode=>'MODAL'
 ,p_step_title=>'Copy Statuses from Project'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(26770108974455615)  -- 2) CLIENTS
+,p_group_id=>wwv_flow_imp.id(78006013489194627)  -- 3) PROJECTS
 ,p_step_template=>wwv_flow_imp.id(33859121557153720)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
@@ -39,7 +39,9 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>30
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TSK_STATUSES'
-,p_query_where=>'project_id = :P322_PROJECT_ID'
+,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'client_id = tsk_app.get_client_id()',
+'AND project_id = :P322_PROJECT_ID'))
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
 ,p_ajax_items_to_submit=>'P322_PROJECT_ID'
@@ -434,6 +436,9 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(27233023343725518)
 ,p_is_visible=>true
 ,p_is_frozen=>false
+,p_sort_order=>2
+,p_sort_direction=>'ASC'
+,p_sort_nulls=>'LAST'
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(27310826334747213)
@@ -451,6 +456,9 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_is_visible=>true
 ,p_is_frozen=>false
 ,p_width=>90
+,p_sort_order=>1
+,p_sort_direction=>'ASC'
+,p_sort_nulls=>'FIRST'
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(27312602679747219)
@@ -692,12 +700,11 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_sequence=>10
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_region_id=>wwv_flow_imp.id(27232380753725511)
-,p_process_type=>'NATIVE_IG_DML'
+,p_process_type=>'NATIVE_INVOKE_API'
 ,p_process_name=>'COPY_STATUSES'
-,p_attribute_01=>'PLSQL_CODE'
-,p_attribute_04=>'tsk_handlers.copy_statuses();'
-,p_attribute_05=>'Y'
-,p_attribute_06=>'N'
+,p_attribute_01=>'PLSQL_PACKAGE'
+,p_attribute_03=>'TSK_HANDLERS'
+,p_attribute_04=>'COPY_STATUSES'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_only_for_changed_rows=>'N'
 ,p_internal_uid=>27234629547725534

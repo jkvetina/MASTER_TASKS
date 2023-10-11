@@ -5,7 +5,7 @@ identification:
   name: Copy Statuses from Project
   alias: COPY-STATUSES
   title: Copy Statuses from Project
-  page-group: 2) CLIENTS # 26770108974455615
+  page-group: 3) PROJECTS # 78006013489194627
 
 appearance: 
   page-mode: Modal Dialog
@@ -55,7 +55,9 @@ regions:
     table-owner: Parsing Schema
     table-name: TSK_STATUSES
     include-rowid-column: false
-    where-clause: 'project_id = :P322_PROJECT_ID'
+    where-clause: |
+      client_id = tsk_app.get_client_id()
+      AND project_id = :P322_PROJECT_ID
     page-items-to-submit: 
     - P322_PROJECT_ID
 
@@ -1137,15 +1139,15 @@ processes:
   id: 27234629547725534
   identification: 
     name: COPY_STATUSES
-    type: Interactive Grid - Automatic Row Processing (DML)
+    type: Invoke API
     execution-chain: None
     editable-region: '[GRID]' # 27232380753725511
 
   settings: 
-    target-type: PL/SQL Code
-    pl/sql-code-to-insert/update/delete: tsk_handlers.copy_statuses();
-    prevent-lost-updates: true
-    lock-row: No
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: COPY_STATUSES
 
   execution: 
     sequence: 10
