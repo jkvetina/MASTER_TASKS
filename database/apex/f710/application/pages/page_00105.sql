@@ -822,6 +822,41 @@ wwv_flow_imp_page.create_page_button(
 ,p_database_action=>'UPDATE'
 );
 wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(25258805949844565)
+,p_button_sequence=>80
+,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
+,p_button_name=>'DELETE_CARD'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'Delete Card'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_execute_validations=>'N'
+,p_confirm_message=>'Do you want to delete this card?'
+,p_button_condition=>'P105_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_button_css_classes=>'DECENT'
+,p_icon_css_classes=>'fa-trash-o'
+,p_database_action=>'DELETE'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(27422429232258642)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
+,p_button_name=>'MORE_ACTIONS'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'More Actions'
+,p_button_position=>'UP'
+,p_button_execute_validations=>'N'
+,p_warn_on_unsaved_changes=>null
+,p_button_condition=>'P105_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_button_css_classes=>'TRANSPARENT'
+,p_icon_css_classes=>'fa-ellipsis-h'
+);
+wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25259296786844565)
 ,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
@@ -839,26 +874,22 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-copy'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(25258805949844565)
-,p_button_sequence=>30
+ p_id=>wwv_flow_imp.id(27532573313783246)
+,p_button_sequence=>40
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
-,p_button_name=>'DELETE_CARD'
-,p_button_action=>'SUBMIT'
+,p_button_name=>'HELP'
+,p_button_action=>'REDIRECT_APP'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
-,p_button_image_alt=>'Delete Card'
+,p_button_image_alt=>'Help'
 ,p_button_position=>'UP'
-,p_button_execute_validations=>'N'
-,p_confirm_message=>'Do you want to delete this card?'
-,p_button_condition=>'P105_CARD_ID'
-,p_button_condition_type=>'ITEM_IS_NOT_NULL'
-,p_button_css_classes=>'DECENT'
-,p_icon_css_classes=>'fa-trash-o'
-,p_database_action=>'DELETE'
+,p_button_redirect_url=>'f?p=800:980:&SESSION.::&DEBUG.:980:P980_APP_ID,P980_PAGE_ID:&APP_ID.,&APP_PAGE_ID.'
+,p_button_css_classes=>'TRANSPARENT'
+,p_icon_css_classes=>'fa-question'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260460384844566)
-,p_button_sequence=>40
+,p_button_sequence=>50
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'GOTO_PREV_CARD'
 ,p_button_action=>'SUBMIT'
@@ -873,7 +904,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260022178844566)
-,p_button_sequence=>50
+,p_button_sequence=>60
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'GOTO_NEXT_CARD'
 ,p_button_action=>'SUBMIT'
@@ -888,9 +919,10 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25259633374844566)
-,p_button_sequence=>60
+,p_button_sequence=>70
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'CLOSE_DIALOG'
+,p_button_static_id=>'CLOSE_DIALOG'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
@@ -953,6 +985,18 @@ wwv_flow_imp_page.create_page_branch(
 '    WHERE t.card_id = :P105_CARD_ID',
 '));'))
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.2'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25478579834860914)
 ,p_name=>'P105_CARD_NUMBER'
@@ -976,18 +1020,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'BOTH'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25479757064860926)
@@ -1503,24 +1535,6 @@ wwv_flow_imp_page.create_page_computation(
 '        KEY t.category_id VALUE t.color_bg',
 '    ))',
 'FROM tsk_lov_categories_v t;'))
-);
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(25268693467844589)
-,p_name=>'CLOSE_DIALOG'
-,p_event_sequence=>10
-,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(25259633374844566)
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'click'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(25269103137844591)
-,p_event_id=>wwv_flow_imp.id(25268693467844589)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_DIALOG_CANCEL'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(25269548550844592)

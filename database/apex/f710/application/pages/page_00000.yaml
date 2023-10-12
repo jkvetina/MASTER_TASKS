@@ -560,3 +560,32 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+- # ====== Dynamic Action: CLOSE_DIALOG ========================
+  id: 27422588151258643
+  identification: 
+    name: CLOSE_DIALOG
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: jQuery Selector
+    jquery-selector: '#CLOSE_DIALOG'
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Close Dialog ================================
+    id: 27422640094258644
+    identification: 
+      action: Close Dialog
+
+    execution: 
+      sequence: 10
+      event: CLOSE_DIALOG # 27422588151258643
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

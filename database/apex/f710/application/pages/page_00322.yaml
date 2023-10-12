@@ -970,6 +970,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
+  advanced: 
+    static-id: CLOSE_DIALOG
+
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_FILTERS =====================
   id: 27234021447725528
@@ -1050,35 +1053,6 @@ dynamic-actions:
     execution: 
       sequence: 10
       event: COPY_STATUSES # 27235386686725541
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 27301020305695380
-  identification: 
-    name: CLOSE_DIALOG
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: CLOSE_DIALOG # 27299407954695379
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Close Dialog ================================
-    id: 27301535232695381
-    identification: 
-      action: Close Dialog
-
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG # 27301020305695380
       fire-when-event-result-is: True
       fire-on-initialization: false
 

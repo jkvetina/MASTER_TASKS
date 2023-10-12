@@ -3308,9 +3308,9 @@ buttons:
     label: Delete Card
 
   layout: 
-    sequence: 30
+    sequence: 80
     region: '&P105_HEADER.' # 108316517171408030
-    position: UP
+    position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -3380,7 +3380,7 @@ buttons:
     label: Close Dialog
 
   layout: 
-    sequence: 60
+    sequence: 70
     region: '&P105_HEADER.' # 108316517171408030
     position: UP
     start-new-layout: false
@@ -3400,6 +3400,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
+  advanced: 
+    static-id: CLOSE_DIALOG
+
 - # ====== Button: GOTO_NEXT_CARD ==============================
   id: 25260022178844566
   identification: 
@@ -3407,7 +3410,7 @@ buttons:
     label: Save changes and go to next card
 
   layout: 
-    sequence: 50
+    sequence: 60
     region: '&P105_HEADER.' # 108316517171408030
     position: UP
     start-new-layout: false
@@ -3440,7 +3443,7 @@ buttons:
     label: Save changes and go to previous card
 
   layout: 
-    sequence: 40
+    sequence: 50
     region: '&P105_HEADER.' # 108316517171408030
     position: UP
     start-new-layout: false
@@ -3498,36 +3501,78 @@ buttons:
     type: Item is NOT NULL
     item: P105_CARD_ID
 
-dynamic-actions: 
-- # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 25268693467844589
+- # ====== Button: MORE_ACTIONS ================================
+  id: 27422429232258642
   identification: 
-    name: CLOSE_DIALOG
+    button-name: MORE_ACTIONS
+    label: More Actions
 
-  execution: 
+  layout: 
     sequence: 10
+    region: '&P105_HEADER.' # 108316517171408030
+    position: UP
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
 
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: CLOSE_DIALOG # 25259633374844566
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - TRANSPARENT
+    icon: fa-ellipsis-h
 
-  execution: 
-    event-scope: Static
-    type: Immediate
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
 
-  actions: 
-  - # ====== Action: Cancel Dialog ===============================
-    id: 25269103137844591
-    identification: 
-      action: Cancel Dialog
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P105_CARD_ID
 
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG # 25268693467844589
-      fire-when-event-result-is: True
-      fire-on-initialization: false
+- # ====== Button: HELP ========================================
+  id: 27532573313783246
+  identification: 
+    button-name: HELP
+    label: Help
 
+  layout: 
+    sequence: 40
+    region: '&P105_HEADER.' # 108316517171408030
+    position: UP
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - TRANSPARENT
+    icon: fa-question
+
+  behavior: 
+    action: Redirect to Page in a different Application
+    target: 
+      url: 'f?p=800:980:&SESSION.::&DEBUG.:980:P980_APP_ID,P980_PAGE_ID:&APP_ID.,&APP_PAGE_ID.'
+      app: 800
+      page: 980
+      clear-cache: 980
+      values: 
+        p980_app_id: '&APP_ID.'
+        p980_page_id: '&APP_PAGE_ID.'
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
 - # ====== Dynamic Action: COPY_TO_CLIPBOARD ===================
   id: 25269548550844592
   identification: 
