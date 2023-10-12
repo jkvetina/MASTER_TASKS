@@ -20,6 +20,7 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_query_table=>'TSK_LOV_CATEGORIES_V'
 ,p_return_column_name=>'CATEGORY_ID'
 ,p_display_column_name=>'CATEGORY_NAME'
+,p_group_column_name=>'CATEGORY_GROUP'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'ORDER#'
 ,p_default_sort_direction=>'ASC'

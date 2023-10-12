@@ -117,6 +117,8 @@
     display: CATEGORY_NAME
     default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
+    group: CATEGORY_GROUP
+    group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_USERS ===========================
   id: 23489673221151564

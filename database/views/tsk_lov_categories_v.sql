@@ -2,6 +2,7 @@ CREATE OR REPLACE FORCE VIEW tsk_lov_categories_v AS
 SELECT
     t.category_id,
     t.category_name,
+    t.category_group,
     t.color_bg,
     t.color_fg,
     t.is_default,

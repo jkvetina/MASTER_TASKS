@@ -173,7 +173,8 @@ regions:
       value-identifies-row: false
 
     validation: 
-      value-required: false
+      value-required: true
+      maximum-length: 32
 
     source: 
       type: Database Column
@@ -266,14 +267,14 @@ regions:
       type: Color Picker
 
     heading: 
-      heading: Color Bg
+      heading: Background
       alignment: start
 
     settings: 
       use-defaults: true
 
     layout: 
-      sequence: 70
+      sequence: 80
       column-alignment: start
       stretch: Use Report Setting
 
@@ -320,14 +321,14 @@ regions:
       type: Color Picker
 
     heading: 
-      heading: Color Fg
+      heading: Text
       alignment: start
 
     settings: 
       use-defaults: true
 
     layout: 
-      sequence: 80
+      sequence: 90
       column-alignment: start
       stretch: Use Report Setting
 
@@ -341,6 +342,61 @@ regions:
     source: 
       type: Database Column
       database-column: COLOR_FG
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: CATEGORY_GROUP ==============================
+    id: 27423222065258650
+    identification: 
+      column-name: CATEGORY_GROUP
+      type: Text Field
+
+    heading: 
+      heading: Group
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 64
+
+    source: 
+      type: Database Column
+      database-column: CATEGORY_GROUP
       data-type: VARCHAR2
       query-only: false
       primary-key: false
@@ -450,7 +506,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 90
+      sequence: 100
       column-alignment: end
       stretch: Use Report Setting
 
@@ -497,7 +553,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 100
+      sequence: 110
       column-alignment: center
       stretch: Use Report Setting
 
@@ -551,7 +607,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 110
+      sequence: 120
       column-alignment: center
       stretch: Use Report Setting
 
@@ -605,7 +661,7 @@ regions:
       text-case: NO CHANGE
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: start
       stretch: Use Report Setting
 
@@ -654,7 +710,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 130
+      sequence: 140
 
     accessibility: 
       value-identifies-row: false
