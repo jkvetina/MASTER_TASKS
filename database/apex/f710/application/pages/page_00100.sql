@@ -1131,20 +1131,10 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'apexafterclosedialog'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(26840022289020939)
-,p_event_id=>wwv_flow_imp.id(19909981721955381)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_REFRESH'
-,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_imp.id(74502154509114589)
-);
-wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(19910402431955381)
 ,p_event_id=>wwv_flow_imp.id(19909981721955381)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>20
+,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -1191,14 +1181,37 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(74502154509114589)
 );
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27419335306258611)
+,p_name=>'AFTER_GRID_REFRESH'
+,p_event_sequence=>80
+,p_triggering_element_type=>'JQUERY_SELECTOR'
+,p_triggering_element=>'#BOARD'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterrefresh'
+);
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(27235157231725539)
-,p_event_id=>wwv_flow_imp.id(25478734766860916)
+ p_id=>wwv_flow_imp.id(27419454012258612)
+,p_event_id=>wwv_flow_imp.id(27419335306258611)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'show_success(''Cards refreshed'');'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27419553722258613)
+,p_event_id=>wwv_flow_imp.id(27419335306258611)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>20
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>'show_success(''Cards refreshed'');'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// this also works',
+'$(''#BOARD'').on(''apexafterrefresh'', function() {',
+'});'))
+,p_server_condition_type=>'NEVER'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(26839618973020935)

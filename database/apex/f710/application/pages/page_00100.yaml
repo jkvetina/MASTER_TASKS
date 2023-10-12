@@ -1811,28 +1811,13 @@ dynamic-actions:
         
 
     execution: 
-      sequence: 20
+      sequence: 10
       event: DIALOG_CLOSED # 19909981721955381
       fire-when-event-result-is: True
       fire-on-initialization: false
 
     server-side-condition: 
       type: Never
-
-  - # ====== Action: Refresh =====================================
-    id: 26840022289020939
-    identification: 
-      action: Refresh
-
-    affected-elements: 
-      selection-type: Region
-      region: Cards [CONTENT] # 74502154509114589
-
-    execution: 
-      sequence: 10
-      event: DIALOG_CLOSED # 19909981721955381
-      fire-when-event-result-is: True
-      fire-on-initialization: false
 
 - # ====== Dynamic Action: REFRESH_GRID ========================
   id: 25478734766860916
@@ -1867,20 +1852,6 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 27235157231725539
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: show_success('Cards refreshed');
-
-    execution: 
-      sequence: 20
-      event: REFRESH_GRID # 25478734766860916
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
 - # ====== Dynamic Action: INIT_GRID ===========================
   id: 25478913059860918
   identification: 
@@ -1911,6 +1882,58 @@ dynamic-actions:
       event: INIT_GRID # 25478913059860918
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+- # ====== Dynamic Action: AFTER_GRID_REFRESH ==================
+  id: 27419335306258611
+  identification: 
+    name: AFTER_GRID_REFRESH
+
+  execution: 
+    sequence: 80
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
+    selection-type: jQuery Selector
+    jquery-selector: '#BOARD'
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 27419454012258612
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: show_success('Cards refreshed');
+
+    execution: 
+      sequence: 10
+      event: AFTER_GRID_REFRESH # 27419335306258611
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 27419553722258613
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        // this also works
+        $('#BOARD').on('apexafterrefresh', function() {
+        });
+
+    execution: 
+      sequence: 20
+      event: AFTER_GRID_REFRESH # 27419335306258611
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    server-side-condition: 
+      type: Never
 
 processes: 
 - # ====== Process: UPDATE_CARD ================================
