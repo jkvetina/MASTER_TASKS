@@ -1,8 +1,8 @@
 CREATE TABLE tsk_swimlanes (
-    swimlane_id                     VARCHAR2(32)    CONSTRAINT nn_tsk_swimlanes_id NOT NULL,
-    swimlane_name                   VARCHAR2(64)    CONSTRAINT nn_tsk_swimlanes_name NOT NULL,
     client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_swimlanes_client NOT NULL,
     project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_swimlanes_project NOT NULL,
+    swimlane_id                     VARCHAR2(32)    CONSTRAINT nn_tsk_swimlanes_id NOT NULL,
+    swimlane_name                   VARCHAR2(64)    CONSTRAINT nn_tsk_swimlanes_name NOT NULL,
     is_active                       CHAR(1),
     order#                          NUMBER(4,0),
     updated_by                      VARCHAR2(128),
@@ -22,10 +22,10 @@ CREATE TABLE tsk_swimlanes (
 --
 COMMENT ON TABLE tsk_swimlanes IS '';
 --
-COMMENT ON COLUMN tsk_swimlanes.swimlane_id     IS '';
-COMMENT ON COLUMN tsk_swimlanes.swimlane_name   IS '';
 COMMENT ON COLUMN tsk_swimlanes.client_id       IS '';
 COMMENT ON COLUMN tsk_swimlanes.project_id      IS '';
+COMMENT ON COLUMN tsk_swimlanes.swimlane_id     IS '';
+COMMENT ON COLUMN tsk_swimlanes.swimlane_name   IS '';
 COMMENT ON COLUMN tsk_swimlanes.is_active       IS '';
 COMMENT ON COLUMN tsk_swimlanes.order#          IS '';
 

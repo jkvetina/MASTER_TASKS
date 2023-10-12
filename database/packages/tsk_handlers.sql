@@ -117,10 +117,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         in_action           CONSTANT CHAR := core.get_grid_action();
     BEGIN
         -- change record in table
-        rec.board_id        := core.get_grid_data('BOARD_ID');
-        rec.board_name      := core.get_grid_data('BOARD_NAME');
         rec.client_id       := core.get_grid_data('CLIENT_ID');
         rec.project_id      := core.get_grid_data('PROJECT_ID');
+        rec.board_id        := core.get_grid_data('BOARD_ID');
+        rec.board_name      := core.get_grid_data('BOARD_NAME');
         rec.sequence_id     := core.get_grid_data('SEQUENCE_ID');
         rec.is_active       := core.get_grid_data('IS_ACTIVE');
         rec.is_default      := core.get_grid_data('IS_DEFAULT');
@@ -178,10 +178,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         in_action               CONSTANT CHAR := core.get_grid_action();
     BEGIN
         -- change record in table
-        rec.status_id           := core.get_grid_data('STATUS_ID');
-        rec.status_name         := core.get_grid_data('STATUS_NAME');
         rec.client_id           := core.get_grid_data('CLIENT_ID');
         rec.project_id          := core.get_grid_data('PROJECT_ID');
+        rec.status_id           := core.get_grid_data('STATUS_ID');
+        rec.status_name         := core.get_grid_data('STATUS_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');
@@ -218,10 +218,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         in_action               CONSTANT CHAR := core.get_grid_action();
     BEGIN
         -- change record in table
-        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
-        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
         rec.client_id           := core.get_grid_data('CLIENT_ID');
         rec.project_id          := core.get_grid_data('PROJECT_ID');
+        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
+        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.order#              := core.get_grid_data('ORDER#');
         --
@@ -255,10 +255,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         in_action               CONSTANT CHAR := core.get_grid_action();
     BEGIN
         -- change record in table
-        rec.category_id         := core.get_grid_data('CATEGORY_ID');
-        rec.category_name       := core.get_grid_data('CATEGORY_NAME');
         rec.client_id           := core.get_grid_data('CLIENT_ID');
         rec.project_id          := core.get_grid_data('PROJECT_ID');
+        rec.category_id         := core.get_grid_data('CATEGORY_ID');
+        rec.category_name       := core.get_grid_data('CATEGORY_NAME');
         rec.color_bg            := core.get_grid_data('COLOR_BG');
         rec.color_fg            := core.get_grid_data('COLOR_FG');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
@@ -366,10 +366,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
 
         -- change record in table
-        rec.status_id           := core.get_grid_data('STATUS_ID');
-        rec.status_name         := core.get_grid_data('STATUS_NAME');
         rec.client_id           := tsk_app.get_client_id();
         rec.project_id          := tsk_app.get_project_id();
+        rec.status_id           := core.get_grid_data('STATUS_ID');
+        rec.status_name         := core.get_grid_data('STATUS_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');
@@ -447,10 +447,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
 
         -- change record in table
-        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
-        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
         rec.client_id           := tsk_app.get_client_id();
         rec.project_id          := tsk_app.get_project_id();
+        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
+        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.order#              := core.get_grid_data('ORDER#');
         --
@@ -525,10 +525,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
 
         -- change record in table
-        rec.category_id         := core.get_grid_data('CATEGORY_ID');
-        rec.category_name       := core.get_grid_data('CATEGORY_NAME');
         rec.client_id           := tsk_app.get_client_id();
         rec.project_id          := tsk_app.get_project_id();
+        rec.category_id         := core.get_grid_data('CATEGORY_ID');
+        rec.category_name       := core.get_grid_data('CATEGORY_NAME');
         rec.color_bg            := core.get_grid_data('COLOR_BG');
         rec.color_fg            := core.get_grid_data('COLOR_FG');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');

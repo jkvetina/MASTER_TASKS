@@ -1,10 +1,10 @@
 CREATE TABLE tsk_cards (
+    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_cards_client NOT NULL,
+    project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_cards_project NOT NULL,
     card_id                         NUMBER(10,0)    CONSTRAINT nn_tsk_cards_id NOT NULL,
     card_number                     VARCHAR2(16),
     card_name                       VARCHAR2(128)   CONSTRAINT nn_tsk_cards_name NOT NULL,
     card_desc                       VARCHAR2(4000),
-    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_cards_client NOT NULL,
-    project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_cards_project NOT NULL,
     board_id                        NUMBER(10,0)    CONSTRAINT nn_tsk_cards_board NOT NULL,
     swimlane_id                     VARCHAR2(32)    CONSTRAINT nn_tsk_cards_swimlane NOT NULL,
     status_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_cards_status NOT NULL,
@@ -49,12 +49,12 @@ CREATE TABLE tsk_cards (
 --
 COMMENT ON TABLE tsk_cards IS '';
 --
+COMMENT ON COLUMN tsk_cards.client_id       IS '';
+COMMENT ON COLUMN tsk_cards.project_id      IS '';
 COMMENT ON COLUMN tsk_cards.card_id         IS '';
 COMMENT ON COLUMN tsk_cards.card_number     IS '';
 COMMENT ON COLUMN tsk_cards.card_name       IS '';
 COMMENT ON COLUMN tsk_cards.card_desc       IS '';
-COMMENT ON COLUMN tsk_cards.client_id       IS '';
-COMMENT ON COLUMN tsk_cards.project_id      IS '';
 COMMENT ON COLUMN tsk_cards.board_id        IS '';
 COMMENT ON COLUMN tsk_cards.swimlane_id     IS '';
 COMMENT ON COLUMN tsk_cards.status_id       IS '';

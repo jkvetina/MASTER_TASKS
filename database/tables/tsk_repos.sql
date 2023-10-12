@@ -1,9 +1,9 @@
 CREATE TABLE tsk_repos (
-    repo_id                         VARCHAR2(64)    CONSTRAINT nn_tsk_repos_repo NOT NULL,
-    owner_id                        VARCHAR2(64)    CONSTRAINT nn_tsk_repos_owner NOT NULL,
     client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_repos_client NOT NULL,
     project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_repos_project NOT NULL,
     branch_id                       VARCHAR2(128),
+    repo_id                         VARCHAR2(64)    CONSTRAINT nn_tsk_repos_repo NOT NULL,
+    owner_id                        VARCHAR2(64)    CONSTRAINT nn_tsk_repos_owner NOT NULL,
     api_type                        VARCHAR2(16)    CONSTRAINT nn_tsk_repos_api_type NOT NULL,
     api_token                       VARCHAR2(128)   CONSTRAINT nn_tsk_repos_api_token NOT NULL,
     last_synced_at                  DATE,
@@ -21,11 +21,11 @@ CREATE TABLE tsk_repos (
 --
 COMMENT ON TABLE tsk_repos IS '';
 --
-COMMENT ON COLUMN tsk_repos.repo_id             IS '';
-COMMENT ON COLUMN tsk_repos.owner_id            IS '';
 COMMENT ON COLUMN tsk_repos.client_id           IS '';
 COMMENT ON COLUMN tsk_repos.project_id          IS '';
 COMMENT ON COLUMN tsk_repos.branch_id           IS '';
+COMMENT ON COLUMN tsk_repos.repo_id             IS '';
+COMMENT ON COLUMN tsk_repos.owner_id            IS '';
 COMMENT ON COLUMN tsk_repos.api_type            IS '';
 COMMENT ON COLUMN tsk_repos.api_token           IS '';
 COMMENT ON COLUMN tsk_repos.last_synced_at      IS '';
