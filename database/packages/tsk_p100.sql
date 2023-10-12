@@ -65,43 +65,16 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         core.set_item('P100_BOARD_ID',      v_board_id);
         core.set_item('P100_CARDS_LINK',    core.get_page_url(100, in_reset => NULL));
         --
-        FOR c IN (
-            WITH d AS (
-                SELECT 'HEADER'         AS item_name FROM DUAL UNION ALL
-                SELECT 'IS_FAVORITE'    AS item_name FROM DUAL
-            ),
-            t AS (
-                -- calculate page header
-                SELECT
-                    'HEADER'            AS item_name,
-                    'Cards for ' || p.project_name || ' - ' || b.board_name AS item_value
-                FROM tsk_boards b
-                JOIN tsk_projects p
-                    ON b.project_id     = p.project_id
-                WHERE b.board_id        = v_board_id
-                UNION ALL
-                -- check favorite status
-                SELECT
-                    'IS_FAVORITE'       AS item_name,
-                    'Y'                 AS item_value
-                FROM tsk_boards_fav b
-                WHERE b.user_id         = core.get_user_id()
-                    AND b.client_id     = v_client_id
-                    AND b.project_id    = v_project_id
-                    AND b.board_id      = v_board_id
-            )
+        FOR b IN (
             SELECT
-                d.item_name,
-                t.item_value
-            FROM d
-            LEFT JOIN t
-                ON t.item_name = d.item_name
+                b.board_name,
+                b.is_favorite
+            FROM tsk_available_boards_v b
+            WHERE b.board_id = v_board_id
         ) LOOP
-            core.set_item('P100_' || c.item_name, c.item_value);
-            --
-            IF c.item_name = 'IS_FAVORITE' THEN
-                core.set_item('P100_BOOKMARK_ICON', 'fa-bookmark' || CASE WHEN c.item_value IS NULL THEN '-o' END);
-            END IF;
+            core.set_item('P100_HEADER',            b.board_name || ' Board');
+            core.set_item('P100_IS_FAVORITE',       b.is_favorite);
+            core.set_item('P100_BOOKMARK_ICON',     'fa-bookmark' || CASE WHEN b.is_favorite IS NULL THEN '-o' END);
         END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
