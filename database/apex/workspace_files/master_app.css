@@ -64,8 +64,10 @@ body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {
 .t-HeroRegion {
     padding             : 0.75rem 0.5rem 1rem;
 }
-.t-HeroRegion.SECOND {
-    margin-top          : 3rem;
+.t-HeroRegion.SECOND,
+body.t-Dialog-page .t-HeroRegion.SECOND,
+body.t-Drawer-page .t-HeroRegion.SECOND {
+    margin-top          : 2rem !important;
 }
 h1.t-HeroRegion-title {
     font-size           : 1.8rem;
