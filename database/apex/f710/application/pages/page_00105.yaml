@@ -82,6 +82,12 @@ javascript:
 
 css: 
   inline: |
+    /* SWAP CHECKBOX AND ITEM */
+    table .a-GV-row,
+    table .a-GV-row .a-GV-cell {
+        transform: scaleX(-1);
+    }
+    
     /* HIDE DESC LABEL */
     #P105_CARD_DESC_CONTAINER .t-Form-labelContainer {
       display: none;
@@ -1244,6 +1250,9 @@ regions:
 
     toolbar: 
       show: true
+      controls: 
+      - Actions Menu
+      - Save Button
 
     enable-users-to: 
       save-public-report: false
@@ -3507,7 +3516,7 @@ buttons:
   id: 26839989070020938
   identification: 
     button-name: UPDATE_AND_REFRESH
-    label: Update and Refresh
+    label: Save Changes and Refresh
 
   layout: 
     sequence: 70

@@ -75,6 +75,12 @@ wwv_flow_imp_page.create_page(
 '});',
 ''))
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'/* SWAP CHECKBOX AND ITEM */',
+'table .a-GV-row,',
+'table .a-GV-row .a-GV-cell {',
+'    transform: scaleX(-1);',
+'}',
+'',
 '/* HIDE DESC LABEL */',
 '#P105_CARD_DESC_CONTAINER .t-Form-labelContainer {',
 '  display: none;',
@@ -329,7 +335,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'CHECKLIST_DONE'
 ,p_data_type=>'VARCHAR2'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_SINGLE_CHECKBOX'
 ,p_heading=>'Checklist Done'
@@ -406,7 +411,7 @@ wwv_flow_imp_page.create_interactive_grid(
 ,p_pagination_type=>'SCROLL'
 ,p_show_total_row_count=>true
 ,p_show_toolbar=>true
-,p_toolbar_buttons=>null
+,p_toolbar_buttons=>'ACTIONS_MENU:SAVE'
 ,p_enable_save_public_report=>false
 ,p_enable_subscriptions=>true
 ,p_enable_flashback=>false
@@ -439,7 +444,7 @@ wwv_flow_imp_page.create_ig_report_view(
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(45103318144563442)
 ,p_view_id=>wwv_flow_imp.id(91403406220187546)
-,p_display_seq=>8
+,p_display_seq=>6
 ,p_column_id=>wwv_flow_imp.id(91364448161871270)
 ,p_is_visible=>false
 ,p_is_frozen=>false
@@ -455,7 +460,7 @@ wwv_flow_imp_page.create_ig_report_column(
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(91404832047187556)
 ,p_view_id=>wwv_flow_imp.id(91403406220187546)
-,p_display_seq=>4
+,p_display_seq=>2
 ,p_column_id=>wwv_flow_imp.id(91363850750871264)
 ,p_is_visible=>true
 ,p_is_frozen=>false
@@ -463,7 +468,7 @@ wwv_flow_imp_page.create_ig_report_column(
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(91405661785187559)
 ,p_view_id=>wwv_flow_imp.id(91403406220187546)
-,p_display_seq=>2
+,p_display_seq=>4
 ,p_column_id=>wwv_flow_imp.id(91364007612871265)
 ,p_is_visible=>true
 ,p_is_frozen=>false
@@ -813,7 +818,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
-,p_button_image_alt=>'Update and Refresh'
+,p_button_image_alt=>'Save Changes and Refresh'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_warn_on_unsaved_changes=>null
 ,p_button_condition=>'P105_CARD_ID'
@@ -969,6 +974,18 @@ wwv_flow_imp_page.create_page_branch(
 ,p_branch_when_button_id=>wwv_flow_imp.id(25258087987844564)
 ,p_branch_sequence=>40
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.2'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(26394256764631603)
 ,p_branch_name=>'GOTO_CARDS_ON_AUTH_FAIL'
@@ -985,18 +1002,6 @@ wwv_flow_imp_page.create_page_branch(
 '    FROM tsk_p100_cards_v t',
 '    WHERE t.card_id = :P105_CARD_ID',
 '));'))
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(25478579834860914)
