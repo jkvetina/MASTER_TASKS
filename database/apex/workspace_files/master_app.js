@@ -426,8 +426,10 @@ var fix_grid_toolbar = function (region_id) {
         persistSelection: true
     };
 
+    //actions.set('edit', true);    // not working
+    //config.editable = true;
+
     // update toolbar
-    //actions.set('edit', true);
     toolbar.toolbar('option', 'data', config);
     toolbar.toolbar('refresh');
     console.groupEnd();
