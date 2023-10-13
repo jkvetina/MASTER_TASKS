@@ -70,7 +70,7 @@ SELECT
     s.order#            AS status_order#,
     t.order#            AS card_order#,
     --
-    ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.card_id) AS order#
+    ROW_NUMBER() OVER (ORDER BY w.order#, s.order#, t.order# NULLS LAST, t.card_id) AS order#
     --
 FROM t
 JOIN tsk_lov_statuses_v s

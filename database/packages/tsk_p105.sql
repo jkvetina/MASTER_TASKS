@@ -26,7 +26,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
                 SELECT t.card_id, t.prev_card, t.next_card
                 FROM tsk_p100_cards_v t
                 WHERE t.card_id = rec.card_id
-                    AND core.get_number_item('$SOURCE_PAGE') NOT IN (115)
             ) LOOP
                 core.set_item('P105_PREV_CARD_ID', NULLIF(c.prev_card, c.card_id));
                 core.set_item('P105_NEXT_CARD_ID', NULLIF(c.next_card, c.card_id));
