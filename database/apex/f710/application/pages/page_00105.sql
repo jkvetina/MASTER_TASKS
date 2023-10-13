@@ -1144,6 +1144,16 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(27593660432272001)
+,p_name=>'P105_STATUS_REQUESTED'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(25066083083730040)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_warn_on_unsaved_changes=>'I'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'N'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(79916493298307144)
 ,p_name=>'P105_CARD_NAME'
 ,p_source_data_type=>'VARCHAR2'
@@ -1258,7 +1268,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_named_lov=>'LOV_STATUSES'
-,p_lov_cascade_parent_items=>'P105_BOARD_ID'
+,p_lov_cascade_parent_items=>'P105_PROJECT_ID'
 ,p_ajax_items_to_submit=>'P105_CLIENT_ID,P105_PROJECT_ID,P105_BOARD_ID'
 ,p_ajax_optimize_refresh=>'Y'
 ,p_cHeight=>1
@@ -1442,8 +1452,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_named_lov=>'LOV_CATEGORIES'
 ,p_lov_display_null=>'YES'
-,p_lov_cascade_parent_items=>'P105_CLIENT_ID'
-,p_ajax_items_to_submit=>'P105_CLIENT_ID'
+,p_lov_cascade_parent_items=>'P105_PROJECT_ID'
+,p_ajax_items_to_submit=>'P105_CLIENT_ID,P105_PROJECT_ID,P105_BOARD_ID'
 ,p_ajax_optimize_refresh=>'Y'
 ,p_cHeight=>1
 ,p_begin_on_new_line=>'N'
@@ -1471,8 +1481,8 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_SELECT_LIST'
 ,p_named_lov=>'LOV_USERS'
 ,p_lov_display_null=>'YES'
-,p_lov_cascade_parent_items=>'P105_CLIENT_ID'
-,p_ajax_items_to_submit=>'P105_CLIENT_ID'
+,p_lov_cascade_parent_items=>'P105_BOARD_ID'
+,p_ajax_items_to_submit=>'P105_CLIENT_ID,P105_PROJECT_ID,P105_BOARD_ID'
 ,p_ajax_optimize_refresh=>'Y'
 ,p_cHeight=>1
 ,p_field_template=>wwv_flow_imp.id(34018942203153820)
@@ -1629,6 +1639,25 @@ wwv_flow_imp_page.create_page_da_action(
 '    $(''label#P105_CATEGORY_ID_LABEL'').css(''padding-left'', ''0.5rem'');',
 '}',
 ''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27594174583272006)
+,p_name=>'REQUESTED_STATUS'
+,p_event_sequence=>80
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P105_STATUS_ID'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterrefresh'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27593872798272003)
+,p_event_id=>wwv_flow_imp.id(27594174583272006)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'Y'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'apex.item(''P105_STATUS_ID'').setValue(apex.item(''P105_STATUS_REQUESTED'').getValue());'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(25252582106844557)

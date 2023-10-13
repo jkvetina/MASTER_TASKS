@@ -1975,6 +1975,36 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P105_STATUS_REQUESTED ====================
+  id: 27593660432272001
+  identification: 
+    name: P105_STATUS_REQUESTED
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 20
+    region: Info # 25066083083730040
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P105_CARD_NAME ===========================
   id: 79916493298307144
   identification: 
@@ -2285,7 +2315,7 @@ page-items:
 
   cascading-list-of-values: 
     parent-item(s): 
-    - P105_BOARD_ID
+    - P105_PROJECT_ID
     items-to-submit: 
     - P105_CLIENT_ID
     - P105_PROJECT_ID
@@ -2827,9 +2857,11 @@ page-items:
 
   cascading-list-of-values: 
     parent-item(s): 
-    - P105_CLIENT_ID
+    - P105_PROJECT_ID
     items-to-submit: 
     - P105_CLIENT_ID
+    - P105_PROJECT_ID
+    - P105_BOARD_ID
     parent-required: true
 
   advanced: 
@@ -2896,9 +2928,11 @@ page-items:
 
   cascading-list-of-values: 
     parent-item(s): 
-    - P105_CLIENT_ID
+    - P105_BOARD_ID
     items-to-submit: 
     - P105_CLIENT_ID
+    - P105_PROJECT_ID
+    - P105_BOARD_ID
     parent-required: true
 
   advanced: 
@@ -3715,6 +3749,39 @@ dynamic-actions:
     execution: 
       sequence: 10
       event: CHANGED_CATEGORY # 27231404553725502
+      fire-when-event-result-is: True
+      fire-on-initialization: true
+
+- # ====== Dynamic Action: REQUESTED_STATUS ====================
+  id: 27594174583272006
+  identification: 
+    name: REQUESTED_STATUS
+
+  execution: 
+    sequence: 80
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
+    selection-type: Item(s)
+    item(s): 
+    - P105_STATUS_ID
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 27593872798272003
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.item('P105_STATUS_ID').setValue(apex.item('P105_STATUS_REQUESTED').getValue());
+
+    execution: 
+      sequence: 10
+      event: REQUESTED_STATUS # 27594174583272006
       fire-when-event-result-is: True
       fire-on-initialization: true
 

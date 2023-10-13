@@ -146,15 +146,20 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     s.status_id,
                     s.status_name,
                     s.is_badge,
+                    --
+                    d.count_cards,
+                    d.count_checks,
+                    d.count_done,
+                    --
                     SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS user_name,
-                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST) AS r#
+                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST)    AS r#
+                    --
                 FROM tsk_lov_statuses_v s
                 LEFT JOIN app_users_v u
                     ON u.user_id        = in_owner_id
-                ORDER BY s.order#
-            ) LOOP
-                FOR d IN (
+                LEFT JOIN (
                     SELECT
+                        t.status_id,
                         COUNT(DISTINCT t.card_id)       AS count_cards,
                         COUNT(NVL(l.checklist_id, 0))   AS count_checks,
                         COUNT(l.checklist_done)         AS count_done
@@ -165,18 +170,28 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     WHERE t.client_id       = in_client_id
                         AND t.project_id    = in_project_id
                         AND t.board_id      = in_board_id
-                        AND t.status_id     = s.status_id
                         AND t.swimlane_id   = w.swimlane_id
-                ) LOOP
-                    clob_append(out_clob, '<div class="TARGET_LIKE">');
-                    clob_append(out_clob, '<h3>' || s.status_name ||
-                        CASE WHEN d.count_cards > 0 THEN '<span class="BADGE' || CASE WHEN s.is_badge IS NULL THEN ' DECENT' END || '">' || d.count_cards || '</span>' END ||
-                        CASE WHEN d.count_cards > 0 THEN '<span class="PROGRESS">' || d.count_done || '/' || d.count_checks || '</span>' END ||
-                        '</h3>' ||
-                        '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(d.count_done / NULLIF(d.count_checks, 0) * 100), 0) || '%;"></div></div>'
-                    );
-                    clob_append(out_clob, '</div>');
-                END LOOP;
+                    GROUP BY t.status_id
+                ) d
+                    ON d.status_id = s.status_id
+                ORDER BY s.order#
+            ) LOOP
+                clob_append(out_clob, '<div class="TARGET_LIKE">');
+                clob_append(out_clob, '<h3>' || s.status_name ||
+                    CASE WHEN s.count_cards > 0 THEN '<span class="BADGE' || CASE WHEN s.is_badge IS NULL THEN ' DECENT' END || '">' || s.count_cards || '</span>' END ||
+                    CASE WHEN s.count_cards > 0 THEN '<span class="PROGRESS">' || s.count_done || '/' || s.count_checks || '</span>' END ||
+                    '<a href="' ||
+                    APEX_PAGE.GET_URL (
+                        p_page          => 105,
+                        p_clear_cache   => 105,
+                        p_items         => 'P105_STATUS_REQUESTED',
+                        p_values        => s.status_id
+                    ) ||
+                    '" class="PLUS"><span class="fa fa-plus"></span></a>' ||
+                    '</h3>' ||
+                    '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(s.count_done / NULLIF(s.count_checks, 0) * 100), 0) || '%;"></div></div>'
+                );
+                clob_append(out_clob, '</div>');
             END LOOP;
 
             -- add swimlane name

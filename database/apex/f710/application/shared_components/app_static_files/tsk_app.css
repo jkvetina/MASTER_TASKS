@@ -39,6 +39,12 @@
     border-top-right-radius : 12px;
 }
 
+.BOARD .TARGET_LIKE .PLUS {
+    display         : inline-flex;
+    padding         : 0.4rem 0.4rem 0.35rem;
+    color           : #888 !important;
+}
+
 /* INDIVIDUAL CARDS */
 .BOARD .CARD {
     margin          : 0.5rem;

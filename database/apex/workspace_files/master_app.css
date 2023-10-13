@@ -75,6 +75,14 @@ h1.t-HeroRegion-title {
     align-items         : flex-start;
 }
 
+/* HERO REGION - MOVE UP REGION TO THE RIGHT - USED FOR BUTTONS */
+.t-HeroRegion-col--beforeIcon,
+.t-HeroRegion-col--beforeIcon {
+    order               : 5;
+    margin              : 1px 0 0;
+    gap                 : 0.13rem;
+}
+
 
 
 /* HERO REGION - HIDE ICONS */
@@ -106,6 +114,11 @@ h1.t-HeroRegion-title button:first-child {
 }
 
 
+
+/* FIX BUTTON OFFSET ON LINE WITH OTHER ITEMS */
+.FILTERS button {
+    margin-top          : 0.9rem;
+}
 
 /* BUTTON BADGES */
 button .BADGE {
@@ -181,15 +194,26 @@ ul.t-Tabs .t-Tabs-link {
     background          : transparent;
     font-size           : 1rem;
 }
-ul.t-Tabs .is-active .t-Tabs-link,
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover {
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link,
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
     outline             : none;
     box-shadow          : none;
     font-weight         : 600;
-    color               : #000;
+    color               : #444;
     background          : transparent;
+    padding-bottom      : 0.6rem;
+    border-bottom       : 8px solid #ededed;
+}
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
+    color               : #000;
     border-bottom       : 8px solid #615d51 !important;
 }
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
+    color               : #000;
+    border-bottom       : 8px solid #222 !important;
+}
+
 .t-TabsRegion-items > div {
     display             : none;
 }
@@ -198,6 +222,16 @@ ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover {
 }
 a.t-Tabs-link::before {
     display             : none;  /* remove dupe green border */
+}
+ul.t-Tabs li.t-Tabs-item {
+    margin-right        : 8px;
+}
+
+ul.t-Tabs li.t-Tabs-item {
+    margin-right        : 8px;
+}
+ul.t-Tabs li.t-Tabs-item:last-child {
+    margin-right        : 0;
 }
 
 
