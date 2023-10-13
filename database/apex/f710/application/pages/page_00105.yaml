@@ -3606,6 +3606,9 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
+  advanced: 
+    static-id: HELP_BUTTON
+
 dynamic-actions: 
 - # ====== Dynamic Action: COPY_TO_CLIPBOARD ===================
   id: 25269548550844592
@@ -3769,6 +3772,10 @@ dynamic-actions:
   execution: 
     event-scope: Static
     type: Immediate
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P105_CARD_ID
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
