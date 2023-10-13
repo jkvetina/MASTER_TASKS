@@ -44,10 +44,14 @@ server-cache:
 
 help: 
   help-text: |
-    First, select source items. You should see affected cards below.
+    First, select source items. You should see affected cards below for a confirmation and adjusting selection.
     
-    Second, for the items you would like to change select new values. You can finetine cards affected by slecting specific rows and using correct button.
+    Second, for the items you would like to change pick new values. You can finetune cards affected by selecting specific rows and using correct button.
     
+    How it works:
+    - if you select any source value but leave target value empty, this value will be removed
+    - if you leave both source and target values empty, this value will be unchanged
+    - if you leave source value empty and select target value, then all values will be changed to this one selected value
     
 
 regions: 
@@ -867,7 +871,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CATEGORIES # 23488253257018677
+    list-of-values: LOV_OWNERS # 19920099360955398
     display-extra-values: false
     display-null-value: true
 
@@ -889,10 +893,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P110_OWNER ===============================
+- # ====== Page Item: P110_OWNER_ID ============================
   id: 27594490056272009
   identification: 
-    name: P110_OWNER
+    name: P110_OWNER_ID
     type: Select List
 
   label: 
@@ -926,7 +930,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CATEGORIES # 23488253257018677
+    list-of-values: LOV_OWNERS # 19920099360955398
     display-extra-values: false
     display-null-value: true
 
@@ -1639,6 +1643,9 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
+  advanced: 
+    static-id: HELP_BUTTON
+
 - # ====== Button: CLOSE_DIALOG ================================
   id: 27474734201062509
   identification: 
@@ -1751,24 +1758,19 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
-- # ====== Dynamic Action: SOURCE_CHANGED ======================
+- # ====== Dynamic Action: CHANGED_PROJECT =====================
   id: 27477036392062533
   identification: 
-    name: SOURCE_CHANGED
+    name: CHANGED_PROJECT
 
   execution: 
-    sequence: 20
+    sequence: 10
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
     selection-type: Item(s)
     item(s): 
     - P110_SOURCE_PROJECT
-    - P110_SOURCE_BOARD
-    - P110_SOURCE_STATUS
-    - P110_SOURCE_SWIMLANE
-    - P110_SOURCE_CATEGORY
-    - P110_SOURCE_OWNER
 
   execution: 
     event-scope: Static
@@ -1786,7 +1788,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SOURCE_CHANGED # 27477036392062533
+      event: CHANGED_PROJECT # 27477036392062533
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -1796,7 +1798,7 @@ dynamic-actions:
     name: REFRESH_AFFECTED_ROWS
 
   execution: 
-    sequence: 40
+    sequence: 80
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -1822,6 +1824,268 @@ dynamic-actions:
       event: REFRESH_AFFECTED_ROWS # 27594646194272011
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+- # ====== Dynamic Action: CHANGED_BOARD =======================
+  id: 27698729582224433
+  identification: 
+    name: CHANGED_BOARD
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P110_SOURCE_BOARD
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 27698825077224434
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: AFFECTED_CARDS [GRID] # 27595158466272016
+
+    execution: 
+      sequence: 10
+      event: CHANGED_BOARD # 27698729582224433
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CHANGED_STATUS ======================
+  id: 27698919699224435
+  identification: 
+    name: CHANGED_STATUS
+
+  execution: 
+    sequence: 40
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P110_SOURCE_STATUS
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 27699023919224436
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: AFFECTED_CARDS [GRID] # 27595158466272016
+
+    execution: 
+      sequence: 20
+      event: CHANGED_STATUS # 27698919699224435
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Value ===================================
+    id: 27700046719224446
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: apex.item('P110_SOURCE_STATUS').getValue()
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P110_STATUS_ID
+
+    execution: 
+      sequence: 10
+      event: CHANGED_STATUS # 27698919699224435
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: CHANGED_CATEGORY ====================
+  id: 27699123769224437
+  identification: 
+    name: CHANGED_CATEGORY
+
+  execution: 
+    sequence: 50
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P110_SOURCE_CATEGORY
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 27699272328224438
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: AFFECTED_CARDS [GRID] # 27595158466272016
+
+    execution: 
+      sequence: 20
+      event: CHANGED_CATEGORY # 27699123769224437
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Value ===================================
+    id: 27699807975224444
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: apex.item('P110_SOURCE_CATEGORY').getValue()
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P110_CATEGORY_ID
+
+    execution: 
+      sequence: 10
+      event: CHANGED_CATEGORY # 27699123769224437
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: CHANGED_OWNER =======================
+  id: 27699370458224439
+  identification: 
+    name: CHANGED_OWNER
+
+  execution: 
+    sequence: 60
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P110_SOURCE_OWNER
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 27699463030224440
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: AFFECTED_CARDS [GRID] # 27595158466272016
+
+    execution: 
+      sequence: 20
+      event: CHANGED_OWNER # 27699370458224439
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Value ===================================
+    id: 27699784608224443
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: apex.item('P110_SOURCE_OWNER').getValue()
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P110_OWNER_ID
+
+    execution: 
+      sequence: 10
+      event: CHANGED_OWNER # 27699370458224439
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+- # ====== Dynamic Action: CHANGED_SWIMLANE ====================
+  id: 27699562447224441
+  identification: 
+    name: CHANGED_SWIMLANE
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P110_SOURCE_SWIMLANE
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 27699617218224442
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: AFFECTED_CARDS [GRID] # 27595158466272016
+
+    execution: 
+      sequence: 20
+      event: CHANGED_SWIMLANE # 27699562447224441
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Value ===================================
+    id: 27699990368224445
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: apex.item('P110_SOURCE_SWIMLANE').getValue()
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P110_SWIMLANE_ID
+
+    execution: 
+      sequence: 10
+      event: CHANGED_SWIMLANE # 27699562447224441
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
 
 processes: 
 - # ====== Process: PROCESS_BULK_REQUEST =======================
