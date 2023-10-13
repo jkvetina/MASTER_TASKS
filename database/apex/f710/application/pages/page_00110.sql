@@ -537,19 +537,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'RIGHT_OF_TITLE'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(27594566780272010)
-,p_button_sequence=>30
-,p_button_plug_id=>wwv_flow_imp.id(27594828701272013)
-,p_button_name=>'REFRESH_AFFECTED_ROWS'
-,p_button_action=>'DEFINED_BY_DA'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
-,p_button_image_alt=>'Refresh Affected Rows'
-,p_button_position=>'RIGHT_OF_TITLE'
-,p_warn_on_unsaved_changes=>null
-,p_icon_css_classes=>'fa-refresh'
-);
-wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27422395501258641)
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(155729416312791673)
@@ -1006,26 +993,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(27595158466272016)
 );
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(27594646194272011)
-,p_name=>'REFRESH_AFFECTED_ROWS'
-,p_event_sequence=>80
-,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(27594566780272010)
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'click'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(27596324843272028)
-,p_event_id=>wwv_flow_imp.id(27594646194272011)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_REFRESH'
-,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_imp.id(27595158466272016)
-);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(27475705404062526)
 ,p_process_sequence=>10
@@ -1037,18 +1004,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_04=>'PROCESS_BULK_INIT'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_internal_uid=>27475705404062526
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(27475395825062526)
