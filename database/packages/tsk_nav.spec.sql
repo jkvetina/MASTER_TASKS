@@ -38,6 +38,26 @@ CREATE OR REPLACE PACKAGE tsk_nav AS
 
 
 
+    FUNCTION get_swimlanes
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_statuses
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_categories
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_owners
+    RETURN VARCHAR2;
+
+
+
     FUNCTION get_commits
     RETURN VARCHAR2;
 

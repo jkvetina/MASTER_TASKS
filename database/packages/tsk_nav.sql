@@ -378,6 +378,156 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             );
         END LOOP;
         --
+        RETURN
+            '<div>' || o || '</div>';
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION get_swimlanes
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        IF tsk_app.get_project_id() IS NULL THEN
+            RETURN NULL;
+        END IF;
+        --
+        o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Swimlane</span></div>';
+        --
+        FOR t IN (
+            SELECT
+                t.swimlane_id,
+                t.swimlane_name,
+                NULL                AS is_current
+            FROM tsk_lov_swimlanes_v t
+            ORDER BY t.order#
+        ) LOOP
+            o := o || tsk_app.get_link (
+                CASE WHEN t.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || t.swimlane_name || '</span>',
+                NULL,
+                in_class => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE')
+            );
+        END LOOP;
+        --
+        RETURN
+            '<div>' || o || '</div>';
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION get_statuses
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        IF tsk_app.get_project_id() IS NULL THEN
+            RETURN NULL;
+        END IF;
+        --
+        o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Status</span></div>';
+        --
+        FOR t IN (
+            SELECT
+                t.status_id,
+                t.status_name,
+                NULL                AS is_current
+            FROM tsk_lov_statuses_v t
+            ORDER BY t.order#
+        ) LOOP
+            o := o || tsk_app.get_link (
+                CASE WHEN t.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || t.status_name || '</span>',
+                NULL,
+                in_class => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE')
+            );
+        END LOOP;
+        --
+        RETURN
+            '<div>' || o || '</div>';
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION get_categories
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        IF tsk_app.get_project_id() IS NULL THEN
+            RETURN NULL;
+        END IF;
+        --
+        o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Category</span></div>';
+        --
+        FOR t IN (
+            SELECT
+                t.category_id,
+                t.category_name,
+                NULL                AS is_current
+            FROM tsk_lov_categories_v t
+            ORDER BY t.order#
+        ) LOOP
+            o := o || tsk_app.get_link (
+                CASE WHEN t.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || t.category_name || '</span>',
+                NULL,
+                in_class => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE')
+            );
+        END LOOP;
+        --
+        RETURN
+            '<div>' || o || '</div>';
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION get_owners
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        IF tsk_app.get_project_id() IS NULL THEN
+            RETURN NULL;
+        END IF;
+        --
+        o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Owner</span></div>';
+        --
+        FOR t IN (
+            SELECT DISTINCT
+                t.owner_id,
+                NULL                AS is_current
+            FROM tsk_p100_cards_v t
+            ORDER BY t.owner_id
+        ) LOOP
+            o := o || tsk_app.get_link (
+                CASE WHEN t.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
+                '&' || 'nbsp; ' || t.owner_id || '</span>',
+                NULL,
+                in_class => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE')
+            );
+        END LOOP;
         --
         RETURN
             '<div>' || o || '</div>';

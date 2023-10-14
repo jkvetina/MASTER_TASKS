@@ -71,6 +71,10 @@ FROM (
     SELECT 200 AS page_id, tsk_nav.get_clients()    AS payload FROM DUAL UNION ALL
     SELECT 300 AS page_id, tsk_nav.get_projects()   AS payload FROM DUAL UNION ALL
     SELECT 400 AS page_id, tsk_nav.get_boards()     AS payload FROM DUAL UNION ALL
+    SELECT 410 AS page_id, tsk_nav.get_swimlanes()  AS payload FROM DUAL UNION ALL
+    SELECT 420 AS page_id, tsk_nav.get_statuses()   AS payload FROM DUAL UNION ALL
+    SELECT 440 AS page_id, tsk_nav.get_categories() AS payload FROM DUAL UNION ALL
+    SELECT 460 AS page_id, tsk_nav.get_owners()     AS payload FROM DUAL UNION ALL
     SELECT 500 AS page_id, tsk_nav.get_commits()    AS payload FROM DUAL
 ) t
 CROSS JOIN curr;
