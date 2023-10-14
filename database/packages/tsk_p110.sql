@@ -62,8 +62,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_p110 AS
             t.board_id          = NVL(v_target.board_id,    t.board_id),
             t.status_id         = NVL(v_target.status_id,   t.status_id),
             t.swimlane_id       = NVL(v_target.swimlane_id, t.swimlane_id),
-            t.category_id       = CASE WHEN v_source.category_id    IS NOT NULL THEN v_target.category_id END,
-            t.owner_id          = CASE WHEN v_source.owner_id       IS NOT NULL THEN v_target.owner_id END,
+            --
+            t.category_id       = CASE WHEN COALESCE(v_source.category_id,  v_target.category_id)   IS NOT NULL THEN v_target.category_id   ELSE t.category_id END,
+            t.owner_id          = CASE WHEN COALESCE(v_source.owner_id,     v_target.owner_id)      IS NOT NULL THEN v_target.owner_id      ELSE t.owner_id END,
+            --
             t.updated_by        = v_target.updated_by,
             t.updated_at        = v_target.updated_at
         WHERE 1 = 1
