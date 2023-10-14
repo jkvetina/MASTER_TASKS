@@ -149,6 +149,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
     AS
         rec                 tsk_card_checklist%ROWTYPE;
     BEGIN
+        -- ignore any changes when deleting whole card
+        IF core.get_request() = 'DELETE_CARD' THEN
+            RETURN;
+        END IF;
+
         -- verify if card exists
         BEGIN
             SELECT t.card_id INTO rec.card_id
