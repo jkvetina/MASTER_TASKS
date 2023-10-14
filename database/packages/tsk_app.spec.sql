@@ -32,8 +32,6 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
     PROCEDURE init_defaults;
-    --
-    PROCEDURE init_defaults_p100;
 
 
 

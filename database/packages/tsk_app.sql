@@ -19,26 +19,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
 
-
-    PROCEDURE init_defaults_p100
-    AS
-    BEGIN
-        core.set_item('P100_HEADER',
-            --core.get_item('P0_CLIENT_NAME')     || ' &' || 'ndash; ' ||
-            core.get_item('P0_PROJECT_NAME')    || ' &' || 'ndash; ' ||
-            core.get_item('P0_BOARD_NAME')
-        );
-        --
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-
     FUNCTION get_client_id
     RETURN tsk_clients.client_id%TYPE
     AS
