@@ -16,11 +16,11 @@ JOIN x
 UNION ALL
 --
 SELECT
-    x.card_id,
+    NULL        AS card_id,
     -1          AS checklist_id,
     NULL        AS checklist_item,
     NULL        AS checklist_done
-FROM x
+FROM DUAL
 ORDER BY checklist_done NULLS LAST, checklist_item, checklist_id;
 --
 COMMENT ON TABLE tsk_p105_checklist_v IS '';
