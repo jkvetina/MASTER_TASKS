@@ -1877,13 +1877,28 @@ dynamic-actions:
         
 
     execution: 
-      sequence: 10
+      sequence: 20
       event: DIALOG_CLOSED # 19909981721955381
       fire-when-event-result-is: True
       fire-on-initialization: false
 
     server-side-condition: 
       type: Never
+
+  - # ====== Action: Refresh =====================================
+    id: 28267520567994308
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Cards [CONTENT] # 74502154509114589
+
+    execution: 
+      sequence: 10
+      event: DIALOG_CLOSED # 19909981721955381
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 - # ====== Dynamic Action: REFRESH_GRID ========================
   id: 25478734766860916
@@ -2000,6 +2015,40 @@ dynamic-actions:
 
     server-side-condition: 
       type: Never
+
+- # ====== Dynamic Action: REFRESH_GRID_ON_CARD_MOVE ===========
+  id: 28267794588994310
+  identification: 
+    name: REFRESH_GRID_ON_CARD_MOVE
+
+  execution: 
+    sequence: 90
+
+  when: 
+    event: EVENT.EVENT.CUSTOM.CUSTOM
+    custom-event: REFRESH_GRID
+    selection-type: JavaScript Expression
+    javascript-expression: document
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 28267901762994312
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Cards [CONTENT] # 74502154509114589
+
+    execution: 
+      sequence: 10
+      event: REFRESH_GRID_ON_CARD_MOVE # 28267794588994310
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 processes: 
 - # ====== Process: UPDATE_CARD ================================

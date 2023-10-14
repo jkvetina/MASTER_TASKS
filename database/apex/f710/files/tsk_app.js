@@ -109,6 +109,7 @@ const dragend = function(e) {
                 }
                 else {
                     apex.message.showPageSuccess(pData);
+                    $.event.trigger('REFRESH_GRID');
                 }
             }
         }
