@@ -19,16 +19,17 @@ SELECT DISTINCT
     x.user_id,
     x.app_id,
     x.page_id,
-    c.client_id,
-    p.project_id,
+    b.client_id,
+    b.project_id,
     b.board_id,
     x.swimlane_id,
     x.owner_id
     --
 FROM x
-LEFT JOIN tsk_available_projects_v c    ON c.client_id = x.client_id
-LEFT JOIN tsk_available_projects_v p    ON p.client_id = x.client_id        AND p.project_id = x.project_id
-LEFT JOIN tsk_available_boards_v b      ON b.client_id = x.client_id        AND b.project_id = x.project_id         AND b.board_id = x.board_id;
+JOIN tsk_available_boards_v b
+    ON b.client_id      = x.client_id
+    AND b.project_id    = x.project_id
+    AND b.board_id      = x.board_id;
 --
 COMMENT ON TABLE tsk_auth_context_v IS '';
 

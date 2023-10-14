@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Project Boards [GRID] =======================
+- # ====== Region: Boards [GRID] ===============================
   id: 115469225440223629
   identification: 
-    title: Project Boards [GRID]
+    title: Boards [GRID]
     type: Interactive Grid
 
   source: 
@@ -106,7 +106,7 @@ regions:
       fixed-row-height: true
 
     pagination: 
-      type: Page
+      type: Scroll
       show-total-count: true
 
     toolbar: 
@@ -164,6 +164,432 @@ regions:
       heading: Board Info
 
   columns: 
+  - # ====== Column: IS_CURRENT ==================================
+    id: 28269599455994328
+    identification: 
+      column-name: IS_CURRENT
+      type: Checkbox
+
+    heading: 
+      heading: Current
+      alignment: center
+
+    settings: 
+      use-defaults: false
+      checked-value: Y
+
+    layout: 
+      sequence: 160
+      column-alignment: center
+      group: Flags # 116123553164713932
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: IS_CURRENT
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    read-only: 
+      type: Always
+      execute: Once
+
+  - # ====== Column: COUNT_SWIMLANES =============================
+    id: 28269606345994329
+    identification: 
+      column-name: COUNT_SWIMLANES
+      type: Display Only
+
+    heading: 
+      heading: Swimlanes
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 170
+      column-alignment: end
+      group: Counts # 116122693316713923
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_SWIMLANES
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_STATUSES ==============================
+    id: 28269780158994330
+    identification: 
+      column-name: COUNT_STATUSES
+      type: Display Only
+
+    heading: 
+      heading: Statuses
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 180
+      column-alignment: end
+      group: Counts # 116122693316713923
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_STATUSES
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_CATEGORIES ============================
+    id: 28269859209994331
+    identification: 
+      column-name: COUNT_CATEGORIES
+      type: Display Only
+
+    heading: 
+      heading: Categories
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 190
+      column-alignment: end
+      group: Counts # 116122693316713923
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_CATEGORIES
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_OWNERS ================================
+    id: 28269961155994332
+    identification: 
+      column-name: COUNT_OWNERS
+      type: Display Only
+
+    heading: 
+      heading: Owners
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 200
+      column-alignment: end
+      group: Counts # 116122693316713923
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_OWNERS
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_CARDS =================================
+    id: 28270000857994333
+    identification: 
+      column-name: COUNT_CARDS
+      type: Display Only
+
+    heading: 
+      heading: Cards
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 210
+      column-alignment: end
+      group: Counts # 116122693316713923
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_CARDS
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: CLIENT_ID ===================================
+    id: 28270166439994334
+    identification: 
+      column-name: CLIENT_ID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 50
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: CLIENT_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: CLIENT_NAME =================================
+    id: 28270201704994335
+    identification: 
+      column-name: CLIENT_NAME
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 60
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: CLIENT_NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: PROJECT_ID ==================================
+    id: 28270328401994336
+    identification: 
+      column-name: PROJECT_ID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 70
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: PROJECT_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: PROJECT_NAME ================================
+    id: 28270499706994337
+    identification: 
+      column-name: PROJECT_NAME
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 80
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: PROJECT_NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
   - # ====== Column: APEX$ROW_ACTION =============================
     id: 50045712622623123
     identification: 
@@ -202,7 +628,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 120
+      sequence: 140
       column-alignment: center
       group: Flags # 116123553164713932
       use-group-for: Both
@@ -250,12 +676,14 @@ regions:
       type: Select List
 
     heading: 
-      heading: Sequence Id
+      heading: Sequence
       alignment: start
 
     layout: 
-      sequence: 90
+      sequence: 110
       column-alignment: start
+      group: Board Info # 116211752825695431
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -303,16 +731,28 @@ regions:
     id: 115469798165223634
     identification: 
       column-name: BOARD_ID
-      type: Hidden
+      type: Number Field
+
+    heading: 
+      heading: Board Id
+      alignment: end
 
     settings: 
-      value-protected: true
+      number-alignment: Start
+      virtual-keyboard: Decimal
 
     layout: 
-      sequence: 70
+      sequence: 90
+      column-alignment: end
+      group: Board Info # 116211752825695431
+      use-group-for: Both
+      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
+
+    validation: 
+      value-required: true
 
     source: 
       type: Database Column
@@ -324,8 +764,9 @@ regions:
     default: 
       duplicate-copies-existing-value: false
 
-    session-state: 
-      data-type: VARCHAR2
+    column-filter: 
+      enabled: true
+      lov-type: None
 
     export-/-printing: 
       include-in-export-/-print: false
@@ -333,6 +774,10 @@ regions:
     enable-users-to: 
       sort: true
       control-break/aggregate: true
+      hide: true
+
+    security: 
+      authorization-scheme: MASTER - IS_DEVELOPER # 68472631569287844
 
   - # ====== Column: BOARD_NAME ==================================
     id: 115469879937223635
@@ -349,7 +794,7 @@ regions:
       text-case: NO CHANGE
 
     layout: 
-      sequence: 80
+      sequence: 100
       column-alignment: start
       group: Board Info # 116211752825695431
       use-group-for: Both
@@ -391,128 +836,6 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: CLIENT_ID ===================================
-    id: 115469987548223636
-    identification: 
-      column-name: CLIENT_ID
-      type: Select List
-
-    heading: 
-      heading: Client
-      alignment: start
-
-    layout: 
-      sequence: 50
-      column-alignment: start
-      group: Board Info # 116211752825695431
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-
-    list-of-values: 
-      type: Shared Component
-      list-of-values: LOV_CLIENTS # 19917139722955396
-      display-extra-values: true
-      display-null-value: true
-
-    source: 
-      type: Database Column
-      database-column: CLIENT_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Expression
-      language: PL/SQL
-      pl/sql-expression: tsk_app.get_client_id()
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Use List of Values
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: PROJECT_ID ==================================
-    id: 115470055387223637
-    identification: 
-      column-name: PROJECT_ID
-      type: Select List
-
-    heading: 
-      heading: Project
-      alignment: start
-
-    layout: 
-      sequence: 60
-      column-alignment: start
-      group: Board Info # 116211752825695431
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-
-    list-of-values: 
-      type: Shared Component
-      list-of-values: LOV_PROJECTS # 23314637906165586
-      display-extra-values: true
-      display-null-value: true
-
-    source: 
-      type: Database Column
-      database-column: PROJECT_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Expression
-      language: PL/SQL
-      pl/sql-expression: tsk_app.get_project_id()
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Use List of Values
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
   - # ====== Column: IS_ACTIVE ===================================
     id: 115470148770223638
     identification: 
@@ -528,7 +851,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 130
+      sequence: 150
       column-alignment: center
       group: Flags # 116123553164713932
       use-group-for: Both
@@ -586,7 +909,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 110
+      sequence: 130
       column-alignment: center
       group: Flags # 116123553164713932
       use-group-for: Both
@@ -627,498 +950,6 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: COUNT_STATUS_1 ==============================
-    id: 115846219538929239
-    identification: 
-      column-name: COUNT_STATUS_1
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_1.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 140
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_1
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_1
-
-  - # ====== Column: COUNT_STATUS_2 ==============================
-    id: 115846400545929240
-    identification: 
-      column-name: COUNT_STATUS_2
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_2.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 150
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_2
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_2
-
-  - # ====== Column: COUNT_STATUS_3 ==============================
-    id: 115846405116929241
-    identification: 
-      column-name: COUNT_STATUS_3
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_3.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 160
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_3
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_3
-
-  - # ====== Column: COUNT_STATUS_4 ==============================
-    id: 115846516844929242
-    identification: 
-      column-name: COUNT_STATUS_4
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_4.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 170
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_4
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_4
-
-  - # ====== Column: COUNT_STATUS_5 ==============================
-    id: 115846703735929243
-    identification: 
-      column-name: COUNT_STATUS_5
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_5.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 180
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_5
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_5
-
-  - # ====== Column: COUNT_STATUS_6 ==============================
-    id: 115846775094929244
-    identification: 
-      column-name: COUNT_STATUS_6
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_6.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 190
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_6
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_6
-
-  - # ====== Column: COUNT_STATUS_7 ==============================
-    id: 115846832359929245
-    identification: 
-      column-name: COUNT_STATUS_7
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_7.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 200
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_7
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_7
-
-  - # ====== Column: COUNT_STATUS_8 ==============================
-    id: 115846913513929246
-    identification: 
-      column-name: COUNT_STATUS_8
-      type: Display Only
-
-    heading: 
-      heading: '&P300_STATUS_8.'
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 210
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUS_8
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Item is NOT NULL
-      item: P400_STATUS_8
-
-  - # ====== Column: COUNT_INACTIVE ==============================
-    id: 116122464838713921
-    identification: 
-      column-name: COUNT_INACTIVE
-      type: Display Only
-
-    heading: 
-      heading: Not Active
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 220
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_INACTIVE
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COUNT_TOTAL =================================
-    id: 116122566701713922
-    identification: 
-      column-name: COUNT_TOTAL
-      type: Display Only
-
-    heading: 
-      heading: Total
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 230
-      column-alignment: end
-      group: Counts # 116122693316713923
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_TOTAL
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
   - # ====== Column: ORDER# ======================================
     id: 116211822953695432
     identification: 
@@ -1134,7 +965,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 100
+      sequence: 120
       column-alignment: end
       group: Board Info # 116211752825695431
       use-group-for: Both
@@ -1167,254 +998,6 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
-
-  - # ====== Column: STATUS_NAME_1 ===============================
-    id: 118002103906314721
-    identification: 
-      column-name: STATUS_NAME_1
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 240
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_1
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: STATUS_NAME_2 ===============================
-    id: 118002191770314722
-    identification: 
-      column-name: STATUS_NAME_2
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 250
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_2
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: STATUS_NAME_3 ===============================
-    id: 118002273105314723
-    identification: 
-      column-name: STATUS_NAME_3
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 260
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_3
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: STATUS_NAME_4 ===============================
-    id: 118002350474314724
-    identification: 
-      column-name: STATUS_NAME_4
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 270
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_4
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: STATUS_NAME_5 ===============================
-    id: 118002478017314725
-    identification: 
-      column-name: STATUS_NAME_5
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 280
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_5
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: STATUS_NAME_6 ===============================
-    id: 118002507549314726
-    identification: 
-      column-name: STATUS_NAME_6
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 290
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_6
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: STATUS_NAME_7 ===============================
-    id: 118002627786314727
-    identification: 
-      column-name: STATUS_NAME_7
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 300
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_7
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: STATUS_NAME_8 ===============================
-    id: 118002771301314728
-    identification: 
-      column-name: STATUS_NAME_8
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 310
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: STATUS_NAME_8
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
 
   - # ====== Column: OLD_BOARD_ID ================================
     id: 118908175716739629
@@ -1466,7 +1049,7 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
-      page-header-text: Project Boards [GRID]
+      page-header-text: Boards [GRID]
 
     column-headings: 
       font: Helvetica
@@ -1530,247 +1113,6 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-page-items: 
-- # ====== Page Item: P400_STATUS_1 ============================
-  id: 115863035503929265
-  identification: 
-    name: P400_STATUS_1
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 10
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P400_STATUS_5 ============================
-  id: 115898337400379016
-  identification: 
-    name: P400_STATUS_5
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 50
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P400_STATUS_7 ============================
-  id: 115898476403379017
-  identification: 
-    name: P400_STATUS_7
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 70
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P400_STATUS_8 ============================
-  id: 115898524835379018
-  identification: 
-    name: P400_STATUS_8
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 80
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P400_STATUS_2 ============================
-  id: 115898658500379019
-  identification: 
-    name: P400_STATUS_2
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 20
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P400_STATUS_3 ============================
-  id: 115898753810379020
-  identification: 
-    name: P400_STATUS_3
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 30
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P400_STATUS_4 ============================
-  id: 115898877290379021
-  identification: 
-    name: P400_STATUS_4
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 40
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P400_STATUS_6 ============================
-  id: 115898897840379022
-  identification: 
-    name: P400_STATUS_6
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 60
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 processes: 
 - # ====== Process: SAVE_BOARDS ================================
   id: 26794752428503105
@@ -1778,7 +1120,7 @@ processes:
     name: SAVE_BOARDS
     type: Invoke API
     execution-chain: None
-    editable-region: Project Boards [GRID] # 115469225440223629
+    editable-region: Boards [GRID] # 115469225440223629
 
   settings: 
     type: PL/SQL Package
