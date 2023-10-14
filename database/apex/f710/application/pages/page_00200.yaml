@@ -316,15 +316,11 @@ regions:
     id: 23264089038120020
     identification: 
       column-name: COUNT_PROJECTS
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Projects
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 80
@@ -336,15 +332,22 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:300:&SESSION.::&DEBUG.:300:P0_CLIENT_ID:&CLIENT_ID.'
+        page: 300 # Projects
+        clear-cache: 300
+        values: 
+          p0_client_id: '&CLIENT_ID.'
+
+      link-text: '&COUNT_PROJECTS.'
+
     source: 
       type: Database Column
       database-column: COUNT_PROJECTS
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -357,6 +360,9 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
+
+    security: 
+      escape-special-characters: true
 
   - # ====== Column: COUNT_BOARDS ================================
     id: 23264157467120021
