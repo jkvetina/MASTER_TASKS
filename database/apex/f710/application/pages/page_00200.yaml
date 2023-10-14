@@ -153,6 +153,16 @@ regions:
     heading: 
       heading: Counts
 
+  - # ====== Column Group: Flags =================================
+    id: 28270596080994338
+    heading: 
+      heading: Flags
+
+  - # ====== Column Group: Client Info ===========================
+    id: 28271103248994344
+    heading: 
+      heading: Client Info
+
   columns: 
   - # ====== Column: OLD_CLIENT_ID ===============================
     id: 23263735744120017
@@ -205,6 +215,8 @@ regions:
     layout: 
       sequence: 40
       column-alignment: start
+      group: Client Info # 28271103248994344
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -260,6 +272,8 @@ regions:
     layout: 
       sequence: 50
       column-alignment: start
+      group: Client Info # 28271103248994344
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -313,7 +327,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 70
+      sequence: 80
       column-alignment: end
       group: Counts # 23262159387120001
       use-group-for: Both
@@ -359,7 +373,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 80
+      sequence: 90
       column-alignment: end
       group: Counts # 23262159387120001
       use-group-for: Both
@@ -405,7 +419,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 90
+      sequence: 140
       column-alignment: end
       group: Counts # 23262159387120001
       use-group-for: Both
@@ -463,16 +477,28 @@ regions:
     id: 23265803948120038
     identification: 
       column-name: IS_ACTIVE
-      type: Hidden
+      type: Checkbox
+
+    heading: 
+      heading: Active
+      alignment: center
 
     settings: 
-      value-protected: true
+      use-defaults: false
+      checked-value: Y
 
     layout: 
       sequence: 60
+      column-alignment: center
+      group: Flags # 28270596080994338
+      use-group-for: Both
+      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
+
+    validation: 
+      value-required: false
 
     source: 
       type: Database Column
@@ -484,14 +510,267 @@ regions:
     default: 
       duplicate-copies-existing-value: true
 
-    session-state: 
-      data-type: VARCHAR2
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
 
     export-/-printing: 
       include-in-export-/-print: false
 
     enable-users-to: 
       sort: false
+      hide: true
+
+  - # ====== Column: IS_CURRENT ==================================
+    id: 28270637999994339
+    identification: 
+      column-name: IS_CURRENT
+      type: Checkbox
+
+    heading: 
+      heading: Current
+      alignment: center
+
+    settings: 
+      use-defaults: false
+      checked-value: Y
+
+    layout: 
+      sequence: 70
+      column-alignment: center
+      group: Flags # 28270596080994338
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: IS_CURRENT
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    read-only: 
+      type: Always
+      execute: Once
+
+  - # ====== Column: COUNT_SWIMLANES =============================
+    id: 28270757663994340
+    identification: 
+      column-name: COUNT_SWIMLANES
+      type: Display Only
+
+    heading: 
+      heading: Swimlanes
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 100
+      column-alignment: end
+      group: Counts # 23262159387120001
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_SWIMLANES
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_STATUSES ==============================
+    id: 28270860867994341
+    identification: 
+      column-name: COUNT_STATUSES
+      type: Display Only
+
+    heading: 
+      heading: Statuses
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 110
+      column-alignment: end
+      group: Counts # 23262159387120001
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_STATUSES
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_CATEGORIES ============================
+    id: 28270971375994342
+    identification: 
+      column-name: COUNT_CATEGORIES
+      type: Display Only
+
+    heading: 
+      heading: Categories
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 120
+      column-alignment: end
+      group: Counts # 23262159387120001
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_CATEGORIES
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_OWNERS ================================
+    id: 28271081567994343
+    identification: 
+      column-name: COUNT_OWNERS
+      type: Display Only
+
+    heading: 
+      heading: Owners
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 130
+      column-alignment: end
+      group: Counts # 23262159387120001
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_OWNERS
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
 
   printing: 
     page: 
