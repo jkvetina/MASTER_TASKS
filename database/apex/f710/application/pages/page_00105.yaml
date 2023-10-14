@@ -1193,6 +1193,9 @@ regions:
     table-owner: Parsing Schema
     table-name: TSK_P105_CHECKLIST_V
     include-rowid-column: false
+    order-by-clause: GRID_ORDER NULLS LAST
+    page-items-to-submit: 
+    - P105_CARD_ID
 
   layout: 
     sequence: 10
@@ -1280,6 +1283,99 @@ regions:
         alias: 463001
 
   columns: 
+  - # ====== Column: ORDER# ======================================
+    id: 27771570391313616
+    identification: 
+      column-name: ORDER#
+      type: Text Field
+
+    heading: 
+      heading: Order#
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    appearance: 
+      css-classes: 
+      - CHECKLIST_ORDER
+
+    validation: 
+      value-required: false
+      maximum-length: 32
+
+    source: 
+      type: Database Column
+      database-column: ORDER#
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+    server-side-condition: 
+      type: Never
+
+  - # ====== Column: GRID_ORDER ==================================
+    id: 27771670072313617
+    identification: 
+      column-name: GRID_ORDER
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 80
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: GRID_ORDER
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
   - # ====== Column: CHECKLIST_ID ================================
     id: 91363810050871263
     identification: 
@@ -1447,7 +1543,7 @@ regions:
     source: 
       type: Database Column
       database-column: CARD_ID
-      data-type: VARCHAR2
+      data-type: NUMBER
       query-only: false
       primary-key: false
 

@@ -8,8 +8,14 @@ WITH x AS (
 SELECT
     t.card_id,
     t.checklist_id,
-    RTRIM(LTRIM(t.checklist_item))      AS checklist_item,
-    t.checklist_done
+    --
+    LTRIM(t.order# || ' ') || t.checklist_item AS checklist_item,
+    --
+    t.checklist_done,
+    t.order#,
+    --
+    ROW_NUMBER() OVER (ORDER BY order# NULLS LAST, checklist_done NULLS LAST, checklist_item, checklist_id) AS grid_order
+    --
 FROM tsk_card_checklist t
 JOIN x
     ON x.card_id    = t.card_id
@@ -19,9 +25,10 @@ SELECT
     NULL        AS card_id,
     -1          AS checklist_id,
     NULL        AS checklist_item,
-    NULL        AS checklist_done
-FROM DUAL
-ORDER BY checklist_done NULLS LAST, checklist_item, checklist_id;
+    NULL        AS checklist_done,
+    NULL        AS order#,
+    NULL        AS grid_order
+FROM DUAL;
 --
 COMMENT ON TABLE tsk_p105_checklist_v IS '';
 

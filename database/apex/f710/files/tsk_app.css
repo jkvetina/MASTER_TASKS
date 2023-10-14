@@ -140,6 +140,9 @@
     padding-left    : 0;
     padding-right   : 0;
 }
+#CHECKLIST .CHECKLIST_ORDER {
+    color           : #888;
+}
 #CHECKLIST .CHECKLIST_BOX .apex-item-single-checkbox {
     padding         : 3px 0 0 0.6rem;
 }

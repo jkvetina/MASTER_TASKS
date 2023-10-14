@@ -149,30 +149,35 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
     AS
         rec                 tsk_card_checklist%ROWTYPE;
     BEGIN
-        rec.card_id         := core.get_grid_data('CARD_ID');
-        rec.checklist_id    := core.get_grid_data('CHECKLIST_ID');
-        rec.checklist_item  := NULLIF(LTRIM(RTRIM(core.get_grid_data('CHECKLIST_ITEM'))), '-');
-        rec.checklist_done  := core.get_grid_data('CHECKLIST_DONE');
-        rec.order#          := core.get_grid_data('ORDER#');
-        --
-        rec.updated_by      := core.get_user_id();
-        rec.updated_at      := SYSDATE;
-        --
-        IF rec.card_id IS NULL THEN
-            rec.card_id     := core.get_item('P105_CARD_ID');
-        END IF;
-
         -- verify if card exists
         BEGIN
             SELECT t.card_id INTO rec.card_id
             FROM tsk_cards t
-            WHERE t.card_id = rec.card_id;
+            WHERE t.card_id = COALESCE(core.get_grid_data('CARD_ID'), core.get_item('P105_CARD_ID'));
         EXCEPTION
         WHEN NO_DATA_FOUND THEN
             core.raise_error('INVALID_CARD');
         END;
 
-        -- proceed
+        -- prepare data
+        rec.checklist_id    := core.get_grid_data('CHECKLIST_ID');
+        rec.checklist_item  := NULLIF(TRIM(core.get_grid_data('CHECKLIST_ITEM')), '-');
+        rec.checklist_done  := core.get_grid_data('CHECKLIST_DONE');
+        rec.order#          := TRIM(core.get_grid_data('ORDER#'));
+        rec.updated_by      := core.get_user_id();
+        rec.updated_at      := SYSDATE;
+
+        -- split text to order#
+        IF REGEXP_LIKE(rec.checklist_item, '^\d') THEN
+            rec.order#          := SUBSTR(rec.checklist_item, 1, INSTR(rec.checklist_item || ' ', ' ') - 1);  -- ^[^\s]+
+            rec.checklist_item  := LTRIM(REPLACE(rec.checklist_item, rec.order#, ''));
+            --
+            IF SUBSTR(rec.order#, -1, 1) != '.' THEN
+                rec.order#      := rec.order# || ')';
+            END IF;
+        END IF;
+
+        -- proceed with updates
         IF (core.get_grid_action() = 'D' OR rec.checklist_item IS NULL) THEN
             DELETE FROM tsk_card_checklist t
             WHERE t.card_id         = rec.card_id
