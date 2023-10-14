@@ -4079,9 +4079,6 @@ processes:
   server-side-condition: 
     when-button-pressed: CREATE_CARD # 25256418258844563
 
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
 - # ====== Process: SAVE_COMMENT ===============================
   id: 25266295708844587
   identification: 
@@ -4228,9 +4225,11 @@ branches:
   behavior: 
     type: Page or URL (Redirect)
     target: 
-      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105::&success_msg=#SUCCESS_MSG#'
+      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_STATUS_REQUESTED:&P105_STATUS_ID.&success_msg=#SUCCESS_MSG#'
       page: 105 # Card Detail
       clear-cache: 105
+      values: 
+        p105_status_requested: '&P105_STATUS_ID.'
 
   server-side-condition: 
     when-button-pressed: CREATE_ANOTHER # 25256044784844563

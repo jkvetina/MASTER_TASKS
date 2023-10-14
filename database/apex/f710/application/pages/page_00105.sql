@@ -1066,7 +1066,7 @@ wwv_flow_imp_page.create_page_branch(
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(25271485983844595)
 ,p_branch_name=>'CREATE_ANOTHER'
-,p_branch_action=>'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105::&success_msg=#SUCCESS_MSG#'
+,p_branch_action=>'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_STATUS_REQUESTED:&P105_STATUS_ID.&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_when_button_id=>wwv_flow_imp.id(25256044784844563)
@@ -1848,7 +1848,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(25256418258844563)
 ,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
-,p_required_patch=>wwv_flow_imp.id(33790501555120051)
 ,p_internal_uid=>25265822843844587
 );
 wwv_flow_imp_page.create_page_process(
