@@ -266,6 +266,10 @@ regions:
       control-break/aggregate: true
       hide: true
 
+    read-only: 
+      type: Always
+      execute: Once
+
   - # ====== Column: OLD_PROJECT_ID ==============================
     id: 49582377188109008
     identification: 

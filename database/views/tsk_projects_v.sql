@@ -1,5 +1,10 @@
 CREATE OR REPLACE FORCE VIEW tsk_projects_v AS
-WITH t AS (
+WITH x AS (
+    SELECT /*+ MATERIALIZE */
+        a.client_id
+    FROM tsk_auth_context_v a
+),
+t AS (
     SELECT /*+ MATERIALIZE */
         t.client_id,
         t.project_id,
@@ -12,24 +17,23 @@ WITH t AS (
         COUNT(*)                        AS count_cards
         --
     FROM tsk_cards t
-    JOIN tsk_available_projects_v p
-        ON p.client_id      = t.client_id
-        AND p.project_id    = t.project_id
+    JOIN x
+        ON x.client_id      = t.client_id
     GROUP BY
         t.client_id,
         t.project_id
 )
 --
 SELECT
-    p.project_id        AS old_project_id,      -- to allow PK changes
-    p.client_id         AS old_client_id,       -- to allow PK changes
+    a.project_id        AS old_project_id,      -- to allow PK changes
+    a.client_id         AS old_client_id,       -- to allow PK changes
     --
-    p.client_id,
-    p.project_id,
-    p.project_name,
-    p.is_active,
-    p.is_default,
-    p.is_current,
+    a.client_id,
+    a.project_id,
+    a.project_name,
+    a.is_active,
+    a.is_default,
+    a.is_current,
     --
     t.count_boards,
     t.count_swimlanes,
@@ -40,10 +44,12 @@ SELECT
     --
     -- @TODO: add users/admins?
     --
-FROM tsk_available_projects_v p
+FROM tsk_available_projects_v a
+JOIN x
+    ON x.client_id      = a.client_id
 LEFT JOIN t
-    ON t.client_id      = p.client_id
-    AND t.project_id    = p.project_id;
+    ON t.client_id      = a.client_id
+    AND t.project_id    = a.project_id;
 --
 COMMENT ON TABLE tsk_projects_v IS '';
 

@@ -135,6 +135,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_primary_key=>false
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
+,p_readonly_condition_type=>'ALWAYS'
+,p_readonly_for_each_row=>false
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(49582377188109008)
