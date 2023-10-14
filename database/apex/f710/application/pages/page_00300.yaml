@@ -493,15 +493,11 @@ regions:
     id: 49582901801109013
     identification: 
       column-name: COUNT_CATEGORIES
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Categories
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 140
@@ -513,15 +509,20 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:340:&SESSION.::&DEBUG.:340::'
+        page: 340 # Categories
+        clear-cache: 340
+
+      link-text: '&COUNT_CATEGORIES.'
+
     source: 
       type: Database Column
       database-column: COUNT_CATEGORIES
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -535,19 +536,18 @@ regions:
       control-break/aggregate: true
       hide: true
 
+    security: 
+      escape-special-characters: true
+
   - # ====== Column: COUNT_STATUSES ==============================
     id: 49583016252109014
     identification: 
       column-name: COUNT_STATUSES
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Statuses
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 130
@@ -559,15 +559,20 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:320:&SESSION.::&DEBUG.:320::'
+        page: 320 # Statuses
+        clear-cache: 320
+
+      link-text: '&COUNT_STATUSES.'
+
     source: 
       type: Database Column
       database-column: COUNT_STATUSES
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -581,19 +586,18 @@ regions:
       control-break/aggregate: true
       hide: true
 
+    security: 
+      escape-special-characters: true
+
   - # ====== Column: COUNT_SWIMLANES =============================
     id: 49583094699109015
     identification: 
       column-name: COUNT_SWIMLANES
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Swimlanes
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 120
@@ -605,15 +609,20 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:310:&SESSION.::&DEBUG.:310::'
+        page: 310 # Swimlanes
+        clear-cache: 310
+
+      link-text: '&COUNT_SWIMLANES.'
+
     source: 
       type: Database Column
       database-column: COUNT_SWIMLANES
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -627,19 +636,18 @@ regions:
       control-break/aggregate: true
       hide: true
 
+    security: 
+      escape-special-characters: true
+
   - # ====== Column: COUNT_BOARDS ================================
     id: 49583185933109016
     identification: 
       column-name: COUNT_BOARDS
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Boards
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 110
@@ -651,15 +659,20 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:400:&SESSION.::&DEBUG.:400::'
+        page: 400 # Boards
+        clear-cache: 400
+
+      link-text: '&COUNT_BOARDS.'
+
     source: 
       type: Database Column
       database-column: COUNT_BOARDS
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -672,6 +685,9 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
+
+    security: 
+      escape-special-characters: true
 
   - # ====== Column: COUNT_CARDS =================================
     id: 49583294235109017

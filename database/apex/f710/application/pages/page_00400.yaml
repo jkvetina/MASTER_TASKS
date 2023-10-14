@@ -248,6 +248,14 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:310:&SESSION.::&DEBUG.:310::'
+        page: 310 # Swimlanes
+        clear-cache: 310
+
+      link-text: '&COUNT_SWIMLANES.'
+
     source: 
       type: Database Column
       database-column: COUNT_SWIMLANES
@@ -274,15 +282,11 @@ regions:
     id: 28269780158994330
     identification: 
       column-name: COUNT_STATUSES
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Statuses
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 180
@@ -294,15 +298,20 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:320:&SESSION.::&DEBUG.:320::'
+        page: 320 # Statuses
+        clear-cache: 320
+
+      link-text: '&COUNT_STATUSES.'
+
     source: 
       type: Database Column
       database-column: COUNT_STATUSES
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -316,19 +325,18 @@ regions:
       control-break/aggregate: true
       hide: true
 
+    security: 
+      escape-special-characters: true
+
   - # ====== Column: COUNT_CATEGORIES ============================
     id: 28269859209994331
     identification: 
       column-name: COUNT_CATEGORIES
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Categories
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 190
@@ -340,15 +348,20 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:340:&SESSION.::&DEBUG.:340::'
+        page: 340 # Categories
+        clear-cache: 340
+
+      link-text: '&COUNT_CATEGORIES.'
+
     source: 
       type: Database Column
       database-column: COUNT_CATEGORIES
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -361,6 +374,9 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
+
+    security: 
+      escape-special-characters: true
 
   - # ====== Column: COUNT_OWNERS ================================
     id: 28269961155994332
@@ -412,15 +428,11 @@ regions:
     id: 28270000857994333
     identification: 
       column-name: COUNT_CARDS
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Cards
       alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 210
@@ -432,15 +444,24 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:100:P0_CLIENT_ID,P0_PROJECT_ID,P0_BOARD_ID:&CLIENT_ID.,&PROJECT_ID.,&BOARD_ID.'
+        page: 100 # &APP_NAME.
+        clear-cache: 100
+        values: 
+          p0_client_id: '&CLIENT_ID.'
+          p0_project_id: '&PROJECT_ID.'
+          p0_board_id: '&BOARD_ID.'
+
+      link-text: '&COUNT_CARDS.'
+
     source: 
       type: Database Column
       database-column: COUNT_CARDS
       data-type: NUMBER
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -453,6 +474,9 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
+
+    security: 
+      escape-special-characters: true
 
   - # ====== Column: CLIENT_ID ===================================
     id: 28270166439994334
