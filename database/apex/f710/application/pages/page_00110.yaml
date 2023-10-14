@@ -1018,7 +1018,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_STATUSES # 19918350743955397
+    list-of-values: LOV_STATUSES_ALL # 28297973486714089
     display-extra-values: false
     display-null-value: true
 
@@ -1410,7 +1410,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_STATUSES # 19918350743955397
+    list-of-values: LOV_STATUSES_ALL # 28297973486714089
     display-extra-values: false
     display-null-value: true
 

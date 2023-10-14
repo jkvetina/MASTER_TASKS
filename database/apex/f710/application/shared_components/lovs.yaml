@@ -190,3 +190,22 @@
     default-sort: OWNER_ID
     sort-direction: Ascending (Nulls Last)
 
+- # ====== List of Values: LOV_STATUSES_ALL ====================
+  id: 28297973486714089
+  identification: 
+    name: LOV_STATUSES_ALL
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_STATUSES_ALL_V
+
+  column-mapping: 
+    return: STATUS_ID
+    display: STATUS_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+

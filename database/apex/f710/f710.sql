@@ -33,7 +33,7 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   19:10 Sobota Říjen 14, 2023
+--   Date and Time:   19:16 Sobota Říjen 14, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -66,7 +66,7 @@ prompt APPLICATION 710 - Card Crunchers
 --           Breadcrumb:           1
 --           Button:               3
 --           Report:              12
---         LOVs:                  11
+--         LOVs:                  12
 --         Plug-ins:               7
 --       PWA:
 --       Globalization:
@@ -1214,6 +1214,24 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_query_table=>'TSK_LOV_STATUSES_V'
 ,p_return_column_name=>'STATUS_ID'
 ,p_display_column_name=>'STATUS_NAME'
+,p_group_sort_direction=>'ASC'
+,p_default_sort_column_name=>'ORDER#'
+,p_default_sort_direction=>'ASC'
+);
+end;
+/
+prompt --application/shared_components/user_interface/lovs/lov_statuses_all
+begin
+wwv_flow_imp_shared.create_list_of_values(
+ p_id=>wwv_flow_imp.id(28297973486714089)  -- LOV_STATUSES_ALL
+,p_lov_name=>'LOV_STATUSES_ALL'
+,p_source_type=>'TABLE'
+,p_location=>'LOCAL'
+,p_use_local_sync_table=>false
+,p_query_table=>'TSK_LOV_STATUSES_ALL_V'
+,p_return_column_name=>'STATUS_ID'
+,p_display_column_name=>'STATUS_NAME'
+,p_group_column_name=>'GROUP_NAME'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'ORDER#'
 ,p_default_sort_direction=>'ASC'
@@ -22956,7 +22974,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(91625657495276117)
 ,p_prompt=>'Source Status'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_STATUSES'
+,p_named_lov=>'LOV_STATUSES_ALL'
 ,p_lov_display_null=>'YES'
 ,p_lov_cascade_parent_items=>'P110_SOURCE_BOARD'
 ,p_ajax_items_to_submit=>'P110_SOURCE_CLIENT_ID,P110_SOURCE_PROJECT_ID,P110_SOURCE_BOARD_ID'
@@ -23082,7 +23100,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(91625657495276117)
 ,p_prompt=>'Target Status'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_STATUSES'
+,p_named_lov=>'LOV_STATUSES_ALL'
 ,p_lov_display_null=>'YES'
 ,p_lov_cascade_parent_items=>'P110_BOARD_ID'
 ,p_ajax_items_to_submit=>'P110_PROJECT_ID,P110_BOARD_ID'
