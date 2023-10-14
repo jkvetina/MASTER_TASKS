@@ -179,8 +179,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         o := o || '</div>';
 
         -- add extra pages
-        RETURN
-            '<div>' || o || '</div>' ||
+        o := '<div>' || o || '</div>' ||
             '<div>' ||
                 '<div class="M1"><span class="fa fa-alarm-clock"></span> &' || 'nbsp; <span>Recent Tasks</span></div>' ||
                 '<div>' ||
@@ -188,6 +187,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 '</div>' ||
             '</div>' ||
             '<div class="NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -241,21 +246,24 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         END LOOP;
         --
         o := o || '</div>';
+        o := '<div>' || o || '</div>';
 
         -- add setup links
-        IF tsk_app.get_client_id() IS NULL THEN
-            RETURN
-                '<div>' || o || '</div>';
-        END IF;
-        --
-        RETURN
-            '<div>' || o || '</div>' ||
+        IF tsk_app.get_client_id() IS NOT NULL THEN
+            o := o ||
             '<div>' ||
                 '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
                 tsk_app.get_page_link(300, '<span>&' || 'mdash;&' || 'nbsp; Projects</span>', 'M2') ||
                 tsk_app.get_page_link(510, '<span>&' || 'mdash;&' || 'nbsp; Repositories</span>', 'M2') ||
                 tsk_app.get_page_link(210, '<span>&' || 'mdash;&' || 'nbsp; Sequences</span>', 'M2') ||
             '</div>';
+        END IF;
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -322,15 +330,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         END LOOP;
         --
         o := o || '</div>';
+        o := '<div>' || o || '</div>';
 
         -- add setup links
-        IF tsk_app.get_project_id() IS NULL THEN
-            RETURN
-                '<div>' || o || '</div>';
-        END IF;
-        --
-        RETURN
-            '<div>' || o || '</div>' ||
+        IF tsk_app.get_project_id() IS NOT NULL THEN
+            o := o ||
             '<div>' ||
                 '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
                 tsk_app.get_page_link(400, '<span>&' || 'mdash;&' || 'nbsp; Boards</span>', 'M2') ||
@@ -338,6 +342,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 tsk_app.get_page_link(320, '<span>&' || 'mdash;&' || 'nbsp; Statuses</span>', 'M2') ||
                 tsk_app.get_page_link(340, '<span>&' || 'mdash;&' || 'nbsp; Categories</span>', 'M2') ||
             '</div>';
+        END IF;
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -378,8 +389,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             );
         END LOOP;
         --
-        RETURN
-            '<div>' || o || '</div>';
+        o := '<div>' || o || '</div>';
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -416,8 +432,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             );
         END LOOP;
         --
-        RETURN
-            '<div>' || o || '</div>';
+        o := '<div>' || o || '</div>';
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -454,8 +475,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             );
         END LOOP;
         --
-        RETURN
-            '<div>' || o || '</div>';
+        o := '<div>' || o || '</div>';
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -492,8 +518,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             );
         END LOOP;
         --
-        RETURN
-            '<div>' || o || '</div>';
+        o := '<div>' || o || '</div>';
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -529,8 +560,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             );
         END LOOP;
         --
-        RETURN
-            '<div>' || o || '</div>';
+        o := '<div>' || o || '</div>';
+        --
+        IF LENGTH(o) >= 3900 THEN
+            core.raise_error('4K_LIMIT_EXCEEDED');
+        END IF;
+        --
+        RETURN o;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
