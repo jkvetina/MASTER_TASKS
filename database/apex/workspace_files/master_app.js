@@ -67,7 +67,7 @@ const wait_for_element = function(search, start, fn, disconnect) {
 //
 // WAIT FOR SPECIFIC AMOUNT OF TIME
 //
-function delay(time) {
+const delay = function (time) {
     return new Promise(resolve => setTimeout(resolve, time));
 }
 
@@ -131,7 +131,7 @@ var ping_active = true;
 var ping_loop;
 var last_scheduler;
 //
-var init_page = function() {
+const init_page = function() {
     // autohide success messages
     // this actually dont work together with the following setThemeHooks
     apex.theme42.util.configAPEXMsgs({
@@ -242,7 +242,7 @@ apex.jQuery(window).on('theme42ready', function() {
 //
 // COMMON TOOLBAR FOR ALL GRIDS
 //
-var fix_grid_toolbars = function () {
+const fix_grid_toolbars = function () {
     $('.a-IG').each(function() {
         var $parent = $(this).parent();
         var id      = $parent.attr('id');
@@ -254,7 +254,7 @@ var fix_grid_toolbars = function () {
     })
 };
 //
-var fix_grid_toolbar = function (region_id) {
+const fix_grid_toolbar = function (region_id) {
     console.group('FIX_GRID_TOOLBAR', region_id);
     //
     var $region     = $('#' + region_id);
@@ -440,7 +440,7 @@ var fix_grid_toolbar = function (region_id) {
 //
 // FIX GRID SAVE BUTTON - look for css change on Edit button and apply it to Save button
 //
-var fix_grid_save_button = function () {
+const fix_grid_save_button = function () {
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
             // when Edit button is changed to active, then change Save button to hot
@@ -466,7 +466,7 @@ var fix_grid_save_button = function () {
 //
 // FIX GRID FOLDING - fold (hide) requested group (Control Break)
 //
-var fold_grid_group = function(grid_id, group_name, group_value) {
+const fold_grid_group = function(grid_id, group_name, group_value) {
     (function loop(i) {
         setTimeout(function() {
             $('#' + grid_id + ' table tbody tr button.a-Button.js-toggleBreak').each(function() {
@@ -487,5 +487,61 @@ var fold_grid_group = function(grid_id, group_name, group_value) {
             if (--i) loop(i);
         }, 200)
     })(10);
+};
+
+
+
+//
+// PROCESS ALL ROWS FROM GRID
+//
+const process_grid_all_rows = function (static_id, fake_column_name, action_name) {
+    var grid    = apex.region(static_id).widget();
+    var model   = grid.interactiveGrid('getViews', 'grid').model;
+    //
+    model.forEach(function(r) {
+        try {
+            model.setValue(r, fake_column_name, model.getValue(r, fake_column_name) + '!');
+        }
+        catch(err) {
+        }
+    });
+    //grid.interactiveGrid('getActions').invoke('save');
+    apex.submit(action_name);
+};
+
+
+
+//
+// PROCESS SELECTED ROWS FROM GRID
+//
+const process_grid_selected_rows = function (static_id, fake_column_name, action_name) {
+    var grid        = apex.region(static_id).widget();
+    var model       = grid.interactiveGrid('getViews', 'grid').model;
+    var gridview    = grid.interactiveGrid('getViews').grid;
+    var selected    = grid.interactiveGrid('getViews').grid.getSelectedRecords();
+    var changed     = [];
+    //
+    for (var i = 0; i < selected.length; i++ ) {
+        var id = gridview.model.getRecordId(selected[i]);
+        changed.push(id);
+    };
+    //
+    model.forEach(function(r) {
+        try {
+            for (var i = 0; i < changed.length; i++ ) {
+                if (changed[i] == gridview.model.getRecordId(r)) {
+                    try {
+                        model.setValue(r, fake_column_name, 'Y');
+                    }
+                    catch(err) {
+                    }
+                }
+            }
+        }
+        catch(err) {
+        }
+    });
+    //grid.interactiveGrid('getActions').invoke('save');
+    apex.submit(action_name);
 };
 

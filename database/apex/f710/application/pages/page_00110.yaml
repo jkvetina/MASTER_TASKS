@@ -139,6 +139,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: AFFECTED_CARDS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -259,11 +260,8 @@ regions:
       type: Database Column
       database-column: CARD_NUMBER
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     session-state: 
       data-type: VARCHAR2
@@ -301,11 +299,8 @@ regions:
       type: Database Column
       database-column: CARD_ID__
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     column-filter: 
       enabled: true
@@ -359,11 +354,8 @@ regions:
       type: Database Column
       database-column: CARD_NAME
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     column-filter: 
       enabled: true
@@ -419,11 +411,8 @@ regions:
       type: Database Column
       database-column: STATUS_ID
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     column-filter: 
       enabled: true
@@ -479,11 +468,8 @@ regions:
       type: Database Column
       database-column: SWIMLANE_ID
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     column-filter: 
       enabled: true
@@ -539,11 +525,8 @@ regions:
       type: Database Column
       database-column: CATEGORY_ID
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     column-filter: 
       enabled: true
@@ -599,11 +582,8 @@ regions:
       type: Database Column
       database-column: OWNER_ID
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     column-filter: 
       enabled: true
@@ -647,11 +627,8 @@ regions:
       type: Database Column
       database-column: DEADLINE_AT
       data-type: DATE
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     session-state: 
       data-type: VARCHAR2
@@ -682,11 +659,8 @@ regions:
       type: Database Column
       database-column: CARD_LINK
       data-type: VARCHAR2
-      query-only: false
+      query-only: true
       primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
 
     session-state: 
       data-type: VARCHAR2
@@ -711,6 +685,61 @@ regions:
 
     layout: 
       sequence: 10
+
+  - # ====== Column: SELECTED_ROW ================================
+    id: 28267458077994307
+    identification: 
+      column-name: SELECTED_ROW
+      type: Text Field
+
+    heading: 
+      heading: Selected Row
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 130
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 1
+
+    source: 
+      type: Database Column
+      database-column: SELECTED_ROW
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
 
   printing: 
     page: 
@@ -1377,7 +1406,7 @@ page-items:
     height: 1
 
   validation: 
-    value-required: true
+    value-required: false
 
   list-of-values: 
     type: Shared Component
@@ -1444,7 +1473,7 @@ page-items:
     height: 1
 
   validation: 
-    value-required: true
+    value-required: false
 
   list-of-values: 
     type: Shared Component
@@ -1699,14 +1728,13 @@ buttons:
     - '#DEFAULT#'
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
 
-- # ====== Button: PROCESS_SELECTED ============================
+- # ====== Button: PROCESS_SELECTED_ROWS =======================
   id: 27597103358272036
   identification: 
-    button-name: PROCESS_SELECTED
+    button-name: PROCESS_SELECTED_ROWS
     label: Process Selected Rows
 
   layout: 
@@ -1726,9 +1754,8 @@ buttons:
     - '#DEFAULT#'
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_PROJECT =====================
@@ -2027,27 +2054,95 @@ dynamic-actions:
       stop-execution-on-error: true
       wait-for-result: true
 
+- # ====== Dynamic Action: PROCESS_ALL_ROWS ====================
+  id: 28267062839994303
+  identification: 
+    name: PROCESS_ALL_ROWS
+
+  execution: 
+    sequence: 70
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: PROCESS_ALL_ROWS # 27597005854272035
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 28267185824994304
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: process_grid_all_rows('AFFECTED_CARDS', 'SELECTED_ROW', 'PROCESS_ALL_ROWS');
+
+    execution: 
+      sequence: 10
+      event: PROCESS_ALL_ROWS # 28267062839994303
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: PROCESS_SELECTED_ROWS ===============
+  id: 28267203206994305
+  identification: 
+    name: PROCESS_SELECTED_ROWS
+
+  execution: 
+    sequence: 80
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: PROCESS_SELECTED_ROWS # 27597103358272036
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 28267346839994306
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: process_grid_selected_rows('AFFECTED_CARDS', 'SELECTED_ROW', 'PROCESS_SELECTED_ROWS');
+
+    execution: 
+      sequence: 10
+      event: PROCESS_SELECTED_ROWS # 28267203206994305
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 processes: 
-- # ====== Process: PROCESS_BULK_REQUEST =======================
+- # ====== Process: PROCESS_BULK_FILTERS =======================
   id: 27475395825062526
   identification: 
-    name: PROCESS_BULK_REQUEST
+    name: PROCESS_BULK_FILTERS
     type: Invoke API
     execution-chain: None
+    editable-region: AFFECTED_CARDS [GRID] # 27595158466272016
 
   settings: 
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_P110
-    procedure-or-function: PROCESS_BULK_REQUEST
+    procedure-or-function: PROCESS_BULK_FILTERS
 
   execution: 
-    sequence: 30
+    sequence: 20
     point: Processing
     run-process: Once Per Page Visit (default)
 
   error: 
     display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: All Submitted Rows
 
 - # ====== Process: PROCESS_BULK_INIT ==========================
   id: 27475705404062526
@@ -2070,28 +2165,27 @@ processes:
   error: 
     display-location: Inline in Notification
 
-- # ====== Process: SAVE_GRID ==================================
+- # ====== Process: PROCESS_BULK_REQUEST =======================
   id: 27596664559272031
   identification: 
-    name: SAVE_GRID
-    type: Interactive Grid - Automatic Row Processing (DML)
+    name: PROCESS_BULK_REQUEST
+    type: Invoke API
     execution-chain: None
-    editable-region: AFFECTED_CARDS [GRID] # 27595158466272016
 
   settings: 
-    target-type: PL/SQL Code
-    pl/sql-code-to-insert/update/delete: NULL;
-    prevent-lost-updates: true
-    lock-row: No
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_P110
+    procedure-or-function: PROCESS_BULK_REQUEST
 
   execution: 
-    sequence: 40
+    sequence: 30
     point: Processing
     run-process: Once Per Page Visit (default)
 
+  success-message: 
+    success-message: '&P0_SUCCESS_MESSAGE.'
+
   error: 
     display-location: Inline in Notification
-
-  server-side-condition: 
-    execution-scope: For Created and Modified Rows
 

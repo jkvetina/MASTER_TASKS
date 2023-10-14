@@ -27,7 +27,9 @@ SELECT
         p_clear_cache   => 105,
         p_items         => 'P105_CARD_ID,P105_SOURCE_PAGE',
         p_values        => '' || t.card_id || ',110'
-    ) AS card_link
+    ) AS card_link,
+    --
+    'N' AS selected_row     -- Y/N, changed by JS
     --
 FROM tsk_cards t
 CROSS JOIN x
