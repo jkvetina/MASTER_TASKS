@@ -14,8 +14,8 @@ appearance:
   - '#DEFAULT#'
 
 dialog: 
-  width: 80%
-  chained: false
+  width: 85%
+  chained: true
 
 navigation-menu: 
   override-user-interface-level: false
@@ -1272,9 +1272,6 @@ regions:
     detail-view: 
       show: false
 
-    help: 
-      help-text: '@Max, EDIT=TRUE here doesnt work either'
-
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
       id: 91403223540187545
@@ -1298,7 +1295,7 @@ regions:
       text-case: NO CHANGE
 
     layout: 
-      sequence: 70
+      sequence: 80
       column-alignment: start
       stretch: Use Report Setting
 
@@ -1355,7 +1352,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 80
+      sequence: 90
 
     accessibility: 
       value-identifies-row: false
@@ -1363,6 +1360,37 @@ regions:
     source: 
       type: Database Column
       database-column: GRID_ORDER
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: CSS_CLASS ===================================
+    id: 27771717756313618
+    identification: 
+      column-name: CSS_CLASS
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 70
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: CSS_CLASS
       data-type: NUMBER
       query-only: true
       primary-key: false
@@ -1438,7 +1466,7 @@ regions:
 
     validation: 
       value-required: false
-      maximum-length: 256
+      maximum-length: 289
 
     source: 
       type: Database Column
@@ -1466,6 +1494,15 @@ regions:
     enable-users-to: 
       sort: false
       hide: true
+
+    advanced: 
+      column-initialization-javascript-function: |
+        function(config) {
+          config.defaultGridColumnOptions = {
+            cellCssClassesColumn: 'CSS_CLASS'
+          };
+          return config;
+        }
 
   - # ====== Column: CHECKLIST_DONE ==============================
     id: 91364007612871265

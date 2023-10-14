@@ -172,7 +172,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             rec.order#          := SUBSTR(rec.checklist_item, 1, INSTR(rec.checklist_item || ' ', ' ') - 1);  -- ^[^\s]+
             rec.checklist_item  := LTRIM(REPLACE(rec.checklist_item, rec.order#, ''));
             --
-            IF SUBSTR(rec.order#, -1, 1) != '.' THEN
+            IF SUBSTR(rec.order#, -1, 1) != '.' AND SUBSTR(rec.order#, -1, 1) != ')' THEN
                 rec.order#      := rec.order# || ')';
             END IF;
         END IF;

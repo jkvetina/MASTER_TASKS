@@ -108,8 +108,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_template=>wwv_flow_imp.id(33859121557153720)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
-,p_dialog_width=>'80%'
-,p_dialog_chained=>'N'
+,p_dialog_width=>'85%'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'21'
 ,p_last_updated_by=>'DEV'
@@ -296,7 +295,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_item_type=>'NATIVE_TEXT_FIELD'
 ,p_heading=>'Order#'
 ,p_heading_alignment=>'LEFT'
-,p_display_sequence=>70
+,p_display_sequence=>80
 ,p_value_alignment=>'LEFT'
 ,p_value_css_classes=>'CHECKLIST_ORDER'
 ,p_attribute_05=>'BOTH'
@@ -326,7 +325,23 @@ wwv_flow_imp_page.create_region_column(
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
 ,p_item_type=>'NATIVE_HIDDEN'
-,p_display_sequence=>80
+,p_display_sequence=>90
+,p_attribute_01=>'Y'
+,p_use_as_row_header=>false
+,p_enable_sort_group=>false
+,p_is_primary_key=>false
+,p_include_in_export=>false
+);
+wwv_flow_imp_page.create_region_column(
+ p_id=>wwv_flow_imp.id(27771717756313618)
+,p_name=>'CSS_CLASS'
+,p_source_type=>'DB_COLUMN'
+,p_source_expression=>'CSS_CLASS'
+,p_data_type=>'NUMBER'
+,p_session_state_data_type=>'VARCHAR2'
+,p_is_query_only=>true
+,p_item_type=>'NATIVE_HIDDEN'
+,p_display_sequence=>70
 ,p_attribute_01=>'Y'
 ,p_use_as_row_header=>false
 ,p_enable_sort_group=>false
@@ -356,7 +371,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_source_type=>'DB_COLUMN'
 ,p_source_expression=>'CHECKLIST_ITEM'
 ,p_data_type=>'VARCHAR2'
-,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_TEXT_FIELD'
 ,p_heading=>'Checklist Item'
@@ -366,13 +380,20 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_css_classes=>'CHECKLIST_ITEM'
 ,p_attribute_05=>'BOTH'
 ,p_is_required=>false
-,p_max_length=>256
+,p_max_length=>289
 ,p_enable_filter=>true
 ,p_filter_operators=>'C:S:CASE_INSENSITIVE:REGEXP'
 ,p_filter_is_required=>false
 ,p_filter_text_case=>'MIXED'
 ,p_filter_lov_type=>'NONE'
 ,p_use_as_row_header=>false
+,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'function(config) {',
+'  config.defaultGridColumnOptions = {',
+'    cellCssClassesColumn: ''CSS_CLASS''',
+'  };',
+'  return config;',
+'}'))
 ,p_enable_sort_group=>false
 ,p_enable_hide=>true
 ,p_is_primary_key=>false
@@ -471,7 +492,6 @@ wwv_flow_imp_page.create_interactive_grid(
 ,p_fixed_header=>'PAGE'
 ,p_show_icon_view=>false
 ,p_show_detail_view=>false
-,p_help_text=>'@Max, EDIT=TRUE here doesnt work either'
 );
 wwv_flow_imp_page.create_ig_report(
  p_id=>wwv_flow_imp.id(91403223540187545)
@@ -505,6 +525,14 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_view_id=>wwv_flow_imp.id(91403406220187546)
 ,p_display_seq=>8
 ,p_column_id=>wwv_flow_imp.id(27771670072313617)
+,p_is_visible=>true
+,p_is_frozen=>false
+);
+wwv_flow_imp_page.create_ig_report_column(
+ p_id=>wwv_flow_imp.id(27824405217931720)
+,p_view_id=>wwv_flow_imp.id(91403406220187546)
+,p_display_seq=>9
+,p_column_id=>wwv_flow_imp.id(27771717756313618)
 ,p_is_visible=>true
 ,p_is_frozen=>false
 );
@@ -975,6 +1003,18 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-arrow-left'
 ,p_database_action=>'UPDATE'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.2'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260022178844566)
 ,p_button_sequence=>60
@@ -1004,18 +1044,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_execute_validations=>'N'
 ,p_warn_on_unsaved_changes=>null
 ,p_icon_css_classes=>'fa-times'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_branch(
  p_id=>wwv_flow_imp.id(25271848504844595)

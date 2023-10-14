@@ -140,6 +140,12 @@
     padding-left    : 0;
     padding-right   : 0;
 }
+#CHECKLIST .CHECKLIST_ITEM.LEVEL1 { padding-left : 1.5rem !important; }
+#CHECKLIST .CHECKLIST_ITEM.LEVEL2 { padding-left : 3.0rem !important; }
+#CHECKLIST .CHECKLIST_ITEM.LEVEL3 { padding-left : 4.5rem !important; }
+#CHECKLIST .CHECKLIST_ITEM.LEVEL4 { padding-left : 6.0rem !important; }
+#CHECKLIST .CHECKLIST_ITEM.LEVEL5 { padding-left : 7.5rem !important; }
+
 #CHECKLIST .CHECKLIST_ORDER {
     color           : #888;
 }

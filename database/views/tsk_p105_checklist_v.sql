@@ -8,13 +8,14 @@ WITH x AS (
 SELECT
     t.card_id,
     t.checklist_id,
-    --
-    LTRIM(t.order# || ' ') || t.checklist_item AS checklist_item,
-    --
     t.checklist_done,
     t.order#,
     --
-    ROW_NUMBER() OVER (ORDER BY order# NULLS LAST, checklist_done NULLS LAST, checklist_item, checklist_id) AS grid_order
+    LTRIM(t.order# || ' ') || t.checklist_item AS checklist_item,
+    --
+    'LEVEL' || NULLIF(REGEXP_COUNT(RTRIM(t.order#, '.'), '\.'), 0) AS css_class,
+    --
+    ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.checklist_done NULLS LAST, t.checklist_item, t.checklist_id) AS grid_order
     --
 FROM tsk_card_checklist t
 JOIN x
@@ -26,6 +27,7 @@ SELECT
     -1          AS checklist_id,
     NULL        AS checklist_item,
     NULL        AS checklist_done,
+    NULL        AS css_class,
     NULL        AS order#,
     NULL        AS grid_order
 FROM DUAL;
