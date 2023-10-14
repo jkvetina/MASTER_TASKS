@@ -547,16 +547,24 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         --
         FOR t IN (
             SELECT DISTINCT
+                t.client_id,
+                t.project_id,
+                t.board_id,
                 t.owner_id,
-                NULL                AS is_current
+                NULL            AS is_current       -- check against current user
             FROM tsk_p100_cards_v t
             ORDER BY t.owner_id
         ) LOOP
-            o := o || tsk_app.get_link (
-                CASE WHEN t.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
-                '&' || 'nbsp; ' || t.owner_id || '</span>',
-                NULL,
-                in_class => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE')
+            o := o || get_link (
+                in_content      => t.owner_id,
+                in_page_id      => NULL,
+                in_client_id    => t.client_id,
+                in_project_id   => t.project_id,
+                in_board_id     => t.board_id,
+                in_swimlanes    => NULL,
+                in_owners       => t.owner_id,
+                in_class        => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE'),
+                in_icon_name    => CASE WHEN t.is_current = 'Y' THEN 'fa-arrow-circle-right' END
             );
         END LOOP;
         --
