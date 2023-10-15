@@ -2,75 +2,33 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
 
     PROCEDURE init_defaults
     AS
-        v_client_id         tsk_cards.client_id%TYPE    := tsk_app.get_client_id();
-        v_project_id        tsk_cards.project_id%TYPE   := tsk_app.get_project_id();
-        v_board_id          tsk_cards.board_id%TYPE     := tsk_app.get_board_id();
-        v_swimlane_id       tsk_cards.swimlane_id%TYPE  := tsk_app.get_swimlane_id();
         v_card_id           tsk_cards.card_id%TYPE;
     BEGIN
+        -- set page items
+        core.set_item('P100_CARD_LINK',     '');
+        core.set_item('P100_CARDS_LINK',    core.get_page_url(100, in_reset => NULL));
+
         -- check if specific card was requested
-        v_card_id := core.get_item('P100_CARD_ID');
-        --
-        IF v_card_id IS NOT NULL THEN
-            BEGIN
-                SELECT
-                    t.client_id,
-                    t.project_id,
-                    t.board_id
-                INTO
-                    v_client_id,
-                    v_project_id,
-                    v_board_id
-                FROM tsk_cards t
-                WHERE t.card_id = v_card_id;
-            EXCEPTION
-            WHEN NO_DATA_FOUND THEN
-                core.raise_error('INVALID_CARD');
-            END;
-
-            -- update also board below card detail
-            tsk_app.set_user_preferences (
-                in_user_id          => core.get_user_id(),
-                in_client_id        => v_client_id,
-                in_project_id       => v_project_id,
-                in_board_id         => v_board_id,
-                in_swimlane_id      => v_swimlane_id
-            );
-
-            -- generate card link
+        BEGIN
+            SELECT t.card_id INTO v_card_id
+            FROM tsk_cards t
+            WHERE t.card_id = core.get_number_item('P100_CARD_ID');
+            --
             IF v_card_id IS NOT NULL THEN
                 core.set_item('P100_CARD_LINK', tsk_app.get_card_link(v_card_id));
             END IF;
-            --
-        ELSE
-            -- overwrite settings if new are passed in url
-            IF core.get_request_url() LIKE '%p100_board_id=%' THEN
-                v_client_id     := core.get_item('P100_CLIENT_ID');
-                v_project_id    := core.get_item('P100_PROJECT_ID');
-                v_board_id      := core.get_item('P100_BOARD_ID');
-                --
-                tsk_app.set_user_preferences (
-                    in_user_id          => core.get_user_id(),
-                    in_client_id        => v_client_id,
-                    in_project_id       => v_project_id,
-                    in_board_id         => v_board_id,
-                    in_swimlane_id      => v_swimlane_id
-                );
-            END IF;
-        END IF;
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            NULL;
+        END;
 
         -- set page items
-        core.set_item('P100_CLIENT_ID',     v_client_id);
-        core.set_item('P100_PROJECT_ID',    v_project_id);
-        core.set_item('P100_BOARD_ID',      v_board_id);
-        core.set_item('P100_CARDS_LINK',    core.get_page_url(100, in_reset => NULL));
-        --
         FOR b IN (
             SELECT
                 b.board_name,
                 b.is_favorite
             FROM tsk_available_boards_v b
-            WHERE b.board_id = v_board_id
+            WHERE b.board_id = tsk_app.get_board_id()
         ) LOOP
             core.set_item('P100_HEADER',            b.board_name || ' Board');
             core.set_item('P100_IS_FAVORITE',       b.is_favorite);
