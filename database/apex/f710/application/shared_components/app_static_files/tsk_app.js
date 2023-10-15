@@ -16,7 +16,7 @@ const dragover = function(e) {
     const last_card = insert_above(zone, e.clientY);
 
     // check source and target
-    if (!curr_card.classList.contains('CARD')) {
+    if (!curr_card || !curr_card.classList.contains('CARD')) {
         return;
     }
     if (!zone.classList.contains('TARGET')) {
