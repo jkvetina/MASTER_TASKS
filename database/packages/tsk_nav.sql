@@ -518,21 +518,42 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             in_class        => 'M2' || CASE WHEN tsk_app.get_category_id() IS NULL THEN ' ACTIVE' END,
             in_icon_name    => CASE WHEN tsk_app.get_category_id() IS NULL THEN 'fa-arrow-circle-right' END
         );
+        o := o || get_link (
+            in_content      => 'Empty Category',
+            in_category_id  => '!',
+            in_class        => 'M2' || CASE WHEN tsk_app.get_category_id() = '!' THEN ' ACTIVE' END,
+            in_icon_name    => CASE WHEN tsk_app.get_category_id() = '!' THEN 'fa-arrow-circle-right' END
+        );
         --
-        FOR t IN (
-            SELECT
-                t.category_id,
-                t.category_name,
-                CASE WHEN t.category_id = tsk_app.get_category_id() THEN 'Y' END AS is_current
+        FOR g IN (
+            SELECT DISTINCT
+                t.category_group
             FROM tsk_lov_categories_v t
-            ORDER BY t.order#
+            ORDER BY 1
         ) LOOP
             o := o || get_link (
-                in_content      => t.category_name,
-                in_category_id  => t.category_id,
-                in_class        => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE'),
-                in_icon_name    => CASE WHEN t.is_current = 'Y' THEN 'fa-arrow-circle-right' END
+                in_content      => g.category_group,
+                in_category_id  => 'G:' || g.category_group,
+                in_class        => 'M2',
+                in_icon_name    => NULL
             );
+            --
+            FOR t IN (
+                SELECT
+                    t.category_id,
+                    t.category_name,
+                    CASE WHEN t.category_id = tsk_app.get_category_id() THEN 'Y' END AS is_current
+                FROM tsk_lov_categories_v t
+                WHERE t.category_group = g.category_group
+                ORDER BY t.order#
+            ) LOOP
+                o := o || get_link (
+                    in_content      => t.category_name,
+                    in_category_id  => t.category_id,
+                    in_class        => 'M3' || REPLACE(t.is_current, 'Y', ' ACTIVE'),
+                    in_icon_name    => CASE WHEN t.is_current = 'Y' THEN 'fa-arrow-circle-right' END
+                );
+            END LOOP;
         END LOOP;
         --
         o := '<div>' || o || '</div>';
