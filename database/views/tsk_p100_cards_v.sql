@@ -1,18 +1,32 @@
 CREATE OR REPLACE FORCE VIEW tsk_p100_cards_v AS
 WITH t AS (
     SELECT /*+ MATERIALIZE */
-       t.*
-       --
-       -- @TODO: limit columns
-       --
+        t.card_id,
+        t.card_name,
+        t.card_number,
+        t.client_id,
+        t.project_id,
+        t.board_id,
+        t.swimlane_id,
+        t.status_id,
+        t.category_id,
+        t.owner_id,
+        t.deadline_at,
+        t.tags,
+        t.order#,
+        t.created_by,
+        t.created_at,
+        t.updated_by,
+        t.updated_at
     FROM tsk_cards t
     JOIN tsk_auth_context_v x
         ON x.client_id      = t.client_id
         AND x.project_id    = t.project_id
         AND x.board_id      = t.board_id
-        --
-        AND (x.swimlane_id  = t.swimlane_id OR x.swimlane_id IS NULL)
-        AND (x.owner_id     = t.owner_id    OR x.owner_id IS NULL)
+        AND (x.swimlane_id  = t.swimlane_id     OR x.swimlane_id    IS NULL)
+        AND (x.status_id    = t.status_id       OR x.status_id      IS NULL)
+        AND (x.category_id  = t.category_id     OR x.category_id    IS NULL)
+        AND (x.owner_id     = t.owner_id        OR x.owner_id       IS NULL)
 ),
 p AS (
     -- to calculate cards progress
@@ -41,9 +55,8 @@ SELECT
     t.client_id,
     t.project_id,
     t.board_id,
-    --
-    t.status_id,
     t.swimlane_id,
+    t.status_id,
     t.category_id,
     t.owner_id,
     t.deadline_at,
