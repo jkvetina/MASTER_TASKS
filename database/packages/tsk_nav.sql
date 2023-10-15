@@ -26,10 +26,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         IF in_client_id     IS NOT NULL THEN v_items := v_items || ',P0_CLIENT_ID';     v_values := v_values || ',' || in_client_id;    END IF;
         IF in_project_id    IS NOT NULL THEN v_items := v_items || ',P0_PROJECT_ID';    v_values := v_values || ',' || in_project_id;   END IF;
         IF in_board_id      IS NOT NULL THEN v_items := v_items || ',P0_BOARD_ID';      v_values := v_values || ',' || in_board_id;     END IF;
-        IF in_swimlane_id   IS NOT NULL THEN v_items := v_items || ',P0_SWIMLANE_ID';   v_values := v_values || ',' || in_swimlane_id;  END IF;
-        IF in_status_id     IS NOT NULL THEN v_items := v_items || ',P0_STATUS_ID';     v_values := v_values || ',' || in_status_id;    END IF;
-        IF in_category_id   IS NOT NULL THEN v_items := v_items || ',P0_CATEGORY_ID';   v_values := v_values || ',' || in_category_id;  END IF;
-        IF in_owner_id      IS NOT NULL THEN v_items := v_items || ',P0_OWNER_ID';      v_values := v_values || ',' || in_owner_id;     END IF;
+        IF in_swimlane_id   IS NOT NULL THEN v_items := v_items || ',P0_SWIMLANE_ID';   v_values := v_values || ',' || NULLIF(in_swimlane_id, '-'); END IF;
+        IF in_status_id     IS NOT NULL THEN v_items := v_items || ',P0_STATUS_ID';     v_values := v_values || ',' || NULLIF(in_status_id,   '-'); END IF;
+        IF in_category_id   IS NOT NULL THEN v_items := v_items || ',P0_CATEGORY_ID';   v_values := v_values || ',' || NULLIF(in_category_id, '-'); END IF;
+        IF in_owner_id      IS NOT NULL THEN v_items := v_items || ',P0_OWNER_ID';      v_values := v_values || ',' || NULLIF(in_owner_id,    '-'); END IF;
 
         -- adjust icons
         v_icon := CASE
@@ -408,6 +408,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         END IF;
         --
         o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Swimlane</span></div>';
+        o := o || get_link (
+            in_content      => 'All Swimlanes',
+            in_swimlane_id  => '-',
+            in_class        => 'M2' || CASE WHEN tsk_app.get_swimlane_id() IS NULL THEN ' ACTIVE' END,
+            in_icon_name    => CASE WHEN tsk_app.get_swimlane_id() IS NULL THEN 'fa-arrow-circle-right' END
+        );
+        --
         --
         FOR t IN (
             SELECT
@@ -451,6 +458,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         END IF;
         --
         o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Status</span></div>';
+        o := o || get_link (
+            in_content      => 'All Statuses',
+            in_status_id    => '-',
+            in_class        => 'M2' || CASE WHEN tsk_app.get_status_id() IS NULL THEN ' ACTIVE' END,
+            in_icon_name    => CASE WHEN tsk_app.get_status_id() IS NULL THEN 'fa-arrow-circle-right' END
+        );
         --
         FOR t IN (
             SELECT
@@ -494,6 +507,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         END IF;
         --
         o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Category</span></div>';
+        o := o || get_link (
+            in_content      => 'All Categories',
+            in_category_id  => '-',
+            in_class        => 'M2' || CASE WHEN tsk_app.get_category_id() IS NULL THEN ' ACTIVE' END,
+            in_icon_name    => CASE WHEN tsk_app.get_category_id() IS NULL THEN 'fa-arrow-circle-right' END
+        );
         --
         FOR t IN (
             SELECT
@@ -537,6 +556,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         END IF;
         --
         o := o || '<div class="M1"><span class="fa fa-chevron-down"></span> &' || 'nbsp; <span>Select Owner</span></div>';
+        o := o || get_link (
+            in_content      => 'All Owners',
+            in_owner_id     => '-',
+            in_class        => 'M2' || CASE WHEN tsk_app.get_owner_id() IS NULL THEN ' ACTIVE' END,
+            in_icon_name    => CASE WHEN tsk_app.get_owner_id() IS NULL THEN 'fa-arrow-circle-right' END
+        );
         --
         FOR t IN (
             SELECT DISTINCT
