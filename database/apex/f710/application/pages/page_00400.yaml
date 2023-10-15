@@ -800,6 +800,10 @@ regions:
       control-break/aggregate: true
       hide: true
 
+    read-only: 
+      type: Always
+      execute: Once
+
     security: 
       authorization-scheme: MASTER - IS_DEVELOPER # 68472631569287844
 

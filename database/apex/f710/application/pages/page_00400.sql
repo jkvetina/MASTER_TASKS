@@ -425,6 +425,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_primary_key=>false
 ,p_duplicate_value=>false
 ,p_include_in_export=>false
+,p_readonly_condition_type=>'ALWAYS'
+,p_readonly_for_each_row=>false
 ,p_security_scheme=>wwv_flow_imp.id(68472631569287844)  -- MASTER - IS_DEVELOPER
 );
 wwv_flow_imp_page.create_region_column(

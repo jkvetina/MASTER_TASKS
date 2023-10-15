@@ -159,6 +159,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TAB_CHECKLIST
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -200,6 +201,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TAB_COMMENTS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -283,6 +285,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TAB_ATTACHEMENTS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -324,6 +327,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TAB_INFO
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -365,6 +369,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TAB_DESCRIPTION
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -462,6 +467,48 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
+- # ====== Region: Tags ========================================
+  id: 28271631648994349
+  identification: 
+    title: Tags
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: RIGHT # 25479617265860925
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: TAB_TAGS
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 - # ====== Region: Commits =====================================
   id: 89197294196141484
   identification: 
@@ -489,6 +536,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TAB_COMMITS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -1750,7 +1798,7 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 130
+    sequence: 120
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -1810,8 +1858,8 @@ page-items:
     disabled: false
 
   layout: 
-    sequence: 30
-    region: '[FORM]' # 108316672484408031
+    sequence: 10
+    region: Tags # 28271631648994349
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1952,7 +2000,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 140
+    sequence: 130
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -1992,7 +2040,7 @@ page-items:
     send-on-page-submit: true
 
   layout: 
-    sequence: 150
+    sequence: 140
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2043,7 +2091,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 120
+    sequence: 110
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2222,7 +2270,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 60
+    sequence: 50
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2287,7 +2335,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 40
+    sequence: 30
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2320,7 +2368,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 50
+    sequence: 40
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2358,7 +2406,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 70
+    sequence: 60
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2429,7 +2477,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 80
+    sequence: 70
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2495,7 +2543,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 160
+    sequence: 150
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2528,7 +2576,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 180
+    sequence: 170
     region: '[FORM]' # 108316672484408031
     position: BODY
 
@@ -2920,7 +2968,7 @@ page-items:
     send-on-page-submit: true
 
   layout: 
-    sequence: 170
+    sequence: 160
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -2971,7 +3019,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 90
+    sequence: 80
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -3042,7 +3090,7 @@ page-items:
     allow-multi-selection: false
 
   layout: 
-    sequence: 100
+    sequence: 90
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
@@ -3120,7 +3168,7 @@ page-items:
     maximum-date: None
 
   layout: 
-    sequence: 110
+    sequence: 100
     region: '[FORM]' # 108316672484408031
     position: BODY
     alignment: Left
