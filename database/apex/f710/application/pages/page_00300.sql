@@ -433,6 +433,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_sort_group=>false
 ,p_enable_hide=>true
 ,p_is_primary_key=>false
+,p_default_type=>'STATIC'
+,p_default_expression=>'Y'
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );

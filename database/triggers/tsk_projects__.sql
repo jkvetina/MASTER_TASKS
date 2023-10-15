@@ -28,8 +28,6 @@ COMPOUND TRIGGER
         END IF;
         --
         IF INSERTING THEN
-            :NEW.is_active := 'Y';
-
             -- make sure every project has at leats one default board
             BEGIN
                 INSERT INTO tsk_boards (board_name, client_id, project_id, is_active, is_default)

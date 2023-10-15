@@ -19,10 +19,6 @@ COMPOUND TRIGGER
             END IF;
         END IF;
         --
-        IF INSERTING THEN
-            :NEW.is_active := 'Y';
-        END IF;
-        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

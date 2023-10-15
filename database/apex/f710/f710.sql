@@ -33,7 +33,7 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   12:10 Neděle Říjen 15, 2023
+--   Date and Time:   13:47 Neděle Říjen 15, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -23766,6 +23766,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_sort_group=>false
 ,p_enable_hide=>true
 ,p_is_primary_key=>false
+,p_default_type=>'STATIC'
+,p_default_expression=>'Y'
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
@@ -24970,6 +24972,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_sort_group=>false
 ,p_enable_hide=>true
 ,p_is_primary_key=>false
+,p_default_type=>'STATIC'
+,p_default_expression=>'Y'
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
