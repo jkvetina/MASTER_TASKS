@@ -252,7 +252,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             END LOOP;
 
             -- message for app
-            HTP.P('Card ' || c_card_prefix || APEX_APPLICATION.G_X01 || ' updated');
+            --HTP.P('Card ' || c_card_prefix || APEX_APPLICATION.G_X01 || ' updated');
+            HTP.P('{"message":"Card ' || c_card_prefix || APEX_APPLICATION.G_X01 || ' updated","action":"REFRESH_GRID"}');
         END IF;
     EXCEPTION
     WHEN core.app_exception THEN

@@ -2,7 +2,7 @@
 // HANDLE AJAX PROCESS MESSAGES
 //
 const show_success = function(message) {
-    apex.message.showPageSuccess(message);
+    apex.message.showPageSuccess(extract_message(message));
 };
 //
 const show_warning = function(message) {
@@ -39,6 +39,24 @@ const show_message = function(data) {           // expecting JSON objects, ideal
             }]);
         }
     }
+};
+//
+const extract_message = function(message) {
+    if (message.substring(0, 1) === '{' && message.trim().slice(-1) === '}') {
+        try {
+            const obj = JSON.parse(message);
+            //
+            message = (!!obj.message ? obj.message : '');
+            //
+            if (!!obj.action) {
+                console.log('TRIGGER_ACTION', obj.action);
+                $.event.trigger(obj.action);
+            }
+        }
+        catch(err) {
+        }
+    }
+    return message;
 };
 
 
@@ -142,9 +160,12 @@ const init_page = function() {
     // catch message event
     apex.message.setThemeHooks({
         beforeShow: function(pMsgType, pElement$) {
+            console.log('MESSAGE:', pMsgType, pElement$);
+
             if (pMsgType === apex.message.TYPE.ERROR) {
                 var message = pElement$.find('ul.a-Notification-list li').text();
-                console.log('MESSAGE:', pMsgType, pElement$, message);
+                console.log('MESSAGE.ERROR:', message);
+                message = extract_message(message);
 
                 // switch error to warning
                 if (message.includes('WARNING!')) {
@@ -167,6 +188,9 @@ const init_page = function() {
             // autohide success messages
             // this message can be from AJAX call (AJAX_PING process) and then it wont be autoclosed
             if (pMsgType === apex.message.TYPE.SUCCESS) {
+                var message = extract_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text());
+                console.log('MESSAGE.SUCCESS:', message);
+                $('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text(message);
                 clearTimeout(last_scheduler);
                 last_scheduler = setTimeout(() => {
                     apex.message.hidePageSuccess();
