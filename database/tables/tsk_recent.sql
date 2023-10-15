@@ -3,8 +3,10 @@ CREATE TABLE tsk_recent (
     client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_recent_client NOT NULL,
     project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_recent_project NOT NULL,
     board_id                        NUMBER(10,0)    CONSTRAINT nn_tsk_recent_board NOT NULL,
-    swimlanes                       VARCHAR2(2000),
-    owners                          VARCHAR2(2000),
+    swimlane_id                     VARCHAR2(32),
+    status_id                       VARCHAR2(32),
+    category_id                     VARCHAR2(32),
+    owner_id                        VARCHAR2(128),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
@@ -38,6 +40,8 @@ COMMENT ON COLUMN tsk_recent.user_id        IS '';
 COMMENT ON COLUMN tsk_recent.client_id      IS '';
 COMMENT ON COLUMN tsk_recent.project_id     IS '';
 COMMENT ON COLUMN tsk_recent.board_id       IS '';
-COMMENT ON COLUMN tsk_recent.swimlanes      IS '';
-COMMENT ON COLUMN tsk_recent.owners         IS '';
+COMMENT ON COLUMN tsk_recent.swimlane_id    IS '';
+COMMENT ON COLUMN tsk_recent.status_id      IS '';
+COMMENT ON COLUMN tsk_recent.category_id    IS '';
+COMMENT ON COLUMN tsk_recent.owner_id       IS '';
 

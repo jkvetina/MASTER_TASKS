@@ -7,8 +7,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
             in_client_id        => tsk_app.get_client_id(),
             in_project_id       => tsk_app.get_project_id(),
             in_board_id         => tsk_app.get_board_id(),
-            in_swimlanes        => NULL,
-            in_owners           => NULL
+            in_swimlane_id      => tsk_app.get_swimlane_id(),
+            in_status_id        => tsk_app.get_status_id(),
+            in_category_id      => tsk_app.get_category_id(),
+            in_owner_id         => tsk_app.get_owner_id()
         );
     EXCEPTION
     WHEN core.app_exception THEN
@@ -108,6 +110,24 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     AS
     BEGIN
         RETURN core.get_item('P0_SWIMLANE_ID');
+    END;
+
+
+
+    FUNCTION get_status_id
+    RETURN tsk_statuses.status_id%TYPE
+    AS
+    BEGIN
+        RETURN core.get_item('P0_STATUS_ID');
+    END;
+
+
+
+    FUNCTION get_category_id
+    RETURN tsk_categories.category_id%TYPE
+    AS
+    BEGIN
+        RETURN core.get_item('P0_CATEGORY_ID');
     END;
 
 
@@ -220,8 +240,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
         in_board_id         tsk_recent.board_id%TYPE        := NULL,
-        in_swimlanes        tsk_recent.swimlanes%TYPE       := NULL,
-        in_owners           tsk_recent.owners%TYPE          := NULL
+        in_swimlane_id      tsk_recent.swimlane_id%TYPE     := NULL,
+        in_status_id        tsk_recent.status_id%TYPE       := NULL,
+        in_category_id      tsk_recent.category_id%TYPE     := NULL,
+        in_owner_id         tsk_recent.owner_id%TYPE        := NULL
     )
     AS
         rec                 tsk_recent%ROWTYPE;
@@ -230,8 +252,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         rec.client_id       := in_client_id;
         rec.project_id      := in_project_id;
         rec.board_id        := in_board_id;
-        rec.swimlanes       := in_swimlanes;
-        rec.owners          := in_owners;
+        rec.swimlane_id     := in_swimlane_id;
+        rec.status_id       := in_status_id;
+        rec.category_id     := in_category_id;
+        rec.owner_id        := in_owner_id;
 
         -- possible actions
         -- switch client    = verify client, get recent project
@@ -266,8 +290,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.set_item('P0_PROJECT_NAME',    tsk_app.get_project_name(rec.project_id));
         core.set_item('P0_BOARD_ID',        rec.board_id);
         core.set_item('P0_BOARD_NAME',      tsk_app.get_board_name(rec.board_id));
-        core.set_item('P0_SWIMLANES',       rec.swimlanes);
-        core.set_item('P0_OWNERS',          rec.owners);
+        core.set_item('P0_SWIMLANE_ID',     rec.swimlane_id);
+        core.set_item('P0_STATUS_ID',       rec.status_id);
+        core.set_item('P0_CATEGORY_ID',     rec.category_id);
+        core.set_item('P0_OWNER_ID',        rec.owner_id);
         --
         tsk_tapi.save_recent(rec);
 

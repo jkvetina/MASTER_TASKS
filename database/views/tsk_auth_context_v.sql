@@ -8,9 +8,10 @@ WITH x AS (
         tsk_app.get_client_id()         AS client_id,
         tsk_app.get_project_id()        AS project_id,
         tsk_app.get_board_id()          AS board_id,
-        --
-        core.get_item('$SWIMLANE_ID')   AS swimlane_id,     -------- @TODO: create get_* + check for ID + switch to ID (number)?
-        core.get_item('$OWNER_ID')      AS owner_id
+        tsk_app.get_swimlane_id()       AS swimlane_id,
+        tsk_app.get_status_id()         AS status_id,
+        tsk_app.get_category_id()       AS category_id,
+        tsk_app.get_owner_id()          AS owner_id
         --
     FROM app_users_v u
     WHERE u.user_id = core.get_user_id()
@@ -23,6 +24,8 @@ SELECT DISTINCT
     b.project_id,
     b.board_id,
     x.swimlane_id,
+    x.status_id,
+    x.category_id,
     x.owner_id
     --
 FROM x

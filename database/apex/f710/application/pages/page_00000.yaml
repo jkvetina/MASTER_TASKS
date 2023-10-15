@@ -401,7 +401,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 70
+    sequence: 80
     region: APP_CONTEXT # 23517758634581608
     position: BODY
 
@@ -434,7 +434,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 80
+    sequence: 130
     region: APP_CONTEXT # 23517758634581608
     position: BODY
 
@@ -489,6 +489,138 @@ page-items:
 
   comments: 
     comments: For passing messages from modal dialogs
+
+- # ====== Page Item: P0_SWIMLANE_ID ===========================
+  id: 28271224025994345
+  identification: 
+    name: P0_SWIMLANE_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: Interval in seconds to fire AJAX_PING process
+
+- # ====== Page Item: P0_OWNER_ID ==============================
+  id: 28271320355994346
+  identification: 
+    name: P0_OWNER_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 120
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: Interval in seconds to fire AJAX_PING process
+
+- # ====== Page Item: P0_STATUS_ID =============================
+  id: 28271422608994347
+  identification: 
+    name: P0_STATUS_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 100
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: Interval in seconds to fire AJAX_PING process
+
+- # ====== Page Item: P0_CATEGORY_ID ===========================
+  id: 28271508347994348
+  identification: 
+    name: P0_CATEGORY_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_AJAX_PING_INTERVAL ====================
   id: 34569222036312886

@@ -138,7 +138,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23517310108581604)
 ,p_name=>'P0_SWIMLANES'
-,p_item_sequence=>70
+,p_item_sequence=>80
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -148,7 +148,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23517486092581605)
 ,p_name=>'P0_OWNERS'
-,p_item_sequence=>80
+,p_item_sequence=>130
 ,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -165,6 +165,46 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_item_comment=>'For passing messages from modal dialogs'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(28271224025994345)
+,p_name=>'P0_SWIMLANE_ID'
+,p_item_sequence=>70
+,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(28271320355994346)
+,p_name=>'P0_OWNER_ID'
+,p_item_sequence=>120
+,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(28271422608994347)
+,p_name=>'P0_STATUS_ID'
+,p_item_sequence=>100
+,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(28271508347994348)
+,p_name=>'P0_CATEGORY_ID'
+,p_item_sequence=>110
+,p_item_plug_id=>wwv_flow_imp.id(23517758634581608)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(34569222036312886)

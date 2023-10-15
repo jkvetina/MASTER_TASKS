@@ -76,6 +76,16 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
+    FUNCTION get_status_id
+    RETURN tsk_statuses.status_id%TYPE;
+
+
+
+    FUNCTION get_category_id
+    RETURN tsk_categories.category_id%TYPE;
+
+
+
     FUNCTION get_owner_id
     RETURN tsk_cards.owner_id%TYPE;
 
@@ -101,8 +111,10 @@ CREATE OR REPLACE PACKAGE tsk_app AS
         in_client_id        tsk_recent.client_id%TYPE       := NULL,
         in_project_id       tsk_recent.project_id%TYPE      := NULL,
         in_board_id         tsk_recent.board_id%TYPE        := NULL,
-        in_swimlanes        tsk_recent.swimlanes%TYPE       := NULL,
-        in_owners           tsk_recent.owners%TYPE          := NULL
+        in_swimlane_id      tsk_recent.swimlane_id%TYPE     := NULL,
+        in_status_id        tsk_recent.status_id%TYPE       := NULL,
+        in_category_id      tsk_recent.category_id%TYPE     := NULL,
+        in_owner_id         tsk_recent.owner_id%TYPE        := NULL
     );
 
 
