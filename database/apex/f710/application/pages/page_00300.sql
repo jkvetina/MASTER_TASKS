@@ -687,17 +687,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 ,p_internal_uid=>26810501386507982
 );
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(26811054682507983)
-,p_process_sequence=>10
-,p_process_point=>'BEFORE_HEADER'
-,p_process_type=>'NATIVE_INVOKE_API'
-,p_process_name=>'INIT_DEFAULTS'
-,p_attribute_01=>'PLSQL_PACKAGE'
-,p_attribute_03=>'TSK_APP'
-,p_attribute_04=>'INIT_PROJECTS'
-,p_internal_uid=>26811054682507983
-);
 wwv_flow_imp.component_end;
 end;
 /

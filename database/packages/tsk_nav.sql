@@ -297,9 +297,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             o := o ||
             '<div>' ||
                 '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
-                get_link('<span>&' || 'mdash;&' || 'nbsp; Projects</span>',     in_page_id => 300, in_class => 'M2') ||
-                get_link('<span>&' || 'mdash;&' || 'nbsp; Repositories</span>', in_page_id => 510, in_class => 'M2') ||
-                get_link('<span>&' || 'mdash;&' || 'nbsp; Sequences</span>',    in_page_id => 210, in_class => 'M2') ||
+                get_link('Projects',        in_page_id => 300, in_class => 'M2') ||
+                get_link('Repositories',    in_page_id => 510, in_class => 'M2') ||
+                get_link('Sequences',       in_page_id => 210, in_class => 'M2') ||
             '</div>';
         END IF;
         --
@@ -383,10 +383,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             o := o ||
             '<div>' ||
                 '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
-                get_link('<span>&' || 'mdash;&' || 'nbsp; Boards</span>',       in_page_id => 400, in_class => 'M2') ||
-                get_link('<span>&' || 'mdash;&' || 'nbsp; Swimlanes</span>',    in_page_id => 310, in_class => 'M2') ||
-                get_link('<span>&' || 'mdash;&' || 'nbsp; Statuses</span>',     in_page_id => 320, in_class => 'M2') ||
-                get_link('<span>&' || 'mdash;&' || 'nbsp; Categories</span>',   in_page_id => 340, in_class => 'M2') ||
+                get_link('Boards',      in_page_id => 400, in_class => 'M2') ||
+                get_link('Swimlanes',   in_page_id => 310, in_class => 'M2') ||
+                get_link('Statuses',    in_page_id => 320, in_class => 'M2') ||
+                get_link('Categories',  in_page_id => 340, in_class => 'M2') ||
             '</div>';
         END IF;
         --

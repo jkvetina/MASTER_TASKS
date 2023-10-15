@@ -1012,21 +1012,3 @@ processes:
   security: 
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
 
-- # ====== Process: INIT_DEFAULTS ==============================
-  id: 26811054682507983
-  identification: 
-    name: INIT_DEFAULTS
-    type: Invoke API
-    execution-chain: None
-
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_APP
-    procedure-or-function: INIT_PROJECTS
-
-  execution: 
-    sequence: 10
-    point: Before Header
-    run-process: Once Per Page Visit (default)
-

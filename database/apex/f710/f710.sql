@@ -33,14 +33,14 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   18:54 Neděle Říjen 15, 2023
+--   Date and Time:   21:02 Neděle Říjen 15, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     18
 --       Items:                   81
 --       Computations:             4
---       Processes:               40
+--       Processes:               39
 --       Regions:                 60
 --       Buttons:                 42
 --       Dynamic Actions:         33
@@ -96,11 +96,11 @@ wwv_imp_workspace.create_flow(
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'9CBCC171912554FE4A8996BCA5DC653BEC59C661B634BF18F954B71B4DA3D6FD'
 ,p_bookmark_checksum_function=>'SH512'
-,p_max_session_length_sec=>86400
-,p_on_max_session_timeout_url=>'#LOGOUT_URL#'
-,p_max_session_idle_sec=>14400
-,p_on_max_idle_timeout_url=>'#LOGOUT_URL#'
-,p_session_timeout_warning_sec=>0
+,p_max_session_length_sec=>32400
+,p_on_max_session_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
+,p_max_session_idle_sec=>5400
+,p_on_max_idle_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
+,p_session_timeout_warning_sec=>120
 ,p_compatibility_mode=>'21.2'
 ,p_session_state_commits=>'IMMEDIATE'
 ,p_flow_language=>'en'
@@ -25315,17 +25315,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 ,p_internal_uid=>26810501386507982
-);
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(26811054682507983)
-,p_process_sequence=>10
-,p_process_point=>'BEFORE_HEADER'
-,p_process_type=>'NATIVE_INVOKE_API'
-,p_process_name=>'INIT_DEFAULTS'
-,p_attribute_01=>'PLSQL_PACKAGE'
-,p_attribute_03=>'TSK_APP'
-,p_attribute_04=>'INIT_PROJECTS'
-,p_internal_uid=>26811054682507983
 );
 end;
 /
