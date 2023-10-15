@@ -494,7 +494,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
                 t.client_id,
                 t.project_id,
                 --
-                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.category_name, t.category_id) * 10 AS order#
+                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id, t.category_group ORDER BY t.order# NULLS LAST, t.category_name, t.category_id) * 10 AS order#
             FROM tsk_categories t
             WHERE 1 = 1
                 AND (t.client_id    = in_client_id  OR in_client_id  IS NULL)
@@ -530,6 +530,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.project_id          := tsk_app.get_project_id();
         rec.category_id         := core.get_grid_data('CATEGORY_ID');
         rec.category_name       := core.get_grid_data('CATEGORY_NAME');
+        rec.category_group      := core.get_grid_data('CATEGORY_GROUP');
         rec.color_bg            := core.get_grid_data('COLOR_BG');
         rec.color_fg            := core.get_grid_data('COLOR_FG');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
