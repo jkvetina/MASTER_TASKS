@@ -213,11 +213,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             FROM tsk_available_clients_v c
             ORDER BY c.client_name
         ) LOOP
-            o := o || tsk_app.get_link (
-                CASE WHEN c.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
-                '&' || 'nbsp; ' || c.client_name || '</span>',
-                c.client_id,
-                in_class => 'M2' || REPLACE(c.is_current, 'Y', ' ACTIVE')
+            o := o || get_link (
+                in_content      => c.client_name,
+                in_page_id      => 100,
+                in_client_id    => c.client_id,
+                in_class        => 'M2' || REPLACE(c.is_current, 'Y', ' ACTIVE'),
+                in_icon_name    => CASE WHEN c.is_current = 'Y' THEN 'fa-arrow-circle-right' END
             );
             --
             FOR p IN (
@@ -230,12 +231,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 WHERE p.client_id       = c.client_id
                     AND c.is_current    = 'Y'       -- current client
             ) LOOP
-                o := o || tsk_app.get_link (
-                    CASE WHEN p.is_current = 'Y' THEN '<span class="fa fa-arrow-circle-right"></span><span>' ELSE '<span>&' || 'mdash;' END ||
-                    '&' || 'nbsp; ' || p.project_name || '</span>',
-                    c.client_id,
-                    p.project_id,
-                    in_class => 'M3'
+                o := o || get_link (
+                    in_content      => p.project_name,
+                    in_page_id      => 100,
+                    in_client_id    => p.client_id,
+                    in_project_id   => p.project_id,
+                    in_class        => 'M3',
+                    in_icon_name    => CASE WHEN p.is_current = 'Y' THEN 'fa-arrow-circle-right' END
                 );
             END LOOP;
         END LOOP;
@@ -292,6 +294,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         ) LOOP
             o := o || get_link (
                 in_content      => p.project_name,
+                in_page_id      => 100,
                 in_client_id    => p.client_id,
                 in_project_id   => p.project_id,
                 in_class        => 'M3' || REPLACE(p.is_current, 'Y', ' ACTIVE'),
@@ -314,6 +317,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             ) LOOP
                 o := o || get_link (
                     in_content      => b.board_name,
+                    in_page_id      => 100,
                     in_client_id    => b.client_id,
                     in_project_id   => b.project_id,
                     in_board_id     => b.board_id,
@@ -376,6 +380,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         ) LOOP
             o := o || get_link (
                 in_content      => t.board_name,
+                in_page_id      => 100,
                 in_board_id     => t.board_id,
                 in_class        => 'M2' || REPLACE(t.is_current, 'Y', ' ACTIVE'),
                 in_icon_name    => CASE WHEN t.is_current = 'Y' THEN 'fa-arrow-circle-right' END
