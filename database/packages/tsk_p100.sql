@@ -66,6 +66,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_item('P100_OWNER_ID');
         --
         v_statuses          PLS_INTEGER;
+        v_swimlanes         PLS_INTEGER;
         out_clob            CLOB;
     BEGIN
         DBMS_LOB.CREATETEMPORARY(out_clob, cache => TRUE);
@@ -78,16 +79,26 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             AND s.project_id    = in_project_id
             AND s.is_active     = 'Y';
 
+        -- calculate number of swimlanes
+        SELECT COUNT(w.swimlane_id)
+        INTO v_swimlanes
+        FROM tsk_swimlanes w
+        WHERE w.client_id       = in_client_id
+            AND w.project_id    = in_project_id
+            AND (w.swimlane_id  = in_swimlane_id OR in_swimlane_id IS NULL)
+            AND w.is_active     = 'Y';
+
         -- generate grid
         clob_append(out_clob,
             '<div class="BOARD" style="' ||
-            'grid-template-columns: 0 repeat(' || v_statuses || ', minmax(300px, 1fr));' ||
+            'grid-template-columns: ' || CASE WHEN v_swimlanes > 1 THEN '0 ' END || 'repeat(' || v_statuses || ', minmax(300px, 1fr));' ||
             '">');
         --
         FOR w IN (
             SELECT
                 w.*,
-                ROW_NUMBER() OVER (ORDER BY CASE WHEN w.swimlane_id = '-' THEN NULL ELSE w.order# END NULLS LAST) AS r#
+                ROW_NUMBER() OVER (ORDER BY CASE WHEN w.swimlane_id = '-' THEN NULL ELSE w.order# END NULLS LAST) AS r#,
+                COUNT(w.swimlane_id) OVER() AS swimlanes
             FROM tsk_swimlanes w
             WHERE w.client_id       = in_client_id
                 AND w.project_id    = in_project_id
@@ -96,7 +107,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             ORDER BY r#
         ) LOOP
             -- add swimlane spacer to headers
-            clob_append(out_clob, '<div class="SPACER"></div>');
+            IF v_swimlanes > 1 THEN
+                clob_append(out_clob, '<div class="SPACER"></div>');
+            END IF;
 
             -- create headers for each swimlane
             FOR s IN (
@@ -153,7 +166,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             END LOOP;
 
             -- add swimlane name
-            clob_append(out_clob, '<div class="SWIMLANE" id="SWIMLANE_' || w.swimlane_id || '"><span>' || w.swimlane_name || '</span></div>');
+            IF v_swimlanes > 1 THEN
+                clob_append(out_clob, '<div class="SWIMLANE" id="SWIMLANE_' || w.swimlane_id || '"><span>' || w.swimlane_name || '</span></div>');
+            END IF;
 
             -- create status columns (card holders) for each swimlanes
             FOR s IN (
