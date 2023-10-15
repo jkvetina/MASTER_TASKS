@@ -81,7 +81,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         END IF;
 
         -- overwrite some page items
-        core.set_item('P105_CARD_LINK',     tsk_app.get_card_link(rec.card_id, 'EXTERNAL'));
+        core.set_item('P105_CARD_LINK',     tsk_nav.get_card_link(rec.card_id, 'EXTERNAL'));
         core.set_item('P105_AUDIT',         TO_CHAR(rec.updated_at, 'YYYY-MM-DD HH24:MI') || ' ' || rec.updated_by);
         core.set_item('P105_TAGS',          LTRIM(RTRIM(REPLACE(rec.tags, ':', ' '))));
 

@@ -59,6 +59,54 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
 
 
 
+    FUNCTION get_card_link (
+        in_card_id          tsk_cards.card_id%TYPE,
+        in_external         CHAR                        := NULL
+    )
+    RETURN VARCHAR2
+    AS
+    BEGIN
+        IF in_external IS NOT NULL THEN
+            RETURN
+                REGEXP_REPLACE(APEX_MAIL.GET_INSTANCE_URL, '/ords/.*$', '') ||
+                APEX_PAGE.GET_URL (
+                    p_application       => core.get_app_id(),
+                    p_session           => core.get_session_id(),
+                    p_page              => 100,
+                    p_clear_cache       => 100,
+                    p_items             => 'P100_CARD_ID',
+                    p_values            => in_card_id,
+                    p_plain_url         => TRUE
+                );
+        END IF;
+        --
+        FOR c IN (
+            SELECT
+                t.card_id,
+                t.client_id,
+                t.project_id,
+                t.board_id
+            FROM tsk_cards t
+            WHERE t.card_id = in_card_id
+        ) LOOP
+            RETURN APEX_PAGE.GET_URL (
+                p_page              => 105,
+                p_clear_cache       => 105,
+                p_items             => 'P105_CARD_ID',
+                p_values            => c.card_id
+            );
+        END LOOP;
+        --
+        RETURN NULL;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     FUNCTION get_home
     RETURN VARCHAR2             -- 32k limit! - well, actually 4k limit on NAV view
     AS
@@ -114,7 +162,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 --
                 last_project := b.project_id;
             END IF;
-/*
+
             -- render board link
             IF b.boards > 1 THEN
                 o := o || get_link (
@@ -127,7 +175,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     in_icon_name    => CASE WHEN b.is_current = 'Y' THEN 'fa-arrow-circle-right' END
                 );
             END IF;
-*/
         END LOOP;
         --
         o := o || '</div>';
@@ -250,9 +297,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             o := o ||
             '<div>' ||
                 '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
-                tsk_app.get_page_link(300, '<span>&' || 'mdash;&' || 'nbsp; Projects</span>', 'M2') ||
-                tsk_app.get_page_link(510, '<span>&' || 'mdash;&' || 'nbsp; Repositories</span>', 'M2') ||
-                tsk_app.get_page_link(210, '<span>&' || 'mdash;&' || 'nbsp; Sequences</span>', 'M2') ||
+                get_link('<span>&' || 'mdash;&' || 'nbsp; Projects</span>',     in_page_id => 300, in_class => 'M2') ||
+                get_link('<span>&' || 'mdash;&' || 'nbsp; Repositories</span>', in_page_id => 510, in_class => 'M2') ||
+                get_link('<span>&' || 'mdash;&' || 'nbsp; Sequences</span>',    in_page_id => 210, in_class => 'M2') ||
             '</div>';
         END IF;
         --
@@ -336,10 +383,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             o := o ||
             '<div>' ||
                 '<div class="M1"><span class="fa fa-abacus"></span> &' || 'nbsp; <span>Setup</span></div>' ||
-                tsk_app.get_page_link(400, '<span>&' || 'mdash;&' || 'nbsp; Boards</span>',     'M2') ||
-                tsk_app.get_page_link(310, '<span>&' || 'mdash;&' || 'nbsp; Swimlanes</span>',  'M2') ||
-                tsk_app.get_page_link(320, '<span>&' || 'mdash;&' || 'nbsp; Statuses</span>',   'M2') ||
-                tsk_app.get_page_link(340, '<span>&' || 'mdash;&' || 'nbsp; Categories</span>', 'M2') ||
+                get_link('<span>&' || 'mdash;&' || 'nbsp; Boards</span>',       in_page_id => 400, in_class => 'M2') ||
+                get_link('<span>&' || 'mdash;&' || 'nbsp; Swimlanes</span>',    in_page_id => 310, in_class => 'M2') ||
+                get_link('<span>&' || 'mdash;&' || 'nbsp; Statuses</span>',     in_page_id => 320, in_class => 'M2') ||
+                get_link('<span>&' || 'mdash;&' || 'nbsp; Categories</span>',   in_page_id => 340, in_class => 'M2') ||
             '</div>';
         END IF;
         --

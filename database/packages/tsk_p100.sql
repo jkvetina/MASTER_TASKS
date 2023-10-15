@@ -15,7 +15,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             WHERE t.card_id = core.get_number_item('P100_CARD_ID');
             --
             IF v_card_id IS NOT NULL THEN
-                core.set_item('P100_CARD_LINK', tsk_app.get_card_link(v_card_id));
+                core.set_item('P100_CARD_LINK', tsk_nav.get_card_link(v_card_id));
             END IF;
         EXCEPTION
         WHEN NO_DATA_FOUND THEN
