@@ -306,7 +306,9 @@ th.a-GV-header {
 
 /* LINK COLOR IN GRID */
 td.a-GV-cell a {
-    color               : olivedrab;
+    color               : #5498a9;
+    color               : #a26924;
+    color               : #738830;
     font-weight         : 600;
     text-decoration     : none;
 }
