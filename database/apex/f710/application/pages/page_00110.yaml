@@ -959,7 +959,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_OWNERS # 19920099360955398
+    list-of-values: LOV_OWNERS_BULK # 28444628735084001
     display-extra-values: false
     display-null-value: true
 
@@ -1340,7 +1340,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_BOARDS # 19916565304955390
+    list-of-values: LOV_BOARDS_BULK # 28426482603929748
     display-extra-values: false
     display-null-value: false
 
@@ -1410,7 +1410,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_STATUSES_ALL # 28297973486714089
+    list-of-values: LOV_STATUSES_BULK # 28442579523033735
     display-extra-values: false
     display-null-value: true
 
@@ -1477,7 +1477,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_SWIMLANES # 19919016269955397
+    list-of-values: LOV_SWIMLANES_BULK # 28442297255031943
     display-extra-values: false
     display-null-value: true
 
@@ -1603,7 +1603,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CATEGORIES # 23488253257018677
+    list-of-values: LOV_CATEGORIES_BULK # 28445093477086550
     display-extra-values: false
     display-null-value: true
 

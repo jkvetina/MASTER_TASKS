@@ -209,3 +209,98 @@
     group: GROUP_NAME
     group-sort-direction: Ascending (Nulls Last)
 
+- # ====== List of Values: LOV_BOARDS_BULK =====================
+  id: 28426482603929748
+  identification: 
+    name: LOV_BOARDS_BULK
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_BOARDS_BULK_V
+
+  column-mapping: 
+    return: BOARD_ID
+    display: BOARD_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_SWIMLANES_BULK ==================
+  id: 28442297255031943
+  identification: 
+    name: LOV_SWIMLANES_BULK
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_SWIMLANES_BULK_V
+
+  column-mapping: 
+    return: SWIMLANE_ID
+    display: SWIMLANE_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_STATUSES_BULK ===================
+  id: 28442579523033735
+  identification: 
+    name: LOV_STATUSES_BULK
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_STATUSES_BULK_V
+
+  column-mapping: 
+    return: STATUS_ID
+    display: STATUS_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_OWNERS_BULK =====================
+  id: 28444628735084001
+  identification: 
+    name: LOV_OWNERS_BULK
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_OWNERS_BULK_V
+
+  column-mapping: 
+    return: USER_ID
+    display: USER_NAME__
+    default-sort: USER_NAME
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_CATEGORIES_BULK =================
+  id: 28445093477086550
+  identification: 
+    name: LOV_CATEGORIES_BULK
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_CATEGORIES_BULK_V
+
+  column-mapping: 
+    return: CATEGORY_ID
+    display: CATEGORY_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
