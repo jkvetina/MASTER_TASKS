@@ -544,6 +544,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         WHERE t.client_id       = COALESCE(in_client_id, tsk_app.get_client_id())
             AND t.card_number   LIKE in_sequence_id || '%';
         --
+        IF v_max IS NULL AND v_value IS NULL THEN   -- first value
+            RETURN in_sequence_id || '-001';
+        END IF;
+        --
         RETURN REPLACE(v_max, v_value, LPAD(TO_NUMBER(v_value) + 1, LENGTH(v_value), '0'));
     EXCEPTION
     WHEN NO_DATA_FOUND THEN
