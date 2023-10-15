@@ -262,6 +262,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_use_as_row_header=>false
 ,p_enable_sort_group=>false
 ,p_is_primary_key=>false
+,p_default_type=>'ITEM'
+,p_default_expression=>'P0_CLIENT_ID'
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
@@ -296,6 +298,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_use_as_row_header=>false
 ,p_enable_sort_group=>false
 ,p_is_primary_key=>false
+,p_default_type=>'ITEM'
+,p_default_expression=>'P0_PROJECT_ID'
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
@@ -414,7 +418,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_use_group_for=>'BOTH'
 ,p_attribute_03=>'left'
 ,p_attribute_04=>'decimal'
-,p_is_required=>true
+,p_is_required=>false
 ,p_enable_filter=>true
 ,p_filter_is_required=>false
 ,p_filter_lov_type=>'NONE'
@@ -423,6 +427,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_control_break=>true
 ,p_enable_hide=>true
 ,p_is_primary_key=>false
+,p_default_type=>'SEQUENCE'
+,p_default_expression=>'TSK_BOARD_ID'
 ,p_duplicate_value=>false
 ,p_include_in_export=>false
 ,p_readonly_condition_type=>'ALWAYS'
