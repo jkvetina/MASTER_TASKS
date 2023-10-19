@@ -1,7 +1,7 @@
-prompt --application/deployment/definition
+prompt --workspace/credentials/sso_google
 begin
 --   Manifest
---     INSTALL: 710
+--     CREDENTIAL: SSO_GOOGLE
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -11,8 +11,12 @@ wwv_flow_imp.component_begin (
 ,p_default_id_offset=>19878674458876767
 ,p_default_owner=>'APPS'
 );
-wwv_flow_imp_shared.create_install(
- p_id=>wwv_flow_imp.id(34526756995577240)
+wwv_imp_workspace.create_credential(
+ p_id=>wwv_flow_imp.id(62013508289982337)
+,p_name=>'SSO_GOOGLE'
+,p_static_id=>'SSO_GOOGLE'
+,p_authentication_type=>'OAUTH2_CLIENT_CREDENTIALS'
+,p_prompt_on_install=>true
 );
 wwv_flow_imp.component_end;
 end;

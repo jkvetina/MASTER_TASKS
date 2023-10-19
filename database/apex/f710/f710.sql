@@ -19,7 +19,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_imp.import_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
+,p_release=>'23.1.5'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
 ,p_default_id_offset=>19878674458876767
@@ -33,7 +33,7 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   21:02 Neděle Říjen 15, 2023
+--   Date and Time:   17:17 Čtvrtek Říjen 19, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -52,7 +52,7 @@ prompt APPLICATION 710 - Card Crunchers
 --       Navigation:
 --         Lists:                  1
 --       Security:
---         Authentication:         1
+--         Authentication:         2
 --         Authorization:          8
 --       User Interface:
 --         Themes:                 1
@@ -73,7 +73,7 @@ prompt APPLICATION 710 - Card Crunchers
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---   Version:         23.1.2
+--   Version:         23.1.5
 --   Instance ID:     7462307610850096
 --
 
@@ -97,10 +97,10 @@ wwv_imp_workspace.create_flow(
 ,p_checksum_salt=>'9CBCC171912554FE4A8996BCA5DC653BEC59C661B634BF18F954B71B4DA3D6FD'
 ,p_bookmark_checksum_function=>'SH512'
 ,p_max_session_length_sec=>32400
-,p_on_max_session_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
+,p_on_max_session_timeout_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
 ,p_max_session_idle_sec=>5400
-,p_on_max_idle_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
-,p_session_timeout_warning_sec=>120
+,p_on_max_idle_timeout_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
+,p_session_timeout_warning_sec=>0
 ,p_compatibility_mode=>'21.2'
 ,p_session_state_commits=>'IMMEDIATE'
 ,p_flow_language=>'en'
@@ -114,7 +114,7 @@ wwv_imp_workspace.create_flow(
 ,p_documentation_banner=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'Created by Jan Kvetina, 9/2023',
 'www.jankvetina.cz'))
-,p_authentication_id=>wwv_flow_imp.id(70311275564704853)
+,p_authentication_id=>wwv_flow_imp.id(28681044215599643)
 ,p_populate_roles=>'C'
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
@@ -122,7 +122,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-10-15'
+,p_flow_version=>'2023-10-19'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -174,6 +174,17 @@ wwv_flow_imp_shared.create_user_interface(
 ,p_nav_bar_list_id=>wwv_flow_imp.id(33790933661125336)
 ,p_nav_bar_list_template_id=>wwv_flow_imp.id(34008808952153812)
 ,p_nav_bar_template_options=>'#DEFAULT#'
+);
+end;
+/
+prompt --workspace/credentials/sso_google
+begin
+wwv_imp_workspace.create_credential(
+ p_id=>wwv_flow_imp.id(62013508289982337)
+,p_name=>'SSO_GOOGLE'
+,p_static_id=>'SSO_GOOGLE'
+,p_authentication_type=>'OAUTH2_CLIENT_CREDENTIALS'
+,p_prompt_on_install=>true
 );
 end;
 /
@@ -15936,16 +15947,41 @@ begin
 null;
 end;
 /
-prompt --application/shared_components/security/authentications/master_open_door_testing_only
+prompt --application/shared_components/security/authentications/google
 begin
 wwv_flow_imp_shared.create_authentication(
- p_id=>wwv_flow_imp.id(70311275564704853)
-,p_name=>'MASTER - OPEN_DOOR (TESTING ONLY)'
+ p_id=>wwv_flow_imp.id(28680815716599643)
+,p_name=>'GOOGLE'
+,p_scheme_type=>'NATIVE_SOCIAL'
+,p_attribute_01=>wwv_flow_imp.id(62013508289982337)
+,p_attribute_02=>'GOOGLE'
+,p_attribute_07=>'profile,email'
+,p_attribute_09=>'#email#'
+,p_attribute_10=>'email,name'
+,p_attribute_11=>'N'
+,p_attribute_13=>'Y'
+,p_invalid_session_type=>'URL'
+,p_invalid_session_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
+,p_logout_url=>'/ords/f?p=800:9999:0'
+,p_post_auth_process=>'app_auth.after_auth'
+,p_cookie_name=>'&WORKSPACE_COOKIE.'
+,p_use_secure_cookie_yn=>'N'
+,p_ras_mode=>0
+,p_switch_in_session_yn=>'Y'
+,p_reference_id=>24099271848341251
+);
+end;
+/
+prompt --application/shared_components/security/authentications/open_door_testing_only
+begin
+wwv_flow_imp_shared.create_authentication(
+ p_id=>wwv_flow_imp.id(28681044215599643)
+,p_name=>'OPEN_DOOR (TESTING ONLY)'
 ,p_scheme_type=>'NATIVE_CUSTOM'
 ,p_attribute_05=>'N'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0'
-,p_logout_url=>'f?p=800:9999:0'
+,p_invalid_session_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
+,p_logout_url=>'/ords/f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
@@ -21467,7 +21503,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25256870991844563)
-,p_button_sequence=>50
+,p_button_sequence=>30
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'UPDATE_CARD'
 ,p_button_static_id=>'UPDATE_ONLY'
@@ -21483,7 +21519,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25257614657844564)
-,p_button_sequence=>60
+,p_button_sequence=>40
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'MOVE_TO_TOP'
 ,p_button_action=>'SUBMIT'
@@ -21498,7 +21534,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(26839989070020938)
-,p_button_sequence=>70
+,p_button_sequence=>50
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'UPDATE_AND_REFRESH'
 ,p_button_action=>'DEFINED_BY_DA'
@@ -21513,8 +21549,25 @@ wwv_flow_imp_page.create_page_button(
 ,p_database_action=>'UPDATE'
 );
 wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(27422429232258642)
+,p_button_sequence=>60
+,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
+,p_button_name=>'MORE_ACTIONS'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'More Actions'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_execute_validations=>'N'
+,p_warn_on_unsaved_changes=>null
+,p_button_condition=>'P105_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_button_css_classes=>'TRANSPARENT'
+,p_icon_css_classes=>'fa-ellipsis-h'
+);
+wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25258805949844565)
-,p_button_sequence=>80
+,p_button_sequence=>70
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'DELETE_CARD'
 ,p_button_action=>'SUBMIT'
@@ -21531,42 +21584,26 @@ wwv_flow_imp_page.create_page_button(
 ,p_database_action=>'DELETE'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(27422429232258642)
-,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
-,p_button_name=>'MORE_ACTIONS'
-,p_button_action=>'DEFINED_BY_DA'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
-,p_button_image_alt=>'More Actions'
-,p_button_position=>'UP'
-,p_button_execute_validations=>'N'
-,p_warn_on_unsaved_changes=>null
-,p_button_condition=>'P105_CARD_ID'
-,p_button_condition_type=>'ITEM_IS_NOT_NULL'
-,p_button_css_classes=>'TRANSPARENT'
-,p_icon_css_classes=>'fa-ellipsis-h'
-);
-wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25259296786844565)
-,p_button_sequence=>20
+,p_button_sequence=>80
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'COPY_LINK'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
 ,p_button_image_alt=>'Copy link to clipboard'
-,p_button_position=>'UP'
+,p_button_position=>'RIGHT_OF_TITLE'
 ,p_button_execute_validations=>'N'
 ,p_warn_on_unsaved_changes=>null
 ,p_button_condition=>'P105_CARD_ID'
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 ,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-copy'
+,p_required_patch=>wwv_flow_imp.id(33790501555120051)
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27532573313783246)
-,p_button_sequence=>40
+,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'HELP'
 ,p_button_static_id=>'HELP_BUTTON'
@@ -21581,7 +21618,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260460384844566)
-,p_button_sequence=>50
+,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'GOTO_PREV_CARD'
 ,p_button_action=>'SUBMIT'
@@ -21599,7 +21636,7 @@ end;
 begin
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260022178844566)
-,p_button_sequence=>60
+,p_button_sequence=>30
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'GOTO_NEXT_CARD'
 ,p_button_action=>'SUBMIT'
@@ -21614,7 +21651,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25259633374844566)
-,p_button_sequence=>70
+,p_button_sequence=>40
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'CLOSE_DIALOG'
 ,p_button_static_id=>'CLOSE_DIALOG'

@@ -117,6 +117,18 @@ h1.t-HeroRegion-title button:first-child {
 
 
 
+/* HOT BUTTONS */
+.t-Button--hot,
+.ui-button--hot {
+    background: #444;
+}
+.t-Button--hot:hover,
+.ui-button--hot:hover {
+    background: #222;
+}
+
+
+
 /* FIX BUTTON OFFSET ON LINE WITH OTHER ITEMS */
 .FILTERS button {
     margin-top          : 0.9rem;
@@ -208,7 +220,7 @@ ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
 }
 ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
     color               : #000;
-    border-bottom       : 8px solid #615d51 !important;
+    border-bottom       : 8px solid #555 !important;
 }
 ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
 ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
