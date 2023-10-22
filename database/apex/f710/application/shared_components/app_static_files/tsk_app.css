@@ -133,7 +133,7 @@
     background      : transparent !important;
 }
 #CHECKLIST td.CHECKLIST_DONE {
-    padding         : 0.3rem 0 0 0.5rem;
+    padding         : 0.7rem 0 0.4rem 0.5rem;
 }
 #CHECKLIST .CHECKLIST_BOX {
     margin-bottom   : -0.5rem;

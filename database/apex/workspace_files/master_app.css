@@ -155,14 +155,11 @@ button .BADGE {
 }
 
 /* OVERRIDE MENU BADGES WITH SAME STYLE */
-#t_Header > #top_header > nav ul li.RED {
-    background          : red;
-}
 #t_Header > #top_header > nav ul li a > span.BADGE,
 span.BADGE {
     position            : relative;
     top                 : -0.65rem;
-    padding             : 0.1rem 0.45rem 0;
+    padding             : 0.1rem 0.35rem 0;
     margin              : 0 -0.25rem 0 0.25rem;
     border-radius       : 15px 15px;
     background          : red;
@@ -170,7 +167,6 @@ span.BADGE {
     font-family         : 'Roboto', sans-serif;
     font-weight         : 500;
     font-size           : 0.75rem;
-    line-height         : 1.15rem;
 }
 ul.t-Tabs span.BADGE {
     margin-left         : 0;
@@ -181,7 +177,7 @@ span.BADGE {
     background          : red;
 }
 span.BADGE.DECENT {
-    background          : #888;
+    background          : transparent;
 }
 
 
@@ -444,15 +440,10 @@ button.a-Button.a-Button--notification.js-showDetails {
 /* ADJUST FONTS ON BUTTONS AND MENUS */
 button .t-Button-label,
 button .a-Button-label,
-#t_Header > #top_header > nav ul li a,
-#t_Header > #top_header > nav ul li span,
 .a-CardView-subTitle,
 #t_Footer .t-Footer-version {
     font-family         : 'Roboto Slab', sans-serif;
     font-size           : 0.9rem;
-}
-#t_Header > #top_header > nav ul li a.SECOND_LEVEL span {
-    font-size           : 0.85rem;
 }
 .a-CardView-subTitle,
 #t_Footer .t-Footer-version {

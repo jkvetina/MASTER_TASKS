@@ -4361,7 +4361,7 @@ branches:
     type: Page or URL (Redirect)
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
-      page: 100 # &APP_NAME.
+      page: 100 # #APP_NAME#
 
   server-side-condition: 
     type: No Rows returned

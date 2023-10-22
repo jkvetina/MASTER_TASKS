@@ -1,10 +1,10 @@
 ---
-# ====== Page: &APP_NAME. ====================================
+# ====== Page: #APP_NAME# ====================================
 id: 100
 identification: 
-  name: '&APP_NAME.'
+  name: '#APP_NAME#'
   alias: HOME
-  title: '&APP_NAME.'
+  title: Card Crunchers
   page-group: 1) CARDS # 23490192563159466
 
 appearance: 
@@ -1661,7 +1661,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:Y'
-      page: 100 # &APP_NAME.
+      page: 100 # #APP_NAME#
       values: 
         p100_show_grid: Y
 
@@ -1701,7 +1701,7 @@ buttons:
     action: Redirect to Page in this Application
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:'
-      page: 100 # &APP_NAME.
+      page: 100 # #APP_NAME#
       values: 
 
     warn-on-unsaved-changes: Do Not Check

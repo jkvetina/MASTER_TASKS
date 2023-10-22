@@ -13,9 +13,9 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_page.create_page(
  p_id=>100
-,p_name=>'&APP_NAME.'
+,p_name=>'#APP_NAME#'
 ,p_alias=>'HOME'
-,p_step_title=>'&APP_NAME.'
+,p_step_title=>'Card Crunchers'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
 ,p_page_template_options=>'#DEFAULT#'

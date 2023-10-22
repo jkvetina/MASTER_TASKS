@@ -1,4 +1,9 @@
 ---
+- # ====== Page Template: Standard Q23 =========================
+  id: 31385350444643949
+  identification: 
+    name: Standard Q23
+
 - # ====== Page Template: Drawer ===============================
   id: 33838479823153702
   identification: 
@@ -43,16 +48,6 @@
   id: 33864324223153722
   identification: 
     name: Standard
-
-- # ====== Page Template: Standard Q ===========================
-  id: 33867712787153724
-  identification: 
-    name: Standard Q
-
-- # ====== Page Template: Standard Q-NAV =======================
-  id: 33871162690153726
-  identification: 
-    name: Standard Q-NAV
 
 - # ====== Page Template: Wizard Modal Dialog ==================
   id: 33874536455153727

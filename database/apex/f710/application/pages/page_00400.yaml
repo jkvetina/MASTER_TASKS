@@ -447,7 +447,7 @@ regions:
     link: 
       target: 
         url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:100:P0_CLIENT_ID,P0_PROJECT_ID,P0_BOARD_ID:&CLIENT_ID.,&PROJECT_ID.,&BOARD_ID.'
-        page: 100 # &APP_NAME.
+        page: 100 # #APP_NAME#
         clear-cache: 100
         values: 
           p0_client_id: '&CLIENT_ID.'

@@ -62,6 +62,7 @@ prompt --install
 @@application/pages/page_groups.sql
 @@application/comments.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
+@@application/shared_components/user_interface/templates/page/standard_q_nav.sql
 @@application/shared_components/user_interface/templates/page/drawer.sql
 @@application/shared_components/user_interface/templates/page/left_side_column.sql
 @@application/shared_components/user_interface/templates/page/left_and_right_side_columns.sql
@@ -71,8 +72,6 @@ prompt --install
 @@application/shared_components/user_interface/templates/page/modal_dialog.sql
 @@application/shared_components/user_interface/templates/page/right_side_column.sql
 @@application/shared_components/user_interface/templates/page/standard.sql
-@@application/shared_components/user_interface/templates/page/standard_q.sql
-@@application/shared_components/user_interface/templates/page/standard_q_nav.sql
 @@application/shared_components/user_interface/templates/page/wizard_modal_dialog.sql
 @@application/shared_components/user_interface/templates/button/icon.sql
 @@application/shared_components/user_interface/templates/button/text.sql
@@ -98,6 +97,7 @@ prompt --install
 @@application/shared_components/user_interface/templates/region/tabs_container.sql
 @@application/shared_components/user_interface/templates/region/title_bar.sql
 @@application/shared_components/user_interface/templates/region/wizard_container.sql
+@@application/shared_components/user_interface/templates/list/navigation_q23.sql
 @@application/shared_components/user_interface/templates/list/badge_list.sql
 @@application/shared_components/user_interface/templates/list/cards.sql
 @@application/shared_components/user_interface/templates/list/links_list.sql
@@ -105,7 +105,6 @@ prompt --install
 @@application/shared_components/user_interface/templates/list/menu_bar.sql
 @@application/shared_components/user_interface/templates/list/menu_popup.sql
 @@application/shared_components/user_interface/templates/list/navigation_bar.sql
-@@application/shared_components/user_interface/templates/list/navigation_bar_q.sql
 @@application/shared_components/user_interface/templates/list/side_navigation_menu.sql
 @@application/shared_components/user_interface/templates/list/tabs.sql
 @@application/shared_components/user_interface/templates/list/top_navigation_mega_menu.sql

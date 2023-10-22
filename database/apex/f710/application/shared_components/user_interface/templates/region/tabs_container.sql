@@ -32,7 +32,7 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(20600968687244085)
+ p_id=>wwv_flow_imp.id(35359605837125554)
 ,p_plug_template_id=>wwv_flow_imp.id(33957611184153776)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
@@ -43,7 +43,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(20601438722244085)
+ p_id=>wwv_flow_imp.id(35360193383125554)
 ,p_plug_template_id=>wwv_flow_imp.id(33957611184153776)
 ,p_name=>'Tabs'
 ,p_placeholder=>'SUB_REGIONS'

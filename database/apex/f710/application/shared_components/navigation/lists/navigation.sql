@@ -12,18 +12,20 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list(
- p_id=>wwv_flow_imp.id(33790933661125336)
+ p_id=>wwv_flow_imp.id(28802196659285496)
 ,p_name=>'NAVIGATION'
 ,p_list_type=>'SQL_QUERY'
 ,p_list_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT',
 '    t.lvl,',
-'    t.label,',
-'    t.target,',
-'    t.is_current_list_entry,',
-'    t.image,',
-'    t.image_attribute,',
-'    t.image_alt_attribute,',
+'    --',
+'    NULL AS label,',
+'    NULL AS target,',
+'    NULL AS is_current_list_entry,',
+'    NULL AS image,',
+'    NULL AS image_attribute,',
+'    NULL AS image_alt_attribute,',
+'    --',
 '    t.attribute01,',
 '    t.attribute02,',
 '    t.attribute03,',

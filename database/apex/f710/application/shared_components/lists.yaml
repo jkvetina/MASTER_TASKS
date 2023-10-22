@@ -1,6 +1,6 @@
 ---
 - # ====== List: NAVIGATION ====================================
-  id: 33790933661125336
+  id: 28802196659285496
   identification: 
     name: NAVIGATION
 
@@ -9,12 +9,14 @@
     sql-query: |
       SELECT
           t.lvl,
-          t.label,
-          t.target,
-          t.is_current_list_entry,
-          t.image,
-          t.image_attribute,
-          t.image_alt_attribute,
+          --
+          NULL AS label,
+          NULL AS target,
+          NULL AS is_current_list_entry,
+          NULL AS image,
+          NULL AS image_attribute,
+          NULL AS image_alt_attribute,
+          --
           t.attribute01,
           t.attribute02,
           t.attribute03,

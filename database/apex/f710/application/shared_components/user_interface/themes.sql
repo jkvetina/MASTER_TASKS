@@ -20,7 +20,7 @@ wwv_flow_imp_shared.create_theme(
 ,p_nav_bar_type=>'LIST'
 ,p_reference_id=>63467056572439181
 ,p_is_locked=>false
-,p_default_page_template=>wwv_flow_imp.id(33871162690153726)
+,p_default_page_template=>wwv_flow_imp.id(31385350444643949)
 ,p_default_dialog_template=>wwv_flow_imp.id(33859121557153720)
 ,p_error_template=>wwv_flow_imp.id(33849078010153714)
 ,p_printer_friendly_template=>wwv_flow_imp.id(33864324223153722)
@@ -43,14 +43,14 @@ wwv_flow_imp_shared.create_theme(
 ,p_default_calendar_template=>wwv_flow_imp.id(34023094769153829)
 ,p_default_list_template=>wwv_flow_imp.id(34002469867153808)
 ,p_default_nav_list_template=>wwv_flow_imp.id(34014612441153815)
-,p_default_top_nav_list_temp=>wwv_flow_imp.id(34008808952153812)
-,p_default_side_nav_list_temp=>wwv_flow_imp.id(34008808952153812)
+,p_default_top_nav_list_temp=>wwv_flow_imp.id(31684266225644159)
+,p_default_side_nav_list_temp=>wwv_flow_imp.id(31684266225644159)
 ,p_default_nav_list_position=>'TOP'
 ,p_default_dialogbtnr_template=>wwv_flow_imp.id(33884050069153737)
 ,p_default_dialogr_template=>wwv_flow_imp.id(33881254928153735)
 ,p_default_option_label=>wwv_flow_imp.id(34018942203153820)
 ,p_default_required_label=>wwv_flow_imp.id(34020184240153822)
-,p_default_navbar_list_template=>wwv_flow_imp.id(34008808952153812)
+,p_default_navbar_list_template=>wwv_flow_imp.id(31684266225644159)
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_theme_file_prefix(800),'#APEX_FILES#themes/theme_42/23.1/')
 ,p_files_version=>64
 ,p_icon_library=>'FONTAPEX'

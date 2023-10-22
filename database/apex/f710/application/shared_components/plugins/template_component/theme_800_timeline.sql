@@ -75,19 +75,19 @@ wwv_flow_imp_shared.create_plugin(
 ,p_help_text=>'Display a series of events. Supports avatars and badges. Available for a single row or as a report with multiple rows.'
 );
 wwv_flow_imp_shared.create_plugin_attr_group(
- p_id=>wwv_flow_imp.id(2194146991996483446)
+ p_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_title=>'Badge'
 ,p_display_sequence=>20
 );
 wwv_flow_imp_shared.create_plugin_attr_group(
- p_id=>wwv_flow_imp.id(2194147547008483447)
+ p_id=>wwv_flow_imp.id(2208906372879364868)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_title=>'Avatar'
 ,p_display_sequence=>10
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20859086081244338)
+ p_id=>wwv_flow_imp.id(35617806007125759)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
@@ -103,7 +103,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select a source column to be displayed as the user name associated with a timeline event.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20859528350244338)
+ p_id=>wwv_flow_imp.id(35618351767125759)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
@@ -119,7 +119,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select a source column containing a date, date range, or time.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20860011631244338)
+ p_id=>wwv_flow_imp.id(35618890888125759)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
@@ -135,7 +135,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select a source column to be used as the title.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20860518892244339)
+ p_id=>wwv_flow_imp.id(35619364769125760)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>4
@@ -151,7 +151,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select a source column to be used for the row description.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20861026880244339)
+ p_id=>wwv_flow_imp.id(35619844550125760)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>5
@@ -167,7 +167,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Specify whether to display or hide the avatar for each row. When set to Yes, an avatar will be displayed with the assigned image, icon, or initials. When set to No, no avatar will be displayed.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20861586070244339)
+ p_id=>wwv_flow_imp.id(35620385659125760)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>6
@@ -183,7 +183,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Specify whether to display or hide the badge for each row. When set to Yes, a badge will be displayed in each row. When set to No, no badge will be displayed.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20862062907244339)
+ p_id=>wwv_flow_imp.id(35620874625125761)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>7
@@ -196,37 +196,37 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_demo_value=>'icon'
 ,p_escape_mode=>'HTML'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861026880244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35619844550125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
 ,p_lov_type=>'STATIC'
-,p_attribute_group_id=>wwv_flow_imp.id(2194147547008483447)
+,p_attribute_group_id=>wwv_flow_imp.id(2208906372879364868)
 ,p_help_text=>'Select the type of content that will be displayed in the avatar.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20862511205244340)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20862062907244339)
+ p_id=>wwv_flow_imp.id(35621319567125761)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35620874625125761)
 ,p_display_sequence=>10
 ,p_display_value=>'Image'
 ,p_return_value=>'image'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20863111888244340)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20862062907244339)
+ p_id=>wwv_flow_imp.id(35621947308125761)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35620874625125761)
 ,p_display_sequence=>20
 ,p_display_value=>'Initials'
 ,p_return_value=>'initials'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20863705136244340)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20862062907244339)
+ p_id=>wwv_flow_imp.id(35622537492125762)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35620874625125761)
 ,p_display_sequence=>30
 ,p_display_value=>'Icon'
 ,p_return_value=>'icon'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20864369916244341)
+ p_id=>wwv_flow_imp.id(35623125306125762)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>8
@@ -237,11 +237,11 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>true
 ,p_escape_mode=>'ATTR'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20862062907244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620874625125761)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'image'
-,p_attribute_group_id=>wwv_flow_imp.id(2194147547008483447)
+,p_attribute_group_id=>wwv_flow_imp.id(2208906372879364868)
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<p>Use the Media popup dialog to select a source for the avatar image.</p>',
 '',
@@ -254,7 +254,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 '</p>'))
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20864889892244341)
+ p_id=>wwv_flow_imp.id(35623651488125762)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>9
@@ -265,14 +265,14 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>false
 ,p_escape_mode=>'ATTR'
 ,p_is_translatable=>true
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20864369916244341)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35623125306125762)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'NOT_NULL'
-,p_attribute_group_id=>wwv_flow_imp.id(2194147547008483447)
+,p_attribute_group_id=>wwv_flow_imp.id(2208906372879364868)
 ,p_help_text=>'Enter a short description of the image or select a source column from the quick pick options. This will be used as alt text for the avatar image.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20865340051244341)
+ p_id=>wwv_flow_imp.id(35624144267125763)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>10
@@ -284,15 +284,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_escape_mode=>'STRIPHTML'
 ,p_column_data_types=>'VARCHAR2'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20862062907244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620874625125761)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'initials'
-,p_attribute_group_id=>wwv_flow_imp.id(2194147547008483447)
+,p_attribute_group_id=>wwv_flow_imp.id(2208906372879364868)
 ,p_help_text=>'Select the source column to be displayed within each avatar. Only varchar2 data types are supported.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20865884550244342)
+ p_id=>wwv_flow_imp.id(35624667475125763)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>11
@@ -304,15 +304,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_default_value=>'fa-user'
 ,p_escape_mode=>'ATTR'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20862062907244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620874625125761)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'icon'
-,p_attribute_group_id=>wwv_flow_imp.id(2194147547008483447)
+,p_attribute_group_id=>wwv_flow_imp.id(2208906372879364868)
 ,p_help_text=>'Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the avatar.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20866325466244342)
+ p_id=>wwv_flow_imp.id(35625118624125763)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>12
@@ -324,48 +324,48 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_default_value=>'t-Avatar--circle'
 ,p_escape_mode=>'ATTR'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861026880244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35619844550125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
 ,p_lov_type=>'STATIC'
-,p_attribute_group_id=>wwv_flow_imp.id(2194147547008483447)
+,p_attribute_group_id=>wwv_flow_imp.id(2208906372879364868)
 ,p_help_text=>'Select the shape of the avatar. Default inherits the shape set by the containing template.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20866861452244342)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20866325466244342)
+ p_id=>wwv_flow_imp.id(35625642199125764)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35625118624125763)
 ,p_display_sequence=>10
 ,p_display_value=>'Rounded'
 ,p_return_value=>'t-Avatar--rounded'
 ,p_help_text=>'Displayed within a square with rounded corners.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20867419869244343)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20866325466244342)
+ p_id=>wwv_flow_imp.id(35626205132125764)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35625118624125763)
 ,p_display_sequence=>20
 ,p_display_value=>'Circular'
 ,p_return_value=>'t-Avatar--circle'
 ,p_help_text=>'Displayed within a circular shape.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20868019868244343)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20866325466244342)
+ p_id=>wwv_flow_imp.id(35626873322125765)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35625118624125763)
 ,p_display_sequence=>30
 ,p_display_value=>'Square'
 ,p_return_value=>'t-Avatar--square'
 ,p_help_text=>'Displayed within a square shape.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20868660448244343)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20866325466244342)
+ p_id=>wwv_flow_imp.id(35627413667125765)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35625118624125763)
 ,p_display_sequence=>40
 ,p_display_value=>'No Shape'
 ,p_return_value=>'t-Avatar--noShape'
 ,p_help_text=>'Displayed inline without a containing shape.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20869295181244344)
+ p_id=>wwv_flow_imp.id(35628000894125765)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>13
@@ -376,15 +376,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>true
 ,p_escape_mode=>'HTML'
 ,p_is_translatable=>true
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861586070244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620385659125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
-,p_attribute_group_id=>wwv_flow_imp.id(2194146991996483446)
+,p_attribute_group_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_help_text=>'Enter a value for the badge label or select a source column from the quick pick options.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20869785824244344)
+ p_id=>wwv_flow_imp.id(35628599177125766)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>14
@@ -397,15 +397,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_escape_mode=>'ATTR'
 ,p_column_data_types=>'VARCHAR2:NUMBER:DATE:INTERVAL_Y2M:INTERVAL_D2S'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861586070244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620385659125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
-,p_attribute_group_id=>wwv_flow_imp.id(2194146991996483446)
+,p_attribute_group_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_help_text=>'Select a source column for the badge value.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20870232097244344)
+ p_id=>wwv_flow_imp.id(35629054055125766)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>15
@@ -418,15 +418,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_escape_mode=>'ATTR'
 ,p_column_data_types=>'VARCHAR2'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861586070244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620385659125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
-,p_attribute_group_id=>wwv_flow_imp.id(2194146991996483446)
+,p_attribute_group_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_help_text=>'Select the source column for the state of the badge. Substitute column value with "danger", "warning", "success" or "info" for default styling.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20870739489244344)
+ p_id=>wwv_flow_imp.id(35629561052125766)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>16
@@ -438,15 +438,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_demo_value=>'fa-check-circle-o'
 ,p_escape_mode=>'ATTR'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861586070244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620385659125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
-,p_attribute_group_id=>wwv_flow_imp.id(2194146991996483446)
+,p_attribute_group_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_help_text=>'Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the badge.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20871273869244345)
+ p_id=>wwv_flow_imp.id(35630042373125767)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>17
@@ -458,15 +458,15 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_default_value=>'N'
 ,p_escape_mode=>'ATTR'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861586070244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620385659125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
-,p_attribute_group_id=>wwv_flow_imp.id(2194146991996483446)
+,p_attribute_group_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_help_text=>'Specify whether to display or hide the badge label. When set to Yes, the badge label will be displayed in addition to the badge value. When set to No, only the badge value will be displayed.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20871753065244345)
+ p_id=>wwv_flow_imp.id(35630559204125767)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>18
@@ -477,31 +477,31 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>false
 ,p_escape_mode=>'ATTR'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861586070244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620385659125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
 ,p_lov_type=>'STATIC'
-,p_attribute_group_id=>wwv_flow_imp.id(2194146991996483446)
+,p_attribute_group_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_null_text=>'Default'
 ,p_help_text=>'Select the badge style. Default inherits the style set by the containing template.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20872269214244345)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20871753065244345)
+ p_id=>wwv_flow_imp.id(35631000894125767)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35630559204125767)
 ,p_display_sequence=>10
 ,p_display_value=>'Subtle'
 ,p_return_value=>'t-Badge--subtle'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20872898303244346)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20871753065244345)
+ p_id=>wwv_flow_imp.id(35631624749125767)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35630559204125767)
 ,p_display_sequence=>20
 ,p_display_value=>'Outline'
 ,p_return_value=>'t-Badge--outline'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20873470434244346)
+ p_id=>wwv_flow_imp.id(35632223892125768)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>19
@@ -512,41 +512,41 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_required=>false
 ,p_escape_mode=>'HTML'
 ,p_is_translatable=>false
-,p_depending_on_attribute_id=>wwv_flow_imp.id(20861586070244339)
+,p_depending_on_attribute_id=>wwv_flow_imp.id(35620385659125760)
 ,p_depending_on_has_to_exist=>true
 ,p_depending_on_condition_type=>'EQUALS'
 ,p_depending_on_expression=>'Y'
 ,p_lov_type=>'STATIC'
-,p_attribute_group_id=>wwv_flow_imp.id(2194146991996483446)
+,p_attribute_group_id=>wwv_flow_imp.id(2208905817867364867)
 ,p_null_text=>'Default'
 ,p_help_text=>'Select the shape of the badge. Default inherits the shape set by the containing template.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20873968459244346)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20873470434244346)
+ p_id=>wwv_flow_imp.id(35632745938125768)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35632223892125768)
 ,p_display_sequence=>10
 ,p_display_value=>'Rounded'
 ,p_return_value=>'t-Badge--rounded'
 ,p_help_text=>'Displayed with rounded corners.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20874515779244347)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20873470434244346)
+ p_id=>wwv_flow_imp.id(35633382078125769)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35632223892125768)
 ,p_display_sequence=>20
 ,p_display_value=>'Circular'
 ,p_return_value=>'t-Badge--circle'
 ,p_help_text=>'Displayed with circular edges.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20875170873244347)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20873470434244346)
+ p_id=>wwv_flow_imp.id(35633927956125769)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35632223892125768)
 ,p_display_sequence=>30
 ,p_display_value=>'Square'
 ,p_return_value=>'t-Badge--square'
 ,p_help_text=>'Displayed with squared edges.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20875797728244347)
+ p_id=>wwv_flow_imp.id(35634555445125769)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'REPORT'
 ,p_attribute_sequence=>20
@@ -562,14 +562,14 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Set the style of timeline items.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(20876290760244348)
-,p_plugin_attribute_id=>wwv_flow_imp.id(20875797728244347)
+ p_id=>wwv_flow_imp.id(35635022316125770)
+,p_plugin_attribute_id=>wwv_flow_imp.id(35634555445125769)
 ,p_display_sequence=>10
 ,p_display_value=>'Compact'
 ,p_return_value=>'t-Timeline--compact'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(20876833943244348)
+ p_id=>wwv_flow_imp.id(35635638504125770)
 ,p_plugin_id=>wwv_flow_imp.id(34090052990153895)
 ,p_attribute_scope=>'REPORT'
 ,p_attribute_sequence=>21
