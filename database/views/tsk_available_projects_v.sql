@@ -1,10 +1,13 @@
 CREATE OR REPLACE FORCE VIEW tsk_available_projects_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
+        u.app_id,
+        u.user_id,
         tsk_app.get_client_id()     AS client_id,
         tsk_app.get_project_id()    AS project_id,
         tsk_app.get_board_id()      AS board_id
-    FROM DUAL
+        --
+    FROM app_user_v u
 )
 SELECT
     a.app_id,
@@ -16,15 +19,14 @@ SELECT
     p.is_active,
     p.is_default,
     --
-    CASE WHEN x.project_id IS NOT NULL THEN 'Y' END AS is_current
+    CASE WHEN p.client_id   = x.client_id   THEN 'Y' END AS is_current_client,
+    CASE WHEN p.project_id  = x.project_id  THEN 'Y' END AS is_current
     --
 FROM tsk_available_clients_v a
+CROSS JOIN x
 JOIN tsk_projects p
     ON p.client_id      = a.client_id
-    AND p.is_active     = 'Y'
-LEFT JOIN x
-    ON x.client_id      = p.client_id
-    AND x.project_id    = p.project_id
+    AND p.is_active     = 'Y';
 /*
 --
 -- @TODO: need to map assigned projects
