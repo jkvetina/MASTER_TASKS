@@ -13,20 +13,24 @@
     -ms-user-select         : none;
     user-select             : none;
 }
-.BOARD .TARGET {
-    min-height                  : 3rem;
-    border-bottom-left-radius   : 12px;
-    border-bottom-right-radius  : 12px;
-    border-bottom               : 0.5rem solid #e9e7e7;
-    margin-bottom               : 1rem;
+.BOARD > .COLUMN,
+.BOARD > .COLUMN .COLUMN_PAYLOAD {
+    display         : flex;
+    flex-direction  : column;
+    align-items     : stretch;
 }
-.BOARD .TARGET,
-.BOARD .TARGET_LIKE {
+.BOARD > .COLUMN > * {
+    flex-grow       : 1;
     background      : #e9e7e7;
-    min-height      : 3rem;
+    margin-bottom   : 1rem;
+    border-radius   : 1rem;
 }
-.BOARD .TARGET_LIKE,
-.BOARD .TARGET_LIKE h3 {
+.BOARD .TARGET {
+    flex-grow       : 1;
+    margin-bottom   : 1rem;
+}
+.BOARD .TARGET_HEADER,
+.BOARD .TARGET_HEADER h3 {
     margin          : 0;
     padding         : 0.45rem 0.5rem 0.1rem;
     border          : 0;
@@ -34,12 +38,7 @@
     text-align      : left;
     font-size       : 100%;
 }
-.BOARD .TARGET_LIKE {
-    border-top-left-radius  : 12px;
-    border-top-right-radius : 12px;
-}
-
-.BOARD .TARGET_LIKE .PLUS {
+.BOARD .TARGET_HEADER .PLUS {
     display         : inline-flex;
     padding         : 0.4rem 0.4rem 0.35rem;
     color           : #888 !important;
@@ -62,27 +61,27 @@
     outline         : none !important;
 }
 .BOARD .CARD .PROGRESS,
-.BOARD .TARGET_LIKE .PROGRESS {
+.BOARD .TARGET_HEADER .PROGRESS {
     float           : right;
     margin          : -0.5rem -0.45rem 0 0;
     font-size       : 85%;
     font-weight     : normal;
     color           : #888;
 }
-.BOARD .TARGET_LIKE .PROGRESS {
+.BOARD .TARGET_HEADER .PROGRESS {
     color: #555;
 }
-.BOARD .TARGET_LIKE .PROGRESS_BAR,
-.BOARD .TARGET_LIKE .PROGRESS_BAR > * {
+.BOARD .TARGET_HEADER .PROGRESS_BAR,
+.BOARD .TARGET_HEADER .PROGRESS_BAR > * {
     height          : 7px;
     border-radius   : 3px;
     margin          : 0.5rem 0 0;
     background      : #ddd;
 }
-.BOARD .TARGET_LIKE .PROGRESS_BAR > * {
+.BOARD .TARGET_HEADER .PROGRESS_BAR > * {
     background      : #555 !important;
 }
-.BOARD .TARGET_LIKE .BADGE.DECENT {
+.BOARD .TARGET_HEADER .BADGE.DECENT {
     background      : transparent;
     color           : #222;
 }

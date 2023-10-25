@@ -8,9 +8,9 @@ prompt --install
 @@application/shared_components/files/tsk_app_css.sql
 @@application/shared_components/files/tsk_app_js.sql
 @@application/shared_components/files/tsk_app_min_js.sql
-@@application/shared_components/files/tsk_app_min_css.sql
 @@application/shared_components/files/icons_app_icon_144_rounded_png.sql
 @@application/shared_components/files/icons_app_icon_256_rounded_png.sql
+@@application/shared_components/files/tsk_app_min_css.sql
 @@application/shared_components/files/icons_app_icon_32_png.sql
 @@application/shared_components/files/icons_app_icon_192_png.sql
 @@application/shared_components/files/icons_app_icon_512_png.sql

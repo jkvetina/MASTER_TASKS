@@ -26,15 +26,6 @@
     mime-type: text/javascript
     file-character-set: Unicode UTF-8
 
-- # ====== Static Application File: tsk_app.min.css ============
-  id: 28786633143843450
-  identification: 
-    file-name: tsk_app.min.css
-
-  attributes: 
-    mime-type: text/css
-    file-character-set: Unicode UTF-8
-
 - # ====== Static Application File: icons/app-icon-144-rounded.p
   id: 33783227850336513
   identification: 
@@ -51,6 +42,15 @@
 
   attributes: 
     mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: tsk_app.min.css ============
+  id: 37624069089778985
+  identification: 
+    file-name: tsk_app.min.css
+
+  attributes: 
+    mime-type: text/css
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-32.png ======
