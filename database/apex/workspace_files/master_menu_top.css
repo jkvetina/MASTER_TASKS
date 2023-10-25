@@ -2,9 +2,12 @@
     display             : none;
 }
 
+/*
+@media only screen and (min-width: 768px) {
+*/
 /**
- * NAVIGATION TOP BAR
- */
+* NAVIGATION TOP BAR
+*/
 #t_Header {
     height              : 3rem; /* BAR_HEIGHT */
     line-height         : 2.5rem;
@@ -39,11 +42,9 @@
     flex-grow           : 0;
 }
 
-
-
 /**
- * NAVIGATION MENUS
- */
+* NAVIGATION MENUS
+*/
 #t_Header > #top_header,
 #t_Header > #top_header > nav ul li {
     background          : #3f3d33;
@@ -74,11 +75,9 @@
     background          : #222;
 }
 
-
-
 /**
- * DROPDOWN LISTS
- */
+* DROPDOWN LISTS
+*/
 #t_Header > #top_header > nav ul {
     list-style-type     : none;
 }
@@ -95,6 +94,7 @@
     left                : 0;
     opacity             : 0;
     z-index             : 1000;
+    box-shadow          : rgba(149, 157, 165, 0.2) 0 0.5rem 1rem;
 }
 #t_Header > #top_header > nav ul li:hover > ul,
 #t_Header > #top_header > nav ul li:hover > div {
@@ -114,11 +114,9 @@
     left                : auto;
 }
 
-
-
 /**
- * MULTICOLUMN SUPPORT
- */
+* MULTICOLUMN SUPPORT
+*/
 #t_Header > #top_header > nav ul li div.COLUMNS {
     display             : flex !important;
     flex-direction      : row;
@@ -134,29 +132,28 @@
     padding-right       : 3rem;
 }
 
-
-
 /**
- * ACTIVE ITEMS OVERWRITE
- */
+* ACTIVE ITEMS OVERWRITE
+*/
 #t_Header > #top_header > nav ul li.ACTIVE,
 #t_Header > #top_header > nav ul li.ACTIVE:hover {
     background          : #222;
 }
 
 /* ADJUST LEVEL ITEMS */
-#t_Header > #top_header > nav a.NAV_L2 {
-}
 #t_Header > #top_header > nav a.NAV_L2,
-#t_Header > #top_header > nav a.NAV_L2 > span {
+#t_Header > #top_header > nav a.NAV_L2 > span,
+#t_Header > #top_header > nav li.NAV_L2 * {
     font-size           : 0.9rem;
     line-height         : 0.9rem;
 }
-#t_Header > #top_header > nav a.NAV_L3 {
+#t_Header > #top_header > nav a.NAV_L3,
+#t_Header > #top_header > nav li.NAV_L3 > * {
     padding             : 0.7rem 2rem 0.7rem 2.8rem;
 }
 #t_Header > #top_header > nav a.NAV_L3,
-#t_Header > #top_header > nav a.NAV_L3 > span {
+#t_Header > #top_header > nav a.NAV_L3 > span,
+#t_Header > #top_header > nav li.NAV_L3 * {
     font-size           : 0.85rem;
     line-height         : 0.85rem;
 }

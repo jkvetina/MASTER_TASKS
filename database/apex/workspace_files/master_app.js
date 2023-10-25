@@ -1,4 +1,135 @@
 //
+// WHEN PAGE LOADS
+//
+var ping_active = true;
+var ping_loop;
+var last_scheduler;
+//
+const init_page = function() {
+    // autohide success messages
+    // this actually dont work together with the following setThemeHooks
+    apex.theme42.util.configAPEXMsgs({
+        autoDismiss : true,
+        duration    : 2300
+    });
+
+    // catch message event
+    apex.message.setThemeHooks({
+        beforeShow: function(pMsgType, pElement$) {
+            console.log('MESSAGE:', pMsgType, pElement$);
+
+            if (pMsgType === apex.message.TYPE.ERROR) {
+                var message = pElement$.find('ul.a-Notification-list li').text();
+                console.log('MESSAGE.ERROR:', message);
+                message = extract_message(message);
+
+                // switch error to warning
+                if (message.includes('WARNING!')) {
+                    message = message.replace('WARNING!', '').trim();
+                    pElement$.find('.t-Alert--warning').addClass('t-Alert--yellow');
+                    pElement$.find('.a-Notification-item').first().html(message);
+                }
+
+                // stop pinging on session timeout error
+                if (message.toUpperCase().includes('YOUR SESSION HAS ENDED')) {
+                    ping_active = false;
+                    for (var i = 0 ; i <= ping_loop; i++) {
+                        clearTimeout(i); 
+                    }
+                    // also redirect to login page
+                    window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
+                }
+            }
+
+            // autohide success messages
+            // this message can be from AJAX call (AJAX_PING process) and then it wont be autoclosed
+            if (pMsgType === apex.message.TYPE.SUCCESS) {
+                var message = extract_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text());
+                console.log('MESSAGE.SUCCESS:', message);
+                $('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text(message);
+                clearTimeout(last_scheduler);
+                last_scheduler = setTimeout(() => {
+                    apex.message.hidePageSuccess();
+                }, 2300);
+            }
+        },
+        beforeHide: function(pMsgType, pElement$) {
+        }
+    });
+
+    //
+    // PING FOR LOGGED USERS
+    //
+    var ping_interval = parseInt(apex.item('P0_AJAX_PING_INTERVAL').getValue());
+    var ping_fn = function() {
+        if (!ping_active) {
+            return;
+        }
+        //
+        console.log('CALL AJAX_PING');
+        apex.server.process (
+            'AJAX_PING',
+            {
+                //x01: 1,
+                //x02: 2,
+                //x03: 3,
+                //p_arg_names   : [''],     // set items?
+                //p_arg_values  : [''],
+            },  // params
+            {
+                async       : true,
+                dataType    : 'json',
+                success     : function(data) {
+                    //console.log('PING RECEIVED', ping_loop, data);
+                    show_message(data);
+                }
+            }
+        );
+        //
+        if (ping_active && ping_interval > 0) {
+            ping_loop = setTimeout(function() { ping_fn(); }, ping_interval * 1000);
+        }
+    };
+    if (ping_active && ping_interval > 0 && apex.item('P0_AJAX_PING_INTERVAL').node) {
+        ping_loop = ping_fn();
+    }
+
+    //
+    // ADJUST GRIDS
+    //
+    fix_grid_toolbars();
+    fix_grid_save_button();
+
+    //
+    // INIT ACTION MENUS
+    //
+    $('body').on('click', 'button.ACTION_MENU', show_action_menu);
+    $('html').click(function() {
+        $('div.ACTION_MENU').hide();
+    });
+    $('div.ACTION_MENU a').click(function(e) {
+        var f = $(this);
+        console.log('MENU CLICK', f, e);
+    });
+};
+
+// fix badges on buttons
+$('button > .t-Button-label').each(function(k, id) {
+    $(id).html($(id).html().replace(/\[([^\]]+)\]/, '<div class="BADGE">$1</div>'));
+});
+
+// when page is loaded
+$(function() {
+});
+
+// when all APEX components are loaded
+apex.jQuery(window).on('theme42ready', function() {
+    init_page();
+});
+
+
+
+//
 // HANDLE AJAX PROCESS MESSAGES
 //
 const show_success = function(message) {
@@ -139,127 +270,6 @@ const color_cell = function (options, value, title, color_bg, color_text) {
     }
     return options;
 }
-
-
-
-//
-// WHEN PAGE LOADS
-//
-var ping_active = true;
-var ping_loop;
-var last_scheduler;
-//
-const init_page = function() {
-    // autohide success messages
-    // this actually dont work together with the following setThemeHooks
-    apex.theme42.util.configAPEXMsgs({
-        autoDismiss : true,
-        duration    : 2300
-    });
-
-    // catch message event
-    apex.message.setThemeHooks({
-        beforeShow: function(pMsgType, pElement$) {
-            console.log('MESSAGE:', pMsgType, pElement$);
-
-            if (pMsgType === apex.message.TYPE.ERROR) {
-                var message = pElement$.find('ul.a-Notification-list li').text();
-                console.log('MESSAGE.ERROR:', message);
-                message = extract_message(message);
-
-                // switch error to warning
-                if (message.includes('WARNING!')) {
-                    message = message.replace('WARNING!', '').trim();
-                    pElement$.find('.t-Alert--warning').addClass('t-Alert--yellow');
-                    pElement$.find('.a-Notification-item').first().html(message);
-                }
-
-                // stop pinging on session timeout error
-                if (message.toUpperCase().includes('YOUR SESSION HAS ENDED')) {
-                    ping_active = false;
-                    for (var i = 0 ; i <= ping_loop; i++) {
-                        clearTimeout(i); 
-                    }
-                    // also redirect to login page
-                    window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
-                }
-            }
-
-            // autohide success messages
-            // this message can be from AJAX call (AJAX_PING process) and then it wont be autoclosed
-            if (pMsgType === apex.message.TYPE.SUCCESS) {
-                var message = extract_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text());
-                console.log('MESSAGE.SUCCESS:', message);
-                $('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text(message);
-                clearTimeout(last_scheduler);
-                last_scheduler = setTimeout(() => {
-                    apex.message.hidePageSuccess();
-                }, 2300);
-            }
-        },
-        beforeHide: function(pMsgType, pElement$) {
-        }
-    });
-
-    //
-    // PING FOR LOGGED USERS
-    //
-    var ping_interval = parseInt(apex.item('P0_AJAX_PING_INTERVAL').getValue());
-    var ping_fn = function() {
-        if (!ping_active) {
-            return;
-        }
-        //
-        console.log('CALL AJAX_PING');
-        apex.server.process (
-            'AJAX_PING',
-            {
-                //x01: 1,
-                //x02: 2,
-                //x03: 3,
-                //p_arg_names   : [''],     // set items?
-                //p_arg_values  : [''],
-            },  // params
-            {
-                async       : true,
-                dataType    : 'json',
-                success     : function(data) {
-                    //console.log('PING RECEIVED', ping_loop, data);
-                    show_message(data);
-                }
-            }
-        );
-        //
-        if (ping_active && ping_interval > 0) {
-            ping_loop = setTimeout(function() { ping_fn(); }, ping_interval * 1000);
-        }
-    };
-    if (ping_active && ping_interval > 0 && apex.item('P0_AJAX_PING_INTERVAL').node) {
-        ping_loop = ping_fn();
-    }
-
-    //
-    // ADJUST GRIDS
-    //
-    fix_grid_toolbars();
-    fix_grid_save_button();
-};
-
-// fix badges on buttons
-$('button > .t-Button-label').each(function(k, id) {
-    $(id).html($(id).html().replace(/\[([^\]]+)\]/, '<div class="BADGE">$1</div>'));
-});
-
-// when page is loaded
-$(function() {
-});
-
-// when all APEX components are loaded
-apex.jQuery(window).on('theme42ready', function() {
-    init_page();
-});
-
-
 
 
 
@@ -567,5 +577,30 @@ const process_grid_selected_rows = function (static_id, fake_column_name, action
     });
     //grid.interactiveGrid('getActions').invoke('save');
     apex.submit(action_name);
+};
+
+
+
+//
+// RENDER ACTION MENU BELOW CURRENT BUTTON
+//
+const show_action_menu = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    //
+    var $id = $(this).attr('id');  // e.target.id, this.triggeringElement.id;
+    var pos = $('button#' + $id).offset();
+    console.log('BUTTON', $id, pos, 'MENU', $('div.ACTION_MENU').offset());
+    //
+    $('div.ACTION_MENU').css({
+        display   : 'none'
+    });
+    $('div.ACTION_MENU[data-id="' + $id + '"]').css({
+        display   : 'block',
+        position  : 'fixed',
+        top       : pos.top,
+        left      : pos.left
+    });
+    //$('div.ACTION_MENU[data-id="' + $id + '"] a:first').focus();
 };
 

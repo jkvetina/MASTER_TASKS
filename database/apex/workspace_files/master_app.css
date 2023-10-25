@@ -117,14 +117,27 @@ h1.t-HeroRegion-title button:first-child {
 
 
 
-/* HOT BUTTONS */
-.t-Button--hot,
-.ui-button--hot {
-    background: #444;
+/* NORMAL BUTTONS */
+button.t-Button,
+button.ui-button {
+    background          : #E9E7E7;
 }
-.t-Button--hot:hover,
-.ui-button--hot:hover {
-    background: #222;
+button.t-Button:hover,
+button.ui-button:hover {
+    background          : #DFDEDC;
+    background          : #d7d6d4;
+}
+
+/* HOT BUTTONS */
+button.t-Button--hot,
+button.ui-button--hot,
+button.a-Button.a-Toolbar-item.a-Button--hot {
+    background          : #5f5c58;
+}
+button.t-Button--hot:hover,
+button.ui-button--hot:hover,
+button.a-Button.a-Toolbar-item.a-Button--hot:hover {
+    background          : #333;
 }
 
 
@@ -216,12 +229,12 @@ ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
 }
 ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
     color               : #000;
-    border-bottom       : 8px solid #555 !important;
+    border-bottom       : 8px solid #5f5c58 !important;
 }
 ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
 ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
     color               : #000;
-    border-bottom       : 8px solid #222 !important;
+    border-bottom       : 8px solid #333 !important;
 }
 
 .t-TabsRegion-items > div {
@@ -312,11 +325,11 @@ th.a-GV-header {
 
 
 
-/* LINK COLOR IN GRID */
+/* LINKS COLOR IN GRID */
 td.a-GV-cell a {
-    color               : #5498a9;
-    color               : #a26924;
     color               : #738830;
+    color               : #5d9700;
+    color               : #648e00;
     font-weight         : 600;
     text-decoration     : none;
 }
@@ -478,5 +491,76 @@ button.DECENT {
 button.TRANSPARENT {
     background          : transparent;
     color               : #222;
+}
+
+
+
+/*
+ * ACTION MENU - TO SHOW MORE OPTIONS BELOW A BUTTON
+ */
+div.ACTION_MENU {
+    display             : none;
+    position            : absolute;
+    background          : #E9E7E7;
+    color               : white;
+    margin              : 3.5rem 0 0 0rem;
+    padding             : 0;
+    border-radius       : 1.5rem 1.5rem;
+    z-index             : 1000;
+    box-shadow          : rgba(149, 157, 165, 0.2) 0 0.5rem 1rem;
+}
+div.ACTION_MENU > .WRAPPER {
+    position            : relative;
+    display             : block !important;
+    position            : static !important;
+}
+div.ACTION_MENU div.TRIANGLE {
+    float               : left;
+    width               : 0.4rem;
+    height              : 0.7rem;
+    border-style        : solid;
+    border-width        : 0 0.4rem 0.7rem 0.4rem;
+    border-color        : transparent transparent #E9E7E7 transparent;
+    transform           : rotate(0deg);
+    margin              : -0.6rem 0 0 1rem;
+}
+div.ACTION_MENU ul {
+    display             : block;
+    list-style-type     : none;
+    list-style-position : inside;
+    margin              : 0;
+    padding             : 0;
+}
+div.ACTION_MENU ul li {
+    margin              : 0;
+    padding             : 0;
+}
+div.ACTION_MENU ul li:first-child > * {
+    border-top-left-radius      : 1rem;
+    border-top-right-radius     : 1rem;
+    padding-top                 : 0.9rem;
+}
+div.ACTION_MENU ul li:last-child > * {
+    border-bottom-left-radius   : 1rem;
+    border-bottom-right-radius  : 1rem;
+    padding-bottom              : 0.9rem;
+}
+div.ACTION_MENU a,
+div.ACTION_MENU a:hover {
+    display             : inline-block;
+    width               : 100%;
+    padding             : 0.6rem 1.2rem;
+    font-family         : 'Roboto', sans-serif;
+    color               : #222;
+    text-decoration     : none;
+    background          : #E9E7E7;
+}
+div.ACTION_MENU a:hover {
+    color               : #000;
+    font-weight         : 500;
+    background          : #d7d6d4;
+}
+div.ACTION_MENU a span.fa {
+    margin              : 0.15rem 0 -0.15rem;
 }
 
