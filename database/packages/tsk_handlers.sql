@@ -22,12 +22,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
         -- update primary key back to APEX grid for proper row refresh
         core.set_grid_data('OLD_CLIENT_ID',     rec.client_id);
-
-        -- for the new records
-        IF in_action = 'C' THEN
-            -- @TODO: make new client active
-            NULL;
-        END IF;
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -63,45 +58,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         -- update primary key back to APEX grid for proper row refresh
         core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
         core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
-
-        -- for the new records
-        IF in_action = 'C' THEN
-            create_default_swimlane (
-                in_client_id        => rec.client_id,
-                in_project_id       => rec.project_id
-            );
-
-            -- @TODO: make new board active
-            NULL;
-        END IF;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-    PROCEDURE create_default_swimlane (
-        in_client_id        tsk_projects.client_id%TYPE,
-        in_project_id       tsk_projects.project_id%TYPE
-    )
-    AS
-        rec                 tsk_swimlanes%ROWTYPE;
-    BEGIN
-        rec.client_id       := in_client_id;
-        rec.project_id      := in_project_id;
-        rec.swimlane_id     := '-';
-        rec.swimlane_name   := '-';
-        rec.is_active       := 'Y';
-        rec.order#          := 100;
         --
-        tsk_tapi.swimlanes (rec,
-            in_client_id        => rec.client_id,
-            in_project_id       => rec.project_id,
-            in_swimlane_id      => rec.swimlane_id
-        );
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -137,12 +94,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
         -- update primary key back to APEX grid for proper row refresh
         core.set_grid_data('OLD_BOARD_ID',          rec.board_id);
-
-        -- for new records
-        IF in_action = 'C' THEN
-            -- @TODO: make new board active
-            NULL;
-        END IF;
 
         -- add board to favorites
         DELETE FROM tsk_boards_fav t

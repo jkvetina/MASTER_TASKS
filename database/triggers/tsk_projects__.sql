@@ -28,13 +28,65 @@ COMPOUND TRIGGER
         END IF;
         --
         IF INSERTING THEN
-            -- make sure every project has at leats one default board
+            -- make sure every project has at least one default board
             BEGIN
-                INSERT INTO tsk_boards (board_name, client_id, project_id, is_active, is_default)
+                INSERT INTO tsk_boards (client_id, project_id, board_id, board_name, order#, is_active, is_default)
                 VALUES (
-                    'DEFAULT',
                     :NEW.client_id,
                     :NEW.project_id,
+                    tsk_board_id.NEXTVAL,
+                    'Default Board',
+                    10,
+                    'Y',
+                    'Y'
+                );
+            EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                NULL;
+            END;
+
+            -- make sure every project has at least one swimlane
+            BEGIN
+                INSERT INTO tsk_swimlanes (client_id, project_id, swimlane_id, swimlane_name, order#, is_active)
+                VALUES (
+                    :NEW.client_id,
+                    :NEW.project_id,
+                    'DEFAULT',
+                    'Default Swimlane',
+                    10,
+                    'Y'
+                );
+            EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                NULL;
+            END;
+
+            -- make sure every project has at least one status
+            BEGIN
+                INSERT INTO tsk_statuses (client_id, project_id, status_id, status_name, order#, is_active, is_default)
+                VALUES (
+                    :NEW.client_id,
+                    :NEW.project_id,
+                    'DEFAULT',
+                    'Default Status',
+                    10,
+                    'Y',
+                    'Y'
+                );
+            EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                NULL;
+            END;
+
+            -- make sure every project has at least one category
+            BEGIN
+                INSERT INTO tsk_categories (client_id, project_id, category_id, category_name, order#, is_active, is_default)
+                VALUES (
+                    :NEW.client_id,
+                    :NEW.project_id,
+                    'DEFAULT',
+                    'Default Category',
+                    10,
                     'Y',
                     'Y'
                 );
