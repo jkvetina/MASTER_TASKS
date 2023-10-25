@@ -106,17 +106,18 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 AND w.is_active     = 'Y'
             ORDER BY r#
         ) LOOP
-            -- add swimlane spacer to headers
+            -- add swimlane name
             IF v_swimlanes > 1 THEN
-                clob_append(out_clob, '<div class="SPACER"></div>');
+                clob_append(out_clob, '<div class="SWIMLANE" id="SWIMLANE_' || w.swimlane_id || '"><span>' || w.swimlane_name || '</span></div>');
             END IF;
 
-            -- create headers for each swimlane
+            -- create status columns (card holders) for each swimlanes
             FOR s IN (
                 SELECT
                     s.status_id,
                     s.status_name,
                     s.is_badge,
+                    s.is_colored,
                     --
                     d.count_cards,
                     d.count_checks,
@@ -147,7 +148,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     ON d.status_id = s.status_id
                 ORDER BY s.order#
             ) LOOP
-                clob_append(out_clob, '<div class="TARGET_LIKE">');
+                clob_append(out_clob, '<div class="COLUMN">');
+
+                -- generate status header
+                clob_append(out_clob, '<div class="COLUMN_PAYLOAD">');
+                clob_append(out_clob, '<div class="TARGET_HEADER">');
                 clob_append(out_clob, '<h3>' || s.status_name ||
                     CASE WHEN s.count_cards > 0 THEN '<span class="BADGE' || CASE WHEN s.is_badge IS NULL THEN ' DECENT' END || '">' || s.count_cards || '</span>' END ||
                     CASE WHEN s.count_cards > 0 THEN '<span class="PROGRESS">' || s.count_done || '/' || s.count_checks || '</span>' END ||
@@ -162,22 +167,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     '</h3>' ||
                     '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(s.count_done / NULLIF(s.count_checks, 0) * 100), 0) || '%;"></div></div>'
                 );
-                clob_append(out_clob, '</div>');
-            END LOOP;
+                clob_append(out_clob, '</div>');    -- .TARGET_HEADER
 
-            -- add swimlane name
-            IF v_swimlanes > 1 THEN
-                clob_append(out_clob, '<div class="SWIMLANE" id="SWIMLANE_' || w.swimlane_id || '"><span>' || w.swimlane_name || '</span></div>');
-            END IF;
-
-            -- create status columns (card holders) for each swimlanes
-            FOR s IN (
-                SELECT
-                    s.status_id,
-                    s.is_colored
-                FROM tsk_lov_statuses_v s
-                ORDER BY s.order#
-            ) LOOP
+                -- generate status content/cards
                 clob_append(out_clob, '<div class="TARGET" id="STATUS_' || s.status_id || '_SWIMLANE_' || w.swimlane_id || '">');
                 --
                 FOR t IN (
@@ -212,7 +204,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     );
                 END LOOP;
                 --
-                clob_append(out_clob, '</div>');
+                clob_append(out_clob, '</div>');    -- .TARGET
+                clob_append(out_clob, '</div>');    -- .COLUMN_PAYLOAD
+                clob_append(out_clob, '</div>');    -- .COLUMN
             END LOOP;
         END LOOP;
         --
