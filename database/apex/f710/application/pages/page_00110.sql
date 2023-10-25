@@ -391,7 +391,7 @@ wwv_flow_imp_page.create_interactive_grid(
 ,p_edit_operations=>'u'
 ,p_lost_update_check_type=>'VALUES'
 ,p_submit_checked_rows=>false
-,p_lazy_loading=>false
+,p_lazy_loading=>true
 ,p_requires_filter=>false
 ,p_select_first_row=>false
 ,p_fixed_row_height=>true

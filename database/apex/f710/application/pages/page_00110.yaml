@@ -158,7 +158,7 @@ regions:
       lost-update-type: Row Values
 
     performance: 
-      lazy-loading: false
+      lazy-loading: true
 
     appearance: 
       select-first-row: false
