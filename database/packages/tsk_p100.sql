@@ -132,7 +132,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     SELECT
                         t.status_id,
                         COUNT(DISTINCT t.card_id)       AS count_cards,
-                        COUNT(NVL(l.checklist_id, 0))   AS count_checks,
+                        COUNT(NVL(l.checklist_id, 1))   AS count_checks,
                         COUNT(l.checklist_done)         AS count_done
                         --
                     FROM tsk_p100_cards_v t
