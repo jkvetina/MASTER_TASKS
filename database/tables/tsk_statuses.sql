@@ -8,6 +8,7 @@ CREATE TABLE tsk_statuses (
     is_active                       CHAR(1),
     is_default                      CHAR(1),
     order#                          NUMBER(4,0),
+    row_order#                      NUMBER(4,0),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
@@ -43,4 +44,5 @@ COMMENT ON COLUMN tsk_statuses.is_badge         IS '';
 COMMENT ON COLUMN tsk_statuses.is_active        IS '';
 COMMENT ON COLUMN tsk_statuses.is_default       IS '';
 COMMENT ON COLUMN tsk_statuses.order#           IS '';
+COMMENT ON COLUMN tsk_statuses.row_order#       IS '';
 

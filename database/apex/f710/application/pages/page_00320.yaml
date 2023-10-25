@@ -189,6 +189,16 @@ regions:
         alias: 347675
 
   column-groups: 
+  - # ====== Column Group: Status Info ===========================
+    id: 28430734925964236
+    heading: 
+      heading: Status Info
+
+  - # ====== Column Group: Order =================================
+    id: 28430867666964237
+    heading: 
+      heading: Order
+
   - # ====== Column Group: Flags =================================
     id: 115563593186106170
     heading: 
@@ -200,6 +210,55 @@ regions:
       heading: Counts
 
   columns: 
+  - # ====== Column: ROW_ORDER# ==================================
+    id: 28430693556964235
+    identification: 
+      column-name: ROW_ORDER#
+      type: Number Field
+
+    heading: 
+      heading: Row
+      alignment: end
+
+    settings: 
+      number-alignment: Start
+      virtual-keyboard: Decimal
+
+    layout: 
+      sequence: 110
+      column-alignment: end
+      group: Order # 28430867666964237
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: ROW_ORDER#
+      data-type: NUMBER
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
   - # ====== Column: APEX$ROW_ACTION =============================
     id: 49700225597315137
     identification: 
@@ -238,7 +297,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 140
+      sequence: 150
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -294,7 +353,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 170
+      sequence: 180
       column-alignment: end
       group: Counts # 115563620474106171
       use-group-for: Both
@@ -340,7 +399,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 160
+      sequence: 170
       column-alignment: end
       group: Counts # 115563620474106171
       use-group-for: Both
@@ -386,7 +445,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 150
+      sequence: 160
       column-alignment: end
       group: Counts # 115563620474106171
       use-group-for: Both
@@ -432,7 +491,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -488,7 +547,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 130
+      sequence: 140
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -644,6 +703,8 @@ regions:
     layout: 
       sequence: 60
       column-alignment: start
+      group: Status Info # 28430734925964236
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -703,6 +764,8 @@ regions:
     layout: 
       sequence: 70
       column-alignment: start
+      group: Status Info # 28430734925964236
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -764,7 +827,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 110
+      sequence: 120
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -824,6 +887,8 @@ regions:
     layout: 
       sequence: 80
       column-alignment: start
+      group: Status Info # 28430734925964236
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -879,6 +944,8 @@ regions:
     layout: 
       sequence: 90
       column-alignment: start
+      group: Status Info # 28430734925964236
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -924,7 +991,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: Order#
+      heading: Column
       alignment: end
 
     settings: 
@@ -934,6 +1001,8 @@ regions:
     layout: 
       sequence: 100
       column-alignment: end
+      group: Order # 28430867666964237
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 

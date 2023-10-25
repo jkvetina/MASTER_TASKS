@@ -6,7 +6,7 @@ SELECT
     t.is_colored,
     t.is_badge,
     --
-    ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.status_id) AS order#
+    ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.row_order# NULLS LAST, t.status_id) AS order#
     --
 FROM tsk_statuses t
 JOIN tsk_lov_boards_v b

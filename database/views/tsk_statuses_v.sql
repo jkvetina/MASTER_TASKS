@@ -32,6 +32,7 @@ SELECT
     t.status_id,
     t.status_name,
     t.order#,
+    t.row_order#,
     t.is_active,
     t.is_default,
     t.is_colored,
