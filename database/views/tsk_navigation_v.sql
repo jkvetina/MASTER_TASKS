@@ -1,5 +1,5 @@
 CREATE OR REPLACE FORCE VIEW tsk_navigation_v AS
-WITH curr AS (
+WITH x AS (
     SELECT /*+ MATERIALIZE */
         core.get_app_id()           AS app_id,
         core.get_user_id()          AS user_id,

@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW tsk_available_clients_v AS
+CREATE OR REPLACE FORCE VIEW tsk_available_clients_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         u.app_id,

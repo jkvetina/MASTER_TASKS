@@ -4,7 +4,7 @@
 PROMPT MOVE AUDIT COLUMNS
 --
 DECLARE
-    in_table_name       CONSTANT VARCHAR2(30)   := 'XX\_%';
+    in_table_name       CONSTANT VARCHAR2(30)   := 'TSK\_%';
     in_columns          CONSTANT VARCHAR2(4000) := 'CREATED_BY,CREATED_AT,UPDATED_BY,UPDATED_AT,DELETED_BY,DELETED_AT';
 BEGIN
     FOR t IN (

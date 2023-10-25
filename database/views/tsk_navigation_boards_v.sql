@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW tsk_navigation_boards_v AS
+CREATE OR REPLACE FORCE VIEW tsk_navigation_boards_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         core.get_app_id()           AS app_id,
@@ -79,4 +79,6 @@ SELECT
 FROM filter_boards t
 JOIN endpoints e
     ON e.boards IS NOT NULL;
+--
+COMMENT ON TABLE tsk_navigation_boards_v IS '';
 

@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW tsk_navigation_clients_v AS
+CREATE OR REPLACE FORCE VIEW tsk_navigation_clients_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         core.get_app_id()           AS app_id,
@@ -125,4 +125,6 @@ JOIN (
     SELECT 210 AS page_id, 'Sequences'      AS page_label, 3 AS order# FROM DUAL
 ) t
     ON e.clients IS NOT NULL;
+--
+COMMENT ON TABLE tsk_navigation_clients_v IS '';
 

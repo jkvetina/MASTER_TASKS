@@ -14,7 +14,7 @@ USING (
     SELECT 710 AS app_id, 100 AS page_id, NULL AS parent_id, NULL AS is_hidden, NULL AS is_reset, 1 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 710 AS app_id, 105 AS page_id, 100 AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, NULL AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 710 AS app_id, 200 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 200 AS order#, NULL AS col_id FROM DUAL UNION ALL
-    SELECT 710 AS app_id, 210 AS page_id, 200 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 710 AS app_id, 210 AS page_id, 200 AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 710 AS app_id, 300 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 300 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 710 AS app_id, 310 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 410 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 710 AS app_id, 312 AS page_id, 310 AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, NULL AS order#, NULL AS col_id FROM DUAL UNION ALL
