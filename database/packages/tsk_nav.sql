@@ -14,7 +14,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         in_items            VARCHAR2                        := NULL,
         in_values           VARCHAR2                        := NULL,
         in_class            VARCHAR2                        := NULL,
-        in_icon_name        VARCHAR2                        := NULL
+        in_icon_name        VARCHAR2                        := NULL,
+        in_badge            VARCHAR2                        := NULL
     )
     RETURN VARCHAR2
     AS
@@ -46,7 +47,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 p_items         => SUBSTR(v_items,  2, 4000),
                 p_values        => SUBSTR(v_values, 2, 4000)
             ) ||
-            '" class="' || in_class || '">' || v_icon || in_content || '</span></a>';
+            '" class="' || in_class || '">' || v_icon || in_content ||
+            CASE WHEN in_badge IS NOT NULL THEN '</span><span class="BADGE DECENT">' || in_badge END ||
+            '</span></a>';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
