@@ -62,8 +62,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         in_client_id        CONSTANT tsk_cards.client_id%TYPE       := tsk_app.get_client_id();
         in_project_id       CONSTANT tsk_cards.project_id%TYPE      := tsk_app.get_project_id();
         in_board_id         CONSTANT tsk_cards.board_id%TYPE        := tsk_app.get_board_id();
-        in_swimlane_id      CONSTANT tsk_cards.swimlane_id%TYPE     := core.get_item('P100_SWIMLANE_ID');
-        in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_item('P100_OWNER_ID');
+        in_swimlane_id      CONSTANT tsk_cards.swimlane_id%TYPE     := core.get_item('P0_SWIMLANE_ID');
+        in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_item('P0_OWNER_ID');
         --
         v_statuses          PLS_INTEGER;
         v_swimlanes         PLS_INTEGER;
