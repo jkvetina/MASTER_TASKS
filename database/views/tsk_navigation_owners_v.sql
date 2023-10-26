@@ -73,12 +73,15 @@ filter_data AS (
     FROM (
         SELECT DISTINCT
             t.owner_id,
-            t.owner_id AS owner_name,
+            NVL(u.user_name, t.owner_id) AS owner_name,
+            --
             CASE WHEN t.owner_id = tsk_app.get_owner_id() THEN 'Y' END AS is_current,
             t.owner_id AS order#
             --
         FROM tsk_p100_cards_v t
-        WHERE t.owner_id IS NOT NULL
+        LEFT JOIN tsk_lov_users_v u
+            ON u.user_id    = t.owner_id
+        WHERE t.owner_id    IS NOT NULL
     ) a
     CROSS JOIN endpoints e
 )
