@@ -24,6 +24,8 @@
     background      : #e9e7e7;
     margin-bottom   : 1rem;
     border-radius   : 1rem;
+    border          : 1px solid #e6e4e4;
+    box-shadow      : rgba(149, 157, 165, 0.1) 0 0 0.3rem;
 }
 .BOARD .TARGET {
     flex-grow       : 1;
