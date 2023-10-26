@@ -36,6 +36,25 @@ filter_data AS (
         --
     FROM endpoints e
     UNION ALL
+    --
+    SELECT
+        2 AS lvl,
+        --
+        tsk_nav.get_link (
+            in_content      => 'No Owner',
+            in_page_id      => core.get_page_id(),
+            in_owner_id     => '!',
+            in_class        => '',
+            in_icon_name    => CASE WHEN e.owner_id = '!' THEN 'fa-arrow-circle-right' END
+        ) AS attribute01,
+        --
+        ' class="NAV_L3' || CASE WHEN e.owner_id = '!' THEN ' ACTIVE' END || '"' AS attribute10,
+        --
+        e.owners || '..' AS order#
+        --
+    FROM endpoints e
+    UNION ALL
+    --
     SELECT
         2 AS lvl,
         --
