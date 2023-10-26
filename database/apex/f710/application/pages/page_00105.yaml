@@ -223,7 +223,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 20
+    sequence: 10
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -432,7 +432,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 30
+    sequence: 20
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -508,6 +508,64 @@ regions:
     settings: 
       output-as: HTML
       expand-shortcuts: false
+
+- # ====== Region: MORE_ACTIONS ================================
+  id: 28430186076964230
+  identification: 
+    title: MORE_ACTIONS
+    type: Dynamic Content
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: |
+      RETURN '<div class="ACTION_MENU" data-id="MORE_ACTIONS">
+          <div class="WRAPPER">
+              <div class="TRIANGLE"></div>
+              <ul role="menu">
+                  <li><a tabindex="-1" href="javascript:{ $.event.trigger(''DELETE_CARD''); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>
+                  <li><a tabindex="-1" href="#"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>
+                  <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>
+                  <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>
+                  <li><a tabindex="-1" href="#"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>
+              </ul>
+          </div>
+      </div>';
+    page-items-to-submit: 
+    - P105_CARD_ID
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
 
 - # ====== Region: Commits =====================================
   id: 89197294196141484
@@ -3476,6 +3534,9 @@ buttons:
     type: Item is NOT NULL
     item: P105_SHOW_SPLIT
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Button: JOIN_CARD ===================================
   id: 25258454823844564
   identification: 
@@ -3525,6 +3586,9 @@ buttons:
     type: Item is NOT NULL
     item: P105_SHOW_SPLIT
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
 - # ====== Button: DELETE_CARD =================================
   id: 25258805949844565
   identification: 
@@ -3563,6 +3627,9 @@ buttons:
   server-side-condition: 
     type: Item is NOT NULL
     item: P105_CARD_ID
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Button: COPY_LINK ===================================
   id: 25259296786844565
@@ -3750,12 +3817,16 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     css-classes: 
+    - ACTION_MENU
     - TRANSPARENT
     icon: fa-ellipsis-h
 
   behavior: 
     action: Defined by Dynamic Action
     execute-validations: false
+
+  advanced: 
+    static-id: MORE_ACTIONS
 
   server-side-condition: 
     type: Item is NOT NULL
@@ -3985,6 +4056,70 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: true
 
+- # ====== Dynamic Action: DELETE_CARD =========================
+  id: 28430249839964231
+  identification: 
+    name: DELETE_CARD
+
+  execution: 
+    sequence: 90
+
+  when: 
+    event: EVENT.EVENT.CUSTOM.CUSTOM
+    custom-event: DELETE_CARD
+    selection-type: JavaScript Expression
+    javascript-expression: document
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Confirm =====================================
+    id: 28430343869964232
+    identification: 
+      action: Confirm
+
+    settings: 
+      message: Are you sure?
+      style: Default
+
+    execution: 
+      sequence: 10
+      event: DELETE_CARD # 28430249839964231
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Close Dialog ================================
+    id: 28430411702964233
+    identification: 
+      action: Close Dialog
+
+    execution: 
+      sequence: 30
+      event: DELETE_CARD # 28430249839964231
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 28430552725964234
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: 'tsk_p105.delete_card(in_card_id => :P105_CARD_ID);'
+      items-to-submit: 
+      - P105_CARD_ID
+
+    execution: 
+      sequence: 20
+      event: DELETE_CARD # 28430249839964231
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
 computations: 
 - # ====== Computation: P105_CATEGORY_JSON =====================
   id: 27231876014725506
@@ -4087,27 +4222,6 @@ processes:
 
   server-side-condition: 
     when-button-pressed: UPDATE_CARD # 25256870991844563
-
-- # ====== Process: CLOSE_DIALOG_DELETE ========================
-  id: 25265465111844587
-  identification: 
-    name: CLOSE_DIALOG_DELETE
-    type: Close Dialog
-    execution-chain: None
-
-  execution: 
-    sequence: 110
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  success-message: 
-    success-message: '&P0_SUCCESS_MESSAGE.'
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: DELETE_CARD # 25258805949844565
 
 - # ====== Process: CLOSE_DIALOG_CREATE ========================
   id: 25265822843844587
