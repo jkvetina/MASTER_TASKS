@@ -5,7 +5,7 @@ SELECT
     t.is_default,
     t.is_colored,
     t.is_badge,
-    b.project_name      AS group_name,
+    b.project_name || CASE WHEN t.is_active IS NULL THEN ' [Not Active]' END AS group_name,
     --
     LPAD('0', ROW_NUMBER() OVER (
         PARTITION BY t.client_id, t.project_id
@@ -16,8 +16,7 @@ FROM tsk_statuses t
 JOIN tsk_lov_boards_bulk_v b
     ON b.client_id      = t.client_id
     AND b.project_id    = t.project_id
-    AND b.is_current    = 'Y'
-WHERE t.is_active       = 'Y';
+    AND b.is_current    = 'Y';
 --
 COMMENT ON TABLE tsk_lov_statuses_bulk_v IS '';
 
