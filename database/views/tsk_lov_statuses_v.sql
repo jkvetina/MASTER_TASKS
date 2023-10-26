@@ -6,7 +6,11 @@ SELECT
     t.is_colored,
     t.is_badge,
     --
-    ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.row_order# NULLS LAST, t.status_id) AS order#,
+    LPAD('0', ROW_NUMBER() OVER (
+        PARTITION BY t.client_id, t.project_id
+        ORDER BY t.order# NULLS LAST, t.row_order# NULLS LAST, t.status_id
+        ), '0') AS order#,
+    --
     t.order#            AS col_order#,
     t.row_order#
     --

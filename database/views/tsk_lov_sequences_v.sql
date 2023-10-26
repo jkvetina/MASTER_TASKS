@@ -8,7 +8,7 @@ SELECT
     t.sequence_id,
     t.sequence_desc,
     --
-    ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.sequence_id) AS order#
+    LPAD('0', ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.sequence_id), '0') AS order#
     --
 FROM tsk_sequences t
 JOIN x

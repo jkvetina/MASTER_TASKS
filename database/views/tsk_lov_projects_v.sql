@@ -12,7 +12,10 @@ SELECT
     t.project_id,
     t.project_name,
     --
-    ROW_NUMBER() OVER (PARTITION BY t.client_id ORDER BY t.project_name, t.project_id) AS order#
+    LPAD('0', ROW_NUMBER() OVER (
+        PARTITION BY t.client_id
+        ORDER BY t.project_name, t.project_id
+        ), '0') AS order#
     --
 FROM tsk_available_projects_v t
 JOIN x

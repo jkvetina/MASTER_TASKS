@@ -8,7 +8,10 @@ SELECT
     t.is_default,
     b.project_name || ' - ' || t.category_group AS group_name,
     --
-    ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order#, t.category_name) AS order#
+    LPAD('0', ROW_NUMBER() OVER (
+        PARTITION BY t.client_id, t.project_id
+        ORDER BY t.order#, t.category_name
+        ), '0') AS order#
     --
 FROM tsk_categories t
 JOIN tsk_lov_boards_bulk_v b

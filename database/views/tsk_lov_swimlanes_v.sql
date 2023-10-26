@@ -3,7 +3,10 @@ SELECT
     t.swimlane_id,
     t.swimlane_name,
     --
-    ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.swimlane_name) AS order#
+    LPAD('0', ROW_NUMBER() OVER (
+        PARTITION BY t.client_id, t.project_id
+        ORDER BY t.order# NULLS LAST, t.swimlane_name
+        ), '0') AS order#
     --
 FROM tsk_swimlanes t
 JOIN tsk_lov_boards_v b

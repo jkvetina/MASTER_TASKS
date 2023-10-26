@@ -7,7 +7,10 @@ SELECT
     t.color_fg,
     t.is_default,
     --
-    ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order#, t.category_name) AS order#
+    LPAD('0', ROW_NUMBER() OVER (
+        PARTITION BY t.client_id, t.project_id
+        ORDER BY t.order#, t.category_name
+        ), '0') AS order#
     --
 FROM tsk_categories t
 JOIN tsk_lov_boards_v b
