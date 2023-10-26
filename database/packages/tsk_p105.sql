@@ -145,6 +145,29 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
 
 
 
+    PROCEDURE delete_card (
+        in_card_id          tsk_cards.card_id%TYPE
+    )
+    AS
+    BEGIN
+        --
+        -- @TODO: CHECK AUTH
+        --
+        DELETE FROM tsk_card_checklist t
+        WHERE t.card_id     = in_card_id;
+        --
+        DELETE FROM tsk_cards t
+        WHERE t.card_id     = in_card_id;
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE save_checklist
     AS
         rec                 tsk_card_checklist%ROWTYPE;

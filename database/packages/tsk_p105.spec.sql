@@ -8,6 +8,12 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
 
 
 
+    PROCEDURE delete_card (
+        in_card_id          tsk_cards.card_id%TYPE
+    );
+
+
+
     PROCEDURE save_checklist;
 
 
