@@ -12,6 +12,8 @@ appearance:
   page-template: Theme Default
   template-options: 
   - '#DEFAULT#'
+  css-classes: 
+  - MULTICOLUMN
 
 navigation-menu: 
   override-user-interface-level: false
