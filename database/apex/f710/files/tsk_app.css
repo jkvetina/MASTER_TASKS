@@ -4,7 +4,7 @@
 .BOARD {
     width                   : 100%;
     display                 : grid;
-    grid-template-columns   : 0 repeat(6, minmax(300px, 1fr)); /* repeat # overridden on tag */
+    grid-template-columns   : 0 repeat(6, minmax(320px, 1fr)); /* repeat # overridden on tag */
     grid-auto-rows          : max-content;
     grid-column-gap         : 1rem;
     grid-row-gap            : 0;
@@ -28,6 +28,7 @@
 .BOARD .TARGET {
     flex-grow       : 1;
     margin-bottom   : 1rem;
+    min-height      : 3rem
 }
 .BOARD .TARGET_HEADER,
 .BOARD .TARGET_HEADER h3 {

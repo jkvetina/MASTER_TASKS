@@ -77,7 +77,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         FROM tsk_statuses s
         WHERE s.client_id       = in_client_id
             AND s.project_id    = in_project_id
-            AND s.is_active     = 'Y';
+            AND s.is_active     = 'Y'
+            AND (s.row_order#   IS NULL OR s.row_order# = 1);
 
         -- calculate number of swimlanes
         SELECT COUNT(w.swimlane_id)
@@ -91,7 +92,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         -- generate grid
         clob_append(out_clob,
             '<div class="BOARD" style="' ||
-            'grid-template-columns: ' || CASE WHEN v_swimlanes > 1 THEN '0 ' END || 'repeat(' || v_statuses || ', minmax(300px, 1fr));' ||
+            'grid-template-columns: ' || CASE WHEN v_swimlanes > 1 THEN '0 ' END || 'repeat(' || v_statuses || ', minmax(320px, 1fr));' ||
             '">');
         --
         FOR w IN (
@@ -124,11 +125,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     d.count_done,
                     --
                     SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS user_name,
-                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST)    AS r#
+                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST)    AS r#,
+                    ROW_NUMBER() OVER (PARTITION BY s.col_order# ORDER BY s.row_order# NULLS LAST) AS row#,
+                    GREATEST(COUNT(s.row_order#) OVER (PARTITION BY s.col_order#), 1) AS row_count
                     --
                 FROM tsk_lov_statuses_v s
                 LEFT JOIN app_users_v u
-                    ON u.user_id        = in_owner_id
+                    ON u.user_id = in_owner_id
                 LEFT JOIN (
                     SELECT
                         t.status_id,
@@ -148,7 +151,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     ON d.status_id = s.status_id
                 ORDER BY s.order#
             ) LOOP
-                clob_append(out_clob, '<div class="COLUMN">');
+                IF s.row# = 1 THEN
+                    clob_append(out_clob, '<div class="COLUMN">');
+                END IF;
 
                 -- generate status header
                 clob_append(out_clob, '<div class="COLUMN_PAYLOAD">');
@@ -206,7 +211,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 --
                 clob_append(out_clob, '</div>');    -- .TARGET
                 clob_append(out_clob, '</div>');    -- .COLUMN_PAYLOAD
-                clob_append(out_clob, '</div>');    -- .COLUMN
+                --
+                IF s.row# = s.row_count THEN
+                    clob_append(out_clob, '</div>');    -- .COLUMN
+                END IF;
             END LOOP;
         END LOOP;
         --
