@@ -2,8 +2,7 @@ CREATE OR REPLACE FORCE VIEW tsk_navigation_clients_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         core.get_app_id()           AS app_id,
-        core.get_user_id()          AS user_id,
-        core.get_item('$TRIP_ID')   AS trip_id
+        core.get_user_id()          AS user_id
     FROM DUAL
 ),
 endpoints AS (
@@ -16,7 +15,7 @@ endpoints AS (
     JOIN x
         ON x.app_id     = n.app_id
 ),
-filter_clients AS (
+filter_data AS (
     SELECT DISTINCT
         2 AS lvl,
         a.client_id,
@@ -75,7 +74,7 @@ SELECT
     --
     e.clients || '/0/' || t.order# AS order#
     --
-FROM filter_clients t
+FROM filter_data t
 JOIN endpoints e
     ON e.clients IS NOT NULL
 UNION ALL

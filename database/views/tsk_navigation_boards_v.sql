@@ -2,8 +2,7 @@ CREATE OR REPLACE FORCE VIEW tsk_navigation_boards_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         core.get_app_id()           AS app_id,
-        core.get_user_id()          AS user_id,
-        core.get_item('$TRIP_ID')   AS trip_id
+        core.get_user_id()          AS user_id
     FROM DUAL
 ),
 endpoints AS (
@@ -16,10 +15,10 @@ endpoints AS (
     JOIN x
         ON x.app_id     = n.app_id
 ),
-filter_boards AS (
+filter_data AS (
     SELECT
         2 AS lvl,
-            a.is_current,
+        a.is_current,
         --
         tsk_nav.get_link (
             in_content      => a.board_name,
@@ -76,7 +75,7 @@ SELECT
     --
     e.boards || '/0/' || t.order# AS order#
     --
-FROM filter_boards t
+FROM filter_data t
 JOIN endpoints e
     ON e.boards IS NOT NULL;
 --
