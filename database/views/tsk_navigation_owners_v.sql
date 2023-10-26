@@ -2,15 +2,21 @@ CREATE OR REPLACE FORCE VIEW tsk_navigation_owners_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         core.get_app_id()               AS app_id,
-        core.get_user_id()              AS user_id
+        core.get_user_id()              AS user_id,
+        core.get_item('P0_OWNER_ID')    AS owner_id
     FROM DUAL
 ),
 endpoints AS (
     SELECT /*+ MATERIALIZE */
+        x.owner_id,
+        --
         MAX(CASE WHEN n.page_id = 360 THEN n.order# END) AS owners
+        --
     FROM app_navigation_v n
     JOIN x
         ON x.app_id     = n.app_id
+    GROUP BY
+        x.owner_id
 ),
 filter_data AS (
     SELECT
@@ -56,7 +62,6 @@ filter_data AS (
         WHERE t.owner_id IS NOT NULL
     ) a
     CROSS JOIN endpoints e
-    CROSS JOIN x
 )
 SELECT
     2 AS lvl,
@@ -69,9 +74,10 @@ SELECT
     '' AS attribute05,
     '' AS attribute06,
     '' AS attribute07,
-    '</ul><ul>' AS attribute08,
-    '' AS attribute09,
-    ' class="NAV_L2"' AS attribute10,
+    --
+    '</ul><ul>'         AS attribute08,
+    ''                  AS attribute09,
+    ' class="NAV_L2"'   AS attribute10,
     --
     e.owners || '/0/' AS order#
     --

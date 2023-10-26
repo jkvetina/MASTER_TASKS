@@ -8,10 +8,15 @@ WITH x AS (
 ),
 endpoints AS (
     SELECT /*+ MATERIALIZE */
+        x.status_id,
+        --
         MAX(CASE WHEN n.page_id = 320 THEN n.order# END) AS statuses
+        --
     FROM app_navigation_v n
     JOIN x
         ON x.app_id     = n.app_id
+    GROUP BY
+        x.status_id
 ),
 filter_data AS (
     SELECT
@@ -31,6 +36,7 @@ filter_data AS (
         --
     FROM endpoints e
     UNION ALL
+    --
     SELECT
         2 AS lvl,
         --
@@ -39,16 +45,15 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_status_id    => a.status_id,
             in_class        => '',
-            in_icon_name    => CASE WHEN x.status_id = a.status_id THEN 'fa-arrow-circle-right' END
+            in_icon_name    => CASE WHEN e.status_id = a.status_id THEN 'fa-arrow-circle-right' END
         ) AS attribute01,
         --
-        ' class="NAV_L3' || CASE WHEN x.status_id = a.status_id THEN ' ACTIVE' END || '"' AS attribute10,
+        ' class="NAV_L3' || CASE WHEN e.status_id = a.status_id THEN ' ACTIVE' END || '"' AS attribute10,
         --
         e.statuses || '.' || a.order# AS order#
         --
     FROM tsk_lov_statuses_v a
     CROSS JOIN endpoints e
-    CROSS JOIN x
 )
 SELECT
     2 AS lvl,
@@ -61,9 +66,10 @@ SELECT
     '' AS attribute05,
     '' AS attribute06,
     '' AS attribute07,
-    '</ul><ul>' AS attribute08,
-    '' AS attribute09,
-    ' class="NAV_L2"' AS attribute10,
+    --
+    '</ul><ul>'         AS attribute08,
+    ''                  AS attribute09,
+    ' class="NAV_L2"'   AS attribute10,
     --
     e.statuses || '/0/' AS order#
     --

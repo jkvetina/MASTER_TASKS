@@ -46,11 +46,11 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_category_id  => '!',
             in_class        => '',
-            in_icon_name    => ''
+            in_icon_name    => CASE WHEN e.category_id = '!' THEN 'fa-arrow-circle-right' END
         ) AS attribute01,
         --
         '' AS attribute08,
-        ' class="NAV_L3"' AS attribute10,
+        ' class="NAV_L3' || CASE WHEN e.category_id = '!' THEN ' ACTIVE' END || '"' AS attribute10,
         --
         e.categories || '..' AS order#
         --
@@ -116,9 +116,10 @@ SELECT
     '' AS attribute05,
     '' AS attribute06,
     '' AS attribute07,
-    '</ul><ul>' AS attribute08,
-    '' AS attribute09,
-    ' class="NAV_L2"' AS attribute10,
+    --
+    '</ul><ul>'         AS attribute08,
+    ''                  AS attribute09,
+    ' class="NAV_L2"'   AS attribute10,
     --
     e.categories || '/0/' AS order#
     --

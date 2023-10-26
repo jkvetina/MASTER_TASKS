@@ -49,9 +49,10 @@ SELECT
     '' AS attribute05,
     '' AS attribute06,
     '' AS attribute07,
-    '</ul><ul>' AS attribute08,
-    '' AS attribute09,
-    ' class="NAV_L2"' AS attribute10,
+    --
+    '</ul><ul>'         AS attribute08,
+    ''                  AS attribute09,
+    ' class="NAV_L2"'   AS attribute10,
     --
     e.projects || '/0/' AS order#
     --
@@ -92,9 +93,10 @@ SELECT
     '' AS attribute05,
     '' AS attribute06,
     '' AS attribute07,
-    '</ul><ul>' AS attribute08,
-    '' AS attribute09,
-    ' class="NAV_L2"' AS attribute10,
+    --
+    '</ul><ul>'         AS attribute08,
+    ''                  AS attribute09,
+    ' class="NAV_L2"'   AS attribute10,
     --
     e.projects || '/1/' AS order#
     --
