@@ -174,10 +174,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Comments ====================================
+- # ====== Region: Comments &P105_BADGE_COMMENTS. ==============
   id: 25064723919730027
   identification: 
-    title: Comments
+    title: Comments &P105_BADGE_COMMENTS.
     type: Static Content
 
   layout: 
@@ -258,10 +258,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Attachements ================================
+- # ====== Region: Attachements &P105_BADGE_FILES. =============
   id: 25065282126730032
   identification: 
-    title: Attachements
+    title: Attachements &P105_BADGE_FILES.
     type: Static Content
 
   layout: 
@@ -342,10 +342,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Description =================================
+- # ====== Region: Description &P105_BADGE_DESC. ===============
   id: 25479496737860923
   identification: 
-    title: Description
+    title: Description &P105_BADGE_DESC.
     type: Static Content
 
   layout: 
@@ -392,7 +392,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Description # 25479496737860923
+    parent-region: Description &P105_BADGE_DESC. # 25479496737860923
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -467,10 +467,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Tags ========================================
+- # ====== Region: Tags &P105_BADGE_TAGS. ======================
   id: 28271631648994349
   identification: 
-    title: Tags
+    title: Tags &P105_BADGE_TAGS.
     type: Static Content
 
   layout: 
@@ -567,10 +567,51 @@ regions:
     performance: 
       lazy-loading: false
 
-- # ====== Region: Commits =====================================
+- # ====== Region: Code Review &P105_BADGE_REVIEW. =============
+  id: 28431051780964239
+  identification: 
+    title: Code Review &P105_BADGE_REVIEW.
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: LEFT # 25064882953730028
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Commits &P105_BADGE_COMMITS. ================
   id: 89197294196141484
   identification: 
-    title: Commits
+    title: Commits &P105_BADGE_COMMITS.
     type: Static Content
 
   layout: 
@@ -629,7 +670,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Comments # 25064723919730027
+    parent-region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1134,7 +1175,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Attachements # 25065282126730032
+    parent-region: Attachements &P105_BADGE_FILES. # 25065282126730032
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1205,7 +1246,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Commits # 89197294196141484
+    parent-region: Commits &P105_BADGE_COMMITS. # 89197294196141484
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1254,7 +1295,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Attachements # 25065282126730032
+    parent-region: Attachements &P105_BADGE_FILES. # 25065282126730032
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1917,7 +1958,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Tags # 28271631648994349
+    region: Tags &P105_BADGE_TAGS. # 28271631648994349
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -2239,6 +2280,36 @@ page-items:
 
   advanced: 
     warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_BADGE_REVIEW ========================
+  id: 28431120483964240
+  identification: 
+    name: P105_BADGE_REVIEW
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 40
+    region: '&P105_HEADER.' # 108316517171408030
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
 
   source: 
     type: Null
@@ -2727,7 +2798,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 60
+    sequence: 70
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2757,7 +2828,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 50
+    sequence: 60
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2787,7 +2858,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 70
+    sequence: 80
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2817,7 +2888,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 40
+    sequence: 50
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2847,7 +2918,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 90
+    sequence: 100
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2877,7 +2948,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 100
+    sequence: 110
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2907,7 +2978,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 110
+    sequence: 120
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -2989,7 +3060,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 120
+    sequence: 130
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -3278,7 +3349,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 80
+    sequence: 90
     region: '&P105_HEADER.' # 108316517171408030
     position: BODY
 
@@ -3337,7 +3408,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: Comments # 25064723919730027
+    region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true

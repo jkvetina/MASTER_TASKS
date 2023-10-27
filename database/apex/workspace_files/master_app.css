@@ -131,12 +131,14 @@ button.ui-button:hover {
 /* HOT BUTTONS */
 button.t-Button--hot,
 button.ui-button--hot,
+button.js-confirmBtn.ui-button--danger,
 button.a-Button.a-Toolbar-item.a-Button--hot {
     background          : #5f5c58;
 }
 button.t-Button--hot:hover,
 button.ui-button--hot:hover,
-button.a-Button.a-Toolbar-item.a-Button--hot:hover {
+button.a-Button.a-Toolbar-item.a-Button--hot:hover,
+button.js-confirmBtn.ui-button--danger:hover {
     background          : #333;
 }
 
@@ -172,8 +174,8 @@ button .BADGE {
 span.BADGE {
     position            : relative;
     top                 : -0.65rem;
-    padding             : 0.1rem 0.35rem 0;
     margin              : 0 -0.25rem 0 0.25rem;
+    padding             : 0.1rem 0.35rem 0;
     border-radius       : 15px 15px;
     background          : red;
     color               : #fff;
@@ -189,8 +191,26 @@ span.BADGE {
     padding             : 0.25rem 0.45rem 0.2rem;
     background          : red;
 }
+#t_Header > #top_header > nav ul li a > span.BADGE.DECENT,
+.t-Tabs-item span.BADGE.DECENT,
 span.BADGE.DECENT {
+    top                 : -0.5rem;
+    margin              : 0 -0.3rem 0 0.3rem;
+    padding             : 0;
     background          : transparent;
+}
+.t-Tabs-item span.BADGE.DECENT {
+    color               : #222;
+}
+
+/* ADJUST BADGES WITH ICONS */
+span.BADGE.ICON {
+    padding-left        : 0.1rem;
+    padding-right       : 0.1rem;
+    background          : transparent;
+}
+span.BADGE.ICON > .fa {
+    top                 : 0.3rem;
 }
 
 
@@ -336,6 +356,13 @@ td.a-GV-cell a {
 td.a-GV-cell a:hover {
     color               : #000;
     text-decoration     : none;
+}
+
+/* KEEP WHITE BACKGROUND FOR READONLY CELLS */
+.a-GV--editMode .a-GV-cell.is-readonly,
+.a-GV--editMode .a-GV-row.is-readonly .a-GV-cell {
+    background          : #fff;
+    color               : #000;
 }
 
 

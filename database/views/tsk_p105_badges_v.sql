@@ -10,6 +10,7 @@ SELECT
     CASE WHEN COUNT(*) > 0
         THEN '<span class="BADGE">' || COUNT(*) || '</span>'
         END AS badge
+    --
 FROM tsk_card_checklist c
 JOIN x
     ON x.card_id            = c.card_id
@@ -18,7 +19,10 @@ WHERE c.checklist_done      IS NULL
 UNION ALL
 SELECT
     'P105_BADGE_COMMENTS'               AS item_name,
-    tsk_p105.get_badge_icon(COUNT(*))   AS badge
+    CASE WHEN COUNT(*) > 0
+        THEN '<span class="BADGE DECENT">' || COUNT(*) || '</span>'
+        END AS badge
+    --
 FROM tsk_card_comments c
 JOIN x
     ON x.card_id            = c.card_id
@@ -26,7 +30,10 @@ JOIN x
 UNION ALL
 SELECT
     'P105_BADGE_COMMITS'                AS item_name,
-    tsk_p105.get_badge_icon(COUNT(*))   AS badge
+    CASE WHEN COUNT(*) > 0
+        THEN '<span class="BADGE DECENT">' || COUNT(*) || '</span>'
+        END AS badge
+    --
 FROM tsk_card_commits c
 JOIN x
     ON x.card_id            = c.card_id
@@ -34,13 +41,19 @@ JOIN x
 UNION ALL
 SELECT
     'P105_BADGE_TAGS'                   AS item_name,
-    tsk_p105.get_badge_icon(COUNT(*))   AS badge
+    CASE WHEN COUNT(*) > 0
+        THEN '<span class="BADGE DECENT">' || COUNT(*) || '</span>'
+        END AS badge
+    --
 FROM tsk_p105_tags_v c
 --
 UNION ALL
 SELECT
     'P105_BADGE_FILES'                  AS item_name,
-    tsk_p105.get_badge_icon(COUNT(*))   AS badge
+    CASE WHEN COUNT(*) > 0
+        THEN '<span class="BADGE DECENT">' || COUNT(*) || '</span>'
+        END AS badge
+    --
 FROM tsk_card_files c
 JOIN x
     ON x.card_id            = c.card_id;
