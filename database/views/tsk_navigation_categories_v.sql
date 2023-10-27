@@ -33,7 +33,7 @@ filter_data AS (
         '' AS attribute08,
         ' class="NAV_L3"' AS attribute10,
         --
-        e.categories || '.' AS order#
+        e.categories || '/0/.' AS order#
         --
     FROM endpoints e
     UNION ALL
@@ -46,15 +46,22 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_category_id  => '!',
             in_class        => '',
-            in_icon_name    => CASE WHEN e.category_id = '!' THEN 'fa-arrow-circle-right' END
+            in_icon_name    => CASE WHEN e.category_id = '!' THEN 'fa-arrow-circle-right' END,
+            in_badge        => c.row_count
         ) AS attribute01,
         --
         '' AS attribute08,
         ' class="NAV_L3' || CASE WHEN e.category_id = '!' THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.categories || '..' AS order#
+        e.categories || '/0/..' AS order#
         --
     FROM endpoints e
+    CROSS JOIN (
+        SELECT
+            COUNT(*)        AS row_count
+        FROM tsk_p100_cards_v c
+        WHERE c.category_id IS NULL
+    ) c
     UNION ALL
     --
     SELECT
@@ -65,7 +72,7 @@ filter_data AS (
         '</ul><ul>'         AS attribute08,     -- start new column with each group
         ' class="NAV_L2"'   AS attribute10,
         --
-        e.categories || '.' || a.category_group AS order#
+        e.categories || '/0/' || a.category_group AS order#
         --
     FROM (
         SELECT DISTINCT
@@ -92,7 +99,7 @@ filter_data AS (
         '' AS attribute08,
         ' class="NAV_L3' || CASE WHEN e.category_id = a.category_id THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.categories || '.' || a.category_group || '.' || a.order# AS order#
+        e.categories || '/0/' || a.category_group || '.' || a.order# AS order#
         --
     FROM tsk_lov_categories_v a
     CROSS JOIN endpoints e
@@ -101,7 +108,8 @@ filter_data AS (
             c.category_id,
             COUNT(*)        AS row_count
         FROM tsk_p100_cards_v c
-        GROUP BY c.category_id
+        GROUP BY
+            c.category_id
     ) c
         ON c.category_id = a.category_id
 )
@@ -139,12 +147,9 @@ SELECT
     t.attribute08,
     '' AS attribute09,
     t.attribute10,
+    t.order# AS order#
     --
-    e.categories || '/0/' || t.order# AS order#
-    --
-FROM filter_data t
-JOIN endpoints e
-    ON e.categories IS NOT NULL;
+FROM filter_data t;
 --
 COMMENT ON TABLE tsk_navigation_categories_v IS '';
 

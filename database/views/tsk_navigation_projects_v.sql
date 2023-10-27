@@ -28,14 +28,27 @@ filter_data AS (
             in_client_id    => a.client_id,
             in_project_id   => a.project_id,
             in_class        => '',
-            in_icon_name    => CASE WHEN a.is_current = 'Y' THEN 'fa-arrow-circle-right' END
+            in_icon_name    => CASE WHEN a.is_current = 'Y' THEN 'fa-arrow-circle-right' END,
+            in_badge        => c.row_count
         ) AS attribute01,
         --
         ' class="NAV_L3' || REPLACE(a.is_current, 'Y', ' ACTIVE') || '"' AS attribute10,
         --
-        '/0.300.' || a.project_id AS order#
+        e.projects || '/0/' || a.project_id AS order#
         --
     FROM tsk_available_projects_v a
+    CROSS JOIN endpoints e
+    LEFT JOIN (
+        SELECT
+            c.project_id,
+            COUNT(*)        AS row_count
+        FROM tsk_cards c
+        JOIN tsk_available_projects_v a
+            ON a.project_id = c.project_id
+        GROUP BY
+            c.project_id
+    ) c
+        ON c.project_id = a.project_id
     WHERE a.is_current_client = 'Y'
 )
 SELECT
@@ -74,12 +87,9 @@ SELECT
     '' AS attribute09,
     --
     t.attribute10,
-    --
-    e.projects || '/0/' || t.order# AS order#
+    t.order#
     --
 FROM filter_data t
-JOIN endpoints e
-    ON e.projects IS NOT NULL
 UNION ALL
 --
 SELECT

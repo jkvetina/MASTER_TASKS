@@ -27,14 +27,27 @@ filter_data AS (
             in_project_id   => a.project_id,
             in_board_id     => a.board_id,
             in_class        => '',
-            in_icon_name    => CASE WHEN a.is_current = 'Y' THEN 'fa-arrow-circle-right' END
+            in_icon_name    => CASE WHEN a.is_current = 'Y' THEN 'fa-arrow-circle-right' END,
+            in_badge        => c.row_count
         ) AS attribute01,
         --
         ' class="NAV_L3' || REPLACE(a.is_current, 'Y', ' ACTIVE') || '"' AS attribute10,
         --
-        '/0.400.' || a.board_id AS order#
+        e.boards || '/0/' || a.board_id AS order#
         --
     FROM tsk_available_boards_v a
+    CROSS JOIN endpoints e
+    LEFT JOIN (
+        SELECT
+            c.board_id,
+            COUNT(*)        AS row_count
+        FROM tsk_cards c
+        JOIN tsk_available_boards_v a
+            ON a.board_id = c.board_id
+        GROUP BY
+            c.board_id
+    ) c
+        ON c.board_id = a.board_id
     WHERE a.is_current_project = 'Y'
 )
 SELECT
@@ -73,12 +86,9 @@ SELECT
     '' AS attribute09,
     --
     t.attribute10,
+    t.order#
     --
-    e.boards || '/0/' || t.order# AS order#
-    --
-FROM filter_data t
-JOIN endpoints e
-    ON e.boards IS NOT NULL;
+FROM filter_data t;
 --
 COMMENT ON TABLE tsk_navigation_boards_v IS '';
 

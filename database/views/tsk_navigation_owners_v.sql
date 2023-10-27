@@ -32,7 +32,7 @@ filter_data AS (
         --
         ' class="NAV_L3"' AS attribute10,
         --
-        e.owners || '.' AS order#
+        e.owners || '/0/.' AS order#
         --
     FROM endpoints e
     UNION ALL
@@ -45,14 +45,21 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_owner_id     => '!',
             in_class        => '',
-            in_icon_name    => CASE WHEN e.owner_id = '!' THEN 'fa-arrow-circle-right' END
+            in_icon_name    => CASE WHEN e.owner_id = '!' THEN 'fa-arrow-circle-right' END,
+            in_badge        => c.row_count
         ) AS attribute01,
         --
         ' class="NAV_L3' || CASE WHEN e.owner_id = '!' THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.owners || '..' AS order#
+        e.owners || '/0/..' AS order#
         --
     FROM endpoints e
+    CROSS JOIN (
+        SELECT
+            COUNT(*)        AS row_count
+        FROM tsk_p100_cards_v c
+        WHERE c.owner_id    IS NULL
+    ) c
     UNION ALL
     --
     SELECT
@@ -63,12 +70,13 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_owner_id     => a.owner_id,
             in_class        => '',
-            in_icon_name    => CASE WHEN a.is_current = 'Y' THEN 'fa-arrow-circle-right' END
+            in_icon_name    => CASE WHEN a.is_current = 'Y' THEN 'fa-arrow-circle-right' END,
+            in_badge        => c.row_count
         ) AS attribute01,
         --
         ' class="NAV_L3' || CASE WHEN a.is_current = 'Y' THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.owners || '.' || a.order# AS order#
+        e.owners || '/0/' || a.order# AS order#
         --
     FROM (
         SELECT DISTINCT
@@ -83,7 +91,17 @@ filter_data AS (
             ON u.user_id    = t.owner_id
         WHERE t.owner_id    IS NOT NULL
     ) a
-    CROSS JOIN endpoints e
+    JOIN endpoints e
+        ON e.owners IS NOT NULL
+    LEFT JOIN (
+        SELECT
+            c.owner_id,
+            COUNT(*)        AS row_count
+        FROM tsk_p100_cards_v c
+        GROUP BY
+            c.owner_id
+    ) c
+        ON c.owner_id = a.owner_id
 )
 SELECT
     2 AS lvl,
@@ -120,12 +138,9 @@ SELECT
     '' AS attribute09,
     --
     t.attribute10,
+    t.order#
     --
-    e.owners || '/0/' || t.order# AS order#
-    --
-FROM filter_data t
-JOIN endpoints e
-    ON e.owners IS NOT NULL;
+FROM filter_data t;
 --
 COMMENT ON TABLE tsk_navigation_owners_v IS '';
 

@@ -32,7 +32,7 @@ filter_data AS (
         --
         ' class="NAV_L3"' AS attribute10,
         --
-        e.swimlanes || '.' AS order#
+        e.swimlanes || '/0/.' AS order#
         --
     FROM endpoints e
     UNION ALL
@@ -45,15 +45,26 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_swimlane_id  => a.swimlane_id,
             in_class        => '',
-            in_icon_name    => CASE WHEN e.swimlane_id = a.swimlane_id THEN 'fa-arrow-circle-right' END
+            in_icon_name    => CASE WHEN e.swimlane_id = a.swimlane_id THEN 'fa-arrow-circle-right' END,
+            in_badge        => c.row_count
         ) AS attribute01,
         --
         ' class="NAV_L3' || CASE WHEN e.swimlane_id = a.swimlane_id THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.swimlanes || '.' || a.order# AS order#
+        e.swimlanes || '/0/' || a.order# AS order#
         --
     FROM tsk_lov_swimlanes_v a
-    CROSS JOIN endpoints e
+    JOIN endpoints e
+        ON e.swimlanes IS NOT NULL
+    LEFT JOIN (
+        SELECT
+            c.swimlane_id,
+            COUNT(*)        AS row_count
+        FROM tsk_p100_cards_v c
+        GROUP BY
+            c.swimlane_id
+    ) c
+        ON c.swimlane_id = a.swimlane_id
 )
 SELECT
     2 AS lvl,
@@ -90,12 +101,9 @@ SELECT
     '' AS attribute09,
     --
     t.attribute10,
+    t.order#
     --
-    e.swimlanes || '/0/' || t.order# AS order#
-    --
-FROM filter_data t
-JOIN endpoints e
-    ON e.swimlanes IS NOT NULL;
+FROM filter_data t;
 --
 COMMENT ON TABLE tsk_navigation_swimlanes_v IS '';
 
