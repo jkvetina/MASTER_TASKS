@@ -1,22 +1,28 @@
 CREATE OR REPLACE FORCE VIEW tsk_navigation_projects_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_app_id()           AS app_id,
-        core.get_user_id()          AS user_id
-    FROM DUAL
-),
-endpoints AS (
-    SELECT /*+ MATERIALIZE */
-        MAX(CASE WHEN n.page_id = 200 THEN n.order# END) AS clients,
-        MAX(CASE WHEN n.page_id = 300 THEN n.order# END) AS projects,
-        MAX(CASE WHEN n.page_id = 400 THEN n.order# END) AS boards
+        core.get_app_id()   AS app_id,
+        core.get_user_id()  AS user_id,
+        --
+        n.order#            AS endpoint
         --
     FROM app_navigation_v n
-    JOIN x
-        ON x.app_id     = n.app_id
+    WHERE n.app_id          = core.get_app_id()
+        AND n.page_id       = 300  -- projects
+),
+counts AS (
+    SELECT /*+ MATERIALIZE */
+        c.project_id,
+        COUNT(*)            AS row_count
+        --
+    FROM tsk_cards c
+    JOIN tsk_available_projects_v a
+        ON a.project_id     = c.project_id
+    GROUP BY
+        c.project_id
 ),
 filter_data AS (
-    SELECT DISTINCT
+    SELECT DISTINCT /*+ MATERIALIZE */
         2 AS lvl,
         a.project_id,
         a.project_name,
@@ -34,22 +40,13 @@ filter_data AS (
         --
         ' class="NAV_L3' || REPLACE(a.is_current, 'Y', ' ACTIVE') || '"' AS attribute10,
         --
-        e.projects || '/0/' || a.project_id AS order#
+        x.endpoint || '/0/' || a.project_id AS order#
         --
     FROM tsk_available_projects_v a
-    CROSS JOIN endpoints e
-    LEFT JOIN (
-        SELECT
-            c.project_id,
-            COUNT(*)        AS row_count
-        FROM tsk_cards c
-        JOIN tsk_available_projects_v a
-            ON a.project_id = c.project_id
-        GROUP BY
-            c.project_id
-    ) c
-        ON c.project_id = a.project_id
-    WHERE a.is_current_client = 'Y'
+    CROSS JOIN x
+    LEFT JOIN counts c
+        ON c.project_id         = a.project_id
+    WHERE a.is_current_client   = 'Y'
 )
 SELECT
     2 AS lvl,
@@ -67,10 +64,9 @@ SELECT
     ''                  AS attribute09,
     ' class="NAV_L2"'   AS attribute10,
     --
-    e.projects || '/0/' AS order#
+    x.endpoint || '/0/' AS order#
     --
-FROM endpoints e
-WHERE e.projects IS NOT NULL
+FROM x
 UNION ALL
 --
 SELECT
@@ -108,10 +104,9 @@ SELECT
     ''                  AS attribute09,
     ' class="NAV_L2"'   AS attribute10,
     --
-    e.projects || '/1/' AS order#
+    x.endpoint || '/1/' AS order#
     --
-FROM endpoints e
-WHERE e.projects IS NOT NULL
+FROM x
 UNION ALL
 --
 SELECT
@@ -129,16 +124,15 @@ SELECT
     '' AS attribute09,
     ' class="NAV_L3"' AS attribute10,
     --
-    e.projects || '/1/' || t.order# || '.' || t.page_id AS order#
+    x.endpoint || '/1/' || t.order# || '.' || t.page_id AS order#
     --
-FROM endpoints e
-JOIN (
+FROM x
+CROSS JOIN (
     SELECT 400 AS page_id, 'Boards'         AS page_label, 1 AS order# FROM DUAL UNION ALL
     SELECT 310 AS page_id, 'Swimlanes'      AS page_label, 2 AS order# FROM DUAL UNION ALL
     SELECT 320 AS page_id, 'Statuses'       AS page_label, 3 AS order# FROM DUAL UNION ALL
     SELECT 340 AS page_id, 'Categories'     AS page_label, 4 AS order# FROM DUAL
-) t
-    ON e.projects IS NOT NULL;
+) t;
 --
 COMMENT ON TABLE tsk_navigation_projects_v IS '';
 
