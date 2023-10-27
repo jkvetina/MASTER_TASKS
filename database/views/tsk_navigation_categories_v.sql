@@ -1,22 +1,32 @@
 CREATE OR REPLACE FORCE VIEW tsk_navigation_categories_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_app_id()               AS app_id,
-        core.get_user_id()              AS user_id,
-        core.get_item('P0_CATEGORY_ID') AS category_id
-    FROM DUAL
-),
-endpoints AS (
-    SELECT /*+ MATERIALIZE */
-        x.category_id,
+        core.get_app_id()   AS app_id,
+        core.get_user_id()  AS user_id,
         --
-        MAX(CASE WHEN n.page_id = 340 THEN n.order# END) AS categories
+        n.order#            AS endpoint,
+        --
+        core.get_item('P0_CATEGORY_ID') AS category_id
         --
     FROM app_navigation_v n
-    JOIN x
-        ON x.app_id     = n.app_id
+    WHERE n.app_id          = core.get_app_id()
+        AND n.page_id       = 340  -- categories
+),
+counts AS (
+    SELECT /*+ MATERIALIZE */
+        c.category_id,
+        COUNT(*)            AS row_count
+    FROM tsk_p100_cards_v c
     GROUP BY
-        x.category_id
+        c.category_id
+),
+a AS (
+    SELECT /*+ MATERIALIZE */
+        t.category_group
+    FROM tsk_lov_categories_v t
+    WHERE t.category_group IS NOT NULL
+    GROUP BY
+        t.category_group
 ),
 filter_data AS (
     SELECT
@@ -33,9 +43,9 @@ filter_data AS (
         '' AS attribute08,
         ' class="NAV_L3"' AS attribute10,
         --
-        e.categories || '/0/.' AS order#
+        x.endpoint || '/0/.' AS order#
         --
-    FROM endpoints e
+    FROM x
     UNION ALL
     --
     SELECT
@@ -46,22 +56,19 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_category_id  => '!',
             in_class        => '',
-            in_icon_name    => CASE WHEN e.category_id = '!' THEN 'fa-arrow-circle-right' END,
+            in_icon_name    => CASE WHEN x.category_id = '!' THEN 'fa-arrow-circle-right' END,
             in_badge        => c.row_count
         ) AS attribute01,
         --
         '' AS attribute08,
-        ' class="NAV_L3' || CASE WHEN e.category_id = '!' THEN ' ACTIVE' END || '"' AS attribute10,
+        ' class="NAV_L3' || CASE WHEN x.category_id = '!' THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.categories || '/0/..' AS order#
+        x.endpoint || '/0/..' AS order#
         --
-    FROM endpoints e
-    CROSS JOIN (
-        SELECT
-            COUNT(*)        AS row_count
-        FROM tsk_p100_cards_v c
-        WHERE c.category_id IS NULL
-    ) c
+    FROM x
+    LEFT JOIN counts c
+        ON 1 = 1
+        AND c.category_id   IS NULL
     UNION ALL
     --
     SELECT
@@ -72,16 +79,10 @@ filter_data AS (
         '</ul><ul>'         AS attribute08,     -- start new column with each group
         ' class="NAV_L2"'   AS attribute10,
         --
-        e.categories || '/0/' || a.category_group AS order#
+        x.endpoint || '/0/' || a.category_group AS order#
         --
-    FROM (
-        SELECT DISTINCT
-            t.category_group
-        FROM tsk_lov_categories_v t
-        CROSS JOIN endpoints e
-        WHERE t.category_group IS NOT NULL
-    ) a
-    CROSS JOIN endpoints e
+    FROM a
+    CROSS JOIN x
     --
     UNION ALL
     SELECT
@@ -92,26 +93,19 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_category_id  => a.category_id,
             in_class        => '',
-            in_icon_name    => CASE WHEN e.category_id = a.category_id THEN 'fa-arrow-circle-right' END,
+            in_icon_name    => CASE WHEN x.category_id = a.category_id THEN 'fa-arrow-circle-right' END,
             in_badge        => c.row_count
         ) AS attribute01,
         --
         '' AS attribute08,
-        ' class="NAV_L3' || CASE WHEN e.category_id = a.category_id THEN ' ACTIVE' END || '"' AS attribute10,
+        ' class="NAV_L3' || CASE WHEN x.category_id = a.category_id THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.categories || '/0/' || a.category_group || '.' || a.order# AS order#
+        x.endpoint || '/0/' || a.category_group || '.' || a.order# AS order#
         --
     FROM tsk_lov_categories_v a
-    CROSS JOIN endpoints e
-    LEFT JOIN (
-        SELECT
-            c.category_id,
-            COUNT(*)        AS row_count
-        FROM tsk_p100_cards_v c
-        GROUP BY
-            c.category_id
-    ) c
-        ON c.category_id = a.category_id
+    CROSS JOIN x
+    LEFT JOIN counts c
+        ON c.category_id    = a.category_id
 )
 SELECT
     2 AS lvl,
@@ -129,9 +123,9 @@ SELECT
     ''                  AS attribute09,
     ' class="NAV_L2"'   AS attribute10,
     --
-    e.categories || '/0/' AS order#
+    x.endpoint || '/0/' AS order#
     --
-FROM endpoints e
+FROM x
 UNION ALL
 --
 SELECT

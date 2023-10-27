@@ -1,22 +1,24 @@
 CREATE OR REPLACE FORCE VIEW tsk_navigation_statuses_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_app_id()               AS app_id,
-        core.get_user_id()              AS user_id,
-        core.get_item('P0_STATUS_ID')   AS status_id
-    FROM DUAL
-),
-endpoints AS (
-    SELECT /*+ MATERIALIZE */
-        x.status_id,
+        core.get_app_id()   AS app_id,
+        core.get_user_id()  AS user_id,
         --
-        MAX(CASE WHEN n.page_id = 320 THEN n.order# END) AS statuses
+        n.order#            AS endpoint,
+        --
+        core.get_item('P0_STATUS_ID')   AS status_id
         --
     FROM app_navigation_v n
-    JOIN x
-        ON x.app_id     = n.app_id
+    WHERE n.app_id          = core.get_app_id()
+        AND n.page_id       = 320  -- statuses
+),
+counts AS (
+    SELECT /*+ MATERIALIZE */
+        c.status_id,
+        COUNT(*)        AS row_count
+    FROM tsk_p100_cards_v c
     GROUP BY
-        x.status_id
+        c.status_id
 ),
 filter_data AS (
     SELECT
@@ -32,9 +34,9 @@ filter_data AS (
         --
         ' class="NAV_L3"' AS attribute10,
         --
-        e.statuses || '/0/.' AS order#
+        x.endpoint || '/0/.' AS order#
         --
-    FROM endpoints e
+    FROM x
     UNION ALL
     --
     SELECT
@@ -45,26 +47,18 @@ filter_data AS (
             in_page_id      => core.get_page_id(),
             in_status_id    => a.status_id,
             in_class        => '',
-            in_icon_name    => CASE WHEN e.status_id = a.status_id THEN 'fa-arrow-circle-right' END,
+            in_icon_name    => CASE WHEN x.status_id = a.status_id THEN 'fa-arrow-circle-right' END,
             in_badge        => c.row_count
         ) AS attribute01,
         --
-        ' class="NAV_L3' || CASE WHEN e.status_id = a.status_id THEN ' ACTIVE' END || '"' AS attribute10,
+        ' class="NAV_L3' || CASE WHEN x.status_id = a.status_id THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        e.statuses || '/0/' || a.order# AS order#
+        x.endpoint || '/0/' || a.order# AS order#
         --
     FROM tsk_lov_statuses_v a
-    JOIN endpoints e
-        ON e.statuses IS NOT NULL
-    LEFT JOIN (
-        SELECT
-            c.status_id,
-            COUNT(*)        AS row_count
-        FROM tsk_p100_cards_v c
-        GROUP BY
-            c.status_id
-    ) c
-        ON c.status_id = a.status_id
+    CROSS JOIN x
+    LEFT JOIN counts c
+        ON c.status_id      = a.status_id
 )
 SELECT
     2 AS lvl,
@@ -82,9 +76,9 @@ SELECT
     ''                  AS attribute09,
     ' class="NAV_L2"'   AS attribute10,
     --
-    e.statuses || '/0/' AS order#
+    x.endpoint || '/0/' AS order#
     --
-FROM endpoints e
+FROM x
 UNION ALL
 --
 SELECT

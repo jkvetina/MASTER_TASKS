@@ -43,7 +43,7 @@ filter_data AS (
     FROM tsk_available_boards_v a
     CROSS JOIN x
     LEFT JOIN counts c
-        ON c.board_id           = a.board_id
+        ON c.board_id       = a.board_id
     WHERE a.is_current_project  = 'Y'
 )
 SELECT
