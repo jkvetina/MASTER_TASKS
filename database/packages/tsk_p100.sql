@@ -151,14 +151,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     ON d.status_id = s.status_id
                 ORDER BY s.order#
             ) LOOP
-                IF s.row# = 1 THEN
-                    clob_append(out_clob, '<div class="COLUMN">');
-                END IF;
-
                 -- generate status header
-                clob_append(out_clob, '<div class="COLUMN_PAYLOAD">');
-                clob_append(out_clob, '<div class="TARGET_HEADER">');
-                clob_append(out_clob, '<h3>' || s.status_name ||
+                clob_append(out_clob,
+                    CASE WHEN s.row# = 1 THEN
+                        '<div class="COLUMN">'
+                    END ||
+                    --
+                    '<div class="COLUMN_PAYLOAD">' ||
+                    '<div class="TARGET_HEADER">' ||
+                    '<h3>' || s.status_name ||
                     CASE WHEN s.count_cards > 0 THEN '<span class="BADGE' || CASE WHEN s.is_badge IS NULL THEN ' DECENT' END || '">' || s.count_cards || '</span>' END ||
                     CASE WHEN s.count_cards > 0 THEN '<span class="PROGRESS">' || s.count_done || '/' || s.count_checks || '</span>' END ||
                     '<a href="' ||
@@ -170,9 +171,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     ) ||
                     '" class="PLUS"><span class="fa fa-plus"></span></a>' ||
                     '</h3>' ||
-                    '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(s.count_done / NULLIF(s.count_checks, 0) * 100), 0) || '%;"></div></div>'
+                    '<div class="PROGRESS_BAR"><div style="width: ' || NVL(FLOOR(s.count_done / NULLIF(s.count_checks, 0) * 100), 0) || '%;"></div></div>' ||
+                    '</div>'  -- .TARGET_HEADER
                 );
-                clob_append(out_clob, '</div>');    -- .TARGET_HEADER
 
                 -- generate status content/cards
                 clob_append(out_clob, '<div class="TARGET" id="STATUS_' || s.status_id || '_SWIMLANE_' || w.swimlane_id || '">');
@@ -209,12 +210,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     );
                 END LOOP;
                 --
-                clob_append(out_clob, '</div>');    -- .TARGET
-                clob_append(out_clob, '</div>');    -- .COLUMN_PAYLOAD
-                --
-                IF s.row# = s.row_count THEN
-                    clob_append(out_clob, '</div>');    -- .COLUMN
-                END IF;
+                clob_append(out_clob,
+                    '</div>' ||     -- .TARGET
+                    '</div>' ||     -- .COLUMN_PAYLOAD
+                    --
+                    CASE WHEN s.row# = s.row_count THEN
+                        '</div>'    -- .COLUMN
+                    END
+                );
             END LOOP;
         END LOOP;
         --
