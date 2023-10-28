@@ -20,7 +20,8 @@ SELECT
     b.is_simple,
     b.is_active,
     b.is_default,
-    b.order#,
+    --
+    LPAD(b.order#, 4, '0') AS order#,
     --
     CASE WHEN f.board_id IS NOT NULL THEN 'Y' END AS is_favorite,
     --

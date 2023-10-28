@@ -16,20 +16,15 @@ SELECT
     c.client_name,
     c.is_active,
     --
-    CASE WHEN c.client_id = x.client_id THEN 'Y' END AS is_current
+    CASE WHEN c.client_id = x.client_id THEN 'Y' END AS is_current,
+    --
+    LPAD(ROW_NUMBER() OVER (ORDER BY c.client_name), 4, '0') AS order#
     --
 FROM tsk_clients c
 CROSS JOIN x
-/*
 --
 -- @TODO: need to map assigned clients
 --
-JOIN tsk_auth_...
-    ON a.user_id        = x.user_id
-    AND a.client_id     = c.client_id
-    AND a.is_active     = 'Y'
-    --AND (?.user_id      = u.user_id OR u.is_admin = 'Y')
-    */
 WHERE c.is_active       = 'Y';
 --
 COMMENT ON TABLE tsk_available_clients_v IS '';

@@ -20,24 +20,15 @@ SELECT
     p.is_default,
     --
     CASE WHEN p.client_id   = x.client_id   THEN 'Y' END AS is_current_client,
-    CASE WHEN p.project_id  = x.project_id  THEN 'Y' END AS is_current
+    CASE WHEN p.project_id  = x.project_id  THEN 'Y' END AS is_current,
+    --
+    LPAD(ROW_NUMBER() OVER (PARTITION BY a.client_id ORDER BY p.project_name), 4, '0') AS order#
     --
 FROM tsk_available_clients_v a
 CROSS JOIN x
 JOIN tsk_projects p
     ON p.client_id      = a.client_id
     AND p.is_active     = 'Y';
-/*
---
--- @TODO: need to map assigned projects
---
-JOIN tsk_roles r
-    ON r.client_id      = p.client_id
-    AND (r.project_id   = p.project_id  OR r.project_id IS NULL)
-    AND r.user_id       = c.user_id
-    AND r.is_active     = 'Y'
-*/
-WHERE 1 = 1;
 --
 COMMENT ON TABLE tsk_available_projects_v IS '';
 

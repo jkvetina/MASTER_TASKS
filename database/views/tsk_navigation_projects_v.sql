@@ -40,7 +40,7 @@ filter_data AS (
         --
         ' class="NAV_L3' || REPLACE(a.is_current, 'Y', ' ACTIVE') || '"' AS attribute10,
         --
-        x.endpoint || '/0/' || a.project_id AS order#
+        x.endpoint || '/0/' || a.order# AS order#
         --
     FROM tsk_available_projects_v a
     CROSS JOIN x

@@ -27,7 +27,7 @@ filter_data AS (
         --
         ' class="NAV_L3' || REPLACE(a.is_current, 'Y', ' ACTIVE') || '"' AS attribute10,
         --
-        x.endpoint || '/0/' || a.client_id AS order#
+        x.endpoint || '/0/' || a.order# AS order#
         --
     FROM tsk_available_clients_v a
     CROSS JOIN x
