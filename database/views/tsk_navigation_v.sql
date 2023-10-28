@@ -1,11 +1,4 @@
 CREATE OR REPLACE FORCE VIEW tsk_navigation_v AS
-WITH x AS (
-    SELECT /*+ MATERIALIZE */
-        core.get_app_id()           AS app_id,
-        core.get_user_id()          AS user_id,
-        core.get_item('$TRIP_ID')   AS trip_id
-    FROM DUAL
-)
 SELECT
     n.lvl,                  -- use Master application navigation
     n.attribute01,
