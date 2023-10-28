@@ -39,14 +39,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
                 FROM tsk_p105_badges_v b
             ) LOOP
                 core.set_item(c.item_name, c.badge);
-
-                -- offer card split when there are unfinished items on checklist
-                IF c.item_name = 'P105_BADGE_CHECKLIST' AND INSTR(c.badge, 'fa-number') >= 0 THEN
-                    core.set_item('P105_SHOW_SPLIT', 'Y');
-                END IF;
             END LOOP;
             --
-            core.set_item('P105_BADGE_DESC',    CASE WHEN LENGTH(rec.card_desc) > 0 THEN ' &nbsp;<span class="fa fa-arrow-circle-down"></span>' END);
+            core.set_item('P105_BADGE_DESC', CASE WHEN LENGTH(rec.card_desc) > 0
+                THEN ' &nbsp;<span class="BADGE ICON"><span class="fa fa-warning" style="color: orange;"></span></span>'
+                END);
             --
         ELSE
             -- get defaults for new card
