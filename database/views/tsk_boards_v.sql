@@ -38,6 +38,7 @@ SELECT
     a.board_id,
     a.board_name,
     a.sequence_id,
+    a.is_simple,
     a.is_active,
     a.is_default,
     a.is_favorite,

@@ -19,6 +19,7 @@ SELECT
         ORDER BY t.order#, t.board_name
         ), '0') AS order#,
     --
+    t.is_simple,
     t.is_favorite,
     --
     CASE WHEN t.board_id = x.board_id THEN 'Y' END AS is_current

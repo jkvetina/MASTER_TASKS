@@ -17,6 +17,7 @@ SELECT
     b.board_id,
     b.board_name,
     b.sequence_id,
+    b.is_simple,
     b.is_active,
     b.is_default,
     b.order#,

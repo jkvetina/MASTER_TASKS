@@ -4,6 +4,7 @@ CREATE TABLE tsk_boards (
     board_id                        NUMBER(10,0)    CONSTRAINT nn_tsk_boards_id NOT NULL,
     board_name                      VARCHAR2(64)    CONSTRAINT nn_tsk_boards_name NOT NULL,
     sequence_id                     VARCHAR2(32),
+    is_simple                       CHAR(1),
     is_active                       CHAR(1),
     is_default                      CHAR(1),
     order#                          NUMBER(4,0),
@@ -21,6 +22,9 @@ CREATE TABLE tsk_boards (
     --
     CONSTRAINT ch_tsk_boards_default
         CHECK (is_default = 'Y' OR is_default IS NULL),
+    --
+    CONSTRAINT ch_tsk_boards_simple
+        CHECK (is_simple = 'Y' OR is_simple IS NULL),
     --
     CONSTRAINT fk_tsk_boards_project
         FOREIGN KEY (client_id, project_id)
@@ -40,6 +44,7 @@ COMMENT ON COLUMN tsk_boards.project_id     IS '';
 COMMENT ON COLUMN tsk_boards.board_id       IS '';
 COMMENT ON COLUMN tsk_boards.board_name     IS '';
 COMMENT ON COLUMN tsk_boards.sequence_id    IS '';
+COMMENT ON COLUMN tsk_boards.is_simple      IS '';
 COMMENT ON COLUMN tsk_boards.is_active      IS '';
 COMMENT ON COLUMN tsk_boards.is_default     IS '';
 COMMENT ON COLUMN tsk_boards.order#         IS '';

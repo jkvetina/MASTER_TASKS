@@ -181,7 +181,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 160
+      sequence: 170
       column-alignment: center
       group: Flags # 116123553164713932
       use-group-for: Both
@@ -241,7 +241,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 170
+      sequence: 180
       column-alignment: end
       group: Counts # 116122693316713923
       use-group-for: Both
@@ -291,7 +291,7 @@ regions:
       alignment: end
 
     layout: 
-      sequence: 180
+      sequence: 190
       column-alignment: end
       group: Counts # 116122693316713923
       use-group-for: Both
@@ -341,7 +341,7 @@ regions:
       alignment: end
 
     layout: 
-      sequence: 190
+      sequence: 200
       column-alignment: end
       group: Counts # 116122693316713923
       use-group-for: Both
@@ -395,7 +395,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 200
+      sequence: 210
       column-alignment: end
       group: Counts # 116122693316713923
       use-group-for: Both
@@ -437,7 +437,7 @@ regions:
       alignment: end
 
     layout: 
-      sequence: 210
+      sequence: 220
       column-alignment: end
       group: Counts # 116122693316713923
       use-group-for: Both
@@ -620,6 +620,62 @@ regions:
     enable-users-to: 
       sort: false
 
+  - # ====== Column: IS_SIMPLE ===================================
+    id: 37724329561953108
+    identification: 
+      column-name: IS_SIMPLE
+      type: Checkbox
+
+    heading: 
+      heading: Simple
+      alignment: center
+
+    settings: 
+      use-defaults: false
+      checked-value: Y
+
+    layout: 
+      sequence: 130
+      column-alignment: center
+      group: Flags # 116123553164713932
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: IS_SIMPLE
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
   - # ====== Column: APEX$ROW_ACTION =============================
     id: 50045712622623123
     identification: 
@@ -658,7 +714,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 140
+      sequence: 150
       column-alignment: center
       group: Flags # 116123553164713932
       use-group-for: Both
@@ -782,7 +838,7 @@ regions:
       value-identifies-row: false
 
     validation: 
-      value-required: false
+      value-required: true
 
     source: 
       type: Database Column
@@ -887,7 +943,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 150
+      sequence: 160
       column-alignment: center
       group: Flags # 116123553164713932
       use-group-for: Both
@@ -945,7 +1001,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 130
+      sequence: 140
       column-alignment: center
       group: Flags # 116123553164713932
       use-group-for: Both
