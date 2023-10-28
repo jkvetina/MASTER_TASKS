@@ -17,6 +17,11 @@ UNION ALL
 --
 SELECT
     t.lvl, t.attribute01, t.attribute02, t.attribute03, t.attribute04, t.attribute05, t.attribute06, t.attribute07, t.attribute08, t.attribute09, t.attribute10, t.order#
+FROM tsk_navigation_home_v t
+UNION ALL
+--
+SELECT
+    t.lvl, t.attribute01, t.attribute02, t.attribute03, t.attribute04, t.attribute05, t.attribute06, t.attribute07, t.attribute08, t.attribute09, t.attribute10, t.order#
 FROM tsk_navigation_clients_v t
 UNION ALL
 --
