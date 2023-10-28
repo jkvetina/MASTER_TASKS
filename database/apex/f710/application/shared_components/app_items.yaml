@@ -129,3 +129,43 @@
     session-state-protection: Restricted - May not be set from browser
     escape-special-characters: true
 
+- # ====== Application Item: G_USER_FIRST_NAME =================
+  id: 37766972552932348
+  identification: 
+    name: G_USER_FIRST_NAME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: G_USER_NAME =======================
+  id: 37767137371933438
+  identification: 
+    name: G_USER_NAME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: G_ENV =============================
+  id: 37767343261934181
+  identification: 
+    name: G_ENV
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: G_WORKSPACE =======================
+  id: 37767583459935196
+  identification: 
+    name: G_WORKSPACE
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
