@@ -97,10 +97,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         --
         FOR w IN (
             SELECT
-                w.*,
+                w.swimlane_id,
+                w.swimlane_name,
                 ROW_NUMBER() OVER (ORDER BY CASE WHEN w.swimlane_id = '-' THEN NULL ELSE w.order# END NULLS LAST) AS r#,
-                COUNT(w.swimlane_id) OVER() AS swimlanes
+                COUNT(w.swimlane_id) OVER() AS swimlanes,
+                b.is_simple
             FROM tsk_swimlanes w
+            LEFT JOIN tsk_boards b
+                ON b.client_id      = in_client_id
+                AND b.board_id      = in_board_id
             WHERE w.client_id       = in_client_id
                 AND w.project_id    = in_project_id
                 AND (w.swimlane_id  = in_swimlane_id OR in_swimlane_id IS NULL)
@@ -204,8 +209,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                         CASE WHEN t.card_progress IS NOT NULL
                             THEN '<span class="PROGRESS">' || t.card_progress || '</span>'
                             END ||
-                        '<span class="CARD_ID">' || NVL(t.card_number, c_card_prefix || t.card_id) || '</span>' ||
-                        '<span style="color: #888;"> &' || 'ndash; </span>' || t.card_name ||
+                        CASE WHEN w.is_simple IS NULL
+                            THEN '<span class="CARD_ID">' || NVL(t.card_number, c_card_prefix || t.card_id) || '</span>' ||
+                                '<span style="color: #888;"> &' || 'ndash; </span>'
+                            END ||
+                        t.card_name ||
                         '</a></div>'
                     );
                 END LOOP;
