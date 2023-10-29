@@ -33,7 +33,7 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   19:43 Neděle Říjen 29, 2023
+--   Date and Time:   21:00 Neděle Říjen 29, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -20045,6 +20045,8 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
 ,p_button_image_alt=>'Bookmark Current'
 ,p_button_position=>'UP'
+,p_button_condition=>'P100_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 ,p_icon_css_classes=>'&P100_BOOKMARK_ICON.'
 );
 wwv_flow_imp_page.create_page_item(
@@ -21157,7 +21159,7 @@ wwv_flow_imp_page.create_page_plug(
 '            <li><a tabindex="-1" href="javascript:{ apex.submit({request:''''MOVE_TO_TOP''''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>',
 '            <li><a tabindex="-1" href="javascript:{ $.event.trigger(''''DELETE_CARD''''); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>',
 '            <li><a tabindex="-1" href="#"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>',
-'            <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>',
+'            <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''''Do you want to move unchecked items to the new task?'''', {request:''''SPLIT_CARD''''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>',
 '            <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>',
 '            <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''''P105_CARD_LINK'''').getValue());',
 'show_success(''''Link copied to the clipboard''''); }"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>',

@@ -551,7 +551,7 @@ regions:
                   <li><a tabindex="-1" href="javascript:{ apex.submit({request:''MOVE_TO_TOP''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>
                   <li><a tabindex="-1" href="javascript:{ $.event.trigger(''DELETE_CARD''); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>
                   <li><a tabindex="-1" href="#"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>
-                  <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>
+                  <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''Do you want to move unchecked items to the new task?'', {request:''SPLIT_CARD''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>
                   <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>
                   <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''P105_CARD_LINK'').getValue());
       show_success(''Link copied to the clipboard''); }"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>

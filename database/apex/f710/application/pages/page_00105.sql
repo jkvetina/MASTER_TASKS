@@ -870,7 +870,7 @@ wwv_flow_imp_page.create_page_plug(
 '            <li><a tabindex="-1" href="javascript:{ apex.submit({request:''''MOVE_TO_TOP''''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>',
 '            <li><a tabindex="-1" href="javascript:{ $.event.trigger(''''DELETE_CARD''''); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>',
 '            <li><a tabindex="-1" href="#"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>',
-'            <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>',
+'            <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''''Do you want to move unchecked items to the new task?'''', {request:''''SPLIT_CARD''''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>',
 '            <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>',
 '            <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''''P105_CARD_LINK'''').getValue());',
 'show_success(''''Link copied to the clipboard''''); }"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>',
@@ -987,6 +987,18 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-save'
 ,p_database_action=>'UPDATE'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25256870991844563)
 ,p_button_sequence=>40
@@ -1002,18 +1014,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 ,p_icon_css_classes=>'fa-save'
 ,p_database_action=>'UPDATE'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27422429232258642)
@@ -1978,6 +1978,18 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_09=>'N'
 ,p_wait_for_result=>'Y'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(37724899026953113)
 ,p_event_id=>wwv_flow_imp.id(37724614808953111)
@@ -1993,18 +2005,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_02=>'P105_CARD_ID,P105_COMMENT_ID'
 ,p_attribute_05=>'PLSQL'
 ,p_wait_for_result=>'Y'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(37725481529953119)
