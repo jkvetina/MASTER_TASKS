@@ -134,7 +134,7 @@ UNION ALL
 SELECT
     2 AS lvl,
     --
-    '<span>' || core.get_icon('fa-clock') || ' &nbsp; Recent Cards</span>' AS attribute01,
+    '<span>' || core.get_icon('fa-alarm-clock') || ' &nbsp; Recent Cards</span>' AS attribute01,
     --
     '' AS attribute02,
     '' AS attribute03,

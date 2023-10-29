@@ -3,7 +3,6 @@ prompt --install
 @@application/delete_application.sql
 @@application/create_application.sql
 @@application/user_interfaces.sql
-@@workspace/credentials/sso_google.sql
 @@application/shared_components/navigation/lists/navigation.sql
 @@application/shared_components/files/tsk_app_css.sql
 @@application/shared_components/files/tsk_app_js.sql
@@ -147,7 +146,6 @@ prompt --install
 @@application/shared_components/logic/build_options.sql
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
-@@application/shared_components/security/authentications/google.sql
 @@application/shared_components/security/authentications/open_door_testing_only.sql
 @@application/shared_components/plugins/template_component/theme_800_avatar.sql
 @@application/shared_components/plugins/template_component/theme_800_badge.sql
