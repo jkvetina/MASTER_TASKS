@@ -234,6 +234,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
         core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
         core.set_grid_data('OLD_CATEGORY_ID',       rec.category_id);
+        --
+        app.set_success_message('Categories updated');
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

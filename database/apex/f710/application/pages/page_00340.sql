@@ -699,6 +699,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_03=>'TSK_HANDLERS'
 ,p_attribute_04=>'SAVE_CATEGORIES'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 ,p_internal_uid=>26431936280191275
 );
