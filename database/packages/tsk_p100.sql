@@ -4,6 +4,27 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
     AS
         v_card_id           tsk_cards.card_id%TYPE;
     BEGIN
+        -- load last project/board on login
+        IF tsk_app.get_board_id() IS NULL THEN
+            FOR c IN (
+                SELECT t.*
+                FROM tsk_recent t
+                WHERE t.user_id = core.get_user_id()
+                ORDER BY t.updated_at DESC NULLS LAST
+                FETCH FIRST 1 ROWS ONLY
+            ) LOOP
+                tsk_app.set_context (
+                    in_client_id        => c.client_id,
+                    in_project_id       => c.project_id,
+                    in_board_id         => c.board_id,
+                    in_swimlane_id      => c.swimlane_id,
+                    in_status_id        => c.status_id,
+                    in_category_id      => c.category_id,
+                    in_owner_id         => c.owner_id
+                );
+            END LOOP;
+        END IF;
+
         -- set page items
         core.set_item('P100_CARD_LINK',     '');
         core.set_item('P100_CARDS_LINK',    core.get_page_url(100, in_reset => NULL));
