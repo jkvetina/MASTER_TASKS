@@ -596,7 +596,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 20
+    sequence: 30
     region: ITEMS # 34569381861312888
     position: BODY
 
@@ -604,8 +604,12 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 20
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = 'Y'
+          THEN 0
+          ELSE 6 END
     used: Only when current value in session state is null
 
   session-state: 
@@ -619,6 +623,45 @@ page-items:
 
   comments: 
     comments: Interval in seconds to fire AJAX_PING process
+
+- # ====== Page Item: P0_SESSION_TIMEOUT_URL ===================
+  id: 37724466334953109
+  identification: 
+    name: P0_SESSION_TIMEOUT_URL
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: ITEMS # 34569381861312888
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      APEX_PAGE.GET_URL (
+          p_application   => 800,
+          p_page          => 9999,
+          p_session       => 0,
+          p_items         => 'P9999_ERROR',
+          p_values        => 'SESSION_TIMEOUT'
+      )
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
 
 dynamic-actions: 
 - # ====== Dynamic Action: DIALOG_CLOSED =======================
