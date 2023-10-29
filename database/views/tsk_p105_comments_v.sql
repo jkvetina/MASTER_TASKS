@@ -34,23 +34,17 @@ SELECT
     --
     --'u-color-' || ORA_HASH(c.updated_by, 45) AS icon_modifier,
     CASE WHEN c.updated_by = x.user_id
-        THEN 'u-color-5'
-        ELSE 'u-color-6'
+        THEN ''
         END AS icon_modifier,
     --
-    APEX_STRING.GET_INITIALS(c.updated_by)  AS user_icon,
+    app.get_user_first_name(c.updated_by)   AS user_icon,
+    app.get_user_name(c.updated_by)         AS user_name,
     --
-    CASE WHEN c.updated_by = x.user_id
-        THEN NULL
-        ELSE INITCAP(c.updated_by)
-        END AS user_name
+    ROW_NUMBER() OVER (ORDER BY c.card_id, c.comment_id DESC) AS order#
     --
 FROM tsk_card_comments c
 JOIN x
-    ON x.card_id = c.card_id
-ORDER BY
-    c.card_id,
-    c.comment_id DESC;
+    ON x.card_id = c.card_id;
 --
 COMMENT ON TABLE tsk_p105_comments_v IS '';
 

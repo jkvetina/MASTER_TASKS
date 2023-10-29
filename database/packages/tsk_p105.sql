@@ -290,24 +290,28 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
 
 
 
-    PROCEDURE ajax_delete_comment
+    PROCEDURE delete_comment (
+        in_card_id          tsk_card_comments.card_id%TYPE,
+        in_comment_id       tsk_card_comments.comment_id%TYPE
+    )
     AS
         rec                 tsk_card_comments%ROWTYPE;
     BEGIN
-        rec.card_id         := APEX_APPLICATION.G_X01;
-        rec.comment_id      := APEX_APPLICATION.G_X02;
+        BEGIN
+            SELECT * INTO rec
+            FROM tsk_card_comments c
+            WHERE c.card_id         = in_card_id
+                AND c.comment_id    = in_comment_id;
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RETURN;
+        END;
         --
-        IF rec.card_id IS NOT NULL AND rec.comment_id IS NOT NULL THEN
-            tsk_tapi.card_comments (rec,
-                in_action               => 'D',
-                in_card_id              => rec.card_id,
-                in_comment_id           => rec.comment_id
-            );
-            --
-            IF SQL%ROWCOUNT = 1 THEN
-                HTP.P('Comment deleted');
-            END IF;
-        END IF;
+        tsk_tapi.card_comments (rec,
+            in_action       => 'D',
+            in_card_id      => rec.card_id,
+            in_comment_id   => rec.comment_id
+        );
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

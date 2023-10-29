@@ -48,6 +48,8 @@ javascript:
                     else {
                         apex.message.showPageSuccess(pData);
                     }
+                    //
+                    apex.region('COMMENTS').refresh();
                 }
             }
         );
@@ -109,6 +111,30 @@ css:
     .t-Form-itemWrapper .display_only.apex-item-display-only {
         border: 0;
         color: #555;
+    }
+    
+    
+    
+    /* ADJUST COMMENT BUBBLES */
+    .t-Comments-icon {
+        flex-grow           : 0;
+        padding             : 0;
+    }
+    .t-Comments-userIcon {
+        width               : auto;
+        padding             : 0;
+        margin              : 0;
+        background          : transparent;
+        color               : #222;
+        line-height         : 1.8rem;
+        text-transform      : none;
+        text-align          : left;
+        font-family         : 'Roboto Slab';
+        font-size           : 0.9rem;
+        font-weight         : 400;
+    }
+    .t-Comments-comment {
+        font-family         : 'Roboto Slab';
     }
     
     
@@ -522,11 +548,13 @@ regions:
           <div class="WRAPPER">
               <div class="TRIANGLE"></div>
               <ul role="menu">
+                  <li><a tabindex="-1" href="javascript:{ apex.submit({request:''MOVE_TO_TOP''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>
                   <li><a tabindex="-1" href="javascript:{ $.event.trigger(''DELETE_CARD''); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>
                   <li><a tabindex="-1" href="#"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>
                   <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>
                   <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>
-                  <li><a tabindex="-1" href="#"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>
+                  <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''P105_CARD_LINK'').getValue());
+      show_success(''Link copied to the clipboard''); }"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>
               </ul>
           </div>
       </div>';
@@ -663,10 +691,12 @@ regions:
     table-name: TSK_P105_COMMENTS_V
     include-rowid-column: false
     where-clause: 'card_id = :P105_CARD_ID'
+    page-items-to-submit: 
+    - P105_CARD_ID
 
   order-by: 
     type: Static Value
-    order-by-clause: COMMENT_ID DESC
+    order-by-clause: ORDER#
 
   layout: 
     sequence: 10
@@ -787,7 +817,7 @@ regions:
       value-identifies-row: false
 
     link: 
-      target: "javascript: { delete_comment('#CARD_ID#', '#COMMENT_ID#'); $('#UPDATE_ONLY').click(); }"
+      target: "javascript: { $.event.trigger('DELETE_COMMENT', {card_id:#CARD_ID#, comment_id:#COMMENT_ID#}); }"
       link-text: '#ACTIONS#'
 
     sorting: 
@@ -1137,6 +1167,38 @@ regions:
 
     layout: 
       sequence: 10
+      column-alignment: end
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ORDER# ======================================
+    id: 37725627150953121
+    identification: 
+      column-name: ORDER#
+      type: Plain Text
+
+    heading: 
+      heading: Order#
+      alignment: end
+
+    layout: 
+      sequence: 140
       column-alignment: end
 
     accessibility: 
@@ -2306,6 +2368,96 @@ page-items:
   layout: 
     sequence: 40
     region: '&P105_HEADER.' # 108316517171408030
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_COMMENT =============================
+  id: 37724577978953110
+  identification: 
+    name: P105_COMMENT
+    type: Textarea
+
+  label: 
+    label: Comment
+    alignment: Left
+
+  settings: 
+    resizable: true
+    auto-height: true
+    character-counter: true
+    trim-spaces: Leading and Trailing
+
+  layout: 
+    sequence: 20
+    region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 34018942203153820
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+    height: 5
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    custom-attributes: 
+    - 'style="margin-bottom:'
+    - 1rem;"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_COMMENT_ID ==========================
+  id: 37725346328953118
+  identification: 
+    name: P105_COMMENT_ID
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 10
+    region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
     position: BODY
 
   advanced: 
@@ -3497,10 +3649,10 @@ buttons:
   id: 25256870991844563
   identification: 
     button-name: UPDATE_CARD
-    label: Update Card
+    label: and Close
 
   layout: 
-    sequence: 30
+    sequence: 40
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3510,10 +3662,12 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
-    hot: true
+    button-template: Text with Icon # 34021523429153827
+    hot: false
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-save
 
   behavior: 
     action: Submit Page
@@ -3535,7 +3689,7 @@ buttons:
     label: Move Card to Top
 
   layout: 
-    sequence: 40
+    sequence: 60
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3560,6 +3714,9 @@ buttons:
   server-side-condition: 
     type: Item is NOT NULL
     item: P105_CARD_ID
+
+  configuration: 
+    build-option: NEVER # 33790501555120051
 
 - # ====== Button: SPLIT_CARD ==================================
   id: 25258087987844564
@@ -3667,7 +3824,7 @@ buttons:
     label: Delete Card
 
   layout: 
-    sequence: 70
+    sequence: 80
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3709,7 +3866,7 @@ buttons:
     label: Copy link to clipboard
 
   layout: 
-    sequence: 80
+    sequence: 90
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3838,10 +3995,10 @@ buttons:
   id: 26839989070020938
   identification: 
     button-name: UPDATE_AND_REFRESH
-    label: Save Changes and Refresh
+    label: Save Changes
 
   layout: 
-    sequence: 50
+    sequence: 30
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -3851,11 +4008,12 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
+    button-template: Text with Icon # 34021523429153827
+    hot: true
     template-options: 
     - '#DEFAULT#'
-    icon: fa-refresh
+    - t-Button--iconLeft
+    icon: fa-save
 
   behavior: 
     action: Defined by Dynamic Action
@@ -3873,7 +4031,7 @@ buttons:
     label: More Actions
 
   layout: 
-    sequence: 60
+    sequence: 50
     region: '&P105_HEADER.' # 108316517171408030
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -4191,6 +4349,127 @@ dynamic-actions:
       stop-execution-on-error: true
       wait-for-result: true
 
+- # ====== Dynamic Action: DELETE_COMMENT ======================
+  id: 37724614808953111
+  identification: 
+    name: DELETE_COMMENT
+
+  execution: 
+    sequence: 100
+
+  when: 
+    event: EVENT.EVENT.CUSTOM.CUSTOM
+    custom-event: DELETE_COMMENT
+    selection-type: JavaScript Expression
+    javascript-expression: document
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 37724899026953113
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        tsk_p105.delete_comment (
+            in_card_id      => :P105_CARD_ID,
+            in_comment_id   => :P105_COMMENT_ID
+        );
+      items-to-submit: 
+      - P105_CARD_ID
+      - P105_COMMENT_ID
+
+    execution: 
+      sequence: 40
+      event: DELETE_COMMENT # 37724614808953111
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Set Value ===================================
+    id: 37725058292953115
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: this.data.comment_id
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P105_COMMENT_ID
+
+    execution: 
+      sequence: 20
+      event: DELETE_COMMENT # 37724614808953111
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Refresh =====================================
+    id: 37725102328953116
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Comments [REPORT] # 89273038734478146
+
+    execution: 
+      sequence: 60
+      event: DELETE_COMMENT # 37724614808953111
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Set Value ===================================
+    id: 37725223349953117
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: this.data.card_id
+      suppress-change-event: true
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P105_CARD_ID
+
+    execution: 
+      sequence: 10
+      event: DELETE_COMMENT # 37724614808953111
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+    server-side-condition: 
+      type: Never
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 37725481529953119
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: show_message(apex.item('P105_COMMENT_MESSAGE').getValue());
+
+    execution: 
+      sequence: 50
+      event: DELETE_COMMENT # 37724614808953111
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 computations: 
 - # ====== Computation: P105_CATEGORY_JSON =====================
   id: 27231876014725506
@@ -4340,19 +4619,21 @@ processes:
   id: 25266663264844588
   identification: 
     name: AJAX_DELETE_COMMENT
-    type: Invoke API
+    type: Execute Code
     execution-chain: None
 
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_P105
-    procedure-or-function: AJAX_DELETE_COMMENT
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: tsk_p105.ajax_delete_comment();
 
   execution: 
     sequence: 10
     point: Ajax Callback
     run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Comment deleted
 
 - # ====== Process: SAVE_SPLIT_CHECKLIST =======================
   id: 25267021327844588

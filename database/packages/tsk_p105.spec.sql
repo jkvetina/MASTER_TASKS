@@ -29,7 +29,10 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
 
 
 
-    PROCEDURE ajax_delete_comment;
+    PROCEDURE delete_comment (
+        in_card_id          tsk_card_comments.card_id%TYPE,
+        in_comment_id       tsk_card_comments.comment_id%TYPE
+    );
 
 
 
