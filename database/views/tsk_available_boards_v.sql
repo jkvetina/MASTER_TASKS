@@ -21,13 +21,13 @@ SELECT
     b.is_active,
     b.is_default,
     --
-    LPAD(b.order#, 4, '0') AS order#,
-    --
     CASE WHEN f.board_id IS NOT NULL THEN 'Y' END AS is_favorite,
     --
     CASE WHEN b.client_id   = x.client_id                                   THEN 'Y' END AS is_current_client,
     CASE WHEN b.client_id   = x.client_id AND b.project_id = x.project_id   THEN 'Y' END AS is_current_project,
-    CASE WHEN b.client_id   = x.client_id AND b.board_id    = x.board_id    THEN 'Y' END AS is_current
+    CASE WHEN b.client_id   = x.client_id AND b.board_id    = x.board_id    THEN 'Y' END AS is_current,
+    --
+    LPAD(ROW_NUMBER() OVER (PARTITION BY b.project_id ORDER BY b.order#, b.board_name), 4, '0') AS order#
     --
 FROM tsk_available_projects_v a
 CROSS JOIN x

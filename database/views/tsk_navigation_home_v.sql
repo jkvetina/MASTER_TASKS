@@ -80,7 +80,7 @@ filter_data AS (
         --
         ' class="NAV_L4' || CASE WHEN b.is_current = 'Y' THEN ' ACTIVE' END || '"' AS attribute10,
         --
-        x.endpoint || '/0/' || b.client_id || '/' || b.project_id || '/' || b.board_id AS order#
+        x.endpoint || '/0/' || b.client_id || '/' || b.project_id || '/' || b.order# AS order#
         --
     FROM tsk_available_boards_v b
     CROSS JOIN x
@@ -107,7 +107,8 @@ filter_data AS (
         b.project_name,
         b.board_id,
         b.board_name,
-        b.is_current
+        b.is_current,
+        b.order#
 )
 SELECT
     2 AS lvl,
