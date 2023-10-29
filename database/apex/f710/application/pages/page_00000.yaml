@@ -641,7 +641,7 @@ page-items:
 
   source: 
     type: Static Value
-    static-value: 3
+    static-value: 20
     used: Only when current value in session state is null
 
   session-state: 

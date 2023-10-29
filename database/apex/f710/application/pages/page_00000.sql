@@ -211,7 +211,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_AJAX_PING_INTERVAL'
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
-,p_source=>'3'
+,p_source=>'20'
 ,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'

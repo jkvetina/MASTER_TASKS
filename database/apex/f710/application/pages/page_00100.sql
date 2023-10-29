@@ -18,6 +18,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Card Crunchers'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
+,p_page_css_classes=>'MULTICOLUMN'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_protection_level=>'C'
@@ -1085,15 +1086,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(83932226906589036)
-,p_name=>'P100_CARD_LINK'
-,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
 wwv_flow_imp.component_end;
 end;
 /
@@ -1105,6 +1097,15 @@ wwv_flow_imp.component_begin (
 ,p_default_application_id=>710
 ,p_default_id_offset=>19878674458876767
 ,p_default_owner=>'APPS'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(83932226906589036)
+,p_name=>'P100_CARD_LINK'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(84044013145168999)
