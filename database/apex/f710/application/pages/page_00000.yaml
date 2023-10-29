@@ -223,9 +223,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
-
 - # ====== Page Item: P0_CLIENT_NAME ===========================
   id: 23266918615120049
   identification: 
@@ -255,9 +252,6 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
-
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_PROJECT_ID ============================
   id: 23267008283120050
@@ -289,9 +283,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
-
 - # ====== Page Item: P0_BOARD_ID ==============================
   id: 23517052206581601
   identification: 
@@ -321,9 +312,6 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
-
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_PROJECT_NAME ==========================
   id: 23517110906581602
@@ -355,9 +343,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
-
 - # ====== Page Item: P0_BOARD_NAME ============================
   id: 23517261622581603
   identification: 
@@ -387,9 +372,6 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
-
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_SWIMLANES =============================
   id: 23517310108581604
@@ -421,9 +403,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
-
 - # ====== Page Item: P0_OWNERS ================================
   id: 23517486092581605
   identification: 
@@ -453,9 +432,6 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
-
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_SUCCESS_MESSAGE =======================
   id: 27418598780258603
@@ -520,9 +496,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
-
 - # ====== Page Item: P0_OWNER_ID ==============================
   id: 28271320355994346
   identification: 
@@ -552,9 +525,6 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
-
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_STATUS_ID =============================
   id: 28271422608994347
@@ -586,9 +556,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
-
 - # ====== Page Item: P0_CATEGORY_ID ===========================
   id: 28271508347994348
   identification: 
@@ -618,9 +585,6 @@ page-items:
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
-
-  comments: 
-    comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_AJAX_PING_INTERVAL ====================
   id: 34569222036312886
