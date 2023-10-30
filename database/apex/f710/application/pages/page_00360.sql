@@ -20,6 +20,7 @@ wwv_flow_imp_page.create_page(
 ,p_group_id=>wwv_flow_imp.id(78006013489194627)  -- 3) PROJECTS
 ,p_page_css_classes=>'MULTICOLUMN'
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_protection_level=>'C'
 ,p_page_component_map=>'11'
 ,p_last_updated_by=>'DEV'
