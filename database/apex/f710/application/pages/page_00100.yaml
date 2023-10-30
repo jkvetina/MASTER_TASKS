@@ -1807,9 +1807,18 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:110:&SESSION.::&DEBUG.:110::'
+      url: 'f?p=&APP_ID.:110:&SESSION.::&DEBUG.:110:P110_SOURCE_SWIMLANE,P110_SOURCE_STATUS,P110_SOURCE_CATEGORY,P110_SOURCE_OWNER,P110_SWIMLANE_ID,P110_STATUS_ID,P110_CATEGORY_ID,P110_OWNER_ID:&P0_SWIMLANE_ID.,&P0_STATUS_ID.,&P0_CATEGORY_ID.,&P0_OWNER_ID.,&P0_SWIMLANE_ID.,&P0_STATUS_ID.,&P0_CATEGORY_ID.,&P0_OWNER_ID.'
       page: 110 # Bulk Operations
       clear-cache: 110
+      values: 
+        p110_source_swimlane: '&P0_SWIMLANE_ID.'
+        p110_source_status: '&P0_STATUS_ID.'
+        p110_source_category: '&P0_CATEGORY_ID.'
+        p110_source_owner: '&P0_OWNER_ID.'
+        p110_swimlane_id: '&P0_SWIMLANE_ID.'
+        p110_status_id: '&P0_STATUS_ID.'
+        p110_category_id: '&P0_CATEGORY_ID.'
+        p110_owner_id: '&P0_OWNER_ID.'
 
     warn-on-unsaved-changes: Do Not Check
 
