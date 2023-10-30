@@ -82,6 +82,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         core.set_item('P105_AUDIT',         TO_CHAR(rec.updated_at, 'YYYY-MM-DD HH24:MI') || ' ' || rec.updated_by);
         core.set_item('P105_TAGS',          LTRIM(RTRIM(REPLACE(rec.tags, ':', ' '))));
 
+        -- merge target
+        core.set_item('P105_MERGE_URL',     APEX_PAGE.GET_URL (
+            p_page      => 108,
+            p_items     => 'P108_CARD_ID',
+            p_values    => rec.card_id
+        ));
+
         -- calculate page header
         core.set_item('P105_HEADER', CASE WHEN rec.card_id IS NOT NULL THEN 'Update Card ' || NVL(rec.card_number, tsk_p100.c_card_prefix || rec.card_id) ELSE core.get_page_name(105) END);
     EXCEPTION

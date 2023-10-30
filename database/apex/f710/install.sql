@@ -47,6 +47,7 @@ prompt --install
 @@application/shared_components/navigation/tabs/parent.sql
 @@application/shared_components/user_interface/lovs/lov_boards.sql
 @@application/shared_components/user_interface/lovs/lov_boards_bulk.sql
+@@application/shared_components/user_interface/lovs/lov_card_autocomplete.sql
 @@application/shared_components/user_interface/lovs/lov_categories.sql
 @@application/shared_components/user_interface/lovs/lov_categories_bulk.sql
 @@application/shared_components/user_interface/lovs/lov_clients.sql
@@ -158,6 +159,7 @@ prompt --install
 @@application/pages/page_00000.sql
 @@application/pages/page_00100.sql
 @@application/pages/page_00105.sql
+@@application/pages/page_00108.sql
 @@application/pages/page_00110.sql
 @@application/pages/page_00200.sql
 @@application/pages/page_00210.sql

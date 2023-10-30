@@ -304,3 +304,20 @@
     group: GROUP_NAME
     group-sort-direction: Ascending (Nulls Last)
 
+- # ====== List of Values: LOV_CARD_AUTOCOMPLETE ===============
+  id: 38338004600974250
+  identification: 
+    name: LOV_CARD_AUTOCOMPLETE
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_CARD_AUTOCOMPLETE_V
+
+  column-mapping: 
+    return: CARD_ID
+    display: CARD_NAME
+    default-sort: CARD_NAME
+    sort-direction: Ascending (Nulls Last)
+

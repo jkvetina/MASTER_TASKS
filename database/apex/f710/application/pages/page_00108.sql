@@ -1,0 +1,186 @@
+prompt --application/pages/page_00108
+begin
+--   Manifest
+--     PAGE: 00108
+--   Manifest End
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
+wwv_flow_imp_page.create_page(
+ p_id=>108
+,p_name=>'Merge with Card'
+,p_alias=>'MERGE-CARD'
+,p_page_mode=>'MODAL'
+,p_step_title=>'Merge with Card'
+,p_first_item=>'AUTO_FIRST_ITEM'
+,p_autocomplete_on_off=>'OFF'
+,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
+,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
+,p_dialog_height=>'480'
+,p_dialog_width=>'640'
+,p_dialog_chained=>'N'
+,p_protection_level=>'C'
+,p_page_component_map=>'17'
+,p_last_updated_by=>'DEV'
+,p_last_upd_yyyymmddhh24miss=>'20220101000000'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(150242513538329562)
+,p_plug_name=>'[FORM]'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(33881254928153735)
+,p_plug_display_sequence=>30
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(214346272355845118)
+,p_plug_name=>'Merge #&P108_CARD_ID. into Card'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(33914493478153754)
+,p_plug_display_sequence=>10
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(38333011647974206)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(150242513538329562)
+,p_button_name=>'MERGE_CARD'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34021473197153827)
+,p_button_is_hot=>'Y'
+,p_button_image_alt=>'Merge Card'
+,p_button_position=>'NEXT'
+,p_button_condition=>'P108_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
+,p_button_css_classes=>'u-pullRight'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(38334106406974217)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(214346272355845118)
+,p_button_name=>'CLOSE_DIALOG'
+,p_button_static_id=>'CLOSE_DIALOG'
+,p_button_action=>'DEFINED_BY_DA'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'Close Dialog'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_execute_validations=>'N'
+,p_warn_on_unsaved_changes=>null
+,p_button_css_classes=>'u-pullRight'
+,p_icon_css_classes=>'fa-times'
+);
+wwv_flow_imp_page.create_page_branch(
+ p_id=>wwv_flow_imp.id(38337721037974245)
+,p_branch_name=>'REDIRECT_TO_NEW_CARD'
+,p_branch_action=>'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P108_TARGET_TASK_ID.&success_msg=#SUCCESS_MSG#'
+,p_branch_point=>'AFTER_PROCESSING'
+,p_branch_type=>'REDIRECT_URL'
+,p_branch_sequence=>10
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(105947347138320070)
+,p_name=>'P108_TARGET_CARD_ID'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(150242513538329562)
+,p_prompt=>'Target Card'
+,p_display_as=>'NATIVE_POPUP_LOV'
+,p_named_lov=>'LOV_CARD_AUTOCOMPLETE'
+,p_lov_display_null=>'YES'
+,p_lov_cascade_parent_items=>'P108_BOARD_ID'
+,p_ajax_items_to_submit=>'P108_CLIENT_ID,P108_PROJECT_ID,P108_BOARD_ID'
+,p_ajax_optimize_refresh=>'Y'
+,p_cSize=>30
+,p_field_template=>wwv_flow_imp.id(34018942203153820)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'YES'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'POPUP'
+,p_attribute_02=>'FIRST_ROWSET_FILTER'
+,p_attribute_03=>'N'
+,p_attribute_04=>'N'
+,p_attribute_05=>'Y'
+,p_attribute_06=>'0'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(105948336533320079)
+,p_name=>'P108_CARD_ID'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(214346272355845118)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(106566239426205280)
+,p_name=>'P108_CLIENT_ID'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(214346272355845118)
+,p_item_default=>'tsk_app.get_client_id()'
+,p_item_default_type=>'EXPRESSION'
+,p_item_default_language=>'PLSQL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(106566388398205281)
+,p_name=>'P108_PROJECT_ID'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(214346272355845118)
+,p_item_default=>'tsk_app.get_project_id()'
+,p_item_default_type=>'EXPRESSION'
+,p_item_default_language=>'PLSQL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(106566423358205282)
+,p_name=>'P108_BOARD_ID'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(214346272355845118)
+,p_item_default=>'tsk_app.get_board_id()'
+,p_item_default_type=>'EXPRESSION'
+,p_item_default_language=>'PLSQL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(38335919310974239)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_INVOKE_API'
+,p_process_name=>'MERGE_CARDS'
+,p_attribute_01=>'PLSQL_PACKAGE'
+,p_attribute_03=>'TSK_P105'
+,p_attribute_04=>'SAVE_MERGE_CHECKLIST'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(38333011647974206)
+,p_internal_uid=>38335919310974239
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(38336396389974241)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_CLOSE_WINDOW'
+,p_process_name=>'CLOSE_DIALOG'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_internal_uid=>38336396389974241
+);
+wwv_flow_imp.component_end;
+end;
+/

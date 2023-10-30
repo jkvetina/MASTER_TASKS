@@ -551,8 +551,8 @@ regions:
                   <li><a tabindex="-1" href="javascript:{ apex.submit({request:''MOVE_TO_TOP''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>
                   <li><a tabindex="-1" href="javascript:{ $.event.trigger(''DELETE_CARD''); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>
                   <li><a tabindex="-1" href="#"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>
-                  <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''Do you want to move unchecked items to the new task?'', {request:''SPLIT_CARD''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card</a></li>
-                  <li><a tabindex="-1" href="#"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>
+                  <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''Do you want to move unchecked items to the new task?'', {request:''SPLIT_CARD''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card by Checklist</a></li>
+                  <li><a tabindex="-1" href="javascript:{ apex.navigation.redirect(apex.item(''P105_MERGE_URL'').getValue()); }"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>
                   <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''P105_CARD_LINK'').getValue());
       show_success(''Link copied to the clipboard''); }"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>
               </ul>
@@ -2476,6 +2476,36 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P105_MERGE_URL ===========================
+  id: 37725762817953122
+  identification: 
+    name: P105_MERGE_URL
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 130
+    region: '&P105_HEADER.' # 108316517171408030
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P105_CARD_NAME ===========================
   id: 79916493298307144
   identification: 
@@ -3202,36 +3232,6 @@ page-items:
     session-state-protection: Unrestricted
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_SHOW_SPLIT ==========================
-  id: 90417138787021458
-  identification: 
-    name: P105_SHOW_SPLIT
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 130
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P105_UPDATED_AT ==========================
   id: 91013637748105144
   identification: 
@@ -3552,34 +3552,6 @@ page-items:
     restricted-characters: All characters can be saved.
 
 buttons: 
-- # ====== Button: ADD_COMMENT =================================
-  id: 25065437466730034
-  identification: 
-    button-name: ADD_COMMENT
-    label: Add Comment
-
-  layout: 
-    sequence: 10
-    region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-plus
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-
 - # ====== Button: CREATE_ANOTHER ==============================
   id: 25256044784844563
   identification: 
@@ -3714,105 +3686,6 @@ buttons:
   server-side-condition: 
     type: Item is NOT NULL
     item: P105_CARD_ID
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Button: SPLIT_CARD ==================================
-  id: 25258087987844564
-  identification: 
-    button-name: SPLIT_CARD
-    label: Split Card
-
-  layout: 
-    sequence: 20
-    region: Checklist [GRID] # 91363554227871261
-    position: NEXT
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    css-classes: 
-    - u-pullRight
-    icon: fa-accessor-more
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-
-  confirmation: 
-    message: Do you want to move unchecked items to the new card?
-    style: Default
-
-  advanced: 
-    custom-attributes: 
-    - 'style="margin-top:'
-    - 1rem
-    - '!important;"'
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_SHOW_SPLIT
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Button: JOIN_CARD ===================================
-  id: 25258454823844564
-  identification: 
-    button-name: JOIN_CARD
-    label: Join Card
-
-  layout: 
-    sequence: 10
-    region: Checklist [GRID] # 91363554227871261
-    position: NEXT
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    css-classes: 
-    - u-pullRight
-    icon: fa-accessor-more fa-flip-horizontal
-
-  behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:108:&SESSION.::&DEBUG.:108:P108_CARD_ID:&P105_CARD_ID.'
-      page: 108
-      clear-cache: 108
-      values: 
-        p108_card_id: '&P105_CARD_ID.'
-
-    warn-on-unsaved-changes: Do Not Check
-
-  advanced: 
-    custom-attributes: 
-    - 'style="margin:'
-    - 1rem
-    - 0.5rem
-    - 0
-    - 0
-    - '!important;"'
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_SHOW_SPLIT
 
   configuration: 
     build-option: NEVER # 33790501555120051
@@ -4135,35 +4008,6 @@ dynamic-actions:
     execution: 
       sequence: 10
       event: COPY_TO_CLIPBOARD # 25269548550844592
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CLOSE_DIALOG_ON_JOIN ================
-  id: 25270477386844593
-  identification: 
-    name: CLOSE_DIALOG_ON_JOIN
-
-  execution: 
-    sequence: 40
-
-  when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
-    selection-type: Button
-    button: JOIN_CARD # 25258454823844564
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Close Dialog ================================
-    id: 25270987045844593
-    identification: 
-      action: Close Dialog
-
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG_ON_JOIN # 25270477386844593
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -4615,25 +4459,9 @@ processes:
   error: 
     display-location: Inline in Notification
 
-- # ====== Process: AJAX_DELETE_COMMENT ========================
-  id: 25266663264844588
-  identification: 
-    name: AJAX_DELETE_COMMENT
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: tsk_p105.ajax_delete_comment();
-
-  execution: 
-    sequence: 10
-    point: Ajax Callback
-    run-process: Once Per Page Visit (default)
-
-  success-message: 
-    success-message: Comment deleted
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P105_COMMENT
 
 - # ====== Process: SAVE_SPLIT_CHECKLIST =======================
   id: 25267021327844588
@@ -4657,7 +4485,8 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SPLIT_CARD # 25258087987844564
+    type: Request = Value
+    value: SPLIT_CARD
 
 - # ====== Process: SAVE_ATTACHEMENTS ==========================
   id: 25267470295844588
@@ -4706,7 +4535,8 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: MOVE_TO_TOP # 25257614657844564
+    type: Request = Value
+    value: MOVE_TO_TOP
 
 - # ====== Process: CLOSE_DIALOG_MOVE_TO_TOP ===================
   id: 25268238551844589
@@ -4727,7 +4557,8 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: MOVE_TO_TOP # 25257614657844564
+    type: Request = Value
+    value: MOVE_TO_TOP
 
 branches: 
 - # ====== Branch: CREATE_ANOTHER ==============================
@@ -4812,7 +4643,8 @@ branches:
         p105_card_id: '&P105_CARD_ID.'
 
   server-side-condition: 
-    when-button-pressed: SPLIT_CARD # 25258087987844564
+    type: Request = Value
+    value: SPLIT_CARD
 
 - # ====== Branch: GOTO_CARDS_ON_AUTH_FAIL =====================
   id: 26394256764631603
