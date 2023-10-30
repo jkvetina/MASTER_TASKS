@@ -71,12 +71,12 @@ SELECT
     --
     LAG(t.card_id) OVER (
         PARTITION BY t.client_id, t.project_id, t.board_id
-        ORDER BY w.order# NULLS LAST, s.order# NULLS LAST, t.order# NULLS LAST
+        ORDER BY w.order# NULLS LAST, s.order# NULLS LAST, t.order# NULLS LAST, t.card_id
     ) AS prev_card,
     --
     LEAD(t.card_id) OVER (
         PARTITION BY t.client_id, t.project_id, t.board_id
-        ORDER BY w.order# NULLS LAST, s.order# NULLS LAST, t.order# NULLS LAST
+        ORDER BY w.order# NULLS LAST, s.order# NULLS LAST, t.order# NULLS LAST, t.card_id
     ) AS next_card,
     --
     w.order#            AS swimlane_order#,
