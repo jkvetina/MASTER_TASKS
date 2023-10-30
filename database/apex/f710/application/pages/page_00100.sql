@@ -1047,6 +1047,8 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
 ,p_button_image_alt=>'Bookmark Current'
 ,p_button_position=>'UP'
+,p_button_condition=>'P0_BOARD_ID'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 ,p_icon_css_classes=>'&P100_BOOKMARK_ICON.'
 );
 wwv_flow_imp_page.create_page_item(

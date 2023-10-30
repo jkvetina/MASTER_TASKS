@@ -1777,6 +1777,10 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P0_BOARD_ID
+
 - # ====== Button: BULK_OPERATIONS =============================
   id: 27419646379258614
   identification: 
