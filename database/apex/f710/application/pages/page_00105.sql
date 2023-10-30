@@ -1897,6 +1897,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_03=>'TSK_P105'
 ,p_attribute_04=>'SAVE_CARD'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25252582106844557
 );
 wwv_flow_imp_page.create_page_process(

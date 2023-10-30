@@ -4286,6 +4286,9 @@ processes:
     point: Processing
     run-process: Once Per Page Visit (default)
 
+  success-message: 
+    success-message: '&P0_SUCCESS_MESSAGE.'
+
   error: 
     display-location: Inline in Notification
 

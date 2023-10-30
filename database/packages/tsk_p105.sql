@@ -161,33 +161,36 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             move_card_to_top (
                 in_card_id => rec.card_id
             );
-        END IF;
-        --
-        IF in_request LIKE 'DUPLICATE_CARD%' THEN
+            --
+            app.set_success_message('Card ' || NVL(rec.card_number, '#' || rec.card_id) || ' moved to the top.');
+            --
+        ELSIF in_request LIKE 'DUPLICATE_CARD%' THEN
             rec.card_id := duplicate_card (
                 in_card_id => rec.card_id
             );
-        END IF;
-        --
-        IF in_request LIKE 'SPLIT_CARD%' THEN
+            --
+            app.set_success_message('Card ' || NVL(rec.card_number, '#' || rec.card_id) || ' duplicated.');
+            --
+        ELSIF in_request LIKE 'SPLIT_CARD%' THEN
             rec.card_id := split_checklist (
                 in_card_id => rec.card_id
             );
-        END IF;
-        --
-        IF in_request LIKE 'MERGE_CARD%' THEN
+            --
+            app.set_success_message('Card ' || NVL(rec.card_number, '#' || rec.card_id) || ' splited.');
+            --
+        ELSIF in_request LIKE 'MERGE_CARD%' THEN
             merge_checklist (
                 in_source_card_id   => rec.card_id,
                 in_target_card_id   => core.get_number_item('$TARGET_CARD_ID')
             );
-        END IF;
-
-        -- show message
-        core.set_item('P105_CARD_ID', rec.card_id);
-        --
-        IF in_request IS NULL THEN
+            --
+            app.set_success_message('Card ' || NVL(rec.card_number, '#' || rec.card_id) || ' merged.');
+            --
+        ELSE
             app.set_success_message('Card ' || NVL(rec.card_number, '#' || rec.card_id) || ' updated.');
         END IF;
+        --
+        core.set_item('P105_CARD_ID', rec.card_id);
         --
     EXCEPTION
     WHEN core.app_exception THEN
