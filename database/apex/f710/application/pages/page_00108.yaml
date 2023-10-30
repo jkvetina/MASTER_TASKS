@@ -335,6 +335,38 @@ page-items:
     restricted-characters: All characters can be saved.
 
 buttons: 
+- # ====== Button: CLOSE_DIALOG ================================
+  id: 37727198315953136
+  identification: 
+    button-name: CLOSE_DIALOG
+    label: Close Dialog
+
+  layout: 
+    sequence: 20
+    region: 'Merge #&P108_CARD_ID. into Card' # 214346272355845118
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-pullRight
+    icon: fa-times
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+  advanced: 
+    static-id: CLOSE_DIALOG
+
 - # ====== Button: MERGE_CARD ==================================
   id: 38333011647974206
   identification: 
@@ -368,39 +400,26 @@ buttons:
     type: Item is NOT NULL
     item: P108_CARD_ID
 
-- # ====== Button: CLOSE_DIALOG ================================
-  id: 38334106406974217
-  identification: 
-    button-name: CLOSE_DIALOG
-    label: Close Dialog
-
-  layout: 
-    sequence: 10
-    region: 'Merge #&P108_CARD_ID. into Card' # 214346272355845118
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    css-classes: 
-    - u-pullRight
-    icon: fa-times
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: false
-
-  advanced: 
-    static-id: CLOSE_DIALOG
-
 processes: 
+- # ====== Process: CLOSE_DIALOG ===============================
+  id: 37727670125953141
+  identification: 
+    name: CLOSE_DIALOG
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    items-to-return-: 
+    - P108_TARGET_CARD_ID
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
 - # ====== Process: MERGE_CARDS ================================
   id: 38335919310974239
   identification: 
@@ -412,7 +431,7 @@ processes:
     type: PL/SQL Package
     owner: PARSING SCHEMA
     package: TSK_P105
-    procedure-or-function: SAVE_MERGE_CHECKLIST
+    procedure-or-function: MERGE_CHECKLIST
 
   execution: 
     sequence: 10
@@ -425,12 +444,52 @@ processes:
   server-side-condition: 
     when-button-pressed: MERGE_CARD # 38333011647974206
 
-- # ====== Process: CLOSE_DIALOG ===============================
-  id: 38336396389974241
+  parameters: 
+  - # ====== Parameter: in_source_card_id ========================
+    id: 37726285407953127
+    identification: 
+      name: in_source_card_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P108_CARD_ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: in_target_card_id ========================
+    id: 37726344838953128
+    identification: 
+      name: in_target_card_id
+
+    parameter: 
+      direction: In
+      data-type: NUMBER
+      has-default: false
+
+    value: 
+      type: Item
+      item: P108_TARGET_CARD_ID
+
+    advanced: 
+      display-sequence: 20
+
+- # ====== Process: PASS_NEW_ID_TO_PARENT ======================
+  id: 38405557012540103
   identification: 
-    name: CLOSE_DIALOG
-    type: Close Dialog
+    name: PASS_NEW_ID_TO_PARENT
+    type: Execute Code
     execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: ':P108_TARGET_CARD_ID := tsk_nav.get_card_link(:P108_TARGET_CARD_ID);'
 
   execution: 
     sequence: 20
@@ -440,22 +499,6 @@ processes:
   error: 
     display-location: Inline in Notification
 
-branches: 
-- # ====== Branch: REDIRECT_TO_NEW_CARD ========================
-  id: 38337721037974245
-  identification: 
-    name: REDIRECT_TO_NEW_CARD
-
-  execution: 
-    sequence: 10
-    point: After Processing
-
-  behavior: 
-    type: Page or URL (Redirect)
-    target: 
-      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P108_TARGET_TASK_ID.&success_msg=#SUCCESS_MSG#'
-      page: 105 # Card Detail
-      clear-cache: 105
-      values: 
-        p105_task_id: '&P108_TARGET_TASK_ID.'
+  server-side-condition: 
+    when-button-pressed: MERGE_CARD # 38333011647974206
 

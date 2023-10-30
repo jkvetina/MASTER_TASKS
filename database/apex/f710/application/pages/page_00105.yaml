@@ -548,9 +548,9 @@ regions:
           <div class="WRAPPER">
               <div class="TRIANGLE"></div>
               <ul role="menu">
-                  <li><a tabindex="-1" href="javascript:{ apex.submit({request:''MOVE_TO_TOP''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>
-                  <li><a tabindex="-1" href="javascript:{ $.event.trigger(''DELETE_CARD''); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>
-                  <li><a tabindex="-1" href="#"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>
+                  <li><a tabindex="-1" href="javascript:{ apex.submit({request:''MOVE_TO_TOP_AND_CLOSE''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>
+                  <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''Do you really want to delete the card?'', {request:''DELETE_CARD_AND_CLOSE''}); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>
+                  <li><a tabindex="-1" href="javascript:{ apex.submit({request:''DUPLICATE_CARD''}); }"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>
                   <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''Do you want to move unchecked items to the new task?'', {request:''SPLIT_CARD''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card by Checklist</a></li>
                   <li><a tabindex="-1" href="javascript:{ apex.navigation.redirect(apex.item(''P105_MERGE_URL'').getValue()); }"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>
                   <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''P105_CARD_LINK'').getValue());
@@ -2506,6 +2506,36 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P105_MERGE_CARD ==========================
+  id: 37727702289953142
+  identification: 
+    name: P105_MERGE_CARD
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 140
+    region: '&P105_HEADER.' # 108316517171408030
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P105_CARD_NAME ===========================
   id: 79916493298307144
   identification: 
@@ -3585,10 +3615,10 @@ buttons:
     type: Item is NULL
     item: P105_CARD_ID
 
-- # ====== Button: CREATE_CARD =================================
+- # ====== Button: CREATE_CARD_AND_CLOSE =======================
   id: 25256418258844563
   identification: 
-    button-name: CREATE_CARD
+    button-name: CREATE_CARD_AND_CLOSE
     label: Create New Card
 
   layout: 
@@ -3617,10 +3647,10 @@ buttons:
     type: Item is NULL
     item: P105_CARD_ID
 
-- # ====== Button: UPDATE_CARD =================================
+- # ====== Button: UPDATE_CARD_AND_CLOSE =======================
   id: 25256870991844563
   identification: 
-    button-name: UPDATE_CARD
+    button-name: UPDATE_CARD_AND_CLOSE
     label: and Close
 
   layout: 
@@ -3653,120 +3683,6 @@ buttons:
   server-side-condition: 
     type: Item is NOT NULL
     item: P105_CARD_ID
-
-- # ====== Button: MOVE_TO_TOP =================================
-  id: 25257614657844564
-  identification: 
-    button-name: MOVE_TO_TOP
-    label: Move Card to Top
-
-  layout: 
-    sequence: 60
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-page-top
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-    database-action: SQL UPDATE action
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_CARD_ID
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Button: DELETE_CARD =================================
-  id: 25258805949844565
-  identification: 
-    button-name: DELETE_CARD
-    label: Delete Card
-
-  layout: 
-    sequence: 80
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    css-classes: 
-    - DECENT
-    icon: fa-trash-o
-
-  behavior: 
-    action: Submit Page
-    execute-validations: false
-    warn-on-unsaved-changes: Do Not Check
-    database-action: SQL DELETE action
-
-  confirmation: 
-    message: Do you want to delete this card?
-    style: Default
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_CARD_ID
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-- # ====== Button: COPY_LINK ===================================
-  id: 25259296786844565
-  identification: 
-    button-name: COPY_LINK
-    label: Copy link to clipboard
-
-  layout: 
-    sequence: 90
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    css-classes: 
-    - TRANSPARENT
-    icon: fa-copy
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: false
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_CARD_ID
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
 
 - # ====== Button: CLOSE_DIALOG ================================
   id: 25259633374844566
@@ -3976,48 +3892,13 @@ buttons:
     static-id: HELP_BUTTON
 
 dynamic-actions: 
-- # ====== Dynamic Action: COPY_TO_CLIPBOARD ===================
-  id: 25269548550844592
-  identification: 
-    name: COPY_TO_CLIPBOARD
-
-  execution: 
-    sequence: 20
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: COPY_LINK # 25259296786844565
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 25270060251844593
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: |
-        copy_to_clipboard(apex.item('P105_CARD_LINK').getValue());
-        apex.message.showPageSuccess('Link copied to clipboard');
-        
-
-    execution: 
-      sequence: 10
-      event: COPY_TO_CLIPBOARD # 25269548550844592
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
 - # ====== Dynamic Action: UPDATE_AND_REFRESH ==================
   id: 26840185339020940
   identification: 
     name: UPDATE_AND_REFRESH
 
   execution: 
-    sequence: 50
+    sequence: 20
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -4035,9 +3916,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: |
-        apex.submit('submit');
-        
+      code: apex.submit();
 
     execution: 
       sequence: 10
@@ -4051,7 +3930,7 @@ dynamic-actions:
     name: CHANGED_CATEGORY
 
   execution: 
-    sequence: 60
+    sequence: 10
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -4098,7 +3977,7 @@ dynamic-actions:
     name: REQUESTED_STATUS
 
   execution: 
-    sequence: 80
+    sequence: 10
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
@@ -4129,77 +4008,13 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: true
 
-- # ====== Dynamic Action: DELETE_CARD =========================
-  id: 28430249839964231
-  identification: 
-    name: DELETE_CARD
-
-  execution: 
-    sequence: 90
-
-  when: 
-    event: EVENT.EVENT.CUSTOM.CUSTOM
-    custom-event: DELETE_CARD
-    selection-type: JavaScript Expression
-    javascript-expression: document
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Confirm =====================================
-    id: 28430343869964232
-    identification: 
-      action: Confirm
-
-    settings: 
-      message: Are you sure?
-      style: Default
-
-    execution: 
-      sequence: 10
-      event: DELETE_CARD # 28430249839964231
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-  - # ====== Action: Close Dialog ================================
-    id: 28430411702964233
-    identification: 
-      action: Close Dialog
-
-    execution: 
-      sequence: 30
-      event: DELETE_CARD # 28430249839964231
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-  - # ====== Action: Execute Server-side Code ====================
-    id: 28430552725964234
-    identification: 
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: 'tsk_p105.delete_card(in_card_id => :P105_CARD_ID);'
-      items-to-submit: 
-      - P105_CARD_ID
-
-    execution: 
-      sequence: 20
-      event: DELETE_CARD # 28430249839964231
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
 - # ====== Dynamic Action: DELETE_COMMENT ======================
   id: 37724614808953111
   identification: 
     name: DELETE_COMMENT
 
   execution: 
-    sequence: 100
+    sequence: 10
 
   when: 
     event: EVENT.EVENT.CUSTOM.CUSTOM
@@ -4314,6 +4129,84 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+- # ====== Dynamic Action: STACKED_MODAL_CLOSED ================
+  id: 37726458429953129
+  identification: 
+    name: STACKED_MODAL_CLOSED
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: JavaScript Expression
+    javascript-expression: window
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 37726804782953133
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        show_success('Cards merged.');
+        apex.navigation.redirect(apex.item('P105_MERGE_CARD').getValue());
+        
+
+    execution: 
+      sequence: 30
+      event: STACKED_MODAL_CLOSED # 37726458429953129
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    client-side-condition: 
+      type: Item is not null
+      item: P105_MERGE_CARD
+
+  - # ====== Action: Set Value ===================================
+    id: 37728220845953147
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: Dialog Return Item
+      return-item: P108_TARGET_CARD_ID
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P105_MERGE_CARD
+
+    execution: 
+      sequence: 10
+      event: STACKED_MODAL_CLOSED # 37726458429953129
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Refresh =====================================
+    id: 38405400234540102
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P105_MERGE_CARD
+
+    execution: 
+      sequence: 20
+      event: STACKED_MODAL_CLOSED # 37726458429953129
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 computations: 
 - # ====== Computation: P105_CATEGORY_JSON =====================
   id: 27231876014725506
@@ -4396,160 +4289,18 @@ processes:
   error: 
     display-location: Inline in Notification
 
-- # ====== Process: CLOSE_DIALOG_UPDATE ========================
-  id: 25265086706844586
-  identification: 
-    name: CLOSE_DIALOG_UPDATE
-    type: Close Dialog
-    execution-chain: None
-
-  execution: 
-    sequence: 90
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  success-message: 
-    success-message: '&P0_SUCCESS_MESSAGE.'
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: UPDATE_CARD # 25256870991844563
-
-- # ====== Process: CLOSE_DIALOG_CREATE ========================
+- # ====== Process: CLOSE_DIALOG ===============================
   id: 25265822843844587
   identification: 
-    name: CLOSE_DIALOG_CREATE
+    name: CLOSE_DIALOG
     type: Close Dialog
     execution-chain: None
-
-  execution: 
-    sequence: 80
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  success-message: 
-    success-message: '&P0_SUCCESS_MESSAGE.'
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: CREATE_CARD # 25256418258844563
-
-- # ====== Process: SAVE_COMMENT ===============================
-  id: 25266295708844587
-  identification: 
-    name: SAVE_COMMENT
-    type: Invoke API
-    execution-chain: None
-
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_P105
-    procedure-or-function: SAVE_COMMENT
 
   execution: 
     sequence: 30
     point: Processing
     run-process: Once Per Page Visit (default)
 
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_COMMENT
-
-- # ====== Process: SAVE_SPLIT_CHECKLIST =======================
-  id: 25267021327844588
-  identification: 
-    name: SAVE_SPLIT_CHECKLIST
-    type: Invoke API
-    execution-chain: None
-
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_P105
-    procedure-or-function: SAVE_SPLIT_CHECKLIST
-
-  execution: 
-    sequence: 50
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    type: Request = Value
-    value: SPLIT_CARD
-
-- # ====== Process: SAVE_ATTACHEMENTS ==========================
-  id: 25267470295844588
-  identification: 
-    name: SAVE_ATTACHEMENTS
-    type: Invoke API
-    execution-chain: None
-
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_P105
-    procedure-or-function: SAVE_ATTACHEMENTS
-
-  execution: 
-    sequence: 40
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P105_ATTACHED_FILES
-
-- # ====== Process: UPDATE_AND_MOVE_TO_TOP =====================
-  id: 25267841628844588
-  identification: 
-    name: UPDATE_AND_MOVE_TO_TOP
-    type: Invoke API
-    execution-chain: None
-
-  settings: 
-    type: PL/SQL Package
-    owner: PARSING SCHEMA
-    package: TSK_P105
-    procedure-or-function: MOVE_CARD_TO_TOP
-
-  execution: 
-    sequence: 60
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    type: Request = Value
-    value: MOVE_TO_TOP
-
-- # ====== Process: CLOSE_DIALOG_MOVE_TO_TOP ===================
-  id: 25268238551844589
-  identification: 
-    name: CLOSE_DIALOG_MOVE_TO_TOP
-    type: Close Dialog
-    execution-chain: None
-
-  execution: 
-    sequence: 100
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
   success-message: 
     success-message: '&P0_SUCCESS_MESSAGE.'
 
@@ -4557,8 +4308,9 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    type: Request = Value
-    value: MOVE_TO_TOP
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: core.get_request() LIKE '%\_CLOSE' ESCAPE '\'
 
 branches: 
 - # ====== Branch: CREATE_ANOTHER ==============================
@@ -4624,10 +4376,10 @@ branches:
   server-side-condition: 
     when-button-pressed: GOTO_NEXT_CARD # 25260022178844566
 
-- # ====== Branch: GOTO_SPLIT_CARD =============================
+- # ====== Branch: GOTO_NEW_CARD ===============================
   id: 25272614518844596
   identification: 
-    name: GOTO_SPLIT_CARD
+    name: GOTO_NEW_CARD
 
   execution: 
     sequence: 40
@@ -4643,8 +4395,8 @@ branches:
         p105_card_id: '&P105_CARD_ID.'
 
   server-side-condition: 
-    type: Request = Value
-    value: SPLIT_CARD
+    type: Request is contained in Value
+    value: SPLIT_CARD,DUPLICATE_CARD
 
 - # ====== Branch: GOTO_CARDS_ON_AUTH_FAIL =====================
   id: 26394256764631603

@@ -67,8 +67,8 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_css_classes=>'u-pullRight'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(38334106406974217)
-,p_button_sequence=>10
+ p_id=>wwv_flow_imp.id(37727198315953136)
+,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(214346272355845118)
 ,p_button_name=>'CLOSE_DIALOG'
 ,p_button_static_id=>'CLOSE_DIALOG'
@@ -81,14 +81,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'u-pullRight'
 ,p_icon_css_classes=>'fa-times'
-);
-wwv_flow_imp_page.create_page_branch(
- p_id=>wwv_flow_imp.id(38337721037974245)
-,p_branch_name=>'REDIRECT_TO_NEW_CARD'
-,p_branch_action=>'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105:P105_TASK_ID:&P108_TARGET_TASK_ID.&success_msg=#SUCCESS_MSG#'
-,p_branch_point=>'AFTER_PROCESSING'
-,p_branch_type=>'REDIRECT_URL'
-,p_branch_sequence=>10
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(105947347138320070)
@@ -167,19 +159,56 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'MERGE_CARDS'
 ,p_attribute_01=>'PLSQL_PACKAGE'
 ,p_attribute_03=>'TSK_P105'
-,p_attribute_04=>'SAVE_MERGE_CHECKLIST'
+,p_attribute_04=>'MERGE_CHECKLIST'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(38333011647974206)
 ,p_internal_uid=>38335919310974239
 );
+wwv_flow_imp_shared.create_invokeapi_comp_param(
+ p_id=>wwv_flow_imp.id(37726285407953127)
+,p_page_process_id=>wwv_flow_imp.id(38335919310974239)
+,p_page_id=>108
+,p_name=>'in_source_card_id'
+,p_direction=>'IN'
+,p_data_type=>'NUMBER'
+,p_has_default=>false
+,p_display_sequence=>10
+,p_value_type=>'ITEM'
+,p_value=>'P108_CARD_ID'
+);
+wwv_flow_imp_shared.create_invokeapi_comp_param(
+ p_id=>wwv_flow_imp.id(37726344838953128)
+,p_page_process_id=>wwv_flow_imp.id(38335919310974239)
+,p_page_id=>108
+,p_name=>'in_target_card_id'
+,p_direction=>'IN'
+,p_data_type=>'NUMBER'
+,p_has_default=>false
+,p_display_sequence=>20
+,p_value_type=>'ITEM'
+,p_value=>'P108_TARGET_CARD_ID'
+);
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(38336396389974241)
+ p_id=>wwv_flow_imp.id(38405557012540103)
 ,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'PASS_NEW_ID_TO_PARENT'
+,p_process_sql_clob=>':P108_TARGET_CARD_ID := tsk_nav.get_card_link(:P108_TARGET_CARD_ID);'
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(38333011647974206)
+,p_internal_uid=>38405557012540103
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(37727670125953141)
+,p_process_sequence=>30
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'CLOSE_DIALOG'
+,p_attribute_01=>'P108_TARGET_CARD_ID'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_internal_uid=>38336396389974241
+,p_internal_uid=>37727670125953141
 );
 wwv_flow_imp.component_end;
 end;

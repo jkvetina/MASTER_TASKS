@@ -14,6 +14,19 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
 
 
 
+    FUNCTION duplicate_card (
+        in_card_id          tsk_cards.card_id%TYPE
+    )
+    RETURN tsk_cards.card_id%TYPE;
+
+
+
+    PROCEDURE move_card_to_top (
+        in_card_id          tsk_cards.card_id%TYPE
+    );
+
+
+
     PROCEDURE save_checklist;
 
 
@@ -25,7 +38,11 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
 
 
 
-    PROCEDURE save_comment;
+    PROCEDURE upsert_comment (
+        in_card_id          tsk_card_comments.card_id%TYPE,
+        in_comment_id       tsk_card_comments.comment_id%TYPE,
+        in_comment_payload  tsk_card_comments.comment_payload%TYPE
+    );
 
 
 
@@ -36,11 +53,17 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
 
 
 
-    PROCEDURE save_split_checklist;
+    FUNCTION split_checklist (
+        in_card_id          tsk_cards.card_id%TYPE
+    )
+    RETURN tsk_cards.card_id%TYPE;
 
 
 
-    PROCEDURE save_merge_checklist;
+    PROCEDURE merge_checklist (
+        in_source_card_id   tsk_cards.card_id%TYPE,
+        in_target_card_id   tsk_cards.card_id%TYPE
+    );
 
 
 
@@ -51,10 +74,6 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
     PROCEDURE download_attachement (
         in_file_id              tsk_card_files.file_id%TYPE
     );
-
-
-
-    PROCEDURE move_card_to_top;
 
 END;
 /
