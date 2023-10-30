@@ -105,81 +105,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         core.raise_error();
     END;
 
-
-
-    FUNCTION get_home
-    RETURN VARCHAR2             -- 32k limit! - well, actually 4k limit on NAV view
-    AS
-        o VARCHAR2(32767);
-        r VARCHAR2(32767);
-        --
-        last_client     tsk_projects.client_id%TYPE     := '-';
-        last_project    tsk_projects.project_id%TYPE    := '-';
-    BEGIN
-        -- show favorite/bookmarked boards
-        o := o || '<div class="M1"><span class="fa fa-heart-o"></span> &' || 'nbsp; <span>Favorites</span></div>';
-        o := o || '<div>';      -- class=ROW
-        --
-        FOR b IN (
-            SELECT
-                b.client_id,
-                b.client_name,
-                b.project_id,
-                b.project_name,
-                b.board_id,
-                b.board_name,
-                b.is_current,
-                --
-                COUNT(b.board_id) OVER (PARTITION BY b.client_id, b.project_id) AS boards
-                --
-            FROM tsk_available_boards_v b
-            WHERE b.is_favorite = 'Y'
-            ORDER BY b.client_name, b.project_name, b.board_name
-        ) LOOP
-            -- render client link
-            IF b.client_id != last_client THEN
-                o := o || get_link (
-                    in_content      => b.client_name,
-                    in_page_id      => 100,
-                    in_client_id    => b.client_id,
-                    in_class        => 'M2',
-                    in_icon_name    => CASE WHEN b.client_id = tsk_app.get_client_id() THEN 'fa-arrow-circle-right' END
-                );
-                --
-                last_client := b.client_id;
-            END IF;
-
-            -- render project link
-            IF b.project_id != last_project THEN
-                o := o || get_link (
-                    in_content      => b.project_name,
-                    in_page_id      => 100,
-                    in_client_id    => b.client_id,
-                    in_project_id   => b.project_id,
-                    in_class        => 'M3' || CASE WHEN b.boards = 1 THEN REPLACE(b.is_current, 'Y', ' ACTIVE') END,
-                    in_icon_name    => CASE WHEN b.project_id = tsk_app.get_project_id() THEN 'fa-arrow-circle-right' END
-                );
-                --
-                last_project := b.project_id;
-            END IF;
-
-            -- render board link
-            IF b.boards > 1 THEN
-                o := o || get_link (
-                    in_content      => b.board_name,
-                    in_page_id      => 100,
-                    in_client_id    => b.client_id,
-                    in_project_id   => b.project_id,
-                    in_board_id     => b.board_id,
-                    in_class        => 'M4' || REPLACE(b.is_current, 'Y', ' ACTIVE'),
-                    in_icon_name    => CASE WHEN b.is_current = 'Y' THEN 'fa-arrow-circle-right' END
-                );
-            END IF;
-        END LOOP;
-        --
-        o := o || '</div>';
-        o := o || '<div>';      -- class=ROW
-
         -- add recent tasks
         /*
         FOR t IN (
@@ -217,46 +142,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             );
         END LOOP;
         */
-        --
-        o := o || '</div>';
 
-        -- add extra pages
-        o := '<div>' || o || '</div>' ||
-            '<div>' ||
-                '<div class="M1"><span class="fa fa-alarm-clock"></span> &' || 'nbsp; <span>Recent Tasks</span></div>' ||
-                '<div>' ||
-                r ||
-                '</div>' ||
-            '</div>' ||
-            '<div class="NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
-        --
-        IF LENGTH(o) >= 3900 THEN
-            core.raise_error('4K_LIMIT_EXCEEDED');
-        END IF;
-        --
-        RETURN o;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-    FUNCTION get_commits
-    RETURN VARCHAR2
-    AS
-        o VARCHAR2(32767);
-    BEGIN
-        --
-        RETURN o;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
+        --    '<div class="NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
 
 END;
 /

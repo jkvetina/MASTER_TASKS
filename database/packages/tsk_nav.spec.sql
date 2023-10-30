@@ -27,16 +27,6 @@ CREATE OR REPLACE PACKAGE tsk_nav AS
     )
     RETURN VARCHAR2;
 
-
-
-    FUNCTION get_home
-    RETURN VARCHAR2;
-
-
-
-    FUNCTION get_commits
-    RETURN VARCHAR2;
-
 END;
 /
 
