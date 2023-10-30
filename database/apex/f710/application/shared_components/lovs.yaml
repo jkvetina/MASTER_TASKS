@@ -318,6 +318,6 @@
   column-mapping: 
     return: CARD_ID
     display: CARD_NAME
-    default-sort: CARD_NAME
+    default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
 

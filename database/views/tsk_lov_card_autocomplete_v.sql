@@ -1,7 +1,8 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_card_autocomplete_v AS
 SELECT
     t.card_id,
-    '#' || t.card_id || ' - ' || t.card_name AS card_name
+    NVL(t.card_number, '#' || t.card_id) || ' - ' || t.card_name AS card_name,
+    t.card_name AS order#
     --
 FROM tsk_cards t
 JOIN tsk_available_boards_v a
