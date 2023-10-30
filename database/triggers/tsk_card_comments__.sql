@@ -14,8 +14,10 @@ COMPOUND TRIGGER
                 :NEW.comment_id := tsk_comment_id.NEXTVAL;
             END IF;
             --
-            :NEW.updated_by := core.get_user_id();
-            :NEW.updated_at := SYSDATE;
+            IF (UPDATING OR (INSERTING AND :NEW.updated_at IS NULL)) THEN
+                :NEW.updated_by := core.get_user_id();
+                :NEW.updated_at := SYSDATE;
+            END IF;
         END IF;
         --
     EXCEPTION
