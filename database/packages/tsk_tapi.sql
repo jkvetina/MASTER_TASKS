@@ -522,7 +522,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
             WHERE t.card_id = rec.card_id;
             --
             IF SQL%ROWCOUNT = 0 THEN
-                core.raise_error('UPDATE_FAILED');
+                BEGIN
+                    INSERT INTO tsk_cards
+                    VALUES rec;
+                EXCEPTION
+                WHEN DUP_VAL_ON_INDEX THEN
+                    core.raise_error('UPDATE_FAILED');
+                END;
             END IF;
         END IF;
     EXCEPTION
