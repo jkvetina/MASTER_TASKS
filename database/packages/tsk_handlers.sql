@@ -134,6 +134,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.project_id          := core.get_grid_data('PROJECT_ID');
         rec.status_id           := core.get_grid_data('STATUS_ID');
         rec.status_name         := core.get_grid_data('STATUS_NAME');
+        rec.status_group        := core.get_grid_data('STATUS_GROUP');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');

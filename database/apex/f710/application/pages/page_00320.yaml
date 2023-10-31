@@ -149,7 +149,7 @@ regions:
       fixed-row-height: true
 
     pagination: 
-      type: Page
+      type: Scroll
       show-total-count: true
 
     toolbar: 
@@ -227,7 +227,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 110
+      sequence: 120
       column-alignment: end
       group: Order # 28430867666964237
       use-group-for: Both
@@ -252,6 +252,63 @@ regions:
     column-filter: 
       enabled: true
       lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: STATUS_GROUP ================================
+    id: 38405831973540106
+    identification: 
+      column-name: STATUS_GROUP
+      type: Text Field
+
+    heading: 
+      heading: Status Group
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+      group: Status Info # 28430734925964236
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 64
+
+    source: 
+      type: Database Column
+      database-column: STATUS_GROUP
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
 
     export-/-printing: 
       include-in-export-/-print: true
@@ -299,7 +356,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 150
+      sequence: 160
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -355,7 +412,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 180
+      sequence: 190
       column-alignment: end
       group: Counts # 115563620474106171
       use-group-for: Both
@@ -401,7 +458,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 170
+      sequence: 180
       column-alignment: end
       group: Counts # 115563620474106171
       use-group-for: Both
@@ -447,7 +504,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 160
+      sequence: 170
       column-alignment: end
       group: Counts # 115563620474106171
       use-group-for: Both
@@ -493,7 +550,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 130
+      sequence: 140
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -549,7 +606,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 140
+      sequence: 150
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -829,7 +886,7 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: center
       group: Flags # 115563593186106170
       use-group-for: Both
@@ -1001,7 +1058,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 100
+      sequence: 110
       column-alignment: end
       group: Order # 28430867666964237
       use-group-for: Both

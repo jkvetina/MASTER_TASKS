@@ -20,6 +20,7 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_query_table=>'TSK_LOV_STATUSES_V'
 ,p_return_column_name=>'STATUS_ID'
 ,p_display_column_name=>'STATUS_NAME'
+,p_group_column_name=>'STATUS_GROUP'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'ORDER#'
 ,p_default_sort_direction=>'ASC'

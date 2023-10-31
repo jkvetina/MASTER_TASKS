@@ -31,6 +31,7 @@ SELECT
     t.project_id,
     t.status_id,
     t.status_name,
+    t.status_group,
     t.order#,
     t.row_order#,
     t.is_active,

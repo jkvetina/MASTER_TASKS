@@ -2,6 +2,7 @@ CREATE OR REPLACE FORCE VIEW tsk_lov_statuses_all_v AS
 SELECT
     t.status_id,
     t.status_name,
+    t.status_group,
     t.is_default,
     t.is_colored,
     t.is_badge,
