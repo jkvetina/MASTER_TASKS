@@ -1850,11 +1850,26 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'apexafterclosedialog'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(37728220845953147)
+ p_id=>wwv_flow_imp.id(38405908027540107)
 ,p_event_id=>wwv_flow_imp.id(37726458429953129)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
+,p_name=>'GET_MODAL_PAGE_NUMBER'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// detect which page closed',
+'console.log(''MODAL_CLOSED'', this.data.dialogPageId);',
+'//console.log(''MORE_INFO'', $(this.browserEvent.target).parent(), $(this.browserEvent.target).attr(''class''));  // we can check CSS class for example',
+''))
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(37728220845953147)
+,p_event_id=>wwv_flow_imp.id(37726458429953129)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_name=>'GET_LINK_FROM_MODAL'
 ,p_action=>'NATIVE_SET_VALUE'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P105_MERGE_CARD'
@@ -1867,8 +1882,9 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(38405400234540102)
 ,p_event_id=>wwv_flow_imp.id(37726458429953129)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>20
+,p_action_sequence=>40
 ,p_execute_on_page_init=>'N'
+,p_name=>'REFRESH_PAGE_ITEM'
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'ITEM'
 ,p_affected_elements=>'P105_MERGE_CARD'
@@ -1877,8 +1893,9 @@ wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(37726804782953133)
 ,p_event_id=>wwv_flow_imp.id(37726458429953129)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>30
+,p_action_sequence=>50
 ,p_execute_on_page_init=>'N'
+,p_name=>'REDIRECT_TO_NEW_PAGE'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'show_success(''Cards merged.'');',

@@ -20,7 +20,7 @@ const init_page = function() {
         beforeShow: function(pMsgType, pElement$) {
             // error messages
             if (pMsgType === apex.message.TYPE.ERROR) {
-                var msg = get_message(pElement$.find('ul.a-Notification-list li').text());
+                var msg = get_message(pElement$.find('ul.a-Notification-list li').html());
                 console.log('MESSAGE.ERROR:', msg);
 
                 // switch error to warning
@@ -49,7 +49,7 @@ const init_page = function() {
 
             // success messages
             if (pMsgType === apex.message.TYPE.SUCCESS) {
-                var msg = get_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text())
+                var msg = get_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').html())
                 console.log('MESSAGE.SUCCESS:', msg);
 
                 // change message

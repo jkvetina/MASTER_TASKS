@@ -4147,9 +4147,10 @@ dynamic-actions:
     type: Immediate
 
   actions: 
-  - # ====== Action: Execute JavaScript Code =====================
+  - # ====== Action: REDIRECT_TO_NEW_PAGE ========================
     id: 37726804782953133
     identification: 
+      name: REDIRECT_TO_NEW_PAGE
       action: Execute JavaScript Code
 
     settings: 
@@ -4159,7 +4160,7 @@ dynamic-actions:
         
 
     execution: 
-      sequence: 30
+      sequence: 50
       event: STACKED_MODAL_CLOSED # 37726458429953129
       fire-when-event-result-is: True
       fire-on-initialization: false
@@ -4168,9 +4169,10 @@ dynamic-actions:
       type: Item is not null
       item: P105_MERGE_CARD
 
-  - # ====== Action: Set Value ===================================
+  - # ====== Action: GET_LINK_FROM_MODAL =========================
     id: 37728220845953147
     identification: 
+      name: GET_LINK_FROM_MODAL
       action: Set Value
 
     settings: 
@@ -4184,16 +4186,17 @@ dynamic-actions:
       - P105_MERGE_CARD
 
     execution: 
-      sequence: 10
+      sequence: 20
       event: STACKED_MODAL_CLOSED # 37726458429953129
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
-  - # ====== Action: Refresh =====================================
+  - # ====== Action: REFRESH_PAGE_ITEM ===========================
     id: 38405400234540102
     identification: 
+      name: REFRESH_PAGE_ITEM
       action: Refresh
 
     affected-elements: 
@@ -4202,7 +4205,26 @@ dynamic-actions:
       - P105_MERGE_CARD
 
     execution: 
-      sequence: 20
+      sequence: 40
+      event: STACKED_MODAL_CLOSED # 37726458429953129
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: GET_MODAL_PAGE_NUMBER =======================
+    id: 38405908027540107
+    identification: 
+      name: GET_MODAL_PAGE_NUMBER
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        // detect which page closed
+        console.log('MODAL_CLOSED', this.data.dialogPageId);
+        //console.log('MORE_INFO', $(this.browserEvent.target).parent(), $(this.browserEvent.target).attr('class'));  // we can check CSS class for example
+        
+
+    execution: 
+      sequence: 10
       event: STACKED_MODAL_CLOSED # 37726458429953129
       fire-when-event-result-is: True
       fire-on-initialization: false
