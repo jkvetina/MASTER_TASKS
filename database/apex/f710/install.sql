@@ -42,6 +42,8 @@ prompt --install
 @@application/shared_components/logic/application_items/g_user_first_name.sql
 @@application/shared_components/logic/application_items/g_user_name.sql
 @@application/shared_components/logic/application_items/g_workspace.sql
+@@application/shared_components/logic/application_computations/p0_ajax_ping_interval.sql
+@@application/shared_components/logic/application_computations/p0_session_timeout_url.sql
 @@application/shared_components/logic/application_settings.sql
 @@application/shared_components/navigation/tabs/standard.sql
 @@application/shared_components/navigation/tabs/parent.sql

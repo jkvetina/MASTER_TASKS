@@ -199,12 +199,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_AJAX_PING_INTERVAL'
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
-,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = ''Y''',
-'    THEN 0',
-'    ELSE 6 END'))
-,p_source_type=>'EXPRESSION'
-,p_source_language=>'PLSQL'
+,p_item_default=>'0'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -215,16 +210,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_SESSION_TIMEOUT_URL'
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(34569381861312888)
-,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'APEX_PAGE.GET_URL (',
-'    p_application   => 800,',
-'    p_page          => 9999,',
-'    p_session       => 0,',
-'    p_items         => ''P9999_ERROR'',',
-'    p_values        => ''SESSION_TIMEOUT''',
-')'))
-,p_source_type=>'EXPRESSION'
-,p_source_language=>'PLSQL'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
