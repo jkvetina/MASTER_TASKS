@@ -26,7 +26,7 @@ wwv_flow_imp_page.create_page(
 ,p_dialog_width=>'640'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
-,p_page_component_map=>'17'
+,p_page_component_map=>'16'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );

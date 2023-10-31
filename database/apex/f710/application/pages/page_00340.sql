@@ -484,7 +484,7 @@ wwv_flow_imp_page.create_interactive_grid(
 ,p_requires_filter=>false
 ,p_select_first_row=>false
 ,p_fixed_row_height=>true
-,p_pagination_type=>'SET'
+,p_pagination_type=>'SCROLL'
 ,p_show_total_row_count=>true
 ,p_show_toolbar=>true
 ,p_toolbar_buttons=>'SEARCH_COLUMN:SEARCH_FIELD:ACTIONS_MENU:SAVE'

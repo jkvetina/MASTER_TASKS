@@ -149,7 +149,7 @@ regions:
       fixed-row-height: true
 
     pagination: 
-      type: Page
+      type: Scroll
       show-total-count: true
 
     toolbar: 
