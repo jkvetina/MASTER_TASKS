@@ -9,7 +9,7 @@ SELECT
     --
     LPAD('0', ROW_NUMBER() OVER (
         PARTITION BY t.client_id, t.project_id
-        ORDER BY t.order#, t.category_name
+        ORDER BY t.category_group, t.order#, t.category_name
         ), '0') AS order#
     --
 FROM tsk_categories t

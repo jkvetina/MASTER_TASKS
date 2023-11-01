@@ -272,11 +272,17 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     in_content      => a.status_name,
                     in_page_id      => core.get_page_id(),
                     in_status_id    => a.status_id
-                ) AS row_
+                ) AS row_,
+                --
+                CASE WHEN a.status_group != LAG(a.status_group) OVER (ORDER BY a.order#) THEN 'Y' END AS is_new_column
                 --
             FROM tsk_lov_statuses_v a
             ORDER BY a.order#
         ) LOOP
+            IF c.is_new_column = 'Y' THEN
+                o := o || '</ul><ul role="menu">';
+            END IF;
+            --
             o := o || '<li>' || c.row_ || '</li>';
         END LOOP;
         --
@@ -296,11 +302,17 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     in_content      => a.category_name,
                     in_page_id      => core.get_page_id(),
                     in_category_id  => a.category_id
-                ) AS row_
+                ) AS row_,
+                --
+                CASE WHEN a.category_group != LAG(a.category_group) OVER (ORDER BY a.order#) THEN 'Y' END AS is_new_column
                 --
             FROM tsk_lov_categories_v a
             ORDER BY a.order#
         ) LOOP
+            IF c.is_new_column = 'Y' THEN
+                o := o || '</ul><ul role="menu">';
+            END IF;
+            --
             o := o || '<li>' || c.row_ || '</li>';
         END LOOP;
         --
