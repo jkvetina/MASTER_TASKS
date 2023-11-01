@@ -22,7 +22,8 @@ SELECT
     a.client_id,
     a.client_name,
     a.is_active,
-    a.is_current,
+    --
+    CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') END AS is_current,
     --
     t.count_projects,
     t.count_boards,
