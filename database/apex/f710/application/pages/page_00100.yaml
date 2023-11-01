@@ -41,6 +41,138 @@ server-cache:
   caching: Disabled
 
 regions: 
+- # ====== Region: SWITCH_STATUS ===============================
+  id: 38409764767540145
+  identification: 
+    title: SWITCH_STATUS
+    type: Dynamic Content
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_status();
+
+  layout: 
+    sequence: 50
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
+- # ====== Region: SWITCH_CATEGORY =============================
+  id: 38409808522540146
+  identification: 
+    title: SWITCH_CATEGORY
+    type: Dynamic Content
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_category();
+
+  layout: 
+    sequence: 60
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
+- # ====== Region: SWITCH_OWNER ================================
+  id: 38409933031540147
+  identification: 
+    title: SWITCH_OWNER
+    type: Dynamic Content
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_owner();
+
+  layout: 
+    sequence: 70
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
 - # ====== Region: &P100_HEADER!RAW. ===========================
   id: 74502100937114588
   identification: 
@@ -70,6 +202,10 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P0_BOARD_ID
 
   server-cache: 
     caching: Disabled
@@ -1382,6 +1518,50 @@ regions:
       font-color: '#000000'
       alignment: center
 
+- # ====== Region: SWITCH_SWIMLANE =============================
+  id: 106355500478253993
+  identification: 
+    title: SWITCH_SWIMLANE
+    type: Dynamic Content
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_swimlane();
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
 page-items: 
 - # ====== Page Item: P100_BOOKMARK_ICON =======================
   id: 27232166472725509
@@ -1632,10 +1812,6 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P0_BOARD_ID
-
 - # ====== Button: SHOW_LIST ===================================
   id: 19886880314955346
   identification: 
@@ -1643,7 +1819,7 @@ buttons:
     label: Show as List
 
   layout: 
-    sequence: 10
+    sequence: 30
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: UP
     start-new-layout: false
@@ -1683,7 +1859,7 @@ buttons:
     label: Show as Columns
 
   layout: 
-    sequence: 20
+    sequence: 40
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: UP
     start-new-layout: false
@@ -1722,7 +1898,7 @@ buttons:
     label: Refresh
 
   layout: 
-    sequence: 30
+    sequence: 40
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1743,11 +1919,8 @@ buttons:
     execute-validations: false
 
   server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: |
-      :P100_SHOW_GRID IS NULL
-      AND :P0_BOARD_ID IS NOT NULL
+    type: Item is NULL
+    item: P100_SHOW_GRID
 
 - # ====== Button: BOOKMARK_CURRENT ============================
   id: 27231996116725507
@@ -1756,7 +1929,7 @@ buttons:
     label: Bookmark Current
 
   layout: 
-    sequence: 30
+    sequence: 60
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: UP
     start-new-layout: false
@@ -1777,10 +1950,6 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
-  server-side-condition: 
-    type: Item is NOT NULL
-    item: P0_BOARD_ID
-
 - # ====== Button: BULK_OPERATIONS =============================
   id: 27419646379258614
   identification: 
@@ -1788,9 +1957,9 @@ buttons:
     label: Bulk Operations
 
   layout: 
-    sequence: 20
+    sequence: 10
     region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1822,9 +1991,204 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
+- # ====== Button: SWITCH_SWIMLANE =============================
+  id: 38406179091540109
+  identification: 
+    button-name: SWITCH_SWIMLANE
+    label: Swimlane
+
+  layout: 
+    sequence: 60
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 34021523429153827
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    css-classes: 
+    - ACTION_MENU
+    - TRANSPARENT
+    icon: fa-chevron-down
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: SWITCH_SWIMLANE
+
+- # ====== Button: SWITCH_STATUS ===============================
+  id: 38406217246540110
+  identification: 
+    button-name: SWITCH_STATUS
+    label: Status
+
+  layout: 
+    sequence: 80
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 34021523429153827
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    css-classes: 
+    - ACTION_MENU
+    - TRANSPARENT
+    icon: fa-chevron-down
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: SWITCH_STATUS
+
+- # ====== Button: SWITCH_CATEGORY =============================
+  id: 38406336133540111
+  identification: 
+    button-name: SWITCH_CATEGORY
+    label: Category
+
+  layout: 
+    sequence: 90
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 34021523429153827
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    css-classes: 
+    - ACTION_MENU
+    - TRANSPARENT
+    icon: fa-chevron-down
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: SWITCH_CATEGORY
+
+- # ====== Button: SWITCH_OWNER ================================
+  id: 38406446238540112
+  identification: 
+    button-name: SWITCH_OWNER
+    label: Owner
+
+  layout: 
+    sequence: 100
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 34021523429153827
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    css-classes: 
+    - ACTION_MENU
+    - TRANSPARENT
+    icon: fa-chevron-down
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: SWITCH_OWNER
+
+- # ====== Button: SEARCH ======================================
+  id: 38406527796540113
+  identification: 
+    button-name: SEARCH
+    label: Search
+
+  layout: 
+    sequence: 20
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: UP
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-search
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
   server-side-condition: 
-    type: Item is NOT NULL
-    item: P0_BOARD_ID
+    type: Never
+
+- # ====== Button: FILTER_BOARDS ===============================
+  id: 38409005563540138
+  identification: 
+    button-name: FILTER_BOARDS
+    label: Board
+
+  layout: 
+    sequence: 50
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 34021523429153827
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    css-classes: 
+    - TRANSPARENT
+    icon: fa-chevron-down
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  server-side-condition: 
+    type: Never
 
 dynamic-actions: 
 - # ====== Dynamic Action: OPEN_DETAIL =========================
