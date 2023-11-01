@@ -27,6 +27,41 @@ CREATE OR REPLACE PACKAGE tsk_nav AS
     )
     RETURN VARCHAR2;
 
+
+
+    FUNCTION get_switch_client
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_switch_project
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_switch_board
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_switch_swimlane
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_switch_status
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_switch_category
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_switch_owner
+    RETURN VARCHAR2;
+
 END;
 /
 

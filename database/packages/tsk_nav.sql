@@ -39,6 +39,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             ELSE '<span>&' || 'mdash;&' || 'nbsp; '
             END;
         --
+        /*
         RETURN '<a href="' ||
             APEX_PAGE.GET_URL (
                 --p_application   =>
@@ -50,6 +51,17 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             '" class="' || in_class || '">' || v_icon || in_content ||
             CASE WHEN in_badge IS NOT NULL THEN '</span><span class="BADGE DECENT">' || in_badge END ||
             '</span></a>';
+            */
+        --
+        RETURN '<a href="' ||
+            APEX_PAGE.GET_URL (
+                --p_application   =>
+                p_page          => COALESCE(in_page_id, core.get_page_id()),
+                p_clear_cache   => CASE WHEN (in_project_id IS NOT NULL OR in_client_id IS NOT NULL) THEN '0,' || COALESCE(in_page_id, core.get_page_id()) END,
+                p_items         => SUBSTR(v_items,  2, 4000),
+                p_values        => SUBSTR(v_values, 2, 4000)
+            ) ||
+            '" class="' || in_class || '">' || in_content || '</a>';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -144,6 +156,186 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         */
 
         --    '<div class="NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
+
+
+
+    FUNCTION get_switch_client
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        FOR c IN (
+            SELECT
+                tsk_nav.get_link (
+                    in_content      => a.client_name,
+                    in_page_id      => core.get_page_id(),
+                    in_client_id    => a.client_id
+                ) AS row_
+                --
+            FROM tsk_available_clients_v a
+            ORDER BY a.order#
+        ) LOOP
+            o := o || '<li>' || c.row_ || '</li>';
+        END LOOP;
+        --
+        RETURN '<div class="ACTION_MENU" data-id="SWITCH_CLIENT"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
+    END;
+
+
+
+    FUNCTION get_switch_project
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        FOR c IN (
+            SELECT
+                tsk_nav.get_link (
+                    in_content      => a.project_name,
+                    in_page_id      => core.get_page_id(),
+                    in_client_id    => a.client_id,
+                    in_project_id   => a.project_id
+                ) AS row_
+                --
+            FROM tsk_available_projects_v a
+            WHERE a.is_current_client = 'Y'
+            ORDER BY a.order#
+        ) LOOP
+            o := o || '<li>' || c.row_ || '</li>';
+        END LOOP;
+        --
+        RETURN '<div class="ACTION_MENU" data-id="SWITCH_PROJECT"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
+    END;
+
+
+
+    FUNCTION get_switch_board
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        FOR c IN (
+            SELECT
+                tsk_nav.get_link (
+                    in_content      => CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END || a.board_name,
+                    in_page_id      => core.get_page_id(),
+                    in_client_id    => a.client_id,
+                    in_project_id   => a.project_id,
+                    in_board_id     => a.board_id,
+                    in_class        => CASE WHEN a.is_current = 'Y' THEN 'ACTIVE' END
+                ) AS row_
+                --
+            FROM tsk_available_boards_v a
+            WHERE a.is_current_project = 'Y'
+            ORDER BY a.order#
+        ) LOOP
+            o := o || '<li>' || c.row_ || '</li>';
+        END LOOP;
+        --
+        RETURN '<div class="ACTION_MENU" data-id="SWITCH_BOARD"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
+    END;
+
+
+
+    FUNCTION get_switch_swimlane
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        FOR c IN (
+            SELECT
+                tsk_nav.get_link (
+                    in_content      => a.swimlane_name,
+                    in_page_id      => core.get_page_id(),
+                    in_swimlane_id  => a.swimlane_id
+                ) AS row_
+                --
+            FROM tsk_lov_swimlanes_v a
+            ORDER BY a.order#
+        ) LOOP
+            o := o || '<li>' || c.row_ || '</li>';
+        END LOOP;
+        --
+        RETURN '<div class="ACTION_MENU" data-id="SWITCH_SWIMLANE"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
+    END;
+
+
+
+    FUNCTION get_switch_status
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        FOR c IN (
+            SELECT
+                tsk_nav.get_link (
+                    in_content      => a.status_name,
+                    in_page_id      => core.get_page_id(),
+                    in_status_id    => a.status_id
+                ) AS row_
+                --
+            FROM tsk_lov_statuses_v a
+            ORDER BY a.order#
+        ) LOOP
+            o := o || '<li>' || c.row_ || '</li>';
+        END LOOP;
+        --
+        RETURN '<div class="ACTION_MENU" data-id="SWITCH_STATUS"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
+    END;
+
+
+
+    FUNCTION get_switch_category
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        FOR c IN (
+            SELECT
+                tsk_nav.get_link (
+                    in_content      => a.category_name,
+                    in_page_id      => core.get_page_id(),
+                    in_category_id  => a.category_id
+                ) AS row_
+                --
+            FROM tsk_lov_categories_v a
+            ORDER BY a.order#
+        ) LOOP
+            o := o || '<li>' || c.row_ || '</li>';
+        END LOOP;
+        --
+        RETURN '<div class="ACTION_MENU" data-id="SWITCH_CATEGORY"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
+    END;
+
+
+
+    FUNCTION get_switch_owner
+    RETURN VARCHAR2
+    AS
+        o VARCHAR2(32767);
+    BEGIN
+        FOR c IN (
+            SELECT DISTINCT /*+ MATERIALIZE */
+                t.owner_id,
+                tsk_nav.get_link (
+                    in_content      => NVL(u.user_name, t.owner_id),
+                    in_page_id      => core.get_page_id(),
+                    in_swimlane_id  => t.owner_id
+                ) AS row_
+                --
+                --CASE WHEN t.owner_id = tsk_app.get_owner_id() THEN 'Y' END AS is_current,
+                --
+            FROM tsk_p100_cards_v t
+            LEFT JOIN tsk_lov_users_v u
+                ON u.user_id    = t.owner_id
+            WHERE t.owner_id    IS NOT NULL
+            ORDER BY t.owner_id
+        ) LOOP
+            o := o || '<li>' || c.row_ || '</li>';
+        END LOOP;
+        --
+        RETURN '<div class="ACTION_MENU" data-id="SWITCH_OWNER"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
+    END;
 
 END;
 /
