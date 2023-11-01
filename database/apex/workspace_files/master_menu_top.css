@@ -165,3 +165,93 @@
     padding             : 0.7rem 2rem 0.7rem 4rem;
 }
 
+
+
+/*
+ * ACTION MENU - TO SHOW MORE OPTIONS BELOW A BUTTON
+ */
+div.ACTION_MENU {
+    display             : none;
+    position            : absolute;
+    background          : #E9E7E7;
+    color               : white;
+    margin              : 3.5rem 0 0 0rem;
+    padding             : 0;
+    border-radius       : 1.5rem 1.5rem;
+    z-index             : 1000;
+    box-shadow          : rgba(149, 157, 165, 0.2) 0 0.5rem 1rem;
+}
+div.ACTION_MENU > .WRAPPER {
+    position            : static !important;
+}
+div.ACTION_MENU > .WRAPPER .CONTENT {  /* FOR ROUND BORDERS */
+    display             : flex !important;
+    justify-content     : flex-start;
+    align-items         : flex-start;
+    border-radius       : 1rem;
+    overflow            : hidden;
+}
+div.ACTION_MENU ul {
+    display             : block;
+    list-style-type     : none;
+    list-style-position : inside;
+    margin              : 0;
+    padding             : 0;
+}
+div.ACTION_MENU ul li {
+    margin              : 0;
+    padding             : 0;
+}
+div.ACTION_MENU a,
+div.ACTION_MENU a:hover {
+    display             : inline-block;
+    width               : 100%;
+    padding             : 0.6rem 1.2rem;
+    font-family         : 'Roboto', sans-serif;
+    color               : #222;
+    text-decoration     : none;
+    background          : #E9E7E7;
+}
+div.ACTION_MENU ul li:first-child > * {
+    padding-top         : 0.9rem;
+}
+div.ACTION_MENU ul li:last-child > * {
+    padding-bottom      : 0.9rem;
+}
+div.ACTION_MENU a:hover {
+    color               : #000;
+    font-weight         : 500;
+    background          : #d7d6d4;
+}
+div.ACTION_MENU a span.fa {
+    margin              : 0.15rem 0 -0.15rem;
+}
+
+/* TRIANGLE */
+div.ACTION_MENU > .WRAPPER:before {
+    position            : absolute;
+    top                 : -12px;
+    left                : 1.2rem;
+    content             : "";
+    border              : 1px solid transparent;
+    border-color        : #E9E7E7 transparent;
+    border-width        : 0 8px 12px;
+}
+
+/* DARK VERSION OF THE ACTION MENU */
+div.ACTION_MENU,
+div.ACTION_MENU ul {
+    background          : #3f3d33;
+}
+div.ACTION_MENU > .WRAPPER:before {
+    border-color        : #3f3d33 transparent;
+}
+div.ACTION_MENU a,
+div.ACTION_MENU a:hover {
+    background          : #3f3d33;
+    color               : white;
+}
+div.ACTION_MENU a:hover {
+    background          : #222;
+}
+

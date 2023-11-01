@@ -621,7 +621,7 @@ const show_action_menu = function(e) {
     //
     var $id = $(this).attr('id');  // e.target.id, this.triggeringElement.id;
     var pos = $('button#' + $id).offset();
-    console.log('BUTTON', $id, pos, 'MENU', $('div.ACTION_MENU').offset());
+    console.log('BUTTON', $id, pos, 'MENU', $('div.ACTION_MENU').offset(), $('div.ACTION_MENU[data-id="' + $id + '"]'));
     //
     $('div.ACTION_MENU').css({
         display   : 'none'
