@@ -864,18 +864,17 @@ wwv_flow_imp_page.create_page_plug(
 ,p_function_body_language=>'PLSQL'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'RETURN ''<div class="ACTION_MENU" data-id="MORE_ACTIONS">',
-'    <div class="WRAPPER">',
-'        <div class="TRIANGLE"></div>',
-'        <ul role="menu">',
-'            <li><a tabindex="-1" href="javascript:{ apex.submit({request:''''MOVE_TO_TOP_AND_CLOSE''''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>',
-'            <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''''Do you really want to delete the card?'''', {request:''''DELETE_CARD_AND_CLOSE''''}); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>',
-'            <li><a tabindex="-1" href="javascript:{ apex.submit({request:''''DUPLICATE_CARD''''}); }"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>',
-'            <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''''Do you want to move unchecked items to the new task?'''', {request:''''SPLIT_CARD''''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card by Checklist</a></li>',
-'            <li><a tabindex="-1" href="javascript:{ apex.navigation.redirect(apex.item(''''P105_MERGE_URL'''').getValue()); }"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>',
-'            <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''''P105_CARD_LINK'''').getValue());',
+'<div class="WRAPPER"><div class="CONTENT">',
+'    <ul role="menu">',
+'        <li><a tabindex="-1" href="javascript:{ apex.submit({request:''''MOVE_TO_TOP_AND_CLOSE''''}); }"><span class="fa fa-page-top"></span> &nbsp; Move to the Top</a></li>',
+'        <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''''Do you really want to delete the card?'''', {request:''''DELETE_CARD_AND_CLOSE''''}); }"><span class="fa fa-trash-o"></span> &nbsp; Delete Card</a></li>',
+'        <li><a tabindex="-1" href="javascript:{ apex.submit({request:''''DUPLICATE_CARD''''}); }"><span class="fa fa-copy"></span> &nbsp; Duplicate</a></li>',
+'        <li><a tabindex="-1" href="javascript:{ apex.page.confirm(''''Do you want to move unchecked items to the new task?'''', {request:''''SPLIT_CARD''''}); }"><span class="fa fa-accessor-more"></span> &nbsp; Split Card by Checklist</a></li>',
+'        <li><a tabindex="-1" href="javascript:{ apex.navigation.redirect(apex.item(''''P105_MERGE_URL'''').getValue()); }"><span class="fa fa-accessor-more fa-flip-horizontal"></span> &nbsp; Merge into Card</a></li>',
+'        <li><a tabindex="-1" href="javascript:{ copy_to_clipboard(apex.item(''''P105_CARD_LINK'''').getValue());',
 'show_success(''''Link copied to the clipboard''''); }"><span class="fa fa-share"></span> &nbsp; Copy as Link</a></li>',
-'        </ul>',
-'    </div>',
+'    </ul>',
+'</div></div>',
 '</div>'';'))
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'NATIVE_DYNAMIC_CONTENT'
@@ -897,18 +896,34 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'CREATE_CARD_AND_CLOSE'
 ,p_button_action=>'SUBMIT'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(34021473197153827)
+,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
+,p_button_template_id=>wwv_flow_imp.id(34021523429153827)
 ,p_button_is_hot=>'Y'
 ,p_button_image_alt=>'Create New Card'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_button_condition=>'P105_CARD_ID'
 ,p_button_condition_type=>'ITEM_IS_NULL'
+,p_icon_css_classes=>'fa-save'
+,p_database_action=>'INSERT'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(38406096846540108)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
+,p_button_name=>'CREATE_CARD'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
+,p_button_image_alt=>'Create New Card'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_condition=>'P105_CARD_ID'
+,p_button_condition_type=>'ITEM_IS_NULL'
+,p_icon_css_classes=>'fa-save'
 ,p_database_action=>'INSERT'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25256044784844563)
-,p_button_sequence=>20
+,p_button_sequence=>30
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'CREATE_ANOTHER'
 ,p_button_action=>'SUBMIT'
@@ -923,7 +938,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(26839989070020938)
-,p_button_sequence=>30
+,p_button_sequence=>40
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'UPDATE_AND_REFRESH'
 ,p_button_action=>'DEFINED_BY_DA'
@@ -940,7 +955,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25256870991844563)
-,p_button_sequence=>40
+,p_button_sequence=>50
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'UPDATE_CARD_AND_CLOSE'
 ,p_button_static_id=>'UPDATE_ONLY'
@@ -956,7 +971,7 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27422429232258642)
-,p_button_sequence=>50
+,p_button_sequence=>60
 ,p_button_plug_id=>wwv_flow_imp.id(108316517171408030)
 ,p_button_name=>'MORE_ACTIONS'
 ,p_button_static_id=>'MORE_ACTIONS'
@@ -972,6 +987,18 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-ellipsis-h'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27532573313783246)
 ,p_button_sequence=>10
@@ -986,18 +1013,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_redirect_url=>'f?p=800:980:&SESSION.::&DEBUG.:980:P980_APP_ID,P980_PAGE_ID:&APP_ID.,&APP_PAGE_ID.'
 ,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-question'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260460384844566)
