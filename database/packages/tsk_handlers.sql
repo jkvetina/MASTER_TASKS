@@ -281,39 +281,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
-    PROCEDURE reorder_statuses
-    AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
-    BEGIN
-        FOR s IN (
-            SELECT
-                t.status_id,
-                t.client_id,
-                t.project_id,
-                --
-                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.status_name, t.status_id) * 10 AS order#
-            FROM tsk_statuses t
-            WHERE 1 = 1
-                AND (t.client_id    = in_client_id  OR in_client_id  IS NULL)
-                AND (t.project_id   = in_project_id OR in_project_id IS NULL)
-        ) LOOP
-            UPDATE tsk_statuses t
-            SET t.order#            = s.order#
-            WHERE t.status_id       = s.status_id
-                AND t.client_id     = s.client_id
-                AND t.project_id    = s.project_id
-                AND (t.order#       != s.order# OR t.order# IS NULL);
-        END LOOP;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
     PROCEDURE copy_statuses
     AS
         rec                     tsk_statuses%ROWTYPE;
@@ -354,39 +321,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         --
         core.set_item('P0_SUCCESS_MESSAGE', CASE WHEN SQL%ROWCOUNT = 1 THEN v_affected || ' rows affected.' END);
         --
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-    PROCEDURE reorder_swimlanes
-    AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
-    BEGIN
-        FOR s IN (
-            SELECT
-                t.swimlane_id,
-                t.client_id,
-                t.project_id,
-                --
-                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id ORDER BY t.order# NULLS LAST, t.swimlane_name, t.swimlane_id) * 10 AS order#
-            FROM tsk_swimlanes t
-            WHERE 1 = 1
-                AND (t.client_id    = in_client_id  OR in_client_id  IS NULL)
-                AND (t.project_id   = in_project_id OR in_project_id IS NULL)
-        ) LOOP
-            UPDATE tsk_swimlanes t
-            SET t.order#            = s.order#
-            WHERE t.swimlane_id     = s.swimlane_id
-                AND t.client_id     = s.client_id
-                AND t.project_id    = s.project_id
-                AND (t.order#       != s.order# OR t.order# IS NULL);
-        END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -441,39 +375,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
-    PROCEDURE reorder_categories
-    AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
-    BEGIN
-        FOR s IN (
-            SELECT
-                t.category_id,
-                t.client_id,
-                t.project_id,
-                --
-                ROW_NUMBER() OVER (PARTITION BY t.client_id, t.project_id, t.category_group ORDER BY t.order# NULLS LAST, t.category_name, t.category_id) * 10 AS order#
-            FROM tsk_categories t
-            WHERE 1 = 1
-                AND (t.client_id    = in_client_id  OR in_client_id  IS NULL)
-                AND (t.project_id   = in_project_id OR in_project_id IS NULL)
-        ) LOOP
-            UPDATE tsk_categories t
-            SET t.order#            = s.order#
-            WHERE t.category_id     = s.category_id
-                AND t.client_id     = s.client_id
-                AND t.project_id    = s.project_id
-                AND (t.order#       != s.order# OR t.order# IS NULL);
-        END LOOP;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
     PROCEDURE copy_categories
     AS
         rec                     tsk_categories%ROWTYPE;
@@ -514,6 +415,261 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         --
         core.set_item('P0_SUCCESS_MESSAGE', CASE WHEN SQL%ROWCOUNT = 1 THEN v_affected || ' rows affected.' END);
         --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_swimlanes
+    AS
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        FOR s IN (
+            SELECT
+                t.swimlane_id,
+                t.client_id,
+                t.project_id,
+                --
+                ROW_NUMBER() OVER (
+                    PARTITION BY t.client_id, t.project_id
+                    ORDER BY t.order# NULLS LAST, t.swimlane_name, t.swimlane_id
+                ) * 10 AS order#
+                --
+            FROM tsk_swimlanes t
+            WHERE 1 = 1
+                AND t.client_id     = in_client_id
+                AND t.project_id    = in_project_id
+        ) LOOP
+            UPDATE tsk_swimlanes t
+            SET t.order#            = s.order#
+            WHERE t.swimlane_id     = s.swimlane_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id
+                AND (t.order#       != s.order# OR t.order# IS NULL);
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_statuses
+    AS
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        -- fix columns
+        FOR s IN (
+            SELECT
+                t.status_id,
+                t.client_id,
+                t.project_id,
+                c.old_col_order#,
+                c.new_col_order#
+                --
+            FROM tsk_statuses t
+            JOIN (
+                SELECT
+                    t.client_id,
+                    t.project_id,
+                    t.col_order#    AS old_col_order#,
+                    --
+                    ROW_NUMBER() OVER (
+                        PARTITION BY t.client_id, t.project_id
+                        ORDER BY t.col_order#
+                    ) AS new_col_order#
+                    --
+                FROM tsk_statuses t
+                WHERE 1 = 1
+                    AND t.client_id     = in_client_id
+                    AND t.project_id    = in_project_id
+                    AND t.col_order#    IS NOT NULL
+                GROUP BY
+                    t.client_id,
+                    t.project_id,
+                    t.col_order#
+            ) c
+                ON c.client_id          = t.client_id
+                AND c.project_id        = t.project_id
+                AND c.old_col_order#    = t.col_order#
+            WHERE 1 = 1
+                AND t.client_id         = in_client_id
+                AND t.project_id        = in_project_id
+                AND t.col_order#        IS NOT NULL
+                AND c.old_col_order#    != c.new_col_order#
+        ) LOOP
+            UPDATE tsk_statuses t
+            SET t.col_order#        = s.new_col_order#
+            WHERE t.status_id       = s.status_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id;
+        END LOOP;
+
+        -- fix rows
+        FOR s IN (
+            SELECT
+                t.status_id,
+                t.client_id,
+                t.project_id,
+                c.old_row_order#,
+                c.new_row_order#
+                --
+            FROM tsk_statuses t
+            JOIN (
+                SELECT
+                    t.client_id,
+                    t.project_id,
+                    t.col_order#,
+                    t.row_order#    AS old_row_order#,
+                    --
+                    ROW_NUMBER() OVER (
+                        PARTITION BY t.client_id, t.project_id, t.col_order#
+                        ORDER BY t.row_order#
+                    ) AS new_row_order#
+                    --
+                FROM tsk_statuses t
+                WHERE 1 = 1
+                    AND t.client_id     = in_client_id
+                    AND t.project_id    = in_project_id
+                    AND t.row_order#    IS NOT NULL
+                GROUP BY
+                    t.client_id,
+                    t.project_id,
+                    t.col_order#,
+                    t.row_order#
+            ) c
+                ON c.client_id          = t.client_id
+                AND c.project_id        = t.project_id
+                AND c.col_order#        = t.col_order#
+                AND c.old_row_order#    = t.row_order#
+            WHERE 1 = 1
+                AND t.client_id         = in_client_id
+                AND t.project_id        = in_project_id
+                AND t.row_order#        IS NOT NULL
+                AND c.old_row_order#    != c.new_row_order#
+        ) LOOP
+            UPDATE tsk_statuses t
+            SET t.row_order#        = s.new_row_order#
+            WHERE t.status_id       = s.status_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id;
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_categories
+    AS
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        FOR s IN (
+            SELECT
+                t.category_id,
+                t.client_id,
+                t.project_id,
+                --
+                ROW_NUMBER() OVER (
+                    PARTITION BY t.client_id, t.project_id, t.category_group
+                    ORDER BY t.order# NULLS LAST, t.category_name, t.category_id
+                ) * 10 AS order#
+                --
+            FROM tsk_categories t
+            WHERE 1 = 1
+                AND t.client_id     = in_client_id
+                AND t.project_id    = in_project_id
+        ) LOOP
+            UPDATE tsk_categories t
+            SET t.order#            = s.order#
+            WHERE t.category_id     = s.category_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id
+                AND (t.order#       != s.order# OR t.order# IS NULL);
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_sequences
+    AS
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        FOR s IN (
+            SELECT
+                t.sequence_id,
+                t.client_id,
+                --
+                ROW_NUMBER() OVER (
+                    PARTITION BY t.client_id
+                    ORDER BY t.order# NULLS LAST, t.sequence_id
+                ) * 10 AS order#
+                --
+            FROM tsk_sequences t
+            WHERE 1 = 1
+                AND t.client_id     = in_client_id
+        ) LOOP
+            UPDATE tsk_sequences t
+            SET t.order#            = s.order#
+            WHERE t.sequence_id     = s.sequence_id
+                AND t.client_id     = s.client_id
+                AND (t.order#       != s.order# OR t.order# IS NULL);
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE reorder_boards
+    AS
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+    BEGIN
+        FOR s IN (
+            SELECT
+                t.board_id,
+                t.client_id,
+                t.project_id,
+                --
+                ROW_NUMBER() OVER (
+                    PARTITION BY t.client_id, t.project_id
+                    ORDER BY t.order# NULLS LAST, t.board_id
+                ) * 10 AS order#
+                --
+            FROM tsk_boards t
+            WHERE 1 = 1
+                AND t.client_id     = in_client_id
+                AND t.project_id    = in_project_id
+        ) LOOP
+            UPDATE tsk_boards t
+            SET t.order#            = s.order#
+            WHERE t.board_id        = s.board_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id
+                AND (t.order#       != s.order# OR t.order# IS NULL);
+        END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

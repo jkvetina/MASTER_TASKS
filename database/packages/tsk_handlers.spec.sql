@@ -28,15 +28,7 @@ CREATE OR REPLACE PACKAGE tsk_handlers AS
 
 
 
-    PROCEDURE reorder_statuses;
-
-
-
     PROCEDURE copy_statuses;
-
-
-
-    PROCEDURE reorder_swimlanes;
 
 
 
@@ -44,11 +36,27 @@ CREATE OR REPLACE PACKAGE tsk_handlers AS
 
 
 
+    PROCEDURE copy_categories;
+
+
+
+    PROCEDURE reorder_swimlanes;
+
+
+
+    PROCEDURE reorder_statuses;
+
+
+
     PROCEDURE reorder_categories;
 
 
 
-    PROCEDURE copy_categories;
+    PROCEDURE reorder_sequences;
+
+
+
+    PROCEDURE reorder_boards;
 
 END;
 /
