@@ -16,10 +16,10 @@ SELECT
     --
     LPAD('0', ROW_NUMBER() OVER (
         PARTITION BY t.client_id, t.project_id
-        ORDER BY t.order# NULLS LAST, t.row_order# NULLS LAST, t.status_id
+        ORDER BY t.col_order# NULLS LAST, t.row_order# NULLS LAST, t.status_id
         ), '0') AS order#,
     --
-    t.order#            AS col_order#,
+    t.col_order#,
     t.row_order#
     --
 FROM tsk_statuses t

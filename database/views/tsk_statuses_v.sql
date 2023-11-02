@@ -32,7 +32,7 @@ SELECT
     t.status_id,
     t.status_name,
     t.status_group,
-    t.order#,
+    t.col_order#,
     t.row_order#,
     t.is_active,
     t.is_default,
