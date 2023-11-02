@@ -63,13 +63,12 @@ COMPOUND TRIGGER
 
             -- make sure every project has at least one status
             BEGIN
-                INSERT INTO tsk_statuses (client_id, project_id, status_id, status_name, order#, is_active, is_default)
+                INSERT INTO tsk_statuses (client_id, project_id, status_id, status_name, is_active, is_default)
                 VALUES (
                     :NEW.client_id,
                     :NEW.project_id,
                     'DEFAULT',
                     'Default Status',
-                    10,
                     'Y',
                     'Y'
                 );

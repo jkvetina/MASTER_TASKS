@@ -167,7 +167,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
-                    in_content      => a.client_name,
+                    in_content      => CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END || a.client_name,
                     in_page_id      => core.get_page_id(),
                     in_client_id    => a.client_id
                 ) AS row_
@@ -191,7 +191,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
-                    in_content      => a.project_name,
+                    in_content      => CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END || a.project_name,
                     in_page_id      => core.get_page_id(),
                     in_client_id    => a.client_id,
                     in_project_id   => a.project_id
@@ -227,7 +227,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 --
             FROM tsk_available_boards_v a
             WHERE a.is_current_project = 'Y'
-            ORDER BY a.order#
+            ORDER BY a.board_order#
         ) LOOP
             o := o || '<li>' || c.row_ || '</li>';
         END LOOP;
@@ -245,7 +245,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
-                    in_content      => a.swimlane_name,
+                    in_content      => CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END || a.swimlane_name,
                     in_page_id      => core.get_page_id(),
                     in_swimlane_id  => a.swimlane_id
                 ) AS row_
@@ -269,7 +269,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
-                    in_content      => a.status_name,
+                    in_content      => CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END || a.status_name,
                     in_page_id      => core.get_page_id(),
                     in_status_id    => a.status_id
                 ) AS row_,
@@ -299,7 +299,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
-                    in_content      => a.category_name,
+                    in_content      => CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END || a.category_name,
                     in_page_id      => core.get_page_id(),
                     in_category_id  => a.category_id
                 ) AS row_,
@@ -327,21 +327,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         o VARCHAR2(32767);
     BEGIN
         FOR c IN (
-            SELECT DISTINCT /*+ MATERIALIZE */
-                t.owner_id,
+            SELECT
                 tsk_nav.get_link (
-                    in_content      => NVL(u.user_name, t.owner_id),
+                    in_content      => CASE WHEN a.is_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END || a.user_name,
                     in_page_id      => core.get_page_id(),
-                    in_swimlane_id  => t.owner_id
+                    in_swimlane_id  => a.user_id
                 ) AS row_
-                --
-                --CASE WHEN t.owner_id = tsk_app.get_owner_id() THEN 'Y' END AS is_current,
-                --
-            FROM tsk_p100_cards_v t
-            LEFT JOIN tsk_lov_users_v u
-                ON u.user_id    = t.owner_id
-            WHERE t.owner_id    IS NOT NULL
-            ORDER BY t.owner_id
+            FROM tsk_lov_owners_v a
+            ORDER BY a.order#
         ) LOOP
             o := o || '<li>' || c.row_ || '</li>';
         END LOOP;

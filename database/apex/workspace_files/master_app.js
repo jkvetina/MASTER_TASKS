@@ -5,7 +5,7 @@ var ping_active = true;
 var ping_loop;
 var last_scheduler;
 //
-const init_page = function() {
+const init_page_asap = function() {
     const autohide_after = 2300;
 
     // autohide success messages
@@ -118,7 +118,9 @@ const init_page = function() {
     if (ping_active && ping_interval > 0 && apex.item('P0_AJAX_PING_INTERVAL').node) {
         ping_loop = ping_fn();
     }
-
+};
+//
+const init_page = function() {
     //
     // ADJUST GRIDS
     //
@@ -145,6 +147,7 @@ $('button > .t-Button-label').each(function(k, id) {
 
 // when page is loaded
 $(function() {
+    init_page_asap();
 });
 
 // when all APEX components are loaded
