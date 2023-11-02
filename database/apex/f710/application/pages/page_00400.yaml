@@ -61,6 +61,7 @@ regions:
     template: Tabs Container # 33957611184153776
     template-options: 
     - '#DEFAULT#'
+    - js-useLocalStorage
     - t-TabsRegion-mod--simple
     render-components: Above Content
 
@@ -1337,7 +1338,7 @@ buttons:
     label: Switch Board
 
   layout: 
-    sequence: 10
+    sequence: 20
     region: Boards for &P0_PROJECT_NAME. # 115470213237223639
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1364,6 +1365,34 @@ buttons:
   advanced: 
     static-id: SWITCH_BOARD
 
+- # ====== Button: REORDER_BOARDS ==============================
+  id: 39042938695392161
+  identification: 
+    button-name: REORDER_BOARDS
+    label: Reorder Boards
+
+  layout: 
+    sequence: 10
+    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-sequence
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
 processes: 
 - # ====== Process: SAVE_BOARDS ================================
   id: 26794752428503105
@@ -1384,12 +1413,39 @@ processes:
     point: Processing
     run-process: Once Per Page Visit (default)
 
+  success-message: 
+    success-message: Boards updated
+
   error: 
     display-location: Inline in Notification
 
   server-side-condition: 
     execution-scope: For Created and Modified Rows
 
-  security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+- # ====== Process: REORDER_BOARDS =============================
+  id: 39014380129935405
+  identification: 
+    name: REORDER_BOARDS
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: REORDER_BOARDS
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Boards reordered
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: REORDER_BOARDS # 39042938695392161
 
