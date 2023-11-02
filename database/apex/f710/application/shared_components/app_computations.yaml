@@ -9,8 +9,9 @@
     point: After Header
 
   computation: 
-    type: Static Value
-    static-value: |
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
       CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = 'Y'
           THEN 0
           ELSE 6 END

@@ -16,7 +16,8 @@ wwv_flow_imp_shared.create_flow_computation(
 ,p_computation_sequence=>10
 ,p_computation_item=>'P0_AJAX_PING_INTERVAL'
 ,p_computation_point=>'AFTER_HEADER'
-,p_computation_type=>'STATIC_ASSIGNMENT'
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
 ,p_computation_processed=>'REPLACE_EXISTING'
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = ''Y''',
