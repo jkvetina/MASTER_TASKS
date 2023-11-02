@@ -14,11 +14,7 @@ SELECT
     t.board_id,
     t.board_name,
     t.project_name      AS group_name,
-    --
-    LPAD('0', ROW_NUMBER() OVER (
-        PARTITION BY t.client_id, t.project_id
-        ORDER BY t.order#, t.board_name
-        ), '0') AS order#,
+    t.board_order#      AS order#,
     --
     t.is_favorite,
     --

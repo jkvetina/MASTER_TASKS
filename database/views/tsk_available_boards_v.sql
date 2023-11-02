@@ -27,7 +27,8 @@ SELECT
     CASE WHEN b.client_id   = x.client_id AND b.project_id = x.project_id   THEN 'Y' END AS is_current_project,
     CASE WHEN b.client_id   = x.client_id AND b.board_id    = x.board_id    THEN 'Y' END AS is_current,
     --
-    LPAD(ROW_NUMBER() OVER (PARTITION BY b.project_id ORDER BY b.order#, b.board_name), 4, '0') AS order#
+    LPAD(ROW_NUMBER() OVER (ORDER BY b.order# NULLS LAST, b.board_name), 4, '0') AS board_order#,
+    b.order#
     --
 FROM tsk_available_projects_v a
 CROSS JOIN x
