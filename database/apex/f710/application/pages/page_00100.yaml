@@ -1998,7 +1998,7 @@ buttons:
     label: Swimlane
 
   layout: 
-    sequence: 60
+    sequence: 50
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -2032,7 +2032,7 @@ buttons:
     label: Status
 
   layout: 
-    sequence: 80
+    sequence: 60
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -2066,7 +2066,7 @@ buttons:
     label: Category
 
   layout: 
-    sequence: 90
+    sequence: 70
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -2100,7 +2100,7 @@ buttons:
     label: Owner
 
   layout: 
-    sequence: 100
+    sequence: 80
     region: '&P100_HEADER!RAW.' # 74502100937114588
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -2149,39 +2149,6 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     icon: fa-search
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  server-side-condition: 
-    type: Never
-
-- # ====== Button: FILTER_BOARDS ===============================
-  id: 38409005563540138
-  identification: 
-    button-name: FILTER_BOARDS
-    label: Board
-
-  layout: 
-    sequence: 50
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon # 34021523429153827
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    css-classes: 
-    - TRANSPARENT
-    icon: fa-chevron-down
 
   behavior: 
     action: Defined by Dynamic Action
