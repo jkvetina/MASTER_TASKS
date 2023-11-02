@@ -830,6 +830,7 @@ regions:
     template: Tabs Container # 33957611184153776
     template-options: 
     - '#DEFAULT#'
+    - js-useLocalStorage
     - t-TabsRegion-mod--simple
     render-components: Above Content
 
@@ -1677,7 +1678,7 @@ buttons:
     static-id: SWITCH_CLIENT
 
 - # ====== Button: REORDER_SEQUENCES ===========================
-  id: 38910210348251347
+  id: 39040926339110073
   identification: 
     button-name: REORDER_SEQUENCES
     label: Reorder Sequences
@@ -1704,9 +1705,6 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
-  server-side-condition: 
-    type: Never
-
 processes: 
 - # ====== Process: SAVE_CLIENTS ===============================
   id: 23264570806120025
@@ -1727,12 +1725,67 @@ processes:
     point: Processing
     run-process: Once Per Page Visit (default)
 
+  success-message: 
+    success-message: Clients updated
+
   error: 
     display-location: Inline in Notification
 
   server-side-condition: 
     execution-scope: For Created and Modified Rows
 
-  security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+- # ====== Process: SAVE_SEQUENCES =============================
+  id: 39014288059935404
+  identification: 
+    name: SAVE_SEQUENCES
+    type: Invoke API
+    execution-chain: None
+    editable-region: Sequences [GRID] # 312563241607185103
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: SAVE_SEQUENCES
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Sequences updated
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: For Created and Modified Rows
+
+- # ====== Process: REORDER_SEQUENCES ==========================
+  id: 39041275727112360
+  identification: 
+    name: REORDER_SEQUENCES
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: REORDER_SEQUENCES
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Sequences reordered
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: REORDER_SEQUENCES # 39040926339110073
 

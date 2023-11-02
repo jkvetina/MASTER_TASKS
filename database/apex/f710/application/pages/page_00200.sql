@@ -29,7 +29,7 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(38407248529540120)
 ,p_plug_name=>'TABS'
-,p_region_template_options=>'#DEFAULT#:t-TabsRegion-mod--simple'
+,p_region_template_options=>'#DEFAULT#:js-useLocalStorage:t-TabsRegion-mod--simple'
 ,p_plug_template=>wwv_flow_imp.id(33957611184153776)
 ,p_plug_display_sequence=>10
 ,p_attribute_01=>'N'
@@ -1044,7 +1044,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(38910210348251347)
+ p_id=>wwv_flow_imp.id(39040926339110073)
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(277776529064197343)
 ,p_button_name=>'REORDER_SEQUENCES'
@@ -1053,7 +1053,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
 ,p_button_image_alt=>'Reorder Sequences'
 ,p_button_position=>'RIGHT_OF_TITLE'
-,p_button_condition_type=>'NEVER'
 ,p_icon_css_classes=>'fa-sequence'
 );
 wwv_flow_imp_page.create_page_button(
@@ -1094,10 +1093,37 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_03=>'TSK_HANDLERS'
 ,p_attribute_04=>'SAVE_CLIENTS'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
+,p_process_success_message=>'Clients updated'
 ,p_internal_uid=>23264570806120025
 );
-null;
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(39014288059935404)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_region_id=>wwv_flow_imp.id(312563241607185103)
+,p_process_type=>'NATIVE_INVOKE_API'
+,p_process_name=>'SAVE_SEQUENCES'
+,p_attribute_01=>'PLSQL_PACKAGE'
+,p_attribute_03=>'TSK_HANDLERS'
+,p_attribute_04=>'SAVE_SEQUENCES'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Sequences updated'
+,p_internal_uid=>39014288059935404
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(39041275727112360)
+,p_process_sequence=>30
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_INVOKE_API'
+,p_process_name=>'REORDER_SEQUENCES'
+,p_attribute_01=>'PLSQL_PACKAGE'
+,p_attribute_03=>'TSK_HANDLERS'
+,p_attribute_04=>'REORDER_SEQUENCES'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(39040926339110073)
+,p_process_success_message=>'Sequences reordered'
+,p_internal_uid=>39041275727112360
+);
 wwv_flow_imp.component_end;
 end;
 /
