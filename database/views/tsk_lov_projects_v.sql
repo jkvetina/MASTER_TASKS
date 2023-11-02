@@ -15,7 +15,9 @@ SELECT
     LPAD('0', ROW_NUMBER() OVER (
         PARTITION BY t.client_id
         ORDER BY t.project_name, t.project_id
-        ), '0') AS order#
+        ), '0') AS order#,
+    --
+    t.is_current
     --
 FROM tsk_available_projects_v t
 JOIN x
