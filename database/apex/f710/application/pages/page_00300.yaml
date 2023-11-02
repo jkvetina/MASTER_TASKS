@@ -61,6 +61,7 @@ regions:
     template: Tabs Container # 33957611184153776
     template-options: 
     - '#DEFAULT#'
+    - js-useLocalStorage
     - t-TabsRegion-mod--simple
     render-components: Above Content
 
@@ -124,50 +125,6 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Boards ======================================
-  id: 38406853384540116
-  identification: 
-    title: Boards
-    type: Static Content
-
-  layout: 
-    sequence: 20
-    parent-region: TABS # 38406678052540114
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-side-condition: 
-    type: Never
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
 - # ====== Region: Swimlanes ===================================
   id: 38406903357540117
   identification: 
@@ -175,7 +132,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 30
+    sequence: 20
     parent-region: TABS # 38406678052540114
     position: SUB_REGIONS
     start-new-layout: false
@@ -216,7 +173,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 40
+    sequence: 30
     parent-region: TABS # 38406678052540114
     position: SUB_REGIONS
     start-new-layout: false
@@ -257,7 +214,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 50
+    sequence: 40
     parent-region: TABS # 38406678052540114
     position: SUB_REGIONS
     start-new-layout: false
@@ -268,47 +225,6 @@ regions:
 
   appearance: 
     template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Boards for &P0_PROJECT_NAME. ================
-  id: 38407601331540124
-  identification: 
-    title: Boards for &P0_PROJECT_NAME.
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: Boards # 38406853384540116
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Hero # 33914493478153754
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1277,1129 +1193,6 @@ regions:
   attributes: 
     performance: 
       lazy-loading: false
-
-- # ====== Region: Boards [GRID] ===============================
-  id: 154328476892412612
-  identification: 
-    title: Boards [GRID]
-    type: Interactive Grid
-
-  source: 
-    location: Local Database
-    type: Table / View
-    table-owner: Parsing Schema
-    table-name: TSK_BOARDS_V
-    include-rowid-column: false
-
-  layout: 
-    sequence: 20
-    parent-region: Boards # 38406853384540116
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Interactive Report # 33938051529153767
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    id: 154328606736412613
-    edit: 
-      enabled: true
-      allowed-operations: 
-      - Add Row
-      - Update Row
-      - Delete Row
-      lost-update-type: Row Values
-      add-row-if-empty: false
-
-    edit-authorization: 
-      add: MASTER - IS_ADMIN # 70314575553792528
-      update: MASTER - IS_ADMIN # 70314575553792528
-      delete: MASTER - IS_ADMIN # 70314575553792528
-
-    performance: 
-      lazy-loading: false
-
-    appearance: 
-      select-first-row: false
-      fixed-row-height: true
-
-    pagination: 
-      type: Scroll
-      show-total-count: true
-
-    toolbar: 
-      show: true
-      controls: 
-      - Search Column Selection
-      - Search Field
-      - Actions Menu
-      - Save Button
-
-    enable-users-to: 
-      save-public-report: false
-      flashback: true
-      define-chart-view: true
-      download: true
-
-    download: 
-      formats: 
-      - CSV
-      - HTML
-      - Excel
-      - PDF
-      send-as-email: true
-
-    heading: 
-      fixed-to: Page
-
-    icon-view: 
-      show: false
-
-    detail-view: 
-      show: false
-
-    saved-reports: 
-    - # ====== Saved Report: Primary Report ========================
-      id: 154549124650293590
-      identification: 
-        name: Primary Report
-        alias: 457399
-
-  column-groups: 
-  - # ====== Column Group: Counts ================================
-    id: 154981944768902906
-    heading: 
-      heading: Counts
-
-  - # ====== Column Group: Flags =================================
-    id: 154982804616902915
-    heading: 
-      heading: Flags
-
-  - # ====== Column Group: Board Info ============================
-    id: 155071004277884414
-    heading: 
-      heading: Board Info
-
-  columns: 
-  - # ====== Column: IS_CURRENT ==================================
-    id: 67128850908183311
-    identification: 
-      column-name: IS_CURRENT
-      type: Checkbox
-
-    heading: 
-      heading: Current
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 170
-      column-alignment: center
-      group: Flags # 154982804616902915
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_CURRENT
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    read-only: 
-      type: Always
-      execute: Once
-
-  - # ====== Column: COUNT_SWIMLANES =============================
-    id: 67128857798183312
-    identification: 
-      column-name: COUNT_SWIMLANES
-      type: Display Only
-
-    heading: 
-      heading: Swimlanes
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 180
-      column-alignment: end
-      group: Counts # 154981944768902906
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    link: 
-      target: 
-        url: 'f?p=&APP_ID.:310:&SESSION.::&DEBUG.:310::'
-        page: 310
-        clear-cache: 310
-
-      link-text: '&COUNT_SWIMLANES.'
-
-    source: 
-      type: Database Column
-      database-column: COUNT_SWIMLANES
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COUNT_STATUSES ==============================
-    id: 67129031611183313
-    identification: 
-      column-name: COUNT_STATUSES
-      type: Link
-
-    heading: 
-      heading: Statuses
-      alignment: end
-
-    layout: 
-      sequence: 190
-      column-alignment: end
-      group: Counts # 154981944768902906
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    link: 
-      target: 
-        url: 'f?p=&APP_ID.:320:&SESSION.::&DEBUG.:320::'
-        page: 320
-        clear-cache: 320
-
-      link-text: '&COUNT_STATUSES.'
-
-    source: 
-      type: Database Column
-      database-column: COUNT_STATUSES
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    security: 
-      escape-special-characters: true
-
-  - # ====== Column: COUNT_CATEGORIES ============================
-    id: 67129110662183314
-    identification: 
-      column-name: COUNT_CATEGORIES
-      type: Link
-
-    heading: 
-      heading: Categories
-      alignment: end
-
-    layout: 
-      sequence: 200
-      column-alignment: end
-      group: Counts # 154981944768902906
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    link: 
-      target: 
-        url: 'f?p=&APP_ID.:340:&SESSION.::&DEBUG.:340::'
-        page: 340
-        clear-cache: 340
-
-      link-text: '&COUNT_CATEGORIES.'
-
-    source: 
-      type: Database Column
-      database-column: COUNT_CATEGORIES
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    security: 
-      escape-special-characters: true
-
-  - # ====== Column: COUNT_OWNERS ================================
-    id: 67129212608183315
-    identification: 
-      column-name: COUNT_OWNERS
-      type: Display Only
-
-    heading: 
-      heading: Owners
-      alignment: end
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 210
-      column-alignment: end
-      group: Counts # 154981944768902906
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: COUNT_OWNERS
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: COUNT_CARDS =================================
-    id: 67129252310183316
-    identification: 
-      column-name: COUNT_CARDS
-      type: Link
-
-    heading: 
-      heading: Cards
-      alignment: end
-
-    layout: 
-      sequence: 220
-      column-alignment: end
-      group: Counts # 154981944768902906
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    link: 
-      target: 
-        url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:100:P0_CLIENT_ID,P0_PROJECT_ID,P0_BOARD_ID:&CLIENT_ID.,&PROJECT_ID.,&BOARD_ID.'
-        page: 100 # #APP_NAME#
-        clear-cache: 100
-        values: 
-          p0_client_id: '&CLIENT_ID.'
-          p0_project_id: '&PROJECT_ID.'
-          p0_board_id: '&BOARD_ID.'
-
-      link-text: '&COUNT_CARDS.'
-
-    source: 
-      type: Database Column
-      database-column: COUNT_CARDS
-      data-type: NUMBER
-      query-only: true
-      primary-key: false
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    security: 
-      escape-special-characters: true
-
-  - # ====== Column: CLIENT_ID ===================================
-    id: 67129417892183317
-    identification: 
-      column-name: CLIENT_ID
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 50
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: CLIENT_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Item
-      item: P0_CLIENT_ID
-      duplicate-copies-existing-value: true
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: CLIENT_NAME =================================
-    id: 67129453157183318
-    identification: 
-      column-name: CLIENT_NAME
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 60
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: CLIENT_NAME
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: PROJECT_ID ==================================
-    id: 67129579854183319
-    identification: 
-      column-name: PROJECT_ID
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 70
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: PROJECT_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Item
-      item: P0_PROJECT_ID
-      duplicate-copies-existing-value: true
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: PROJECT_NAME ================================
-    id: 67129751159183320
-    identification: 
-      column-name: PROJECT_NAME
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 80
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: PROJECT_NAME
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  - # ====== Column: IS_SIMPLE ===================================
-    id: 76583581014142091
-    identification: 
-      column-name: IS_SIMPLE
-      type: Checkbox
-
-    heading: 
-      heading: Simple
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 130
-      column-alignment: center
-      group: Flags # 154982804616902915
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_SIMPLE
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: APEX$ROW_ACTION =============================
-    id: 88904964074812106
-    identification: 
-      column-name: APEX$ROW_ACTION
-      type: Actions Menu
-
-    layout: 
-      sequence: 20
-
-  - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 88905046946812107
-    identification: 
-      column-name: APEX$ROW_SELECTOR
-      type: Row Selector
-
-    settings: 
-      enable-multi-select: true
-      show-select-all: true
-      hide-control: false
-
-    layout: 
-      sequence: 10
-
-  - # ====== Column: IS_DEFAULT ==================================
-    id: 89157963503273687
-    identification: 
-      column-name: IS_DEFAULT
-      type: Checkbox
-
-    heading: 
-      heading: Default
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 150
-      column-alignment: center
-      group: Flags # 154982804616902915
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_DEFAULT
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: SEQUENCE_ID =================================
-    id: 92034083447323679
-    identification: 
-      column-name: SEQUENCE_ID
-      type: Select List
-
-    heading: 
-      heading: Sequence
-      alignment: start
-
-    layout: 
-      sequence: 110
-      column-alignment: start
-      group: Board Info # 155071004277884414
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    list-of-values: 
-      type: Shared Component
-      list-of-values: LOV_SEQUENCES # 26408996815154587
-      display-extra-values: false
-      display-null-value: true
-
-    source: 
-      type: Database Column
-      database-column: SEQUENCE_ID
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Use List of Values
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: BOARD_ID ====================================
-    id: 154329049617412617
-    identification: 
-      column-name: BOARD_ID
-      type: Number Field
-
-    heading: 
-      heading: Board Id
-      alignment: end
-
-    settings: 
-      number-alignment: Start
-      virtual-keyboard: Decimal
-
-    layout: 
-      sequence: 90
-      column-alignment: end
-      group: Board Info # 155071004277884414
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-
-    source: 
-      type: Database Column
-      database-column: BOARD_ID
-      data-type: NUMBER
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Sequence
-      sequence: TSK_BOARD_ID
-      duplicate-copies-existing-value: false
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    read-only: 
-      type: Always
-      execute: Once
-
-    security: 
-      authorization-scheme: MASTER - IS_DEVELOPER # 68472631569287844
-
-  - # ====== Column: BOARD_NAME ==================================
-    id: 154329131389412618
-    identification: 
-      column-name: BOARD_NAME
-      type: Text Field
-
-    heading: 
-      heading: Board Name
-      alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
-
-    layout: 
-      sequence: 100
-      column-alignment: start
-      group: Board Info # 155071004277884414
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-      maximum-length: 64
-
-    source: 
-      type: Database Column
-      database-column: BOARD_NAME
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: IS_ACTIVE ===================================
-    id: 154329400222412621
-    identification: 
-      column-name: IS_ACTIVE
-      type: Checkbox
-
-    heading: 
-      heading: Active
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 160
-      column-alignment: center
-      group: Flags # 154982804616902915
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_ACTIVE
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      type: Static
-      static-value: Y
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: IS_FAVORITE =================================
-    id: 154572072430370626
-    identification: 
-      column-name: IS_FAVORITE
-      type: Checkbox
-
-    heading: 
-      heading: Favorite
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 140
-      column-alignment: center
-      group: Flags # 154982804616902915
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_FAVORITE
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: ORDER# ======================================
-    id: 155071074405884415
-    identification: 
-      column-name: ORDER#
-      type: Number Field
-
-    heading: 
-      heading: Order#
-      alignment: end
-
-    settings: 
-      number-alignment: Start
-      virtual-keyboard: Decimal
-
-    layout: 
-      sequence: 120
-      column-alignment: end
-      group: Board Info # 155071004277884414
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: ORDER#
-      data-type: NUMBER
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      lov-type: None
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: OLD_BOARD_ID ================================
-    id: 157767427168928612
-    identification: 
-      column-name: OLD_BOARD_ID
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 40
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: OLD_BOARD_ID
-      data-type: NUMBER
-      query-only: false
-      primary-key: true
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-
-  printing: 
-    page: 
-      size: Letter
-      orientation: Landscape
-      units: Inches
-      width: 11
-      height: 8.5
-      border-width: 0.5
-      border-color: '#666666'
-
-    page-header: 
-      font: Helvetica
-      font-weight: Normal
-      font-size: 12
-      font-color: '#000000'
-      alignment: center
-      page-header-text: Boards [GRID]
-
-    column-headings: 
-      font: Helvetica
-      font-weight: Bold
-      font-size: 10
-      font-color: '#000000'
-      background-color: '#EEEEEE'
-
-    columns: 
-      font: Helvetica
-      font-weight: Normal
-      font-size: 10
-      font-color: '#000000'
-      background-color: '#FFFFFF'
-
-    page-footer: 
-      font: Helvetica
-      font-weight: Normal
-      font-size: 12
-      font-color: '#000000'
-      alignment: center
 
 - # ====== Region: Statuses for &P0_PROJECT_NAME. ==============
   id: 224535655812459474
@@ -3444,10 +2237,10 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: ORDER# ======================================
+  - # ====== Column: COL_ORDER# ==================================
     id: 259370522786750638
     identification: 
-      column-name: ORDER#
+      column-name: COL_ORDER#
       type: Number Field
 
     heading: 
@@ -3473,7 +2266,7 @@ regions:
 
     source: 
       type: Database Column
-      database-column: ORDER#
+      database-column: COL_ORDER#
       data-type: NUMBER
       query-only: false
       primary-key: false
@@ -5441,12 +4234,177 @@ processes:
     point: Processing
     run-process: Once Per Page Visit (default)
 
+  success-message: 
+    success-message: Projects updated
+
   error: 
     display-location: Inline in Notification
 
   server-side-condition: 
     execution-scope: For Created and Modified Rows
 
-  security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+- # ====== Process: REORDER_SWIMLANES ==========================
+  id: 38410059130540148
+  identification: 
+    name: REORDER_SWIMLANES
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: REORDER_SWIMLANES
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Swimlanes reordered
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: REORDER_SWIMLANES # 38879410900209015
+
+- # ====== Process: REORDER_STATUSES ===========================
+  id: 38410161829540149
+  identification: 
+    name: REORDER_STATUSES
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: REORDER_STATUSES
+
+  execution: 
+    sequence: 60
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Statuses reordered
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: REORDER_STATUSES # 38891431967216604
+
+- # ====== Process: REORDER_CATEGORIES =========================
+  id: 38410232086540150
+  identification: 
+    name: REORDER_CATEGORIES
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: REORDER_CATEGORIES
+
+  execution: 
+    sequence: 70
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Categories reordered
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: REORDER_CATEGORIES # 38900725790219955
+
+- # ====== Process: SAVE_SWIMLANES =============================
+  id: 39013949481935401
+  identification: 
+    name: SAVE_SWIMLANES
+    type: Invoke API
+    execution-chain: None
+    editable-region: Swimlanes [GRID] # 282723663142951758
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: SAVE_SWIMLANES
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Swimlanes updated
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: For Created and Modified Rows
+
+- # ====== Process: SAVE_STATUSES ==============================
+  id: 39014094563935402
+  identification: 
+    name: SAVE_STATUSES
+    type: Invoke API
+    execution-chain: None
+    editable-region: Statuses [GRID] # 259316898624447324
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: SAVE_STATUSES
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Statuses updated
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: For Created and Modified Rows
+
+- # ====== Process: SAVE_CATEGORIES ============================
+  id: 39014113429935403
+  identification: 
+    name: SAVE_CATEGORIES
+    type: Invoke API
+    execution-chain: None
+    editable-region: Categories [GRID] # 306739969733500970
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: TSK_HANDLERS
+    procedure-or-function: SAVE_CATEGORIES
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Categories updated
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: For Created and Modified Rows
 
