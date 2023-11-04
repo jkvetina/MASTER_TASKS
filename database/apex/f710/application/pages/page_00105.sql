@@ -136,6 +136,17 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_dialog_width=>'85%'
 ,p_protection_level=>'C'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This is Card detail, everything related to the card - descriptio, attachements, checklist, comments, commits...',
+'',
+'The main focus is on the checklist, which also serve the purpose of acceptance criteria. Instead of putting everything into the task description, you should create a list of things to do/check. If the description is needed, feel free to use it. Same '
+||'for the files and comments.',
+'',
+'You can assign category, owner and deadline to each card.',
+'',
+'Every tab contains the badge if there is a content there requiring your attention.',
+'',
+'Under the [...] button there are hidden some less used actions. Arrows will save the changes and move you to the prev/next card in the same order as you saw them on the Board.'))
 ,p_page_component_map=>'25'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
@@ -969,6 +980,18 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-save'
 ,p_database_action=>'UPDATE'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27422429232258642)
 ,p_button_sequence=>60
@@ -986,18 +1009,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-ellipsis-h'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27532573313783246)
@@ -1958,6 +1969,18 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>25265822843844587
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(25252128389844557)
 ,p_process_sequence=>10
@@ -1969,6 +1992,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when_type=>'ITEM_IS_NOT_NULL'
 ,p_internal_uid=>25252128389844557
 );
+null;
 wwv_flow_imp.component_end;
 end;
 /

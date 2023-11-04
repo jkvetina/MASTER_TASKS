@@ -157,6 +157,18 @@ advanced:
 server-cache: 
   caching: Disabled
 
+help: 
+  help-text: |
+    This is Card detail, everything related to the card - descriptio, attachements, checklist, comments, commits...
+    
+    The main focus is on the checklist, which also serve the purpose of acceptance criteria. Instead of putting everything into the task description, you should create a list of things to do/check. If the description is needed, feel free to use it. Same for the files and comments.
+    
+    You can assign category, owner and deadline to each card.
+    
+    Every tab contains the badge if there is a content there requiring your attention.
+    
+    Under the [...] button there are hidden some less used actions. Arrows will save the changes and move you to the prev/next card in the same order as you saw them on the Board.
+
 regions: 
 - # ====== Region: Checklist &P105_BADGE_CHECKLIST. ============
   id: 25064699187730026

@@ -22,6 +22,19 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_protection_level=>'C'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This is the main page, the Board. It shows cards for selected Client, Project and Board. Then you can filter cards by Swimlanes, Statuses, Categories and Owners. You can setup all of these on dedicated pages.',
+'',
+'The main purpose of this page is to manage cards by moving them via drag and drop from left to right, so you have the visibility over your process. You can click on card to see and change card details.',
+'',
+'You can add cards by [+] buttons on each Status column or by using Add button at the top.',
+'',
+'The number behind status name represents number of cards, the number in top right corner is representing progress, the number of checklist items done/total. The dark bar below represents the same thing.',
+'',
+'On Statuses page you can setup which columns will have colors and color badges to remove distractions. Also you can change the order and Statuses itself.',
+'',
+'With buttons on top right you can bookmark selected combination and see it there in the menu for quick access. You can also switch the view from cards/board to grid. And you can do bulk operations with cards.',
+''))
 ,p_page_component_map=>'25'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
@@ -1057,6 +1070,18 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-chevron-down'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(38406336133540111)
 ,p_button_sequence=>70
@@ -1086,18 +1111,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-chevron-down'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27419646379258614)

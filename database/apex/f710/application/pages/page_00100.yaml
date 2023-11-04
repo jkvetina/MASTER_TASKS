@@ -40,6 +40,21 @@ advanced:
 server-cache: 
   caching: Disabled
 
+help: 
+  help-text: |
+    This is the main page, the Board. It shows cards for selected Client, Project and Board. Then you can filter cards by Swimlanes, Statuses, Categories and Owners. You can setup all of these on dedicated pages.
+    
+    The main purpose of this page is to manage cards by moving them via drag and drop from left to right, so you have the visibility over your process. You can click on card to see and change card details.
+    
+    You can add cards by [+] buttons on each Status column or by using Add button at the top.
+    
+    The number behind status name represents number of cards, the number in top right corner is representing progress, the number of checklist items done/total. The dark bar below represents the same thing.
+    
+    On Statuses page you can setup which columns will have colors and color badges to remove distractions. Also you can change the order and Statuses itself.
+    
+    With buttons on top right you can bookmark selected combination and see it there in the menu for quick access. You can also switch the view from cards/board to grid. And you can do bulk operations with cards.
+    
+
 regions: 
 - # ====== Region: SWITCH_STATUS ===============================
   id: 38409764767540145
