@@ -85,54 +85,6 @@ SELECT
     t.attribute10,
     t.order#
     --
-FROM filter_data t
-UNION ALL
---
-SELECT
-    2 AS lvl,
-    --
-    '<span>' || core.get_icon('fa-wrench') || ' &nbsp; Setup</span>' AS attribute01,
-    --
-    '' AS attribute02,
-    '' AS attribute03,
-    '' AS attribute04,
-    '' AS attribute05,
-    '' AS attribute06,
-    '' AS attribute07,
-    --
-    '</ul><ul>'         AS attribute08,
-    ''                  AS attribute09,
-    ' class="NAV_L2"'   AS attribute10,
-    --
-    x.endpoint || '/1/' AS order#
-    --
-FROM x
-UNION ALL
---
-SELECT
-    2 AS lvl,
-    --
-    tsk_nav.get_link(t.page_label, in_page_id => t.page_id) AS attribute01,
-    --
-    '' AS attribute02,
-    '' AS attribute03,
-    '' AS attribute04,
-    '' AS attribute05,
-    '' AS attribute06,
-    '' AS attribute07,
-    '' AS attribute08,
-    '' AS attribute09,
-    ' class="NAV_L3"' AS attribute10,
-    --
-    x.endpoint || '/1/' || t.order# || '.' || t.page_id AS order#
-    --
-FROM x
-CROSS JOIN (
-    SELECT 400 AS page_id, 'Boards'         AS page_label, 1 AS order# FROM DUAL UNION ALL
-    SELECT 310 AS page_id, 'Swimlanes'      AS page_label, 2 AS order# FROM DUAL UNION ALL
-    SELECT 320 AS page_id, 'Statuses'       AS page_label, 3 AS order# FROM DUAL UNION ALL
-    SELECT 340 AS page_id, 'Categories'     AS page_label, 4 AS order# FROM DUAL
-) t;
---
-COMMENT ON TABLE tsk_navigation_projects_v IS '';
+FROM filter_data t;
+
 
