@@ -72,3 +72,6 @@ SELECT
     --
 FROM filter_data t
 CROSS JOIN x;
+--
+COMMENT ON TABLE tsk_navigation_clients_v IS '';
+

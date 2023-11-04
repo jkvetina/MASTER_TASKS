@@ -86,5 +86,6 @@ SELECT
     t.order#
     --
 FROM filter_data t;
-
+--
+COMMENT ON TABLE tsk_navigation_projects_v IS '';
 
