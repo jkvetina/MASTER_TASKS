@@ -33,14 +33,14 @@ prompt APPLICATION 710 - Card Crunchers
 -- Application Export:
 --   Application:     710
 --   Name:            Card Crunchers
---   Date and Time:   18:03 Čtvrtek Listopad 2, 2023
+--   Date and Time:   09:10 Sobota Listopad 4, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     14
---       Items:                   91
+--       Items:                   95
 --       Computations:             4
---       Processes:               35
+--       Processes:               37
 --       Regions:                 82
 --       Buttons:                 48
 --       Dynamic Actions:         30
@@ -123,7 +123,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-11-02'
+,p_flow_version=>'2023-11-04'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -143,7 +143,7 @@ wwv_imp_workspace.create_flow(
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
-,p_files_version=>740
+,p_files_version=>744
 ,p_print_server_type=>'NATIVE'
 ,p_is_pwa=>'Y'
 ,p_pwa_is_installable=>'N'
@@ -518,7 +518,7 @@ wwv_flow_imp.g_varchar2_table(42) := '64696E672D6C6566743A342E3972656D21696D706F
 wwv_flow_imp.g_varchar2_table(43) := '20756C206C692E4D414E55414C202E4D33207370616E2C23745F4865616465723E23746F705F6865616465723E6E617620756C206C692E4D414E55414C202E4D34207370616E7B666F6E742D73697A653A2E383572656D21696D706F7274616E747D2374';
 wwv_flow_imp.g_varchar2_table(44) := '5F4865616465723E23746F705F6865616465723E6E617620756C206C692E4D414E55414C202E4D31207370616E2E66617B70616464696E672D746F703A2E313572656D21696D706F7274616E747D';
 wwv_flow_imp_shared.create_app_static_file(
- p_id=>wwv_flow_imp.id(37685260927360567)
+ p_id=>wwv_flow_imp.id(39229598008225771)
 ,p_file_name=>'tsk_app.min.css'
 ,p_mime_type=>'text/css'
 ,p_file_charset=>'utf-8'
@@ -1107,7 +1107,7 @@ wwv_flow_imp_shared.create_flow_computation(
 ,p_computation_language=>'PLSQL'
 ,p_computation_processed=>'REPLACE_EXISTING'
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = ''Y''',
+'CASE WHEN core.get_page_is_modal(:APP_ID, :APP_PAGE_ID) = ''Y''',
 '    THEN 0',
 '    ELSE 6 END'))
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
@@ -19063,6 +19063,19 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_protection_level=>'C'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This is the main page, the Board. It shows cards for selected Client, Project and Board. Then you can filter cards by Swimlanes, Statuses, Categories and Owners. You can setup all of these on dedicated pages.',
+'',
+'The main purpose of this page is to manage cards by moving them via drag and drop from left to right, so you have the visibility over your process. You can click on card to see and change card details.',
+'',
+'You can add cards by [+] buttons on each Status column or by using Add button at the top.',
+'',
+'The number behind status name represents number of cards, the number in top right corner is representing progress, the number of checklist items done/total. The dark bar below represents the same thing.',
+'',
+'On Statuses page you can setup which columns will have colors and color badges to remove distractions. Also you can change the order and Statuses itself.',
+'',
+'With buttons on top right you can bookmark selected combination and see it there in the menu for quick access. You can also switch the view from cards/board to grid. And you can do bulk operations with cards.',
+''))
 ,p_page_component_map=>'25'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
@@ -20077,7 +20090,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
 ,p_button_template_id=>wwv_flow_imp.id(34021523429153827)
-,p_button_image_alt=>'Swimlane'
+,p_button_image_alt=>'Swimlane &P100_CURR_SWIMLANE!RAW.'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
@@ -20092,12 +20105,15 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
 ,p_button_template_id=>wwv_flow_imp.id(34021523429153827)
-,p_button_image_alt=>'Status'
+,p_button_image_alt=>'Status &P100_CURR_STATUS!RAW.'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-chevron-down'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(38406336133540111)
 ,p_button_sequence=>70
@@ -20107,7 +20123,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
 ,p_button_template_id=>wwv_flow_imp.id(34021523429153827)
-,p_button_image_alt=>'Category'
+,p_button_image_alt=>'Category &P100_CURR_CATEGORY!RAW.'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
@@ -20122,15 +20138,12 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
 ,p_button_template_id=>wwv_flow_imp.id(34021523429153827)
-,p_button_image_alt=>'Owner'
+,p_button_image_alt=>'Owner &P100_CURR_OWNER!RAW.'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-chevron-down'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27419646379258614)
 ,p_button_sequence=>10
@@ -20219,6 +20232,42 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(27774212714313643)
 ,p_name=>'P100_CARD_ID'
 ,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(39014659777935408)
+,p_name=>'P100_CURR_SWIMLANE'
+,p_item_sequence=>80
+,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(39014892513935410)
+,p_name=>'P100_CURR_STATUS'
+,p_item_sequence=>90
+,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(39014988959935411)
+,p_name=>'P100_CURR_CATEGORY'
+,p_item_sequence=>100
+,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(39015035940935412)
+,p_name=>'P100_CURR_OWNER'
+,p_item_sequence=>110
 ,p_item_plug_id=>wwv_flow_imp.id(74502100937114588)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -20579,6 +20628,17 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
 ,p_dialog_width=>'85%'
 ,p_protection_level=>'C'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This is Card detail, everything related to the card - descriptio, attachements, checklist, comments, commits...',
+'',
+'The main focus is on the checklist, which also serve the purpose of acceptance criteria. Instead of putting everything into the task description, you should create a list of things to do/check. If the description is needed, feel free to use it. Same '
+||'for the files and comments.',
+'',
+'You can assign category, owner and deadline to each card.',
+'',
+'Every tab contains the badge if there is a content there requiring your attention.',
+'',
+'Under the [...] button there are hidden some less used actions. Arrows will save the changes and move you to the prev/next card in the same order as you saw them on the Board.'))
 ,p_page_component_map=>'25'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
@@ -21430,6 +21490,9 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-ellipsis-h'
 );
+end;
+/
+begin
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27532573313783246)
 ,p_button_sequence=>10
@@ -21445,9 +21508,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-question'
 );
-end;
-/
-begin
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25260460384844566)
 ,p_button_sequence=>20
@@ -22660,7 +22720,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_query_table=>'TSK_P110_CARDS_V'
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
-,p_ajax_items_to_submit=>'P110_SOURCE_PROJECT,P110_SOURCE_BOARD,P110_SOURCE_STATUS,P110_SOURCE_SWIMLANE,P110_SOURCE_CATEGORY,P110_SOURCE_OWNER'
+,p_ajax_items_to_submit=>'P110_SOURCE_PROJECT,P110_SOURCE_BOARD,P110_SOURCE_SWIMLANE,P110_SOURCE_STATUS,P110_SOURCE_CATEGORY,P110_SOURCE_OWNER'
 ,p_prn_units=>'INCHES'
 ,p_prn_paper_size=>'LETTER'
 ,p_prn_width=>11
@@ -23145,7 +23205,7 @@ wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(27597005854272035)
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(27594828701272013)
-,p_button_name=>'PROCESS_ALL_ROWS'
+,p_button_name=>'PROCESS_ALL_ROWS_AND_CLOSE'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(34021473197153827)
@@ -23182,7 +23242,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-question'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(27474734201062509)
+ p_id=>wwv_flow_imp.id(39051597109211547)
 ,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(155729416312791673)
 ,p_button_name=>'CLOSE_DIALOG'
@@ -23194,6 +23254,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'UP'
 ,p_button_execute_validations=>'N'
 ,p_warn_on_unsaved_changes=>null
+,p_button_css_classes=>'u-pullRight'
 ,p_icon_css_classes=>'fa-times'
 );
 wwv_flow_imp_page.create_page_item(
@@ -23638,7 +23699,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>'process_grid_all_rows(''AFFECTED_CARDS'', ''SELECTED_ROW'', ''PROCESS_ALL_ROWS'');'
+,p_attribute_01=>'process_grid_all_rows(''AFFECTED_CARDS'', ''SELECTED_ROW'', ''PROCESS_ALL_ROWS_AND_CLOSE'');'
 );
 end;
 /
@@ -23700,6 +23761,30 @@ wwv_flow_imp_page.create_page_process(
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>27596664559272031
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(39050324798189972)
+,p_process_sequence=>40
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_CLOSE_WINDOW'
+,p_process_name=>'CLOSE_DIALOG'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when=>'core.get_request() LIKE ''%\_CLOSE'' ESCAPE ''\'''
+,p_process_when_type=>'EXPRESSION'
+,p_process_when2=>'PLSQL'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
+,p_internal_uid=>39050324798189972
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(39014591627935407)
+,p_process_sequence=>50
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'New'
+,p_process_sql_clob=>'core.raise_error(core.get_request());'
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_internal_uid=>39014591627935407
 );
 end;
 /
@@ -26719,7 +26804,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(88581223856530774)
 ,p_is_visible=>true
 ,p_is_frozen=>true
-,p_width=>120
+,p_width=>40
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(91532438760400800)

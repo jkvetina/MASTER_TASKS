@@ -1638,6 +1638,126 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P100_CURR_SWIMLANE =======================
+  id: 39014659777935408
+  identification: 
+    name: P100_CURR_SWIMLANE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 80
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_CURR_STATUS =========================
+  id: 39014892513935410
+  identification: 
+    name: P100_CURR_STATUS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 90
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_CURR_CATEGORY =======================
+  id: 39014988959935411
+  identification: 
+    name: P100_CURR_CATEGORY
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 100
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_CURR_OWNER ==========================
+  id: 39015035940935412
+  identification: 
+    name: P100_CURR_OWNER
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: '&P100_HEADER!RAW.' # 74502100937114588
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P100_HEADER ==============================
   id: 74882513732611307
   identification: 
@@ -2010,7 +2130,7 @@ buttons:
   id: 38406179091540109
   identification: 
     button-name: SWITCH_SWIMLANE
-    label: Swimlane
+    label: Swimlane &P100_CURR_SWIMLANE!RAW.
 
   layout: 
     sequence: 50
@@ -2044,7 +2164,7 @@ buttons:
   id: 38406217246540110
   identification: 
     button-name: SWITCH_STATUS
-    label: Status
+    label: Status &P100_CURR_STATUS!RAW.
 
   layout: 
     sequence: 60
@@ -2078,7 +2198,7 @@ buttons:
   id: 38406336133540111
   identification: 
     button-name: SWITCH_CATEGORY
-    label: Category
+    label: Category &P100_CURR_CATEGORY!RAW.
 
   layout: 
     sequence: 70
@@ -2112,7 +2232,7 @@ buttons:
   id: 38406446238540112
   identification: 
     button-name: SWITCH_OWNER
-    label: Owner
+    label: Owner &P100_CURR_OWNER!RAW.
 
   layout: 
     sequence: 80

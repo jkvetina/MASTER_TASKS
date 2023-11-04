@@ -525,3 +525,19 @@ button.TRANSPARENT:hover {
     color               : #000;
 }
 
+/* SHOW CURRENT VALUE UNDER SWITCH BUTTONS (ACTION MENU) */
+button.TRANSPARENT .t-Button-label {
+    display         : inline-grid;
+    text-align      : left;
+}
+span.CURRENT {
+    font-size       : 0.7rem;
+    font-weight     : 300;
+    color           : #555;
+    margin-top      : -0.3rem;
+    margin-bottom   : -1.2rem;
+}
+span.CURRENT:hover {
+    color           : #222;
+}
+
