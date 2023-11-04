@@ -260,10 +260,23 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         --
         INSERT INTO tsk_cards VALUES rec;
 
+        -- copy checklist
+        INSERT INTO tsk_card_checklist (card_id, checklist_id, checklist_item, checklist_done, order#, updated_by, updated_at)
+        SELECT
+            rec.card_id,
+            tsk_checklist_id.NEXTVAL    AS checklist_id,
+            t.checklist_item,
+            t.checklist_done,
+            t.order#,
+            t.updated_by,
+            t.updated_at
+        FROM tsk_card_checklist t
+        WHERE t.card_id = in_card_id;
+
         -- also copy comments and files
         INSERT INTO tsk_card_comments (card_id, comment_id, comment_payload, updated_by, updated_at)
         SELECT
-            rec.card_id             AS card_id,
+            rec.card_id,
             t.comment_id,           -- reuse same number
             t.comment_payload,
             t.updated_by,
@@ -273,7 +286,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         --
         INSERT INTO tsk_card_files (card_id, file_id, file_name, file_mime, file_size, file_payload, updated_by, updated_at)
         SELECT
-            rec.card_id             AS card_id,
+            rec.card_id,
             tsk_file_id.NEXTVAL     AS file_id,
             t.file_name,
             t.file_mime,
