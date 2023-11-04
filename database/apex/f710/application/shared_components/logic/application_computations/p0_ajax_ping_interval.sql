@@ -20,7 +20,7 @@ wwv_flow_imp_shared.create_flow_computation(
 ,p_computation_language=>'PLSQL'
 ,p_computation_processed=>'REPLACE_EXISTING'
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = ''Y''',
+'CASE WHEN core.get_page_is_modal(:APP_ID, :APP_PAGE_ID) = ''Y''',
 '    THEN 0',
 '    ELSE 6 END'))
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
