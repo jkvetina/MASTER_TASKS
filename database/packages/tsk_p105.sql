@@ -490,9 +490,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             in_card_id => in_card_id
         );
 
-        -- remove non cheched items from source card
-        UPDATE tsk_card_checklist t
-        SET t.card_id               = out_card_id
+        -- remove checked/done items from target card
+        DELETE FROM tsk_card_checklist t
+        WHERE t.card_id             = out_card_id
+            AND t.checklist_done    IS NOT NULL;
+
+        -- remove non checked items from source card
+        DELETE FROM tsk_card_checklist t
         WHERE t.card_id             = in_card_id
             AND t.checklist_done    IS NULL;
         --
