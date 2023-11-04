@@ -113,8 +113,8 @@ regions:
     page-items-to-submit: 
     - P110_SOURCE_PROJECT
     - P110_SOURCE_BOARD
-    - P110_SOURCE_STATUS
     - P110_SOURCE_SWIMLANE
+    - P110_SOURCE_STATUS
     - P110_SOURCE_CATEGORY
     - P110_SOURCE_OWNER
 
@@ -1675,40 +1675,10 @@ buttons:
   advanced: 
     static-id: HELP_BUTTON
 
-- # ====== Button: CLOSE_DIALOG ================================
-  id: 27474734201062509
-  identification: 
-    button-name: CLOSE_DIALOG
-    label: Close Dialog
-
-  layout: 
-    sequence: 20
-    region: Bulk Operations # 155729416312791673
-    position: UP
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 34020683404153823
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-times
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: false
-
-  advanced: 
-    static-id: CLOSE_DIALOG
-
-- # ====== Button: PROCESS_ALL_ROWS ============================
+- # ====== Button: PROCESS_ALL_ROWS_AND_CLOSE ==================
   id: 27597005854272035
   identification: 
-    button-name: PROCESS_ALL_ROWS
+    button-name: PROCESS_ALL_ROWS_AND_CLOSE
     label: Process All Rows
 
   layout: 
@@ -1756,6 +1726,38 @@ buttons:
   behavior: 
     action: Defined by Dynamic Action
     execute-validations: true
+
+- # ====== Button: CLOSE_DIALOG ================================
+  id: 39051597109211547
+  identification: 
+    button-name: CLOSE_DIALOG
+    label: Close Dialog
+
+  layout: 
+    sequence: 20
+    region: Bulk Operations # 155729416312791673
+    position: UP
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 34020683404153823
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-pullRight
+    icon: fa-times
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+  advanced: 
+    static-id: CLOSE_DIALOG
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_PROJECT =====================
@@ -2065,7 +2067,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: PROCESS_ALL_ROWS # 27597005854272035
+    button: PROCESS_ALL_ROWS_AND_CLOSE # 27597005854272035
 
   execution: 
     event-scope: Static
@@ -2078,7 +2080,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: process_grid_all_rows('AFFECTED_CARDS', 'SELECTED_ROW', 'PROCESS_ALL_ROWS');
+      code: process_grid_all_rows('AFFECTED_CARDS', 'SELECTED_ROW', 'PROCESS_ALL_ROWS_AND_CLOSE');
 
     execution: 
       sequence: 10
@@ -2188,4 +2190,47 @@ processes:
 
   error: 
     display-location: Inline in Notification
+
+- # ====== Process: New ========================================
+  id: 39014591627935407
+  identification: 
+    name: New
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: core.raise_error(core.get_request());
+
+  execution: 
+    sequence: 50
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: CLOSE_DIALOG ===============================
+  id: 39050324798189972
+  identification: 
+    name: CLOSE_DIALOG
+    type: Close Dialog
+    execution-chain: None
+
+  execution: 
+    sequence: 40
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: '&P0_SUCCESS_MESSAGE.'
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: core.get_request() LIKE '%\_CLOSE' ESCAPE '\'
 
