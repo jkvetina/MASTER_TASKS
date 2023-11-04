@@ -15,7 +15,8 @@ CREATE OR REPLACE PACKAGE tsk_nav AS
         in_values           VARCHAR2                        := NULL,
         in_class            VARCHAR2                        := NULL,
         in_icon_name        VARCHAR2                        := NULL,
-        in_badge            VARCHAR2                        := NULL
+        in_badge            VARCHAR2                        := NULL,
+        in_current          CHAR                            := NULL
     )
     RETURN VARCHAR2;
 

@@ -220,7 +220,6 @@ div.ACTION_MENU ul li:last-child > * {
 }
 div.ACTION_MENU a:hover {
     color               : #000;
-    font-weight         : 500;
     background          : #d7d6d4;
 }
 div.ACTION_MENU a span.fa {
@@ -252,6 +251,10 @@ div.ACTION_MENU a:hover {
     color               : white;
 }
 div.ACTION_MENU a:hover {
+    background          : #222;
+}
+div.ACTION_MENU a.ACTIVE,
+div.ACTION_MENU a.ACTIVE:hover {
     background          : #222;
 }
 
