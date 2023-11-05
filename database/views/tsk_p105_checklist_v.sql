@@ -9,13 +9,14 @@ SELECT
     t.card_id,
     t.checklist_id,
     t.checklist_done,
-    t.order#,
+    t.checklist_item,
+    t.checklist_level,
     --
-    LTRIM(t.order# || ' ') || t.checklist_item AS checklist_item,
+    COALESCE(t.order#, LPAD(ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.checklist_id), 3, '0')) AS old_order,
     --
-    'LEVEL' || NULLIF(REGEXP_COUNT(RTRIM(t.order#, '.'), '\.'), 0) AS css_class,
+    TO_CHAR(ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.checklist_id) - 1) AS new_order,  -- populated by JS
     --
-    ROW_NUMBER() OVER (ORDER BY t.order# NULLS LAST, t.checklist_done NULLS LAST, t.checklist_item, t.checklist_id) AS grid_order
+    'LEVEL' || NULLIF(t.checklist_level, 0) AS css_class
     --
 FROM tsk_card_checklist t
 JOIN x
@@ -24,12 +25,13 @@ UNION ALL
 --
 SELECT
     NULL        AS card_id,
-    -1          AS checklist_id,
-    NULL        AS checklist_item,
+    -1          AS checklist_id,        -- create new/empty row
     NULL        AS checklist_done,
-    NULL        AS css_class,
-    NULL        AS order#,
-    NULL        AS grid_order
+    NULL        AS checklist_item,
+    NULL        AS checklist_level,
+    NULL        AS old_order,
+    NULL        AS new_order,
+    NULL        AS css_class
 FROM DUAL;
 --
 COMMENT ON TABLE tsk_p105_checklist_v IS '';

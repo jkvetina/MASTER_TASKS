@@ -49,7 +49,7 @@ const init_page_asap = function() {
 
             // success messages
             if (pMsgType === apex.message.TYPE.SUCCESS) {
-                var msg = get_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').html())
+                var msg = get_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').html());
                 console.log('MESSAGE.SUCCESS:', msg);
 
                 // change message

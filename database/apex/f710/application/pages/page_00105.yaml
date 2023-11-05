@@ -26,7 +26,24 @@ navigation:
 
 javascript: 
   function-and-global-variable-declaration: |
-    var delete_comment = function (card_id, comment_id) {
+    const renumber_grid_rows = function (static_id, column_name) {
+        var grid    = apex.region(static_id).widget();
+        var model   = grid.interactiveGrid('getViews', 'grid').model;
+        //
+        model.forEach(function(r, i) {
+            var res;
+            try {
+                res = model.setValue(r, column_name, '#' + i);
+            }
+            catch(err) {
+                console.error('ERROR:', i, r, res, err);
+            }
+        });
+    };
+    
+    
+    
+    const delete_comment = function (card_id, comment_id) {
         apex.server.process('AJAX_DELETE_COMMENT',
             {
                 x01: card_id,
@@ -55,6 +72,7 @@ javascript:
         );
     };
     
+    
   execute-when-page-loads: |
     const region_id = 'CHECKLIST';
     $('#' + region_id + ' .a-GV').on('keydown', 'input', function(event) {
@@ -62,24 +80,11 @@ javascript:
             // add new line below current line
             var $widget = apex.region(region_id).widget();
             $widget.interactiveGrid('getActions').invoke('selection-add-row');
-    
-            // focus nearest .CHECKLIST_ITEM
-            // it does not exists yet
-            /*
-            var view$ = $widget.interactiveGrid('getViews').grid.view$;
-            var selectedRecords = view$.grid('getSelection');
-            $.each(selectedRecords, function(index, record) {
-                console.log('SEL', index, record, record.hasClass('is-active'));
-                if (record.hasClass('is-active')) {
-                    record.find('.CHECKLIST_ITEM').focus();
-                    alert('FOCUS');
-                }
-            });
-            */
-            //
             event.stopPropagation();
         }
     });
+    
+    // MAYBE WE CAN CATCH ALSO TAB, SHIFT-TAB FOR INDENTATION
     
 
 css: 
@@ -1413,7 +1418,7 @@ regions:
     table-owner: Parsing Schema
     table-name: TSK_P105_CHECKLIST_V
     include-rowid-column: false
-    order-by-clause: GRID_ORDER NULLS LAST
+    order-by-clause: OLD_ORDER
     page-items-to-submit: 
     - P105_CARD_ID
 
@@ -1500,89 +1505,30 @@ regions:
         alias: 463001
 
   columns: 
-  - # ====== Column: ORDER# ======================================
-    id: 27771570391313616
+  - # ====== Column: CSS_CLASS ===================================
+    id: 27771717756313618
     identification: 
-      column-name: ORDER#
-      type: Text Field
-
-    heading: 
-      heading: Order#
-      alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
-
-    layout: 
-      sequence: 80
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    appearance: 
-      css-classes: 
-      - CHECKLIST_ORDER
-
-    validation: 
-      value-required: false
-      maximum-length: 32
-
-    source: 
-      type: Database Column
-      database-column: ORDER#
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-    server-side-condition: 
-      type: Never
-
-  - # ====== Column: GRID_ORDER ==================================
-    id: 27771670072313617
-    identification: 
-      column-name: GRID_ORDER
+      column-name: CSS_CLASS
       type: Hidden
 
     settings: 
       value-protected: true
 
     layout: 
-      sequence: 90
+      sequence: 100
 
     accessibility: 
       value-identifies-row: false
 
     source: 
       type: Database Column
-      database-column: GRID_ORDER
-      data-type: NUMBER
-      query-only: true
+      database-column: CSS_CLASS
+      data-type: VARCHAR2
+      query-only: false
       primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
 
     session-state: 
       data-type: VARCHAR2
@@ -1593,10 +1539,82 @@ regions:
     enable-users-to: 
       sort: false
 
-  - # ====== Column: CSS_CLASS ===================================
-    id: 27771717756313618
+  - # ====== Column: OLD_ORDER ===================================
+    id: 39016440079935426
     identification: 
-      column-name: CSS_CLASS
+      column-name: OLD_ORDER
+      type: Hidden
+
+    settings: 
+      value-protected: false
+
+    layout: 
+      sequence: 80
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: OLD_ORDER
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      type: Static
+      static-value: '-1'
+      duplicate-copies-existing-value: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: NEW_ORDER ===================================
+    id: 39016561504935427
+    identification: 
+      column-name: NEW_ORDER
+      type: Hidden
+
+    settings: 
+      value-protected: false
+
+    layout: 
+      sequence: 90
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: NEW_ORDER
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      type: Static
+      static-value: '-1'
+      duplicate-copies-existing-value: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: CHECKLIST_LEVEL =============================
+    id: 39017740344935439
+    identification: 
+      column-name: CHECKLIST_LEVEL
       type: Hidden
 
     settings: 
@@ -1610,10 +1628,13 @@ regions:
 
     source: 
       type: Database Column
-      database-column: CSS_CLASS
+      database-column: CHECKLIST_LEVEL
       data-type: NUMBER
-      query-only: true
+      query-only: false
       primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
 
     session-state: 
       data-type: VARCHAR2
@@ -1686,7 +1707,7 @@ regions:
 
     validation: 
       value-required: false
-      maximum-length: 289
+      maximum-length: 256
 
     source: 
       type: Database Column
@@ -3617,9 +3638,8 @@ buttons:
     icon: fa-plus
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
     database-action: SQL INSERT action
 
   server-side-condition: 
@@ -3651,9 +3671,8 @@ buttons:
     icon: fa-save
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
     database-action: SQL INSERT action
 
   server-side-condition: 
@@ -3685,13 +3704,9 @@ buttons:
     icon: fa-save
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
-
-  advanced: 
-    static-id: UPDATE_ONLY
 
   server-side-condition: 
     type: Item is NOT NULL
@@ -3928,9 +3943,8 @@ buttons:
     icon: fa-save
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
     database-action: SQL INSERT action
 
   server-side-condition: 
@@ -3944,7 +3958,7 @@ dynamic-actions:
     name: UPDATE_AND_REFRESH
 
   execution: 
-    sequence: 20
+    sequence: 40
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -3962,7 +3976,9 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: apex.submit();
+      code: |
+        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
+        apex.submit('UPDATE_AND_REFRESH');
 
     execution: 
       sequence: 10
@@ -3976,7 +3992,7 @@ dynamic-actions:
     name: CHANGED_CATEGORY
 
   execution: 
-    sequence: 10
+    sequence: 50
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -4181,7 +4197,7 @@ dynamic-actions:
     name: STACKED_MODAL_CLOSED
 
   execution: 
-    sequence: 30
+    sequence: 10
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
@@ -4272,6 +4288,177 @@ dynamic-actions:
     execution: 
       sequence: 10
       event: STACKED_MODAL_CLOSED # 37726458429953129
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: RENUMBER_CHECKLIST ==================
+  id: 39016019220935422
+  identification: 
+    name: RENUMBER_CHECKLIST
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: NATIVE_IG|REGION TYPE|apexbeginrecordedit
+    selection-type: Region
+    region: Checklist [GRID] # 91363554227871261
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  server-side-condition: 
+    type: Never
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 39016135549935423
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: console.log('NEW_ROW_INIT');
+
+    execution: 
+      sequence: 10
+      event: RENUMBER_CHECKLIST # 39016019220935422
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: UPDATE_CARD_AND_CLOSE ===============
+  id: 39016903836935431
+  identification: 
+    name: UPDATE_CARD_AND_CLOSE
+
+  execution: 
+    sequence: 50
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: UPDATE_CARD_AND_CLOSE # 25256870991844563
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 39017098446935432
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
+        apex.submit('UPDATE_CARD_AND_CLOSE');
+
+    execution: 
+      sequence: 10
+      event: UPDATE_CARD_AND_CLOSE # 39016903836935431
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CREATE_CARD_AND_CLOSE ===============
+  id: 39017117969935433
+  identification: 
+    name: CREATE_CARD_AND_CLOSE
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CREATE_CARD_AND_CLOSE # 25256418258844563
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 39017249811935434
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
+        apex.submit('CREATE_CARD_AND_CLOSE');
+
+    execution: 
+      sequence: 10
+      event: CREATE_CARD_AND_CLOSE # 39017117969935433
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CREATE_CARD =========================
+  id: 39017341517935435
+  identification: 
+    name: CREATE_CARD
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CREATE_CARD # 38406096846540108
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 39017443725935436
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
+        apex.submit('CREATE_CARD');
+
+    execution: 
+      sequence: 10
+      event: CREATE_CARD # 39017341517935435
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CREATE_ANOTHER ======================
+  id: 39017559915935437
+  identification: 
+    name: CREATE_ANOTHER
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CREATE_ANOTHER # 25256044784844563
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 39017681772935438
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
+        apex.submit('CREATE_ANOTHER');
+
+    execution: 
+      sequence: 10
+      event: CREATE_ANOTHER # 39017559915935437
       fire-when-event-result-is: True
       fire-on-initialization: false
 

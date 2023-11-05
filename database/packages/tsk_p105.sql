@@ -346,20 +346,17 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
 
         -- prepare data
         rec.checklist_id    := core.get_grid_data('CHECKLIST_ID');
-        rec.checklist_item  := NULLIF(TRIM(core.get_grid_data('CHECKLIST_ITEM')), '-');
+        rec.checklist_item  := TRIM(core.get_grid_data('CHECKLIST_ITEM'));
         rec.checklist_done  := core.get_grid_data('CHECKLIST_DONE');
-        rec.order#          := TRIM(core.get_grid_data('ORDER#'));
+        rec.checklist_level := core.get_grid_data('CHECKLIST_LEVEL');
+        rec.order#          := LPAD(REPLACE(core.get_grid_data('NEW_ORDER'), '#', ''), 3, '0');
         rec.updated_by      := core.get_user_id();
         rec.updated_at      := SYSDATE;
 
-        -- split text to order#
-        IF REGEXP_LIKE(rec.checklist_item, '^\d') THEN
-            rec.order#          := SUBSTR(rec.checklist_item, 1, INSTR(rec.checklist_item || ' ', ' ') - 1);  -- ^[^\s]+
-            rec.checklist_item  := LTRIM(REPLACE(rec.checklist_item, rec.order#, ''));
-            --
-            IF SUBSTR(rec.order#, -1, 1) != '.' AND SUBSTR(rec.order#, -1, 1) != ')' THEN
-                rec.order#      := rec.order# || ')';
-            END IF;
+        -- update level
+        IF rec.checklist_item LIKE '-%' THEN
+            rec.checklist_level := LENGTH(rec.checklist_item) - LENGTH(LTRIM(rec.checklist_item, '-'));
+            rec.checklist_item  := LTRIM(LTRIM(rec.checklist_item, '-'));
         END IF;
 
         -- proceed with updates
@@ -368,10 +365,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             WHERE t.card_id         = rec.card_id
                 AND t.checklist_id  = rec.checklist_id;
             --
-            RETURN;
-        END IF;
-        --
-        IF rec.checklist_id > 0 THEN
+        ELSIF rec.checklist_id > 0 THEN
             UPDATE tsk_card_checklist t
             SET ROW = rec
             WHERE t.card_id         = rec.card_id
