@@ -11,7 +11,7 @@ WITH x AS (
         AND n.page_id       = 100  -- home
 ),
 filter_data AS (
-    SELECT
+    SELECT /*+ MATERIALIZE */
         2 AS lvl,
         --
         tsk_nav.get_link (
@@ -22,7 +22,7 @@ filter_data AS (
             in_icon_name    => CASE WHEN b.is_current_client = 'Y' THEN 'fa-arrow-circle-right' END
         ) AS attribute01,
         --
-        ' class="NAV_L2' || /*CASE WHEN b.is_current_client = 'Y' THEN ' ACTIVE' END ||*/ '"' AS attribute10,
+        ' class="NAV_L2"' AS attribute10,
         --
         x.endpoint || '/0/' || b.client_id AS order#
         --
@@ -109,6 +109,27 @@ filter_data AS (
         b.board_name,
         b.is_current,
         b.order#
+),
+recent_cards AS (
+    SELECT /*+ MATERIALIZE */
+        tsk_nav.get_link (
+            in_content      => t.card_name,
+            in_page_id      => 100,
+            in_client_id    => t.client_id,
+            in_project_id   => t.project_id,
+            in_board_id     => t.board_id
+        ) AS attribute01,
+        --
+        ROW_NUMBER() OVER (ORDER BY t.updated_at DESC) AS order#
+        --
+    FROM tsk_cards t
+    JOIN tsk_available_boards_v b
+        ON b.client_id      = t.client_id
+        AND b.project_id    = t.project_id
+        AND b.board_id      = t.board_id
+        AND b.is_current    = 'Y'
+    ORDER BY t.updated_at DESC
+    FETCH FIRST 5 ROW ONLY
 )
 SELECT
     2 AS lvl,
@@ -129,6 +150,25 @@ SELECT
     x.endpoint || '/0/' AS order#
     --
 FROM x
+UNION ALL
+--
+SELECT
+    t.lvl,
+    t.attribute01,
+    --
+    '' AS attribute02,
+    '' AS attribute03,
+    '' AS attribute04,
+    '' AS attribute05,
+    '' AS attribute06,
+    '' AS attribute07,
+    '' AS attribute08,
+    '' AS attribute09,
+    --
+    t.attribute10,
+    t.order#
+    --
+FROM filter_data t
 UNION ALL
 --
 SELECT
@@ -153,7 +193,8 @@ FROM x
 UNION ALL
 --
 SELECT
-    t.lvl,
+    2 AS lvl,
+    --
     t.attribute01,
     --
     '' AS attribute02,
@@ -162,13 +203,15 @@ SELECT
     '' AS attribute05,
     '' AS attribute06,
     '' AS attribute07,
-    '' AS attribute08,
-    '' AS attribute09,
     --
-    t.attribute10,
-    t.order#
+    ''                  AS attribute08,
+    ''                  AS attribute09,
+    ' class="NAV_L3"'   AS attribute10,
     --
-FROM filter_data t;
+    x.endpoint || '/1/' || t.order# AS order#
+    --
+FROM recent_cards t
+CROSS JOIN x;
 --
 COMMENT ON TABLE tsk_navigation_home_v IS '';
 

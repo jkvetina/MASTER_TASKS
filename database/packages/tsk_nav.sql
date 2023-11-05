@@ -40,20 +40,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             ELSE '<span>&' || 'mdash;&' || 'nbsp; '
             END;
         --
-        /*
-        RETURN '<a href="' ||
-            APEX_PAGE.GET_URL (
-                --p_application   =>
-                p_page          => COALESCE(in_page_id, core.get_page_id()),
-                p_clear_cache   => CASE WHEN (in_project_id IS NOT NULL OR in_client_id IS NOT NULL) THEN '0,' || COALESCE(in_page_id, core.get_page_id()) END,
-                p_items         => SUBSTR(v_items,  2, 4000),
-                p_values        => SUBSTR(v_values, 2, 4000)
-            ) ||
-            '" class="' || in_class || '">' || v_icon || in_content ||
-            CASE WHEN in_badge IS NOT NULL THEN '</span><span class="BADGE DECENT">' || in_badge END ||
-            '</span></a>';
-            */
-        --
         RETURN '<a href="' ||
             APEX_PAGE.GET_URL (
                 --p_application   =>
@@ -63,9 +49,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 p_values        => SUBSTR(v_values, 2, 4000)
             ) ||
             '" class="' || in_class ||
-            CASE WHEN in_current = 'Y' THEN ' ACTIVE' END || '">' ||
+            CASE WHEN in_current = 'Y' THEN ' ACTIVE' END ||
+            '">' || v_icon ||
             CASE WHEN in_current = 'Y' THEN core.get_icon('fa-arrow-circle-right') || ' &' || 'nbsp; ' END ||
-            in_content || '</a>';
+            in_content ||
+            CASE WHEN in_badge IS NOT NULL THEN ' <span class="BADGE DECENT">' || in_badge || '</span>' END ||
+            '</a>';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -120,46 +109,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     WHEN OTHERS THEN
         core.raise_error();
     END;
-
-        -- add recent tasks
-        /*
-        FOR t IN (
-            SELECT
-                t.client_id,
-                t.project_id,
-                t.board_id,
-                t.card_id,
-                t.card_number,
-                t.card_name,
-                --
-                CASE WHEN s.status_id IS NOT NULL
-                    THEN ROW_NUMBER() OVER (PARTITION BY t.status_id ORDER BY t.order#)
-                    END AS badge
-                --
-            FROM tsk_p100_cards_v t
-            LEFT JOIN tsk_statuses s
-                ON s.client_id      = t.client_id
-                AND s.project_id    = t.project_id
-                AND s.status_id     = t.status_id
-                AND s.is_badge      = 'Y'
-            WHERE t.owner_id        = core.get_user_id()
-            ORDER BY t.updated_at DESC
-            FETCH FIRST 1 ROWS ONLY
-        ) LOOP
-            r := r || get_link (
-                in_content      => NVL(t.card_number, '#' || t.card_id) || ' - ' || CASE WHEN LENGTH(t.card_name) > 30 THEN SUBSTR(TRIM(t.card_name), 1, 27) || '...' ELSE t.card_name END,
-                in_page_id      => 105,
-                in_card_id      => t.card_id,
-                in_client_id    => t.client_id,
-                in_project_id   => t.project_id,
-                in_board_id     => t.board_id,
-                in_class        => 'M2',
-                in_icon_name    => CASE WHEN t.badge BETWEEN 1 AND 5 THEN 'fa-number-' || t.badge END
-            );
-        END LOOP;
-        */
-
-        --    '<div class="NO_HOVER" style="padding-left: 2rem; padding-right: 1rem;"><a href="#" style="height: 3rem; padding-top: 1rem !important;"><span class="fa fa-search"></span>&' || 'nbsp; <span style="">Search for Cards</span></a><span style="padding: 0 0.5rem; margin-right: 1rem;"><input id="MENU_SEARCH" value="" /></span></div>';
 
 
 
