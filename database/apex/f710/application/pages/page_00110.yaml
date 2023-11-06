@@ -1701,6 +1701,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: true
 
+  advanced: 
+    static-id: PROCESS_ALL_ROWS_AND_CLOSE
+
 - # ====== Button: PROCESS_SELECTED_ROWS =======================
   id: 27597103358272036
   identification: 
@@ -1726,6 +1729,9 @@ buttons:
   behavior: 
     action: Defined by Dynamic Action
     execute-validations: true
+
+  advanced: 
+    static-id: PROCESS_SELECTED_ROWS
 
 - # ====== Button: CLOSE_DIALOG ================================
   id: 39051597109211547
@@ -2080,7 +2086,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: process_grid_all_rows('AFFECTED_CARDS', 'SELECTED_ROW', 'PROCESS_ALL_ROWS_AND_CLOSE');
+      code: process_grid_all_rows('AFFECTED_CARDS', 'SELECTED_ROW', this.triggeringElement.id);
 
     execution: 
       sequence: 10
@@ -2112,7 +2118,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: process_grid_selected_rows('AFFECTED_CARDS', 'SELECTED_ROW', 'PROCESS_SELECTED_ROWS');
+      code: process_grid_selected_rows('AFFECTED_CARDS', 'SELECTED_ROW', this.triggeringElement.id);
 
     execution: 
       sequence: 10
@@ -2187,26 +2193,6 @@ processes:
 
   success-message: 
     success-message: '&P0_SUCCESS_MESSAGE.'
-
-  error: 
-    display-location: Inline in Notification
-
-- # ====== Process: New ========================================
-  id: 39014591627935407
-  identification: 
-    name: New
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: core.raise_error(core.get_request());
-
-  execution: 
-    sequence: 50
-    point: Processing
-    run-process: Once Per Page Visit (default)
 
   error: 
     display-location: Inline in Notification

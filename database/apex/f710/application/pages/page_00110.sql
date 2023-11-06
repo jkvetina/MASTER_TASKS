@@ -547,6 +547,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(27594828701272013)
 ,p_button_name=>'PROCESS_ALL_ROWS_AND_CLOSE'
+,p_button_static_id=>'PROCESS_ALL_ROWS_AND_CLOSE'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(34021473197153827)
@@ -560,6 +561,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(27594828701272013)
 ,p_button_name=>'PROCESS_SELECTED_ROWS'
+,p_button_static_id=>'PROCESS_SELECTED_ROWS'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(34021473197153827)
@@ -1052,7 +1054,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>'process_grid_all_rows(''AFFECTED_CARDS'', ''SELECTED_ROW'', ''PROCESS_ALL_ROWS_AND_CLOSE'');'
+,p_attribute_01=>'process_grid_all_rows(''AFFECTED_CARDS'', ''SELECTED_ROW'', this.triggeringElement.id);'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(28267203206994305)
@@ -1071,7 +1073,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>'process_grid_selected_rows(''AFFECTED_CARDS'', ''SELECTED_ROW'', ''PROCESS_SELECTED_ROWS'');'
+,p_attribute_01=>'process_grid_selected_rows(''AFFECTED_CARDS'', ''SELECTED_ROW'', this.triggeringElement.id);'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(27475705404062526)
@@ -1124,17 +1126,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when2=>'PLSQL'
 ,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>39050324798189972
-);
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(39014591627935407)
-,p_process_sequence=>50
-,p_process_point=>'AFTER_SUBMIT'
-,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'New'
-,p_process_sql_clob=>'core.raise_error(core.get_request());'
-,p_process_clob_language=>'PLSQL'
-,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_internal_uid=>39014591627935407
 );
 wwv_flow_imp.component_end;
 end;

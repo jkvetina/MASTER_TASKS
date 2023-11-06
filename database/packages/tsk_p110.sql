@@ -18,7 +18,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p110 AS
     AS
     BEGIN
         -- store grid lines into collection
-        IF (core.get_grid_data('SELECTED_ROW') = 'Y' OR core.get_request() = 'PROCESS_ALL_ROWS') THEN
+        IF (core.get_grid_data('SELECTED_ROW') = 'Y' OR core.get_request() LIKE 'PROCESS_ALL_ROWS%') THEN
             APEX_COLLECTION.ADD_MEMBER (
                 p_collection_name   => c_coll_card_filter,
                 p_c001              => core.get_grid_data('CARD_ID')
