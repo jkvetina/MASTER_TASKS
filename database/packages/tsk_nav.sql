@@ -255,6 +255,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     BEGIN
         FOR c IN (
             SELECT
+                a.category_name,
                 tsk_nav.get_link (
                     in_content      => a.category_name,
                     in_page_id      => core.get_page_id(),
@@ -262,7 +263,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     in_current      => a.is_current
                 ) AS row_,
                 --
-                CASE WHEN a.category_group != LAG(a.category_group) OVER (ORDER BY a.order#) THEN 'Y' END AS is_new_column
+                CASE WHEN a.category_group != LAG(a.category_group) OVER (ORDER BY a.order#)        THEN 'Y' END AS is_new_column,
+                CASE WHEN ROW_NUMBER() OVER (PARTITION BY a.category_group ORDER BY a.order#) = 1   THEN 'Y' END AS is_first_column
                 --
             FROM tsk_lov_categories_v a
             ORDER BY a.order#
@@ -271,7 +273,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 o := o || '</ul><ul role="menu">';
             END IF;
             --
-            o := o || '<li>' || c.row_ || '</li>';
+            IF c.is_first_column = 'Y' THEN
+                o := o || '<li><span>' || c.category_name || '</span></li>';
+            END IF;
+            --
+            o := o || '<li class="">' || c.row_ || '</li>';
         END LOOP;
         --
         RETURN '<div class="ACTION_MENU" data-id="SWITCH_CATEGORY"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
