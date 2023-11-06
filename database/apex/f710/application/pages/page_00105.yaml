@@ -26,6 +26,13 @@ navigation:
 
 javascript: 
   function-and-global-variable-declaration: |
+    const submit_checklist = function (button_id) {
+        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
+        apex.submit(button_id);
+    };
+    
+    
+    
     const renumber_grid_rows = function (static_id, column_name) {
         var grid    = apex.region(static_id).widget();
         var model   = grid.interactiveGrid('getViews', 'grid').model;
@@ -3642,6 +3649,9 @@ buttons:
     execute-validations: true
     database-action: SQL INSERT action
 
+  advanced: 
+    static-id: CREATE_ANOTHER
+
   server-side-condition: 
     type: Item is NULL
     item: P105_CARD_ID
@@ -3675,6 +3685,9 @@ buttons:
     execute-validations: true
     database-action: SQL INSERT action
 
+  advanced: 
+    static-id: CREATE_CARD_AND_CLOSE
+
   server-side-condition: 
     type: Item is NULL
     item: P105_CARD_ID
@@ -3707,6 +3720,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: true
     database-action: SQL UPDATE action
+
+  advanced: 
+    static-id: UPDATE_CARD_AND_CLOSE
 
   server-side-condition: 
     type: Item is NOT NULL
@@ -3837,6 +3853,9 @@ buttons:
     execute-validations: true
     database-action: SQL UPDATE action
 
+  advanced: 
+    static-id: UPDATE_AND_REFRESH
+
   server-side-condition: 
     type: Item is NOT NULL
     item: P105_CARD_ID
@@ -3947,6 +3966,9 @@ buttons:
     execute-validations: true
     database-action: SQL INSERT action
 
+  advanced: 
+    static-id: CREATE_CARD
+
   server-side-condition: 
     type: Item is NULL
     item: P105_CARD_ID
@@ -3976,9 +3998,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: |
-        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
-        apex.submit('UPDATE_AND_REFRESH');
+      code: submit_checklist(this.triggeringElement.id);
 
     execution: 
       sequence: 10
@@ -4350,9 +4370,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: |
-        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
-        apex.submit('UPDATE_CARD_AND_CLOSE');
+      code: submit_checklist(this.triggeringElement.id);
 
     execution: 
       sequence: 10
@@ -4384,9 +4402,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: |
-        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
-        apex.submit('CREATE_CARD_AND_CLOSE');
+      code: submit_checklist(this.triggeringElement.id);
 
     execution: 
       sequence: 10
@@ -4418,9 +4434,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: |
-        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
-        apex.submit('CREATE_CARD');
+      code: submit_checklist(this.triggeringElement.id);
 
     execution: 
       sequence: 10
@@ -4452,9 +4466,7 @@ dynamic-actions:
       action: Execute JavaScript Code
 
     settings: 
-      code: |
-        renumber_grid_rows('CHECKLIST', 'NEW_ORDER');
-        apex.submit('CREATE_ANOTHER');
+      code: submit_checklist(this.triggeringElement.id);
 
     execution: 
       sequence: 10
