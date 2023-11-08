@@ -52,7 +52,7 @@ body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {
     display             : none;
 }
 .ui-dialog .ui-dialog-titlebar:before {
-    background-image        : none;
+    background-image    : none;
     /* background: gray; */
 }
 
@@ -119,11 +119,13 @@ h1.t-HeroRegion-title button:first-child {
 
 /* NORMAL BUTTONS */
 button.t-Button,
-button.ui-button {
+button.ui-button,
+.apex-item-filedrop-action.a-Button.a-Button--hot {
     background          : #E9E7E7;
 }
 button.t-Button:hover,
-button.ui-button:hover {
+button.ui-button:hover,
+.apex-item-filedrop-action.a-Button.a-Button--hot {
     background          : #DFDEDC;
     background          : #d7d6d4;
 }
@@ -142,7 +144,15 @@ button.js-confirmBtn.ui-button--danger:hover {
     background          : #333;
 }
 
-
+/* BUTTON TO UPLOAD FILES */
+.apex-item-filedrop-action.a-Button.a-Button--hot {
+    padding             : 0.5rem 0.9rem;
+    color               : #222;
+}
+.apex-item-filedrop-action.a-Button.a-Button--hot:hover {
+    background          : #5f5c58;
+    color               : #fff;
+}
 
 /* FIX BUTTON OFFSET ON LINE WITH OTHER ITEMS */
 .FILTERS button {
@@ -298,6 +308,11 @@ ul.t-Tabs li.t-Tabs-item:last-child {
 /* CARDS - ADD SPACE TO SEE OUTLINE */
 ul.a-CardView-items {
     padding             : 2px;
+}
+
+/* CARDS - ALLOW MORE COLUMNS THEN 5 */
+.CARDS6 ul.a-CardView-items {
+    grid-template-columns: repeat(6, minmax(0,1fr));
 }
 
 
@@ -480,6 +495,7 @@ button.a-Button.a-Button--notification.js-showDetails {
 /* ADJUST FONTS ON BUTTONS AND MENUS */
 button .t-Button-label,
 button .a-Button-label,
+.apex-item-filedrop-action.a-Button.a-Button--hot,
 .a-CardView-subTitle,
 #t_Footer .t-Footer-version {
     font-family         : 'Roboto Slab', sans-serif;
@@ -539,5 +555,34 @@ span.CURRENT {
 }
 span.CURRENT:hover {
     color           : #222;
+}
+
+
+
+/* ADJUST COMMENT BUBBLES */
+.t-Comments-icon {
+    flex-grow           : 0;
+    padding             : 0;
+}
+.t-Comments-userIcon {
+    width               : auto;
+    padding             : 0;
+    margin              : 0;
+    background          : transparent;
+    color               : #222;
+    line-height         : 1.8rem;
+    text-transform      : none;
+    text-align          : left;
+    font-family         : 'Roboto Slab';
+    font-size           : 0.9rem;
+    font-weight         : 400;
+}
+.t-Comments-comment {
+    font-family         : 'Roboto Slab';
+}
+.t-Comments-actions {
+    display             : block;
+    float               : right;
+    margin              : 0.25rem 0 -0.25rem;
 }
 

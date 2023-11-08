@@ -566,7 +566,7 @@ const process_grid_all_rows = function (static_id, fake_column_name, action_name
     var grid    = apex.region(static_id).widget();
     var model   = grid.interactiveGrid('getViews', 'grid').model;
     //
-    model.forEach(function(r) {
+    model.forEach(function(r, i) {
         try {
             model.setValue(r, fake_column_name, model.getValue(r, fake_column_name) + '!');
         }
@@ -611,6 +611,26 @@ const process_grid_selected_rows = function (static_id, fake_column_name, action
     });
     //grid.interactiveGrid('getActions').invoke('save');
     apex.submit(action_name);
+};
+
+
+
+//
+// RENUMBER ROWS IN GRID SO WE ENSURE THE ORDER OF ROWS
+//
+const renumber_grid_rows = function (static_id, column_name) {
+    var grid    = apex.region(static_id).widget();
+    var model   = grid.interactiveGrid('getViews', 'grid').model;
+    //
+    model.forEach(function(r, i) {
+        var res;
+        try {
+            res = model.setValue(r, column_name, '#' + i);
+        }
+        catch(err) {
+            console.error('ERROR:', i, r, res, err);
+        }
+    });
 };
 
 
