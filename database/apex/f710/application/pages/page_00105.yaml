@@ -33,23 +33,6 @@ javascript:
     
     
     
-    const renumber_grid_rows = function (static_id, column_name) {
-        var grid    = apex.region(static_id).widget();
-        var model   = grid.interactiveGrid('getViews', 'grid').model;
-        //
-        model.forEach(function(r, i) {
-            var res;
-            try {
-                res = model.setValue(r, column_name, '#' + i);
-            }
-            catch(err) {
-                console.error('ERROR:', i, r, res, err);
-            }
-        });
-    };
-    
-    
-    
     const delete_comment = function (card_id, comment_id) {
         apex.server.process('AJAX_DELETE_COMMENT',
             {
@@ -104,49 +87,29 @@ css:
     
     /* HIDE DESC LABEL */
     #P105_CARD_DESC_CONTAINER .t-Form-labelContainer {
-      display: none;
-    }
-    #P105_CARD_DESC_CONTAINER .t-Form-itemWrapper {
-      margin: 0 !important;
-    }
-    
-    /* HIDE FILES LABEL */
-    #ATTACHEMENTS .t-Form-fieldContainer--floatingLabel .t-Form-labelContainer {
         display: none;
     }
-    #ATTACHEMENTS .t-Form-fieldContainer--floatingLabel.t-Form-fieldContainer {
-        padding-top: 0;
-        margin-top: -1.2rem;
+    #P105_CARD_DESC_CONTAINER .t-Form-itemWrapper {
+        margin: 0 !important;
+    }
+    
+    /* HIDE UPLOADER LABEL */
+    #UPLOADER .t-Form-labelContainer,
+    #UPLOADER .apex-item-filedrop-heading,
+    .apex-item-filedrop-icon {
+        display: none;
+    }
+    #UPLOADER div#P105_ATTACHED_FILES_GROUP {
+        margin: 0.5rem 0 1rem;
+    }
+    #UPLOADER .apex-item-filedrop-action.a-Button.a-Button--hot {
+        margin-top: 1rem;
     }
     
     /* HIDE DISPLAY ONLY ITEM BORDERS */
     .t-Form-itemWrapper .display_only.apex-item-display-only {
         border: 0;
         color: #555;
-    }
-    
-    
-    
-    /* ADJUST COMMENT BUBBLES */
-    .t-Comments-icon {
-        flex-grow           : 0;
-        padding             : 0;
-    }
-    .t-Comments-userIcon {
-        width               : auto;
-        padding             : 0;
-        margin              : 0;
-        background          : transparent;
-        color               : #222;
-        line-height         : 1.8rem;
-        text-transform      : none;
-        text-align          : left;
-        font-family         : 'Roboto Slab';
-        font-size           : 0.9rem;
-        font-weight         : 400;
-    }
-    .t-Comments-comment {
-        font-family         : 'Roboto Slab';
     }
     
     
@@ -286,6 +249,7 @@ regions:
     template: Tabs Container # 33957611184153776
     template-options: 
     - '#DEFAULT#'
+    - js-useLocalStorage
     - t-TabsRegion-mod--simple
     render-components: Above Content
 
@@ -495,6 +459,7 @@ regions:
     template: Tabs Container # 33957611184153776
     template-options: 
     - '#DEFAULT#'
+    - js-useLocalStorage
     - t-TabsRegion-mod--simple
     render-components: Above Content
 
@@ -659,6 +624,545 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
+- # ====== Region: Files [REPORT] ==============================
+  id: 39764966812325847
+  identification: 
+    title: Files [REPORT]
+    type: Classic Report
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_P105_FILES_V
+    include-rowid-column: false
+    page-items-to-submit: 
+    - P105_CARD_ID
+
+  order-by: 
+    type: Static Value
+    order-by-clause: ORDER#
+
+  layout: 
+    sequence: 30
+    parent-region: Attachements &P105_BADGE_FILES. # 25065282126730032
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 33881254928153735
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    layout: 
+      number-of-rows-type: Static Value
+      number-of-rows: 100
+
+    appearance: 
+      template-type: Theme
+      template: Comments # 33977403049153790
+      template-options: 
+      - '#DEFAULT#'
+      - t-Comments--chat
+      - t-Comments--iconsRounded
+      - t-Report--hideNoPagination
+
+    pagination: 
+      type: No Pagination (Show All Rows)
+      partial-page-refresh: true
+
+    performance: 
+      lazy-loading: false
+
+    break-formatting: 
+      break-columns: No Break
+
+    advanced: 
+      strip-html: false
+      sort-nulls: Last
+
+    heading: 
+      type: Custom Headings
+
+    download: 
+      csv-export-enabled: false
+
+    printing: 
+      enabled: false
+
+  columns: 
+  - # ====== Column: CARD_ID =====================================
+    id: 39765063188325848
+    identification: 
+      column-name: CARD_ID
+      type: Plain Text
+
+    heading: 
+      heading: Card Id
+      alignment: end
+
+    layout: 
+      sequence: 10
+      column-alignment: end
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: COMMENT_ID ==================================
+    id: 39765120248325849
+    identification: 
+      column-name: COMMENT_ID
+      type: Plain Text
+
+    heading: 
+      heading: Comment Id
+      alignment: center
+
+    layout: 
+      sequence: 20
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ACTIONS =====================================
+    id: 39765246411325850
+    identification: 
+      column-name: ACTIONS
+      type: Link
+
+    heading: 
+      heading: Actions
+      alignment: center
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    link: 
+      target: "javascript: { $.event.trigger('DELETE_COMMENT', {card_id:#CARD_ID#, comment_id:#COMMENT_ID#}); }"
+      link-text: '#ACTIONS#'
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: false
+
+  - # ====== Column: ATTRIBUTE_1 =================================
+    id: 40023163998814901
+    identification: 
+      column-name: ATTRIBUTE_1
+      type: Plain Text
+
+    heading: 
+      heading: Attribute 1
+      alignment: center
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ATTRIBUTE_2 =================================
+    id: 40023267200814902
+    identification: 
+      column-name: ATTRIBUTE_2
+      type: Plain Text
+
+    heading: 
+      heading: Attribute 2
+      alignment: center
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ATTRIBUTE_3 =================================
+    id: 40023329373814903
+    identification: 
+      column-name: ATTRIBUTE_3
+      type: Plain Text
+
+    heading: 
+      heading: Attribute 3
+      alignment: center
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ATTRIBUTE_4 =================================
+    id: 40023481994814904
+    identification: 
+      column-name: ATTRIBUTE_4
+      type: Plain Text
+
+    heading: 
+      heading: Attribute 4
+      alignment: center
+
+    layout: 
+      sequence: 70
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: COMMENT_DATE ================================
+    id: 40023575413814905
+    identification: 
+      column-name: COMMENT_DATE
+      type: Plain Text
+
+    heading: 
+      heading: Comment Date
+      alignment: center
+
+    layout: 
+      sequence: 80
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: COMMENT_MODIFIERS ===========================
+    id: 40023690461814906
+    identification: 
+      column-name: COMMENT_MODIFIERS
+      type: Plain Text
+
+    heading: 
+      heading: Comment Modifiers
+      alignment: center
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: COMMENT_TEXT ================================
+    id: 40023724897814907
+    identification: 
+      column-name: COMMENT_TEXT
+      type: Plain Text
+
+    heading: 
+      heading: Comment Text
+      alignment: center
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ICON_MODIFIER ===============================
+    id: 40023887589814908
+    identification: 
+      column-name: ICON_MODIFIER
+      type: Plain Text
+
+    heading: 
+      heading: Icon Modifier
+      alignment: center
+
+    layout: 
+      sequence: 110
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: USER_ICON ===================================
+    id: 40023993029814909
+    identification: 
+      column-name: USER_ICON
+      type: Plain Text
+
+    heading: 
+      heading: User Icon
+      alignment: center
+
+    layout: 
+      sequence: 120
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: USER_NAME ===================================
+    id: 40024020150814910
+    identification: 
+      column-name: USER_NAME
+      type: Plain Text
+
+    heading: 
+      heading: User Name
+      alignment: center
+
+    layout: 
+      sequence: 130
+      column-alignment: start
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
+  - # ====== Column: ORDER# ======================================
+    id: 40024191755814911
+    identification: 
+      column-name: ORDER#
+      type: Plain Text
+
+    heading: 
+      heading: Order#
+      alignment: end
+
+    layout: 
+      sequence: 140
+      column-alignment: end
+
+    accessibility: 
+      value-identifies-row: false
+
+    sorting: 
+      sortable: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    advanced: 
+      compute-sum: false
+
+    ui-defaults-reference: 
+      table-owner: Parsing Schema
+
+    security: 
+      escape-special-characters: true
+
 - # ====== Region: Commits &P105_BADGE_COMMITS. ================
   id: 89197294196141484
   identification: 
@@ -713,7 +1217,6 @@ regions:
     table-owner: Parsing Schema
     table-name: TSK_P105_COMMENTS_V
     include-rowid-column: false
-    where-clause: 'card_id = :P105_CARD_ID'
     page-items-to-submit: 
     - P105_CARD_ID
 
@@ -1298,13 +1801,16 @@ regions:
   customization: 
     customizable: Not Customizable By End Users
 
+  configuration: 
+    build-option: NEVER # 33790501555120051
+
   attributes: 
     settings: 
       text-column: FILE_NAME
       supplemental-information-column: UPDATED_AT
       link-target: 
         url: 'f?p=&APP_ID.:106:&SESSION.::&DEBUG.:Y,106:P106_FILE_ID:&FILE_ID.'
-        page: 106
+        page: 106 # Download File
         clear-cache: Y,106
         values: 
           p106_file_id: '&FILE_ID.'
@@ -1399,6 +1905,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: UPLOADER
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -3261,6 +3768,7 @@ page-items:
 
   settings: 
     display-as: Block Dropzone
+    dropzone-description: Select or drop one or more files here...
     storage-type: Table APEX_APPLICATION_TEMP_FILES
     purge-file-at: End of Session
     allow-multiple-files: true
@@ -3279,9 +3787,10 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Above # 34018832975153820
     template-options: 
     - '#DEFAULT#'
+    - t-Form-fieldContainer--stretchInputs
     width: 30
 
   validation: 
