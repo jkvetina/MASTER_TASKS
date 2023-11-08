@@ -30,7 +30,14 @@ SELECT
         THEN 'OTHERS'
         END AS comment_modifiers,
     --
-    c.file_name || ' [' || c.file_size || ']' AS comment_text,
+    '<a href="' || APEX_PAGE.GET_URL(
+        p_page      => 106,
+        p_items     => 'P106_FILE_ID',
+        p_values    => '' || c.file_id
+    ) || '">' || c.file_name ||
+    '</a><span class="GREY"> &' || 'nbsp;' ||
+    TRANSLATE(APEX_STRING_UTIL.TO_DISPLAY_FILESIZE(c.file_size), 'K', 'k') ||
+    '</span>' AS comment_text,
     --
     --'u-color-' || ORA_HASH(c.updated_by, 45) AS icon_modifier,
     CASE WHEN c.updated_by = x.user_id

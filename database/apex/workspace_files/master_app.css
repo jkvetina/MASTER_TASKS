@@ -125,7 +125,7 @@ button.ui-button,
 }
 button.t-Button:hover,
 button.ui-button:hover,
-.apex-item-filedrop-action.a-Button.a-Button--hot {
+.apex-item-filedrop-action.a-Button.a-Button--hot:hover {
     background          : #DFDEDC;
     background          : #d7d6d4;
 }
@@ -148,10 +148,6 @@ button.js-confirmBtn.ui-button--danger:hover {
 .apex-item-filedrop-action.a-Button.a-Button--hot {
     padding             : 0.5rem 0.9rem;
     color               : #222;
-}
-.apex-item-filedrop-action.a-Button.a-Button--hot:hover {
-    background          : #5f5c58;
-    color               : #fff;
 }
 
 /* FIX BUTTON OFFSET ON LINE WITH OTHER ITEMS */
@@ -584,5 +580,12 @@ span.CURRENT:hover {
     display             : block;
     float               : right;
     margin              : 0.25rem 0 -0.25rem;
+}
+.t-Comments--chat .t-Comments-comment a {
+    text-decoration     : underline;
+    color               : #222;
+}
+.t-Comments-comment .GREY {
+    color               : #888;
 }
 

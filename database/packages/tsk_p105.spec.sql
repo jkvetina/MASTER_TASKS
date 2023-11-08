@@ -75,6 +75,12 @@ CREATE OR REPLACE PACKAGE tsk_p105 AS
         in_file_id              tsk_card_files.file_id%TYPE
     );
 
+
+
+    PROCEDURE delete_file (
+        in_file_id          tsk_card_files.file_id%TYPE
+    );
+
 END;
 /
 

@@ -592,6 +592,23 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE delete_file (
+        in_file_id          tsk_card_files.file_id%TYPE
+    )
+    AS
+    BEGIN
+        DELETE FROM tsk_card_files t
+        WHERE t.file_id     = in_file_id
+            AND t.card_id   = core.get_item('P105_CARD_ID');
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 

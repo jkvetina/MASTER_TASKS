@@ -644,7 +644,7 @@ regions:
     order-by-clause: ORDER#
 
   layout: 
-    sequence: 30
+    sequence: 20
     parent-region: Attachements &P105_BADGE_FILES. # 25065282126730032
     position: SUB_REGIONS
     start-new-layout: false
@@ -664,8 +664,16 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: ATTACHMENTS
     region-display-selector: false
     exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Rows returned
+    sql-query: |
+      SELECT 1
+      FROM tsk_p105_files_v
+      WHERE ROWNUM = 1
 
   server-cache: 
     caching: Disabled
@@ -793,7 +801,7 @@ regions:
       value-identifies-row: false
 
     link: 
-      target: "javascript: { $.event.trigger('DELETE_COMMENT', {card_id:#CARD_ID#, comment_id:#COMMENT_ID#}); }"
+      target: "javascript: { $.event.trigger('DELETE_FILE', {file_id:#COMMENT_ID#}); }"
       link-text: '#ACTIONS#'
 
     sorting: 
@@ -1033,7 +1041,7 @@ regions:
       table-owner: Parsing Schema
 
     security: 
-      escape-special-characters: true
+      escape-special-characters: false
 
   - # ====== Column: ICON_MODIFIER ===============================
     id: 40023887589814908
@@ -1744,80 +1752,6 @@ regions:
 
     security: 
       escape-special-characters: true
-
-- # ====== Region: Files [LIST] ================================
-  id: 90385894728021382
-  identification: 
-    title: Files [LIST]
-    type: List View
-
-  source: 
-    location: Local Database
-    type: Table / View
-    table-owner: Parsing Schema
-    table-name: TSK_P105_FILES_V
-    include-rowid-column: false
-
-  order-by: 
-    type: None
-
-  layout: 
-    sequence: 20
-    parent-region: Attachements &P105_BADGE_FILES. # 25065282126730032
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Cards Container # 33888340216153739
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-side-condition: 
-    type: Rows returned
-    sql-query: |
-      SELECT 1
-      FROM TSK_P105_FILES_V
-      WHERE ROWNUM = 1
-
-  security: 
-    escape-special-characters: true
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  configuration: 
-    build-option: NEVER # 33790501555120051
-
-  attributes: 
-    settings: 
-      text-column: FILE_NAME
-      supplemental-information-column: UPDATED_AT
-      link-target: 
-        url: 'f?p=&APP_ID.:106:&SESSION.::&DEBUG.:Y,106:P106_FILE_ID:&FILE_ID.'
-        page: 106 # Download File
-        clear-cache: Y,106
-        values: 
-          p106_file_id: '&FILE_ID.'
-
-    layout: 
-      number-of-rows-type: Static Value
-      number-of-rows: 15
 
 - # ====== Region: Commits [LIST] ==============================
   id: 90518377557569070
@@ -3064,6 +2998,36 @@ page-items:
   layout: 
     sequence: 140
     region: '&P105_HEADER.' # 108316517171408030
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_FILE_ID =============================
+  id: 40024827820814918
+  identification: 
+    name: P105_FILE_ID
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 20
+    region: UPLOADER # 90619880583399447
     position: BODY
 
   advanced: 
@@ -4489,7 +4453,7 @@ dynamic-actions:
     name: UPDATE_AND_REFRESH
 
   execution: 
-    sequence: 40
+    sequence: 80
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -4521,7 +4485,7 @@ dynamic-actions:
     name: CHANGED_CATEGORY
 
   execution: 
-    sequence: 50
+    sequence: 90
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -4726,7 +4690,7 @@ dynamic-actions:
     name: STACKED_MODAL_CLOSED
 
   execution: 
-    sequence: 10
+    sequence: 30
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
@@ -4826,7 +4790,7 @@ dynamic-actions:
     name: RENUMBER_CHECKLIST
 
   execution: 
-    sequence: 10
+    sequence: 40
 
   when: 
     event: NATIVE_IG|REGION TYPE|apexbeginrecordedit
@@ -4861,7 +4825,7 @@ dynamic-actions:
     name: UPDATE_CARD_AND_CLOSE
 
   execution: 
-    sequence: 50
+    sequence: 100
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -4893,7 +4857,7 @@ dynamic-actions:
     name: CREATE_CARD_AND_CLOSE
 
   execution: 
-    sequence: 10
+    sequence: 50
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -4925,7 +4889,7 @@ dynamic-actions:
     name: CREATE_CARD
 
   execution: 
-    sequence: 20
+    sequence: 60
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -4957,7 +4921,7 @@ dynamic-actions:
     name: CREATE_ANOTHER
 
   execution: 
-    sequence: 30
+    sequence: 70
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
@@ -4980,6 +4944,100 @@ dynamic-actions:
     execution: 
       sequence: 10
       event: CREATE_ANOTHER # 39017559915935437
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: DELETE_FILE =========================
+  id: 40024207339814912
+  identification: 
+    name: DELETE_FILE
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.CUSTOM.CUSTOM
+    custom-event: DELETE_FILE
+    selection-type: JavaScript Expression
+    javascript-expression: document
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Set Value ===================================
+    id: 40024478382814914
+    identification: 
+      action: Set Value
+
+    settings: 
+      set-type: JavaScript Expression
+      javascript-expression: this.data.file_id
+      suppress-change-event: false
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P105_FILE_ID
+
+    execution: 
+      sequence: 20
+      event: DELETE_FILE # 40024207339814912
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 40024515726814915
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        tsk_p105.delete_file (
+            in_file_id      => :P105_FILE_ID
+        );
+      items-to-submit: 
+      - P105_CARD_ID
+      - P105_FILE_ID
+
+    execution: 
+      sequence: 30
+      event: DELETE_FILE # 40024207339814912
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 40024631158814916
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: show_message('File deleted');
+
+    execution: 
+      sequence: 40
+      event: DELETE_FILE # 40024207339814912
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh =====================================
+    id: 40024733936814917
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Files [REPORT] # 39764966812325847
+
+    execution: 
+      sequence: 50
+      event: DELETE_FILE # 40024207339814912
       fire-when-event-result-is: True
       fire-on-initialization: false
 
