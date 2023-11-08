@@ -146,11 +146,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         END IF;
 
         -- create/update comments
-        IF core.get_item('P105_COMMENT_PAYLOAD') IS NOT NULL THEN
+        IF core.get_item('P105_COMMENT') IS NOT NULL THEN
             upsert_comment (
                 in_card_id          => rec.card_id,
                 in_comment_id       => core.get_item('P105_COMMENT_ID'),
-                in_comment_payload  => core.get_item('P105_COMMENT_PAYLOAD')
+                in_comment_payload  => core.get_item('P105_COMMENT')
             );
         END IF;
 
