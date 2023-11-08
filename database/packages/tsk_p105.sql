@@ -145,6 +145,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             RETURN;
         END IF;
 
+        -- save attachements
+        IF core.get_item('P105_ATTACHED_FILES') IS NOT NULL THEN
+            save_attachements();
+        END IF;
+
         -- create/update comments
         IF core.get_item('P105_COMMENT') IS NOT NULL THEN
             upsert_comment (
