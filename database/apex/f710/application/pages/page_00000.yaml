@@ -738,3 +738,32 @@ dynamic-actions:
       type: JavaScript expression
       javascript-expression: apex.page.isChanged()
 
+- # ====== Dynamic Action: CHECK_SESSION =======================
+  id: 40025123956814921
+  identification: 
+    name: CHECK_SESSION
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 40025203334814922
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: check_session();
+
+    execution: 
+      sequence: 10
+      event: CHECK_SESSION # 40025123956814921
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
