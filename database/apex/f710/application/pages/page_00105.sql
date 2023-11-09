@@ -59,6 +59,7 @@ wwv_flow_imp_page.create_page(
 '',
 ''))
 ,p_javascript_code_onload=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'// CATCH ENTER KEY PRESS',
 'const region_id = ''CHECKLIST'';',
 '$(''#'' + region_id + '' .a-GV'').on(''keydown'', ''input'', function(event) {',
 '    if (event.which === 13) {',
@@ -69,7 +70,28 @@ wwv_flow_imp_page.create_page(
 '    }',
 '});',
 '',
-'// MAYBE WE CAN CATCH ALSO TAB, SHIFT-TAB FOR INDENTATION',
+'// MAKE THE GRID EDITABLE (WITH A DELAY)',
+'$(function() {',
+'    var static_id = ''CHECKLIST'';',
+'    (function loop(i) {',
+'        setTimeout(function() {',
+'            try {',
+'                var region  = apex.region(static_id);',
+'                var grid    = region.widget();',
+'                var model   = grid.interactiveGrid(''getViews'', ''grid'').model;',
+'                var current = grid.interactiveGrid(''getViews'').grid.getSelectedRecords()[0];',
+'                //',
+'                region.call(''getActions'').set(''edit'', true);',
+'                if (current !== undefined) {',
+'                    return;',
+'                }',
+'            }',
+'            catch(err) {',
+'            }',
+'            if (--i) loop(i);',
+'        }, 100)',
+'    })(20);',
+'});',
 ''))
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '/* SWAP CHECKBOX AND ITEM */',
@@ -1015,6 +1037,18 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attribute_06=>'CREATED'
 ,p_attribute_16=>'javascript: { window.open(''&COMMIT_URL.'', ''_blank''); }'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(28430186076964230)
 ,p_plug_name=>'MORE_ACTIONS'
@@ -1039,18 +1073,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'NATIVE_DYNAMIC_CONTENT'
 ,p_ajax_items_to_submit=>'P105_CARD_ID'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(108316517171408030)
@@ -1970,6 +1992,18 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>'show_message(apex.item(''P105_COMMENT_MESSAGE'').getValue());'
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(37725102328953116)
 ,p_event_id=>wwv_flow_imp.id(37724614808953111)
@@ -2028,18 +2062,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>'show_message(''File deleted'');'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(40024733936814917)
