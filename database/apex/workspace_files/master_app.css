@@ -376,6 +376,34 @@ td.a-GV-cell a:hover {
     color               : #000;
 }
 
+/* CHANGE EDITED CELL TRIANGLE */
+.a-GV-cell.is-changed:not(.is-active):before, .a-GV-row.is-updated .a-GV-selHeader:before {
+    color               : #648e00;
+}
+
+/* ADJUST BACKGROUND COLORS FOR UPDATED/SELECTED ROWS */
+/* tr.is-selected, tr.is-updated, tr.is-hover, td.is-readonly */
+tr.a-GV-row.is-updated td,
+tr.a-GV-row.is-updated th {
+    background          : white !important;
+}
+tr.a-GV-row.is-selected td,
+tr.a-GV-row.is-selected th {
+    background          : #F5F4F2 !important;
+}
+tr.a-GV-row.is-hover td,
+tr.a-GV-row.is-hover th {
+    background          : #F5F4F2 !important;
+}
+tr.a-GV-row.is-selected.is-hover td,
+tr.a-GV-row.is-selected.is-hover th {
+    background          : #E9E7E7 !important;
+}
+tr.a-GV-row.is-selected td.is-readonly,
+tr.a-GV-row.is-hover td.is-readonly {
+    background          : #FBFAF8 !important;
+}
+
 
 
 /* LIGHTER CHECKED CHECKBOXES IN GRID */
@@ -484,6 +512,14 @@ button.a-Button.a-Button--notification.js-showDetails {
 /** fa fa-info-circle */
 .t-Alert--horizontal .t-Alert-buttons {
     align-items         : end;
+}
+
+/* SESSION DIALOGS */
+div#apex_session_alert_dlg {
+    padding-top         : 1rem;
+    font-size           : 1rem;
+    line-height         : 1.5rem;
+    color               : #000;
 }
 
 

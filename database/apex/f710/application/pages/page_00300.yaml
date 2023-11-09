@@ -22,6 +22,13 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
+javascript: 
+  execute-when-page-loads: |
+    apex.jQuery(window).on('theme42ready', function() {
+        delay(250).then(() => fix_grid_checkbox('PROJECTS', 'IS_DEFAULT'));
+    });
+    
+
 security: 
   authorization-scheme: MASTER - IS_USER # 70314822393792529
   authentication: Page Requires Authentication

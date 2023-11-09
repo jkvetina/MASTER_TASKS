@@ -18,6 +18,11 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Projects'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(78006013489194627)  -- 3) PROJECTS
+,p_javascript_code_onload=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'apex.jQuery(window).on(''theme42ready'', function() {',
+'    delay(250).then(() => fix_grid_checkbox(''PROJECTS'', ''IS_DEFAULT''));',
+'});',
+''))
 ,p_page_css_classes=>'MULTICOLUMN'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
@@ -1087,6 +1092,18 @@ wwv_flow_imp_page.create_region_column(
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_interactive_grid(
  p_id=>wwv_flow_imp.id(282724809735951769)
 ,p_internal_uid=>282724809735951769
@@ -1116,18 +1133,6 @@ wwv_flow_imp_page.create_interactive_grid(
 ,p_fixed_header=>'PAGE'
 ,p_show_icon_view=>false
 ,p_show_detail_view=>false
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_ig_report(
  p_id=>wwv_flow_imp.id(282746953004124741)
@@ -2170,6 +2175,18 @@ wwv_flow_imp_page.create_region_column(
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
 );
+wwv_flow_imp.component_end;
+end;
+/
+begin
+wwv_flow_imp.component_begin (
+ p_version_yyyy_mm_dd=>'2023.04.28'
+,p_release=>'23.1.5'
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>710
+,p_default_id_offset=>19878674458876767
+,p_default_owner=>'APPS'
+);
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(88580072864530298)
 ,p_name=>'APEX$ROW_ACTION'
@@ -2216,18 +2233,6 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_primary_key=>false
 ,p_duplicate_value=>true
 ,p_include_in_export=>true
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(155779633485462496)
