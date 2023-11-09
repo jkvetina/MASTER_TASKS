@@ -282,6 +282,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: PROJECTS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -4213,6 +4214,41 @@ buttons:
 
   security: 
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+
+dynamic-actions: 
+- # ====== Dynamic Action: ONE_CHECKBOX_PROJECTS ===============
+  id: 40025508770814925
+  identification: 
+    name: ONE_CHECKBOX_PROJECTS
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Column(s)
+    interactive-grid: Projects [GRID] # 49582159465109006
+    column(s): 
+    - IS_DEFAULT
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 40025666314814926
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: grid_one_checkbox_only('PROJECTS', 'IS_DEFAULT');
+
+    execution: 
+      sequence: 10
+      event: ONE_CHECKBOX_PROJECTS # 40025508770814925
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_PROJECTS ==============================

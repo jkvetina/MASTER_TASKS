@@ -49,6 +49,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(49582159465109006)
 ,p_plug_name=>'Projects [GRID]'
+,p_region_name=>'PROJECTS'
 ,p_parent_plug_id=>wwv_flow_imp.id(38406726459540115)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
@@ -2826,6 +2827,26 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_redirect_url=>'f?p=&APP_ID.:342:&SESSION.::&DEBUG.:342::'
 ,p_icon_css_classes=>'fa-download'
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(40025508770814925)
+,p_name=>'ONE_CHECKBOX_PROJECTS'
+,p_event_sequence=>10
+,p_triggering_element_type=>'COLUMN'
+,p_triggering_region_id=>wwv_flow_imp.id(49582159465109006)
+,p_triggering_element=>'IS_DEFAULT'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(40025666314814926)
+,p_event_id=>wwv_flow_imp.id(40025508770814925)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'grid_one_checkbox_only(''PROJECTS'', ''IS_DEFAULT'');'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(26810501386507982)
