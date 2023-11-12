@@ -22,7 +22,7 @@ wwv_flow_imp_shared.create_flow_computation(
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'CASE WHEN core.get_page_is_modal(:APP_ID, :APP_PAGE_ID) = ''Y''',
 '    THEN 0',
-'    ELSE 6 END'))
+'    ELSE 4 END'))
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 );
 wwv_flow_imp.component_end;

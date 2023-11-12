@@ -14,7 +14,7 @@
     pl/sql-expression: |
       CASE WHEN core.get_page_is_modal(:APP_ID, :APP_PAGE_ID) = 'Y'
           THEN 0
-          ELSE 6 END
+          ELSE 4 END
 
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
