@@ -379,6 +379,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.set_item('P0_OWNER_ID',        rec.owner_id);
         core.set_item('P0_OWNER_NAME',      tsk_app.get_owner_name(rec.owner_id));
         --
+        core.set_item('P0_CLIENT_FILTER',       '<br /><span class="CURRENT">' || core.get_item('P0_CLIENT_NAME')   || '</span>');
+        core.set_item('P0_PROJECT_FILTER',      '<br /><span class="CURRENT">' || core.get_item('P0_PROJECT_NAME')  || '</span>');
+        core.set_item('P0_BOARD_FILTER',        '<br /><span class="CURRENT">' || core.get_item('P0_BOARD_NAME')    || '</span>');
         core.set_item('P0_SWIMLANE_FILTER',     '<br /><span class="CURRENT">' || core.get_item('P0_SWIMLANE_NAME') || '</span>');
         core.set_item('P0_STATUS_FILTER',       '<br /><span class="CURRENT">' || core.get_item('P0_STATUS_NAME')   || '</span>');
         core.set_item('P0_CATEGORY_FILTER',     '<br /><span class="CURRENT">' || core.get_item('P0_CATEGORY_NAME') || '</span>');

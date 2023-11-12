@@ -1647,7 +1647,7 @@ buttons:
   id: 38904652260243454
   identification: 
     button-name: SWITCH_CLIENT
-    label: Switch Client
+    label: Switch Client &P0_CLIENT_FILTER!RAW.
 
   layout: 
     sequence: 20

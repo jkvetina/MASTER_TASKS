@@ -4003,7 +4003,7 @@ buttons:
   id: 38408163770540129
   identification: 
     button-name: SWITCH_PROJECT
-    label: Switch Project
+    label: Switch Project &P0_PROJECT_FILTER!RAW.
 
   layout: 
     sequence: 20

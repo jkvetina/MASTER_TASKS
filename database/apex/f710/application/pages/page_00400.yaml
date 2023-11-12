@@ -1335,7 +1335,7 @@ buttons:
   id: 38935607764688605
   identification: 
     button-name: SWITCH_BOARD
-    label: Switch Board
+    label: Switch Board &P0_BOARD_FILTER!RAW.
 
   layout: 
     sequence: 20

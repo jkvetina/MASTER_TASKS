@@ -2785,7 +2785,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#:t-Button--iconLeft'
 ,p_button_template_id=>wwv_flow_imp.id(34021523429153827)
-,p_button_image_alt=>'Switch Project'
+,p_button_image_alt=>'Switch Project &P0_PROJECT_FILTER!RAW.'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
