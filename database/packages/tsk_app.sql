@@ -67,7 +67,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     BEGIN
         SELECT t.project_name INTO out_name
         FROM tsk_projects t
-        WHERE t.project_id  = COALESCE(in_project_id, tsk_app.get_project_id());
+        WHERE t.client_id       = tsk_app.get_client_id()
+            AND t.project_id    = COALESCE(in_project_id, tsk_app.get_project_id());
         --
         RETURN out_name;
     EXCEPTION
@@ -95,7 +96,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
     BEGIN
         SELECT t.board_name INTO out_name
         FROM tsk_boards t
-        WHERE t.board_id    = COALESCE(in_board_id, tsk_app.get_board_id());
+        WHERE t.client_id       = tsk_app.get_client_id()
+            AND t.project_id    = tsk_app.get_project_id()
+            AND t.board_id      = COALESCE(in_board_id, tsk_app.get_board_id());
         --
         RETURN out_name;
     EXCEPTION
@@ -382,7 +385,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.set_item('P0_OWNER_FILTER',        '<br /><span class="CURRENT">' || core.get_item('P0_OWNER_NAME')    || '</span>');
 
         -- temp message
-        IF core.get_page_id() = 100 THEN
+        IF core.get_page_id() = 100 AND rec.client_id IS NOT NULL THEN
             app.ajax_message('Context: Client=' || rec.client_id || ' | Project=' || rec.project_id || ' | Board=' || rec.board_id);
         END IF;
         --
