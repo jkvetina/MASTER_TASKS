@@ -253,11 +253,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     in_current      => a.is_current
                 ) AS row_,
                 --
-                CASE WHEN a.status_group != LAG(a.status_group) OVER (ORDER BY a.order#)        THEN 'Y' END AS is_new_column,
-                CASE WHEN ROW_NUMBER() OVER (PARTITION BY a.status_group ORDER BY a.order#) = 1 THEN 'Y' END AS is_first_column
+                CASE WHEN a.status_group != LAG(a.status_group) OVER (ORDER BY a.status_group, a.order#)        THEN 'Y' END AS is_new_column,
+                CASE WHEN ROW_NUMBER() OVER (PARTITION BY a.status_group ORDER BY a.status_group, a.order#) = 1 THEN 'Y' END AS is_first_column
                 --
             FROM tsk_lov_statuses_v a
-            ORDER BY a.order#
+            ORDER BY
+                a.status_group,
+                a.order#
         ) LOOP
             IF c.is_new_column = 'Y' THEN
                 o := o || '</ul><ul role="menu">';
@@ -297,11 +299,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     in_current      => a.is_current
                 ) AS row_,
                 --
-                CASE WHEN a.category_group != LAG(a.category_group) OVER (ORDER BY a.order#)        THEN 'Y' END AS is_new_column,
-                CASE WHEN ROW_NUMBER() OVER (PARTITION BY a.category_group ORDER BY a.order#) = 1   THEN 'Y' END AS is_first_column
+                CASE WHEN a.category_group != LAG(a.category_group) OVER (ORDER BY a.category_group, a.order#)      THEN 'Y' END AS is_new_column,
+                CASE WHEN ROW_NUMBER() OVER (PARTITION BY a.category_group ORDER BY a.category_group, a.order#) = 1 THEN 'Y' END AS is_first_column
                 --
             FROM tsk_lov_categories_v a
-            ORDER BY a.order#
+            ORDER BY
+                a.category_group,
+                a.order#
         ) LOOP
             IF c.is_new_column = 'Y' THEN
                 o := o || '</ul><ul role="menu">';
