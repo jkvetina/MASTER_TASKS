@@ -197,6 +197,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
+        o := o || '<li>' ||
+            tsk_nav.get_link (
+                in_content      => 'All',
+                in_page_id      => core.get_page_id(),
+                in_swimlane_id  => '-',
+                in_current      => CASE WHEN tsk_app.get_swimlane_id() IS NULL THEN 'Y' END
+            ) ||
+            '</li>';
+        --
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
@@ -222,6 +231,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
+        o := o || '<li>' ||
+            tsk_nav.get_link (
+                in_content      => 'All',
+                in_page_id      => core.get_page_id(),
+                in_status_id    => '-',
+                in_current      => CASE WHEN tsk_app.get_status_id() IS NULL THEN 'Y' END
+            ) ||
+            '</li>';
+        --
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
@@ -253,6 +271,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
+        o := o || '<li>' ||
+            tsk_nav.get_link (
+                in_content      => 'All',
+                in_page_id      => core.get_page_id(),
+                in_category_id  => '-',
+                in_current      => CASE WHEN tsk_app.get_category_id() IS NULL THEN 'Y' END
+            ) ||
+            '</li>';
+        --
         FOR c IN (
             SELECT
                 a.category_name,
@@ -290,6 +317,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
+        o := o || '<li>' ||
+            tsk_nav.get_link (
+                in_content      => 'All',
+                in_page_id      => core.get_page_id(),
+                in_owner_id     => '-',
+                in_current      => CASE WHEN tsk_app.get_owner_id() IS NULL THEN 'Y' END
+            ) ||
+            '</li>';
+        --
         FOR c IN (
             SELECT
                 tsk_nav.get_link (
