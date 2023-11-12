@@ -197,14 +197,16 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
-        o := o || '<li>' ||
-            tsk_nav.get_link (
-                in_content      => 'All',
-                in_page_id      => core.get_page_id(),
-                in_swimlane_id  => '-',
-                in_current      => CASE WHEN tsk_app.get_swimlane_id() IS NULL THEN 'Y' END
-            ) ||
-            '</li>';
+        IF tsk_app.get_swimlane_id() IS NOT NULL THEN
+            o := o || '<li>' ||
+                tsk_nav.get_link (
+                    in_content      => 'All',
+                    in_page_id      => core.get_page_id(),
+                    in_swimlane_id  => '-',
+                    in_current      => 'Y'
+                ) ||
+                '</li>';
+        END IF;
         --
         FOR c IN (
             SELECT
@@ -231,14 +233,16 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
-        o := o || '<li>' ||
-            tsk_nav.get_link (
-                in_content      => 'All',
-                in_page_id      => core.get_page_id(),
-                in_status_id    => '-',
-                in_current      => CASE WHEN tsk_app.get_status_id() IS NULL THEN 'Y' END
-            ) ||
-            '</li>';
+        IF tsk_app.get_status_id() IS NOT NULL THEN
+            o := o || '<li>' ||
+                tsk_nav.get_link (
+                    in_content      => 'All',
+                    in_page_id      => core.get_page_id(),
+                    in_status_id    => '-',
+                    in_current      => 'Y'
+                ) ||
+                '</li>';
+        END IF;
         --
         FOR c IN (
             SELECT
@@ -249,7 +253,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                     in_current      => a.is_current
                 ) AS row_,
                 --
-                CASE WHEN a.status_group != LAG(a.status_group) OVER (ORDER BY a.order#) THEN 'Y' END AS is_new_column
+                CASE WHEN a.status_group != LAG(a.status_group) OVER (ORDER BY a.order#)        THEN 'Y' END AS is_new_column,
+                CASE WHEN ROW_NUMBER() OVER (PARTITION BY a.status_group ORDER BY a.order#) = 1 THEN 'Y' END AS is_first_column
                 --
             FROM tsk_lov_statuses_v a
             ORDER BY a.order#
@@ -271,14 +276,16 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
-        o := o || '<li>' ||
+        IF tsk_app.get_category_id() IS NOT NULL THEN
+            o := o || '<li>' ||
             tsk_nav.get_link (
                 in_content      => 'All',
                 in_page_id      => core.get_page_id(),
                 in_category_id  => '-',
-                in_current      => CASE WHEN tsk_app.get_category_id() IS NULL THEN 'Y' END
+                in_current      => 'Y'
             ) ||
             '</li>';
+        END IF;
         --
         FOR c IN (
             SELECT
@@ -301,10 +308,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             END IF;
             --
             IF c.is_first_column = 'Y' THEN
-                o := o || '<li><span>' || c.category_name || '</span></li>';
+                o := o || '<li><span class="NAV_L2">' || c.category_name || '</span></li>';
             END IF;
             --
-            o := o || '<li class="">' || c.row_ || '</li>';
+            o := o || '<li class="NAV_L3">' || c.row_ || '</li>';
         END LOOP;
         --
         RETURN '<div class="ACTION_MENU" data-id="SWITCH_CATEGORY"><div class="WRAPPER"><div class="CONTENT"><ul role="menu">' || o || '</ul></div></div></div>';
@@ -317,14 +324,16 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
     AS
         o VARCHAR2(32767);
     BEGIN
-        o := o || '<li>' ||
-            tsk_nav.get_link (
-                in_content      => 'All',
-                in_page_id      => core.get_page_id(),
-                in_owner_id     => '-',
-                in_current      => CASE WHEN tsk_app.get_owner_id() IS NULL THEN 'Y' END
-            ) ||
-            '</li>';
+        IF tsk_app.get_owner_id() IS NOT NULL THEN
+            o := o || '<li>' ||
+                tsk_nav.get_link (
+                    in_content      => 'All',
+                    in_page_id      => core.get_page_id(),
+                    in_owner_id     => '-',
+                    in_current      => 'Y'
+                ) ||
+                '</li>';
+        END IF;
         --
         FOR c IN (
             SELECT
