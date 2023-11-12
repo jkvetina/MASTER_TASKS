@@ -373,10 +373,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P0_SWIMLANES =============================
+- # ====== Page Item: P0_SWIMLANE_NAME =========================
   id: 23517310108581604
   identification: 
-    name: P0_SWIMLANES
+    name: P0_SWIMLANE_NAME
     type: Hidden
 
   settings: 
@@ -403,17 +403,17 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P0_OWNERS ================================
+- # ====== Page Item: P0_OWNER_NAME ============================
   id: 23517486092581605
   identification: 
-    name: P0_OWNERS
+    name: P0_OWNER_NAME
     type: Hidden
 
   settings: 
     value-protected: true
 
   layout: 
-    sequence: 130
+    sequence: 170
     region: APP_CONTEXT # 23517758634581608
     position: BODY
 
@@ -506,7 +506,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 120
+    sequence: 160
     region: APP_CONTEXT # 23517758634581608
     position: BODY
 
@@ -566,7 +566,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 110
+    sequence: 130
     region: APP_CONTEXT # 23517758634581608
     position: BODY
 
@@ -635,6 +635,186 @@ page-items:
   layout: 
     sequence: 20
     region: ITEMS # 34569381861312888
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_STATUS_NAME ===========================
+  id: 40025713118814927
+  identification: 
+    name: P0_STATUS_NAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_CATEGORY_NAME =========================
+  id: 40025853480814928
+  identification: 
+    name: P0_CATEGORY_NAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 140
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_SWIMLANE_FILTER =======================
+  id: 40025905185814929
+  identification: 
+    name: P0_SWIMLANE_FILTER
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 90
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_STATUS_FILTER =========================
+  id: 40026027995814930
+  identification: 
+    name: P0_STATUS_FILTER
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 120
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_CATEGORY_FILTER =======================
+  id: 40026144469814931
+  identification: 
+    name: P0_CATEGORY_FILTER
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 150
+    region: APP_CONTEXT # 23517758634581608
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_OWNER_FILTER ==========================
+  id: 40026241145814932
+  identification: 
+    name: P0_OWNER_FILTER
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 180
+    region: APP_CONTEXT # 23517758634581608
     position: BODY
 
   advanced: 

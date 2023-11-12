@@ -55,35 +55,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             core.set_item('P100_IS_FAVORITE',       b.is_favorite);
             core.set_item('P100_BOOKMARK_ICON',     'fa-bookmark' || CASE WHEN b.is_favorite IS NULL THEN '-o' END);
         END LOOP;
-
-        -- set current filters
-        FOR c IN (
-            SELECT
-                'P100_CURR_SWIMLANE' AS item_name,
-                '<br /><span class="CURRENT">' || t.swimlane_name || '</span>' AS item_value
-            FROM tsk_lov_swimlanes_v t
-            WHERE t.swimlane_id = tsk_app.get_swimlane_id()
-            UNION ALL
-            SELECT
-                'P100_CURR_STATUS' AS item_name,
-                '<br /><span class="CURRENT">' || t.status_name || '</span>' AS item_value
-            FROM tsk_lov_statuses_v t
-            WHERE t.status_id = tsk_app.get_status_id()
-            UNION ALL
-            SELECT
-                'P100_CURR_CATEGORY' AS item_name,
-                '<br /><span class="CURRENT">' || t.category_name || '</span>' AS item_value
-            FROM tsk_lov_categories_v t
-            WHERE t.category_id = tsk_app.get_category_id()
-            UNION ALL
-            SELECT
-                'P100_CURR_OWNER' AS item_name,
-                '<br /><span class="CURRENT">' || t.user_name || '</span>' AS item_value
-            FROM tsk_lov_owners_v t
-            WHERE t.user_id = tsk_app.get_owner_id()
-        ) LOOP
-            core.set_item(c.item_name, c.item_value);
-        END LOOP;
         --
     EXCEPTION
     WHEN core.app_exception THEN
