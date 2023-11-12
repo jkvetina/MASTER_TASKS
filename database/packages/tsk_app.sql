@@ -114,11 +114,53 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
 
+    FUNCTION get_swimlane_name (
+        in_swimlane_id      tsk_swimlanes.swimlane_id%TYPE := NULL
+    )
+    RETURN tsk_swimlanes.swimlane_name%TYPE
+    AS
+        out_name            tsk_swimlanes.swimlane_name%TYPE;
+    BEGIN
+        SELECT t.swimlane_name INTO out_name
+        FROM tsk_swimlanes t
+        WHERE t.client_id       = tsk_app.get_client_id()
+            AND t.project_id    = tsk_app.get_project_id()
+            AND t.swimlane_id   = COALESCE(in_swimlane_id, tsk_app.get_swimlane_id());
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
     FUNCTION get_status_id
     RETURN tsk_statuses.status_id%TYPE
     AS
     BEGIN
         RETURN core.get_item('P0_STATUS_ID');
+    END;
+
+
+
+    FUNCTION get_status_name (
+        in_status_id        tsk_statuses.status_id%TYPE := NULL
+    )
+    RETURN tsk_statuses.status_name%TYPE
+    AS
+        out_name            tsk_statuses.status_name%TYPE;
+    BEGIN
+        SELECT t.status_name INTO out_name
+        FROM tsk_statuses t
+        WHERE t.client_id       = tsk_app.get_client_id()
+            AND t.project_id    = tsk_app.get_project_id()
+            AND t.status_id     = COALESCE(in_status_id, tsk_app.get_status_id());
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
     END;
 
 
@@ -132,11 +174,43 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
 
 
+    FUNCTION get_category_name (
+        in_category_id      tsk_categories.category_id%TYPE := NULL
+    )
+    RETURN tsk_categories.category_name%TYPE
+    AS
+        out_name            tsk_categories.category_name%TYPE;
+    BEGIN
+        SELECT t.category_name INTO out_name
+        FROM tsk_categories t
+        WHERE t.client_id       = tsk_app.get_client_id()
+            AND t.project_id    = tsk_app.get_project_id()
+            AND t.category_id   = COALESCE(in_category_id, tsk_app.get_category_id());
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
     FUNCTION get_owner_id
     RETURN tsk_cards.owner_id%TYPE
     AS
     BEGIN
         RETURN core.get_item('P0_OWNER_ID');
+    END;
+
+
+
+    FUNCTION get_owner_name (
+        in_owner_id         tsk_cards.owner_id%TYPE := NULL
+    )
+    RETURN VARCHAR2
+    AS
+    BEGIN
+        RETURN COALESCE(in_owner_id, core.get_item('P0_OWNER_ID'));
     END;
 
 
@@ -283,6 +357,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
             );
         END IF;
 
+        -- save current selection
+        tsk_tapi.save_recent(rec);
+
         -- set verified values
         core.set_item('P0_CLIENT_ID',       rec.client_id);
         core.set_item('P0_CLIENT_NAME',     tsk_app.get_client_name(rec.client_id));
@@ -291,11 +368,18 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.set_item('P0_BOARD_ID',        rec.board_id);
         core.set_item('P0_BOARD_NAME',      tsk_app.get_board_name(rec.board_id));
         core.set_item('P0_SWIMLANE_ID',     rec.swimlane_id);
+        core.set_item('P0_SWIMLANE_NAME',   tsk_app.get_swimlane_name(rec.swimlane_id));
         core.set_item('P0_STATUS_ID',       rec.status_id);
+        core.set_item('P0_STATUS_NAME',     tsk_app.get_status_name(rec.status_id));
         core.set_item('P0_CATEGORY_ID',     rec.category_id);
+        core.set_item('P0_CATEGORY_NAME',   tsk_app.get_category_name(rec.category_id));
         core.set_item('P0_OWNER_ID',        rec.owner_id);
+        core.set_item('P0_OWNER_NAME',      tsk_app.get_owner_name(rec.owner_id));
         --
-        tsk_tapi.save_recent(rec);
+        core.set_item('P0_SWIMLANE_FILTER',     '<br /><span class="CURRENT">' || core.get_item('P0_SWIMLANE_NAME') || '</span>');
+        core.set_item('P0_STATUS_FILTER',       '<br /><span class="CURRENT">' || core.get_item('P0_STATUS_NAME')   || '</span>');
+        core.set_item('P0_CATEGORY_FILTER',     '<br /><span class="CURRENT">' || core.get_item('P0_CATEGORY_NAME') || '</span>');
+        core.set_item('P0_OWNER_FILTER',        '<br /><span class="CURRENT">' || core.get_item('P0_OWNER_NAME')    || '</span>');
 
         -- temp message
         IF core.get_page_id() = 100 THEN

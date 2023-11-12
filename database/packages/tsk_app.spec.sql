@@ -76,8 +76,22 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
+    FUNCTION get_swimlane_name (
+        in_swimlane_id      tsk_swimlanes.swimlane_id%TYPE := NULL
+    )
+    RETURN tsk_swimlanes.swimlane_name%TYPE;
+
+
+
     FUNCTION get_status_id
     RETURN tsk_statuses.status_id%TYPE;
+
+
+
+    FUNCTION get_status_name (
+        in_status_id        tsk_statuses.status_id%TYPE := NULL
+    )
+    RETURN tsk_statuses.status_name%TYPE;
 
 
 
@@ -86,8 +100,22 @@ CREATE OR REPLACE PACKAGE tsk_app AS
 
 
 
+    FUNCTION get_category_name (
+        in_category_id      tsk_categories.category_id%TYPE := NULL
+    )
+    RETURN tsk_categories.category_name%TYPE;
+
+
+
     FUNCTION get_owner_id
     RETURN tsk_cards.owner_id%TYPE;
+
+
+
+    FUNCTION get_owner_name (
+        in_owner_id         tsk_cards.owner_id%TYPE := NULL
+    )
+    RETURN VARCHAR2;
 
 
 
