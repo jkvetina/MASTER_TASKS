@@ -112,13 +112,23 @@ filter_data AS (
 ),
 recent_cards AS (
     SELECT /*+ MATERIALIZE */
-        tsk_nav.get_link (
-            in_content      => t.card_name,
-            in_page_id      => 100,
-            in_client_id    => t.client_id,
-            in_project_id   => t.project_id,
-            in_board_id     => t.board_id
-        ) AS attribute01,
+        CASE WHEN core.get_page_id() = 100
+            THEN tsk_nav.get_link (
+                in_content      => t.card_name,
+                in_page_id      => 105,
+                in_items        => 'P105_CARD_ID',
+                in_values       => t.card_id
+            )
+            ELSE tsk_nav.get_link (
+                in_content      => t.card_name,
+                in_page_id      => 100,
+                in_client_id    => t.client_id,
+                in_project_id   => t.project_id,
+                in_board_id     => t.board_id,
+                in_items        => 'P100_CARD_ID',
+                in_values       => t.card_id
+            )
+            END AS attribute01,
         --
         ROW_NUMBER() OVER (ORDER BY t.updated_at DESC) AS order#
         --
