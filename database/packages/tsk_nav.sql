@@ -45,8 +45,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 --p_application   =>
                 p_page          => COALESCE(in_page_id, core.get_page_id()),
                 p_clear_cache   => CASE WHEN (in_project_id IS NOT NULL OR in_client_id IS NOT NULL) THEN '0,' || COALESCE(in_page_id, core.get_page_id()) END,
-                p_items         => SUBSTR(v_items,  2, 4000),
-                p_values        => SUBSTR(v_values, 2, 4000)
+                p_items         => LTRIM(SUBSTR(v_items,  2, 4000) || CASE WHEN in_items IS NOT NULL THEN ',' || in_items  END, ','),
+                p_values        => LTRIM(SUBSTR(v_values, 2, 4000) || CASE WHEN in_items IS NOT NULL THEN ',' || in_values END, ',')
             ) ||
             '" class="' || in_class ||
             CASE WHEN in_current = 'Y' THEN ' ACTIVE' END ||
@@ -202,8 +202,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 tsk_nav.get_link (
                     in_content      => 'All',
                     in_page_id      => core.get_page_id(),
-                    in_swimlane_id  => '-',
-                    in_current      => 'Y'
+                    in_swimlane_id  => '-'
                 ) ||
                 '</li>';
         END IF;
@@ -238,8 +237,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 tsk_nav.get_link (
                     in_content      => 'All',
                     in_page_id      => core.get_page_id(),
-                    in_status_id    => '-',
-                    in_current      => 'Y'
+                    in_status_id    => '-'
                 ) ||
                 '</li>';
         END IF;
@@ -283,8 +281,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
             tsk_nav.get_link (
                 in_content      => 'All',
                 in_page_id      => core.get_page_id(),
-                in_category_id  => '-',
-                in_current      => 'Y'
+                in_category_id  => '-'
             ) ||
             '</li>';
         END IF;
@@ -333,8 +330,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
                 tsk_nav.get_link (
                     in_content      => 'All',
                     in_page_id      => core.get_page_id(),
-                    in_owner_id     => '-',
-                    in_current      => 'Y'
+                    in_owner_id     => '-'
                 ) ||
                 '</li>';
         END IF;
