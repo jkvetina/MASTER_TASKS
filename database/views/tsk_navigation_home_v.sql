@@ -72,8 +72,9 @@ filter_data AS (
             in_client_id    => b.client_id,
             in_project_id   => b.project_id,
             in_board_id     => b.board_id,
-            --in_swimlane_id  => '-',
-            --in_status_id    => '-',
+            in_swimlane_id  => b.fav_swimlane_id,
+            in_status_id    => '',
+            in_owner_id     => b.fav_owner_id,
             in_class        => '',
             in_icon_name    => CASE WHEN b.is_current = 'Y' THEN 'fa-arrow-circle-right' END
         ) AS attribute01,
@@ -107,6 +108,8 @@ filter_data AS (
         b.project_name,
         b.board_id,
         b.board_name,
+        b.fav_swimlane_id,
+        b.fav_owner_id,
         b.is_current,
         b.order#
 ),

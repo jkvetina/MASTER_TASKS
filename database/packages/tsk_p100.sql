@@ -307,6 +307,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         rec.client_id       := tsk_app.get_client_id();
         rec.project_id      := tsk_app.get_project_id();
         rec.board_id        := tsk_app.get_board_id();
+        rec.swimlane_id     := tsk_app.get_swimlane_id();
+        rec.owner_id        := tsk_app.get_owner_id();
         --
         BEGIN
             SELECT t.*
