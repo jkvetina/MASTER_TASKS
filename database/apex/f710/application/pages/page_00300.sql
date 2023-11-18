@@ -2801,7 +2801,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
 ,p_button_image_alt=>'Copy Swimlanes'
 ,p_button_position=>'RIGHT_OF_TITLE'
-,p_button_redirect_url=>'f?p=&APP_ID.:312:&SESSION.::&DEBUG.:312::'
+,p_button_redirect_url=>'f?p=&APP_ID.:312:&SESSION.::&DEBUG.::P312_TYPE:SWIMLANES'
 ,p_icon_css_classes=>'fa-download'
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 );
@@ -2815,7 +2815,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
 ,p_button_image_alt=>'Copy Statuses'
 ,p_button_position=>'RIGHT_OF_TITLE'
-,p_button_redirect_url=>'f?p=&APP_ID.:322:&SESSION.::&DEBUG.:322::'
+,p_button_redirect_url=>'f?p=&APP_ID.:312:&SESSION.::&DEBUG.::P312_TYPE:STATUSES'
 ,p_icon_css_classes=>'fa-download'
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 );
@@ -2829,7 +2829,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(34020683404153823)
 ,p_button_image_alt=>'Copy Categories'
 ,p_button_position=>'RIGHT_OF_TITLE'
-,p_button_redirect_url=>'f?p=&APP_ID.:342:&SESSION.::&DEBUG.:342::'
+,p_button_redirect_url=>'f?p=&APP_ID.:312:&SESSION.::&DEBUG.::P312_TYPE:CATEGORIES'
 ,p_icon_css_classes=>'fa-download'
 ,p_security_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
 );

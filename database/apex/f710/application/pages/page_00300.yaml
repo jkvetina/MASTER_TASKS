@@ -4059,9 +4059,10 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:312:&SESSION.::&DEBUG.:312::'
-      page: 312 # Copy Swimlanes from Project
-      clear-cache: 312
+      url: 'f?p=&APP_ID.:312:&SESSION.::&DEBUG.::P312_TYPE:SWIMLANES'
+      page: 312 # Copy from Project
+      values: 
+        p312_type: SWIMLANES
 
     warn-on-unsaved-changes: Do Not Check
 
@@ -4150,9 +4151,10 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:322:&SESSION.::&DEBUG.:322::'
-      page: 322 # Copy Statuses from Project
-      clear-cache: 322
+      url: 'f?p=&APP_ID.:312:&SESSION.::&DEBUG.::P312_TYPE:STATUSES'
+      page: 312 # Copy from Project
+      values: 
+        p312_type: STATUSES
 
     warn-on-unsaved-changes: Do Not Check
 
@@ -4213,9 +4215,10 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:342:&SESSION.::&DEBUG.:342::'
-      page: 342 # Copy Categories from Project
-      clear-cache: 342
+      url: 'f?p=&APP_ID.:312:&SESSION.::&DEBUG.::P312_TYPE:CATEGORIES'
+      page: 312 # Copy from Project
+      values: 
+        p312_type: CATEGORIES
 
     warn-on-unsaved-changes: Do Not Check
 
