@@ -82,7 +82,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    static-id: GRID
+    static-id: SWIMLANES
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -623,7 +623,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    static-id: GRID
+    static-id: STATUSES
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -1408,7 +1408,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    static-id: GRID
+    static-id: CATEGORIES
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -2469,16 +2469,14 @@ dynamic-actions:
 
   execution: 
     sequence: 20
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
     selection-type: Item(s)
     item(s): 
     - P312_PROJECT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Refresh =====================================
@@ -2533,15 +2531,13 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: COPY_SWIMLANES # 27366619842524201
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -2553,7 +2549,7 @@ dynamic-actions:
       code: |
         // fake changes on all rows, submit grid
         // close dialog with a message
-        var grid    = apex.region('GRID').widget();
+        var grid    = apex.region('SWIMLANES').widget();
         var model   = grid.interactiveGrid('getViews', 'grid').model;
         //
         model.forEach(function(r) {
@@ -2581,15 +2577,13 @@ dynamic-actions:
 
   execution: 
     sequence: 30
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: COPY_STATUSES # 40027429997814944
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -2601,7 +2595,7 @@ dynamic-actions:
       code: |
         // fake changes on all rows, submit grid
         // close dialog with a message
-        var grid    = apex.region('GRID').widget();
+        var grid    = apex.region('STATUSES').widget();
         var model   = grid.interactiveGrid('getViews', 'grid').model;
         //
         model.forEach(function(r) {
@@ -2629,15 +2623,13 @@ dynamic-actions:
 
   execution: 
     sequence: 40
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: COPY_CATEGORIES # 40027531009814945
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -2649,7 +2641,7 @@ dynamic-actions:
       code: |
         // fake changes on all rows, submit grid
         // close dialog with a message
-        var grid    = apex.region('GRID').widget();
+        var grid    = apex.region('CATEGORIES').widget();
         var model   = grid.interactiveGrid('getViews', 'grid').model;
         //
         model.forEach(function(r) {
@@ -2717,6 +2709,9 @@ processes:
     name: CLOSE_DIALOG
     type: Close Dialog
     execution-chain: None
+
+  settings: 
+    show-success-messages: false
 
   execution: 
     sequence: 40

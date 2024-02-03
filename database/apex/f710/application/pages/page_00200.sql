@@ -4,8 +4,8 @@ begin
 --     PAGE: 00200
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
 ,p_default_id_offset=>19878674458876767
@@ -49,6 +49,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(22781973600601049)
 ,p_plug_name=>'Clients [GRID]'
+,p_region_name=>'CLIENTS'
 ,p_parent_plug_id=>wwv_flow_imp.id(38407302985540121)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(33938051529153767)
@@ -318,20 +319,12 @@ wwv_flow_imp_page.create_region_column(
 ,p_data_type=>'VARCHAR2'
 ,p_session_state_data_type=>'VARCHAR2'
 ,p_is_query_only=>true
-,p_item_type=>'NATIVE_DISPLAY_ONLY'
-,p_heading_alignment=>'CENTER'
+,p_item_type=>'NATIVE_HIDDEN'
 ,p_display_sequence=>70
-,p_value_alignment=>'CENTER'
-,p_attribute_05=>'HTML'
-,p_enable_filter=>true
-,p_filter_operators=>'C:S:CASE_INSENSITIVE:REGEXP'
+,p_attribute_01=>'Y'
 ,p_filter_is_required=>false
-,p_filter_text_case=>'MIXED'
-,p_filter_exact_match=>true
-,p_filter_lov_type=>'DISTINCT'
 ,p_use_as_row_header=>false
 ,p_enable_sort_group=>false
-,p_enable_hide=>true
 ,p_is_primary_key=>false
 ,p_include_in_export=>false
 );
@@ -644,6 +637,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(312563241607185103)
 ,p_plug_name=>'Sequences [GRID]'
+,p_region_name=>'SEQUENCES'
 ,p_parent_plug_id=>wwv_flow_imp.id(38407494058540122)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
@@ -1070,13 +1064,24 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_css_classes=>'ACTION_MENU TRANSPARENT'
 ,p_icon_css_classes=>'fa-chevron-down'
 );
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(40920768551459787)
+,p_name=>'P200_CURRENT_CLIENTS'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(136799133959925374)
+,p_item_default=>'P0_CLIENT_ID'
+,p_item_default_type=>'ITEM'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
 wwv_flow_imp.component_end;
 end;
 /
 begin
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
 ,p_default_id_offset=>19878674458876767

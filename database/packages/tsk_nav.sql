@@ -37,7 +37,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_nav AS
         v_icon := CASE
             WHEN in_icon_name IS NOT NULL
                 THEN '<span class="fa ' || in_icon_name || '"></span><span> &' || 'nbsp; '
-            ELSE '<span>&' || 'mdash;&' || 'nbsp; '
+                --
+            WHEN in_current IS NULL
+                THEN '<span>&' || 'mdash;&' || 'nbsp; '
+            ELSE ''
             END;
         --
         RETURN '<a href="' ||

@@ -75,6 +75,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: CLIENTS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -543,18 +544,13 @@ regions:
     id: 28270637999994339
     identification: 
       column-name: IS_CURRENT
-      type: Display Only
-
-    heading: 
-      alignment: center
+      type: Hidden
 
     settings: 
-      format: HTML
+      value-protected: true
 
     layout: 
       sequence: 70
-      column-alignment: center
-      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
@@ -569,23 +565,11 @@ regions:
     session-state: 
       data-type: VARCHAR2
 
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
     export-/-printing: 
       include-in-export-/-print: false
 
     enable-users-to: 
       sort: false
-      hide: true
 
   - # ====== Column: COUNT_SWIMLANES =============================
     id: 28270757663994340
@@ -1136,6 +1120,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: SEQUENCES
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -1610,6 +1595,41 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
+
+page-items: 
+- # ====== Page Item: P200_CURRENT_CLIENTS =====================
+  id: 40920768551459787
+  identification: 
+    name: P200_CURRENT_CLIENTS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Clients # 136799133959925374
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Item
+    item: P0_CLIENT_ID
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
 
 buttons: 
 - # ====== Button: ADD_CLIENT_WIZARD ===========================

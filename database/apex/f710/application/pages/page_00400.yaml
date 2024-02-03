@@ -204,6 +204,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: BOARDS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -299,18 +300,13 @@ regions:
     id: 28269599455994328
     identification: 
       column-name: IS_CURRENT
-      type: Display Only
-
-    heading: 
-      alignment: center
+      type: Hidden
 
     settings: 
-      format: HTML
+      value-protected: true
 
     layout: 
       sequence: 170
-      column-alignment: center
-      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
@@ -325,24 +321,11 @@ regions:
     session-state: 
       data-type: VARCHAR2
 
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
     export-/-printing: 
-      include-in-export-/-print: true
+      include-in-export-/-print: false
 
     enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
+      sort: false
 
   - # ====== Column: COUNT_SWIMLANES =============================
     id: 28269606345994329
@@ -803,6 +786,14 @@ regions:
     layout: 
       sequence: 20
 
+    advanced: 
+      column-initialization-javascript-function: |
+        function (options) {
+            //return cell_class(options, '&IS_CURRENT. &BOARD_NAME.');
+            return options;
+        }
+        
+
   - # ====== Column: APEX$ROW_SELECTOR ===========================
     id: 50045795494623124
     identification: 
@@ -1014,8 +1005,7 @@ regions:
       value-identifies-row: false
 
     validation: 
-      value-required: true
-      maximum-length: 64
+      value-required: false
 
     source: 
       type: Database Column
@@ -1330,6 +1320,41 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
+page-items: 
+- # ====== Page Item: P400_CURRENT_BOARDS ======================
+  id: 40846775243003003
+  identification: 
+    name: P400_CURRENT_BOARDS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Item
+    item: P0_BOARD_ID
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 buttons: 
 - # ====== Button: SWITCH_BOARD ================================
   id: 38935607764688605
@@ -1392,6 +1417,39 @@ buttons:
     action: Submit Page
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: ONE_CHECKBOX_BOARDS =================
+  id: 40873940446673177
+  identification: 
+    name: ONE_CHECKBOX_BOARDS
+
+  execution: 
+    sequence: 10
+    event-scope: Dynamic
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Column(s)
+    interactive-grid: Boards [GRID] # 115469225440223629
+    column(s): 
+    - IS_DEFAULT
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 40874371192673183
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: grid_one_checkbox_only('BOARDS', 'IS_DEFAULT');
+
+    execution: 
+      sequence: 10
+      event: ONE_CHECKBOX_BOARDS # 40873940446673177
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_BOARDS ================================

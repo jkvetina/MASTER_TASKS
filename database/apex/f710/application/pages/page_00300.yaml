@@ -22,13 +22,6 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
-javascript: 
-  execute-when-page-loads: |
-    apex.jQuery(window).on('theme42ready', function() {
-        delay(250).then(() => fix_grid_checkbox('PROJECTS', 'IS_DEFAULT'));
-    });
-    
-
 security: 
   authorization-scheme: MASTER - IS_USER # 70314822393792529
   authentication: Page Requires Authentication
@@ -431,18 +424,13 @@ regions:
     id: 28269459513994327
     identification: 
       column-name: IS_CURRENT
-      type: Display Only
-
-    heading: 
-      alignment: center
+      type: Hidden
 
     settings: 
-      format: HTML
+      value-protected: true
 
     layout: 
       sequence: 100
-      column-alignment: center
-      stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
@@ -457,24 +445,11 @@ regions:
     session-state: 
       data-type: VARCHAR2
 
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
     export-/-printing: 
-      include-in-export-/-print: true
+      include-in-export-/-print: false
 
     enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
+      sort: false
 
   - # ====== Column: OLD_PROJECT_ID ==============================
     id: 49582377188109008
@@ -1318,6 +1293,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: STATUSES
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -2408,6 +2384,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: SWIMLANES
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -3156,6 +3133,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: CATEGORIES
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -3967,6 +3945,42 @@ regions:
       font-color: '#000000'
       alignment: center
 
+page-items: 
+- # ====== Page Item: P300_CURRENT_PROJECTS ====================
+  id: 40846837690003004
+  identification: 
+    name: P300_CURRENT_PROJECTS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Projects for &P0_CLIENT_NAME. # 140318868333565921
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: REPLACE('["&P0_PROJECT_ID.","&P0_CLIENT_ID."]', '"', '&quot;')
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 buttons: 
 - # ====== Button: ADD_PROJECT_WIZARD ==========================
   id: 26802574571507975
@@ -4226,13 +4240,79 @@ buttons:
     authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
 
 dynamic-actions: 
+- # ====== Dynamic Action: ONE_CHECKBOX_STATUSES ===============
+  id: 40850268175003038
+  identification: 
+    name: ONE_CHECKBOX_STATUSES
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Column(s)
+    interactive-grid: Statuses [GRID] # 259316898624447324
+    column(s): 
+    - IS_DEFAULT
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 40850318045003039
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: grid_one_checkbox_only('STATUSES', 'IS_DEFAULT');
+
+    execution: 
+      sequence: 10
+      event: ONE_CHECKBOX_STATUSES # 40850268175003038
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: ONE_CHECKBOX_CATEGORIES =============
+  id: 40850470349003040
+  identification: 
+    name: ONE_CHECKBOX_CATEGORIES
+
+  execution: 
+    sequence: 30
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Column(s)
+    interactive-grid: Categories [GRID] # 306739969733500970
+    column(s): 
+    - IS_DEFAULT
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 40850553601003041
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: grid_one_checkbox_only('CATEGORIES', 'IS_DEFAULT');
+
+    execution: 
+      sequence: 10
+      event: ONE_CHECKBOX_CATEGORIES # 40850470349003040
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 - # ====== Dynamic Action: ONE_CHECKBOX_PROJECTS ===============
-  id: 40025508770814925
+  id: 40918405647437542
   identification: 
     name: ONE_CHECKBOX_PROJECTS
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -4241,13 +4321,9 @@ dynamic-actions:
     column(s): 
     - IS_DEFAULT
 
-  execution: 
-    event-scope: Static
-    type: Immediate
-
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40025666314814926
+    id: 40918858193437551
     identification: 
       action: Execute JavaScript Code
 
@@ -4256,7 +4332,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: ONE_CHECKBOX_PROJECTS # 40025508770814925
+      event: ONE_CHECKBOX_PROJECTS # 40918405647437542
       fire-when-event-result-is: True
       fire-on-initialization: false
 

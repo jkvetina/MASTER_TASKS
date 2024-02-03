@@ -4,8 +4,8 @@ begin
 --     PAGE: 00312
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
 ,p_default_id_offset=>19878674458876767
@@ -32,7 +32,7 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(54590309752249697)
 ,p_plug_name=>'Swimlanes [GRID]'
-,p_region_name=>'GRID'
+,p_region_name=>'SWIMLANES'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(33938051529153767)
@@ -416,7 +416,7 @@ wwv_flow_imp_page.create_ig_report_column(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(68048248342604520)
 ,p_plug_name=>'Statuses [GRID]'
-,p_region_name=>'GRID'
+,p_region_name=>'STATUSES'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(33938051529153767)
@@ -987,7 +987,7 @@ wwv_flow_imp_page.create_ig_report_column(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(95441092416403423)
 ,p_plug_name=>'Categories [GRID]'
-,p_region_name=>'GRID'
+,p_region_name=>'CATEGORIES'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(33938051529153767)
@@ -1128,8 +1128,8 @@ end;
 /
 begin
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
 ,p_default_id_offset=>19878674458876767
@@ -1698,7 +1698,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '// fake changes on all rows, submit grid',
 '// close dialog with a message',
-'var grid    = apex.region(''GRID'').widget();',
+'var grid    = apex.region(''SWIMLANES'').widget();',
 'var model   = grid.interactiveGrid(''getViews'', ''grid'').model;',
 '//',
 'model.forEach(function(r) {',
@@ -1773,7 +1773,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '// fake changes on all rows, submit grid',
 '// close dialog with a message',
-'var grid    = apex.region(''GRID'').widget();',
+'var grid    = apex.region(''STATUSES'').widget();',
 'var model   = grid.interactiveGrid(''getViews'', ''grid'').model;',
 '//',
 'model.forEach(function(r) {',
@@ -1808,7 +1808,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '// fake changes on all rows, submit grid',
 '// close dialog with a message',
-'var grid    = apex.region(''GRID'').widget();',
+'var grid    = apex.region(''CATEGORIES'').widget();',
 'var model   = grid.interactiveGrid(''getViews'', ''grid'').model;',
 '//',
 'model.forEach(function(r) {',
@@ -1871,6 +1871,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'CLOSE_DIALOG'
+,p_attribute_02=>'N'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>27367953698524202

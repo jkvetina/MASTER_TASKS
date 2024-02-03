@@ -389,7 +389,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
         -- temp message
         IF core.get_page_id() = 100 AND rec.client_id IS NOT NULL THEN
-            app.ajax_message('Context: Client=' || rec.client_id || ' | Project=' || rec.project_id || ' | Board=' || rec.board_id);
+            --app.ajax_message('Context: Client=' || rec.client_id || ' | Project=' || rec.project_id || ' | Board=' || rec.board_id);
+            NULL;
         END IF;
         --
     EXCEPTION

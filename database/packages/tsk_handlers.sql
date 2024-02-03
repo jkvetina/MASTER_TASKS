@@ -103,6 +103,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
             AND t.project_id    = rec.project_id
             AND t.board_id      = NVL(core.get_grid_data('OLD_BOARD_ID'), rec.board_id);
         --
+        IF SQL%ROWCOUNT > 0 THEN
+            app.set_success_message('Current board removed from favorites');
+        END IF;
+        --
         IF core.get_grid_data('IS_FAVORITE') = 'Y' THEN
             INSERT INTO tsk_boards_fav (user_id, client_id, project_id, board_id, swimlane_id, owner_id)
             VALUES (
@@ -113,6 +117,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
                 NULL,
                 NULL
             );
+            --
+            IF SQL%ROWCOUNT > 0 THEN
+                app.set_success_message('Current board added to the favorites');
+            END IF;
         END IF;
         --
     EXCEPTION
