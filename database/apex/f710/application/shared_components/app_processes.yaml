@@ -17,6 +17,9 @@
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
 
+  subscription: 
+    version-number: 1
+
 - # ====== Application Process: AJAX_PING ======================
   id: 35361836373726315
   identification: 
@@ -34,4 +37,7 @@
 
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 1
 

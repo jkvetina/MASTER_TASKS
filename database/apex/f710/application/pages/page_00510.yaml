@@ -971,6 +971,8 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -978,10 +980,6 @@ dynamic-actions:
     item(s): 
     - P510_CLIENT_ID
     - P510_PROJECT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Hide ========================================

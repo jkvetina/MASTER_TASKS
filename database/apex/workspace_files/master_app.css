@@ -3,6 +3,9 @@ body {
     background-image    : none !important;
     background-color    : var(--ut-body-main-background-color);
 }
+#main .t-Body-contentInner {
+    padding             : 1.5rem;
+}
 
 
 
@@ -70,6 +73,8 @@ body.t-Drawer-page .t-HeroRegion.SECOND {
     margin-top          : 2rem !important;
 }
 h1.t-HeroRegion-title {
+    font-family         : 'Mate', serif;
+    font-weight         : 600;
     font-size           : 1.8rem;
     line-height         : 150%;
 }
@@ -300,6 +305,10 @@ ul.t-Tabs li.t-Tabs-item:last-child {
     align-items         : flex-start;
     padding-bottom      : 0;
 }
+.a-CardView-header .a-CardView-title {
+    font-family         : 'Roboto Slab', sans-serif;
+    font-weight         : 600;
+}
 
 /* CARDS - ADD SPACE TO SEE OUTLINE */
 ul.a-CardView-items {
@@ -377,12 +386,16 @@ td.a-GV-cell a:hover {
 }
 
 /* CHANGE EDITED CELL TRIANGLE */
-.a-GV-cell.is-changed:not(.is-active):before, .a-GV-row.is-updated .a-GV-selHeader:before {
+.a-GV-cell.is-changed:not(.is-active):before,
+.a-GV-row.is-inserted .a-GV-selHeader:before,
+.a-GV-row.is-updated .a-GV-selHeader:before {
     color               : #648e00;
 }
 
 /* ADJUST BACKGROUND COLORS FOR UPDATED/SELECTED ROWS */
 /* tr.is-selected, tr.is-updated, tr.is-hover, td.is-readonly */
+tr.a-GV-row.is-inserted td,
+tr.a-GV-row.is-inserted th,
 tr.a-GV-row.is-updated td,
 tr.a-GV-row.is-updated th {
     background          : white !important;
@@ -605,12 +618,12 @@ span.CURRENT:hover {
     line-height         : 1.8rem;
     text-transform      : none;
     text-align          : left;
-    font-family         : 'Roboto Slab';
+    font-family         : 'Roboto Slab', sans-serif;
     font-size           : 0.9rem;
     font-weight         : 400;
 }
 .t-Comments-comment {
-    font-family         : 'Roboto Slab';
+    font-family         : 'Roboto Slab', sans-serif;
 }
 .t-Comments-actions {
     display             : block;

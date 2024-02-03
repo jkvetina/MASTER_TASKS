@@ -3,4 +3,14 @@
   id: 34023094769153829
   identification: 
     name: Calendar
+    identifier: CALENDAR
+    class: Calendar
+
+  subscription: 
+    master: 
+      app: 800 # Master
+      referenced-id: 63465715722439170 # Calendar
+
+  advanced: 
+    translatable: false
 

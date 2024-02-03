@@ -4,6 +4,7 @@ prompt --install
 @@application/create_application.sql
 @@application/user_interfaces.sql
 @@application/shared_components/navigation/lists/navigation.sql
+@@application/shared_components/navigation/listentry.sql
 @@application/shared_components/files/tsk_app_css.sql
 @@application/shared_components/files/tsk_app_js.sql
 @@application/shared_components/files/tsk_app_min_js.sql

@@ -411,6 +411,7 @@ processes:
   settings: 
     items-to-return-: 
     - P108_TARGET_CARD_ID
+    show-success-messages: false
 
   execution: 
     sequence: 30

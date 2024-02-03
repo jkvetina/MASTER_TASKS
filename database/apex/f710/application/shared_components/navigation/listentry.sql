@@ -1,7 +1,7 @@
-prompt --application/shared_components/logic/application_items/g_user_first_name
+prompt --application/shared_components/navigation/listentry
 begin
 --   Manifest
---     APPLICATION ITEM: G_USER_FIRST_NAME
+--     LIST ENTRY: 
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
@@ -11,13 +11,7 @@ wwv_flow_imp.component_begin (
 ,p_default_id_offset=>19878674458876767
 ,p_default_owner=>'APPS'
 );
-wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(37766972552932348)
-,p_name=>'G_USER_FIRST_NAME'
-,p_scope=>'GLOBAL'
-,p_protection_level=>'I'
-,p_version_scn=>1
-);
+null;
 wwv_flow_imp.component_end;
 end;
 /

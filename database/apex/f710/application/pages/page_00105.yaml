@@ -3746,16 +3746,19 @@ page-items:
   id: 90411714354021456
   identification: 
     name: P105_ATTACHED_FILES
-    type: File Browse...
+    type: File Upload
 
   label: 
     label: Attach Files
     alignment: Left
 
-  settings: 
+  display: 
     display-as: Block Dropzone
     dropzone-description: Select or drop one or more files here...
-    storage-type: Table APEX_APPLICATION_TEMP_FILES
+    capture-using: NONE
+
+  storage:: 
+    type: Table APEX_APPLICATION_TEMP_FILES
     purge-file-at: End of Session
     allow-multiple-files: true
     maximum-file-size: 20000
@@ -4476,15 +4479,13 @@ dynamic-actions:
 
   execution: 
     sequence: 80
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: UPDATE_AND_REFRESH # 26839989070020938
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -4508,16 +4509,14 @@ dynamic-actions:
 
   execution: 
     sequence: 90
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
     selection-type: Item(s)
     item(s): 
     - P105_CATEGORY_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -4555,16 +4554,14 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
     selection-type: Item(s)
     item(s): 
     - P105_STATUS_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   server-side-condition: 
     type: Item is NULL
@@ -4592,16 +4589,14 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.CUSTOM.CUSTOM
     custom-event: DELETE_COMMENT
     selection-type: JavaScript Expression
     javascript-expression: document
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
@@ -4713,15 +4708,13 @@ dynamic-actions:
 
   execution: 
     sequence: 30
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: JavaScript Expression
     javascript-expression: window
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: REDIRECT_TO_NEW_PAGE ========================
@@ -4813,15 +4806,13 @@ dynamic-actions:
 
   execution: 
     sequence: 40
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: NATIVE_IG|REGION TYPE|apexbeginrecordedit
     selection-type: Region
     region: Checklist [GRID] # 91363554227871261
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   server-side-condition: 
     type: Never
@@ -4848,15 +4839,13 @@ dynamic-actions:
 
   execution: 
     sequence: 100
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: UPDATE_CARD_AND_CLOSE # 25256870991844563
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -4880,15 +4869,13 @@ dynamic-actions:
 
   execution: 
     sequence: 50
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: CREATE_CARD_AND_CLOSE # 25256418258844563
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -4912,15 +4899,13 @@ dynamic-actions:
 
   execution: 
     sequence: 60
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: CREATE_CARD # 38406096846540108
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -4944,15 +4929,13 @@ dynamic-actions:
 
   execution: 
     sequence: 70
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
     button: CREATE_ANOTHER # 25256044784844563
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -4976,16 +4959,14 @@ dynamic-actions:
 
   execution: 
     sequence: 20
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.CUSTOM.CUSTOM
     custom-event: DELETE_FILE
     selection-type: JavaScript Expression
     javascript-expression: document
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Set Value ===================================
@@ -5154,6 +5135,9 @@ processes:
     name: CLOSE_DIALOG
     type: Close Dialog
     execution-chain: None
+
+  settings: 
+    show-success-messages: false
 
   execution: 
     sequence: 30

@@ -1080,6 +1080,8 @@ dynamic-actions:
 
   execution: 
     sequence: 20
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -1089,10 +1091,6 @@ dynamic-actions:
     - P515_PROJECT_ID
     - P515_OWNER_ID
     - P515_REPO_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Hide ========================================
