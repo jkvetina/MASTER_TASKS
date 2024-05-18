@@ -1,0 +1,260 @@
+.HIDDEN {
+    display             : none;
+}
+
+/*
+@media only screen and (min-width: 768px) {
+*/
+/**
+* NAVIGATION TOP BAR
+*/
+#t_Header {
+    height              : 3rem; /* BAR_HEIGHT */
+    line-height         : 2.5rem;
+}
+#t_Header > #top_header,
+#t_Header > #top_header * {
+    user-drag           : none;
+    -moz-user-select    : none;
+    -webkit-user-drag   : none;
+    -moz-user-drag      : none;
+    margin              : 0;
+    padding             : 0;
+    color               : #fff;
+    line-height         : 1rem;
+    user-select         : none;
+}
+#t_Header > #top_header {
+    width               : 100%;
+    height              : 3rem; /* BAR_HEIGHT */
+    position            : fixed;
+    top                 : 0;
+    z-index             : 1000;
+}
+#t_Header > #top_header nav {
+    display             : flex;
+    flex-direction      : row;
+    flex-wrap           : nowrap;
+    justify-content     : space-between;
+    align-items         : stretch;
+}
+#t_Header > #top_header nav > * {
+    flex-grow           : 0;
+}
+
+/**
+* NAVIGATION MENUS
+*/
+#t_Header > #top_header,
+#t_Header > #top_header > nav ul li {
+    background          : #3f3d33;
+    color               : #fff;
+}
+#t_Header > #top_header > nav ul li > span {
+    display             : block;
+    padding             : 1rem 1rem;
+    line-height         : 1rem;
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.95rem;
+    white-space         : nowrap;
+}
+#t_Header > #top_header > nav a,
+#t_Header > #top_header > nav a:hover {
+    display             : block;
+    padding             : 1rem 1rem;
+    line-height         : 1rem;
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.95rem;
+    text-decoration     : none;
+    white-space         : nowrap;
+    color               : #fff;
+    outline             : none;
+    max-height          : 3rem;
+}
+#t_Header > #top_header > nav a:hover {
+    background          : #222;
+}
+
+/**
+* DROPDOWN LISTS
+*/
+#t_Header > #top_header > nav ul {
+    list-style-type     : none;
+}
+#t_Header > #top_header > nav > ul > li {
+    display             : block;
+    float               : left;
+    position            : relative;
+}
+#t_Header > #top_header > nav > ul > li > ul,
+#t_Header > #top_header > nav > ul > li > div {
+    display             : none;
+    visibility          : hidden;
+    position            : absolute;
+    left                : 0;
+    opacity             : 0;
+    z-index             : 1000;
+    box-shadow          : rgba(149, 157, 165, 0.2) 0 0.5rem 1rem;
+}
+#t_Header > #top_header > nav ul li:hover > ul,
+#t_Header > #top_header > nav ul li:hover > div {
+    display             : block;
+    visibility          : visible;
+    opacity             : 1;
+}
+
+/* FIX RIGHT ALIGNMENT */
+#t_Header > #top_header > nav ul li.RIGHT > div.WRAPPER {
+    left                : auto;
+    right               : 0;
+}
+#t_Header > #top_header > nav ul li.RIGHT_FIXED > div.WRAPPER {
+    position            : fixed;
+    right               : 0;
+    left                : auto;
+}
+
+/**
+* MULTICOLUMN SUPPORT
+*/
+#t_Header > #top_header > nav ul li div.COLUMNS {
+    display             : flex !important;
+    flex-direction      : row;
+    background          : #3f3d33;
+}
+#t_Header > #top_header > nav ul li div.COLUMNS ul li {
+    width               : 100%;
+}
+#t_Header > #top_header > nav ul li.MULTICOLUMN div.COLUMNS {
+    padding-bottom      : 2rem;
+}
+#t_Header > #top_header > nav ul li.MULTICOLUMN div.COLUMNS ul > li > * {
+    padding-right       : 3rem;
+}
+
+/**
+* ACTIVE ITEMS OVERWRITE
+*/
+#t_Header > #top_header > nav ul li.ACTIVE,
+#t_Header > #top_header > nav ul li.ACTIVE:hover {
+    background          : #222;
+}
+
+/* ADJUST LEVEL ITEMS */
+#t_Header > #top_header > nav a.NAV_L2,
+#t_Header > #top_header > nav a.NAV_L2 > span,
+#t_Header > #top_header > nav li.NAV_L2 * {
+    font-size           : 0.9rem;
+    line-height         : 0.9rem;
+}
+#t_Header > #top_header > nav a.NAV_L3,
+#t_Header > #top_header > nav li.NAV_L3 > * {
+    padding             : 0.7rem 2rem 0.7rem 2.8rem;
+}
+#t_Header > #top_header > nav a.NAV_L3,
+#t_Header > #top_header > nav a.NAV_L3 > span,
+#t_Header > #top_header > nav li.NAV_L3 *,
+#t_Header > #top_header > nav a.NAV_L4,
+#t_Header > #top_header > nav a.NAV_L4 > span,
+#t_Header > #top_header > nav li.NAV_L4 * {
+    font-size           : 0.85rem;
+    line-height         : 0.85rem;
+}
+#t_Header > #top_header > nav a.NAV_L4,
+#t_Header > #top_header > nav li.NAV_L4 > * {
+    padding             : 0.7rem 2rem 0.7rem 4rem;
+}
+
+
+
+/*
+ * ACTION MENU - TO SHOW MORE OPTIONS BELOW A BUTTON
+ */
+div.ACTION_MENU {
+    display             : none;
+    position            : absolute;
+    background          : #E9E7E7;
+    color               : white;
+    margin              : 3.5rem 0 0 0rem;
+    padding             : 0;
+    border-radius       : 1.5rem 1.5rem;
+    z-index             : 1000;
+    box-shadow          : rgba(149, 157, 165, 0.2) 0 0.5rem 1rem;
+}
+div.ACTION_MENU > .WRAPPER {
+    position            : static !important;
+}
+div.ACTION_MENU > .WRAPPER .CONTENT {  /* FOR ROUND BORDERS */
+    display             : flex !important;
+    justify-content     : flex-start;
+    align-items         : flex-start;
+    border-radius       : 1rem;
+    overflow            : hidden;
+}
+div.ACTION_MENU ul {
+    display             : block;
+    list-style-type     : none;
+    list-style-position : inside;
+    margin              : 0;
+    padding             : 0;
+}
+div.ACTION_MENU ul li {
+    margin              : 0;
+    padding             : 0;
+}
+div.ACTION_MENU a,
+div.ACTION_MENU a:hover {
+    display             : inline-block;
+    width               : 100%;
+    padding             : 0.6rem 1.2rem;
+    font-family         : 'Roboto', sans-serif;
+    color               : #222;
+    text-decoration     : none;
+    background          : #E9E7E7;
+}
+div.ACTION_MENU ul li:first-child > * {
+    padding-top         : 0.9rem;
+}
+div.ACTION_MENU ul li:last-child > * {
+    padding-bottom      : 0.9rem;
+}
+div.ACTION_MENU a:hover {
+    color               : #000;
+    background          : #d7d6d4;
+}
+div.ACTION_MENU a span.fa {
+    margin              : 0.15rem 0 -0.15rem;
+}
+
+/* TRIANGLE */
+div.ACTION_MENU > .WRAPPER:before {
+    position            : absolute;
+    top                 : -12px;
+    left                : 1.2rem;
+    content             : "";
+    border              : 1px solid transparent;
+    border-color        : #E9E7E7 transparent;
+    border-width        : 0 8px 12px;
+}
+
+/* DARK VERSION OF THE ACTION MENU */
+div.ACTION_MENU,
+div.ACTION_MENU ul {
+    background          : #3f3d33;
+}
+div.ACTION_MENU > .WRAPPER:before {
+    border-color        : #3f3d33 transparent;
+}
+div.ACTION_MENU a,
+div.ACTION_MENU a:hover {
+    background          : #3f3d33;
+    color               : white;
+}
+div.ACTION_MENU a:hover {
+    background          : #222;
+}
+div.ACTION_MENU a.ACTIVE,
+div.ACTION_MENU a.ACTIVE:hover {
+    background          : #222;
+}
+

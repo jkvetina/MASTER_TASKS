@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_theme(
@@ -51,7 +51,7 @@ wwv_flow_imp_shared.create_theme(
 ,p_default_option_label=>wwv_flow_imp.id(34018942203153820)
 ,p_default_required_label=>wwv_flow_imp.id(34020184240153822)
 ,p_default_navbar_list_template=>wwv_flow_imp.id(31684266225644159)
-,p_file_prefix => nvl(wwv_flow_application_install.get_static_theme_file_prefix(800),'#APEX_FILES#themes/theme_42/23.1/')
+,p_file_prefix => nvl(wwv_flow_application_install.get_static_theme_file_prefix(800),'#APEX_FILES#themes/theme_42/23.2/')
 ,p_files_version=>64
 ,p_icon_library=>'FONTAPEX'
 ,p_javascript_file_urls=>wwv_flow_string.join(wwv_flow_t_varchar2(

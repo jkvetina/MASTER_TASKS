@@ -63,7 +63,7 @@
     identification: 
       name: Danger
       identifier: DANGER
-      group: Alert Type # 34947263814125242
+      group: Alert Type # 36904114514506577
       sequence: 20
 
     settings: 
@@ -81,7 +81,7 @@
     identification: 
       name: Hidden but Accessible
       identifier: HIDDENHEADER
-      group: Alert Title # 34946873204125241
+      group: Alert Title # 36903790496506577
       sequence: 20
 
     settings: 
@@ -99,7 +99,7 @@
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Alert Title # 34946873204125241
+      group: Alert Title # 36903790496506577
       sequence: 10
 
     settings: 
@@ -118,7 +118,7 @@
     identification: 
       name: Hide Icons
       identifier: HIDE_ICONS
-      group: Alert Icons # 34946492140125241
+      group: Alert Icons # 36903339318506577
       sequence: 10
 
     settings: 
@@ -136,7 +136,7 @@
     identification: 
       name: Horizontal
       identifier: HORIZONTAL
-      group: Alert Display # 34946086612125241
+      group: Alert Display # 36902910467506577
       sequence: 10
 
     settings: 
@@ -154,7 +154,7 @@
     identification: 
       name: Information
       identifier: INFORMATION
-      group: Alert Type # 34947263814125242
+      group: Alert Type # 36904114514506577
       sequence: 30
 
     settings: 
@@ -172,7 +172,7 @@
     identification: 
       name: Show Custom Icons
       identifier: SHOW_CUSTOM_ICONS
-      group: Alert Icons # 34946492140125241
+      group: Alert Icons # 36903339318506577
       sequence: 30
 
     settings: 
@@ -190,7 +190,7 @@
     identification: 
       name: Success
       identifier: SUCCESS
-      group: Alert Type # 34947263814125242
+      group: Alert Type # 36904114514506577
       sequence: 40
 
     settings: 
@@ -208,7 +208,7 @@
     identification: 
       name: Show Default Icons
       identifier: USEDEFAULTICONS
-      group: Alert Icons # 34946492140125241
+      group: Alert Icons # 36903339318506577
       sequence: 20
 
     settings: 
@@ -226,7 +226,7 @@
     identification: 
       name: Warning
       identifier: WARNING
-      group: Alert Type # 34947263814125242
+      group: Alert Type # 36904114514506577
       sequence: 10
 
     settings: 
@@ -244,7 +244,7 @@
     identification: 
       name: Wizard
       identifier: WIZARD
-      group: Alert Display # 34946086612125241
+      group: Alert Display # 36902910467506577
       sequence: 20
 
     settings: 
@@ -331,7 +331,7 @@
     identification: 
       name: Borderless
       identifier: BORDERLESS
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 1
 
     settings: 
@@ -346,7 +346,7 @@
     identification: 
       name: No Padding
       identifier: NOPADDING
-      group: Body Padding # 34949276448125243
+      group: Body Padding # 36906183504506578
       sequence: 3
 
     settings: 
@@ -361,7 +361,7 @@
     identification: 
       name: Remove UI Decoration
       identifier: REMOVEUIDECORATION
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 4
 
     settings: 
@@ -376,7 +376,7 @@
     identification: 
       name: Slim Padding
       identifier: SLIMPADDING
-      group: Body Padding # 34949276448125243
+      group: Body Padding # 36906183504506578
       sequence: 5
 
     settings: 
@@ -456,7 +456,7 @@
     identification: 
       name: Style A
       identifier: STYLE_A
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 10
 
     settings: 
@@ -471,7 +471,7 @@
     identification: 
       name: Style B
       identifier: STYLE_B
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 20
 
     settings: 
@@ -486,7 +486,7 @@
     identification: 
       name: Style C
       identifier: STYLE_C
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 30
 
     settings: 
@@ -563,7 +563,7 @@
     identification: 
       name: 10 Seconds
       identifier: 10_SECONDS
-      group: Timer # 34964492633125251
+      group: Timer # 36921398600506585
       sequence: 20
 
     settings: 
@@ -578,7 +578,7 @@
     identification: 
       name: 15 Seconds
       identifier: 15_SECONDS
-      group: Timer # 34964492633125251
+      group: Timer # 36921398600506585
       sequence: 30
 
     settings: 
@@ -593,7 +593,7 @@
     identification: 
       name: 20 Seconds
       identifier: 20_SECONDS
-      group: Timer # 34964492633125251
+      group: Timer # 36921398600506585
       sequence: 40
 
     settings: 
@@ -608,7 +608,7 @@
     identification: 
       name: 240px
       identifier: 240PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 10
 
     settings: 
@@ -626,7 +626,7 @@
     identification: 
       name: 320px
       identifier: 320PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 20
 
     settings: 
@@ -644,7 +644,7 @@
     identification: 
       name: 480px
       identifier: 480PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 30
 
     settings: 
@@ -659,7 +659,7 @@
     identification: 
       name: 5 Seconds
       identifier: 5_SECONDS
-      group: Timer # 34964492633125251
+      group: Timer # 36921398600506585
       sequence: 10
 
     settings: 
@@ -674,7 +674,7 @@
     identification: 
       name: 640px
       identifier: 640PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 40
 
     settings: 
@@ -689,7 +689,7 @@
     identification: 
       name: Accent 1
       identifier: ACCENT_1
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 10
 
     settings: 
@@ -704,7 +704,7 @@
     identification: 
       name: Accent 2
       identifier: ACCENT_2
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 20
 
     settings: 
@@ -719,7 +719,7 @@
     identification: 
       name: Accent 3
       identifier: ACCENT_3
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 30
 
     settings: 
@@ -734,7 +734,7 @@
     identification: 
       name: Accent 4
       identifier: ACCENT_4
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 40
 
     settings: 
@@ -749,7 +749,7 @@
     identification: 
       name: Accent 5
       identifier: ACCENT_5
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 50
 
     settings: 
@@ -764,7 +764,7 @@
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Header # 34952817633125245
+      group: Header # 36909779650506579
       sequence: 10
 
     settings: 
@@ -779,7 +779,7 @@
     identification: 
       name: Hide
       identifier: HIDEOVERFLOW
-      group: Body Overflow # 34948807001125243
+      group: Body Overflow # 36905704148506578
       sequence: 10
 
     settings: 
@@ -794,7 +794,7 @@
     identification: 
       name: Hidden but accessible
       identifier: HIDEREGIONHEADER
-      group: Header # 34952817633125245
+      group: Header # 36909779650506579
       sequence: 20
 
     settings: 
@@ -829,7 +829,7 @@
     identification: 
       name: Remove Borders
       identifier: NOBORDER
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 10
 
     settings: 
@@ -861,7 +861,7 @@
     identification: 
       name: Scroll
       identifier: SCROLLBODY
-      group: Body Overflow # 34948807001125243
+      group: Body Overflow # 36905704148506578
       sequence: 20
 
     settings: 
@@ -924,7 +924,7 @@
     identification: 
       name: Slide
       identifier: SLIDE
-      group: Animation # 34948014420125242
+      group: Animation # 36904939103506577
       sequence: 10
 
     settings: 
@@ -939,7 +939,7 @@
     identification: 
       name: Spin
       identifier: SPIN
-      group: Animation # 34948014420125242
+      group: Animation # 36904939103506577
       sequence: 20
 
     settings: 
@@ -954,7 +954,7 @@
     identification: 
       name: Stack Region
       identifier: STACKED
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 20
 
     settings: 
@@ -1019,7 +1019,7 @@
           (() => {
               const region = document.getElementById('#REGION_STATIC_ID#').classList;
               const pref = sessionStorage.getItem('ORA_WWV_apex.toggleCore.a_Collapsible_#REGION_ID#.&APP_ID..&APP_PAGE_ID..preferenceForExpanded');
-              if (region.contains('js-useLocalStorage')) { region.toggle('is-collapsed', pref === 'false'); }
+              if (region.contains('js-useLocalStorage')) { region.toggle('is-collapsed', pref === 'false' || region.contains('is-collapsed')); }
           })();
       </script>
 
@@ -1033,7 +1033,7 @@
     identification: 
       name: 240px
       identifier: 240PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 10
 
     settings: 
@@ -1051,7 +1051,7 @@
     identification: 
       name: 320px
       identifier: 320PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 20
 
     settings: 
@@ -1069,7 +1069,7 @@
     identification: 
       name: 480px
       identifier: 480PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 30
 
     settings: 
@@ -1087,7 +1087,7 @@
     identification: 
       name: 640px
       identifier: 640PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 40
 
     settings: 
@@ -1105,7 +1105,7 @@
     identification: 
       name: Accent 1
       identifier: ACCENT_1
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 10
 
     settings: 
@@ -1120,7 +1120,7 @@
     identification: 
       name: Accent 10
       identifier: ACCENT_10
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 100
 
     settings: 
@@ -1135,7 +1135,7 @@
     identification: 
       name: Accent 11
       identifier: ACCENT_11
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 110
 
     settings: 
@@ -1150,7 +1150,7 @@
     identification: 
       name: Accent 12
       identifier: ACCENT_12
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 120
 
     settings: 
@@ -1165,7 +1165,7 @@
     identification: 
       name: Accent 13
       identifier: ACCENT_13
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 130
 
     settings: 
@@ -1180,7 +1180,7 @@
     identification: 
       name: Accent 14
       identifier: ACCENT_14
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 140
 
     settings: 
@@ -1195,7 +1195,7 @@
     identification: 
       name: Accent 15
       identifier: ACCENT_15
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 150
 
     settings: 
@@ -1210,7 +1210,7 @@
     identification: 
       name: Accent 2
       identifier: ACCENT_2
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 20
 
     settings: 
@@ -1225,7 +1225,7 @@
     identification: 
       name: Accent 3
       identifier: ACCENT_3
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 30
 
     settings: 
@@ -1240,7 +1240,7 @@
     identification: 
       name: Accent 4
       identifier: ACCENT_4
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 40
 
     settings: 
@@ -1255,7 +1255,7 @@
     identification: 
       name: Accent 5
       identifier: ACCENT_5
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 50
 
     settings: 
@@ -1270,7 +1270,7 @@
     identification: 
       name: Accent 6
       identifier: ACCENT_6
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 60
 
     settings: 
@@ -1285,7 +1285,7 @@
     identification: 
       name: Accent 7
       identifier: ACCENT_7
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 70
 
     settings: 
@@ -1300,7 +1300,7 @@
     identification: 
       name: Accent 8
       identifier: ACCENT_8
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 80
 
     settings: 
@@ -1315,7 +1315,7 @@
     identification: 
       name: Accent 9
       identifier: ACCENT_9
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 90
 
     settings: 
@@ -1330,7 +1330,7 @@
     identification: 
       name: Collapsed
       identifier: COLLAPSED
-      group: Default State # 34951200220125244
+      group: Default State # 36908112370506579
       sequence: 20
 
     settings: 
@@ -1345,7 +1345,7 @@
     identification: 
       name: End
       identifier: CONRTOLS_POSITION_END
-      group: Collapsible Icon Position # 34950860901125244
+      group: Collapsible Icon Position # 36907753752506579
       sequence: 1
 
     settings: 
@@ -1363,7 +1363,7 @@
     identification: 
       name: Expanded
       identifier: EXPANDED
-      group: Default State # 34951200220125244
+      group: Default State # 36908112370506579
       sequence: 10
 
     settings: 
@@ -1378,7 +1378,7 @@
     identification: 
       name: Hide
       identifier: HIDEOVERFLOW
-      group: Body Overflow # 34948807001125243
+      group: Body Overflow # 36905704148506578
       sequence: 20
 
     settings: 
@@ -1393,7 +1393,7 @@
     identification: 
       name: Plus or Minus
       identifier: ICONS_PLUS_OR_MINUS
-      group: Collapsible Button Icons # 34950486712125244
+      group: Collapsible Button Icons # 36907393765506578
       sequence: 1
 
     settings: 
@@ -1428,7 +1428,7 @@
     identification: 
       name: Remove Borders
       identifier: NOBORDER
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 10
 
     settings: 
@@ -1463,7 +1463,7 @@
     identification: 
       name: Remove UI Decoration
       identifier: REMOVE_UI_DECORATION
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 30
 
     settings: 
@@ -1481,7 +1481,7 @@
     identification: 
       name: Scroll - Default
       identifier: SCROLLBODY
-      group: Body Overflow # 34948807001125243
+      group: Body Overflow # 36905704148506578
       sequence: 10
 
     settings: 
@@ -1496,7 +1496,7 @@
     identification: 
       name: Stack Region
       identifier: STACKED
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 20
 
     settings: 
@@ -1571,7 +1571,7 @@
     identification: 
       name: Large
       identifier: CONTENT_TITLE_H1
-      group: Region Title # 34961206420125250
+      group: Region Title # 36918170449506583
       sequence: 10
 
     settings: 
@@ -1586,7 +1586,7 @@
     identification: 
       name: Medium
       identifier: CONTENT_TITLE_H2
-      group: Region Title # 34961206420125250
+      group: Region Title # 36918170449506583
       sequence: 20
 
     settings: 
@@ -1601,7 +1601,7 @@
     identification: 
       name: Small
       identifier: CONTENT_TITLE_H3
-      group: Region Title # 34961206420125250
+      group: Region Title # 36918170449506583
       sequence: 30
 
     settings: 
@@ -1616,7 +1616,7 @@
     identification: 
       name: Alternative
       identifier: HEADING_FONT_ALTERNATIVE
-      group: Heading Font # 34953252615125245
+      group: Heading Font # 36910112867506580
       sequence: 1
 
     settings: 
@@ -1631,7 +1631,7 @@
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Header # 34952817633125245
+      group: Header # 36909779650506579
       sequence: 10
 
     settings: 
@@ -1647,7 +1647,7 @@
     identification: 
       name: Hidden but accessible
       identifier: HIDEREGIONHEADER
-      group: Header # 34952817633125245
+      group: Header # 36909779650506579
       sequence: 20
 
     settings: 
@@ -1665,7 +1665,7 @@
     identification: 
       name: Light Background
       identifier: LIGHT_BACKGROUND
-      group: Body Style # 34949676649125243
+      group: Body Style # 36906552197506578
       sequence: 20
 
     settings: 
@@ -1683,7 +1683,7 @@
     identification: 
       name: Shadow Background
       identifier: SHADOW_BACKGROUND
-      group: Body Style # 34949676649125243
+      group: Body Style # 36906552197506578
       sequence: 10
 
     settings: 
@@ -1759,7 +1759,7 @@
     identification: 
       name: No
       identifier: DISPLAY_ICON_NO
-      group: Display Icon # 34952056805125244
+      group: Display Icon # 36908980985506579
       sequence: 10
 
     settings: 
@@ -1777,7 +1777,7 @@
     identification: 
       name: Featured
       identifier: FEATURED
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 10
 
     settings: 
@@ -1792,7 +1792,7 @@
     identification: 
       name: Alternative
       identifier: HEADING_FONT_ALTERNATIVE
-      group: Heading Font # 34953252615125245
+      group: Heading Font # 36910112867506580
       sequence: 1
 
     settings: 
@@ -1807,7 +1807,7 @@
     identification: 
       name: Circle
       identifier: ICONS_CIRCULAR
-      group: Icon Shape # 34954456270125246
+      group: Icon Shape # 36911331771506580
       sequence: 10
 
     settings: 
@@ -1825,7 +1825,7 @@
     identification: 
       name: Square
       identifier: ICONS_SQUARE
-      group: Icon Shape # 34954456270125246
+      group: Icon Shape # 36911331771506580
       sequence: 20
 
     settings: 
@@ -1860,7 +1860,7 @@
     identification: 
       name: Stacked Featured
       identifier: STACKED_FEATURED
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 20
 
     settings: 
@@ -1902,7 +1902,7 @@
     identification: 
       name: Blur
       identifier: FILTER_BLUR
-      group: Filter # 34955261710125246
+      group: Filter # 36912185675506581
       sequence: 430
 
     settings: 
@@ -1917,7 +1917,7 @@
     identification: 
       name: Grayscale
       identifier: FILTER_GRAYSCALE
-      group: Filter # 34955261710125246
+      group: Filter # 36912185675506581
       sequence: 410
 
     settings: 
@@ -1932,7 +1932,7 @@
     identification: 
       name: Invert
       identifier: FILTER_INVERT
-      group: Filter # 34955261710125246
+      group: Filter # 36912185675506581
       sequence: 440
 
     settings: 
@@ -1947,7 +1947,7 @@
     identification: 
       name: None
       identifier: FILTER_NONE
-      group: Filter # 34955261710125246
+      group: Filter # 36912185675506581
       sequence: 400
 
     settings: 
@@ -1962,7 +1962,7 @@
     identification: 
       name: Saturate
       identifier: FILTER_SATURATE
-      group: Filter # 34955261710125246
+      group: Filter # 36912185675506581
       sequence: 450
 
     settings: 
@@ -1977,7 +1977,7 @@
     identification: 
       name: Sepia
       identifier: FILTER_SEPIA
-      group: Filter # 34955261710125246
+      group: Filter # 36912185675506581
       sequence: 420
 
     settings: 
@@ -2006,7 +2006,7 @@
     identification: 
       name: '16:9 (Widescreen)'
       identifier: RATIO_16_9
-      group: Ratio # 34955638025125246
+      group: Ratio # 36912568613506581
       sequence: 120
 
     settings: 
@@ -2021,7 +2021,7 @@
     identification: 
       name: '1:1 (Square)'
       identifier: RATIO_1_1
-      group: Ratio # 34955638025125246
+      group: Ratio # 36912568613506581
       sequence: 110
 
     settings: 
@@ -2036,7 +2036,7 @@
     identification: 
       name: '2:1 (Univisium)'
       identifier: RATIO_2_1
-      group: Ratio # 34955638025125246
+      group: Ratio # 36912568613506581
       sequence: 140
 
     settings: 
@@ -2051,7 +2051,7 @@
     identification: 
       name: '4:3 (Standard)'
       identifier: RATIO_4_3
-      group: Ratio # 34955638025125246
+      group: Ratio # 36912568613506581
       sequence: 130
 
     settings: 
@@ -2066,7 +2066,7 @@
     identification: 
       name: Auto
       identifier: RATIO_AUTO
-      group: Ratio # 34955638025125246
+      group: Ratio # 36912568613506581
       sequence: 100
 
     settings: 
@@ -2081,7 +2081,7 @@
     identification: 
       name: Contain
       identifier: SCALE_CONTAIN
-      group: Scale # 34956056886125247
+      group: Scale # 36912943325506581
       sequence: 200
 
     settings: 
@@ -2096,7 +2096,7 @@
     identification: 
       name: Cover
       identifier: SCALE_COVER
-      group: Scale # 34956056886125247
+      group: Scale # 36912943325506581
       sequence: 210
 
     settings: 
@@ -2111,7 +2111,7 @@
     identification: 
       name: Scale Down
       identifier: SCALE_DOWN
-      group: Scale # 34956056886125247
+      group: Scale # 36912943325506581
       sequence: 230
 
     settings: 
@@ -2126,7 +2126,7 @@
     identification: 
       name: Fill
       identifier: SCALE_FILL
-      group: Scale # 34956056886125247
+      group: Scale # 36912943325506581
       sequence: 220
 
     settings: 
@@ -2141,7 +2141,7 @@
     identification: 
       name: Circle
       identifier: SHAPE_CIRCLE
-      group: Shape # 34956492051125247
+      group: Shape # 36913343489506581
       sequence: 320
 
     settings: 
@@ -2156,7 +2156,7 @@
     identification: 
       name: Rounded
       identifier: SHAPE_ROUNDED
-      group: Shape # 34956492051125247
+      group: Shape # 36913343489506581
       sequence: 310
 
     settings: 
@@ -2171,7 +2171,7 @@
     identification: 
       name: Square
       identifier: SHAPE_SQUARE
-      group: Shape # 34956492051125247
+      group: Shape # 36913343489506581
       sequence: 300
 
     settings: 
@@ -2259,7 +2259,7 @@
     identification: 
       name: Large (720x480)
       identifier: LARGE_720X480
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 30
 
     settings: 
@@ -2274,7 +2274,7 @@
     identification: 
       name: Medium (600x400)
       identifier: MEDIUM_600X400
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 20
 
     settings: 
@@ -2303,7 +2303,7 @@
     identification: 
       name: None
       identifier: NONE
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 5
 
     settings: 
@@ -2349,7 +2349,7 @@
     identification: 
       name: Small (480x320)
       identifier: SMALL_480X320
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 10
 
     settings: 
@@ -2412,7 +2412,7 @@
     identification: 
       name: Extra Large
       identifier: DRAWER_SIZE_EXTRA_LARGE
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 40
 
     settings: 
@@ -2427,7 +2427,7 @@
     identification: 
       name: Large
       identifier: DRAWER_SIZE_LARGE
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 30
 
     settings: 
@@ -2442,7 +2442,7 @@
     identification: 
       name: Medium
       identifier: DRAWER_SIZE_MEDIUM
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 20
 
     settings: 
@@ -2457,7 +2457,7 @@
     identification: 
       name: Small
       identifier: DRAWER_SIZE_SMALL
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 10
 
     settings: 
@@ -2486,7 +2486,7 @@
     identification: 
       name: None (Auto)
       identifier: NONE
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 5
 
     settings: 
@@ -2501,7 +2501,7 @@
     identification: 
       name: End
       identifier: POSITION_END
-      group: Position # 34960454212125249
+      group: Position # 36917322723506583
       sequence: 20
 
     settings: 
@@ -2516,7 +2516,7 @@
     identification: 
       name: Start
       identifier: POSITION_START
-      group: Position # 34960454212125249
+      group: Position # 36917322723506583
       sequence: 10
 
     settings: 
@@ -2586,7 +2586,7 @@
     identification: 
       name: Above
       identifier: ABOVE
-      group: Callout Position # 34950050692125243
+      group: Callout Position # 36906952869506578
       sequence: 30
 
     settings: 
@@ -2604,7 +2604,7 @@
     identification: 
       name: After
       identifier: AFTER
-      group: Callout Position # 34950050692125243
+      group: Callout Position # 36906952869506578
       sequence: 20
 
     settings: 
@@ -2639,7 +2639,7 @@
     identification: 
       name: Before
       identifier: BEFORE
-      group: Callout Position # 34950050692125243
+      group: Callout Position # 36906952869506578
       sequence: 10
 
     settings: 
@@ -2657,7 +2657,7 @@
     identification: 
       name: Below
       identifier: BELOW
-      group: Callout Position # 34950050692125243
+      group: Callout Position # 36906952869506578
       sequence: 40
 
     settings: 
@@ -2692,7 +2692,7 @@
     identification: 
       name: Inside
       identifier: INSIDE
-      group: Callout Position # 34950050692125243
+      group: Callout Position # 36906952869506578
       sequence: 50
 
     settings: 
@@ -2710,7 +2710,7 @@
     identification: 
       name: Large (720x480)
       identifier: LARGE_720X480
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 30
 
     settings: 
@@ -2725,7 +2725,7 @@
     identification: 
       name: Medium (600x400)
       identifier: MEDIUM_600X400
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 20
 
     settings: 
@@ -2740,7 +2740,7 @@
     identification: 
       name: None
       identifier: NONE
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 1
 
     settings: 
@@ -2789,7 +2789,7 @@
     identification: 
       name: Small (480x320)
       identifier: SMALL_480X320
-      group: Size # 34951634559125244
+      group: Size # 36908596036506579
       sequence: 10
 
     settings: 
@@ -2892,7 +2892,7 @@
     identification: 
       name: Center
       identifier: ALIGNMENT_CENTER
-      group: Alignment # 34947690961125242
+      group: Alignment # 36904576896506577
       sequence: 11
 
     settings: 
@@ -2907,7 +2907,7 @@
     identification: 
       name: End
       identifier: ALIGNMENT_END
-      group: Alignment # 34947690961125242
+      group: Alignment # 36904576896506577
       sequence: 12
 
     settings: 
@@ -2922,7 +2922,7 @@
     identification: 
       name: Start
       identifier: ALIGNMENT_START
-      group: Alignment # 34947690961125242
+      group: Alignment # 36904576896506577
       sequence: 10
 
     settings: 
@@ -2937,7 +2937,7 @@
     identification: 
       name: Stretch
       identifier: ALIGNMENT_STRETCH
-      group: Alignment # 34947690961125242
+      group: Alignment # 36904576896506577
       sequence: 13
 
     settings: 
@@ -3017,7 +3017,7 @@
     identification: 
       name: Icon
       identifier: LOGIN_HEADER_ICON
-      group: Login Header # 34959243123125248
+      group: Login Header # 36916128236506582
       sequence: 10
 
     settings: 
@@ -3035,7 +3035,7 @@
     identification: 
       name: Title
       identifier: LOGIN_HEADER_TITLE
-      group: Login Header # 34959243123125248
+      group: Login Header # 36916128236506582
       sequence: 20
 
     settings: 
@@ -3054,7 +3054,7 @@
     identification: 
       name: Hidden
       identifier: LOGO_HEADER_HIDDEN
-      group: Login Header # 34959243123125248
+      group: Login Header # 36916128236506582
       sequence: 30
 
     settings: 
@@ -3122,7 +3122,7 @@
     identification: 
       name: Large
       identifier: ICON_SIZE_LARGE
-      group: Icon Size # 34954876298125246
+      group: Icon Size # 36911732930506580
       sequence: 3
 
     settings: 
@@ -3140,7 +3140,7 @@
     identification: 
       name: Medium
       identifier: ICON_SIZE_MEDIUM
-      group: Icon Size # 34954876298125246
+      group: Icon Size # 36911732930506580
       sequence: 2
 
     settings: 
@@ -3158,7 +3158,7 @@
     identification: 
       name: Small
       identifier: ICON_SIZE_SMALL
-      group: Icon Size # 34954876298125246
+      group: Icon Size # 36911732930506580
       sequence: 1
 
     settings: 
@@ -3176,7 +3176,7 @@
     identification: 
       name: Boxed
       identifier: RESULT_APPEARANCE_BOXED
-      group: Result Appearance # 34962033845125250
+      group: Result Appearance # 36918916455506584
       sequence: 1
 
     settings: 
@@ -3191,7 +3191,7 @@
     identification: 
       name: Flat
       identifier: RESULT_APPEARANCE_FLAT
-      group: Result Appearance # 34962033845125250
+      group: Result Appearance # 36918916455506584
       sequence: 2
 
     settings: 
@@ -3257,7 +3257,7 @@
     identification: 
       name: 240px
       identifier: 240PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 10
 
     settings: 
@@ -3275,7 +3275,7 @@
     identification: 
       name: 320px
       identifier: 320PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 20
 
     settings: 
@@ -3293,7 +3293,7 @@
     identification: 
       name: 480px
       identifier: 480PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 30
 
     settings: 
@@ -3308,7 +3308,7 @@
     identification: 
       name: 640px
       identifier: 640PX
-      group: Body Height # 34948441471125242
+      group: Body Height # 36905396992506578
       sequence: 40
 
     settings: 
@@ -3323,7 +3323,7 @@
     identification: 
       name: Accent 1
       identifier: ACCENT_1
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 10
 
     settings: 
@@ -3338,7 +3338,7 @@
     identification: 
       name: Accent 10
       identifier: ACCENT_10
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 100
 
     settings: 
@@ -3353,7 +3353,7 @@
     identification: 
       name: Accent 11
       identifier: ACCENT_11
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 110
 
     settings: 
@@ -3368,7 +3368,7 @@
     identification: 
       name: Accent 12
       identifier: ACCENT_12
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 120
 
     settings: 
@@ -3383,7 +3383,7 @@
     identification: 
       name: Accent 13
       identifier: ACCENT_13
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 130
 
     settings: 
@@ -3398,7 +3398,7 @@
     identification: 
       name: Accent 14
       identifier: ACCENT_14
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 140
 
     settings: 
@@ -3413,7 +3413,7 @@
     identification: 
       name: Accent 15
       identifier: ACCENT_15
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 150
 
     settings: 
@@ -3428,7 +3428,7 @@
     identification: 
       name: Accent 2
       identifier: ACCENT_2
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 20
 
     settings: 
@@ -3443,7 +3443,7 @@
     identification: 
       name: Accent 3
       identifier: ACCENT_3
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 30
 
     settings: 
@@ -3458,7 +3458,7 @@
     identification: 
       name: Accent 4
       identifier: ACCENT_4
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 40
 
     settings: 
@@ -3473,7 +3473,7 @@
     identification: 
       name: Accent 5
       identifier: ACCENT_5
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 50
 
     settings: 
@@ -3488,7 +3488,7 @@
     identification: 
       name: Accent 6
       identifier: ACCENT_6
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 60
 
     settings: 
@@ -3503,7 +3503,7 @@
     identification: 
       name: Accent 7
       identifier: ACCENT_7
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 70
 
     settings: 
@@ -3518,7 +3518,7 @@
     identification: 
       name: Accent 8
       identifier: ACCENT_8
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 80
 
     settings: 
@@ -3533,7 +3533,7 @@
     identification: 
       name: Accent 9
       identifier: ACCENT_9
-      group: Accent # 34945676150125241
+      group: Accent # 36902576305506576
       sequence: 90
 
     settings: 
@@ -3548,7 +3548,7 @@
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Header # 34952817633125245
+      group: Header # 36909779650506579
       sequence: 10
 
     settings: 
@@ -3564,7 +3564,7 @@
     identification: 
       name: Hide
       identifier: HIDEOVERFLOW
-      group: Body Overflow # 34948807001125243
+      group: Body Overflow # 36905704148506578
       sequence: 20
 
     settings: 
@@ -3579,7 +3579,7 @@
     identification: 
       name: Hidden but accessible
       identifier: HIDEREGIONHEADER
-      group: Header # 34952817633125245
+      group: Header # 36909779650506579
       sequence: 20
 
     settings: 
@@ -3614,7 +3614,7 @@
     identification: 
       name: Remove Borders
       identifier: NOBORDER
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 10
 
     settings: 
@@ -3632,7 +3632,7 @@
     identification: 
       name: Remove UI Decoration
       identifier: REMOVE_UI_DECORATION
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 30
 
     settings: 
@@ -3650,7 +3650,7 @@
     identification: 
       name: Scroll - Default
       identifier: SCROLLBODY
-      group: Body Overflow # 34948807001125243
+      group: Body Overflow # 36905704148506578
       sequence: 10
 
     settings: 
@@ -3699,7 +3699,7 @@
     identification: 
       name: Stack Region
       identifier: STACKED
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 20
 
     settings: 
@@ -3717,7 +3717,7 @@
     identification: 
       name: Text Content
       identifier: TEXT_CONTENT
-      group: Style # 34963230749125251
+      group: Style # 36920168883506584
       sequence: 40
 
     settings: 
@@ -3769,7 +3769,7 @@
     identification: 
       name: Fill Tab Labels
       identifier: FILL_TAB_LABELS
-      group: Layout # 34958828542125248
+      group: Layout # 36915711240506582
       sequence: 10
 
     settings: 
@@ -3784,7 +3784,7 @@
     identification: 
       name: Pill
       identifier: PILL
-      group: Tab Style # 34964040526125251
+      group: Tab Style # 36920930754506585
       sequence: 20
 
     settings: 
@@ -3813,7 +3813,7 @@
     identification: 
       name: Simple
       identifier: SIMPLE
-      group: Tab Style # 34964040526125251
+      group: Tab Style # 36920930754506585
       sequence: 10
 
     settings: 
@@ -3828,7 +3828,7 @@
     identification: 
       name: Large
       identifier: TABSLARGE
-      group: Tabs Size # 34963671674125251
+      group: Tabs Size # 36920577785506584
       sequence: 20
 
     settings: 
@@ -3843,7 +3843,7 @@
     identification: 
       name: Small
       identifier: TABS_SMALL
-      group: Tabs Size # 34963671674125251
+      group: Tabs Size # 36920577785506584
       sequence: 10
 
     settings: 
@@ -3900,7 +3900,7 @@
     identification: 
       name: Use Current Breadcrumb Entry
       identifier: GET_TITLE_FROM_BREADCRUMB
-      group: Region Title # 34961206420125250
+      group: Region Title # 36918170449506583
       sequence: 1
 
     settings: 
@@ -3915,7 +3915,7 @@
     identification: 
       name: Alternative
       identifier: HEADING_FONT_ALTERNATIVE
-      group: Heading Font # 34953252615125245
+      group: Heading Font # 36910112867506580
       sequence: 1
 
     settings: 
@@ -3944,7 +3944,7 @@
     identification: 
       name: Use Region Title
       identifier: REGION_HEADER_VISIBLE
-      group: Region Title # 34961206420125250
+      group: Region Title # 36918170449506583
       sequence: 1
 
     settings: 
@@ -4014,7 +4014,7 @@
     identification: 
       name: Small Screens (Tablet)
       identifier: HIDESMALLSCREENS
-      group: Hide Steps For # 34954047912125246
+      group: Hide Steps For # 36910993009506580
       sequence: 20
 
     settings: 
@@ -4032,7 +4032,7 @@
     identification: 
       name: X Small Screens (Mobile)
       identifier: HIDEXSMALLSCREENS
-      group: Hide Steps For # 34954047912125246
+      group: Hide Steps For # 36910993009506580
       sequence: 10
 
     settings: 

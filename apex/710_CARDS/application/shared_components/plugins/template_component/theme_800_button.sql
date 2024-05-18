@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_plugin(
@@ -32,7 +32,7 @@ wwv_flow_imp_shared.create_plugin(
 ,p_subscribe_plugin_settings=>true
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35531277394125697)
+ p_id=>wwv_flow_imp.id(37488639974506978)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
@@ -45,7 +45,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_translatable=>false
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35531727527125698)
+ p_id=>wwv_flow_imp.id(37489177700506978)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
@@ -58,7 +58,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_translatable=>false
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35532200405125698)
+ p_id=>wwv_flow_imp.id(37489699637506979)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
@@ -71,7 +71,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_translatable=>false
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35532769166125698)
+ p_id=>wwv_flow_imp.id(37490199877506979)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>4
@@ -84,7 +84,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_translatable=>false
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35533296717125699)
+ p_id=>wwv_flow_imp.id(37490634556506980)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>5
@@ -97,7 +97,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_translatable=>false
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35533774184125699)
+ p_id=>wwv_flow_imp.id(37491185780506980)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>6
@@ -111,7 +111,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_translatable=>false
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35534233953125699)
+ p_id=>wwv_flow_imp.id(37491653180506980)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>7
@@ -125,7 +125,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_is_translatable=>false
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(35534740496125700)
+ p_id=>wwv_flow_imp.id(37492136769506981)
 ,p_plugin_id=>wwv_flow_imp.id(34038240907153860)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>8

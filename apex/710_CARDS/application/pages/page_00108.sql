@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page(
@@ -19,16 +19,16 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Merge with Card'
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
+,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- PAGE GROUP: 1) CARDS
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
+,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- AUTHORIZATION: MASTER - IS_USER
 ,p_dialog_height=>'480'
 ,p_dialog_width=>'640'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'16'
-,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20220101000000'
+,p_last_updated_by=>'JAN.KVETINA@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20231030190918'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(150242513538329562)

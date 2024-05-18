@@ -1,0 +1,645 @@
+/* REMOVE BACKGROUND IMAGE */
+body {
+    background-image    : none !important;
+    background-color    : var(--ut-body-main-background-color);
+}
+#main .t-Body-contentInner {
+    padding             : 1.5rem;
+}
+
+
+
+/*
+ * ADJUST MODAL + DRAWER DIALOGS
+ */
+body.t-Dialog-page .t-Dialog-header,
+body.t-Drawer-page .t-Dialog-header {
+    margin              : 0.9rem 0.8rem -1rem;
+    margin-top          : 0 !important;
+}
+body.t-Dialog-page .t-HeroRegion,
+body.t-Drawer-page .t-HeroRegion {
+    margin              : 0 !important;
+    padding             : 0.3rem 0.2rem 0.75rem !important;
+}
+body.t-Drawer-page .t-HeroRegion {
+    margin-bottom       : -0.25rem !important;
+    padding             : 0.3rem 1rem 0 !important;
+}
+body.t-Dialog-page .t-HeroRegion .t-HeroRegion-buttons:empty,
+body.t-Drawer-page .t-HeroRegion .t-HeroRegion-buttons:empty {
+    display             : none;
+}
+body.t-Dialog-page .t-HeroRegion .t-HeroRegion-icon,
+body.t-Drawer-page .t-HeroRegion .t-HeroRegion-icon {
+    display             : none;
+}
+body.t-Dialog-page .t-HeroRegion-col--beforeIcon,
+body.t-Drawer-page .t-HeroRegion-col--beforeIcon {
+    order               : 5;
+    margin              : 0;
+    gap                 : 0.13rem;  /* TO FIX BUTTON SPACING IN HERO.UP REGION */
+}
+body.t-Dialog-page .t-HeroRegion-col--beforeIcon button,
+body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {
+    margin-top          : 0 !important;
+}
+
+/* MODAL DIALOGS, REMOVE THE IMAGE AND PADDING AT TOP */
+.ui-dialog .ui-dialog-titlebar {
+    border-bottom       : 0;
+    margin-bottom       : 0;
+    padding             : 0.4rem;
+}
+.ui-dialog .ui-dialog-titlebar > * {
+    display             : none;
+}
+.ui-dialog .ui-dialog-titlebar:before {
+    background-image    : none;
+    /* background: gray; */
+}
+
+
+
+/*
+ * HERO REGION
+ */
+.t-HeroRegion {
+    padding             : 0.75rem 0.5rem 1rem;
+}
+.t-HeroRegion.SECOND,
+body.t-Dialog-page .t-HeroRegion.SECOND,
+body.t-Drawer-page .t-HeroRegion.SECOND {
+    margin-top          : 2rem !important;
+}
+h1.t-HeroRegion-title {
+    font-family         : 'Mate', serif;
+    font-weight         : 600;
+    font-size           : 1.8rem;
+    line-height         : 150%;
+}
+.t-HeroRegion-wrap {    /* TO ALSO ALIGN RIGHT/UP BUTTON PROPERLY */
+    align-items         : flex-start;
+}
+
+/* HERO REGION - MOVE UP REGION TO THE RIGHT - USED FOR BUTTONS */
+.t-HeroRegion-col--beforeIcon,
+.t-HeroRegion-col--beforeIcon {
+    order               : 5;
+    margin              : 1px 0 0;
+    gap                 : 0.13rem;
+}
+
+
+
+/* HERO REGION - HIDE ICONS */
+.t-HeroRegion .t-HeroRegion-icon {
+    display             : none;
+}
+
+/* HERO REGION - HIDE RIGHT PART */
+.t-HeroRegion .t-HeroRegion-col--right {
+    display             : none;
+}
+
+/* HERO REGION - ADJUST BUTTONS */
+h1.t-HeroRegion-title button {
+    position            : relative;
+    top                 : -0.2rem;      /* FIX BUTTON OFFSET */
+    margin-left         : 0.4rem !important;
+}
+h1.t-HeroRegion-title button:first-child {
+    margin-left         : 1.5rem !important;
+}
+
+/* BUTTONS FLOATING RIGHT */
+.t-Button.u-pullRight {
+    margin              : 0.2rem 0 0 0.25rem !important;
+}
+.t-Button.u-pullRight:last-child {
+    margin-right        : 0 !important;
+}
+
+
+
+/* NORMAL BUTTONS */
+button.t-Button,
+button.ui-button,
+.apex-item-filedrop-action.a-Button.a-Button--hot {
+    background          : #E9E7E7;
+}
+button.t-Button:hover,
+button.ui-button:hover,
+.apex-item-filedrop-action.a-Button.a-Button--hot:hover {
+    background          : #DFDEDC;
+    background          : #d7d6d4;
+}
+
+/* HOT BUTTONS */
+button.t-Button--hot,
+button.ui-button--hot,
+button.js-confirmBtn.ui-button--danger,
+button.a-Button.a-Toolbar-item.a-Button--hot {
+    background          : #5f5c58;
+}
+button.t-Button--hot:hover,
+button.ui-button--hot:hover,
+button.a-Button.a-Toolbar-item.a-Button--hot:hover,
+button.js-confirmBtn.ui-button--danger:hover {
+    background          : #333;
+}
+
+/* BUTTON TO UPLOAD FILES */
+.apex-item-filedrop-action.a-Button.a-Button--hot {
+    padding             : 0.5rem 0.9rem;
+    color               : #222;
+}
+
+/* FIX BUTTON OFFSET ON LINE WITH OTHER ITEMS */
+.FILTERS button {
+    margin-top          : 0.9rem;
+}
+
+/* BUTTON BADGES */
+button .BADGE {
+    display             : block;
+    float               : right;
+    position            : absolute;
+    right               : 0.5rem;
+    top                 : -0.6rem;
+    background          : red;
+    color               : white;
+    border-radius       : 15px 15px;
+    margin              : 0;
+    padding             : 0.1rem 0.45rem 0;
+    font-family         : 'Roboto', sans-serif;
+    font-size           : 0.75rem;
+    line-height         : 1.2rem;
+}
+.RED {
+    color               : red;
+}
+
+/* OVERRIDE MENU BADGES WITH SAME STYLE */
+#t_Header > #top_header > nav ul li a > span.BADGE,
+span.BADGE {
+    position            : relative;
+    top                 : -0.65rem;
+    margin              : 0 -0.25rem 0 0.25rem;
+    padding             : 0.1rem 0.35rem 0;
+    border-radius       : 15px 15px;
+    background          : red;
+    color               : #fff;
+    font-family         : 'Roboto', sans-serif;
+    font-weight         : 500;
+    font-size           : 0.75rem;
+}
+ul.t-Tabs span.BADGE {
+    margin-left         : 0;
+    line-height         : 0.7rem;
+}
+span.BADGE {
+    padding             : 0.25rem 0.45rem 0.2rem;
+    background          : red;
+}
+#t_Header > #top_header > nav ul li a > span.BADGE.DECENT,
+.t-Tabs-item span.BADGE.DECENT,
+span.BADGE.DECENT {
+    top                 : -0.5rem;
+    margin              : 0 -0.3rem 0 0.3rem;
+    padding             : 0;
+    background          : transparent;
+}
+.t-Tabs-item span.BADGE.DECENT {
+    color               : #222;
+}
+
+/* ADJUST BADGES WITH ICONS */
+span.BADGE.ICON {
+    padding-left        : 0.1rem;
+    padding-right       : 0.1rem;
+    background          : transparent;
+}
+span.BADGE.ICON > .fa {
+    top                 : 0.3rem;
+}
+
+
+
+/* FIX TABS HEIGHT */
+.t-TabsRegion-items {
+   min-height           : auto !important;
+}
+
+/* REMOVE OUTLINE FROM ACTIVE TABS */
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link {
+    outline             : none !important;
+}
+
+/* TABS COLOR BORDER AND SOME SPACING ADJUSTMENTS */
+ul.t-Tabs {
+    margin-bottom       : 0.5rem;
+}
+ul.t-Tabs::selection {
+    user-select         : none;
+}
+ul.t-Tabs .t-Tabs-link {
+    padding-bottom      : 0.5rem;
+    background          : transparent;
+    font-size           : 1rem;
+}
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link,
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
+    outline             : none;
+    box-shadow          : none;
+    font-weight         : 600;
+    color               : #444;
+    background          : transparent;
+    padding-bottom      : 0.6rem;
+    border-bottom       : 8px solid #ededed;
+}
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
+    color               : #000;
+    border-bottom       : 8px solid #5f5c58 !important;
+}
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
+    color               : #000;
+    border-bottom       : 8px solid #333 !important;
+}
+
+.t-TabsRegion-items > div {
+    display             : none;
+}
+.t-TabsRegion-items > div.apex-rds-slider {
+    display             : block;
+}
+a.t-Tabs-link::before {
+    display             : none;  /* remove dupe green border */
+}
+ul.t-Tabs li.t-Tabs-item {
+    margin-right        : 8px;
+}
+
+ul.t-Tabs li.t-Tabs-item {
+    margin-right        : 8px;
+}
+ul.t-Tabs li.t-Tabs-item:last-child {
+    margin-right        : 0;
+}
+
+
+
+/* CARDS - HIDE BACKGROUND FOR BUTTONS */
+.a-CardView-actions {
+    background          : transparent;
+    padding-top         : 0;
+}
+.CLEAR_ACTIONS .a-CardView-media.a-CardView-media--body.a-CardView-media--fit {
+    margin-left         : 0;
+    margin-right        : 0;
+}
+
+/* CARDS - SHOW BADGE AT TOP + FIX TOO MUCH SPACE BEFORE HEADER AND BODY */
+.a-CardView-header {
+    align-items         : flex-start;
+    padding-bottom      : 0;
+}
+.a-CardView-header .a-CardView-title {
+    font-family         : 'Roboto Slab', sans-serif;
+    font-weight         : 600;
+}
+
+/* CARDS - ADD SPACE TO SEE OUTLINE */
+ul.a-CardView-items {
+    padding             : 2px;
+}
+
+/* CARDS - ALLOW MORE COLUMNS THEN 5 */
+.CARDS6 ul.a-CardView-items {
+    grid-template-columns: repeat(6, minmax(0,1fr));
+}
+
+/* SHADOWS */
+.a-CardView {
+    box-shadow          : rgba(149, 157, 165, 0.15) 0 0 0.5rem;
+}
+
+
+    
+/* FIX READ ONLY LABELS ON FORM TEXTAREA */
+.apex-item-wrapper--display-only label {
+    background: transparent !important;
+}
+.apex-item-wrapper--display-only label::before {
+    background: transparent !important;
+}
+
+
+
+/* HIDE USELESS EDIT BUTTON ON IG */
+div.a-Toolbar-group [data-action="edit"] {
+    display             : none !important;
+}
+
+
+
+/* GRID CONTROL BREAK */
+.a-GV-controlBreak .a-GV-controlBreakLabel {
+    font-size           : 120%;
+    color               : #333;
+}
+.a-GV-controlBreak .a-GV-controlBreakLabel .a-GV-breakValue {
+    font-weight         : bold;
+}
+
+
+
+/* FIX WRONG OFFSET FOR ICONS ON GRID */
+.a-GV-bdy span.fa {
+    margin              : 0.125rem 0.2rem 0;
+}
+
+
+
+/* FIX MISSING BORDER ON GRID HEADER */
+th.a-GV-header {
+    border-left         : 1px solid var(--a-gv-header-cell-border-color);
+    border-bottom       : 2px solid var(--a-gv-header-cell-border-color);
+}
+
+
+
+/* LINKS COLOR IN GRID */
+td.a-GV-cell a {
+    color               : #738830;
+    color               : #5d9700;
+    color               : #648e00;
+    font-weight         : 600;
+    text-decoration     : none;
+}
+td.a-GV-cell a:hover {
+    color               : #000;
+    text-decoration     : none;
+}
+
+/* KEEP WHITE BACKGROUND FOR READONLY CELLS */
+.a-GV--editMode .a-GV-cell.is-readonly,
+.a-GV--editMode .a-GV-row.is-readonly .a-GV-cell {
+    background          : #fff;
+    color               : #000;
+}
+
+/* CHANGE EDITED CELL TRIANGLE */
+.a-GV-cell.is-changed:not(.is-active):before,
+.a-GV-row.is-inserted .a-GV-selHeader:before,
+.a-GV-row.is-updated .a-GV-selHeader:before {
+    color               : #648e00;
+}
+
+/* ADJUST BACKGROUND COLORS FOR UPDATED/SELECTED ROWS */
+/* tr.is-selected, tr.is-updated, tr.is-hover, td.is-readonly */
+tr.a-GV-row.is-inserted td,
+tr.a-GV-row.is-inserted th,
+tr.a-GV-row.is-updated td,
+tr.a-GV-row.is-updated th {
+    background          : white !important;
+}
+tr.a-GV-row.is-selected td,
+tr.a-GV-row.is-selected th {
+    background          : #F5F4F2 !important;
+}
+tr.a-GV-row.is-hover td,
+tr.a-GV-row.is-hover th {
+    background          : #F5F4F2 !important;
+}
+tr.a-GV-row.is-selected.is-hover td,
+tr.a-GV-row.is-selected.is-hover th {
+    background          : #E9E7E7 !important;
+}
+tr.a-GV-row.is-selected td.is-readonly,
+tr.a-GV-row.is-hover td.is-readonly {
+    background          : #FBFAF8 !important;
+}
+
+
+
+/* LIGHTER CHECKED CHECKBOXES IN GRID */
+.apex-item-single-checkbox input:checked+.u-checkbox,
+.apex-item-single-checkbox input:checked+label, .u-checkbox.is-checked {
+    --a-checkbox-background-color: #555;
+}
+
+
+
+/* BORDERLESS COLORFUL CELL IN IG/IR */
+.COLOR_CELL,
+.COLOR_CELL_LEFT {
+    padding             : 0 !important;
+    margin              : 0 !important;
+    border-radius       : 4px;
+}
+.COLOR_CELL > *,
+.COLOR_CELL_LEFT > * {
+    display             : flex;
+    align-items         : center;
+    justify-content     : center;
+    min-height          : 2.5rem;
+    padding-left        : 0.8rem;
+    padding-right       : 0.8rem;
+}
+.COLOR_CELL_LEFT > * {
+    justify-content     : flex-start;
+}
+
+
+
+/* CHECKLISTS */
+ul.DASH_LIST {
+  list-style-type       : none;
+  margin                : 0.5rem 0 0.5rem 3rem;
+}
+ul.DASH_LIST li:before {
+  content               : '\2014';
+  position              : absolute;
+  margin                : 0 3rem 0 -1.5rem;
+}
+
+
+
+/* SELECTED TEXT BACKGROUND */
+::selection {
+  color                 : #fff;
+  background            : #555;
+}
+
+
+
+/* NOTIFICATIONS */
+span.apex-page-error *,
+span.apex-page-error .a-Notification-item,
+span.apex-page-success * {
+    color               : #fff !important;
+    font-family         : 'Roboto', sans-serif;
+    font-size           : 1.1rem;
+    font-weight         : bold;
+    line-height         : 1.5rem;
+}
+span.apex-page-error .a-Notification-title {
+    display             : none;
+    margin              : 1rem 0 !important;
+}
+span.apex-page-error ul.a-Notification-list {
+    list-style          : none !important;
+    list-style-type     : none !important;
+}
+span.apex-page-error .a-Notification-list {
+    margin              : 0.8rem 0 !important;
+}
+span.apex-page-error .a-Notification-item {
+    margin-left         : -20px !important;
+}
+
+/* ICON */
+span.apex-page-error .t-Alert-icon .t-Icon,
+span.apex-page-success .t-Alert-icon .t-Icon {
+    color               : #fff !important;
+    font-size           : 2rem;
+    background          : transparent;
+    padding             : 1rem 2.5rem 1rem 0.5rem;
+}
+
+/* COLORS */
+span.apex-page-success .t-Alert.t-Alert--success {
+    background          : #518D54 !important;
+}
+span.apex-page-error .t-Alert--colorBG.t-Alert--warning {
+    background          : #C9261D;
+}
+span.apex-page-error .t-Alert--colorBG.t-Alert--yellow {
+    background          : #ecad01;
+}
+
+/* WARNING NOTIFICATION */
+button.a-Button.a-Button--notification.js-showDetails {
+    background          : transparent;
+    border              : 0;
+    outline             : none;
+}
+
+/** fa fa-info-circle */
+.t-Alert--horizontal .t-Alert-buttons {
+    align-items         : end;
+}
+
+/* SESSION DIALOGS */
+div#apex_session_alert_dlg {
+    padding-top         : 1rem;
+    font-size           : 1rem;
+    line-height         : 1.5rem;
+    color               : #000;
+}
+
+
+
+/* ADJUST FONTS ON BUTTONS AND MENUS */
+button .t-Button-label,
+button .a-Button-label,
+.apex-item-filedrop-action.a-Button.a-Button--hot,
+.a-CardView-subTitle,
+#t_Footer .t-Footer-version {
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.9rem;
+}
+.a-CardView-subTitle,
+#t_Footer .t-Footer-version {
+    font-size           : 0.85rem;
+    color               : #555;
+}
+#t_Footer .BUTTON {
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.85rem;
+    width               : auto;
+    margin-right        : 0.25rem;
+}
+
+
+
+/* HIDE BOTTOM IMAGE ON BREADCRUMB BAR */
+#t_Body_title.t-Body-title {
+    border              : 0;
+}
+#t_Body_title.t-Body-title::after {
+    background-image    : none;
+    display             : none !important;
+}
+
+
+
+/* DECENT BUTTONS */
+button.DECENT {
+    background          : transparent;
+    color               : #999;
+}
+button.TRANSPARENT {
+    background          : transparent;
+    color               : #555;
+    outline             : none !important;
+}
+button.TRANSPARENT:hover {
+    background          : transparent;
+    color               : #000;
+}
+
+/* SHOW CURRENT VALUE UNDER SWITCH BUTTONS (ACTION MENU) */
+button.TRANSPARENT .t-Button-label {
+    display         : inline-grid;
+    text-align      : left;
+}
+span.CURRENT {
+    font-size       : 0.7rem;
+    font-weight     : 300;
+    color           : #555;
+    margin-top      : -0.3rem;
+    margin-bottom   : -1.2rem;
+}
+span.CURRENT:hover {
+    color           : #222;
+}
+
+
+
+/* ADJUST COMMENT BUBBLES */
+.t-Comments-icon {
+    flex-grow           : 0;
+    padding             : 0;
+}
+.t-Comments-userIcon {
+    width               : auto;
+    padding             : 0;
+    margin              : 0;
+    background          : transparent;
+    color               : #222;
+    line-height         : 1.8rem;
+    text-transform      : none;
+    text-align          : left;
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.9rem;
+    font-weight         : 400;
+}
+.t-Comments-comment {
+    font-family         : 'Roboto Slab', sans-serif;
+}
+.t-Comments-actions {
+    display             : block;
+    float               : right;
+    margin              : 0.25rem 0 -0.25rem;
+}
+.t-Comments--chat .t-Comments-comment a {
+    text-decoration     : underline;
+    color               : #222;
+}
+.t-Comments-comment .GREY {
+    color               : #888;
+}
+

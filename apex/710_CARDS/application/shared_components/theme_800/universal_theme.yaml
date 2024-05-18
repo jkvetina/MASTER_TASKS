@@ -12,7 +12,7 @@ navigation:
 
 javascript: 
   file-urls: 
-  - '#APEX_FILES#libraries/apex/#MIN_DIRECTORY#widget.stickyWidget#MIN#.js?v=#APEX_VERSION#'
+  - '#APEX_FILES#libraries/apex/#MIN_DIRECTORY#widget.stickyWidget#MIN#.js?v=#APEX_VERSION#'
   - '#THEME_FILES#js/theme42#MIN#.js?v=#APEX_VERSION#'
 
 css: 
@@ -56,11 +56,11 @@ icons:
   library: Font APEX
 
 files: 
-  file-prefix: '#APEX_FILES#themes/theme_42/23.1/'
+  file-prefix: '#APEX_FILES#themes/theme_42/23.2/'
 
 styles: 
 - # ====== Style: Redwood Light ================================
-  id: 34764456191125106
+  id: 36721440008506475
   identification: 
     name: Redwood Light
 
@@ -71,7 +71,7 @@ styles:
 
   css: 
     file-urls: 
-    - '#APEX_FILES#libraries/oracle-fonts/oraclesans-apex#MIN#.css?v=#APEX_VERSION#'
+    - '#APEX_FILES#libraries/oracle-fonts/oraclesans-apex#MIN#.css?v=#APEX_VERSION#'
     - '#THEME_FILES#css/Redwood#MIN#.css?v=#APEX_VERSION#'
 
   theme-roller-attributes: 
@@ -80,7 +80,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Redwood-Theme#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita =========================================
-  id: 34764879135125106
+  id: 36721810504506475
   identification: 
     name: Vita
 
@@ -95,7 +95,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Dark ==================================
-  id: 34765271978125106
+  id: 36722270927506475
   identification: 
     name: Vita - Dark
 
@@ -110,7 +110,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita-Dark#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Red ===================================
-  id: 34765608635125107
+  id: 36722661875506476
   identification: 
     name: Vita - Red
 
@@ -125,7 +125,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita-Red#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Slate =================================
-  id: 34766038540125107
+  id: 36723041499506476
   identification: 
     name: Vita - Slate
 

@@ -129,7 +129,7 @@
     identification: 
       name: 128px
       identifier: 128PX
-      group: Badge Size # 34965640992125252
+      group: Badge Size # 36922500461506585
       sequence: 50
 
     settings: 
@@ -144,7 +144,7 @@
     identification: 
       name: 2 Column Grid
       identifier: 2COLUMNGRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 20
 
     settings: 
@@ -162,7 +162,7 @@
     identification: 
       name: 32px
       identifier: 32PX
-      group: Badge Size # 34965640992125252
+      group: Badge Size # 36922500461506585
       sequence: 10
 
     settings: 
@@ -177,7 +177,7 @@
     identification: 
       name: 3 Column Grid
       identifier: 3COLUMNGRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 30
 
     settings: 
@@ -196,7 +196,7 @@
     identification: 
       name: 48px
       identifier: 48PX
-      group: Badge Size # 34965640992125252
+      group: Badge Size # 36922500461506585
       sequence: 20
 
     settings: 
@@ -211,7 +211,7 @@
     identification: 
       name: 4 Column Grid
       identifier: 4COLUMNGRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 40
 
     settings: 
@@ -227,7 +227,7 @@
     identification: 
       name: 5 Column Grid
       identifier: 5COLUMNGRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 50
 
     settings: 
@@ -243,7 +243,7 @@
     identification: 
       name: 64px
       identifier: 64PX
-      group: Badge Size # 34965640992125252
+      group: Badge Size # 36922500461506585
       sequence: 30
 
     settings: 
@@ -258,7 +258,7 @@
     identification: 
       name: 96px
       identifier: 96PX
-      group: Badge Size # 34965640992125252
+      group: Badge Size # 36922500461506585
       sequence: 40
 
     settings: 
@@ -287,7 +287,7 @@
     identification: 
       name: Circular
       identifier: CIRCULAR
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 20
 
     settings: 
@@ -302,7 +302,7 @@
     identification: 
       name: Span Horizontally
       identifier: FIXED
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 60
 
     settings: 
@@ -317,7 +317,7 @@
     identification: 
       name: Flexible Box
       identifier: FLEXIBLEBOX
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 80
 
     settings: 
@@ -332,7 +332,7 @@
     identification: 
       name: Float Items
       identifier: FLOATITEMS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 70
 
     settings: 
@@ -347,7 +347,7 @@
     identification: 
       name: Grid
       identifier: GRID
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 30
 
     settings: 
@@ -362,7 +362,7 @@
     identification: 
       name: Stacked
       identifier: STACKED
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 10
 
     settings: 
@@ -462,7 +462,7 @@
     identification: 
       name: 2 Columns
       identifier: 2_COLUMNS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 15
 
     settings: 
@@ -477,7 +477,7 @@
     identification: 
       name: 2 Lines
       identifier: 2_LINES
-      group: Body Text # 34966014604125252
+      group: Body Text # 36922983507506585
       sequence: 10
 
     settings: 
@@ -492,7 +492,7 @@
     identification: 
       name: 3 Columns
       identifier: 3_COLUMNS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 20
 
     settings: 
@@ -507,7 +507,7 @@
     identification: 
       name: 3 Lines
       identifier: 3_LINES
-      group: Body Text # 34966014604125252
+      group: Body Text # 36922983507506585
       sequence: 20
 
     settings: 
@@ -522,7 +522,7 @@
     identification: 
       name: 4 Columns
       identifier: 4_COLUMNS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 30
 
     settings: 
@@ -537,7 +537,7 @@
     identification: 
       name: 4 Lines
       identifier: 4_LINES
-      group: Body Text # 34966014604125252
+      group: Body Text # 36922983507506585
       sequence: 30
 
     settings: 
@@ -552,7 +552,7 @@
     identification: 
       name: 5 Columns
       identifier: 5_COLUMNS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 50
 
     settings: 
@@ -567,7 +567,7 @@
     identification: 
       name: Basic
       identifier: BASIC
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 10
 
     settings: 
@@ -582,7 +582,7 @@
     identification: 
       name: Block
       identifier: BLOCK
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 40
 
     settings: 
@@ -599,7 +599,7 @@
     identification: 
       name: Color Fill
       identifier: CARDS_COLOR_FILL
-      group: Animation # 34965258892125252
+      group: Animation # 36922191196506585
       sequence: 10
 
     settings: 
@@ -614,7 +614,7 @@
     identification: 
       name: Raise Card
       identifier: CARD_RAISE_CARD
-      group: Animation # 34965258892125252
+      group: Animation # 36922191196506585
       sequence: 20
 
     settings: 
@@ -629,7 +629,7 @@
     identification: 
       name: Compact
       identifier: COMPACT
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 20
 
     settings: 
@@ -647,7 +647,7 @@
     identification: 
       name: Display Icons
       identifier: DISPLAY_ICONS
-      group: Icons # 34970874056125255
+      group: Icons # 36927730006506588
       sequence: 10
 
     settings: 
@@ -662,7 +662,7 @@
     identification: 
       name: Display Initials
       identifier: DISPLAY_INITIALS
-      group: Icons # 34970874056125255
+      group: Icons # 36927730006506588
       sequence: 20
 
     settings: 
@@ -691,7 +691,7 @@
     identification: 
       name: Featured
       identifier: FEATURED
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 30
 
     settings: 
@@ -707,7 +707,7 @@
     identification: 
       name: Float
       identifier: FLOAT
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 60
 
     settings: 
@@ -722,7 +722,7 @@
     identification: 
       name: Hidden
       identifier: HIDDEN_BODY_TEXT
-      group: Body Text # 34966014604125252
+      group: Body Text # 36922983507506585
       sequence: 50
 
     settings: 
@@ -740,7 +740,7 @@
     identification: 
       name: Rounded Corners
       identifier: ICONS_ROUNDED
-      group: Icon Shape # 34971274098125255
+      group: Icon Shape # 36928124280506588
       sequence: 10
 
     settings: 
@@ -758,7 +758,7 @@
     identification: 
       name: Square
       identifier: ICONS_SQUARE
-      group: Icon Shape # 34971274098125255
+      group: Icon Shape # 36928124280506588
       sequence: 20
 
     settings: 
@@ -776,7 +776,7 @@
     identification: 
       name: Span Horizontally
       identifier: SPAN_HORIZONTALLY
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 70
 
     settings: 
@@ -871,7 +871,7 @@
     identification: 
       name: Basic
       identifier: BASIC
-      group: Comments Style # 34969260742125254
+      group: Comments Style # 36926115630506587
       sequence: 10
 
     settings: 
@@ -886,7 +886,7 @@
     identification: 
       name: Rounded Corners
       identifier: ICONS_ROUNDED
-      group: Icon Shape # 34971274098125255
+      group: Icon Shape # 36928124280506588
       sequence: 10
 
     settings: 
@@ -904,7 +904,7 @@
     identification: 
       name: Square
       identifier: ICONS_SQUARE
-      group: Icon Shape # 34971274098125255
+      group: Icon Shape # 36928124280506588
       sequence: 20
 
     settings: 
@@ -922,7 +922,7 @@
     identification: 
       name: Speech Bubbles
       identifier: SPEECH_BUBBLES
-      group: Comments Style # 34969260742125254
+      group: Comments Style # 36926115630506587
       sequence: 20
 
     settings: 
@@ -1001,7 +1001,7 @@
     identification: 
       name: Hidden
       identifier: ACTIONS_HIDDEN
-      group: Actions # 34966886842125253
+      group: Actions # 36923741790506586
       sequence: 60
 
     settings: 
@@ -1019,7 +1019,7 @@
     identification: 
       name: Top
       identifier: ALIGNMENT_TOP
-      group: Content Alignment # 34969683616125254
+      group: Content Alignment # 36926507604506587
       sequence: 100
 
     settings: 
@@ -1037,7 +1037,7 @@
     identification: 
       name: Hidden
       identifier: DESCRIPTION_HIDDEN
-      group: Description # 34967232074125253
+      group: Description # 36924120872506586
       sequence: 40
 
     settings: 
@@ -1055,7 +1055,7 @@
     identification: 
       name: Hidden
       identifier: ICON_HIDDEN
-      group: Icon # 34968068455125253
+      group: Icon # 36924965620506586
       sequence: 20
 
     settings: 
@@ -1073,7 +1073,7 @@
     identification: 
       name: Hidden
       identifier: MISC_HIDDEN
-      group: Misc # 34968464346125253
+      group: Misc # 36925399656506586
       sequence: 50
 
     settings: 
@@ -1091,7 +1091,7 @@
     identification: 
       name: Hidden
       identifier: SELECTION_HIDDEN
-      group: Selection # 34968888620125254
+      group: Selection # 36925744127506587
       sequence: 10
 
     settings: 
@@ -1109,7 +1109,7 @@
     identification: 
       name: Compact
       identifier: STYLE_COMPACT
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 1
 
     settings: 
@@ -1127,7 +1127,7 @@
     identification: 
       name: Hidden
       identifier: TITLE_HIDDEN
-      group: Title # 34967671493125253
+      group: Title # 36924586627506586
       sequence: 30
 
     settings: 
@@ -1197,7 +1197,7 @@
     identification: 
       name: Stacked
       identifier: DISPLAY_ITEMS_STACKED
-      group: Display Items # 34970090168125254
+      group: Display Items # 36926938388506587
       sequence: 1
 
     settings: 
@@ -1212,7 +1212,7 @@
     identification: 
       name: Stacked
       identifier: DISPLAY_LABELS_STACKED
-      group: Display Labels # 34970421515125255
+      group: Display Labels # 36927354301506587
       sequence: 1
 
     settings: 
@@ -1320,7 +1320,7 @@
     identification: 
       name: 2 Column Grid
       identifier: 2_COLUMN_GRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 10
 
     settings: 
@@ -1336,7 +1336,7 @@
     identification: 
       name: 3 Column Grid
       identifier: 3_COLUMN_GRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 20
 
     settings: 
@@ -1352,7 +1352,7 @@
     identification: 
       name: 4 Column Grid
       identifier: 4_COLUMN_GRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 30
 
     settings: 
@@ -1368,7 +1368,7 @@
     identification: 
       name: 5 Column Grid
       identifier: 5_COLUMN_GRID
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 40
 
     settings: 
@@ -1398,7 +1398,7 @@
     identification: 
       name: Rounded Corners
       identifier: ICONS_ROUNDED
-      group: Icon Shape # 34971274098125255
+      group: Icon Shape # 36928124280506588
       sequence: 10
 
     settings: 
@@ -1416,7 +1416,7 @@
     identification: 
       name: Square
       identifier: ICONS_SQUARE
-      group: Icon Shape # 34971274098125255
+      group: Icon Shape # 36928124280506588
       sequence: 20
 
     settings: 
@@ -1434,7 +1434,7 @@
     identification: 
       name: Large
       identifier: LARGE
-      group: Size # 34973631277125257
+      group: Size # 36930500669506589
       sequence: 20
 
     settings: 
@@ -1495,7 +1495,7 @@
     identification: 
       name: Span Horizontal
       identifier: SPAN_HORIZONTAL
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 50
 
     settings: 
@@ -1510,7 +1510,7 @@
     identification: 
       name: Stack
       identifier: STACK
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 5
 
     settings: 
@@ -1701,7 +1701,7 @@
     identification: 
       name: Disable
       identifier: ALTROWCOLORSDISABLE
-      group: Alternating Rows # 34964804985125251
+      group: Alternating Rows # 36921712404506585
       sequence: 20
 
     settings: 
@@ -1716,7 +1716,7 @@
     identification: 
       name: Enable
       identifier: ALTROWCOLORSENABLE
-      group: Alternating Rows # 34964804985125251
+      group: Alternating Rows # 36921712404506585
       sequence: 10
 
     settings: 
@@ -1731,7 +1731,7 @@
     identification: 
       name: Enable
       identifier: ENABLE
-      group: Row Highlighting # 34973200465125257
+      group: Row Highlighting # 36930156021506589
       sequence: 10
 
     settings: 
@@ -1749,7 +1749,7 @@
     identification: 
       name: Horizontal Only
       identifier: HORIZONTALBORDERS
-      group: Report Border # 34972814618125256
+      group: Report Border # 36929774923506588
       sequence: 20
 
     settings: 
@@ -1764,7 +1764,7 @@
     identification: 
       name: No Borders
       identifier: REMOVEALLBORDERS
-      group: Report Border # 34972814618125256
+      group: Report Border # 36929774923506588
       sequence: 30
 
     settings: 
@@ -1779,7 +1779,7 @@
     identification: 
       name: No Outer Borders
       identifier: REMOVEOUTERBORDERS
-      group: Report Border # 34972814618125256
+      group: Report Border # 36929774923506588
       sequence: 40
 
     settings: 
@@ -1794,7 +1794,7 @@
     identification: 
       name: Disable
       identifier: ROWHIGHLIGHTDISABLE
-      group: Row Highlighting # 34973200465125257
+      group: Row Highlighting # 36930156021506589
       sequence: 20
 
     settings: 
@@ -1826,7 +1826,7 @@
     identification: 
       name: Vertical Only
       identifier: VERTICALBORDERS
-      group: Report Border # 34972814618125256
+      group: Report Border # 36929774923506588
       sequence: 20
 
     settings: 
@@ -1946,7 +1946,7 @@
     identification: 
       name: Compact
       identifier: COMPACT
-      group: Style # 34974044387125257
+      group: Style # 36930995884506589
       sequence: 1
 
     settings: 
@@ -2022,7 +2022,7 @@
     identification: 
       name: Fixed - Large
       identifier: FIXED_LARGE
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 30
 
     settings: 
@@ -2037,7 +2037,7 @@
     identification: 
       name: Fixed - Medium
       identifier: FIXED_MEDIUM
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 20
 
     settings: 
@@ -2052,7 +2052,7 @@
     identification: 
       name: Fixed - Small
       identifier: FIXED_SMALL
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 10
 
     settings: 
@@ -2067,7 +2067,7 @@
     identification: 
       name: Left Aligned Details
       identifier: LEFT_ALIGNED_DETAILS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 10
 
     settings: 
@@ -2082,7 +2082,7 @@
     identification: 
       name: Right Aligned Details
       identifier: RIGHT_ALIGNED_DETAILS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 20
 
     settings: 
@@ -2097,7 +2097,7 @@
     identification: 
       name: Variable - Large
       identifier: VARIABLE_LARGE
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 60
 
     settings: 
@@ -2112,7 +2112,7 @@
     identification: 
       name: Variable - Medium
       identifier: VARIABLE_MEDIUM
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 50
 
     settings: 
@@ -2127,7 +2127,7 @@
     identification: 
       name: Variable - Small
       identifier: VARIABLE_SMALL
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 40
 
     settings: 
@@ -2200,7 +2200,7 @@
     identification: 
       name: Fixed - Large
       identifier: FIXED_LARGE
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 30
 
     settings: 
@@ -2215,7 +2215,7 @@
     identification: 
       name: Fixed - Medium
       identifier: FIXED_MEDIUM
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 20
 
     settings: 
@@ -2230,7 +2230,7 @@
     identification: 
       name: Fixed - Small
       identifier: FIXED_SMALL
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 10
 
     settings: 
@@ -2245,7 +2245,7 @@
     identification: 
       name: Left Aligned Details
       identifier: LEFT_ALIGNED_DETAILS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 10
 
     settings: 
@@ -2260,7 +2260,7 @@
     identification: 
       name: Right Aligned Details
       identifier: RIGHT_ALIGNED_DETAILS
-      group: Layout # 34972064293125256
+      group: Layout # 36928985826506588
       sequence: 20
 
     settings: 
@@ -2275,7 +2275,7 @@
     identification: 
       name: Variable - Large
       identifier: VARIABLE_LARGE
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 60
 
     settings: 
@@ -2290,7 +2290,7 @@
     identification: 
       name: Variable - Medium
       identifier: VARIABLE_MEDIUM
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 50
 
     settings: 
@@ -2305,7 +2305,7 @@
     identification: 
       name: Variable - Small
       identifier: VARIABLE_SMALL
-      group: Label Width # 34971633788125255
+      group: Label Width # 36928532604506588
       sequence: 40
 
     settings: 

@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page(
@@ -17,10 +17,10 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'HOME'
 ,p_step_title=>'Card Crunchers'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
+,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- PAGE GROUP: 1) CARDS
 ,p_page_css_classes=>'MULTICOLUMN'
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
+,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- AUTHORIZATION: MASTER - IS_USER
 ,p_protection_level=>'C'
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'This is the main page, the Board. It shows cards for selected Client, Project and Board. Then you can filter cards by Swimlanes, Statuses, Categories and Owners. You can setup all of these on dedicated pages.',
@@ -36,8 +36,8 @@ wwv_flow_imp_page.create_page(
 'With buttons on top right you can bookmark selected combination and see it there in the menu for quick access. You can also switch the view from cards/board to grid. And you can do bulk operations with cards.',
 ''))
 ,p_page_component_map=>'25'
-,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20220101000000'
+,p_last_updated_by=>'JAN.KVETINA@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20231125075921'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(38409764767540145)
@@ -283,7 +283,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>true
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19917139722955396)  -- LOV_CLIENTS
+,p_lov_id=>wwv_flow_imp.id(19917139722955396)  -- LOV: LOV_CLIENTS
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -314,7 +314,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>true
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(23314637906165586)  -- LOV_PROJECTS
+,p_lov_id=>wwv_flow_imp.id(23314637906165586)  -- LOV: LOV_PROJECTS
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -345,7 +345,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>true
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19916565304955390)  -- LOV_BOARDS
+,p_lov_id=>wwv_flow_imp.id(19916565304955390)  -- LOV: LOV_BOARDS
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -376,7 +376,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>true
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19918350743955397)  -- LOV_STATUSES
+,p_lov_id=>wwv_flow_imp.id(19918350743955397)  -- LOV: LOV_STATUSES
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -407,7 +407,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>true
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19919016269955397)  -- LOV_SWIMLANES
+,p_lov_id=>wwv_flow_imp.id(19919016269955397)  -- LOV: LOV_SWIMLANES
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -438,7 +438,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>false
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(23488253257018677)  -- LOV_CATEGORIES
+,p_lov_id=>wwv_flow_imp.id(23488253257018677)  -- LOV: LOV_CATEGORIES
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -469,7 +469,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>false
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19920099360955398)  -- LOV_OWNERS
+,p_lov_id=>wwv_flow_imp.id(19920099360955398)  -- LOV: LOV_OWNERS
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -1079,7 +1079,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_button(

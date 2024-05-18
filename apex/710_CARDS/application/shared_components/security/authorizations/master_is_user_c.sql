@@ -8,11 +8,11 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_security_scheme(
- p_id=>wwv_flow_imp.id(34516390450351061)  -- MASTER - IS_USER_C
+ p_id=>wwv_flow_imp.id(34516390450351061)  -- AUTHORIZATION: MASTER - IS_USER_C
 ,p_name=>'MASTER - IS_USER_C'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(

@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_user_interface(
@@ -31,7 +31,7 @@ wwv_flow_imp_shared.create_user_interface(
 '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#',
 '#APP_FILES#tsk_app#MIN#.js?version=#APP_VERSION#'))
 ,p_nav_bar_type=>'LIST'
-,p_nav_bar_list_id=>wwv_flow_imp.id(28802196659285496)
+,p_nav_bar_list_id=>wwv_flow_imp.id(28802196659285496)  -- LIST: NAVIGATION
 ,p_nav_bar_list_template_id=>wwv_flow_imp.id(31684266225644159)
 ,p_nav_bar_template_options=>'#DEFAULT#'
 );

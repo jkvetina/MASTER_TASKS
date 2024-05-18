@@ -8,11 +8,11 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(19920099360955398)  -- LOV_OWNERS
+ p_id=>wwv_flow_imp.id(19920099360955398)  -- LOV: LOV_OWNERS
 ,p_lov_name=>'LOV_OWNERS'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'

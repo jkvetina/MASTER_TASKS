@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page(
@@ -17,14 +17,14 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'BOARDS'
 ,p_step_title=>'Boards'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(23490292620162217)  -- 4) BOARDS
+,p_group_id=>wwv_flow_imp.id(23490292620162217)  -- PAGE GROUP: 4) BOARDS
 ,p_page_css_classes=>'MULTICOLUMN'
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
+,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- AUTHORIZATION: MASTER - IS_USER
 ,p_protection_level=>'C'
 ,p_page_component_map=>'25'
-,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20220101000000'
+,p_last_updated_by=>'JAN.KVETINA@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20231128180930'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(38409172710540139)
@@ -429,7 +429,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_use_group_for=>'BOTH'
 ,p_is_required=>false
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(26408996815154587)  -- LOV_SEQUENCES
+,p_lov_id=>wwv_flow_imp.id(26408996815154587)  -- LOV: LOV_SEQUENCES
 ,p_lov_display_extra=>false
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -477,7 +477,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_include_in_export=>false
 ,p_readonly_condition_type=>'ALWAYS'
 ,p_readonly_for_each_row=>false
-,p_security_scheme=>wwv_flow_imp.id(68472631569287844)  -- MASTER - IS_DEVELOPER
+,p_security_scheme=>wwv_flow_imp.id(68472631569287844)  -- AUTHORIZATION: MASTER - IS_DEVELOPER
 );
 wwv_flow_imp_page.create_region_column(
  p_id=>wwv_flow_imp.id(115469879937223635)
@@ -626,9 +626,9 @@ wwv_flow_imp_page.create_interactive_grid(
 ,p_internal_uid=>115469355284223630
 ,p_is_editable=>true
 ,p_edit_operations=>'i:u:d'
-,p_add_authorization_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
-,p_update_authorization_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
-,p_delete_authorization_scheme=>wwv_flow_imp.id(70314575553792528)  -- MASTER - IS_ADMIN
+,p_add_authorization_scheme=>wwv_flow_imp.id(70314575553792528)  -- AUTHORIZATION: MASTER - IS_ADMIN
+,p_update_authorization_scheme=>wwv_flow_imp.id(70314575553792528)  -- AUTHORIZATION: MASTER - IS_ADMIN
+,p_delete_authorization_scheme=>wwv_flow_imp.id(70314575553792528)  -- AUTHORIZATION: MASTER - IS_ADMIN
 ,p_lost_update_check_type=>'VALUES'
 ,p_add_row_if_empty=>false
 ,p_submit_checked_rows=>false

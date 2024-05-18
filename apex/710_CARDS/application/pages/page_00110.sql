@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page(
@@ -18,10 +18,10 @@ wwv_flow_imp_page.create_page(
 ,p_page_mode=>'MODAL'
 ,p_step_title=>'Bulk Operations'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- 1) CARDS
+,p_group_id=>wwv_flow_imp.id(23490192563159466)  -- PAGE GROUP: 1) CARDS
 ,p_step_template=>wwv_flow_imp.id(33859121557153720)
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- MASTER - IS_USER
+,p_required_role=>wwv_flow_imp.id(70314822393792529)  -- AUTHORIZATION: MASTER - IS_USER
 ,p_dialog_width=>'90%'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
@@ -36,8 +36,8 @@ wwv_flow_imp_page.create_page(
 '- if you leave source value empty and select target value, then all values will be changed to this one selected value',
 ''))
 ,p_page_component_map=>'21'
-,p_last_updated_by=>'DEV'
-,p_last_upd_yyyymmddhh24miss=>'20220101000000'
+,p_last_updated_by=>'JAN.KVETINA@GMAIL.COM'
+,p_last_upd_yyyymmddhh24miss=>'20231106131106'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(27594828701272013)
@@ -198,7 +198,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>true
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19918350743955397)  -- LOV_STATUSES
+,p_lov_id=>wwv_flow_imp.id(19918350743955397)  -- LOV: LOV_STATUSES
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -230,7 +230,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>true
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19919016269955397)  -- LOV_SWIMLANES
+,p_lov_id=>wwv_flow_imp.id(19919016269955397)  -- LOV: LOV_SWIMLANES
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -262,7 +262,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>false
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(23488253257018677)  -- LOV_CATEGORIES
+,p_lov_id=>wwv_flow_imp.id(23488253257018677)  -- LOV: LOV_CATEGORIES
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -294,7 +294,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'LEFT'
 ,p_is_required=>false
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(19920099360955398)  -- LOV_OWNERS
+,p_lov_id=>wwv_flow_imp.id(19920099360955398)  -- LOV: LOV_OWNERS
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -1044,7 +1044,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_da_action(

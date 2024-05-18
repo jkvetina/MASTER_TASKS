@@ -1,0 +1,9 @@
+---
+- # ====== Application Group: LAUNCHPAD ========================
+  id: 14521045818542929
+  identification: 
+    name: LAUNCHPAD
+
+  comments: 
+    comments: Apps visible in Launchpad
+

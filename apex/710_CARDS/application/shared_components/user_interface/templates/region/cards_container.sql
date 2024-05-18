@@ -8,7 +8,7 @@ wwv_flow_imp.component_begin (
 ,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>710
-,p_default_id_offset=>19878674458876767
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_plug_template(
@@ -32,7 +32,7 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(35180744456125410)
+ p_id=>wwv_flow_imp.id(37137636478506718)
 ,p_plug_template_id=>wwv_flow_imp.id(33888340216153739)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
@@ -43,7 +43,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(35181284574125411)
+ p_id=>wwv_flow_imp.id(37138122109506718)
 ,p_plug_template_id=>wwv_flow_imp.id(33888340216153739)
 ,p_name=>'Sort Order'
 ,p_placeholder=>'ORDER_BY_ITEM'
@@ -54,7 +54,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>false
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(35181741164125411)
+ p_id=>wwv_flow_imp.id(37138601809506718)
 ,p_plug_template_id=>wwv_flow_imp.id(33888340216153739)
 ,p_name=>'Sub Regions'
 ,p_placeholder=>'SUB_REGIONS'
