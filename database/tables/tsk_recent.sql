@@ -1,8 +1,8 @@
 CREATE TABLE tsk_recent (
-    user_id                         VARCHAR2(128)   CONSTRAINT nn_tsk_recent_user NOT NULL,
-    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_recent_client NOT NULL,
-    project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_recent_project NOT NULL,
-    board_id                        NUMBER(10,0)    CONSTRAINT nn_tsk_recent_board NOT NULL,
+    user_id                         VARCHAR2(128)         CONSTRAINT nn_tsk_recent_user NOT NULL,
+    client_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_recent_client NOT NULL,
+    project_id                      VARCHAR2(32)          CONSTRAINT nn_tsk_recent_project NOT NULL,
+    board_id                        NUMBER(10,0)          CONSTRAINT nn_tsk_recent_board NOT NULL,
     swimlane_id                     VARCHAR2(32),
     status_id                       VARCHAR2(32),
     category_id                     VARCHAR2(32),
@@ -11,7 +11,11 @@ CREATE TABLE tsk_recent (
     updated_at                      DATE,
     --
     CONSTRAINT pk_tsk_recent
-        PRIMARY KEY (user_id, client_id, project_id),
+        PRIMARY KEY (
+            user_id,
+            client_id,
+            project_id
+        ),
     --
     CONSTRAINT fk_tsk_recent_user
         FOREIGN KEY (user_id)
@@ -24,8 +28,14 @@ CREATE TABLE tsk_recent (
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_recent_project
-        FOREIGN KEY (client_id, project_id)
-        REFERENCES tsk_projects (client_id, project_id)
+        FOREIGN KEY (
+            client_id,
+            project_id
+        )
+        REFERENCES tsk_projects (
+            client_id,
+            project_id
+        )
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_recent_board

@@ -225,6 +225,5 @@ SELECT
     --
 FROM recent_cards t
 CROSS JOIN x;
---
-COMMENT ON TABLE tsk_navigation_home_v IS '';
+/
 

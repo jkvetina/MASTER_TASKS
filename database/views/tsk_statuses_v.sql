@@ -52,6 +52,5 @@ JOIN x
     AND x.project_id    = a.project_id
 LEFT JOIN c
     ON c.status_id      = t.status_id;
---
-COMMENT ON TABLE tsk_statuses_v IS '';
+/
 

@@ -20,6 +20,5 @@ SELECT
 FROM tsk_p500_commits_v t
 JOIN x
     ON x.card_id        = t.card_id;
---
-COMMENT ON TABLE tsk_p105_commits_v IS '';
+/
 

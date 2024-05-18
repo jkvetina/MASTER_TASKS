@@ -46,6 +46,5 @@ WHERE 1 = 1
     AND (x.status_id    = t.status_id   OR x.status_id IS NULL)
     AND (x.category_id  = t.category_id OR x.category_id IS NULL)
     AND (x.owner_id     = t.owner_id    OR x.owner_id IS NULL);
---
-COMMENT ON TABLE tsk_p110_cards_v IS '';
+/
 

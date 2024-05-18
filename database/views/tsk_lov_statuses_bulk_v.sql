@@ -18,6 +18,5 @@ JOIN tsk_lov_boards_bulk_v b
     ON b.client_id      = t.client_id
     AND b.project_id    = t.project_id
     AND b.is_current    = 'Y';
---
-COMMENT ON TABLE tsk_lov_statuses_bulk_v IS '';
+/
 

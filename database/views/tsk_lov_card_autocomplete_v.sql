@@ -10,6 +10,5 @@ JOIN tsk_available_boards_v a
     AND a.project_id    = t.project_id
     AND a.board_id      = t.board_id
     AND a.is_current    = 'Y';
---
-COMMENT ON TABLE tsk_lov_card_autocomplete_v IS '';
+/
 

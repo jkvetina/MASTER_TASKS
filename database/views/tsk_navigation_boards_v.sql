@@ -84,6 +84,5 @@ SELECT
     t.order#
     --
 FROM filter_data t;
---
-COMMENT ON TABLE tsk_navigation_boards_v IS '';
+/
 

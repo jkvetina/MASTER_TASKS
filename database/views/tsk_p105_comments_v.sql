@@ -45,6 +45,5 @@ SELECT
 FROM tsk_card_comments c
 JOIN x
     ON x.card_id = c.card_id;
---
-COMMENT ON TABLE tsk_p105_comments_v IS '';
+/
 

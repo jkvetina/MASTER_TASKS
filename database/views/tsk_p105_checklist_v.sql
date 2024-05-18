@@ -33,6 +33,5 @@ SELECT
     NULL        AS new_order,
     NULL        AS css_class
 FROM DUAL;
---
-COMMENT ON TABLE tsk_p105_checklist_v IS '';
+/
 

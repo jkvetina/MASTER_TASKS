@@ -23,6 +23,5 @@ SELECT
     t.card_link         AS list_link
     --
 FROM tsk_p100_cards_v t;
---
-COMMENT ON TABLE tsk_p105_tags_v IS '';
+/
 

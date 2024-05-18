@@ -34,6 +34,5 @@ ORDER BY
     t.owner_id,
     t.repo_id,
     t.endpoint_id;
---
-COMMENT ON TABLE tsk_p515_endpoints_v IS '';
+/
 

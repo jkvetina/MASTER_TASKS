@@ -24,6 +24,5 @@ FROM tsk_available_boards_v t
 JOIN x
     ON x.client_id      = t.client_id
     AND x.project_id    = t.project_id;
---
-COMMENT ON TABLE tsk_lov_boards_bulk_v IS '';
+/
 

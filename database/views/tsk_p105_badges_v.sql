@@ -57,6 +57,5 @@ SELECT
 FROM tsk_card_files c
 JOIN x
     ON x.card_id            = c.card_id;
---
-COMMENT ON TABLE tsk_p105_badges_v IS '';
+/
 

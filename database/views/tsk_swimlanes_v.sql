@@ -48,6 +48,5 @@ JOIN x
     AND x.project_id    = a.project_id
 LEFT JOIN c
     ON c.swimlane_id    = t.swimlane_id;
---
-COMMENT ON TABLE tsk_swimlanes_v IS '';
+/
 

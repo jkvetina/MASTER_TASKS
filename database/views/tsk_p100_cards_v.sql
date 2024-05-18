@@ -95,6 +95,5 @@ LEFT JOIN tsk_lov_categories_v g
     AND g.color_bg      IS NOT NULL
 LEFT JOIN p
     ON p.card_id        = t.card_id;
---
-COMMENT ON TABLE tsk_p100_cards_v IS '';
+/
 

@@ -25,6 +25,5 @@ JOIN tsk_available_projects_v a
 JOIN x
     ON x.client_id      = a.client_id
     AND x.project_id    = a.project_id;
---
-COMMENT ON TABLE tsk_lov_owners_v IS '';
+/
 

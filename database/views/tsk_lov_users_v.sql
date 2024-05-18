@@ -8,6 +8,5 @@ SELECT
     --
 FROM app_users_v t
 WHERE t.is_active       = 'Y';
---
-COMMENT ON TABLE tsk_lov_users_v IS '';
+/
 

@@ -29,6 +29,5 @@ CROSS JOIN x
 JOIN tsk_projects p
     ON p.client_id      = a.client_id
     AND p.is_active     = 'Y';
---
-COMMENT ON TABLE tsk_available_projects_v IS '';
+/
 

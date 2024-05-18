@@ -45,6 +45,5 @@ LEFT JOIN tsk_boards_fav f
     AND f.client_id     = b.client_id
     AND f.project_id    = b.project_id
     AND f.board_id      = b.board_id;
---
-COMMENT ON TABLE tsk_available_boards_v IS '';
+/
 

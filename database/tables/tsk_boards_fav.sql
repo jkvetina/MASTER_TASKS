@@ -1,15 +1,20 @@
 CREATE TABLE tsk_boards_fav (
-    user_id                         VARCHAR2(128)   CONSTRAINT nn_tsk_boards_fav_user NOT NULL,
-    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_boards_fav_client NOT NULL,
-    project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_boards_fav_project NOT NULL,
-    board_id                        NUMBER(10,0)    CONSTRAINT nn_tsk_boards_fav_board NOT NULL,
+    user_id                         VARCHAR2(128)         CONSTRAINT nn_tsk_boards_fav_user NOT NULL,
+    client_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_boards_fav_client NOT NULL,
+    project_id                      VARCHAR2(32)          CONSTRAINT nn_tsk_boards_fav_project NOT NULL,
+    board_id                        NUMBER(10,0)          CONSTRAINT nn_tsk_boards_fav_board NOT NULL,
     swimlane_id                     VARCHAR2(32),
     owner_id                        VARCHAR2(128),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
     CONSTRAINT pk_tsk_boards_fav
-        PRIMARY KEY (user_id, client_id, project_id, board_id),
+        PRIMARY KEY (
+            user_id,
+            client_id,
+            project_id,
+            board_id
+        ),
     --
     CONSTRAINT fk_tsk_boards_fav_board
         FOREIGN KEY (board_id)
@@ -17,8 +22,16 @@ CREATE TABLE tsk_boards_fav (
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_boards_fav_swim
-        FOREIGN KEY (client_id, project_id, swimlane_id)
-        REFERENCES tsk_swimlanes (client_id, project_id, swimlane_id)
+        FOREIGN KEY (
+            client_id,
+            project_id,
+            swimlane_id
+        )
+        REFERENCES tsk_swimlanes (
+            client_id,
+            project_id,
+            swimlane_id
+        )
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_boards_fav_owner

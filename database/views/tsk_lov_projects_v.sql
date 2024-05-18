@@ -22,6 +22,5 @@ SELECT
 FROM tsk_available_projects_v t
 JOIN x
     ON x.client_id      = t.client_id;
---
-COMMENT ON TABLE tsk_lov_projects_v IS '';
+/
 

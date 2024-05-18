@@ -33,6 +33,5 @@ JOIN tsk_available_boards_v b
     ON b.client_id      = x.client_id
     AND b.project_id    = x.project_id
     AND b.board_id      = x.board_id;
---
-COMMENT ON TABLE tsk_auth_context_v IS '';
+/
 

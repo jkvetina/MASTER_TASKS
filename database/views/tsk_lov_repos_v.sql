@@ -15,6 +15,5 @@ JOIN tsk_lov_projects_v p   -- using tsk_auth_available_projects_v
 JOIN x
     ON x.client_id          = r.client_id
     AND (x.project_id       = r.project_id  OR x.project_id IS NULL);
---
-COMMENT ON TABLE tsk_lov_repos_v IS '';
+/
 

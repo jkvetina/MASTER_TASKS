@@ -1,9 +1,9 @@
 CREATE TABLE tsk_card_files (
-    card_id                         NUMBER(10,0)    CONSTRAINT nn_tsk_card_files_card NOT NULL,
-    file_id                         NUMBER(10,0)    CONSTRAINT nn_tsk_card_files_id NOT NULL,
-    file_name                       VARCHAR2(256)   CONSTRAINT nn_tsk_card_files_name NOT NULL,
-    file_mime                       VARCHAR2(256)   CONSTRAINT nn_tsk_card_files_mime NOT NULL,
-    file_size                       NUMBER          CONSTRAINT nn_tsk_card_files_len NOT NULL,
+    card_id                         NUMBER(10,0)          CONSTRAINT nn_tsk_card_files_card NOT NULL,
+    file_id                         NUMBER(10,0)          CONSTRAINT nn_tsk_card_files_id NOT NULL,
+    file_name                       VARCHAR2(256)         CONSTRAINT nn_tsk_card_files_name NOT NULL,
+    file_mime                       VARCHAR2(256)         CONSTRAINT nn_tsk_card_files_mime NOT NULL,
+    file_size                       NUMBER                CONSTRAINT nn_tsk_card_files_len NOT NULL,
     file_payload                    BLOB,
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
@@ -12,10 +12,16 @@ CREATE TABLE tsk_card_files (
         PRIMARY KEY (file_id),
     --
     CONSTRAINT uq_tsk_card_files
-        UNIQUE (card_id, file_id),
+        UNIQUE (
+            card_id,
+            file_id
+        ),
     --
     CONSTRAINT uq_tsk_card_files_name
-        UNIQUE (card_id, file_name),
+        UNIQUE (
+            card_id,
+            file_name
+        ),
     --
     CONSTRAINT fk_tsk_card_files_card
         FOREIGN KEY (card_id)

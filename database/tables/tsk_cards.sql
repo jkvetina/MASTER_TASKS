@@ -1,20 +1,20 @@
 CREATE TABLE tsk_cards (
-    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_cards_client NOT NULL,
-    project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_cards_project NOT NULL,
-    card_id                         NUMBER(10,0)    CONSTRAINT nn_tsk_cards_id NOT NULL,
+    client_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_cards_client NOT NULL,
+    project_id                      VARCHAR2(32)          CONSTRAINT nn_tsk_cards_project NOT NULL,
+    card_id                         NUMBER(10,0)          CONSTRAINT nn_tsk_cards_id NOT NULL,
     card_number                     VARCHAR2(16),
-    card_name                       VARCHAR2(128)   CONSTRAINT nn_tsk_cards_name NOT NULL,
+    card_name                       VARCHAR2(128)         CONSTRAINT nn_tsk_cards_name NOT NULL,
     card_desc                       VARCHAR2(4000),
-    board_id                        NUMBER(10,0)    CONSTRAINT nn_tsk_cards_board NOT NULL,
-    swimlane_id                     VARCHAR2(32)    CONSTRAINT nn_tsk_cards_swimlane NOT NULL,
-    status_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_cards_status NOT NULL,
+    board_id                        NUMBER(10,0)          CONSTRAINT nn_tsk_cards_board NOT NULL,
+    swimlane_id                     VARCHAR2(32)          CONSTRAINT nn_tsk_cards_swimlane NOT NULL,
+    status_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_cards_status NOT NULL,
     category_id                     VARCHAR2(32),
     owner_id                        VARCHAR2(128),
     deadline_at                     DATE,
     tags                            VARCHAR2(256),
     order#                          NUMBER(10,0),
-    created_by                      VARCHAR2(128)   CONSTRAINT nn_tsk_cards_created_by NOT NULL,
-    created_at                      DATE            CONSTRAINT nn_tsk_cards_created_at NOT NULL,
+    created_by                      VARCHAR2(128)         CONSTRAINT nn_tsk_cards_created_by NOT NULL,
+    created_at                      DATE                  CONSTRAINT nn_tsk_cards_created_at NOT NULL,
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
@@ -27,18 +27,42 @@ CREATE TABLE tsk_cards (
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_cards_status
-        FOREIGN KEY (client_id, project_id, status_id)
-        REFERENCES tsk_statuses (client_id, project_id, status_id)
+        FOREIGN KEY (
+            client_id,
+            project_id,
+            status_id
+        )
+        REFERENCES tsk_statuses (
+            client_id,
+            project_id,
+            status_id
+        )
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_cards_swimlane
-        FOREIGN KEY (client_id, project_id, swimlane_id)
-        REFERENCES tsk_swimlanes (client_id, project_id, swimlane_id)
+        FOREIGN KEY (
+            client_id,
+            project_id,
+            swimlane_id
+        )
+        REFERENCES tsk_swimlanes (
+            client_id,
+            project_id,
+            swimlane_id
+        )
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_cards_category
-        FOREIGN KEY (client_id, project_id, category_id)
-        REFERENCES tsk_categories (client_id, project_id, category_id)
+        FOREIGN KEY (
+            client_id,
+            project_id,
+            category_id
+        )
+        REFERENCES tsk_categories (
+            client_id,
+            project_id,
+            category_id
+        )
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_tsk_cards_owner

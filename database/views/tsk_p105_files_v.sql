@@ -52,6 +52,5 @@ SELECT
 FROM tsk_card_files c
 JOIN x
     ON x.card_id = c.card_id;
---
-COMMENT ON TABLE tsk_p105_files_v IS '';
+/
 

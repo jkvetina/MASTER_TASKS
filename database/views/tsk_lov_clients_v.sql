@@ -8,6 +8,5 @@ SELECT
     t.is_current
     --
 FROM tsk_available_clients_v t;
---
-COMMENT ON TABLE tsk_lov_clients_v IS '';
+/
 

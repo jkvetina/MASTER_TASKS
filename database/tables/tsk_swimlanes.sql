@@ -1,22 +1,34 @@
 CREATE TABLE tsk_swimlanes (
-    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_swimlanes_client NOT NULL,
-    project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_swimlanes_project NOT NULL,
-    swimlane_id                     VARCHAR2(32)    CONSTRAINT nn_tsk_swimlanes_id NOT NULL,
-    swimlane_name                   VARCHAR2(64)    CONSTRAINT nn_tsk_swimlanes_name NOT NULL,
+    client_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_swimlanes_client NOT NULL,
+    project_id                      VARCHAR2(32)          CONSTRAINT nn_tsk_swimlanes_project NOT NULL,
+    swimlane_id                     VARCHAR2(32)          CONSTRAINT nn_tsk_swimlanes_id NOT NULL,
+    swimlane_name                   VARCHAR2(64)          CONSTRAINT nn_tsk_swimlanes_name NOT NULL,
     is_active                       CHAR(1),
     order#                          NUMBER(4,0),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
     CONSTRAINT ch_tsk_swimlanes
-        CHECK (is_active = 'Y' OR is_active IS NULL),
+        CHECK (
+            is_active = 'Y' OR is_active IS NULL
+        ),
     --
     CONSTRAINT pk_tsk_swimlanes
-        PRIMARY KEY (client_id, project_id, swimlane_id),
+        PRIMARY KEY (
+            client_id,
+            project_id,
+            swimlane_id
+        ),
     --
     CONSTRAINT fk_tsk_swimlanes_project
-        FOREIGN KEY (client_id, project_id)
-        REFERENCES tsk_projects (client_id, project_id)
+        FOREIGN KEY (
+            client_id,
+            project_id
+        )
+        REFERENCES tsk_projects (
+            client_id,
+            project_id
+        )
         DEFERRABLE INITIALLY DEFERRED
 );
 --

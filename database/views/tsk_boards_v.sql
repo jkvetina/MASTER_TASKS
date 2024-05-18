@@ -64,6 +64,5 @@ LEFT JOIN t
     ON t.client_id      = a.client_id
     AND t.project_id    = a.project_id
     AND t.board_id      = a.board_id;
---
-COMMENT ON TABLE tsk_boards_v IS '';
+/
 

@@ -45,6 +45,5 @@ SELECT
 FROM d
 JOIN z
     ON z.today = d.today;
---
-COMMENT ON TABLE tsk_p500_commits_v IS '';
+/
 

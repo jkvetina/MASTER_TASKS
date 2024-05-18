@@ -1,12 +1,14 @@
 CREATE TABLE tsk_clients (
-    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_clients_id NOT NULL,
+    client_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_clients_id NOT NULL,
     client_name                     VARCHAR2(64),
     is_active                       CHAR(1),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
     CONSTRAINT ch_tsk_clients_active
-        CHECK (is_active = 'Y' OR is_active IS NULL),
+        CHECK (
+            is_active = 'Y' OR is_active IS NULL
+        ),
     --
     CONSTRAINT pk_tsk_clients
         PRIMARY KEY (client_id)

@@ -19,6 +19,5 @@ JOIN tsk_available_clients_v a
     ON a.client_id      = t.client_id
 JOIN x
     ON x.client_id      = a.client_id;
---
-COMMENT ON TABLE tsk_sequences_v IS '';
+/
 

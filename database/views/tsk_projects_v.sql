@@ -51,6 +51,5 @@ JOIN x
 LEFT JOIN t
     ON t.client_id      = a.client_id
     AND t.project_id    = a.project_id;
---
-COMMENT ON TABLE tsk_projects_v IS '';
+/
 

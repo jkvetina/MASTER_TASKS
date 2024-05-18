@@ -1,8 +1,8 @@
 CREATE TABLE tsk_categories (
-    client_id                       VARCHAR2(32)    CONSTRAINT nn_tsk_categories_client NOT NULL,
-    project_id                      VARCHAR2(32)    CONSTRAINT nn_tsk_categories_project NOT NULL,
-    category_id                     VARCHAR2(32)    CONSTRAINT nn_tsk_categories_id NOT NULL,
-    category_name                   VARCHAR2(64)    CONSTRAINT nn_tsk_categories_name NOT NULL,
+    client_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_categories_client NOT NULL,
+    project_id                      VARCHAR2(32)          CONSTRAINT nn_tsk_categories_project NOT NULL,
+    category_id                     VARCHAR2(32)          CONSTRAINT nn_tsk_categories_id NOT NULL,
+    category_name                   VARCHAR2(64)          CONSTRAINT nn_tsk_categories_name NOT NULL,
     category_group                  VARCHAR2(64),
     color_bg                        VARCHAR2(8),
     color_fg                        VARCHAR2(8),
@@ -13,17 +13,31 @@ CREATE TABLE tsk_categories (
     updated_at                      DATE,
     --
     CONSTRAINT ch_tsk_categories
-        CHECK (is_active = 'Y' OR is_active IS NULL),
+        CHECK (
+            is_active = 'Y' OR is_active IS NULL
+        ),
     --
     CONSTRAINT ch_tsk_categories_default
-        CHECK (is_default = 'Y' OR is_default IS NULL),
+        CHECK (
+            is_default = 'Y' OR is_default IS NULL
+        ),
     --
     CONSTRAINT pk_tsk_categories
-        PRIMARY KEY (client_id, project_id, category_id),
+        PRIMARY KEY (
+            client_id,
+            project_id,
+            category_id
+        ),
     --
     CONSTRAINT fk_tsk_categories_project
-        FOREIGN KEY (client_id, project_id)
-        REFERENCES tsk_projects (client_id, project_id)
+        FOREIGN KEY (
+            client_id,
+            project_id
+        )
+        REFERENCES tsk_projects (
+            client_id,
+            project_id
+        )
         DEFERRABLE INITIALLY DEFERRED
 );
 --

@@ -19,6 +19,5 @@ JOIN tsk_lov_boards_bulk_v b
     AND b.project_id    = t.project_id
     AND b.is_current    = 'Y'
 WHERE t.is_active       = 'Y';
---
-COMMENT ON TABLE tsk_lov_categories_bulk_v IS '';
+/
 

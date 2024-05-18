@@ -38,6 +38,5 @@ SELECT
 FROM tsk_available_clients_v a
 LEFT JOIN t
     ON t.client_id      = a.client_id;
---
-COMMENT ON TABLE tsk_clients_v IS '';
+/
 

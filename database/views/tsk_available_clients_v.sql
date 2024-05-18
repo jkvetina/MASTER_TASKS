@@ -26,6 +26,5 @@ CROSS JOIN x
 -- @TODO: need to map assigned clients
 --
 WHERE c.is_active       = 'Y';
---
-COMMENT ON TABLE tsk_available_clients_v IS '';
+/
 
