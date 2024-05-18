@@ -3,5 +3,6 @@ CREATE UNIQUE INDEX tsk_cards_card_number_uq
         client_id,
         NVL(card_number,
         TO_CHAR(card_id
-    )));
+    )))
+    TABLESPACE data;
 
