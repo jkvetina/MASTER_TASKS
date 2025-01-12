@@ -4,7 +4,60 @@ body {
     background-color    : var(--ut-body-main-background-color);
 }
 #main .t-Body-contentInner {
-    padding             : 1.5rem;
+    padding             : 1rem 1.5rem 2.5rem;
+}
+
+/* ENV BANNER */
+a.ENV_BANNER {
+    float               : left;
+    outline             : none !important;
+    height              : 3rem;
+    max-height          : 3rem;
+    padding             : 1rem 0.75rem !important;
+}
+a.ENV_BANNER:hover {
+    background          : #222;
+}
+/*
+a.ENV_BANNER.DEV        { background : #508223; }
+a.ENV_BANNER.UAT        { background : #227e9e; }
+a.ENV_BANNER.PROD       { background : #d63b25; }
+*/
+html.app-MASTER a.ENV_BANNER > span.fa {
+    display             : none;
+}
+
+/* HIDE HOVER CURSORS WHEN HOVERING OVER CARD WITH EMPTY LINK */
+.NO_HOVER a:hover {
+    cursor              : default;
+}
+.a-CardView-button {
+    cursor              : pointer !important;
+}
+
+
+
+/*
+ * CLIENT + APPLICATION LOGO IN NAVIGATION
+ */
+#CLIENT_LOGO {
+    float               : left;
+    outline             : none !important;
+}
+#CLIENT_LOGO > img {
+    height              : 2rem;
+    margin              : 0.5rem !important;
+}
+#APP_LOGO {
+    float               : left;
+    height              : 2rem;
+    margin              : 0.5rem 0 !important;
+}
+#APP_LOGO > img {
+    padding             : 0.5rem 0.25rem !important;
+}
+#APP_LOGO > span.apex-logo-text {
+    padding             : 0.5rem 0.75rem !important;
 }
 
 
@@ -12,19 +65,27 @@ body {
 /*
  * ADJUST MODAL + DRAWER DIALOGS
  */
+
+.ui-dialog--apex.t-Dialog-page--standard .ui-dialog-content iframe,
+.ui-dialog--apex.t-Dialog-page--wizard .ui-dialog-content iframe {
+    background          : #fff;  /* BG WHILE DIALOG IS LOADING */
+}
+
 body.t-Dialog-page .t-Dialog-header,
 body.t-Drawer-page .t-Dialog-header {
-    margin              : 0.9rem 0.8rem -1rem;
-    margin-top          : 0 !important;
+    margin              : 0 0.8rem !important;
 }
 body.t-Dialog-page .t-HeroRegion,
 body.t-Drawer-page .t-HeroRegion {
     margin              : 0 !important;
-    padding             : 0.3rem 0.2rem 0.75rem !important;
+    padding             : 0.3rem 0.2rem 0.5rem !important;
 }
 body.t-Drawer-page .t-HeroRegion {
     margin-bottom       : -0.25rem !important;
     padding             : 0.3rem 1rem 0 !important;
+}
+body.t-Drawer-page .t-Drawer-body .t-HeroRegion {   /* HERO IN BODY */
+    padding             : 1.5rem 0 0 !important;
 }
 body.t-Dialog-page .t-HeroRegion .t-HeroRegion-buttons:empty,
 body.t-Drawer-page .t-HeroRegion .t-HeroRegion-buttons:empty {
@@ -47,16 +108,49 @@ body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {
 
 /* MODAL DIALOGS, REMOVE THE IMAGE AND PADDING AT TOP */
 .ui-dialog .ui-dialog-titlebar {
-    border-bottom       : 0;
-    margin-bottom       : 0;
-    padding             : 0.4rem;
+    border-bottom       : 0 !important;
+    margin-bottom       : 0 !important;
+    padding             : 0.4rem !important;
 }
 .ui-dialog .ui-dialog-titlebar > * {
-    display             : none;
+    display             : none !important;
 }
 .ui-dialog .ui-dialog-titlebar:before {
-    background-image    : none;
-    /* background: gray; */
+    background-image    : none !important;
+    background          : #fff;
+}
+.ui-dialog.ui-dialog--notification > .ui-dialog-titlebar,
+.ui-dialog.ui-dialog--notification > .ui-dialog-titlebar:before,   /* SESSION TIMEOUT POPUP */
+.ui-dialog.t-Drawer-page--standard .ui-dialog-titlebar:before {
+    background          : #FBF9F8 !important;
+}
+
+/* FIX HEADERS ON MODAL */
+.ui-dialog .ui-dialog-titlebar h1.t-HeroRegion-title,
+.t-Dialog .t-Dialog-header .t-HeroRegion .t-HeroRegion-top h1.t-HeroRegion-title {
+    line-height         : 1.8rem;
+    height              : 1.8rem;
+    margin-top          : 0.2rem;
+}
+.t-Dialog-body,
+.t-Drawer-body {
+    padding-top         : 0 !important;
+}
+.ui-dialog .ui-dialog-titlebar h1.t-HeroRegion-title,
+.t-Dialog .t-Dialog-header .t-HeroRegion .t-HeroRegion-top h1.t-HeroRegion-title {
+    margin-top          : 0.45rem;  /* TO ALIGN WITH BUTTONS */
+}
+
+/* FIX SPACING AROUND */
+.t-Dialog-body > .container:last-child > .row:last-child > .col > div > button {
+    margin-top          : 1rem !important;
+    margin-bottom       : -1rem !important;
+}
+.t-Dialog-footer {
+    margin              : 1rem;
+}
+.t-Dialog-bodyWrapperOut {
+    margin-bottom       : -2rem !important;  /* TO REMOVE THE SCROLLER IN FOOTER BODY */
 }
 
 
@@ -65,7 +159,7 @@ body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {
  * HERO REGION
  */
 .t-HeroRegion {
-    padding             : 0.75rem 0.5rem 1rem;
+    padding             : 1rem 0 0.5rem;
 }
 .t-HeroRegion.SECOND,
 body.t-Dialog-page .t-HeroRegion.SECOND,
@@ -76,7 +170,8 @@ h1.t-HeroRegion-title {
     font-family         : 'Mate', serif;
     font-weight         : 600;
     font-size           : 1.8rem;
-    line-height         : 150%;
+    line-height         : 1.8rem;
+    height              : 2.8rem;
 }
 .t-HeroRegion-wrap {    /* TO ALSO ALIGN RIGHT/UP BUTTON PROPERLY */
     align-items         : flex-start;
@@ -89,8 +184,6 @@ h1.t-HeroRegion-title {
     margin              : 1px 0 0;
     gap                 : 0.13rem;
 }
-
-
 
 /* HERO REGION - HIDE ICONS */
 .t-HeroRegion .t-HeroRegion-icon {
@@ -107,9 +200,44 @@ h1.t-HeroRegion-title button {
     position            : relative;
     top                 : -0.2rem;      /* FIX BUTTON OFFSET */
     margin-left         : 0.4rem !important;
+    margin-top          : -0.3rem;  /* TO ALIGN HEROS WITH AND WITHOUT BUTTONS */
 }
 h1.t-HeroRegion-title button:first-child {
     margin-left         : 1.5rem !important;
+}
+
+.SECOND {
+    margin-top          : 1.5rem;
+}
+
+/* FIX SELECT BOXES AND BUTTONS IN HERO REGION */
+.BUTTONS > div.container > div.row > div.col > div.t-Form-fieldContainer,
+div.t-HeroRegion-col.t-HeroRegion-col--content > div.container > div.row > div.col > div.t-Form-fieldContainer {
+    padding-top         : 0;
+}
+.BUTTONS > div.container > div.row > div.col > button.t-Button,
+div.t-HeroRegion-col.t-HeroRegion-col--content > div.container > div.row > div.col > button.t-Button {
+    margin-top          : 0.325rem;
+}
+.BUTTONS > div.container {
+    margin-bottom       : 0.5rem;
+}
+
+/* FIXES FOR 24.1 */
+button.t-Button {
+    height              : 2.8rem;
+}
+button.t-Button span.t-Icon.fa {
+    padding-left        : 0.3rem;
+    padding-right       : 0.3rem;
+}
+button.t-Button.t-Button--iconLeft span.t-Icon.fa {
+    padding-left        : 0;
+    padding-right       : 0.2rem;
+}
+button.t-Button.t-Button--iconRight span.t-Icon.fa {
+    padding-left        : 0.2rem;
+    padding-right       : 0;
 }
 
 /* BUTTONS FLOATING RIGHT */
@@ -118,6 +246,11 @@ h1.t-HeroRegion-title button:first-child {
 }
 .t-Button.u-pullRight:last-child {
     margin-right        : 0 !important;
+}
+
+/* FIX HEADER ON DRAWER */
+div.t-Drawer div.t-HeroRegion h1.t-HeroRegion-title {
+    margin              : 0.5rem 0 0;
 }
 
 
@@ -130,23 +263,34 @@ button.ui-button,
 }
 button.t-Button:hover,
 button.ui-button:hover,
-.apex-item-filedrop-action.a-Button.a-Button--hot:hover {
-    background          : #DFDEDC;
-    background          : #d7d6d4;
+.apex-item-filedrop-action.a-Button.a-Button--hot:hover,
+/* BUTTON IN GRID */
+.a-Button:hover,
+.a-CardView-button:hover,
+.apex-button-group label:hover,
+.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc input+label:hover,
+.t-Form-helpButton:hover {
+    background          : #dbd8d4;
 }
 
 /* HOT BUTTONS */
+button.HOT,
+a.a-CardView-button.HOT,
 button.t-Button--hot,
 button.ui-button--hot,
 button.js-confirmBtn.ui-button--danger,
 button.a-Button.a-Toolbar-item.a-Button--hot {
-    background          : #5f5c58;
+    background          : #464237;
+    color               : #fff;
 }
+button.HOT:hover,
+a.a-CardView-button.HOT:hover,
 button.t-Button--hot:hover,
 button.ui-button--hot:hover,
 button.a-Button.a-Toolbar-item.a-Button--hot:hover,
 button.js-confirmBtn.ui-button--danger:hover {
-    background          : #333;
+    background          : #222;
+    color               : #fff;
 }
 
 /* BUTTON TO UPLOAD FILES */
@@ -158,6 +302,10 @@ button.js-confirmBtn.ui-button--danger:hover {
 /* FIX BUTTON OFFSET ON LINE WITH OTHER ITEMS */
 .FILTERS button {
     margin-top          : 0.9rem;
+}
+.FILTERS h1.t-HeroRegion-title {
+    height              : 3.5rem;
+    margin-top          : -1.5rem;
 }
 
 /* BUTTON BADGES */
@@ -176,9 +324,6 @@ button .BADGE {
     font-size           : 0.75rem;
     line-height         : 1.2rem;
 }
-.RED {
-    color               : red;
-}
 
 /* OVERRIDE MENU BADGES WITH SAME STYLE */
 #t_Header > #top_header > nav ul li a > span.BADGE,
@@ -194,7 +339,9 @@ span.BADGE {
     font-weight         : 500;
     font-size           : 0.75rem;
 }
-ul.t-Tabs span.BADGE {
+
+ul.t-Tabs span.BADGE,
+div.radio_group.apex-item-group span.BADGE {
     margin-left         : 0;
     line-height         : 0.7rem;
 }
@@ -224,47 +371,83 @@ span.BADGE.ICON > .fa {
     top                 : 0.3rem;
 }
 
+/* HIDE BUTTON IN THE FILE UPLOAD DROPZONE */
+div.a-FileDrop.a-FileDrop--dropzone > div.a-FileDrop-action > span.a-Button.a-FileDrop-action-choose {
+    display             : none !important;
+}
 
+
+
+
+
+/* TO SHOW RADIO BUTTONS AS TABS */
+/*
+    CREATE RADIO BUTTON
+    SET MORE THEN 1 COLUMN
+    SET PAGE ACTION TO REDIRECT AND SAVE VALUE
+    SET HIDDEN ITEM LABEL
+    SET TEMPLATE OPTION - DISPLAY AS PILL
+    SET IGNORE CHANGES
+*/
+.TABS > .container > .row > .col > .apex-item-wrapper > .t-Form-labelContainer {
+    display             : none;
+}
+.TABS .apex-item-grid-row {
+    margin-top          : -1.3rem;  /* FOR PIXEL PERFECT ALIGNMENT */
+    display             : flex !important;
+}
+.TABS .apex-item-grid-row .apex-item-option {
+    margin              : 0.5rem 8px 0.75rem 0;
+}
+.TABS .t-Form-labelContainer.col {
+    display             : none;
+}
 
 /* FIX TABS HEIGHT */
 .t-TabsRegion-items {
    min-height           : auto !important;
 }
 
-/* REMOVE OUTLINE FROM ACTIVE TABS */
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link {
-    outline             : none !important;
-}
-
 /* TABS COLOR BORDER AND SOME SPACING ADJUSTMENTS */
-ul.t-Tabs {
-    margin-bottom       : 0.5rem;
+.TABS ul.t-Tabs {
+    margin-top          : -0.5rem;  /* to compensate for badge */
+    margin-bottom       : 1.2rem;
 }
-ul.t-Tabs::selection {
-    user-select         : none;
+.TABS ul.t-Tabs::selection {
+    user-select         : none !important;
 }
-ul.t-Tabs .t-Tabs-link {
+.TABS ul.t-Tabs .t-Tabs-link {
     padding-bottom      : 0.5rem;
     background          : transparent;
     font-size           : 1rem;
 }
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link,
-ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
-    outline             : none;
-    box-shadow          : none;
+.TABS ul.t-Tabs li.t-Tabs-item a.t-Tabs-link,
+.TABS ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link,
+.TABS .apex-item-grid-row .apex-item-option label {
+    font-size           : 1rem;
     font-weight         : 600;
-    color               : #444;
-    background          : transparent;
-    padding-bottom      : 0.6rem;
+    color               : #444 !important;
+    background          : transparent !important;
+    padding             : 0.5rem 0.7rem;
+    border              : 0;
     border-bottom       : 8px solid #ededed;
+    border-radius       : 0 0 !important;
+    box-shadow          : none !important;
+    outline             : none !important;
 }
-ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
-    color               : #000;
+.TABS .apex-item-grid-row .apex-item-option label {
+    padding-bottom      : 0.3rem;  /* FOR PIXEL PERFECT ALIGNMENT */
+}
+.TABS ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link,
+.TABS .apex-item-grid-row .apex-item-option input:checked + label {
+    color               : #000 !important;
     border-bottom       : 8px solid #5f5c58 !important;
 }
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
-ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
-    color               : #000;
+.TABS ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
+.TABS ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover,
+.TABS .apex-item-grid-row .apex-item-option label:hover,
+.TABS .apex-item-grid-row .apex-item-option input:checked + label:hover {
+    color               : #000 !important;
     border-bottom       : 8px solid #333 !important;
 }
 
@@ -279,10 +462,7 @@ a.t-Tabs-link::before {
 }
 ul.t-Tabs li.t-Tabs-item {
     margin-right        : 8px;
-}
-
-ul.t-Tabs li.t-Tabs-item {
-    margin-right        : 8px;
+    line-height         : 1.5rem;  /* to squeze in tab badges */
 }
 ul.t-Tabs li.t-Tabs-item:last-child {
     margin-right        : 0;
@@ -325,14 +505,64 @@ ul.a-CardView-items {
     box-shadow          : rgba(149, 157, 165, 0.15) 0 0 0.5rem;
 }
 
+/* HIDE PLACEHOLDER FOR BUTTONS ON CARD */
+.NO_CARD_BUTTONS .a-CardView-body .a-CardView-subContent {
+    display             : none;
+}
 
-    
+/* FIX CARD BUTTON MARGINS */
+.a-CardView-body .a-CardView-actionsPrimary > * {
+    margin              : 0.25rem 0.25rem 0 0;
+}
+.a-CardView-body .a-CardView-actionsSecondary > * {
+    margin              : 0.25rem 0 0 0.25rem;
+}
+
+/* FORCE CARDS ON MODALS */
+.t-Dialog-body .a-CardView-items--grid2col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.t-Dialog-body .a-CardView-items--grid3col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.t-Dialog-body .a-CardView-items--grid4col { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.t-Dialog-body .a-CardView-items--grid5col { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.t-Drawer-body .a-CardView-items--grid2col { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.t-Drawer-body .a-CardView-items--grid3col { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.t-Drawer-body .a-CardView-items--grid4col { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.t-Drawer-body .a-CardView-items--grid5col { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+
+/* FIX PADDING ON CARD BUTTONS */
+a.a-CardView-button {
+    padding             : 0.5rem 0.75rem;
+}
+span.a-CardView-buttonLabel .fa {
+    line-height         : 1.5rem;
+    font-size           : 1.1rem;
+}
+
 /* FIX READ ONLY LABELS ON FORM TEXTAREA */
 .apex-item-wrapper--display-only label {
-    background: transparent !important;
+    background          : transparent !important;
 }
 .apex-item-wrapper--display-only label::before {
-    background: transparent !important;
+    background          : transparent !important;
+}
+
+/* HIDE REQUIRED MESSAGE, KEEP THE RED TRIANGLE */
+.t-Form-itemRequired {
+    display             : none !important;
+}
+
+/* HIDE LABEL ON ITEMS */
+.HIDDEN_LABEL > .t-Form-labelContainer {
+    display             : none !important;
+}
+.HIDDEN_LABEL.t-Form-fieldContainer--floatingLabel > .t-Form-inputContainer {
+    margin-top          : -1.7rem;
+}
+
+.HIDDEN {
+    display             : none;
+}
+.STRIKED {
+  text-decoration       : line-through;
 }
 
 
@@ -345,6 +575,9 @@ div.a-Toolbar-group [data-action="edit"] {
 
 
 /* GRID CONTROL BREAK */
+.a-GV-table th.a-GV-controlBreakHeader {
+    background          : #f5f4f2;
+}
 .a-GV-controlBreak .a-GV-controlBreakLabel {
     font-size           : 120%;
     color               : #333;
@@ -352,20 +585,224 @@ div.a-Toolbar-group [data-action="edit"] {
 .a-GV-controlBreak .a-GV-controlBreakLabel .a-GV-breakValue {
     font-weight         : bold;
 }
+.a-IG-button.a-IG-button--controls,
+.a-IRR-button.a-IRR-button--controls {
+    margin              : 0.125rem 0 0 -0.1rem !important;  /* FIX TRIANGLE */
+}
+
+/* GRID HEADERS */
+.a-GV-headerLabel {
+    color               : #333;
+}
+
+/* FIX GRID BORDERS */
+.a-IG-controlsContainer,
+.a-IRR-controlsContainer,
+.a-IG-header,
+.a-GV-footer {
+    border              : 1px solid #eaeaea;
+}
+.a-GV-cell:last-child,
+.a-GV-table th.a-GV-header:last-child,
+.a-GV-table th.a-GV-headerGroup:last-child {
+    border-right-width  : 0;
+}
+.a-GV-table th.a-GV-headerGroup {
+    border-top          : 0;
+}
+.a-GV-table th.a-GV-headerGroup:first-child {
+    border-left         : 0;
+}
+
+/* FIX HAMBURGER IN GRID HEADERS */
+.a-GV-header .a-Button.a-Button--actions {
+    padding             : 0;
+    margin-left         : -1px;
+    text-overflow       : none;
+}
+
+/* TRANSPARENT FOOTER */
+.a-IG {
+    border              : 0;
+    box-shadow          : 0;
+}
+.a-GV-footer {
+    background          : #FCF9F8 !important;
+    color               : #888;
+    border              : 0;
+    border-top          : 1px solid #eaeaea;
+    box-shadow          : 0;
+}
+div.t-Dialog .a-GV-footer {
+    background          : #fff !important;  /* FOOTER ON MODAL */
+}
+
+/* HIDE NUMBER OF SELECTED ROWS IN GRID ON MODAL */
+div.t-Dialog .a-GV-footer .a-GV-status {
+    display             : none;
+}
+
+/* REDESIGN GRID BORDERS */
+.a-IG-header {
+    border              : 2px solid #eaeaea;
+}
+.a-IG-body .a-MediaBlock,
+.a-IG-gridView.a-GV > .a-GV-hdr,
+.a-IG-gridView.a-GV > .a-GV-bdy {
+    border-left         : 2px solid #eaeaea;
+    border-right        : 2px solid #eaeaea;
+    box-shadow          : 0;
+}
+.a-IG-body .a-MediaBlock {
+    border              : 2px solid #eaeaea;
+    border-top          : 0;
+}
+.a-GV-hdr .a-GV-w-frozen .a-GV-table,
+.a-GV-hdr .a-GV-w-hdr .a-GV-table {
+    border              : 0 !important;
+}
+.a-GV-row th.a-GV-header {
+    border-bottom       : 2px solid #eaeaea;
+}
+thead .a-GV-row th.a-GV-headerGroup.a-GV-frozen:first-child,
+thead .a-GV-row th.a-GV-header:first-child {
+    border-left         : 0;
+}
+.a-GV-altMessage {
+    border              : 0;
+    border-bottom       : 1px solid #eaeaea;
+}
+.a-TMV--cards .a-GV-altMessage {    /* NO DATA FOUND ON CARDS */
+    border              : 0;
+}
+
+/* FIX CONTROL BREAK BORDERS */
+.a-GV-table th.a-GV-controlBreakHeader {
+    border-left         : 0;
+    border-right        : 0;
+    border-bottom       : 1px solid #eaeaea;
+    line-height         : 1.4rem;
+    padding-top         : 0.4rem;
+}
+.a-GV-controlBreakHeader .a-Button {
+    height              : 1.5rem;
+}
+.a-GV-table th.a-GV-controlBreakHeader {
+    border-top          : 1px solid #eaeaea;
+    border-bottom       : 1px solid #eaeaea;
+}
+.a-GV-table th.a-GV-controlBreakHeader:first-child {
+    border-left         : 0;
+}
+/* FIX MISSING SPACE FOR TOP BORDERS ON FIRST LINE IN GRID */
+.a-GV .a-GV-w-scroll {
+    padding-top         : 0;
+}
+.a-GV-table tr > *:last-child {
+    border-right        : 0;
+}
 
 
+
+/* FIX BROKEN GRID PAGINATION */
+.a-GV-footer.js-stickyWidget-toggle {
+    width               : 100%;
+}
 
 /* FIX WRONG OFFSET FOR ICONS ON GRID */
 .a-GV-bdy span.fa {
     margin              : 0.125rem 0.2rem 0;
 }
 
+/* LARGER CUSTOM ICON ON ACTION (ROW SELECTION) COLUMN */
+div.a-GV-bdy table.a-GV-table > tbody > tr.a-GV-row > td.a-GV-cell.has-button span.fa {
+    font-size           : 125%;
+}
 
+/* CHANGE GRID FILTERS ICON BACKGROUND */
+.a-IG-controls-cell:nth-child(2),
+.a-IRR-controls-cell:nth-child(2),
+/* CHANGE GRID FILTER COLLAPSED */
+.a-IG-reportSummary-icon,
+.a-IRR-reportSummary-icon,
+/* CHANGE GRID CHECKBOXES ON FILTERS AND ROW SELECTOR */
+.a-IG-controlsCheckbox:checked+.a-IG-controlsCheckboxLabel,
+.a-IRR-controlsCheckbox:checked+.a-IRR-controlsCheckboxLabel,
+.u-selector.is-selected {
+    background-color    : #8b8673;
+    color               : #fff;
+}
+.a-IG-controlsLabel:hover,
+.a-IRR-controlsLabel:hover,
+.a-IG-controlsLabel:active,
+.a-IRR-controlsLabel:active,
+.a-IG-reportSummary-value:hover,
+.a-IRR-reportSummary-value:hover {
+    background          : #f1efed !important;
+    outline             : none !important;
+}
+
+/* FIX FILTER PANEL ISSUES ON 24.1 */
+li.a-IG-controls-item,
+.a-IG-controls-item--controlBreak,
+.a-IG-controls-cell.a-IG-controls-cell--remove {
+    background          : transparent;
+}
+span.a-Icon.a-IG-controlsIcon {
+    color               : #fff;
+}
+.a-IG-controls-cell.a-IG-controls-cell--label,
+.a-IG-reportSummary-value,
+.a-IRR-reportSummary-value {
+    background          : #F5F4F2 !important;
+}
+.a-IG-controls-cell:first-child,
+.a-IRR-controls-cell:first-child,
+.a-IG-controls-cell:nth-child(2),
+.a-IRR-controls-cell:nth-child(2),
+.a-IG-reportSummary-icon,
+.a-IRR-reportSummary-icon {
+    padding-inline-end      : 0.5rem !important;
+    padding-inline-start    : 0.5rem !important;
+}
+
+/* FIX GRID CONTROL BORDERS */
+span.a-IG-controls-cell.a-IG-controls-cell--label {
+    border              : 1px solid #F5F4F2;
+    border-radius       : 0 6px 6px 0;
+    border-left         : 0;
+}
+span.a-IG-controls-cell.a-IG-controls-cell--label::after {
+    display             : none;
+}
+
+/* CHANGE GRID CHECKBOXES INSIDE OF THE GRID */
+.apex-item-single-checkbox input:checked+.u-checkbox,
+.apex-item-single-checkbox input:checked+label,
+.u-checkbox.is-checked {
+    background-color    : #464237;
+    color               : #fff;
+}
+
+/* HIDE READONLY CHECKBOXES */
+td.a-GV-cell.is-readonly.HIDE_READONLY_CHECKBOXES > span.u-checkbox {
+  display               : none;
+}
 
 /* FIX MISSING BORDER ON GRID HEADER */
 th.a-GV-header {
     border-left         : 1px solid var(--a-gv-header-cell-border-color);
     border-bottom       : 2px solid var(--a-gv-header-cell-border-color);
+}
+
+/* HIDE "1 SELECTED ROW" NOTE */
+.a-GV-footer .a-GV-status {
+    display             : none;
+}
+
+/* REMOVE THE SHADE UNDER GRID HEADER */
+.a-GV-hdr.a-GV-hdr--fixed:after {
+    background          : none;
 }
 
 
@@ -405,29 +842,108 @@ tr.a-GV-row.is-updated td,
 tr.a-GV-row.is-updated th {
     background          : white !important;
 }
-tr.a-GV-row.is-selected td,
-tr.a-GV-row.is-selected th {
-    background          : #F5F4F2 !important;
-}
+tr.a-GV-row.is-hover th,
 tr.a-GV-row.is-hover td,
-tr.a-GV-row.is-hover th {
+/* READ ONLY GRID CELLS + ROW SELECTORS */
+tr.a-GV-row.is-hover td.is-readonly,
+tr.a-GV-row.is-selected td.is-readonly,
+tr.a-GV-row.is-selected td.a-GV-cell.is-readonly,
+tr.a-GV-row.is-selected th.a-GV-cell.a-GV-selHeader,
+tr.a-GV-row.is-selected td.a-GV-cell.has-button.a-GV-frozen {
     background          : #F5F4F2 !important;
 }
+/* SELECTED ROW + HOVER */
+tr.a-GV-row.is-selected td,
+tr.a-GV-row.is-selected th,
 tr.a-GV-row.is-selected.is-hover td,
 tr.a-GV-row.is-selected.is-hover th {
-    background          : #E9E7E7 !important;
+    background          : #f7f5ed !important;
+    background          : #e3e8eb !important;
+    background          : #dae0e4 !important;
+    background          : #bacbdb !important;
+    background          : #cead6d !important;
+    background          : #deb64d !important;
+    background          : #e7cd78 !important;
 }
-tr.a-GV-row.is-selected td.is-readonly,
-tr.a-GV-row.is-hover td.is-readonly {
-    background          : #FBFAF8 !important;
-}
-
-
 
 /* LIGHTER CHECKED CHECKBOXES IN GRID */
 .apex-item-single-checkbox input:checked+.u-checkbox,
 .apex-item-single-checkbox input:checked+label, .u-checkbox.is-checked {
     --a-checkbox-background-color: #555;
+}
+td.a-GV-cell.is-readonly > span.u-checkbox,
+td.a-GV-cell.is-readonly > span.u-checkbox:before,
+td.a-GV-cell.is-readonly > span.u-checkbox:after,
+td.a-GV-cell.is-readonly > span.u-radio,
+td.a-GV-cell.is-readonly > span.u-radio:before,
+td.a-GV-cell.is-readonly > span.u-radio:after {
+    outline             : none !important;
+}
+
+/* BORDER INSIDE OF THE EDITED CELL */
+div.a-GV-columnItem input,
+/* BORDER INSIDE OF THE FOCUSED CELL */
+tr.a-GV-row.is-selected td.a-GV-cell.is-focused,
+tr.a-GV-row.is-selected th.a-GV-cell.is-focused,
+tr.a-GV-row.is-hover td.a-GV-cell.is-focused,
+tr.a-GV-row.is-hover th.a-GV-cell.is-focused {
+    box-shadow          : 0px 0px 0px 1px #555 inset !important;
+}
+tr.a-GV-row td button {
+    outline             : none !important;
+}
+
+
+
+/*
+ * FORM FIELDS / PAGE ITEMS
+ */
+
+/* BORDERS ON ACTIVE FIELDS */
+.apex-item-combobox:focus,
+.apex-item-combobox:focus-within,
+.apex-item-multi:focus,
+.apex-item-multi:focus-within,
+.apex-item-select:focus,
+.apex-item-select:focus-within,
+.apex-item-text:focus,
+.apex-item-text:focus-within,
+.apex-item-textarea:focus,
+.apex-item-textarea:focus-within,
+.apex-item-comboselect:focus,
+.apex-item-comboselect:focus-within,
+.datetimepicker_newMonth:focus,
+.datetimepicker_newMonth:focus-within,
+.u-TF-item--select:focus,
+.u-TF-item--select:focus-within,
+.u-TF-item--text:focus,
+.u-TF-item--text:focus-within,
+select.group_selectlist:focus,
+select.group_selectlist:focus-within,
+select.listmanager:focus,
+select.listmanager:focus-within {
+    --a-field-input-state-shadow        : inset 0 0 0 1px #738830;
+    --a-field-input-state-border-color  : #738830;
+}
+/* LABEL INSIDE OF ACTIVE FIELD */
+div.t-Form-fieldContainer.is-active > div.t-Form-labelContainer > label.t-Form-label {
+    color               : #000;
+}
+
+/* SELECT MULTIPLE VALUES
+--a-field-input-state-border-color
+ */
+div.t-Form-fieldContainer:focus-within .t-Form-itemWrapper > * > *,
+div.t-Form-fieldContainer:focus-within .t-Form-itemWrapper > * > textarea.apex-item-textarea {
+    border                              : 1px solid #738830 !important;
+    --a-field-input-state-shadow        : inset 0 0 0 1px #738830;
+}
+.TABS div.t-Form-fieldContainer:focus-within .t-Form-itemWrapper > * > *,
+div.t-Form-fieldContainer:focus-within .t-Form-itemWrapper > * > * {
+    border              : 0 !important;
+}
+.t-Form-fieldContainer--floatingLabel:focus-within .t-Form-label {
+    color               : #000;
 }
 
 
@@ -467,10 +983,14 @@ ul.DASH_LIST li:before {
 
 
 
-/* SELECTED TEXT BACKGROUND */
+/* SELECTED TEXT BACKGROUND, NEED TO BE SEPARATED */
+::-moz-selection {
+    color               : #fff !important;
+    background-color    : #555 !important;
+}
 ::selection {
-  color                 : #fff;
-  background            : #555;
+    color               : #fff !important;
+    background-color    : #555 !important;
 }
 
 
@@ -509,16 +1029,17 @@ span.apex-page-success .t-Alert-icon .t-Icon {
     padding             : 1rem 2.5rem 1rem 0.5rem;
 }
 
-/* COLORS */
-span.apex-page-success .t-Alert.t-Alert--success {
-    background          : #518D54 !important;
-}
-span.apex-page-error .t-Alert--colorBG.t-Alert--warning {
-    background          : #C9261D;
-}
-span.apex-page-error .t-Alert--colorBG.t-Alert--yellow {
-    background          : #ecad01;
-}
+/* COLORS FOR ICONS, COLORS FOR CARD BADGES */
+.RED,       span.fa.RED {       color : #e83100; }  .a-CardView-badge.RED {     background : #e83100;   color : #fff; }
+.GREY,      span.fa.GREY {      color : #999; }     .a-CardView-badge.GREY {    background : #999;      color : #fff; }
+.VIOLET,    span.fa.VIOLET {    color : #5F4FB5; }  .a-CardView-badge.VIOLET {  background : #5F4FB5;   color : #fff; }
+.GREEN,     span.fa.GREEN {     color : #518D54; }
+.YELLOW,    span.fa.YELLOW {    color : #ecad01; }
+
+/* COLORS FOR NOTIFICATIONS */
+span.apex-page-success .t-Alert.t-Alert--success {          background : #518D54 !important; }
+span.apex-page-error .t-Alert--colorBG.t-Alert--warning {   background : #C9261D; }
+span.apex-page-error .t-Alert--colorBG.t-Alert--yellow {    background : #ecad01; }
 
 /* WARNING NOTIFICATION */
 button.a-Button.a-Button--notification.js-showDetails {
@@ -593,18 +1114,35 @@ button.TRANSPARENT:hover {
 
 /* SHOW CURRENT VALUE UNDER SWITCH BUTTONS (ACTION MENU) */
 button.TRANSPARENT .t-Button-label {
-    display         : inline-grid;
-    text-align      : left;
+    display             : inline-grid;
+    text-align          : left;
 }
 span.CURRENT {
-    font-size       : 0.7rem;
-    font-weight     : 300;
-    color           : #555;
-    margin-top      : -0.3rem;
-    margin-bottom   : -1.2rem;
+    font-size           : 0.7rem;
+    font-weight         : 300;
+    color               : #555;
+    margin-top          : -0.3rem;
+    margin-bottom       : -1.2rem;
 }
 span.CURRENT:hover {
-    color           : #222;
+    color               : #222;
+}
+
+/* RESTYLE SWITCH BACKGROUND */
+.a-Switch input[type=checkbox]:checked+.a-Switch-toggle {
+    --a-switch-background-color         : #518D54;
+    --a-switch-toggle-background-color  : #fff;
+}
+.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .a-Switch-toggle,
+.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .t-Form-itemWrapper .t-Form-helpButton {
+    --a-switch-background-color         : #333 !important;
+}
+
+/* LABEL ON SINGLE CHECKBOX */
+.apex-item-single-checkbox > label.u-checkbox {
+    background          : transparent !important;
+    color               : #222 !important;
+    font-weight         : 600 !important;
 }
 
 
@@ -641,5 +1179,77 @@ span.CURRENT:hover {
 }
 .t-Comments-comment .GREY {
     color               : #888;
+}
+
+
+
+/* FIX NAV BUTTONS */
+.t-Header-navBar button,
+.t-Header-navBar button:hover {
+    background          : transparent;
+    outline             : none !important;
+}
+
+
+
+/* FIX TOO SMALL TEXT ON CONFIRM DIALOGS */
+.a-AlertMessage-details {
+    font-size           : 1rem;
+    line-height         : 1.25rem;
+}
+
+/* FIX TOO SMALL VALIDATION ERROR TEXT */
+.t-Form-error {
+    color               : #222;
+    font-size           : 0.85rem;
+    line-height         : 1rem;
+}
+
+
+
+/* HELP PAGE */
+.P980_HELP_CONTENT {
+    padding             : 0.5rem 0;
+}
+.P980_HELP_CONTENT p,
+.P980_HELP_CONTENT ul li,
+.P980_HELP_CONTENT ul li:before {
+    font-size           : 1rem;
+    line-height         : 1.5rem;
+}
+.P980_HELP_CONTENT ul {
+    list-style-type     : none;
+    margin              : 0.5rem 0 0.5rem 3rem;
+}
+.P980_HELP_CONTENT ul li:before {
+    content             : '\2014';  /* mdash */
+    content             : '\2013';  /* ndash */
+    position            : absolute;
+    margin              : 0 3rem 0 -1.5rem;
+}
+
+.P980_HELP_CONTENT h2 {
+    font-size           : 1.1rem;
+    margin-top          : 2rem;
+}
+.P980_HELP_CONTENT h3 {
+    font-size           : 1.05rem;
+}
+
+
+
+/* TO RENDER USER CARD */
+.USER_CARD .a-CardView-items--row .has-media {
+    grid-template-columns: 200px minmax(0,var(--a-cv-icon-spacer,44px)) 1fr minmax(0,auto);
+}
+.USER_CARD .a-CardView-media--body {
+    margin              : 0;
+}
+.USER_CARD .a-CardView-items--row .a-CardView-media {
+    align-items         : flex-start;
+    background          : transparent;
+}
+.USER_CARD .a-CardView-mediaImg {
+    border-radius       : 8px;
 }
 
