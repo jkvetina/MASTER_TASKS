@@ -1,8 +1,8 @@
 CREATE OR REPLACE FORCE VIEW tsk_p110_cards_v AS
 WITH x AS (
     SELECT
-        tsk_app.get_client_id()     AS client_id,
-        tsk_app.get_project_id()    AS project_id,
+        core.get_item('P0_CLIENT_ID')   AS client_id,
+        core.get_item('P0_PROJECT_ID')  AS project_id,
         --
         core.get_number_item('P110_SOURCE_BOARD')   AS board_id,
         core.get_item('P110_SOURCE_SWIMLANE')       AS swimlane_id,

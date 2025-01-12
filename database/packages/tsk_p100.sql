@@ -5,25 +5,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         v_card_id           tsk_cards.card_id%TYPE;
     BEGIN
         -- load last project/board on login
-        IF tsk_app.get_board_id() IS NULL THEN
-            FOR c IN (
-                SELECT t.*
-                FROM tsk_recent t
-                WHERE t.user_id = core.get_user_id()
-                ORDER BY t.updated_at DESC NULLS LAST
-                FETCH FIRST 1 ROWS ONLY
-            ) LOOP
-                tsk_app.set_context (
-                    in_client_id        => c.client_id,
-                    in_project_id       => c.project_id,
-                    in_board_id         => c.board_id,
-                    in_swimlane_id      => c.swimlane_id,
-                    in_status_id        => c.status_id,
-                    in_category_id      => c.category_id,
-                    in_owner_id         => c.owner_id
-                );
-            END LOOP;
-        END IF;
+        NULL;
 
         -- set page items
         core.set_item('P100_CARD_LINK',     '');
@@ -49,12 +31,21 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 b.board_name,
                 b.is_favorite
             FROM tsk_available_boards_v b
-            WHERE b.board_id = tsk_app.get_board_id()
+            WHERE b.board_id = core.get_item('P0_BOARD_ID')
         ) LOOP
-            core.set_item('P100_HEADER',            b.board_name || ' Board');
+            core.set_item('P100_HEADER',            'Cards on ' || b.board_name);
             core.set_item('P100_IS_FAVORITE',       b.is_favorite);
             core.set_item('P100_BOOKMARK_ICON',     'fa-bookmark' || CASE WHEN b.is_favorite IS NULL THEN '-o' END);
         END LOOP;
+
+        -- disable buttons
+        IF core.get_item('P100_SHOW') IS NULL THEN
+            core.set_item('P100_SHOW', 'COLUMNS');
+        END IF;
+        --
+        core.set_item('P100_DISABLE_COLUMNS',   CASE WHEN core.get_item('P100_SHOW') = 'COLUMNS'    THEN 'disabled="disabled"' END);
+        core.set_item('P100_DISABLE_LIST',      CASE WHEN core.get_item('P100_SHOW') = 'LIST'       THEN 'disabled="disabled"' END);
+        core.set_item('P100_DISABLE_CARDS',     CASE WHEN core.get_item('P100_SHOW') = 'CARDS'      THEN 'disabled="disabled"' END);
         --
     EXCEPTION
     WHEN core.app_exception THEN
@@ -81,11 +72,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
     FUNCTION generate_board
     RETURN CLOB
     AS
-        in_client_id        CONSTANT tsk_cards.client_id%TYPE       := tsk_app.get_client_id();
-        in_project_id       CONSTANT tsk_cards.project_id%TYPE      := tsk_app.get_project_id();
-        in_board_id         CONSTANT tsk_cards.board_id%TYPE        := tsk_app.get_board_id();
-        in_swimlane_id      CONSTANT tsk_cards.swimlane_id%TYPE     := tsk_app.get_swimlane_id();
-        in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := tsk_app.get_owner_id();
+        in_client_id        CONSTANT tsk_cards.client_id%TYPE       := core.get_item('P0_CLIENT_ID');
+        in_project_id       CONSTANT tsk_cards.project_id%TYPE      := core.get_item('P0_PROJECT_ID');
+        in_board_id         CONSTANT tsk_cards.board_id%TYPE        := core.get_item('P0_BOARD_ID');
+        in_swimlane_id      CONSTANT tsk_cards.swimlane_id%TYPE     := core.get_item('P0_SWIMLANE_ID');
+        in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_item('P0_OWNER_ID');
         --
         v_statuses          PLS_INTEGER;
         v_swimlanes         PLS_INTEGER;
@@ -99,8 +90,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         FROM tsk_statuses s
         WHERE s.client_id       = in_client_id
             AND s.project_id    = in_project_id
-            AND s.is_active     = 'Y'
-            AND (s.row_order#   IS NULL OR s.row_order# = 1);
+            AND s.is_active     = 'Y';
 
         -- calculate number of swimlanes
         SELECT COUNT(w.swimlane_id)
@@ -152,12 +142,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     d.count_done,
                     --
                     SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS user_name,
-                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST)    AS r#,
-                    ROW_NUMBER() OVER (PARTITION BY s.col_order# ORDER BY s.row_order# NULLS LAST) AS row#,
-                    GREATEST(COUNT(s.row_order#) OVER (PARTITION BY s.col_order#), 1) AS row_count
+                    --ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST) AS row#,
+                    --GREATEST(COUNT(s.order#) OVER (), 1) AS row_count
+                    1 AS row#,
+                    1 AS row_count
                     --
                 FROM tsk_lov_statuses_v s
-                LEFT JOIN app_users_v u
+                LEFT JOIN app_users_vpd_v u
                     ON u.user_id = in_owner_id
                 LEFT JOIN (
                     SELECT
@@ -304,11 +295,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         rec                 tsk_boards_fav%ROWTYPE;
     BEGIN
         rec.user_id         := core.get_user_id();
-        rec.client_id       := tsk_app.get_client_id();
-        rec.project_id      := tsk_app.get_project_id();
-        rec.board_id        := tsk_app.get_board_id();
-        rec.swimlane_id     := tsk_app.get_swimlane_id();
-        rec.owner_id        := tsk_app.get_owner_id();
+        rec.client_id       := core.get_item('P0_CLIENT_ID');
+        rec.project_id      := core.get_item('P0_PROJECT_ID');
+        rec.board_id        := core.get_item('P0_BOARD_ID');
+        rec.swimlane_id     := core.get_item('P0_SWIMLANE_ID');
+        rec.owner_id        := core.get_item('P0_OWNER_ID');
         --
         BEGIN
             SELECT t.*

@@ -8,36 +8,35 @@ CREATE TABLE tsk_statuses (
     is_badge                        CHAR(1),
     is_active                       CHAR(1),
     is_default                      CHAR(1),
-    col_order#                      NUMBER(4,0),
-    row_order#                      NUMBER(4,0),
+    order#                          NUMBER(4,0),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
     CONSTRAINT ch_tsk_statuses
         CHECK (
             is_active = 'Y' OR is_active IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT ch_tsk_statuses_default
         CHECK (
             is_default = 'Y' OR is_default IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT ch_tsk_statuses_color
         CHECK (
             is_colored = 'Y' OR is_colored IS NULL
-        ),
+        ) ENABLE,
+    --
+    CONSTRAINT ch_tsk_statuses_badge
+        CHECK (
+            is_badge='Y' OR is_badge IS NULL
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_status
         PRIMARY KEY (
             client_id,
             project_id,
             status_id
-        ),
-    --
-    CONSTRAINT ch_tsk_statuses_badge
-        CHECK (
-            is_badge='Y' OR is_badge IS NULL
         ),
     --
     CONSTRAINT fk_tsk_status_project
@@ -63,6 +62,5 @@ COMMENT ON COLUMN tsk_statuses.is_colored       IS '';
 COMMENT ON COLUMN tsk_statuses.is_badge         IS '';
 COMMENT ON COLUMN tsk_statuses.is_active        IS '';
 COMMENT ON COLUMN tsk_statuses.is_default       IS '';
-COMMENT ON COLUMN tsk_statuses.col_order#       IS '';
-COMMENT ON COLUMN tsk_statuses.row_order#       IS '';
+COMMENT ON COLUMN tsk_statuses.order#           IS '';
 

@@ -19,6 +19,7 @@ WITH t AS (
         t.updated_by,
         t.updated_at
     FROM tsk_cards t
+    /*
     JOIN tsk_auth_context_v x
         ON x.client_id      = t.client_id
         AND x.project_id    = t.project_id
@@ -27,6 +28,7 @@ WITH t AS (
         AND (x.status_id    = t.status_id       OR x.status_id      IS NULL)
         AND (x.category_id  = t.category_id     OR x.category_id    IS NULL OR (x.category_id = '!' AND t.category_id   IS NULL))
         AND (x.owner_id     = t.owner_id        OR x.owner_id       IS NULL OR (x.owner_id    = '!' AND t.owner_id      IS NULL))
+    */
 ),
 p AS (
     -- to calculate cards progress

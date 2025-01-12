@@ -1,7 +1,7 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_swimlanes_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        tsk_app.get_swimlane_id()   AS swimlane_id
+        core.get_item('P0_SWIMLANE_ID') AS swimlane_id
     FROM DUAL
 )
 SELECT

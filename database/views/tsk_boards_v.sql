@@ -1,9 +1,9 @@
 CREATE OR REPLACE FORCE VIEW tsk_boards_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        a.client_id,
-        a.project_id
-    FROM tsk_auth_context_v a
+        t.client_id,
+        t.project_id
+    FROM tsk_available_projects_v t
 ),
 t AS (
     SELECT /*+ MATERIALIZE */

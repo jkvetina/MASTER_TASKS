@@ -69,8 +69,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_p110 AS
             t.updated_by        = v_target.updated_by,
             t.updated_at        = v_target.updated_at
         WHERE 1 = 1
-            AND t.client_id     = tsk_app.get_client_id()
-            AND t.project_id    = tsk_app.get_project_id()
+            AND t.client_id     = core.get_item('P0_CLIENT_ID')
+            AND t.project_id    = core.get_item('P0_PROJECT_ID')
             AND t.card_id       IN (
                 SELECT
                     c.c001 AS card_id

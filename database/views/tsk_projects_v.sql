@@ -1,8 +1,8 @@
 CREATE OR REPLACE FORCE VIEW tsk_projects_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        a.client_id
-    FROM tsk_auth_context_v a
+        t.client_id
+    FROM tsk_available_clients_v t
 ),
 t AS (
     SELECT /*+ MATERIALIZE */

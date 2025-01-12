@@ -9,8 +9,12 @@ SELECT
     b.project_name || CASE WHEN t.is_active IS NULL THEN ' [Not Active]' END AS group_name,
     --
     LPAD('0', ROW_NUMBER() OVER (
-        PARTITION BY t.client_id, t.project_id
-        ORDER BY t.col_order# NULLS LAST, t.row_order# NULLS LAST, t.status_id
+        PARTITION BY
+            t.client_id,
+            t.project_id
+        ORDER BY
+            t.order# NULLS LAST,
+            t.status_id
         ), '0') AS order#
     --
 FROM tsk_statuses t

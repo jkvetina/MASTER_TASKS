@@ -137,7 +137,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         DELETE FROM tsk_swimlanes       WHERE client_id = in_client_id AND project_id = in_project_id;
         --DELETE FROM tsk_cards           WHERE client_id = in_client_id AND project_id = in_project_id;
         DELETE FROM tsk_boards_fav      WHERE client_id = in_client_id AND project_id = in_project_id;
-        DELETE FROM tsk_recent          WHERE client_id = in_client_id AND project_id = in_project_id;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -201,7 +200,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         -- need to be sorted properly
         DELETE FROM tsk_boards          WHERE board_id = in_board_id;
         DELETE FROM tsk_boards_fav      WHERE board_id = in_board_id;
-        DELETE FROM tsk_recent          WHERE board_id = in_board_id;
         --DELETE FROM tsk_cards           WHERE board_id = in_board_id;
     EXCEPTION
     WHEN core.app_exception THEN
@@ -912,33 +910,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
     BEGIN
         -- need to be sorted properly
         DELETE FROM tsk_repo_endpoints              WHERE repo_id = in_repo_id AND owner_id = in_owner_id;
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error();
-    END;
-
-
-
-    PROCEDURE save_recent (
-        rec                 IN OUT NOCOPY   tsk_recent%ROWTYPE
-    )
-    AS
-    BEGIN
-        -- upsert record
-        IF rec.client_id IS NOT NULL AND rec.project_id IS NOT NULL THEN
-            UPDATE tsk_recent t
-            SET ROW = rec
-            WHERE t.user_id             = rec.user_id
-                AND t.client_id         = rec.client_id
-                AND t.project_id        = rec.project_id;
-            --
-            IF SQL%ROWCOUNT = 0 THEN
-                INSERT INTO tsk_recent
-                VALUES rec;
-            END IF;
-        END IF;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

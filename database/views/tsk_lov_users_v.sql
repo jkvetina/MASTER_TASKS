@@ -6,7 +6,7 @@ SELECT
     --
     NVL(t.user_name, t.user_id) || ' (' || t.user_mail || ')' AS user_name__
     --
-FROM app_users_v t
+FROM app_users_vpd_v t
 WHERE t.is_active       = 'Y';
 /
 

@@ -1,7 +1,7 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_statuses_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        tsk_app.get_status_id()     AS status_id
+        core.get_item('P0_STATUS_ID')   AS status_id
     FROM DUAL
 )
 SELECT
@@ -15,12 +15,13 @@ SELECT
     CASE WHEN x.status_id = t.status_id THEN 'Y' END AS is_current,
     --
     LPAD('0', ROW_NUMBER() OVER (
-        PARTITION BY t.client_id, t.project_id
-        ORDER BY t.col_order# NULLS LAST, t.row_order# NULLS LAST, t.status_id
-        ), '0') AS order#,
-    --
-    t.col_order#,
-    t.row_order#
+        PARTITION BY
+            t.client_id,
+            t.project_id
+        ORDER BY
+            t.order# NULLS LAST,
+            t.status_id
+        ), '0') AS order#
     --
 FROM tsk_statuses t
 CROSS JOIN x

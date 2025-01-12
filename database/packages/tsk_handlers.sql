@@ -23,6 +23,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         -- update primary key back to APEX grid for proper row refresh
         core.set_grid_data('OLD_CLIENT_ID',     rec.client_id);
         --
+        IF in_action = 'C' THEN
+            core.set_item('P0_CLIENT_ID', rec.client_id);
+        END IF;
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -56,8 +60,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
 
         -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
-        core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
+        core.set_grid_data('OLD_CLIENT_ID',     rec.client_id);
+        core.set_grid_data('OLD_PROJECT_ID',    rec.project_id);
+        --
+        IF in_action = 'C' THEN
+            core.set_item('P0_CLIENT_ID',   rec.client_id);
+            core.set_item('P0_PROJECT_ID',  rec.project_id);
+        END IF;
         --
     EXCEPTION
     WHEN core.app_exception THEN
@@ -123,6 +132,12 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
             END IF;
         END IF;
         --
+        IF in_action = 'C' THEN
+            core.set_item('P0_CLIENT_ID',   rec.client_id);
+            core.set_item('P0_PROJECT_ID',  rec.project_id);
+            core.set_item('P0_BOARD_ID',    rec.board_id);
+        END IF;
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -147,8 +162,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');
         rec.is_badge            := core.get_grid_data('IS_BADGE');
-        rec.col_order#          := core.get_grid_data('COL_ORDER#');
-        rec.row_order#          := core.get_grid_data('ROW_ORDER#');
+        rec.order#              := core.get_grid_data('ORDER#');
         --
         tsk_tapi.statuses (rec,
             in_action               => in_action,
@@ -299,16 +313,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
 
         -- change record in table
-        rec.client_id           := tsk_app.get_client_id();
-        rec.project_id          := tsk_app.get_project_id();
+        rec.client_id           := core.get_item('P0_CLIENT_ID');
+        rec.project_id          := core.get_item('P0_PROJECT_ID');
         rec.status_id           := core.get_grid_data('STATUS_ID');
         rec.status_name         := core.get_grid_data('STATUS_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');
         rec.is_badge            := core.get_grid_data('IS_BADGE');
-        rec.col_order#          := core.get_grid_data('COL_ORDER#');
-        rec.row_order#          := core.get_grid_data('ROW_ORDER#');
+        rec.order#              := core.get_grid_data('ORDER#');
         --
         BEGIN
             INSERT INTO tsk_statuses
@@ -348,8 +361,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
 
         -- change record in table
-        rec.client_id           := tsk_app.get_client_id();
-        rec.project_id          := tsk_app.get_project_id();
+        rec.client_id           := core.get_item('P0_CLIENT_ID');
+        rec.project_id          := core.get_item('P0_PROJECT_ID');
         rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
         rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
@@ -393,8 +406,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
 
         -- change record in table
-        rec.client_id           := tsk_app.get_client_id();
-        rec.project_id          := tsk_app.get_project_id();
+        rec.client_id           := core.get_item('P0_CLIENT_ID');
+        rec.project_id          := core.get_item('P0_PROJECT_ID');
         rec.category_id         := core.get_grid_data('CATEGORY_ID');
         rec.category_name       := core.get_grid_data('CATEGORY_NAME');
         rec.category_group      := core.get_grid_data('CATEGORY_GROUP');
@@ -434,8 +447,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_swimlanes
     AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := core.get_item('P0_CLIENT_ID');
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := core.get_item('P0_PROJECT_ID');
     BEGIN
         FOR s IN (
             SELECT
@@ -471,8 +484,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_statuses
     AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := core.get_item('P0_CLIENT_ID');
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := core.get_item('P0_PROJECT_ID');
     BEGIN
         -- fix columns
         FOR s IN (
@@ -480,92 +493,41 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
                 t.status_id,
                 t.client_id,
                 t.project_id,
-                c.old_col_order#,
-                c.new_col_order#
+                c.old_order#,
+                c.new_order#
                 --
             FROM tsk_statuses t
             JOIN (
                 SELECT
                     t.client_id,
                     t.project_id,
-                    t.col_order#    AS old_col_order#,
+                    t.order#    AS old_order#,
                     --
                     ROW_NUMBER() OVER (
                         PARTITION BY t.client_id, t.project_id
-                        ORDER BY t.col_order#
-                    ) AS new_col_order#
+                        ORDER BY t.order#
+                    ) AS new_order#
                     --
                 FROM tsk_statuses t
                 WHERE 1 = 1
                     AND t.client_id     = in_client_id
                     AND t.project_id    = in_project_id
-                    AND t.col_order#    IS NOT NULL
+                    AND t.order#        IS NOT NULL
                 GROUP BY
                     t.client_id,
-                    t.project_id,
-                    t.col_order#
+                    t.project_id
             ) c
                 ON c.client_id          = t.client_id
                 AND c.project_id        = t.project_id
-                AND c.old_col_order#    = t.col_order#
+                AND c.old_order#        = t.order#
             WHERE 1 = 1
                 AND t.client_id         = in_client_id
                 AND t.project_id        = in_project_id
-                AND t.col_order#        IS NOT NULL
-                AND c.old_col_order#    != c.new_col_order#
+                AND t.order#            IS NOT NULL
+                AND c.old_order#        != c.new_order#
         ) LOOP
             UPDATE tsk_statuses t
-            SET t.col_order#        = s.new_col_order#
-            WHERE t.status_id       = s.status_id
-                AND t.client_id     = s.client_id
-                AND t.project_id    = s.project_id;
-        END LOOP;
-
-        -- fix rows
-        FOR s IN (
-            SELECT
-                t.status_id,
-                t.client_id,
-                t.project_id,
-                c.old_row_order#,
-                c.new_row_order#
-                --
-            FROM tsk_statuses t
-            JOIN (
-                SELECT
-                    t.client_id,
-                    t.project_id,
-                    t.col_order#,
-                    t.row_order#    AS old_row_order#,
-                    --
-                    ROW_NUMBER() OVER (
-                        PARTITION BY t.client_id, t.project_id, t.col_order#
-                        ORDER BY t.row_order#
-                    ) AS new_row_order#
-                    --
-                FROM tsk_statuses t
-                WHERE 1 = 1
-                    AND t.client_id     = in_client_id
-                    AND t.project_id    = in_project_id
-                    AND t.row_order#    IS NOT NULL
-                GROUP BY
-                    t.client_id,
-                    t.project_id,
-                    t.col_order#,
-                    t.row_order#
-            ) c
-                ON c.client_id          = t.client_id
-                AND c.project_id        = t.project_id
-                AND c.col_order#        = t.col_order#
-                AND c.old_row_order#    = t.row_order#
-            WHERE 1 = 1
-                AND t.client_id         = in_client_id
-                AND t.project_id        = in_project_id
-                AND t.row_order#        IS NOT NULL
-                AND c.old_row_order#    != c.new_row_order#
-        ) LOOP
-            UPDATE tsk_statuses t
-            SET t.row_order#        = s.new_row_order#
+            SET t.order#            = s.new_order#
             WHERE t.status_id       = s.status_id
                 AND t.client_id     = s.client_id
                 AND t.project_id    = s.project_id;
@@ -581,8 +543,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_categories
     AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := core.get_item('P0_CLIENT_ID');
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := core.get_item('P0_PROJECT_ID');
     BEGIN
         FOR s IN (
             SELECT
@@ -618,8 +580,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_sequences
     AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := core.get_item('P0_CLIENT_ID');
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := core.get_item('P0_PROJECT_ID');
     BEGIN
         FOR s IN (
             SELECT
@@ -652,8 +614,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
     PROCEDURE reorder_boards
     AS
-        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := tsk_app.get_client_id();
-        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := tsk_app.get_project_id();
+        in_client_id            CONSTANT tsk_cards.client_id%TYPE   := core.get_item('P0_CLIENT_ID');
+        in_project_id           CONSTANT tsk_cards.project_id%TYPE  := core.get_item('P0_PROJECT_ID');
     BEGIN
         FOR s IN (
             SELECT

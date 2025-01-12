@@ -1,9 +1,10 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_owners_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        tsk_app.get_client_id()     AS client_id,
-        tsk_app.get_project_id()    AS project_id,
-        tsk_app.get_owner_id()      AS owner_id
+        core.get_item('P0_CLIENT_ID')   AS client_id,
+        core.get_item('P0_PROJECT_ID')  AS project_id,
+        --
+        NULL AS owner_id
     FROM DUAL
 )
 SELECT DISTINCT

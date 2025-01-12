@@ -1,9 +1,9 @@
 CREATE OR REPLACE FORCE VIEW tsk_statuses_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        tsk_app.get_client_id()     AS client_id,
-        tsk_app.get_project_id()    AS project_id,
-        tsk_app.get_board_id()      AS board_id
+        core.get_item('P0_CLIENT_ID')   AS client_id,
+        core.get_item('P0_PROJECT_ID')  AS project_id,
+        core.get_item('P0_BOARD_ID')    AS board_id
     FROM DUAL
 ),
 c AS (
@@ -32,8 +32,7 @@ SELECT
     t.status_id,
     t.status_name,
     t.status_group,
-    t.col_order#,
-    t.row_order#,
+    t.order#,
     t.is_active,
     t.is_default,
     t.is_colored,

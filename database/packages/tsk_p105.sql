@@ -29,6 +29,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             ) LOOP
                 core.set_item('P105_PREV_CARD_ID', NULLIF(c.prev_card, c.card_id));
                 core.set_item('P105_NEXT_CARD_ID', NULLIF(c.next_card, c.card_id));
+                --
+                core.set_item('P105_DISABLE_PREV', CASE WHEN NULLIF(c.prev_card, c.card_id) IS NULL THEN 'disabled="disabled"' END);
+                core.set_item('P105_DISABLE_NEXT', CASE WHEN NULLIF(c.next_card, c.card_id) IS NULL THEN 'disabled="disabled"' END);
+                --
             END LOOP;
 
             -- calculate tab badges
@@ -42,14 +46,14 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             END LOOP;
             --
             core.set_item('P105_BADGE_DESC', CASE WHEN LENGTH(rec.card_desc) > 0
-                THEN ' &nbsp;<span class="BADGE ICON"><span class="fa fa-warning" style="color: orange;"></span></span>'
+                THEN ' &nbsp;<span class="BADGE ICON"><span class="fa fa-chevron-circle-down" style="color: #555;"></span></span>'
                 END);
             --
         ELSE
             -- get defaults for new card
-            core.set_item('P105_CLIENT_ID',     tsk_app.get_client_id());
-            core.set_item('P105_PROJECT_ID',    tsk_app.get_project_id());
-            core.set_item('P105_BOARD_ID',      tsk_app.get_board_id());
+            core.set_item('P105_CLIENT_ID',     core.get_item('P0_CLIENT_ID'));
+            core.set_item('P105_PROJECT_ID',    core.get_item('P0_PROJECT_ID'));
+            core.set_item('P105_BOARD_ID',      core.get_item('P0_BOARD_ID'));
             core.set_item('P105_OWNER_ID',      core.get_user_id());
             --
             FOR c IN (
@@ -71,7 +75,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             FOR c IN (
                 SELECT t.sequence_id
                 FROM tsk_boards_v t
-                WHERE t.board_id = tsk_app.get_board_id()
+                WHERE t.board_id = core.get_item('P0_BOARD_ID')
             ) LOOP
                 core.set_item('P105_SEQUENCE', c.sequence_id);
             END LOOP;
@@ -79,7 +83,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
 
         -- overwrite some page items
         core.set_item('P105_CARD_LINK',     tsk_nav.get_card_link(rec.card_id, 'EXTERNAL'));
-        core.set_item('P105_AUDIT',         TO_CHAR(rec.updated_at, 'YYYY-MM-DD HH24:MI') || ' ' || rec.updated_by);
+        --core.set_item('P105_AUDIT',         TO_CHAR(rec.updated_at, 'YYYY-MM-DD HH24:MI') || ' ' || rec.updated_by);
         core.set_item('P105_TAGS',          LTRIM(RTRIM(REPLACE(rec.tags, ':', ' '))));
 
         -- merge target
@@ -574,7 +578,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
             JOIN tsk_cards t
                 ON t.card_id        = f.card_id
             WHERE f.file_id         = in_file_id
-                AND t.project_id    = tsk_app.get_project_id();
+                AND t.project_id    = core.get_item('P0_PROJECT_ID');
         EXCEPTION
         WHEN NO_DATA_FOUND THEN
             core.raise_error('FILE_NOT_FOUND');
@@ -582,7 +586,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p105 AS
         --
         core.download_file (
             in_file_name        => rec.file_name,
-            in_file_mime        => rec.file_mime,
+            --in_file_mime        => rec.file_mime,
             in_file_payload     => rec.file_payload
         );
     EXCEPTION

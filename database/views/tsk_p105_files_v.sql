@@ -44,8 +44,8 @@ SELECT
         THEN ''
         END AS icon_modifier,
     --
-    app.get_user_first_name(c.updated_by)   AS user_icon,
-    app.get_user_name(c.updated_by)         AS user_name,
+    app.get_user_name(c.updated_by) AS user_icon,
+    app.get_user_name(c.updated_by) AS user_name,
     --
     ROW_NUMBER() OVER (ORDER BY c.card_id, c.updated_at DESC) AS order#
     --
