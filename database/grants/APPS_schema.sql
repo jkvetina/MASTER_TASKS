@@ -9,5 +9,4 @@ GRANT CREATE SYNONYM                    TO apps;
 GRANT CREATE TABLE                      TO apps;
 GRANT CREATE TRIGGER                    TO apps;
 GRANT CREATE VIEW                       TO apps;
-GRANT UNLIMITED TABLESPACE              TO apps;
 
