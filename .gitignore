@@ -3,3 +3,5 @@
 *.icloud
 /.temp.nosync
 /config
+*.min.*
+apex/workspace/app_groups.yaml
