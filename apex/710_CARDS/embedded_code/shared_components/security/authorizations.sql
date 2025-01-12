@@ -1,20 +1,20 @@
 -- ----------------------------------------
--- Authorization: MASTER - IS_ADMIN > Settings > PL/SQL Function Body
+-- Authorization: IS_ADMIN > Settings > PL/SQL Function Body
 
-RETURN app_auth.is_admin() = 'Y';
+RETURN master.app_auth.is_admin() = 'Y';
 
 -- ----------------------------------------
--- Authorization: MASTER - IS_DEVELOPER > Settings > PL/SQL Function Body
+-- Authorization: IS_DEVELOPER > Settings > PL/SQL Function Body
 
 RETURN core.is_developer();
 
 -- ----------------------------------------
--- Authorization: MASTER - IS_USER > Settings > PL/SQL Function Body
+-- Authorization: IS_USER > Settings > PL/SQL Function Body
 
-RETURN app_auth.is_user() = 'Y';
+RETURN master.app_auth.is_user() = 'Y';
 
 -- ----------------------------------------
--- Authorization: MASTER - IS_USER_C > Settings > PL/SQL Function Body
+-- Authorization: IS_USER_C > Settings > PL/SQL Function Body
 
 RETURN app_auth.is_user_component (
     in_component_id     => :APP_COMPONENT_ID,
@@ -24,7 +24,7 @@ RETURN app_auth.is_user_component (
 ) = 'Y';
 
 -- ----------------------------------------
--- Authorization: MASTER - IS_USER_COMPONENT > Settings > PL/SQL Function Body
+-- Authorization: IS_USER_COMPONENT > Settings > PL/SQL Function Body
 
 RETURN app_auth.is_user_component (
     in_component_id     => :APP_COMPONENT_ID,
@@ -34,7 +34,7 @@ RETURN app_auth.is_user_component (
 ) = 'Y';
 
 -- ----------------------------------------
--- Authorization: MASTER - IS_USER_D > Settings > PL/SQL Function Body
+-- Authorization: IS_USER_D > Settings > PL/SQL Function Body
 
 RETURN app_auth.is_user_component (
     in_component_id     => :APP_COMPONENT_ID,
@@ -44,7 +44,7 @@ RETURN app_auth.is_user_component (
 ) = 'Y';
 
 -- ----------------------------------------
--- Authorization: MASTER - IS_USER_U > Settings > PL/SQL Function Body
+-- Authorization: IS_USER_U > Settings > PL/SQL Function Body
 
 RETURN app_auth.is_user_component (
     in_component_id     => :APP_COMPONENT_ID,
@@ -54,7 +54,7 @@ RETURN app_auth.is_user_component (
 ) = 'Y';
 
 -- ----------------------------------------
--- Authorization: MASTER - NOBODY > Settings > PL/SQL Function Body
+-- Authorization: NOBODY > Settings > PL/SQL Function Body
 
 RETURN FALSE;
 

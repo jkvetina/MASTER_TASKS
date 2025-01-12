@@ -5,10 +5,11 @@ identification:
   name: Card Crunchers
   alias: CARDS
   version: 2023-09-20
-  application-group: LAUNCHPAD # 14521045818542929
+  application-group: APPS # 16454637736618856
 
 row-search: 
   tokenize: true
+  text-query-function: None
 
 availability: 
   status: Available with Developer Toolbar
@@ -26,12 +27,13 @@ advanced:
   allow-feedback: false
   logging: true
   debugging: true
-  compatibility-mode: 21.2 / 22.1 / 22.2
+  compatibility-mode: 21.2 to 24.1
+  accessible-read-only-items: false
   pass-ecid: Y
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: OPEN_DOOR (TESTING ONLY) # 28681044215599643
+  authentication-scheme: OPEN_DOOR (TESTING ONLY) # 47859056698746881
 
 authorization: 
   source-for-role-or-group-schemes: Custom Code
@@ -55,7 +57,7 @@ security:
   html-escaping-mode: Extended
 
 database-session: 
-  parsing-schema: APPS
+  parsing-schema: MASTER
 
 globalization: 
   primary-language: English (en)
@@ -95,7 +97,7 @@ navigation:
     page: LOGIN
 
 navigation-menu: 
-  list-template: Top Navigation Menu # 34014612441153815
+  list-template: Top Navigation Menu
   template-options: 
   - '#DEFAULT#'
   - js-tabLike
@@ -103,22 +105,22 @@ navigation-menu:
 
 navigation-bar: 
   implementation: List
-  list: NAVIGATION # 28802196659285496
-  list-template: Navigation Q23 # 31684266225644159
+  list: NAVIGATION # 47980209142432734
+  list-template: Navigation Q23
   template-options: 
   - '#DEFAULT#'
 
 javascript: 
   file-urls: 
-  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
   - '#APP_FILES#tsk_app#MIN#.js?version=#APP_VERSION#'
   include-jquery-migrate: false
 
 css: 
   file-urls: 
-  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
-  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
-  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
   - '#APP_FILES#tsk_app#MIN#.css?version=#APP_VERSION#'
 
 attributes: 
@@ -126,6 +128,7 @@ attributes:
   global-page: 0
   enable-end-users-to-choose-theme-style: false
   add-"built-with-apex"-to-footer: false
+  auto-dismiss-success-messages: false
 
 substitutions: 
 - # ====== Substitution: APP_NAME ==============================
@@ -154,7 +157,7 @@ substitutions:
 
 component-settings: 
 - # ====== Component Setting: NATIVE_ADFBC =====================
-  id: 1388154471820069
+  id: 20566166954967307
   identification: 
     name: NATIVE_ADFBC
     type: REST Data Source
@@ -162,20 +165,50 @@ component-settings:
   subscription: 
     version-number: 39913487784091
 
+- # ====== Component Setting: NATIVE_SELECT_MANY ===============
+  id: 21271144628828287
+  identification: 
+    name: NATIVE_SELECT_MANY
+    type: Item
+
+  settings: 
+    attribute-1: separated
+
+  subscription: 
+    version-number: 41470801233124
+
+- # ====== Component Setting: NATIVE_GEOCODING =================
+  id: 21271265292828286
+  identification: 
+    name: NATIVE_GEOCODING
+    type: Process
+
+  settings: 
+    attribute-1: RELAX_HOUSE_NUMBER
+
+  subscription: 
+    version-number: 41470801233130
+
+- # ====== Component Setting: NATIVE_OPEN_AI_ASSISTANT =========
+  id: 21271375960828286
+  identification: 
+    name: NATIVE_OPEN_AI_ASSISTANT
+    type: Dynamic Action
+
+  subscription: 
+    version-number: 41470801233141
+
 - # ====== Component Setting: NATIVE_DISPLAY_SELECTOR ==========
-  id: 97829385400921744
+  id: 117007397884068982
   identification: 
     name: NATIVE_DISPLAY_SELECTOR
     type: Region
-
-  settings: 
-    attribute-1: Y
 
   subscription: 
     version-number: 1
 
 - # ====== Component Setting: NATIVE_STAR_RATING ===============
-  id: 97829679008921746
+  id: 117007691492068984
   identification: 
     name: NATIVE_STAR_RATING
     type: Item
@@ -188,7 +221,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_SINGLE_CHECKBOX ===========
-  id: 97829963791921746
+  id: 117007976275068984
   identification: 
     name: NATIVE_SINGLE_CHECKBOX
     type: Item
@@ -201,19 +234,16 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_MAP_REGION ================
-  id: 97830601760921746
+  id: 117008614244068984
   identification: 
     name: NATIVE_MAP_REGION
     type: Region
-
-  settings: 
-    attribute-1: Y
 
   subscription: 
     version-number: 1
 
 - # ====== Component Setting: NATIVE_YES_NO ====================
-  id: 97830838325921746
+  id: 117008850809068984
   identification: 
     name: NATIVE_YES_NO
     type: Item
@@ -227,7 +257,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_COLOR_PICKER ==============
-  id: 97831183395921747
+  id: 117009195879068985
   identification: 
     name: NATIVE_COLOR_PICKER
     type: Item
@@ -240,19 +270,16 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_IR ========================
-  id: 97831504065921747
+  id: 117009516549068985
   identification: 
     name: NATIVE_IR
     type: Region
-
-  settings: 
-    attribute-1: IG
 
   subscription: 
     version-number: 1
 
 - # ====== Component Setting: NATIVE_DATE_PICKER_APEX ==========
-  id: 97831763795921747
+  id: 117009776279068985
   identification: 
     name: NATIVE_DATE_PICKER_APEX
     type: Item
@@ -267,7 +294,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_GEOCODED_ADDRESS ==========
-  id: 97832030356921747
+  id: 117010042840068985
   identification: 
     name: NATIVE_GEOCODED_ADDRESS
     type: Item

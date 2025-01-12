@@ -1,97 +1,15 @@
 ---
-- # ====== Authorization: MASTER - IS_USER_U ===================
-  id: 34516209541350167
+- # ====== Authorization: IS_USER_COMPONENT ====================
+  id: 39922586549197488
   identification: 
-    name: MASTER - IS_USER_U
+    name: IS_USER_COMPONENT
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 14636542046359086 # IS_USER_U
+      app: 800 # Master 25
+      referenced-id: 39918974528136938 # IS_USER_COMPONENT
 
-  authorization-scheme: 
-    type: PL/SQL Function Returning Boolean
-
-  settings: 
-    pl/sql-function-body: |
-      RETURN app_auth.is_user_component (
-          in_component_id     => :APP_COMPONENT_ID,
-          in_component_type   => :APP_COMPONENT_TYPE,
-          in_component_name   => :APP_COMPONENT_NAME,
-          in_action           => 'U'
-      ) = 'Y';
-
-  server-cache: 
-    evaluation-point: Always (No Caching)
-
-  error: 
-    error-message: ACCESS_DENIED|IS_USER_U
-
-- # ====== Authorization: MASTER - IS_USER_C ===================
-  id: 34516390450351061
-  identification: 
-    name: MASTER - IS_USER_C
-
-  subscription: 
-    master: 
-      app: 800 # Master
-      referenced-id: 14635652640350931 # IS_USER_C
-
-  authorization-scheme: 
-    type: PL/SQL Function Returning Boolean
-
-  settings: 
-    pl/sql-function-body: |
-      RETURN app_auth.is_user_component (
-          in_component_id     => :APP_COMPONENT_ID,
-          in_component_type   => :APP_COMPONENT_TYPE,
-          in_component_name   => :APP_COMPONENT_NAME,
-          in_action           => 'C'
-      ) = 'Y';
-
-  server-cache: 
-    evaluation-point: Always (No Caching)
-
-  error: 
-    error-message: ACCESS_DENIED|IS_USER_C
-
-- # ====== Authorization: MASTER - IS_USER_D ===================
-  id: 34516599810351461
-  identification: 
-    name: MASTER - IS_USER_D
-
-  subscription: 
-    master: 
-      app: 800 # Master
-      referenced-id: 14636315967358599 # IS_USER_D
-
-  authorization-scheme: 
-    type: PL/SQL Function Returning Boolean
-
-  settings: 
-    pl/sql-function-body: |
-      RETURN app_auth.is_user_component (
-          in_component_id     => :APP_COMPONENT_ID,
-          in_component_type   => :APP_COMPONENT_TYPE,
-          in_component_name   => :APP_COMPONENT_NAME,
-          in_action           => 'D'
-      ) = 'Y';
-
-  server-cache: 
-    evaluation-point: Always (No Caching)
-
-  error: 
-    error-message: ACCESS_DENIED|IS_USER_D
-
-- # ====== Authorization: MASTER - IS_USER_COMPONENT ===========
-  id: 34516818971352065
-  identification: 
-    name: MASTER - IS_USER_COMPONENT
-
-  subscription: 
-    master: 
-      app: 800 # Master
-      referenced-id: 14635437545348202 # IS_USER_COMPONENT
+    version-number: 42190236159480
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
@@ -111,37 +29,77 @@
   error: 
     error-message: ACCESS_DENIED|IS_USER_COMPONENT
 
-- # ====== Authorization: MASTER - NOBODY ======================
-  id: 63487399953980290
+- # ====== Authorization: IS_USER_D ============================
+  id: 39923139057197490
   identification: 
-    name: MASTER - NOBODY
+    name: IS_USER_D
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 55122406216768269 # NOBODY
+      app: 800 # Master 25
+      referenced-id: 39918369623120475 # IS_USER_D
+
+    version-number: 42190236131449
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
   settings: 
-    pl/sql-function-body: RETURN FALSE;
+    pl/sql-function-body: |
+      RETURN app_auth.is_user_component (
+          in_component_id     => :APP_COMPONENT_ID,
+          in_component_type   => :APP_COMPONENT_TYPE,
+          in_component_name   => :APP_COMPONENT_NAME,
+          in_action           => 'D'
+      ) = 'Y';
 
   server-cache: 
-    evaluation-point: Once per Session
+    evaluation-point: Always (No Caching)
 
-  comments: 
-    comments: This is an alternative to build option Never and/or server side condition Never so you can keep values there
+  error: 
+    error-message: ACCESS_DENIED|IS_USER_D
 
-- # ====== Authorization: MASTER - IS_DEVELOPER ================
-  id: 68472631569287844
+- # ====== Authorization: IS_USER_C ============================
+  id: 39923772794197491
   identification: 
-    name: MASTER - IS_DEVELOPER
+    name: IS_USER_C
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 60089834032939902 # IS_DEVELOPER
+      app: 800 # Master 25
+      referenced-id: 39917183273113133 # IS_USER_C
+
+    version-number: 42190236125622
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN app_auth.is_user_component (
+          in_component_id     => :APP_COMPONENT_ID,
+          in_component_type   => :APP_COMPONENT_TYPE,
+          in_component_name   => :APP_COMPONENT_NAME,
+          in_action           => 'C'
+      ) = 'Y';
+
+  server-cache: 
+    evaluation-point: Always (No Caching)
+
+  error: 
+    error-message: ACCESS_DENIED|IS_USER_C
+
+- # ====== Authorization: IS_DEVELOPER =========================
+  id: 39924320669197492
+  identification: 
+    name: IS_DEVELOPER
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 15014622076335206 # IS_DEVELOPER
+
+    version-number: 42190236119845
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
@@ -155,21 +113,23 @@
   error: 
     error-message: ACCESS_DENIED|IS_DEVELOPER
 
-- # ====== Authorization: MASTER - IS_ADMIN ====================
-  id: 70314575553792528
+- # ====== Authorization: IS_ADMIN =============================
+  id: 39924937074197493
   identification: 
-    name: MASTER - IS_ADMIN
+    name: IS_ADMIN
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63924538900170215 # IS_ADMIN
+      app: 800 # Master 25
+      referenced-id: 15176840787568678 # IS_ADMIN
+
+    version-number: 42190236118045
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
   settings: 
-    pl/sql-function-body: RETURN app_auth.is_admin() = 'Y';
+    pl/sql-function-body: RETURN master.app_auth.is_admin() = 'Y';
 
   server-cache: 
     evaluation-point: Once per Page View
@@ -177,31 +137,78 @@
   error: 
     error-message: ACCESS_DENIED|IS_ADMIN
 
-  comments: 
-    comments: This needs to be relevant to active application
-
-- # ====== Authorization: MASTER - IS_USER =====================
-  id: 70314822393792529
+- # ====== Authorization: NOBODY ===============================
+  id: 39925516849197495
   identification: 
-    name: MASTER - IS_USER
+    name: NOBODY
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 43462402185717150 # IS_USER
+      app: 800 # Master 25
+      referenced-id: 23613577070590582 # NOBODY
+
+    version-number: 42188991664013
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
   settings: 
-    pl/sql-function-body: RETURN app_auth.is_user() = 'Y';
+    pl/sql-function-body: RETURN FALSE;
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+- # ====== Authorization: IS_USER_U ============================
+  id: 39926164959197496
+  identification: 
+    name: IS_USER_U
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 39918522071121241 # IS_USER_U
+
+    version-number: 42190236130794
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN app_auth.is_user_component (
+          in_component_id     => :APP_COMPONENT_ID,
+          in_component_type   => :APP_COMPONENT_TYPE,
+          in_component_name   => :APP_COMPONENT_NAME,
+          in_action           => 'U'
+      ) = 'Y';
+
+  server-cache: 
+    evaluation-point: Always (No Caching)
+
+  error: 
+    error-message: ACCESS_DENIED|IS_USER_U
+
+- # ====== Authorization: IS_USER ==============================
+  id: 39926727961197497
+  identification: 
+    name: IS_USER
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 15176507132562951 # IS_USER
+
+    version-number: 42190236120922
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: RETURN master.app_auth.is_user() = 'Y';
 
   server-cache: 
     evaluation-point: Once per Page View
 
   error: 
     error-message: ACCESS_DENIED|IS_USER
-
-  comments: 
-    comments: This needs to be relevant to active application
 

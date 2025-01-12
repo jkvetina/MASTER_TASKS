@@ -1,6 +1,6 @@
 ---
 - # ====== Popup LOV Template: Search Dialog ===================
-  id: 34023250480153830
+  id: 53201262963301068
   identification: 
     name: Search Dialog
     identifier: winlov
@@ -10,8 +10,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63465831427439173 # Search Dialog
+      referenced-id: 63465831427439173
 
   advanced: 
     translatable: false

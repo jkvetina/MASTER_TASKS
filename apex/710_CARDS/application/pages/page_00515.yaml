@@ -5,7 +5,7 @@ identification:
   name: Map Endpoints
   alias: MAP-ENDPOINTS
   title: Map Endpoints
-  page-group: 5) COMMITS # 26927386398126716
+  page-group: 5) COMMITS # 46105398881273954
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+  authorization-scheme: IS_ADMIN # 39924937074197493
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,15 +40,15 @@ server-cache:
 
 regions: 
 - # ====== Region: Endpoints ===================================
-  id: 184693714894269932
+  id: 203871727377417170
   identification: 
-    title: Endpoints
+    name: Endpoints
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -69,9 +69,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -81,15 +78,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Endpoints ===================================
-  id: 184693844726269933
+  id: 203871857209417171
   identification: 
-    title: Endpoints
+    name: Endpoints
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Endpoints # 184693714894269932
-    position: SUB_REGIONS
+    parent-region: Endpoints # 203871727377417170
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -97,7 +94,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -112,9 +109,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -124,9 +118,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Endpoints [GRID] ============================
-  id: 184693975444269934
+  id: 203871987927417172
   identification: 
-    title: Endpoints [GRID]
+    name: Endpoints [GRID]
     type: Interactive Grid
 
   source: 
@@ -143,8 +137,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Endpoints # 184693714894269932
-    position: SUB_REGIONS
+    parent-region: Endpoints # 203871727377417170
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -152,7 +146,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -165,14 +159,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 184694003046269935
+    id: 203872015529417173
     edit: 
       enabled: true
       allowed-operations: 
@@ -226,14 +217,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 184800753825104238
+      id: 203978766308251476
       identification: 
         name: Primary Report
         alias: 455232
 
   columns: 
   - # ====== Column: CLIENT_ID ===================================
-    id: 95177341656382544
+    id: 114355354139529782
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -255,7 +246,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CLIENTS # 19917139722955396
+      list-of-values: LOV_CLIENTS # 39095152206102634
       display-extra-values: false
       display-null-value: true
 
@@ -295,7 +286,7 @@ regions:
       execute: Once
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 95177454317382545
+    id: 114355466800529783
     identification: 
       column-name: PROJECT_ID
       type: Select List
@@ -317,7 +308,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_PROJECTS # 23314637906165586
+      list-of-values: LOV_PROJECTS # 42492650389312824
       display-extra-values: false
       display-null-value: true
 
@@ -357,7 +348,7 @@ regions:
       execute: Once
 
   - # ====== Column: OLD_REPO_ID =================================
-    id: 95780178094222491
+    id: 114958190577369729
     identification: 
       column-name: OLD_REPO_ID
       type: Hidden
@@ -391,7 +382,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_OWNER_ID ================================
-    id: 96199843603493142
+    id: 115377856086640380
     identification: 
       column-name: OLD_OWNER_ID
       type: Hidden
@@ -425,7 +416,7 @@ regions:
       sort: false
 
   - # ====== Column: REPO_ID =====================================
-    id: 184694169660269936
+    id: 203872182143417174
     identification: 
       column-name: REPO_ID
       type: Select List
@@ -447,7 +438,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_REPOS # 26957139852151500
+      list-of-values: LOV_REPOS # 46135152335298738
       display-extra-values: false
       display-null-value: true
 
@@ -483,7 +474,7 @@ regions:
       hide: true
 
   - # ====== Column: OWNER_ID ====================================
-    id: 184694283983269937
+    id: 203872296466417175
     identification: 
       column-name: OWNER_ID
       type: Select List
@@ -505,7 +496,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_REPO_OWNERS # 26958162062151510
+      list-of-values: LOV_REPO_OWNERS # 46136174545298748
       display-extra-values: false
       display-null-value: true
 
@@ -541,7 +532,7 @@ regions:
       hide: true
 
   - # ====== Column: ENDPOINT_ID =================================
-    id: 184694332914269938
+    id: 203872345397417176
     identification: 
       column-name: ENDPOINT_ID
       type: Text Field
@@ -596,7 +587,7 @@ regions:
       hide: true
 
   - # ====== Column: ENDPOINT_URL ================================
-    id: 184694460481269939
+    id: 203872472964417177
     identification: 
       column-name: ENDPOINT_URL
       type: Text Field
@@ -650,7 +641,7 @@ regions:
       hide: true
 
   - # ====== Column: ENDPOINT_BODY ===============================
-    id: 184694561302269940
+    id: 203872573785417178
     identification: 
       column-name: ENDPOINT_BODY
       type: Text Field
@@ -704,7 +695,7 @@ regions:
       hide: true
 
   - # ====== Column: ENDPOINT_METHOD =============================
-    id: 184694685835269941
+    id: 203872698318417179
     identification: 
       column-name: ENDPOINT_METHOD
       type: Text Field
@@ -759,7 +750,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 184694709596269942
+    id: 203872722079417180
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -808,7 +799,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P515_OWNER_ID ============================
-  id: 93487367131234270
+  id: 112665379614381508
   identification: 
     name: P515_OWNER_ID
     type: Select List
@@ -819,12 +810,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 30
-    region: Endpoints # 184693844726269933
-    position: BODY
+    region: Endpoints # 203871857209417171
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -834,7 +827,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -844,7 +837,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_REPO_OWNERS # 26958162062151510
+    list-of-values: LOV_REPO_OWNERS # 46136174545298748
     display-extra-values: false
     display-null-value: true
 
@@ -875,7 +868,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P515_REPO_ID =============================
-  id: 93487426906234271
+  id: 112665439389381509
   identification: 
     name: P515_REPO_ID
     type: Select List
@@ -886,12 +879,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 40
-    region: Endpoints # 184693844726269933
-    position: BODY
+    region: Endpoints # 203871857209417171
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -901,7 +896,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -911,7 +906,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_REPOS # 26957139852151500
+    list-of-values: LOV_REPOS # 46135152335298738
     display-extra-values: false
     display-null-value: true
 
@@ -943,7 +938,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P515_CLIENT_ID ===========================
-  id: 93782671437643627
+  id: 112960683920790865
   identification: 
     name: P515_CLIENT_ID
     type: Select List
@@ -954,12 +949,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
-    region: Endpoints # 184693844726269933
-    position: BODY
+    region: Endpoints # 203871857209417171
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -969,7 +966,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -979,7 +976,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CLIENTS # 19917139722955396
+    list-of-values: LOV_CLIENTS # 39095152206102634
     display-extra-values: false
     display-null-value: true
 
@@ -1007,7 +1004,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P515_PROJECT_ID ==========================
-  id: 93782990507645561
+  id: 112961002990792799
   identification: 
     name: P515_PROJECT_ID
     type: Select List
@@ -1018,12 +1015,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 20
-    region: Endpoints # 184693844726269933
-    position: BODY
+    region: Endpoints # 203871857209417171
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1033,7 +1032,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1043,7 +1042,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 23314637906165586
+    list-of-values: LOV_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: true
 
@@ -1074,7 +1073,7 @@ page-items:
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_FILTERS =====================
-  id: 26954389786151497
+  id: 46132402269298735
   identification: 
     name: CHANGED_FILTERS
 
@@ -1084,7 +1083,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P515_CLIENT_ID
@@ -1094,7 +1093,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 26954859204151498
+    id: 46132871687298736
     identification: 
       action: Hide
 
@@ -1103,12 +1102,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_FILTERS # 26954389786151497
+      event: CHANGED_FILTERS # 46132402269298735
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Submit Page =================================
-    id: 26955374760151498
+    id: 46133387243298736
     identification: 
       action: Submit Page
 
@@ -1117,18 +1116,18 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: CHANGED_FILTERS # 26954389786151497
+      event: CHANGED_FILTERS # 46132402269298735
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_REPO_ENDPOINTS ========================
-  id: 26953821042151496
+  id: 46131833525298734
   identification: 
     name: SAVE_REPO_ENDPOINTS
     type: Invoke API
     execution-chain: None
-    editable-region: Endpoints [GRID] # 184693975444269934
+    editable-region: Endpoints [GRID] # 203871987927417172
 
   settings: 
     type: PL/SQL Package

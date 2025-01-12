@@ -5,7 +5,7 @@ identification:
   name: Projects
   alias: PROJECTS
   title: Projects
-  page-group: 3) PROJECTS # 78006013489194627
+  page-group: 3) PROJECTS # 97184025972341865
 
 appearance: 
   page-mode: Normal
@@ -23,7 +23,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -42,15 +42,15 @@ server-cache:
 
 regions: 
 - # ====== Region: TABS ========================================
-  id: 38406678052540114
+  id: 57584690535687352
   identification: 
-    title: TABS
+    name: TABS
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -58,7 +58,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 33957611184153776
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -73,9 +73,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -85,15 +82,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Projects ====================================
-  id: 38406726459540115
+  id: 57584738942687353
   identification: 
-    title: Projects
+    name: Projects
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: TABS # 38406678052540114
-    position: SUB_REGIONS
+    parent-region: TABS # 57584690535687352
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -101,7 +98,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -113,9 +110,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -126,15 +120,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Swimlanes ===================================
-  id: 38406903357540117
+  id: 57584915840687355
   identification: 
-    title: Swimlanes
+    name: Swimlanes
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: TABS # 38406678052540114
-    position: SUB_REGIONS
+    parent-region: TABS # 57584690535687352
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -142,7 +136,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -154,9 +148,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -167,15 +158,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Statuses ====================================
-  id: 38407058882540118
+  id: 57585071365687356
   identification: 
-    title: Statuses
+    name: Statuses
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: TABS # 38406678052540114
-    position: SUB_REGIONS
+    parent-region: TABS # 57584690535687352
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -183,7 +174,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -195,9 +186,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -208,15 +196,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Categories ==================================
-  id: 38407132831540119
+  id: 57585145314687357
   identification: 
-    title: Categories
+    name: Categories
     type: Static Content
 
   layout: 
     sequence: 40
-    parent-region: TABS # 38406678052540114
-    position: SUB_REGIONS
+    parent-region: TABS # 57584690535687352
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -224,7 +212,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -237,9 +225,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -249,9 +234,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Projects [GRID] =============================
-  id: 49582159465109006
+  id: 68760171948256244
   identification: 
-    title: Projects [GRID]
+    name: Projects [GRID]
     type: Interactive Grid
 
   source: 
@@ -263,8 +248,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Projects # 38406726459540115
-    position: SUB_REGIONS
+    parent-region: Projects # 57584738942687353
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -272,7 +257,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -286,14 +271,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 49582317268109007
+    id: 68760329751256245
     edit: 
       enabled: true
       allowed-operations: 
@@ -304,9 +286,9 @@ regions:
       add-row-if-empty: false
 
     edit-authorization: 
-      add: MASTER - IS_ADMIN # 70314575553792528
-      update: MASTER - IS_ADMIN # 70314575553792528
-      delete: MASTER - IS_ADMIN # 70314575553792528
+      add: 89492588036939766
+      update: 89492588036939766
+      delete: 89492588036939766
 
     performance: 
       lazy-loading: false
@@ -352,30 +334,30 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 50032607071081751
+      id: 69210619554228989
       identification: 
         name: Primary Report
         alias: 232307
 
   column-groups: 
   - # ====== Column Group: Flags =================================
-    id: 28268100544994314
+    id: 47446113028141552
     heading: 
       heading: Flags
 
   - # ====== Column Group: Project Info ==========================
-    id: 28268237755994315
+    id: 47446250239141553
     heading: 
       heading: Project Info
 
   - # ====== Column Group: Counts ================================
-    id: 49583773680109022
+    id: 68761786163256260
     heading: 
       heading: Counts
 
   columns: 
   - # ====== Column: COUNT_OWNERS ================================
-    id: 28268064198994313
+    id: 47446076682141551
     identification: 
       column-name: COUNT_OWNERS
       type: Display Only
@@ -391,7 +373,7 @@ regions:
     layout: 
       sequence: 150
       column-alignment: end
-      group: Counts # 49583773680109022
+      group: Counts # 68761786163256260
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -421,7 +403,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_CURRENT ==================================
-    id: 28269459513994327
+    id: 47447471997141565
     identification: 
       column-name: IS_CURRENT
       type: Hidden
@@ -452,7 +434,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_PROJECT_ID ==============================
-    id: 49582377188109008
+    id: 68760389671256246
     identification: 
       column-name: OLD_PROJECT_ID
       type: Hidden
@@ -486,7 +468,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 49582472791109009
+    id: 68760485274256247
     identification: 
       column-name: OLD_CLIENT_ID
       type: Hidden
@@ -520,7 +502,7 @@ regions:
       sort: false
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 49582559935109010
+    id: 68760572418256248
     identification: 
       column-name: CLIENT_ID
       type: Hidden
@@ -557,7 +539,7 @@ regions:
       sort: false
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 49582694289109011
+    id: 68760706772256249
     identification: 
       column-name: PROJECT_ID
       type: Text Field
@@ -573,7 +555,7 @@ regions:
     layout: 
       sequence: 60
       column-alignment: start
-      group: Project Info # 28268237755994315
+      group: Project Info # 47446250239141553
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -614,7 +596,7 @@ regions:
       hide: true
 
   - # ====== Column: PROJECT_NAME ================================
-    id: 49582775064109012
+    id: 68760787547256250
     identification: 
       column-name: PROJECT_NAME
       type: Text Field
@@ -630,7 +612,7 @@ regions:
     layout: 
       sequence: 70
       column-alignment: start
-      group: Project Info # 28268237755994315
+      group: Project Info # 47446250239141553
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -671,7 +653,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_CATEGORIES ============================
-    id: 49582901801109013
+    id: 68760914284256251
     identification: 
       column-name: COUNT_CATEGORIES
       type: Link
@@ -683,7 +665,7 @@ regions:
     layout: 
       sequence: 140
       column-alignment: end
-      group: Counts # 49583773680109022
+      group: Counts # 68761786163256260
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -721,7 +703,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COUNT_STATUSES ==============================
-    id: 49583016252109014
+    id: 68761028735256252
     identification: 
       column-name: COUNT_STATUSES
       type: Link
@@ -733,7 +715,7 @@ regions:
     layout: 
       sequence: 130
       column-alignment: end
-      group: Counts # 49583773680109022
+      group: Counts # 68761786163256260
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -771,7 +753,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COUNT_SWIMLANES =============================
-    id: 49583094699109015
+    id: 68761107182256253
     identification: 
       column-name: COUNT_SWIMLANES
       type: Link
@@ -783,7 +765,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: end
-      group: Counts # 49583773680109022
+      group: Counts # 68761786163256260
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -821,7 +803,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COUNT_BOARDS ================================
-    id: 49583185933109016
+    id: 68761198416256254
     identification: 
       column-name: COUNT_BOARDS
       type: Link
@@ -833,7 +815,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: end
-      group: Counts # 49583773680109022
+      group: Counts # 68761786163256260
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -871,7 +853,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COUNT_CARDS =================================
-    id: 49583294235109017
+    id: 68761306718256255
     identification: 
       column-name: COUNT_CARDS
       type: Display Only
@@ -887,7 +869,7 @@ regions:
     layout: 
       sequence: 160
       column-alignment: end
-      group: Counts # 49583773680109022
+      group: Counts # 68761786163256260
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -917,7 +899,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 49583553847109019
+    id: 68761566330256257
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -926,7 +908,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 49583619332109020
+    id: 68761631815256258
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -940,7 +922,7 @@ regions:
       sequence: 10
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 50067953822628013
+    id: 69245966305775251
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -956,7 +938,7 @@ regions:
     layout: 
       sequence: 90
       column-alignment: center
-      group: Flags # 28268100544994314
+      group: Flags # 47446113028141552
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -998,7 +980,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_DEFAULT ==================================
-    id: 50320429477089589
+    id: 69498441960236827
     identification: 
       column-name: IS_DEFAULT
       type: Checkbox
@@ -1014,7 +996,7 @@ regions:
     layout: 
       sequence: 80
       column-alignment: center
-      group: Flags # 28268100544994314
+      group: Flags # 47446113028141552
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1093,15 +1075,15 @@ regions:
       alignment: center
 
 - # ====== Region: Projects for &P0_CLIENT_NAME. ===============
-  id: 140318868333565921
+  id: 159496880816713159
   identification: 
-    title: Projects for &P0_CLIENT_NAME.
+    name: Projects for &P0_CLIENT_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Projects # 38406726459540115
-    position: SUB_REGIONS
+    parent-region: Projects # 57584738942687353
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1109,7 +1091,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1122,9 +1104,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -1134,9 +1113,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: SWITCH_PROJECT ==============================
-  id: 145338157565692454
+  id: 164516170048839692
   identification: 
-    title: SWITCH_PROJECT
+    name: SWITCH_PROJECT
     type: Dynamic Content
 
   source: 
@@ -1146,7 +1125,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1154,7 +1133,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1178,15 +1157,15 @@ regions:
       lazy-loading: false
 
 - # ====== Region: Statuses for &P0_PROJECT_NAME. ==============
-  id: 224535655812459474
+  id: 243713668295606712
   identification: 
-    title: Statuses for &P0_PROJECT_NAME.
+    name: Statuses for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Statuses # 38407058882540118
-    position: SUB_REGIONS
+    parent-region: Statuses # 57585071365687356
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1194,7 +1173,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1206,9 +1185,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1219,15 +1195,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Swimlanes for &P0_PROJECT_NAME. =============
-  id: 247934235814963212
+  id: 267112248298110450
   identification: 
-    title: Swimlanes for &P0_PROJECT_NAME.
+    name: Swimlanes for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Swimlanes # 38406903357540117
-    position: SUB_REGIONS
+    parent-region: Swimlanes # 57584915840687355
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1235,7 +1211,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1248,9 +1224,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -1260,9 +1233,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Statuses [GRID] =============================
-  id: 259316898624447324
+  id: 278494911107594562
   identification: 
-    title: Statuses [GRID]
+    name: Statuses [GRID]
     type: Interactive Grid
 
   source: 
@@ -1274,8 +1247,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Statuses # 38407058882540118
-    position: SUB_REGIONS
+    parent-region: Statuses # 57585071365687356
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -1283,7 +1256,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1297,14 +1270,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 259317220676447327
+    id: 278495233159594565
     edit: 
       enabled: true
       allowed-operations: 
@@ -1315,9 +1285,9 @@ regions:
       add-row-if-empty: false
 
     edit-authorization: 
-      add: MASTER - IS_ADMIN # 70314575553792528
-      update: MASTER - IS_ADMIN # 70314575553792528
-      delete: MASTER - IS_ADMIN # 70314575553792528
+      add: 89492588036939766
+      update: 89492588036939766
+      delete: 89492588036939766
 
     performance: 
       lazy-loading: false
@@ -1363,35 +1333,35 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 259339713685620308
+      id: 278517726168767546
       identification: 
         name: Primary Report
         alias: 347675
 
   column-groups: 
   - # ====== Column Group: Status Info ===========================
-    id: 67311733185179873
+    id: 86489745668327111
     heading: 
       heading: Status Info
 
   - # ====== Column Group: Order =================================
-    id: 67311865926179874
+    id: 86489878409327112
     heading: 
       heading: Order
 
   - # ====== Column Group: Flags =================================
-    id: 154444591445321807
+    id: 173622603928469045
     heading: 
       heading: Flags
 
   - # ====== Column Group: Counts ================================
-    id: 154444618733321808
+    id: 173622631216469046
     heading: 
       heading: Counts
 
   columns: 
   - # ====== Column: ROW_ORDER# ==================================
-    id: 67311691816179872
+    id: 86489704299327110
     identification: 
       column-name: ROW_ORDER#
       type: Number Field
@@ -1407,7 +1377,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: end
-      group: Order # 67311865926179874
+      group: Order # 86489878409327112
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1440,7 +1410,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_GROUP ================================
-    id: 77286830232755743
+    id: 96464842715902981
     identification: 
       column-name: STATUS_GROUP
       type: Text Field
@@ -1456,7 +1426,7 @@ regions:
     layout: 
       sequence: 100
       column-alignment: start
-      group: Status Info # 67311733185179873
+      group: Status Info # 86489745668327111
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1497,7 +1467,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 88581223856530774
+    id: 107759236339678012
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -1506,7 +1476,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 88581348963530775
+    id: 107759361446678013
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -1520,7 +1490,7 @@ regions:
       sequence: 10
 
   - # ====== Column: IS_BADGE ====================================
-    id: 90795868962271669
+    id: 109973881445418907
     identification: 
       column-name: IS_BADGE
       type: Checkbox
@@ -1536,7 +1506,7 @@ regions:
     layout: 
       sequence: 160
       column-alignment: center
-      group: Flags # 154444591445321807
+      group: Flags # 173622603928469045
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1576,7 +1546,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_CLIENT ================================
-    id: 154028204104166405
+    id: 173206216587313643
     identification: 
       column-name: COUNT_CLIENT
       type: Display Only
@@ -1592,7 +1562,7 @@ regions:
     layout: 
       sequence: 190
       column-alignment: end
-      group: Counts # 154444618733321808
+      group: Counts # 173622631216469046
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1622,7 +1592,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_PROJECT ===============================
-    id: 154028275950166406
+    id: 173206288433313644
     identification: 
       column-name: COUNT_PROJECT
       type: Display Only
@@ -1638,7 +1608,7 @@ regions:
     layout: 
       sequence: 180
       column-alignment: end
-      group: Counts # 154444618733321808
+      group: Counts # 173622631216469046
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1668,7 +1638,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_BOARD =================================
-    id: 154028341393166407
+    id: 173206353876313645
     identification: 
       column-name: COUNT_BOARD
       type: Display Only
@@ -1684,7 +1654,7 @@ regions:
     layout: 
       sequence: 170
       column-alignment: end
-      group: Counts # 154444618733321808
+      group: Counts # 173622631216469046
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1714,7 +1684,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_DEFAULT ==================================
-    id: 154443849440321800
+    id: 173621861923469038
     identification: 
       column-name: IS_DEFAULT
       type: Checkbox
@@ -1730,7 +1700,7 @@ regions:
     layout: 
       sequence: 140
       column-alignment: center
-      group: Flags # 154444591445321807
+      group: Flags # 173622603928469045
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1770,7 +1740,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_COLORED ==================================
-    id: 156253294193957326
+    id: 175431306677104564
     identification: 
       column-name: IS_COLORED
       type: Checkbox
@@ -1786,7 +1756,7 @@ regions:
     layout: 
       sequence: 150
       column-alignment: center
-      group: Flags # 154444591445321807
+      group: Flags # 173622603928469045
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1826,7 +1796,7 @@ regions:
       hide: true
 
   - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 157468935291682424
+    id: 176646947774829662
     identification: 
       column-name: OLD_CLIENT_ID
       type: Hidden
@@ -1860,7 +1830,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_PROJECT_ID ==============================
-    id: 157469067560682425
+    id: 176647080043829663
     identification: 
       column-name: OLD_PROJECT_ID
       type: Hidden
@@ -1894,7 +1864,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_STATUS_ID ===============================
-    id: 157469120918682426
+    id: 176647133401829664
     identification: 
       column-name: OLD_STATUS_ID
       type: Hidden
@@ -1928,7 +1898,7 @@ regions:
       sort: false
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 259317504038447330
+    id: 278495516521594568
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -1940,7 +1910,7 @@ regions:
     layout: 
       sequence: 60
       column-alignment: start
-      group: Status Info # 67311733185179873
+      group: Status Info # 86489745668327111
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1952,7 +1922,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CLIENTS # 19917139722955396
+      list-of-values: LOV_CLIENTS # 39095152206102634
       display-extra-values: true
       display-null-value: true
 
@@ -1989,7 +1959,7 @@ regions:
       hide: true
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 259317599582447331
+    id: 278495612065594569
     identification: 
       column-name: PROJECT_ID
       type: Select List
@@ -2001,7 +1971,7 @@ regions:
     layout: 
       sequence: 70
       column-alignment: start
-      group: Status Info # 67311733185179873
+      group: Status Info # 86489745668327111
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2013,7 +1983,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_PROJECTS # 23314637906165586
+      list-of-values: LOV_PROJECTS # 42492650389312824
       display-extra-values: true
       display-null-value: true
 
@@ -2050,7 +2020,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 259317665863447332
+    id: 278495678346594570
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -2066,7 +2036,7 @@ regions:
     layout: 
       sequence: 130
       column-alignment: center
-      group: Flags # 154444591445321807
+      group: Flags # 173622603928469045
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2108,7 +2078,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_ID ===================================
-    id: 259317993727447335
+    id: 278496006210594573
     identification: 
       column-name: STATUS_ID
       type: Text Field
@@ -2124,7 +2094,7 @@ regions:
     layout: 
       sequence: 80
       column-alignment: start
-      group: Status Info # 67311733185179873
+      group: Status Info # 86489745668327111
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2165,7 +2135,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_NAME =================================
-    id: 259318068357447336
+    id: 278496080840594574
     identification: 
       column-name: STATUS_NAME
       type: Text Field
@@ -2181,7 +2151,7 @@ regions:
     layout: 
       sequence: 90
       column-alignment: start
-      group: Status Info # 67311733185179873
+      group: Status Info # 86489745668327111
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2222,7 +2192,7 @@ regions:
       hide: true
 
   - # ====== Column: COL_ORDER# ==================================
-    id: 259370522786750638
+    id: 278548535269897876
     identification: 
       column-name: COL_ORDER#
       type: Number Field
@@ -2238,7 +2208,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: end
-      group: Order # 67311865926179874
+      group: Order # 86489878409327112
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2310,15 +2280,15 @@ regions:
       alignment: center
 
 - # ====== Region: Categories for &P0_PROJECT_NAME. ============
-  id: 271956793304513105
+  id: 291134805787660343
   identification: 
-    title: Categories for &P0_PROJECT_NAME.
+    name: Categories for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Categories # 38407132831540119
-    position: SUB_REGIONS
+    parent-region: Categories # 57585145314687357
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2326,7 +2296,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -2339,9 +2309,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -2351,9 +2318,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Swimlanes [GRID] ============================
-  id: 282723663142951758
+  id: 301901675626098996
   identification: 
-    title: Swimlanes [GRID]
+    name: Swimlanes [GRID]
     type: Interactive Grid
 
   source: 
@@ -2365,8 +2332,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Swimlanes # 38406903357540117
-    position: SUB_REGIONS
+    parent-region: Swimlanes # 57584915840687355
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -2374,7 +2341,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -2388,14 +2355,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 282724809735951769
+    id: 301902822219099007
     edit: 
       enabled: true
       allowed-operations: 
@@ -2406,9 +2370,9 @@ regions:
       add-row-if-empty: false
 
     edit-authorization: 
-      add: MASTER - IS_ADMIN # 70314575553792528
-      update: MASTER - IS_ADMIN # 70314575553792528
-      delete: MASTER - IS_ADMIN # 70314575553792528
+      add: 89492588036939766
+      update: 89492588036939766
+      delete: 89492588036939766
 
     performance: 
       lazy-loading: false
@@ -2454,20 +2418,20 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 282746953004124741
+      id: 301924965487271979
       identification: 
         name: Primary Report
         alias: 347682
 
   column-groups: 
   - # ====== Column Group: Counts ================================
-    id: 90765029134253232
+    id: 109943041617400470
     heading: 
       heading: Counts
 
   columns: 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 88548180068512315
+    id: 107726192551659553
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -2476,7 +2440,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 88548345899512316
+    id: 107726358382659554
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -2490,7 +2454,7 @@ regions:
       sequence: 10
 
   - # ====== Column: COUNT_BOARD =================================
-    id: 177411530905667470
+    id: 196589543388814708
     identification: 
       column-name: COUNT_BOARD
       type: Display Only
@@ -2506,7 +2470,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: end
-      group: Counts # 90765029134253232
+      group: Counts # 109943041617400470
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2536,7 +2500,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_PROJECT ===============================
-    id: 177411569599667471
+    id: 196589582082814709
     identification: 
       column-name: COUNT_PROJECT
       type: Display Only
@@ -2552,7 +2516,7 @@ regions:
     layout: 
       sequence: 130
       column-alignment: end
-      group: Counts # 90765029134253232
+      group: Counts # 109943041617400470
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2582,7 +2546,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_CLIENT ================================
-    id: 177411697128667472
+    id: 196589709611814710
     identification: 
       column-name: COUNT_CLIENT
       type: Display Only
@@ -2598,7 +2562,7 @@ regions:
     layout: 
       sequence: 140
       column-alignment: end
-      group: Counts # 90765029134253232
+      group: Counts # 109943041617400470
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2628,7 +2592,7 @@ regions:
       hide: true
 
   - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 180852282181183489
+    id: 200030294664330727
     identification: 
       column-name: OLD_CLIENT_ID
       type: Hidden
@@ -2662,7 +2626,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_PROJECT_ID ==============================
-    id: 180852387212183490
+    id: 200030399695330728
     identification: 
       column-name: OLD_PROJECT_ID
       type: Hidden
@@ -2696,7 +2660,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_SWIMLANE_ID =============================
-    id: 180852445551183491
+    id: 200030458034330729
     identification: 
       column-name: OLD_SWIMLANE_ID
       type: Hidden
@@ -2730,7 +2694,7 @@ regions:
       sort: false
 
   - # ====== Column: SWIMLANE_ID =================================
-    id: 282724865815951770
+    id: 301902878299099008
     identification: 
       column-name: SWIMLANE_ID
       type: Text Field
@@ -2785,7 +2749,7 @@ regions:
       hide: true
 
   - # ====== Column: SWIMLANE_NAME ===============================
-    id: 282725023770951771
+    id: 301903036254099009
     identification: 
       column-name: SWIMLANE_NAME
       type: Text Field
@@ -2840,7 +2804,7 @@ regions:
       hide: true
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 282725107144951772
+    id: 301903119628099010
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -2862,7 +2826,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CLIENTS # 19917139722955396
+      list-of-values: LOV_CLIENTS # 39095152206102634
       display-extra-values: true
       display-null-value: true
 
@@ -2899,7 +2863,7 @@ regions:
       hide: true
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 282725147424951773
+    id: 301903159908099011
     identification: 
       column-name: PROJECT_ID
       type: Select List
@@ -2921,7 +2885,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_PROJECTS # 23314637906165586
+      list-of-values: LOV_PROJECTS # 42492650389312824
       display-extra-values: true
       display-null-value: true
 
@@ -2958,7 +2922,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 282725290764951774
+    id: 301903303248099012
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -3014,7 +2978,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 282777213903255071
+    id: 301955226386402309
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -3100,9 +3064,9 @@ regions:
       alignment: center
 
 - # ====== Region: Categories [GRID] ===========================
-  id: 306739969733500970
+  id: 325917982216648208
   identification: 
-    title: Categories [GRID]
+    name: Categories [GRID]
     type: Interactive Grid
 
   source: 
@@ -3114,8 +3078,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Categories # 38407132831540119
-    position: SUB_REGIONS
+    parent-region: Categories # 57585145314687357
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -3123,7 +3087,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -3137,14 +3101,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 306740291785500973
+    id: 325918304268648211
     edit: 
       enabled: true
       allowed-operations: 
@@ -3155,9 +3116,9 @@ regions:
       add-row-if-empty: false
 
     edit-authorization: 
-      add: MASTER - IS_ADMIN # 70314575553792528
-      update: MASTER - IS_ADMIN # 70314575553792528
-      delete: MASTER - IS_ADMIN # 70314575553792528
+      add: 89492588036939766
+      update: 89492588036939766
+      delete: 89492588036939766
 
     performance: 
       lazy-loading: false
@@ -3203,30 +3164,30 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 306762784794673954
+      id: 325940797277821192
       identification: 
         name: Primary Report
         alias: 347675
 
   column-groups: 
   - # ====== Column Group: Colors ================================
-    id: 155779967703462499
+    id: 174957980186609737
     heading: 
       heading: Colors
 
   - # ====== Column Group: Flags =================================
-    id: 201867662554375453
+    id: 221045675037522691
     heading: 
       heading: Flags
 
   - # ====== Column Group: Counts ================================
-    id: 201867689842375454
+    id: 221045702325522692
     heading: 
       heading: Counts
 
   columns: 
   - # ====== Column: CATEGORY_GROUP ==============================
-    id: 66315356746477652
+    id: 85493369229624890
     identification: 
       column-name: CATEGORY_GROUP
       type: Text Field
@@ -3281,7 +3242,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 88580072864530298
+    id: 107758085347677536
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -3290,7 +3251,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 88580170713530299
+    id: 107758183196677537
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -3304,7 +3265,7 @@ regions:
       sequence: 10
 
   - # ====== Column: CATEGORY_ID =================================
-    id: 155779561820462495
+    id: 174957574303609733
     identification: 
       column-name: CATEGORY_ID
       type: Text Field
@@ -3359,7 +3320,7 @@ regions:
       hide: true
 
   - # ====== Column: CATEGORY_NAME ===============================
-    id: 155779633485462496
+    id: 174957645968609734
     identification: 
       column-name: CATEGORY_NAME
       type: Text Field
@@ -3414,7 +3375,7 @@ regions:
       hide: true
 
   - # ====== Column: COLOR_BG ====================================
-    id: 155779682325462497
+    id: 174957694808609735
     identification: 
       column-name: COLOR_BG
       type: Color Picker
@@ -3429,7 +3390,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: center
-      group: Colors # 155779967703462499
+      group: Colors # 174957980186609737
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3470,7 +3431,7 @@ regions:
       hide: true
 
   - # ====== Column: COLOR_FG ====================================
-    id: 155779784157462498
+    id: 174957796640609736
     identification: 
       column-name: COLOR_FG
       type: Color Picker
@@ -3485,7 +3446,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: center
-      group: Colors # 155779967703462499
+      group: Colors # 174957980186609737
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3526,7 +3487,7 @@ regions:
       hide: true
 
   - # ====== Column: OLD_CLIENT_ID ===============================
-    id: 157520146099863618
+    id: 176698158583010856
     identification: 
       column-name: OLD_CLIENT_ID
       type: Hidden
@@ -3560,7 +3521,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_PROJECT_ID ==============================
-    id: 157520242068863619
+    id: 176698254552010857
     identification: 
       column-name: OLD_PROJECT_ID
       type: Hidden
@@ -3594,7 +3555,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_CATEGORY_ID =============================
-    id: 157520353946863620
+    id: 176698366430010858
     identification: 
       column-name: OLD_CATEGORY_ID
       type: Hidden
@@ -3628,7 +3589,7 @@ regions:
       sort: false
 
   - # ====== Column: IS_DEFAULT ==================================
-    id: 201866920549375446
+    id: 221044933032522684
     identification: 
       column-name: IS_DEFAULT
       type: Checkbox
@@ -3644,7 +3605,7 @@ regions:
     layout: 
       sequence: 140
       column-alignment: center
-      group: Flags # 201867662554375453
+      group: Flags # 221045675037522691
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3684,7 +3645,7 @@ regions:
       hide: true
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 306740575147500976
+    id: 325918587630648214
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -3706,7 +3667,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CLIENTS # 19917139722955396
+      list-of-values: LOV_CLIENTS # 39095152206102634
       display-extra-values: true
       display-null-value: true
 
@@ -3743,7 +3704,7 @@ regions:
       hide: true
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 306740670691500977
+    id: 325918683174648215
     identification: 
       column-name: PROJECT_ID
       type: Select List
@@ -3765,7 +3726,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_PROJECTS # 23314637906165586
+      list-of-values: LOV_PROJECTS # 42492650389312824
       display-extra-values: true
       display-null-value: true
 
@@ -3802,7 +3763,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 306740736972500978
+    id: 325918749455648216
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -3818,7 +3779,7 @@ regions:
     layout: 
       sequence: 130
       column-alignment: center
-      group: Flags # 201867662554375453
+      group: Flags # 221045675037522691
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3860,7 +3821,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 306793593895804284
+    id: 325971606378951522
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -3947,7 +3908,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P300_CURRENT_PROJECTS ====================
-  id: 40846837690003004
+  id: 60024850173150242
   identification: 
     name: P300_CURRENT_PROJECTS
     type: Hidden
@@ -3957,8 +3918,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Projects for &P0_CLIENT_NAME. # 140318868333565921
-    position: BODY
+    region: Projects for &P0_CLIENT_NAME. # 159496880816713159
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3983,15 +3944,15 @@ page-items:
 
 buttons: 
 - # ====== Button: ADD_PROJECT_WIZARD ==========================
-  id: 26802574571507975
+  id: 45980587054655213
   identification: 
     button-name: ADD_PROJECT_WIZARD
     label: Add Project Wizard
 
   layout: 
     sequence: 10
-    region: Projects for &P0_CLIENT_NAME. # 140318868333565921
-    position: RIGHT_OF_TITLE
+    region: Projects for &P0_CLIENT_NAME. # 159496880816713159
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -3999,7 +3960,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4011,18 +3972,18 @@ buttons:
     execute-validations: true
 
   security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+    authorization-scheme: IS_ADMIN # 39924937074197493
 
 - # ====== Button: SWITCH_PROJECT ==============================
-  id: 38408163770540129
+  id: 57586176253687367
   identification: 
     button-name: SWITCH_PROJECT
     label: Switch Project &P0_PROJECT_FILTER!RAW.
 
   layout: 
     sequence: 20
-    region: Projects for &P0_CLIENT_NAME. # 140318868333565921
-    position: RIGHT_OF_TITLE
+    region: Projects for &P0_CLIENT_NAME. # 159496880816713159
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4030,7 +3991,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4048,15 +4009,15 @@ buttons:
     static-id: SWITCH_PROJECT
 
 - # ====== Button: COPY_SWIMLANES ==============================
-  id: 38879063002209014
+  id: 58057075485356252
   identification: 
     button-name: COPY_SWIMLANES
     label: Copy Swimlanes
 
   layout: 
     sequence: 20
-    region: Swimlanes for &P0_PROJECT_NAME. # 247934235814963212
-    position: RIGHT_OF_TITLE
+    region: Swimlanes for &P0_PROJECT_NAME. # 267112248298110450
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4064,7 +4025,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4081,18 +4042,18 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
   security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+    authorization-scheme: IS_ADMIN # 39924937074197493
 
 - # ====== Button: REORDER_SWIMLANES ===========================
-  id: 38879410900209015
+  id: 58057423383356253
   identification: 
     button-name: REORDER_SWIMLANES
     label: Reorder Swimlanes
 
   layout: 
     sequence: 10
-    region: Swimlanes for &P0_PROJECT_NAME. # 247934235814963212
-    position: RIGHT_OF_TITLE
+    region: Swimlanes for &P0_PROJECT_NAME. # 267112248298110450
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4100,7 +4061,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4109,18 +4070,19 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: REORDER_STATUSES ============================
-  id: 38891431967216604
+  id: 58069444450363842
   identification: 
     button-name: REORDER_STATUSES
     label: Reorder Statuses
 
   layout: 
     sequence: 10
-    region: Statuses for &P0_PROJECT_NAME. # 224535655812459474
-    position: RIGHT_OF_TITLE
+    region: Statuses for &P0_PROJECT_NAME. # 243713668295606712
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4128,7 +4090,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4137,18 +4099,19 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: COPY_STATUSES ===============================
-  id: 38891889060216604
+  id: 58069901543363842
   identification: 
     button-name: COPY_STATUSES
     label: Copy Statuses
 
   layout: 
     sequence: 20
-    region: Statuses for &P0_PROJECT_NAME. # 224535655812459474
-    position: RIGHT_OF_TITLE
+    region: Statuses for &P0_PROJECT_NAME. # 243713668295606712
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4156,7 +4119,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4173,18 +4136,18 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
   security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+    authorization-scheme: IS_ADMIN # 39924937074197493
 
 - # ====== Button: REORDER_CATEGORIES ==========================
-  id: 38900725790219955
+  id: 58078738273367193
   identification: 
     button-name: REORDER_CATEGORIES
     label: Reorder Categories
 
   layout: 
     sequence: 10
-    region: Categories for &P0_PROJECT_NAME. # 271956793304513105
-    position: RIGHT_OF_TITLE
+    region: Categories for &P0_PROJECT_NAME. # 291134805787660343
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4192,7 +4155,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4201,18 +4164,19 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: COPY_CATEGORIES =============================
-  id: 38901129115219955
+  id: 58079141598367193
   identification: 
     button-name: COPY_CATEGORIES
     label: Copy Categories
 
   layout: 
     sequence: 20
-    region: Categories for &P0_PROJECT_NAME. # 271956793304513105
-    position: RIGHT_OF_TITLE
+    region: Categories for &P0_PROJECT_NAME. # 291134805787660343
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4220,7 +4184,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4237,11 +4201,11 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
   security: 
-    authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+    authorization-scheme: IS_ADMIN # 39924937074197493
 
 dynamic-actions: 
 - # ====== Dynamic Action: ONE_CHECKBOX_STATUSES ===============
-  id: 40850268175003038
+  id: 60028280658150276
   identification: 
     name: ONE_CHECKBOX_STATUSES
 
@@ -4251,15 +4215,15 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Column(s)
-    interactive-grid: Statuses [GRID] # 259316898624447324
+    interactive-grid: Statuses [GRID] # 278494911107594562
     column(s): 
     - IS_DEFAULT
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40850318045003039
+    id: 60028330528150277
     identification: 
       action: Execute JavaScript Code
 
@@ -4268,12 +4232,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: ONE_CHECKBOX_STATUSES # 40850268175003038
+      event: ONE_CHECKBOX_STATUSES # 60028280658150276
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: ONE_CHECKBOX_CATEGORIES =============
-  id: 40850470349003040
+  id: 60028482832150278
   identification: 
     name: ONE_CHECKBOX_CATEGORIES
 
@@ -4283,15 +4247,15 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Column(s)
-    interactive-grid: Categories [GRID] # 306739969733500970
+    interactive-grid: Categories [GRID] # 325917982216648208
     column(s): 
     - IS_DEFAULT
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40850553601003041
+    id: 60028566084150279
     identification: 
       action: Execute JavaScript Code
 
@@ -4300,12 +4264,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: ONE_CHECKBOX_CATEGORIES # 40850470349003040
+      event: ONE_CHECKBOX_CATEGORIES # 60028482832150278
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: ONE_CHECKBOX_PROJECTS ===============
-  id: 40918405647437542
+  id: 60096418130584780
   identification: 
     name: ONE_CHECKBOX_PROJECTS
 
@@ -4315,15 +4279,15 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Column(s)
-    interactive-grid: Projects [GRID] # 49582159465109006
+    interactive-grid: Projects [GRID] # 68760171948256244
     column(s): 
     - IS_DEFAULT
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40918858193437551
+    id: 60096870676584789
     identification: 
       action: Execute JavaScript Code
 
@@ -4332,18 +4296,18 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: ONE_CHECKBOX_PROJECTS # 40918405647437542
+      event: ONE_CHECKBOX_PROJECTS # 60096418130584780
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_PROJECTS ==============================
-  id: 26810501386507982
+  id: 45988513869655220
   identification: 
     name: SAVE_PROJECTS
     type: Invoke API
     execution-chain: None
-    editable-region: Projects [GRID] # 49582159465109006
+    editable-region: Projects [GRID] # 68760171948256244
 
   settings: 
     type: PL/SQL Package
@@ -4366,7 +4330,7 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: REORDER_SWIMLANES ==========================
-  id: 38410059130540148
+  id: 57588071613687386
   identification: 
     name: REORDER_SWIMLANES
     type: Invoke API
@@ -4390,10 +4354,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_SWIMLANES # 38879410900209015
+    when-button-pressed: REORDER_SWIMLANES # 58057423383356253
 
 - # ====== Process: REORDER_STATUSES ===========================
-  id: 38410161829540149
+  id: 57588174312687387
   identification: 
     name: REORDER_STATUSES
     type: Invoke API
@@ -4417,10 +4381,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_STATUSES # 38891431967216604
+    when-button-pressed: REORDER_STATUSES # 58069444450363842
 
 - # ====== Process: REORDER_CATEGORIES =========================
-  id: 38410232086540150
+  id: 57588244569687388
   identification: 
     name: REORDER_CATEGORIES
     type: Invoke API
@@ -4444,15 +4408,15 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_CATEGORIES # 38900725790219955
+    when-button-pressed: REORDER_CATEGORIES # 58078738273367193
 
 - # ====== Process: SAVE_SWIMLANES =============================
-  id: 39013949481935401
+  id: 58191961965082639
   identification: 
     name: SAVE_SWIMLANES
     type: Invoke API
     execution-chain: None
-    editable-region: Swimlanes [GRID] # 282723663142951758
+    editable-region: Swimlanes [GRID] # 301901675626098996
 
   settings: 
     type: PL/SQL Package
@@ -4475,12 +4439,12 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: SAVE_STATUSES ==============================
-  id: 39014094563935402
+  id: 58192107047082640
   identification: 
     name: SAVE_STATUSES
     type: Invoke API
     execution-chain: None
-    editable-region: Statuses [GRID] # 259316898624447324
+    editable-region: Statuses [GRID] # 278494911107594562
 
   settings: 
     type: PL/SQL Package
@@ -4503,12 +4467,12 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: SAVE_CATEGORIES ============================
-  id: 39014113429935403
+  id: 58192125913082641
   identification: 
     name: SAVE_CATEGORIES
     type: Invoke API
     execution-chain: None
-    editable-region: Categories [GRID] # 306739969733500970
+    editable-region: Categories [GRID] # 325917982216648208
 
   settings: 
     type: PL/SQL Package

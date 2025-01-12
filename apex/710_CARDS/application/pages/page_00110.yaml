@@ -5,11 +5,11 @@ identification:
   name: Bulk Operations
   alias: BULK-OPERATIONS
   title: Bulk Operations
-  page-group: 1) CARDS # 23490192563159466
+  page-group: 1) CARDS # 42668205046306704
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Modal Dialog # 33859121557153720
+  dialog-template: Modal Dialog
   template-options: 
   - '#DEFAULT#'
 
@@ -25,7 +25,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -56,15 +56,15 @@ help:
 
 regions: 
 - # ====== Region: Affected Cards ==============================
-  id: 27594828701272013
+  id: 46772841184419251
   identification: 
-    title: Affected Cards
+    name: Affected Cards
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -72,7 +72,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -87,9 +87,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -99,9 +96,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: AFFECTED_CARDS [GRID] =======================
-  id: 27595158466272016
+  id: 46773170949419254
   identification: 
-    title: AFFECTED_CARDS [GRID]
+    name: AFFECTED_CARDS [GRID]
     type: Interactive Grid
 
   source: 
@@ -121,7 +118,7 @@ regions:
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -129,7 +126,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -143,14 +140,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 27595203952272017
+    id: 46773216435419255
     edit: 
       enabled: true
       allowed-operations: 
@@ -200,14 +194,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 27650236669809639
+      id: 46828249152956877
       identification: 
         name: Primary Report
         alias: 276503
 
   columns: 
   - # ====== Column: CARD_ID =====================================
-    id: 27595335033272018
+    id: 46773347516419256
     identification: 
       column-name: CARD_ID
       type: Hidden
@@ -242,7 +236,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: CARD_NUMBER =================================
-    id: 27595470761272019
+    id: 46773483244419257
     identification: 
       column-name: CARD_NUMBER
       type: Hidden
@@ -274,7 +268,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: CARD_ID__ ===================================
-    id: 27595557377272020
+    id: 46773569860419258
     identification: 
       column-name: CARD_ID__
       type: Link
@@ -325,7 +319,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CARD_NAME ===================================
-    id: 27595669184272021
+    id: 46773681667419259
     identification: 
       column-name: CARD_NAME
       type: Text Field
@@ -381,7 +375,7 @@ regions:
       execute: Once
 
   - # ====== Column: STATUS_ID ===================================
-    id: 27595786675272022
+    id: 46773799158419260
     identification: 
       column-name: STATUS_ID
       type: Select List
@@ -403,7 +397,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_STATUSES # 19918350743955397
+      list-of-values: LOV_STATUSES # 39096363227102635
       display-extra-values: true
       display-null-value: true
 
@@ -438,7 +432,7 @@ regions:
       execute: Once
 
   - # ====== Column: SWIMLANE_ID =================================
-    id: 27595838867272023
+    id: 46773851350419261
     identification: 
       column-name: SWIMLANE_ID
       type: Select List
@@ -460,7 +454,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_SWIMLANES # 19919016269955397
+      list-of-values: LOV_SWIMLANES # 39097028753102635
       display-extra-values: true
       display-null-value: true
 
@@ -495,7 +489,7 @@ regions:
       execute: Once
 
   - # ====== Column: CATEGORY_ID =================================
-    id: 27595983352272024
+    id: 46773995835419262
     identification: 
       column-name: CATEGORY_ID
       type: Select List
@@ -517,7 +511,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CATEGORIES # 23488253257018677
+      list-of-values: LOV_CATEGORIES # 42666265740165915
       display-extra-values: true
       display-null-value: true
 
@@ -552,7 +546,7 @@ regions:
       execute: Once
 
   - # ====== Column: OWNER_ID ====================================
-    id: 27596019271272025
+    id: 46774031754419263
     identification: 
       column-name: OWNER_ID
       type: Select List
@@ -574,7 +568,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_OWNERS # 19920099360955398
+      list-of-values: LOV_OWNERS # 39098111844102636
       display-extra-values: true
       display-null-value: true
 
@@ -609,7 +603,7 @@ regions:
       execute: Once
 
   - # ====== Column: DEADLINE_AT =================================
-    id: 27596120084272026
+    id: 46774132567419264
     identification: 
       column-name: DEADLINE_AT
       type: Hidden
@@ -641,7 +635,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: CARD_LINK ===================================
-    id: 27596293219272027
+    id: 46774305702419265
     identification: 
       column-name: CARD_LINK
       type: Hidden
@@ -673,7 +667,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 27596594616272030
+    id: 46774607099419268
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -687,7 +681,7 @@ regions:
       sequence: 10
 
   - # ====== Column: SELECTED_ROW ================================
-    id: 28267458077994307
+    id: 47445470561141545
     identification: 
       column-name: SELECTED_ROW
       type: Text Field
@@ -781,15 +775,15 @@ regions:
       alignment: center
 
 - # ====== Region: Bulk Operations [FORM]* =====================
-  id: 91625657495276117
+  id: 110803669978423355
   identification: 
-    title: Bulk Operations [FORM]*
+    name: Bulk Operations [FORM]*
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -797,7 +791,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -809,9 +803,6 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -822,15 +813,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Bulk Operations =============================
-  id: 155729416312791673
+  id: 174907428795938911
   identification: 
-    title: Bulk Operations
+    name: Bulk Operations
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -838,7 +829,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -850,9 +841,6 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -864,7 +852,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P110_SOURCE_OWNER ========================
-  id: 27594357686272008
+  id: 46772370169419246
   identification: 
     name: P110_SOURCE_OWNER
     type: Select List
@@ -875,12 +863,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 60
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -890,7 +880,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -900,7 +890,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_OWNERS # 19920099360955398
+    list-of-values: LOV_OWNERS # 39098111844102636
     display-extra-values: false
     display-null-value: true
 
@@ -923,7 +913,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_OWNER_ID ============================
-  id: 27594490056272009
+  id: 46772502539419247
   identification: 
     name: P110_OWNER_ID
     type: Select List
@@ -934,12 +924,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 120
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -949,7 +941,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -959,7 +951,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_OWNERS_BULK # 28444628735084001
+    list-of-values: LOV_OWNERS_BULK # 47622641218231239
     display-extra-values: false
     display-null-value: true
 
@@ -982,7 +974,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_SOURCE_STATUS =======================
-  id: 91626797043276149
+  id: 110804809526423387
   identification: 
     name: P110_SOURCE_STATUS
     type: Select List
@@ -993,12 +985,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 40
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1008,7 +1002,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1018,7 +1012,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_STATUSES_ALL # 28297973486714089
+    list-of-values: LOV_STATUSES_ALL # 47475985969861327
     display-extra-values: false
     display-null-value: true
 
@@ -1050,7 +1044,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_SOURCE_SWIMLANE =====================
-  id: 91626897160276150
+  id: 110804909643423388
   identification: 
     name: P110_SOURCE_SWIMLANE
     type: Select List
@@ -1061,12 +1055,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 30
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1076,7 +1072,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1086,7 +1082,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_SWIMLANES # 19919016269955397
+    list-of-values: LOV_SWIMLANES # 39097028753102635
     display-extra-values: false
     display-null-value: true
 
@@ -1109,7 +1105,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_SOURCE_PROJECT ======================
-  id: 91627092942276152
+  id: 110805105425423390
   identification: 
     name: P110_SOURCE_PROJECT
     type: Select List
@@ -1120,12 +1116,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -1135,7 +1133,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1145,7 +1143,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 23314637906165586
+    list-of-values: LOV_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: false
 
@@ -1175,7 +1173,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_SOURCE_BOARD ========================
-  id: 91627256425276153
+  id: 110805268908423391
   identification: 
     name: P110_SOURCE_BOARD
     type: Select List
@@ -1186,12 +1184,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 20
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1201,7 +1201,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1211,7 +1211,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_BOARDS # 19916565304955390
+    list-of-values: LOV_BOARDS # 39094577788102628
     display-extra-values: false
     display-null-value: false
 
@@ -1241,7 +1241,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_PROJECT_ID ==========================
-  id: 91629882783276165
+  id: 110807895266423403
   identification: 
     name: P110_PROJECT_ID
     type: Select List
@@ -1252,12 +1252,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 70
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -1267,7 +1269,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1277,7 +1279,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 23314637906165586
+    list-of-values: LOV_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: false
 
@@ -1304,7 +1306,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_BOARD_ID ============================
-  id: 91630032174276166
+  id: 110808044657423404
   identification: 
     name: P110_BOARD_ID
     type: Select List
@@ -1315,12 +1317,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 80
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1330,7 +1334,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1340,7 +1344,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_BOARDS_BULK # 28426482603929748
+    list-of-values: LOV_BOARDS_BULK # 47604495087076986
     display-extra-values: false
     display-null-value: false
 
@@ -1374,7 +1378,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_STATUS_ID ===========================
-  id: 91630119528276167
+  id: 110808132011423405
   identification: 
     name: P110_STATUS_ID
     type: Select List
@@ -1385,12 +1389,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 100
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1400,7 +1406,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1410,7 +1416,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_STATUSES_BULK # 28442579523033735
+    list-of-values: LOV_STATUSES_BULK # 47620592006180973
     display-extra-values: false
     display-null-value: true
 
@@ -1441,7 +1447,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_SWIMLANE_ID =========================
-  id: 91630246255276168
+  id: 110808258738423406
   identification: 
     name: P110_SWIMLANE_ID
     type: Select List
@@ -1452,12 +1458,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 90
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1467,7 +1475,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1477,7 +1485,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_SWIMLANES_BULK # 28442297255031943
+    list-of-values: LOV_SWIMLANES_BULK # 47620309738179181
     display-extra-values: false
     display-null-value: true
 
@@ -1508,7 +1516,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_SOURCE_CATEGORY =====================
-  id: 94917259026013553
+  id: 114095271509160791
   identification: 
     name: P110_SOURCE_CATEGORY
     type: Select List
@@ -1519,12 +1527,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 50
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1534,7 +1544,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1544,7 +1554,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CATEGORIES # 23488253257018677
+    list-of-values: LOV_CATEGORIES # 42666265740165915
     display-extra-values: false
     display-null-value: true
 
@@ -1567,7 +1577,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P110_CATEGORY_ID =========================
-  id: 94919461819013561
+  id: 114097474302160799
   identification: 
     name: P110_CATEGORY_ID
     type: Select List
@@ -1578,12 +1588,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 110
-    region: Bulk Operations [FORM]* # 91625657495276117
-    position: BODY
+    region: Bulk Operations [FORM]* # 110803669978423355
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1593,7 +1605,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1603,7 +1615,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CATEGORIES_BULK # 28445093477086550
+    list-of-values: LOV_CATEGORIES_BULK # 47623105960233788
     display-extra-values: false
     display-null-value: true
 
@@ -1635,15 +1647,15 @@ page-items:
 
 buttons: 
 - # ====== Button: HELP ========================================
-  id: 27422395501258641
+  id: 46600407984405879
   identification: 
     button-name: HELP
     label: Help
 
   layout: 
     sequence: 10
-    region: Bulk Operations # 155729416312791673
-    position: UP
+    region: Bulk Operations # 174907428795938911
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1651,7 +1663,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1676,15 +1688,15 @@ buttons:
     static-id: HELP_BUTTON
 
 - # ====== Button: PROCESS_ALL_ROWS_AND_CLOSE ==================
-  id: 27597005854272035
+  id: 46775018337419273
   identification: 
     button-name: PROCESS_ALL_ROWS_AND_CLOSE
     label: Process All Rows
 
   layout: 
     sequence: 10
-    region: Affected Cards # 27594828701272013
-    position: RIGHT_OF_TITLE
+    region: Affected Cards # 46772841184419251
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1692,7 +1704,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -1705,15 +1717,15 @@ buttons:
     static-id: PROCESS_ALL_ROWS_AND_CLOSE
 
 - # ====== Button: PROCESS_SELECTED_ROWS =======================
-  id: 27597103358272036
+  id: 46775115841419274
   identification: 
     button-name: PROCESS_SELECTED_ROWS
     label: Process Selected Rows
 
   layout: 
     sequence: 20
-    region: Affected Cards # 27594828701272013
-    position: RIGHT_OF_TITLE
+    region: Affected Cards # 46772841184419251
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1721,7 +1733,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1734,15 +1746,15 @@ buttons:
     static-id: PROCESS_SELECTED_ROWS
 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 39051597109211547
+  id: 58229609592358785
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 20
-    region: Bulk Operations # 155729416312791673
-    position: UP
+    region: Bulk Operations # 174907428795938911
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1750,7 +1762,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1767,7 +1779,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_PROJECT =====================
-  id: 27477036392062533
+  id: 46655048875209771
   identification: 
     name: CHANGED_PROJECT
 
@@ -1777,29 +1789,29 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P110_SOURCE_PROJECT
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 27596910330272034
+    id: 46774922813419272
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: AFFECTED_CARDS [GRID] # 27595158466272016
+      region: AFFECTED_CARDS [GRID] # 46773170949419254
 
     execution: 
       sequence: 10
-      event: CHANGED_PROJECT # 27477036392062533
+      event: CHANGED_PROJECT # 46655048875209771
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CHANGED_BOARD =======================
-  id: 27698729582224433
+  id: 46876742065371671
   identification: 
     name: CHANGED_BOARD
 
@@ -1809,29 +1821,29 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P110_SOURCE_BOARD
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 27698825077224434
+    id: 46876837560371672
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: AFFECTED_CARDS [GRID] # 27595158466272016
+      region: AFFECTED_CARDS [GRID] # 46773170949419254
 
     execution: 
       sequence: 10
-      event: CHANGED_BOARD # 27698729582224433
+      event: CHANGED_BOARD # 46876742065371671
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CHANGED_STATUS ======================
-  id: 27698919699224435
+  id: 46876932182371673
   identification: 
     name: CHANGED_STATUS
 
@@ -1841,29 +1853,29 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P110_SOURCE_STATUS
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 27699023919224436
+    id: 46877036402371674
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: AFFECTED_CARDS [GRID] # 27595158466272016
+      region: AFFECTED_CARDS [GRID] # 46773170949419254
 
     execution: 
       sequence: 20
-      event: CHANGED_STATUS # 27698919699224435
+      event: CHANGED_STATUS # 46876932182371673
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Value ===================================
-    id: 27700046719224446
+    id: 46878059202371684
     identification: 
       action: Set Value
 
@@ -1879,14 +1891,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_STATUS # 27698919699224435
+      event: CHANGED_STATUS # 46876932182371673
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: CHANGED_CATEGORY ====================
-  id: 27699123769224437
+  id: 46877136252371675
   identification: 
     name: CHANGED_CATEGORY
 
@@ -1896,29 +1908,29 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P110_SOURCE_CATEGORY
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 27699272328224438
+    id: 46877284811371676
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: AFFECTED_CARDS [GRID] # 27595158466272016
+      region: AFFECTED_CARDS [GRID] # 46773170949419254
 
     execution: 
       sequence: 20
-      event: CHANGED_CATEGORY # 27699123769224437
+      event: CHANGED_CATEGORY # 46877136252371675
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Value ===================================
-    id: 27699807975224444
+    id: 46877820458371682
     identification: 
       action: Set Value
 
@@ -1934,14 +1946,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_CATEGORY # 27699123769224437
+      event: CHANGED_CATEGORY # 46877136252371675
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: CHANGED_OWNER =======================
-  id: 27699370458224439
+  id: 46877382941371677
   identification: 
     name: CHANGED_OWNER
 
@@ -1951,29 +1963,29 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P110_SOURCE_OWNER
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 27699463030224440
+    id: 46877475513371678
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: AFFECTED_CARDS [GRID] # 27595158466272016
+      region: AFFECTED_CARDS [GRID] # 46773170949419254
 
     execution: 
       sequence: 20
-      event: CHANGED_OWNER # 27699370458224439
+      event: CHANGED_OWNER # 46877382941371677
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Value ===================================
-    id: 27699784608224443
+    id: 46877797091371681
     identification: 
       action: Set Value
 
@@ -1989,14 +2001,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_OWNER # 27699370458224439
+      event: CHANGED_OWNER # 46877382941371677
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: CHANGED_SWIMLANE ====================
-  id: 27699562447224441
+  id: 46877574930371679
   identification: 
     name: CHANGED_SWIMLANE
 
@@ -2006,29 +2018,29 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P110_SOURCE_SWIMLANE
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 27699617218224442
+    id: 46877629701371680
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: AFFECTED_CARDS [GRID] # 27595158466272016
+      region: AFFECTED_CARDS [GRID] # 46773170949419254
 
     execution: 
       sequence: 20
-      event: CHANGED_SWIMLANE # 27699562447224441
+      event: CHANGED_SWIMLANE # 46877574930371679
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Value ===================================
-    id: 27699990368224445
+    id: 46878002851371683
     identification: 
       action: Set Value
 
@@ -2044,14 +2056,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_SWIMLANE # 27699562447224441
+      event: CHANGED_SWIMLANE # 46877574930371679
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: PROCESS_ALL_ROWS ====================
-  id: 28267062839994303
+  id: 47445075323141541
   identification: 
     name: PROCESS_ALL_ROWS
 
@@ -2061,13 +2073,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: PROCESS_ALL_ROWS_AND_CLOSE # 27597005854272035
+    button: PROCESS_ALL_ROWS_AND_CLOSE # 46775018337419273
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 28267185824994304
+    id: 47445198308141542
     identification: 
       action: Execute JavaScript Code
 
@@ -2076,12 +2088,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: PROCESS_ALL_ROWS # 28267062839994303
+      event: PROCESS_ALL_ROWS # 47445075323141541
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: PROCESS_SELECTED_ROWS ===============
-  id: 28267203206994305
+  id: 47445215690141543
   identification: 
     name: PROCESS_SELECTED_ROWS
 
@@ -2091,13 +2103,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: PROCESS_SELECTED_ROWS # 27597103358272036
+    button: PROCESS_SELECTED_ROWS # 46775115841419274
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 28267346839994306
+    id: 47445359323141544
     identification: 
       action: Execute JavaScript Code
 
@@ -2106,18 +2118,18 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: PROCESS_SELECTED_ROWS # 28267203206994305
+      event: PROCESS_SELECTED_ROWS # 47445215690141543
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: PROCESS_BULK_FILTERS =======================
-  id: 27475395825062526
+  id: 46653408308209764
   identification: 
     name: PROCESS_BULK_FILTERS
     type: Invoke API
     execution-chain: None
-    editable-region: AFFECTED_CARDS [GRID] # 27595158466272016
+    editable-region: AFFECTED_CARDS [GRID] # 46773170949419254
 
   settings: 
     type: PL/SQL Package
@@ -2137,7 +2149,7 @@ processes:
     execution-scope: All Submitted Rows
 
 - # ====== Process: PROCESS_BULK_INIT ==========================
-  id: 27475705404062526
+  id: 46653717887209764
   identification: 
     name: PROCESS_BULK_INIT
     type: Invoke API
@@ -2158,7 +2170,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: PROCESS_BULK_REQUEST =======================
-  id: 27596664559272031
+  id: 46774677042419269
   identification: 
     name: PROCESS_BULK_REQUEST
     type: Invoke API
@@ -2182,7 +2194,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: CLOSE_DIALOG ===============================
-  id: 39050324798189972
+  id: 58228337281337210
   identification: 
     name: CLOSE_DIALOG
     type: Close Dialog

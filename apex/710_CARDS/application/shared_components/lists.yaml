@@ -1,8 +1,15 @@
 ---
 - # ====== List: NAVIGATION ====================================
-  id: 28802196659285496
+  id: 47980209142432734
   identification: 
     name: NAVIGATION
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 13154021299338235 # NAVIGATION
+
+    version-number: 42101135209027
 
   source: 
     type: SQL Query
@@ -27,6 +34,8 @@
           t.attribute08,
           t.attribute09,
           t.attribute10
-      FROM tsk_navigation_v t
-      ORDER BY t.order# NULLS FIRST;
+          --
+      FROM master.app_navigation_v t
+      ORDER BY
+          t.order# NULLS FIRST;
 

@@ -5,11 +5,11 @@ identification:
   name: Card Detail
   alias: CARD
   title: Card Detail
-  page-group: 1) CARDS # 23490192563159466
+  page-group: 1) CARDS # 42668205046306704
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Modal Dialog # 33859121557153720
+  dialog-template: Modal Dialog
   template-options: 
   - '#DEFAULT#'
 
@@ -137,7 +137,7 @@ css:
     
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -168,15 +168,15 @@ help:
 
 regions: 
 - # ====== Region: Checklist &P105_BADGE_CHECKLIST. ============
-  id: 25064699187730026
+  id: 44242711670877264
   identification: 
-    title: Checklist &P105_BADGE_CHECKLIST.
+    name: Checklist &P105_BADGE_CHECKLIST.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: RIGHT # 25479617265860925
-    position: SUB_REGIONS
+    parent-region: RIGHT # 44657629749008163
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -184,7 +184,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -198,9 +198,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -210,15 +207,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Comments &P105_BADGE_COMMENTS. ==============
-  id: 25064723919730027
+  id: 44242736402877265
   identification: 
-    title: Comments &P105_BADGE_COMMENTS.
+    name: Comments &P105_BADGE_COMMENTS.
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: RIGHT # 25479617265860925
-    position: SUB_REGIONS
+    parent-region: RIGHT # 44657629749008163
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -226,7 +223,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -240,9 +237,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -252,15 +246,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: LEFT ========================================
-  id: 25064882953730028
+  id: 44242895436877266
   identification: 
-    title: LEFT
+    name: LEFT
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -268,7 +262,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 33957611184153776
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -283,9 +277,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -295,15 +286,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Attachements &P105_BADGE_FILES. =============
-  id: 25065282126730032
+  id: 44243294609877270
   identification: 
-    title: Attachements &P105_BADGE_FILES.
+    name: Attachements &P105_BADGE_FILES.
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: LEFT # 25064882953730028
-    position: SUB_REGIONS
+    parent-region: LEFT # 44242895436877266
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -311,7 +302,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -325,9 +316,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -337,15 +325,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Info ========================================
-  id: 25066083083730040
+  id: 44244095566877278
   identification: 
-    title: Info
+    name: Info
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: LEFT # 25064882953730028
-    position: SUB_REGIONS
+    parent-region: LEFT # 44242895436877266
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -353,7 +341,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -367,9 +355,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -379,15 +364,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Description &P105_BADGE_DESC. ===============
-  id: 25479496737860923
+  id: 44657509221008161
   identification: 
-    title: Description &P105_BADGE_DESC.
+    name: Description &P105_BADGE_DESC.
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: LEFT # 25064882953730028
-    position: SUB_REGIONS
+    parent-region: LEFT # 44242895436877266
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -395,7 +380,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -409,9 +394,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -421,15 +403,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: DETAILS =====================================
-  id: 25479533757860924
+  id: 44657546241008162
   identification: 
-    title: DETAILS
+    name: DETAILS
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Description &P105_BADGE_DESC. # 25479496737860923
-    position: SUB_REGIONS
+    parent-region: Description &P105_BADGE_DESC. # 44657509221008161
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -437,7 +419,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -450,9 +432,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -462,15 +441,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: RIGHT =======================================
-  id: 25479617265860925
+  id: 44657629749008163
   identification: 
-    title: RIGHT
+    name: RIGHT
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -478,7 +457,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 33957611184153776
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -493,9 +472,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -505,15 +481,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Tags &P105_BADGE_TAGS. ======================
-  id: 28271631648994349
+  id: 47449644132141587
   identification: 
-    title: Tags &P105_BADGE_TAGS.
+    name: Tags &P105_BADGE_TAGS.
     type: Static Content
 
   layout: 
     sequence: 40
-    parent-region: RIGHT # 25479617265860925
-    position: SUB_REGIONS
+    parent-region: RIGHT # 44657629749008163
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -521,7 +497,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -535,9 +511,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -547,9 +520,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: MORE_ACTIONS ================================
-  id: 28430186076964230
+  id: 47608198560111468
   identification: 
-    title: MORE_ACTIONS
+    name: MORE_ACTIONS
     type: Dynamic Content
 
   source: 
@@ -574,7 +547,7 @@ regions:
   layout: 
     sequence: 40
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -582,7 +555,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -606,15 +579,15 @@ regions:
       lazy-loading: false
 
 - # ====== Region: Code Review &P105_BADGE_REVIEW. =============
-  id: 28431051780964239
+  id: 47609064264111477
   identification: 
-    title: Code Review &P105_BADGE_REVIEW.
+    name: Code Review &P105_BADGE_REVIEW.
     type: Static Content
 
   layout: 
     sequence: 40
-    parent-region: LEFT # 25064882953730028
-    position: SUB_REGIONS
+    parent-region: LEFT # 44242895436877266
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -622,7 +595,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -635,9 +608,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -647,9 +617,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Files [REPORT] ==============================
-  id: 39764966812325847
+  id: 58942979295473085
   identification: 
-    title: Files [REPORT]
+    name: Files [REPORT]
     type: Classic Report
 
   source: 
@@ -667,8 +637,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Attachements &P105_BADGE_FILES. # 25065282126730032
-    position: SUB_REGIONS
+    parent-region: Attachements &P105_BADGE_FILES. # 44243294609877270
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -676,7 +646,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -710,7 +680,7 @@ regions:
 
     appearance: 
       template-type: Theme
-      template: Comments # 33977403049153790
+      template: Comments
       template-options: 
       - '#DEFAULT#'
       - t-Comments--chat
@@ -742,7 +712,7 @@ regions:
 
   columns: 
   - # ====== Column: CARD_ID =====================================
-    id: 39765063188325848
+    id: 58943075671473086
     identification: 
       column-name: CARD_ID
       type: Plain Text
@@ -774,7 +744,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMENT_ID ==================================
-    id: 39765120248325849
+    id: 58943132731473087
     identification: 
       column-name: COMMENT_ID
       type: Plain Text
@@ -806,7 +776,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ACTIONS =====================================
-    id: 39765246411325850
+    id: 58943258894473088
     identification: 
       column-name: ACTIONS
       type: Link
@@ -842,7 +812,7 @@ regions:
       escape-special-characters: false
 
   - # ====== Column: ATTRIBUTE_1 =================================
-    id: 40023163998814901
+    id: 59201176481962139
     identification: 
       column-name: ATTRIBUTE_1
       type: Plain Text
@@ -874,7 +844,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ATTRIBUTE_2 =================================
-    id: 40023267200814902
+    id: 59201279683962140
     identification: 
       column-name: ATTRIBUTE_2
       type: Plain Text
@@ -906,7 +876,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ATTRIBUTE_3 =================================
-    id: 40023329373814903
+    id: 59201341856962141
     identification: 
       column-name: ATTRIBUTE_3
       type: Plain Text
@@ -938,7 +908,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ATTRIBUTE_4 =================================
-    id: 40023481994814904
+    id: 59201494477962142
     identification: 
       column-name: ATTRIBUTE_4
       type: Plain Text
@@ -970,7 +940,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMENT_DATE ================================
-    id: 40023575413814905
+    id: 59201587896962143
     identification: 
       column-name: COMMENT_DATE
       type: Plain Text
@@ -1002,7 +972,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMENT_MODIFIERS ===========================
-    id: 40023690461814906
+    id: 59201702944962144
     identification: 
       column-name: COMMENT_MODIFIERS
       type: Plain Text
@@ -1034,7 +1004,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMENT_TEXT ================================
-    id: 40023724897814907
+    id: 59201737380962145
     identification: 
       column-name: COMMENT_TEXT
       type: Plain Text
@@ -1066,7 +1036,7 @@ regions:
       escape-special-characters: false
 
   - # ====== Column: ICON_MODIFIER ===============================
-    id: 40023887589814908
+    id: 59201900072962146
     identification: 
       column-name: ICON_MODIFIER
       type: Plain Text
@@ -1098,7 +1068,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: USER_ICON ===================================
-    id: 40023993029814909
+    id: 59202005512962147
     identification: 
       column-name: USER_ICON
       type: Plain Text
@@ -1130,7 +1100,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: USER_NAME ===================================
-    id: 40024020150814910
+    id: 59202032633962148
     identification: 
       column-name: USER_NAME
       type: Plain Text
@@ -1162,7 +1132,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ORDER# ======================================
-    id: 40024191755814911
+    id: 59202204238962149
     identification: 
       column-name: ORDER#
       type: Plain Text
@@ -1194,15 +1164,15 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: Commits &P105_BADGE_COMMITS. ================
-  id: 89197294196141484
+  id: 108375306679288722
   identification: 
-    title: Commits &P105_BADGE_COMMITS.
+    name: Commits &P105_BADGE_COMMITS.
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: RIGHT # 25479617265860925
-    position: SUB_REGIONS
+    parent-region: RIGHT # 44657629749008163
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1210,7 +1180,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1224,9 +1194,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -1236,9 +1203,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Comments [REPORT] ===========================
-  id: 89273038734478146
+  id: 108451051217625384
   identification: 
-    title: Comments [REPORT]
+    name: Comments [REPORT]
     type: Classic Report
 
   source: 
@@ -1256,8 +1223,8 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
-    position: SUB_REGIONS
+    parent-region: Comments &P105_BADGE_COMMENTS. # 44242736402877265
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1265,7 +1232,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1292,7 +1259,7 @@ regions:
 
     appearance: 
       template-type: Theme
-      template: Comments # 33977403049153790
+      template: Comments
       template-options: 
       - '#DEFAULT#'
       - t-Comments--chat
@@ -1324,7 +1291,7 @@ regions:
 
   columns: 
   - # ====== Column: COMMENT_ID ==================================
-    id: 25231474251844525
+    id: 44409486734991763
     identification: 
       column-name: COMMENT_ID
       type: Plain Text
@@ -1356,7 +1323,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ACTIONS =====================================
-    id: 25231844564844526
+    id: 44409857047991764
     identification: 
       column-name: ACTIONS
       type: Link
@@ -1392,7 +1359,7 @@ regions:
       escape-special-characters: false
 
   - # ====== Column: ATTRIBUTE_1 =================================
-    id: 25232235236844526
+    id: 44410247719991764
     identification: 
       column-name: ATTRIBUTE_1
       type: Plain Text
@@ -1424,7 +1391,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ATTRIBUTE_2 =================================
-    id: 25232678450844526
+    id: 44410690933991764
     identification: 
       column-name: ATTRIBUTE_2
       type: Plain Text
@@ -1456,7 +1423,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ATTRIBUTE_3 =================================
-    id: 25233018002844527
+    id: 44411030485991765
     identification: 
       column-name: ATTRIBUTE_3
       type: Plain Text
@@ -1488,7 +1455,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ATTRIBUTE_4 =================================
-    id: 25233415837844527
+    id: 44411428320991765
     identification: 
       column-name: ATTRIBUTE_4
       type: Plain Text
@@ -1520,7 +1487,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMENT_DATE ================================
-    id: 25233838614844527
+    id: 44411851097991765
     identification: 
       column-name: COMMENT_DATE
       type: Plain Text
@@ -1552,7 +1519,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMENT_MODIFIERS ===========================
-    id: 25234255039844527
+    id: 44412267522991765
     identification: 
       column-name: COMMENT_MODIFIERS
       type: Plain Text
@@ -1584,7 +1551,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMENT_TEXT ================================
-    id: 25234627995844528
+    id: 44412640478991766
     identification: 
       column-name: COMMENT_TEXT
       type: Plain Text
@@ -1616,7 +1583,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ICON_MODIFIER ===============================
-    id: 25235038828844528
+    id: 44413051311991766
     identification: 
       column-name: ICON_MODIFIER
       type: Plain Text
@@ -1648,7 +1615,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: USER_ICON ===================================
-    id: 25235444604844528
+    id: 44413457087991766
     identification: 
       column-name: USER_ICON
       type: Plain Text
@@ -1680,7 +1647,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: USER_NAME ===================================
-    id: 25235885739844529
+    id: 44413898222991767
     identification: 
       column-name: USER_NAME
       type: Plain Text
@@ -1712,7 +1679,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CARD_ID =====================================
-    id: 25481314572860942
+    id: 44659327056008180
     identification: 
       column-name: CARD_ID
       type: Plain Text
@@ -1744,7 +1711,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: ORDER# ======================================
-    id: 37725627150953121
+    id: 56903639634100359
     identification: 
       column-name: ORDER#
       type: Plain Text
@@ -1776,9 +1743,9 @@ regions:
       escape-special-characters: true
 
 - # ====== Region: Commits [LIST] ==============================
-  id: 90518377557569070
+  id: 109696390040716308
   identification: 
-    title: Commits [LIST]
+    name: Commits [LIST]
     type: List View
 
   source: 
@@ -1793,8 +1760,8 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Commits &P105_BADGE_COMMITS. # 89197294196141484
-    position: SUB_REGIONS
+    parent-region: Commits &P105_BADGE_COMMITS. # 108375306679288722
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1802,7 +1769,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 33888340216153739
+    template: Cards Container
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1835,15 +1802,15 @@ regions:
       number-of-rows: 15
 
 - # ====== Region: UPLOADER ====================================
-  id: 90619880583399447
+  id: 109797893066546685
   identification: 
-    title: UPLOADER
+    name: UPLOADER
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Attachements &P105_BADGE_FILES. # 25065282126730032
-    position: SUB_REGIONS
+    parent-region: Attachements &P105_BADGE_FILES. # 44243294609877270
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1851,7 +1818,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1865,9 +1832,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -1877,9 +1841,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Checklist [GRID] ============================
-  id: 91363554227871261
+  id: 110541566711018499
   identification: 
-    title: Checklist [GRID]
+    name: Checklist [GRID]
     type: Interactive Grid
 
   source: 
@@ -1894,8 +1858,8 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Checklist &P105_BADGE_CHECKLIST. # 25064699187730026
-    position: SUB_REGIONS
+    parent-region: Checklist &P105_BADGE_CHECKLIST. # 44242711670877264
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1903,7 +1867,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -1919,14 +1883,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 91363669626871262
+    id: 110541682110018500
     edit: 
       enabled: true
       allowed-operations: 
@@ -1969,14 +1930,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 91403223540187545
+      id: 110581236023334783
       identification: 
         name: Primary Report
         alias: 463001
 
   columns: 
   - # ====== Column: CSS_CLASS ===================================
-    id: 27771717756313618
+    id: 46949730239460856
     identification: 
       column-name: CSS_CLASS
       type: Hidden
@@ -2010,7 +1971,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_ORDER ===================================
-    id: 39016440079935426
+    id: 58194452563082664
     identification: 
       column-name: OLD_ORDER
       type: Hidden
@@ -2046,7 +2007,7 @@ regions:
       sort: false
 
   - # ====== Column: NEW_ORDER ===================================
-    id: 39016561504935427
+    id: 58194573988082665
     identification: 
       column-name: NEW_ORDER
       type: Hidden
@@ -2082,7 +2043,7 @@ regions:
       sort: false
 
   - # ====== Column: CHECKLIST_LEVEL =============================
-    id: 39017740344935439
+    id: 58195752828082677
     identification: 
       column-name: CHECKLIST_LEVEL
       type: Hidden
@@ -2116,7 +2077,7 @@ regions:
       sort: false
 
   - # ====== Column: CHECKLIST_ID ================================
-    id: 91363810050871263
+    id: 110541822534018501
     identification: 
       column-name: CHECKLIST_ID
       type: Hidden
@@ -2150,7 +2111,7 @@ regions:
       sort: false
 
   - # ====== Column: CHECKLIST_ITEM ==============================
-    id: 91363850750871264
+    id: 110541863234018502
     identification: 
       column-name: CHECKLIST_ITEM
       type: Text Field
@@ -2216,7 +2177,7 @@ regions:
         }
 
   - # ====== Column: CHECKLIST_DONE ==============================
-    id: 91364007612871265
+    id: 110542020096018503
     identification: 
       column-name: CHECKLIST_DONE
       type: Checkbox
@@ -2274,7 +2235,7 @@ regions:
       hide: true
 
   - # ====== Column: CARD_ID =====================================
-    id: 91364077807871266
+    id: 110542090291018504
     identification: 
       column-name: CARD_ID
       type: Hidden
@@ -2308,7 +2269,7 @@ regions:
       sort: false
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 91364337381871269
+    id: 110542349865018507
     identification: 
       column-name: APEX$ROW_ACTION
       type: Hidden
@@ -2329,7 +2290,7 @@ regions:
       data-type: VARCHAR2
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 91364448161871270
+    id: 110542460645018508
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Hidden
@@ -2350,15 +2311,15 @@ regions:
       data-type: VARCHAR2
 
 - # ====== Region: &P105_HEADER. ===============================
-  id: 108316517171408030
+  id: 127494529654555268
   identification: 
-    title: '&P105_HEADER.'
+    name: '&P105_HEADER.'
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2366,7 +2327,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -2379,9 +2340,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -2391,9 +2349,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: [FORM] ======================================
-  id: 108316672484408031
+  id: 127494684967555269
   identification: 
-    title: '[FORM]'
+    name: '[FORM]'
     type: Form
 
   source: 
@@ -2405,8 +2363,8 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Info # 25066083083730040
-    position: SUB_REGIONS
+    parent-region: Info # 44244095566877278
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2414,7 +2372,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -2426,9 +2384,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -2444,7 +2399,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P105_CARD_NUMBER =========================
-  id: 25478579834860914
+  id: 44656592318008152
   identification: 
     name: P105_CARD_NUMBER
     type: Text Field
@@ -2462,8 +2417,8 @@ page-items:
 
   layout: 
     sequence: 120
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -2473,7 +2428,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2486,7 +2441,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CARD_NUMBER
     data-type: VARCHAR2
     query-only: false
@@ -2504,7 +2459,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_TAGS ================================
-  id: 25479757064860926
+  id: 44657769548008164
   identification: 
     name: P105_TAGS
     type: Text Field
@@ -2522,8 +2477,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Tags &P105_BADGE_TAGS. # 28271631648994349
-    position: BODY
+    region: Tags &P105_BADGE_TAGS. # 47449644132141587
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -2533,7 +2488,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2546,7 +2501,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: TAGS
     data-type: VARCHAR2
     query-only: false
@@ -2564,10 +2519,10 @@ page-items:
     restricted-characters: All characters can be saved.
 
   configuration: 
-    build-option: NEVER # 33790501555120051
+    build-option: NEVER # 52968514038267289
 
 - # ====== Page Item: P105_CARD_ID =============================
-  id: 25481403010860943
+  id: 44659415494008181
   identification: 
     name: P105_CARD_ID
     type: Hidden
@@ -2577,14 +2532,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CARD_ID
     data-type: NUMBER
     query-only: false
@@ -2600,7 +2555,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CARD_DESC ===========================
-  id: 25481752154860946
+  id: 44659764638008184
   identification: 
     name: P105_CARD_DESC
     type: Rich Text Editor
@@ -2616,8 +2571,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: DETAILS # 25479533757860924
-    position: BODY
+    region: DETAILS # 44657546241008162
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -2627,7 +2582,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
 
@@ -2638,7 +2593,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CARD_DESC
     data-type: VARCHAR2
     query-only: false
@@ -2654,7 +2609,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CREATED_BY ==========================
-  id: 25481821114860947
+  id: 44659833598008185
   identification: 
     name: P105_CREATED_BY
     type: Hidden
@@ -2664,14 +2619,14 @@ page-items:
 
   layout: 
     sequence: 130
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CREATED_BY
     data-type: VARCHAR2
     query-only: false
@@ -2687,7 +2642,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CREATED_AT ==========================
-  id: 25481975929860948
+  id: 44659988413008186
   identification: 
     name: P105_CREATED_AT
     type: Display Only
@@ -2704,8 +2659,8 @@ page-items:
 
   layout: 
     sequence: 140
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -2715,7 +2670,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     format-mask: 'YYYY-MM-DD HH24:MI'
@@ -2724,7 +2679,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CREATED_AT
     data-type: DATE
     query-only: false
@@ -2740,7 +2695,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_SEQUENCE ============================
-  id: 26394353637631604
+  id: 45572366120778842
   identification: 
     name: P105_SEQUENCE
     type: Select List
@@ -2751,12 +2706,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 110
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -2766,7 +2723,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -2776,7 +2733,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_SEQUENCES # 26408996815154587
+    list-of-values: LOV_SEQUENCES # 45587009298301825
     display-extra-values: false
     display-null-value: true
 
@@ -2799,7 +2756,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CATEGORY_JSON =======================
-  id: 27231799786725505
+  id: 46409812269872743
   identification: 
     name: P105_CATEGORY_JSON
     type: Hidden
@@ -2809,8 +2766,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Info # 25066083083730040
-    position: BODY
+    region: Info # 44244095566877278
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -2829,7 +2786,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_STATUS_REQUESTED ====================
-  id: 27593660432272001
+  id: 46771672915419239
   identification: 
     name: P105_STATUS_REQUESTED
     type: Hidden
@@ -2839,8 +2796,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Info # 25066083083730040
-    position: BODY
+    region: Info # 44244095566877278
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -2859,7 +2816,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BADGE_REVIEW ========================
-  id: 28431120483964240
+  id: 47609132967111478
   identification: 
     name: P105_BADGE_REVIEW
     type: Hidden
@@ -2869,8 +2826,8 @@ page-items:
 
   layout: 
     sequence: 40
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -2889,7 +2846,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_COMMENT =============================
-  id: 37724577978953110
+  id: 56902590462100348
   identification: 
     name: P105_COMMENT
     type: Textarea
@@ -2906,8 +2863,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
-    position: BODY
+    region: Comments &P105_BADGE_COMMENTS. # 44242736402877265
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -2917,7 +2874,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2949,7 +2906,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_COMMENT_ID ==========================
-  id: 37725346328953118
+  id: 56903358812100356
   identification: 
     name: P105_COMMENT_ID
     type: Hidden
@@ -2959,8 +2916,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Comments &P105_BADGE_COMMENTS. # 25064723919730027
-    position: BODY
+    region: Comments &P105_BADGE_COMMENTS. # 44242736402877265
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -2979,7 +2936,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_MERGE_URL ===========================
-  id: 37725762817953122
+  id: 56903775301100360
   identification: 
     name: P105_MERGE_URL
     type: Hidden
@@ -2989,8 +2946,8 @@ page-items:
 
   layout: 
     sequence: 130
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3009,7 +2966,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_MERGE_CARD ==========================
-  id: 37727702289953142
+  id: 56905714773100380
   identification: 
     name: P105_MERGE_CARD
     type: Hidden
@@ -3019,8 +2976,8 @@ page-items:
 
   layout: 
     sequence: 140
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3039,7 +2996,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_FILE_ID =============================
-  id: 40024827820814918
+  id: 59202840303962156
   identification: 
     name: P105_FILE_ID
     type: Hidden
@@ -3049,8 +3006,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: UPLOADER # 90619880583399447
-    position: BODY
+    region: UPLOADER # 109797893066546685
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3069,7 +3026,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CARD_NAME ===========================
-  id: 79916493298307144
+  id: 99094505781454382
   identification: 
     name: P105_CARD_NAME
     type: Text Field
@@ -3087,8 +3044,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -3098,7 +3055,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -3111,7 +3068,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CARD_NAME
     data-type: VARCHAR2
     query-only: false
@@ -3129,7 +3086,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BOARD_ID ============================
-  id: 79916712163307146
+  id: 99094724646454384
   identification: 
     name: P105_BOARD_ID
     type: Select List
@@ -3140,12 +3097,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 50
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -3155,7 +3114,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3165,7 +3124,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_BOARDS # 19916565304955390
+    list-of-values: LOV_BOARDS # 39094577788102628
     display-extra-values: true
     display-null-value: false
 
@@ -3181,7 +3140,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: BOARD_ID
     data-type: NUMBER
     query-only: false
@@ -3199,7 +3158,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CLIENT_ID ===========================
-  id: 79916787074307147
+  id: 99094799557454385
   identification: 
     name: P105_CLIENT_ID
     type: Hidden
@@ -3209,14 +3168,14 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CLIENT_ID
     data-type: VARCHAR2
     query-only: false
@@ -3232,7 +3191,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_PROJECT_ID ==========================
-  id: 79916923377307148
+  id: 99094935860454386
   identification: 
     name: P105_PROJECT_ID
     type: Hidden
@@ -3242,14 +3201,14 @@ page-items:
 
   layout: 
     sequence: 40
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: PROJECT_ID
     data-type: VARCHAR2
     query-only: false
@@ -3265,7 +3224,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_SWIMLANE_ID =========================
-  id: 79917017279307149
+  id: 99095029762454387
   identification: 
     name: P105_SWIMLANE_ID
     type: Select List
@@ -3276,12 +3235,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 60
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -3291,7 +3252,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3301,7 +3262,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_SWIMLANES # 19919016269955397
+    list-of-values: LOV_SWIMLANES # 39097028753102635
     display-extra-values: true
     display-null-value: false
 
@@ -3318,7 +3279,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: SWIMLANE_ID
     data-type: VARCHAR2
     query-only: false
@@ -3336,7 +3297,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_STATUS_ID ===========================
-  id: 79917168236307150
+  id: 99095180719454388
   identification: 
     name: P105_STATUS_ID
     type: Select List
@@ -3347,12 +3308,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 70
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -3362,7 +3325,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3372,7 +3335,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_STATUSES # 19918350743955397
+    list-of-values: LOV_STATUSES # 39096363227102635
     display-extra-values: true
     display-null-value: false
 
@@ -3389,7 +3352,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: STATUS_ID
     data-type: VARCHAR2
     query-only: false
@@ -3407,7 +3370,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_UPDATED_BY ==========================
-  id: 79917255445307151
+  id: 99095267928454389
   identification: 
     name: P105_UPDATED_BY
     type: Hidden
@@ -3417,14 +3380,14 @@ page-items:
 
   layout: 
     sequence: 150
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: UPDATED_BY
     data-type: VARCHAR2
     query-only: true
@@ -3440,7 +3403,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_ORDER ===============================
-  id: 79917442348307153
+  id: 99095454831454391
   identification: 
     name: P105_ORDER
     type: Hidden
@@ -3450,14 +3413,14 @@ page-items:
 
   layout: 
     sequence: 170
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: ORDER#
     data-type: NUMBER
     query-only: false
@@ -3473,7 +3436,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_SOURCE_PAGE =========================
-  id: 80087753664629359
+  id: 99265766147776597
   identification: 
     name: P105_SOURCE_PAGE
     type: Hidden
@@ -3483,8 +3446,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3503,7 +3466,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BADGE_DESC ==========================
-  id: 89229566244141570
+  id: 108407578727288808
   identification: 
     name: P105_BADGE_DESC
     type: Hidden
@@ -3513,8 +3476,8 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3533,7 +3496,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BADGE_FILES =========================
-  id: 89229666894141571
+  id: 108407679377288809
   identification: 
     name: P105_BADGE_FILES
     type: Hidden
@@ -3543,8 +3506,8 @@ page-items:
 
   layout: 
     sequence: 70
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3563,7 +3526,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BADGE_COMMENTS ======================
-  id: 89229732662141572
+  id: 108407745145288810
   identification: 
     name: P105_BADGE_COMMENTS
     type: Hidden
@@ -3573,8 +3536,8 @@ page-items:
 
   layout: 
     sequence: 60
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3593,7 +3556,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BADGE_COMMITS =======================
-  id: 89304773476478226
+  id: 108482785959625464
   identification: 
     name: P105_BADGE_COMMITS
     type: Hidden
@@ -3603,8 +3566,8 @@ page-items:
 
   layout: 
     sequence: 80
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3623,7 +3586,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BADGE_CHECKLIST =====================
-  id: 89304861873478227
+  id: 108482874356625465
   identification: 
     name: P105_BADGE_CHECKLIST
     type: Hidden
@@ -3633,8 +3596,8 @@ page-items:
 
   layout: 
     sequence: 50
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3653,7 +3616,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_PREV_CARD_ID ========================
-  id: 89307285138478252
+  id: 108485297621625490
   identification: 
     name: P105_PREV_CARD_ID
     type: Hidden
@@ -3663,8 +3626,8 @@ page-items:
 
   layout: 
     sequence: 100
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3683,7 +3646,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_NEXT_CARD_ID ========================
-  id: 89307452409478253
+  id: 108485464892625491
   identification: 
     name: P105_NEXT_CARD_ID
     type: Hidden
@@ -3693,8 +3656,8 @@ page-items:
 
   layout: 
     sequence: 110
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3713,7 +3676,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CARD_LINK ===========================
-  id: 89307848415478257
+  id: 108485860898625495
   identification: 
     name: P105_CARD_LINK
     type: Hidden
@@ -3723,8 +3686,8 @@ page-items:
 
   layout: 
     sequence: 120
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -3743,7 +3706,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_ATTACHED_FILES ======================
-  id: 90411714354021456
+  id: 109589726837168694
   identification: 
     name: P105_ATTACHED_FILES
     type: File Upload
@@ -3765,8 +3728,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: UPLOADER # 90619880583399447
-    position: BODY
+    region: UPLOADER # 109797893066546685
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -3776,7 +3739,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Above # 34018832975153820
+    template: Optional - Above
     template-options: 
     - '#DEFAULT#'
     - t-Form-fieldContainer--stretchInputs
@@ -3800,7 +3763,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_UPDATED_AT ==========================
-  id: 91013637748105144
+  id: 110191650231252382
   identification: 
     name: P105_UPDATED_AT
     type: Display Only
@@ -3817,8 +3780,8 @@ page-items:
 
   layout: 
     sequence: 160
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -3828,7 +3791,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     format-mask: 'YYYY-MM-DD HH24:MI'
@@ -3837,7 +3800,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: UPDATED_AT
     data-type: DATE
     query-only: true
@@ -3853,7 +3816,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_CATEGORY_ID =========================
-  id: 92337104389514433
+  id: 111515116872661671
   identification: 
     name: P105_CATEGORY_ID
     type: Select List
@@ -3864,12 +3827,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 80
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -3879,7 +3844,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3889,7 +3854,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CATEGORIES # 23488253257018677
+    list-of-values: LOV_CATEGORIES # 42666265740165915
     display-extra-values: false
     display-null-value: true
 
@@ -3906,7 +3871,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: CATEGORY_ID
     data-type: VARCHAR2
     query-only: false
@@ -3924,7 +3889,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_OWNER_ID ============================
-  id: 92697162290795651
+  id: 111875174773942889
   identification: 
     name: P105_OWNER_ID
     type: Select List
@@ -3935,12 +3900,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 90
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -3950,7 +3917,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3960,7 +3927,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_USERS # 23489673221151564
+    list-of-values: LOV_USERS # 42667685704298802
     display-extra-values: true
     display-null-value: true
 
@@ -3977,7 +3944,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: OWNER_ID
     data-type: VARCHAR2
     query-only: false
@@ -4000,7 +3967,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_DEADLINE_AT =========================
-  id: 92697257377795652
+  id: 111875269860942890
   identification: 
     name: P105_DEADLINE_AT
     type: Date Picker
@@ -4017,8 +3984,8 @@ page-items:
 
   layout: 
     sequence: 100
-    region: '[FORM]' # 108316672484408031
-    position: BODY
+    region: '[FORM]' # 127494684967555269
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -4028,7 +3995,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     format-mask: YYYY-MM-DD
@@ -4041,7 +4008,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
     column: DEADLINE_AT
     data-type: DATE
     query-only: false
@@ -4059,7 +4026,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_BADGE_TAGS ==========================
-  id: 92874350504190425
+  id: 112052362987337663
   identification: 
     name: P105_BADGE_TAGS
     type: Hidden
@@ -4069,8 +4036,8 @@ page-items:
 
   layout: 
     sequence: 90
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -4089,7 +4056,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P105_HEADER ==============================
-  id: 108348917863408117
+  id: 127526930346555355
   identification: 
     name: P105_HEADER
     type: Hidden
@@ -4099,8 +4066,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: '&P105_HEADER.' # 108316517171408030
-    position: BODY
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -4120,15 +4087,15 @@ page-items:
 
 buttons: 
 - # ====== Button: CREATE_ANOTHER ==============================
-  id: 25256044784844563
+  id: 44434057267991801
   identification: 
     button-name: CREATE_ANOTHER
     label: Create and Another
 
   layout: 
     sequence: 30
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4136,7 +4103,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4155,15 +4122,15 @@ buttons:
     item: P105_CARD_ID
 
 - # ====== Button: CREATE_CARD_AND_CLOSE =======================
-  id: 25256418258844563
+  id: 44434430741991801
   identification: 
     button-name: CREATE_CARD_AND_CLOSE
     label: Create New Card
 
   layout: 
     sequence: 10
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4171,7 +4138,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -4191,15 +4158,15 @@ buttons:
     item: P105_CARD_ID
 
 - # ====== Button: UPDATE_CARD_AND_CLOSE =======================
-  id: 25256870991844563
+  id: 44434883474991801
   identification: 
     button-name: UPDATE_CARD_AND_CLOSE
     label: and Close
 
   layout: 
     sequence: 50
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4207,7 +4174,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4227,15 +4194,15 @@ buttons:
     item: P105_CARD_ID
 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 25259633374844566
+  id: 44437645857991804
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 40
-    region: '&P105_HEADER.' # 108316517171408030
-    position: UP
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4243,7 +4210,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4257,15 +4224,15 @@ buttons:
     static-id: CLOSE_DIALOG
 
 - # ====== Button: GOTO_NEXT_CARD ==============================
-  id: 25260022178844566
+  id: 44438034661991804
   identification: 
     button-name: GOTO_NEXT_CARD
     label: Save changes and go to next card
 
   layout: 
     sequence: 30
-    region: '&P105_HEADER.' # 108316517171408030
-    position: UP
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4273,7 +4240,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4282,6 +4249,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
 
@@ -4290,15 +4258,15 @@ buttons:
     item: P105_NEXT_CARD_ID
 
 - # ====== Button: GOTO_PREV_CARD ==============================
-  id: 25260460384844566
+  id: 44438472867991804
   identification: 
     button-name: GOTO_PREV_CARD
     label: Save changes and go to previous card
 
   layout: 
     sequence: 20
-    region: '&P105_HEADER.' # 108316517171408030
-    position: UP
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4306,7 +4274,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4315,6 +4283,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
 
@@ -4323,15 +4292,15 @@ buttons:
     item: P105_PREV_CARD_ID
 
 - # ====== Button: UPDATE_AND_REFRESH ==========================
-  id: 26839989070020938
+  id: 46018001553168176
   identification: 
     button-name: UPDATE_AND_REFRESH
     label: Save Changes
 
   layout: 
     sequence: 40
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4339,7 +4308,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -4359,15 +4328,15 @@ buttons:
     item: P105_CARD_ID
 
 - # ====== Button: MORE_ACTIONS ================================
-  id: 27422429232258642
+  id: 46600441715405880
   identification: 
     button-name: MORE_ACTIONS
     label: More Actions
 
   layout: 
     sequence: 60
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4375,7 +4344,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4396,15 +4365,15 @@ buttons:
     item: P105_CARD_ID
 
 - # ====== Button: HELP ========================================
-  id: 27532573313783246
+  id: 46710585796930484
   identification: 
     button-name: HELP
     label: Help
 
   layout: 
     sequence: 10
-    region: '&P105_HEADER.' # 108316517171408030
-    position: UP
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4412,7 +4381,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4437,15 +4406,15 @@ buttons:
     static-id: HELP_BUTTON
 
 - # ====== Button: CREATE_CARD =================================
-  id: 38406096846540108
+  id: 57584109329687346
   identification: 
     button-name: CREATE_CARD
     label: Create New Card
 
   layout: 
     sequence: 20
-    region: '&P105_HEADER.' # 108316517171408030
-    position: RIGHT_OF_TITLE
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4453,7 +4422,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -4473,7 +4442,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: UPDATE_AND_REFRESH ==================
-  id: 26840185339020940
+  id: 46018197822168178
   identification: 
     name: UPDATE_AND_REFRESH
 
@@ -4483,13 +4452,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: UPDATE_AND_REFRESH # 26839989070020938
+    button: UPDATE_AND_REFRESH # 46018001553168176
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 26840253093020941
+    id: 46018265576168179
     identification: 
       action: Execute JavaScript Code
 
@@ -4498,12 +4467,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: UPDATE_AND_REFRESH # 26840185339020940
+      event: UPDATE_AND_REFRESH # 46018197822168178
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CHANGED_CATEGORY ====================
-  id: 27231404553725502
+  id: 46409417036872740
   identification: 
     name: CHANGED_CATEGORY
 
@@ -4513,14 +4482,14 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P105_CATEGORY_ID
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 27231537526725503
+    id: 46409550009872741
     identification: 
       action: Execute JavaScript Code
 
@@ -4543,12 +4512,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_CATEGORY # 27231404553725502
+      event: CHANGED_CATEGORY # 46409417036872740
       fire-when-event-result-is: True
       fire-on-initialization: true
 
 - # ====== Dynamic Action: REQUESTED_STATUS ====================
-  id: 27594174583272006
+  id: 46772187066419244
   identification: 
     name: REQUESTED_STATUS
 
@@ -4558,7 +4527,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
+    event: After Refresh
     selection-type: Item(s)
     item(s): 
     - P105_STATUS_ID
@@ -4569,7 +4538,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 27593872798272003
+    id: 46771885281419241
     identification: 
       action: Execute JavaScript Code
 
@@ -4578,12 +4547,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: REQUESTED_STATUS # 27594174583272006
+      event: REQUESTED_STATUS # 46772187066419244
       fire-when-event-result-is: True
       fire-on-initialization: true
 
 - # ====== Dynamic Action: DELETE_COMMENT ======================
-  id: 37724614808953111
+  id: 56902627292100349
   identification: 
     name: DELETE_COMMENT
 
@@ -4593,14 +4562,14 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.CUSTOM.CUSTOM
+    event: Custom
     custom-event: DELETE_COMMENT
     selection-type: JavaScript Expression
     javascript-expression: document
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 37724899026953113
+    id: 56902911510100351
     identification: 
       action: Execute Server-side Code
 
@@ -4617,14 +4586,14 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: DELETE_COMMENT # 37724614808953111
+      event: DELETE_COMMENT # 56902627292100349
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Set Value ===================================
-    id: 37725058292953115
+    id: 56903070776100353
     identification: 
       action: Set Value
 
@@ -4640,29 +4609,29 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: DELETE_COMMENT # 37724614808953111
+      event: DELETE_COMMENT # 56902627292100349
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Refresh =====================================
-    id: 37725102328953116
+    id: 56903114812100354
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Comments [REPORT] # 89273038734478146
+      region: Comments [REPORT] # 108451051217625384
 
     execution: 
       sequence: 60
-      event: DELETE_COMMENT # 37724614808953111
+      event: DELETE_COMMENT # 56902627292100349
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Value ===================================
-    id: 37725223349953117
+    id: 56903235833100355
     identification: 
       action: Set Value
 
@@ -4678,7 +4647,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: DELETE_COMMENT # 37724614808953111
+      event: DELETE_COMMENT # 56902627292100349
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
@@ -4688,7 +4657,7 @@ dynamic-actions:
       type: Never
 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 37725481529953119
+    id: 56903494013100357
     identification: 
       action: Execute JavaScript Code
 
@@ -4697,12 +4666,12 @@ dynamic-actions:
 
     execution: 
       sequence: 50
-      event: DELETE_COMMENT # 37724614808953111
+      event: DELETE_COMMENT # 56902627292100349
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: STACKED_MODAL_CLOSED ================
-  id: 37726458429953129
+  id: 56904470913100367
   identification: 
     name: STACKED_MODAL_CLOSED
 
@@ -4712,13 +4681,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    event: Dialog Closed
     selection-type: JavaScript Expression
     javascript-expression: window
 
   actions: 
   - # ====== Action: REDIRECT_TO_NEW_PAGE ========================
-    id: 37726804782953133
+    id: 56904817266100371
     identification: 
       name: REDIRECT_TO_NEW_PAGE
       action: Execute JavaScript Code
@@ -4731,7 +4700,7 @@ dynamic-actions:
 
     execution: 
       sequence: 50
-      event: STACKED_MODAL_CLOSED # 37726458429953129
+      event: STACKED_MODAL_CLOSED # 56904470913100367
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -4740,7 +4709,7 @@ dynamic-actions:
       item: P105_MERGE_CARD
 
   - # ====== Action: GET_LINK_FROM_MODAL =========================
-    id: 37728220845953147
+    id: 56906233329100385
     identification: 
       name: GET_LINK_FROM_MODAL
       action: Set Value
@@ -4757,14 +4726,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: STACKED_MODAL_CLOSED # 37726458429953129
+      event: STACKED_MODAL_CLOSED # 56904470913100367
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: REFRESH_PAGE_ITEM ===========================
-    id: 38405400234540102
+    id: 57583412717687340
     identification: 
       name: REFRESH_PAGE_ITEM
       action: Refresh
@@ -4776,12 +4745,12 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: STACKED_MODAL_CLOSED # 37726458429953129
+      event: STACKED_MODAL_CLOSED # 56904470913100367
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: GET_MODAL_PAGE_NUMBER =======================
-    id: 38405908027540107
+    id: 57583920510687345
     identification: 
       name: GET_MODAL_PAGE_NUMBER
       action: Execute JavaScript Code
@@ -4795,12 +4764,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: STACKED_MODAL_CLOSED # 37726458429953129
+      event: STACKED_MODAL_CLOSED # 56904470913100367
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: RENUMBER_CHECKLIST ==================
-  id: 39016019220935422
+  id: 58194031704082660
   identification: 
     name: RENUMBER_CHECKLIST
 
@@ -4812,14 +4781,14 @@ dynamic-actions:
   when: 
     event: NATIVE_IG|REGION TYPE|apexbeginrecordedit
     selection-type: Region
-    region: Checklist [GRID] # 91363554227871261
+    region: Checklist [GRID] # 110541566711018499
 
   server-side-condition: 
     type: Never
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 39016135549935423
+    id: 58194148033082661
     identification: 
       action: Execute JavaScript Code
 
@@ -4828,12 +4797,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: RENUMBER_CHECKLIST # 39016019220935422
+      event: RENUMBER_CHECKLIST # 58194031704082660
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: UPDATE_CARD_AND_CLOSE ===============
-  id: 39016903836935431
+  id: 58194916320082669
   identification: 
     name: UPDATE_CARD_AND_CLOSE
 
@@ -4843,13 +4812,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: UPDATE_CARD_AND_CLOSE # 25256870991844563
+    button: UPDATE_CARD_AND_CLOSE # 44434883474991801
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 39017098446935432
+    id: 58195110930082670
     identification: 
       action: Execute JavaScript Code
 
@@ -4858,12 +4827,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: UPDATE_CARD_AND_CLOSE # 39016903836935431
+      event: UPDATE_CARD_AND_CLOSE # 58194916320082669
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CREATE_CARD_AND_CLOSE ===============
-  id: 39017117969935433
+  id: 58195130453082671
   identification: 
     name: CREATE_CARD_AND_CLOSE
 
@@ -4873,13 +4842,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: CREATE_CARD_AND_CLOSE # 25256418258844563
+    button: CREATE_CARD_AND_CLOSE # 44434430741991801
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 39017249811935434
+    id: 58195262295082672
     identification: 
       action: Execute JavaScript Code
 
@@ -4888,12 +4857,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CREATE_CARD_AND_CLOSE # 39017117969935433
+      event: CREATE_CARD_AND_CLOSE # 58195130453082671
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CREATE_CARD =========================
-  id: 39017341517935435
+  id: 58195354001082673
   identification: 
     name: CREATE_CARD
 
@@ -4903,13 +4872,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: CREATE_CARD # 38406096846540108
+    button: CREATE_CARD # 57584109329687346
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 39017443725935436
+    id: 58195456209082674
     identification: 
       action: Execute JavaScript Code
 
@@ -4918,12 +4887,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CREATE_CARD # 39017341517935435
+      event: CREATE_CARD # 58195354001082673
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CREATE_ANOTHER ======================
-  id: 39017559915935437
+  id: 58195572399082675
   identification: 
     name: CREATE_ANOTHER
 
@@ -4933,13 +4902,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: CREATE_ANOTHER # 25256044784844563
+    button: CREATE_ANOTHER # 44434057267991801
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 39017681772935438
+    id: 58195694256082676
     identification: 
       action: Execute JavaScript Code
 
@@ -4948,12 +4917,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CREATE_ANOTHER # 39017559915935437
+      event: CREATE_ANOTHER # 58195572399082675
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: DELETE_FILE =========================
-  id: 40024207339814912
+  id: 59202219822962150
   identification: 
     name: DELETE_FILE
 
@@ -4963,14 +4932,14 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.CUSTOM.CUSTOM
+    event: Custom
     custom-event: DELETE_FILE
     selection-type: JavaScript Expression
     javascript-expression: document
 
   actions: 
   - # ====== Action: Set Value ===================================
-    id: 40024478382814914
+    id: 59202490865962152
     identification: 
       action: Set Value
 
@@ -4986,14 +4955,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: DELETE_FILE # 40024207339814912
+      event: DELETE_FILE # 59202219822962150
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute Server-side Code ====================
-    id: 40024515726814915
+    id: 59202528209962153
     identification: 
       action: Execute Server-side Code
 
@@ -5009,14 +4978,14 @@ dynamic-actions:
 
     execution: 
       sequence: 30
-      event: DELETE_FILE # 40024207339814912
+      event: DELETE_FILE # 59202219822962150
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40024631158814916
+    id: 59202643641962154
     identification: 
       action: Execute JavaScript Code
 
@@ -5025,28 +4994,28 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: DELETE_FILE # 40024207339814912
+      event: DELETE_FILE # 59202219822962150
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh =====================================
-    id: 40024733936814917
+    id: 59202746419962155
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Files [REPORT] # 39764966812325847
+      region: Files [REPORT] # 58942979295473085
 
     execution: 
       sequence: 50
-      event: DELETE_FILE # 40024207339814912
+      event: DELETE_FILE # 59202219822962150
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P105_CATEGORY_JSON =====================
-  id: 27231876014725506
+  id: 46409888497872744
   identification: 
     item-name: P105_CATEGORY_JSON
 
@@ -5064,12 +5033,12 @@ computations:
 
 processes: 
 - # ====== Process: SAVE_CHECKLIST =============================
-  id: 25240280109844543
+  id: 44418292592991781
   identification: 
     name: SAVE_CHECKLIST
     type: Invoke API
     execution-chain: None
-    editable-region: Checklist [GRID] # 91363554227871261
+    editable-region: Checklist [GRID] # 110541566711018499
 
   settings: 
     type: PL/SQL Package
@@ -5089,12 +5058,12 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: INIT_FORM ==================================
-  id: 25252128389844557
+  id: 44430140872991795
   identification: 
     name: INIT_FORM
     type: Form - Initialization
     execution-chain: None
-    form-region: '[FORM]' # 108316672484408031
+    form-region: '[FORM]' # 127494684967555269
 
   execution: 
     sequence: 10
@@ -5106,7 +5075,7 @@ processes:
     item: P105_CARD_ID
 
 - # ====== Process: SAVE_FORM ==================================
-  id: 25252582106844557
+  id: 44430594589991795
   identification: 
     name: SAVE_FORM
     type: Invoke API
@@ -5130,7 +5099,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: CLOSE_DIALOG ===============================
-  id: 25265822843844587
+  id: 44443835326991825
   identification: 
     name: CLOSE_DIALOG
     type: Close Dialog
@@ -5157,7 +5126,7 @@ processes:
 
 branches: 
 - # ====== Branch: CREATE_ANOTHER ==============================
-  id: 25271485983844595
+  id: 44449498466991833
   identification: 
     name: CREATE_ANOTHER
 
@@ -5175,10 +5144,10 @@ branches:
         p105_status_requested: '&P105_STATUS_ID.'
 
   server-side-condition: 
-    when-button-pressed: CREATE_ANOTHER # 25256044784844563
+    when-button-pressed: CREATE_ANOTHER # 44434057267991801
 
 - # ====== Branch: GOTO_PREV_CARD ==============================
-  id: 25271848504844595
+  id: 44449860987991833
   identification: 
     name: GOTO_PREV_CARD
 
@@ -5196,10 +5165,10 @@ branches:
         p105_card_id: '&P105_PREV_CARD_ID.'
 
   server-side-condition: 
-    when-button-pressed: GOTO_PREV_CARD # 25260460384844566
+    when-button-pressed: GOTO_PREV_CARD # 44438472867991804
 
 - # ====== Branch: GOTO_NEXT_CARD ==============================
-  id: 25272243040844596
+  id: 44450255523991834
   identification: 
     name: GOTO_NEXT_CARD
 
@@ -5217,10 +5186,10 @@ branches:
         p105_card_id: '&P105_NEXT_CARD_ID.'
 
   server-side-condition: 
-    when-button-pressed: GOTO_NEXT_CARD # 25260022178844566
+    when-button-pressed: GOTO_NEXT_CARD # 44438034661991804
 
 - # ====== Branch: GOTO_NEW_CARD ===============================
-  id: 25272614518844596
+  id: 44450627001991834
   identification: 
     name: GOTO_NEW_CARD
 
@@ -5242,7 +5211,7 @@ branches:
     value: SPLIT_CARD,DUPLICATE_CARD
 
 - # ====== Branch: GOTO_CARDS_ON_AUTH_FAIL =====================
-  id: 26394256764631603
+  id: 45572269247778841
   identification: 
     name: GOTO_CARDS_ON_AUTH_FAIL
 

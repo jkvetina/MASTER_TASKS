@@ -1,6 +1,6 @@
 ---
 - # ====== Plugin: Avatar ======================================
-  id: 34023450120153832
+  id: 53201462603301070
   identification: 
     name: Avatar
     internal-name: THEME_800$AVATAR
@@ -12,8 +12,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 26160982809132099 # Avatar
+      referenced-id: 26160982809132099
 
     subscribe-component-settings: true
 
@@ -22,9 +21,9 @@
     - Single (Partial)
     partial: |
       {if APEX$IS_LAZY_LOADING/}
-        <span class="t-Avatar is-placeholder{if ?SHAPE/} #SHAPE!ATTR#{endif/}{if ?SIZE/} #SIZE!ATTR#{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES!ATTR#{endif/}"></span>
+        <span class="t-Avatar is-placeholder{if ?SHAPE/} #SHAPE#{endif/}{if ?SIZE/} #SIZE#{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES#{endif/}"></span>
       {else/}
-        {if ?LINK/}<a href="#LINK!ATTR#" #LINK_ATTR!RAW#{else/}<span{endif/} class="t-Avatar{if ?TYPE/} t-Avatar--{if ?IMAGE/}image{else/}{if ?INITIALS/}initials{else/}icon{endif/}{endif/}{endif/}{if ?SHAPE/} #SHAPE!ATTR#{endif/}{if ?SIZE/} #SIZE!ATTR#{endif/}{if ?ICON/} #ICON!ATTR#{else/} fa fa-user{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES!ATTR#{endif/} u-color" {if !IMAGE/}{if DESCRIPTION/} role="img" aria-label="#DESCRIPTION!ATTR#" title="#DESCRIPTION!ATTR#"{else/} role="presentation"{endif/}{endif/}>{if IMAGE/}<img src="#IMAGE!ATTR#" alt="#DESCRIPTION!ATTR#"{if ?DESCRIPTION/} title="#DESCRIPTION!ATTR#"{endif/} loading="lazy" />{else/}{if ?INITIALS/}#INITIALS!RAW#{endif/}{endif/}{if ?LINK/}</a>{else/}</span>{endif/}
+        {if ?LINK/}<a href="#LINK#" #LINK_ATTR#{else/}<span{endif/} class="t-Avatar{if ?TYPE/} t-Avatar--{if ?IMAGE/}image{else/}{if ?INITIALS/}initials{else/}icon{endif/}{endif/}{endif/}{if ?SHAPE/} #SHAPE#{endif/}{if ?SIZE/} #SIZE#{endif/}{if ?ICON/} #ICON#{else/} fa fa-user{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES#{endif/} u-color" {if !IMAGE/}{if DESCRIPTION/} role="img" aria-label="#DESCRIPTION#" title="#DESCRIPTION#"{else/} role="presentation"{endif/}{endif/}>{if IMAGE/}<img src="#IMAGE#" alt="#DESCRIPTION#"{if ?DESCRIPTION/} title="#DESCRIPTION#"{endif/} loading="lazy" />{else/}{if ?INITIALS/}#INITIALS#{endif/}{endif/}{if ?LINK/}</a>{else/}</span>{endif/}
       {endif/}
     translate-templates: false
     default-escape-mode: HTML
@@ -41,7 +40,7 @@
 
   custom-attributes: 
   - # ====== Custom Attribute: Type ==============================
-    id: 37464690289506943
+    id: 56642702772654181
     identification: 
       static-id: TYPE
       attribute: 1
@@ -71,7 +70,7 @@
 
     entries: 
     - # ====== Entry: Image ========================================
-      id: 37465127807506944
+      id: 56643140290654182
       entry: 
         sequence: 10
         display: Image
@@ -81,7 +80,7 @@
         quick-pick: false
 
     - # ====== Entry: Initials =====================================
-      id: 37465720716506945
+      id: 56643733199654183
       entry: 
         sequence: 20
         display: Initials
@@ -91,7 +90,7 @@
         quick-pick: false
 
     - # ====== Entry: Icon =========================================
-      id: 37466333873506946
+      id: 56644346356654184
       entry: 
         sequence: 30
         display: Icon
@@ -101,7 +100,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Image =============================
-    id: 37466997630506947
+    id: 56645010113654185
     identification: 
       static-id: IMAGE
       attribute: 2
@@ -120,7 +119,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Type # 37464690289506943
+      depending-on-custom-attribute: Type # 56642702772654181
       depending-on-condition-type: equal to
       expression: IMAGE
       always-evaluate: true
@@ -141,7 +140,7 @@
       demo-value: '#APEX_FILES#apex_ui/img/favicons/app-artwork-catalog.png'
 
   - # ====== Custom Attribute: Description =======================
-    id: 37467489407506947
+    id: 56645501890654185
     identification: 
       static-id: DESCRIPTION
       attribute: 3
@@ -163,7 +162,7 @@
       help-text: Enter a short description of the image/icon or select a source column from the quick pick options. This will be used as title & alt text for the avatar image/icon.
 
   - # ====== Custom Attribute: Initials ==========================
-    id: 37467914418506948
+    id: 56645926901654186
     identification: 
       static-id: INITIALS
       attribute: 4
@@ -184,7 +183,7 @@
       escape-mode: HTML
 
     condition: 
-      depending-on-custom-attribute: Type # 37464690289506943
+      depending-on-custom-attribute: Type # 56642702772654181
       depending-on-condition-type: equal to
       expression: INITIALS
       always-evaluate: true
@@ -193,7 +192,7 @@
       help-text: Select the source column to be displayed within each avatar. Only varchar2 data types are supported.
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37468469615506948
+    id: 56646482098654186
     identification: 
       static-id: ICON
       attribute: 5
@@ -212,7 +211,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Type # 37464690289506943
+      depending-on-custom-attribute: Type # 56642702772654181
       depending-on-condition-type: equal to
       expression: ICON
       always-evaluate: true
@@ -221,7 +220,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the avatar.
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37468923670506948
+    id: 56646936153654186
     identification: 
       static-id: SHAPE
       attribute: 6
@@ -246,7 +245,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37469491617506949
+      id: 56647504100654187
       entry: 
         sequence: 10
         display: Rounded
@@ -259,7 +258,7 @@
         help-text: Displayed within a square with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37470011121506949
+      id: 56648023604654187
       entry: 
         sequence: 20
         display: Circular
@@ -272,7 +271,7 @@
         help-text: Displayed within a circular shape.
 
     - # ====== Entry: Square =======================================
-      id: 37470655690506950
+      id: 56648668173654188
       entry: 
         sequence: 30
         display: Square
@@ -285,7 +284,7 @@
         help-text: Displayed within a square shape.
 
     - # ====== Entry: No Shape =====================================
-      id: 37471206151506951
+      id: 56649218634654189
       entry: 
         sequence: 40
         display: No Shape
@@ -298,7 +297,7 @@
         help-text: Displayed inline without a containing shape.
 
   - # ====== Custom Attribute: Size ==============================
-    id: 37471858032506951
+    id: 56649870515654189
     identification: 
       static-id: SIZE
       attribute: 7
@@ -323,7 +322,7 @@
 
     entries: 
     - # ====== Entry: Extra Extra Small ============================
-      id: 37472356205506952
+      id: 56650368688654190
       entry: 
         sequence: 10
         display: Extra Extra Small
@@ -333,7 +332,7 @@
         quick-pick: false
 
     - # ====== Entry: Extra Small ==================================
-      id: 37472929150506952
+      id: 56650941633654190
       entry: 
         sequence: 20
         display: Extra Small
@@ -343,7 +342,7 @@
         quick-pick: false
 
     - # ====== Entry: Small ========================================
-      id: 37473503852506953
+      id: 56651516335654191
       entry: 
         sequence: 30
         display: Small
@@ -353,7 +352,7 @@
         quick-pick: false
 
     - # ====== Entry: Medium =======================================
-      id: 37474106218506953
+      id: 56652118701654191
       entry: 
         sequence: 40
         display: Medium
@@ -363,7 +362,7 @@
         quick-pick: false
 
     - # ====== Entry: Large ========================================
-      id: 37474709628506954
+      id: 56652722111654192
       entry: 
         sequence: 50
         display: Large
@@ -373,7 +372,7 @@
         quick-pick: false
 
     - # ====== Entry: Extra Large ==================================
-      id: 37475366149506954
+      id: 56653378632654192
       entry: 
         sequence: 60
         display: Extra Large
@@ -383,7 +382,7 @@
         quick-pick: false
 
     - # ====== Entry: Extra Extra Large ============================
-      id: 37475995774506955
+      id: 56654008257654193
       entry: 
         sequence: 70
         display: Extra Extra Large
@@ -393,7 +392,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: CSS Classes =======================
-    id: 37476598994506955
+    id: 56654611477654193
     identification: 
       static-id: CSS_CLASSES
       attribute: 8
@@ -416,7 +415,7 @@
 
   action-positions: 
   - # ====== Action Position: Link ===============================
-    id: 1860235559816399685
+    id: 1879413572299546923
     identification: 
       name: Link
       static-id: LINK
@@ -429,7 +428,7 @@
       type: Link
 
 - # ====== Plugin: Badge =======================================
-  id: 34032299693153855
+  id: 53210312176301093
   identification: 
     name: Badge
     internal-name: THEME_800$BADGE
@@ -441,8 +440,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 26175184990132128 # Badge
+      referenced-id: 26175184990132128
 
     subscribe-component-settings: true
 
@@ -452,12 +450,12 @@
     - Multiple (Report)
     partial: |
       {if APEX$IS_LAZY_LOADING/}
-        <span class="t-Badge is-placeholder{if ?SIZE/} #SIZE!ATTR#{endif/}{if ?SHAPE/} #SHAPE!ATTR#{endif/}"></span>
+        <span class="t-Badge is-placeholder{if ?SIZE/} #SIZE#{endif/}{if ?SHAPE/} #SHAPE#{endif/}"></span>
       {else/}
-        {if ?LINK/}<a href="#LINK!ATTR#" #LINK_ATTR!RAW#{else/}<span{endif/} class="t-Badge {if ?STATE/}t-Badge--#STATE!ATTR#{endif/} {if ?STYLE/}#STYLE!ATTR#{endif/} {if ?SIZE/}#SIZE!ATTR#{endif/} {if ?SHAPE/}#SHAPE!ATTR#{endif/}" role="status" aria-label="#LABEL!ATTR# #VALUE!ATTR#" title="#LABEL!ATTR# #VALUE!ATTR#">
-          {if ?ICON/}<span class="t-Badge-icon #ICON!ATTR#" aria-hidden="true"></span>{endif/}
-          {if LABEL_DISPLAY/}<span class="t-Badge-label">#LABEL!RAW#</span>{endif/}
-          <span class="t-Badge-value">#VALUE!RAW#</span>
+        {if ?LINK/}<a href="#LINK#" #LINK_ATTR#{else/}<span{endif/} class="t-Badge{if ?STATE/} t-Badge--#STATE#{endif/}{if ?STYLE/} #STYLE#{endif/}{if ?SIZE/} #SIZE#{endif/}{if ?SHAPE/} #SHAPE#{endif/}" role="status" aria-label="#LABEL!STRIPHTML# #VALUE#" title="#LABEL!STRIPHTML# #VALUE#">
+          {if ?ICON/}<span class="t-Badge-icon #ICON#" aria-hidden="true"></span>{endif/}
+          {if LABEL_DISPLAY/}<span class="t-Badge-label">#LABEL#</span>{endif/}
+          <span class="t-Badge-value">#VALUE#</span>
         {if ?LINK/}</a>{else/}</span>{endif/}
       {endif/}
       
@@ -484,7 +482,7 @@
 
   custom-attributes: 
   - # ====== Custom Attribute: Label =============================
-    id: 37479095528506968
+    id: 56657108011654206
     identification: 
       static-id: LABEL
       attribute: 1
@@ -500,13 +498,13 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: Strip HTML
+      escape-mode: Raw
 
     help: 
       help-text: Enter a value for the badge label or select a source column from the quick pick options.
 
   - # ====== Custom Attribute: Value =============================
-    id: 37479500779506969
+    id: 56657513262654207
     identification: 
       static-id: VALUE
       attribute: 2
@@ -534,7 +532,7 @@
       help-text: Select a source column for the badge value.
 
   - # ====== Custom Attribute: State =============================
-    id: 37480068828506969
+    id: 56658081311654207
     identification: 
       static-id: STATE
       attribute: 3
@@ -558,7 +556,7 @@
       help-text: Select the source column for the state of the badge. Substitute column value with "danger", "warning", "success" or "info" for default styling.
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37480547167506970
+    id: 56658559650654208
     identification: 
       static-id: ICON
       attribute: 4
@@ -580,7 +578,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the badge.
 
   - # ====== Custom Attribute: Display Label =====================
-    id: 37481015369506970
+    id: 56659027852654208
     identification: 
       static-id: LABEL_DISPLAY
       attribute: 5
@@ -605,7 +603,7 @@
       help-text: Specify whether to display or hide the badge label. When set to Yes, the badge label will be displayed in addition to the badge value. When set to No, only the badge value will be displayed.
 
   - # ====== Custom Attribute: Style =============================
-    id: 37481559956506971
+    id: 56659572439654209
     identification: 
       static-id: STYLE
       attribute: 6
@@ -630,7 +628,7 @@
 
     entries: 
     - # ====== Entry: Subtle =======================================
-      id: 37482005523506971
+      id: 56660018006654209
       entry: 
         sequence: 10
         display: Subtle
@@ -640,7 +638,7 @@
         quick-pick: false
 
     - # ====== Entry: Outline ======================================
-      id: 37482639153506972
+      id: 56660651636654210
       entry: 
         sequence: 20
         display: Outline
@@ -650,7 +648,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37483274154506972
+    id: 56661286637654210
     identification: 
       static-id: SHAPE
       attribute: 7
@@ -675,7 +673,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37483746811506973
+      id: 56661759294654211
       entry: 
         sequence: 10
         display: Rounded
@@ -688,7 +686,7 @@
         help-text: Displayed with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37484341809506973
+      id: 56662354292654211
       entry: 
         sequence: 20
         display: Circular
@@ -701,7 +699,7 @@
         help-text: Displayed with circular edges.
 
     - # ====== Entry: Square =======================================
-      id: 37484921459506974
+      id: 56662933942654212
       entry: 
         sequence: 30
         display: Square
@@ -714,7 +712,7 @@
         help-text: Displayed with squared edges.
 
   - # ====== Custom Attribute: Size ==============================
-    id: 37485559681506974
+    id: 56663572164654212
     identification: 
       static-id: SIZE
       attribute: 8
@@ -739,7 +737,7 @@
 
     entries: 
     - # ====== Entry: Small ========================================
-      id: 37486059439506975
+      id: 56664071922654213
       entry: 
         sequence: 10
         display: Small
@@ -749,7 +747,7 @@
         quick-pick: false
 
     - # ====== Entry: Medium =======================================
-      id: 37486624975506975
+      id: 56664637458654213
       entry: 
         sequence: 20
         display: Medium
@@ -759,7 +757,7 @@
         quick-pick: false
 
     - # ====== Entry: Large ========================================
-      id: 37487282798506976
+      id: 56665295281654214
       entry: 
         sequence: 30
         display: Large
@@ -770,7 +768,7 @@
 
   action-positions: 
   - # ====== Action Position: Link ===============================
-    id: 1560950082543848207
+    id: 1580128095026995445
     identification: 
       name: Link
       static-id: LINK
@@ -783,7 +781,7 @@
       type: Link
 
 - # ====== Plugin: Button ======================================
-  id: 34038240907153860
+  id: 53216253390301098
   identification: 
     name: Button
     internal-name: THEME_800$BUTTON
@@ -795,15 +793,14 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 26201314314132153 # Button
+      referenced-id: 26201314314132153
 
     subscribe-component-settings: true
 
   templates: 
     partial: |
-      {if MENU_ID/}<button type="button" data-menu="#MENU_ID!ATTR#"{else/}<a href="#LINK_URL!ATTR#" #LINK_ATTR!RAW#{endif/} class="t-Button{if IS_HOT/} t-Button--hot{endif/}{if IS_ICON_ONLY/} t-Button--noLabel t-Button--icon{else/}{if ICON_CLASSES/} t-Button--iconLeft{endif/}{endif/} #CSS_CLASSES!ATTR#" title="#LABEL!ATTR#" {if IS_DISABLED/} disabled{endif/}>
-        {if ?ICON_CLASSES/}<span class="t-Icon t-Icon--left #ICON_CLASSES!ATTR#" aria-hidden="true"></span>{endif/}<span class="t-Button-label">#LABEL!RAW#</span>
+      {if MENU_ID/}<button type="button" data-menu="#MENU_ID#"{else/}<a href="#LINK_URL#" #LINK_ATTR#{endif/} class="t-Button{if IS_HOT/} t-Button--hot{endif/}{if IS_ICON_ONLY/} t-Button--noLabel t-Button--icon{else/}{if ICON_CLASSES/} t-Button--iconLeft{endif/}{endif/} #CSS_CLASSES#" title="#LABEL!STRIPHTML#" {if IS_DISABLED/} disabled{endif/}>
+        {if ?ICON_CLASSES/}<span class="t-Icon t-Icon--left #ICON_CLASSES#" aria-hidden="true"></span>{endif/}<span class="t-Button-label">#LABEL#</span>
       {if MENU_ID/}</button>{else/}</a>{endif/}
       
     translate-templates: false
@@ -817,7 +814,7 @@
 
   custom-attributes: 
   - # ====== Custom Attribute: Label =============================
-    id: 37488639974506978
+    id: 56666652457654216
     identification: 
       static-id: LABEL
       attribute: 1
@@ -832,11 +829,11 @@
       common: true
       show-in-wizard: true
       required: false
-      translatable: false
+      translatable: true
       escape-mode: Raw
 
   - # ====== Custom Attribute: Link URL ==========================
-    id: 37489177700506978
+    id: 56667190183654216
     identification: 
       static-id: LINK_URL
       attribute: 2
@@ -855,7 +852,7 @@
       escape-mode: HTML Attribute
 
   - # ====== Custom Attribute: Link Attribute ====================
-    id: 37489699637506979
+    id: 56667712120654217
     identification: 
       static-id: LINK_ATTR
       attribute: 3
@@ -874,7 +871,7 @@
       escape-mode: Raw
 
   - # ====== Custom Attribute: Icon Classes ======================
-    id: 37490199877506979
+    id: 56668212360654217
     identification: 
       static-id: ICON_CLASSES
       attribute: 4
@@ -893,7 +890,7 @@
       escape-mode: HTML Attribute
 
   - # ====== Custom Attribute: CSS Classes =======================
-    id: 37490634556506980
+    id: 56668647039654218
     identification: 
       static-id: CSS_CLASSES
       attribute: 5
@@ -912,7 +909,7 @@
       escape-mode: HTML Attribute
 
   - # ====== Custom Attribute: Is Disabled =======================
-    id: 37491185780506980
+    id: 56669198263654218
     identification: 
       static-id: IS_DISABLED
       attribute: 6
@@ -934,7 +931,7 @@
       value: N
 
   - # ====== Custom Attribute: Is Hot ============================
-    id: 37491653180506980
+    id: 56669665663654218
     identification: 
       static-id: IS_HOT
       attribute: 7
@@ -956,7 +953,7 @@
       value: N
 
   - # ====== Custom Attribute: Is Icon Only ======================
-    id: 37492136769506981
+    id: 56670149252654219
     identification: 
       static-id: IS_ICON_ONLY
       attribute: 8
@@ -978,7 +975,7 @@
       value: N
 
 - # ====== Plugin: Comments ====================================
-  id: 34040919691153862
+  id: 53218932174301100
   identification: 
     name: Comments
     internal-name: THEME_800$COMMENTS
@@ -990,8 +987,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 26184520295132137 # Comments
+      referenced-id: 26184520295132137
 
     subscribe-component-settings: true
 
@@ -1001,7 +997,7 @@
     - Multiple (Report)
     partial: |
       {if APEX$IS_LAZY_LOADING/}
-        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS!ATTR#{endif/}">
+        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS#{endif/}">
           {if DISPLAY_AVATAR%assigned/}
             <div class="t-Comments-icon">
               {with/}
@@ -1018,7 +1014,7 @@
           </div>
         </div>
       {else/}
-        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS!ATTR#{endif/}">
+        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS#{endif/}">
           {if DISPLAY_AVATAR/}
             <div class="t-Comments-icon">
               {with/}
@@ -1031,25 +1027,25 @@
                 SHAPE:=#AVATAR_SHAPE#
                 CSS_CLASSES:=u-color
                 LINK:=#AVATAR_LINK#
-                LINK_ATTR:=#AVATAR_LINK_ATTR!RAW#
+                LINK_ATTR:=#AVATAR_LINK_ATTR#
               {apply THEME$AVATAR/}
             </div>
           {endif/}
           <div class="t-Comments-body">
             <div class="t-Comments-info">
-              <span class="t-Comments-user">{if USER_NAME_LINK/}<a href="#USER_NAME_LINK!ATTR#" #USER_NAME_LINK_ATTR!RAW#>{endif/}#USER_NAME!RAW#{if USER_NAME_LINK/}</a>{endif/}</span>
-              {if COMMENT_DATE/}<span class="t-Comments-date">#COMMENT_DATE!RAW#</span>{endif/}
-              {if ACTIONS/}<span class="t-Comments-actions">#ACTIONS!RAW#</span>{endif/}
+              <span class="t-Comments-user">{if USER_NAME_LINK/}<a href="#USER_NAME_LINK#" #USER_NAME_LINK_ATTR#>{endif/}#USER_NAME#{if USER_NAME_LINK/}</a>{endif/}</span>
+              {if COMMENT_DATE/}<span class="t-Comments-date">#COMMENT_DATE#</span>{endif/}
+              {if ACTIONS/}<span class="t-Comments-actions">#ACTIONS#</span>{endif/}
             </div>
             <div class="t-Comments-comment">
-              #COMMENT_TEXT!RAW#
-              {if ATTRIBUTES/}<div class="t-Comments-attributes">#ATTRIBUTES!RAW#</div>{endif/}
+              #COMMENT_TEXT#
+              {if ATTRIBUTES/}<div class="t-Comments-attributes">#ATTRIBUTES#</div>{endif/}
             </div>
           </div>
         </div>
       {endif/}
     report-body: |
-      <ul class="t-Comments{if ?STYLE/} #STYLE!ATTR#{endif/} {if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>
+      <ul class="t-Comments{if ?STYLE/} #STYLE#{endif/} {if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>
       
     report-row: |
       <li class="t-Comments-item" #APEX$ROW_IDENTIFICATION#>#APEX$PARTIAL#</li>
@@ -1069,14 +1065,14 @@
 
   attribute-groups: 
   - # ====== Attribute Group: Avatar =============================
-    id: 1849381190503777786
+    id: 1868559202986925024
     identification: 
       name: Avatar
       sequence: 20
 
   custom-attributes: 
   - # ====== Custom Attribute: Comment Text ======================
-    id: 37493492193506986
+    id: 56671504676654224
     identification: 
       static-id: COMMENT_TEXT
       attribute: 1
@@ -1103,7 +1099,7 @@
       demo-value: Praesent vel felis rutrum erat elementum viverra sit amet non odio. Cras vel auctor eros, in malesuada dolor. Nulla tellus magna, ornare consectetur purus id, volutpat egestas felis. Proin lobortis risus massa, nec faucibus arcu malesuada a. Nunc sed gravida urna. Fusce at ligula sed erat consequat pharetra.
 
   - # ====== Custom Attribute: User Name =========================
-    id: 37493970534506987
+    id: 56671983017654225
     identification: 
       static-id: USER_NAME
       attribute: 2
@@ -1130,7 +1126,7 @@
       demo-value: Joel
 
   - # ====== Custom Attribute: Date ==============================
-    id: 37494494604506987
+    id: 56672507087654225
     identification: 
       static-id: COMMENT_DATE
       attribute: 3
@@ -1158,7 +1154,7 @@
       demo-value: 5 minutes ago
 
   - # ====== Custom Attribute: Attributes ========================
-    id: 37494986697506988
+    id: 56672999180654226
     identification: 
       static-id: ATTRIBUTES
       attribute: 4
@@ -1169,18 +1165,18 @@
       sequence: 40
 
     settings: 
-      type: Textarea
+      type: HTML
       common: true
       show-in-wizard: true
       required: false
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     help: 
       help-text: Enter some text and/or column substitution strings to be used as the comment attributes.
 
   - # ====== Custom Attribute: Type ==============================
-    id: 37495497977506988
+    id: 56673510460654226
     identification: 
       static-id: AVATAR_TYPE
       attribute: 5
@@ -1188,7 +1184,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849381190503777786
+      attribute-group: Avatar # 1868559202986925024
       sequence: 50
 
     settings: 
@@ -1204,7 +1200,7 @@
       value: icon
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37502685844506994
+      depending-on-custom-attribute: Display Avatar # 56680698327654232
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -1217,7 +1213,7 @@
 
     entries: 
     - # ====== Entry: Image ========================================
-      id: 37495908859506989
+      id: 56673921342654227
       entry: 
         sequence: 10
         display: Image
@@ -1227,7 +1223,7 @@
         quick-pick: false
 
     - # ====== Entry: Initials =====================================
-      id: 37496527171506989
+      id: 56674539654654227
       entry: 
         sequence: 20
         display: Initials
@@ -1237,7 +1233,7 @@
         quick-pick: false
 
     - # ====== Entry: Icon =========================================
-      id: 37497123125506990
+      id: 56675135608654228
       entry: 
         sequence: 30
         display: Icon
@@ -1247,7 +1243,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Image =============================
-    id: 37497797227506990
+    id: 56675809710654228
     identification: 
       static-id: AVATAR_IMAGE
       attribute: 6
@@ -1255,7 +1251,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849381190503777786
+      attribute-group: Avatar # 1868559202986925024
       sequence: 60
 
     settings: 
@@ -1267,7 +1263,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Type # 37495497977506988
+      depending-on-custom-attribute: Type # 56673510460654226
       depending-on-condition-type: equal to
       expression: image
       always-evaluate: true
@@ -1285,7 +1281,7 @@
         </p>
 
   - # ====== Custom Attribute: Description =======================
-    id: 37498205162506991
+    id: 56676217645654229
     identification: 
       static-id: AVATAR_DESCRIPTION
       attribute: 7
@@ -1293,7 +1289,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849381190503777786
+      attribute-group: Avatar # 1868559202986925024
       sequence: 95
 
     settings: 
@@ -1305,7 +1301,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37502685844506994
+      depending-on-custom-attribute: Display Avatar # 56680698327654232
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -1314,7 +1310,7 @@
       help-text: Enter a short description of the image/icon or select a source column from the quick pick options. This will be used as title & alt text for the avatar image/icon.
 
   - # ====== Custom Attribute: Initials ==========================
-    id: 37498704290506991
+    id: 56676716773654229
     identification: 
       static-id: AVATAR_INITIALS
       attribute: 8
@@ -1322,7 +1318,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849381190503777786
+      attribute-group: Avatar # 1868559202986925024
       sequence: 80
 
     settings: 
@@ -1336,7 +1332,7 @@
       escape-mode: Strip HTML
 
     condition: 
-      depending-on-custom-attribute: Type # 37495497977506988
+      depending-on-custom-attribute: Type # 56673510460654226
       depending-on-condition-type: equal to
       expression: initials
       always-evaluate: true
@@ -1348,7 +1344,7 @@
       demo-value: JK
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37499255433506992
+    id: 56677267916654230
     identification: 
       static-id: AVATAR_ICON
       attribute: 9
@@ -1356,7 +1352,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849381190503777786
+      attribute-group: Avatar # 1868559202986925024
       sequence: 90
 
     settings: 
@@ -1371,7 +1367,7 @@
       value: fa-user
 
     condition: 
-      depending-on-custom-attribute: Type # 37495497977506988
+      depending-on-custom-attribute: Type # 56673510460654226
       depending-on-condition-type: equal to
       expression: icon
       always-evaluate: true
@@ -1380,7 +1376,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the avatar.
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37499727274506992
+    id: 56677739757654230
     identification: 
       static-id: AVATAR_SHAPE
       attribute: 10
@@ -1388,7 +1384,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849381190503777786
+      attribute-group: Avatar # 1868559202986925024
       sequence: 100
 
     settings: 
@@ -1404,7 +1400,7 @@
       value: t-Avatar--rounded
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37502685844506994
+      depending-on-custom-attribute: Display Avatar # 56680698327654232
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -1414,7 +1410,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37500247995506992
+      id: 56678260478654230
       entry: 
         sequence: 10
         display: Rounded
@@ -1427,7 +1423,7 @@
         help-text: Displayed within a square with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37500887070506993
+      id: 56678899553654231
       entry: 
         sequence: 20
         display: Circular
@@ -1440,7 +1436,7 @@
         help-text: Displayed within a circular shape.
 
     - # ====== Entry: Square =======================================
-      id: 37501417295506993
+      id: 56679429778654231
       entry: 
         sequence: 30
         display: Square
@@ -1453,7 +1449,7 @@
         help-text: Displayed within a square shape.
 
     - # ====== Entry: No Shape =====================================
-      id: 37502050031506994
+      id: 56680062514654232
       entry: 
         sequence: 40
         display: No Shape
@@ -1466,7 +1462,7 @@
         help-text: Displayed inline without a containing shape.
 
   - # ====== Custom Attribute: Display Avatar ====================
-    id: 37502685844506994
+    id: 56680698327654232
     identification: 
       static-id: DISPLAY_AVATAR
       attribute: 11
@@ -1494,7 +1490,7 @@
       demo-value: Y
 
   - # ====== Custom Attribute: Comment Class =====================
-    id: 37503125557506994
+    id: 56681138040654232
     identification: 
       static-id: COMMENT_CLASS
       attribute: 14
@@ -1516,7 +1512,7 @@
       help-text: Allows you to pass a class onto individual comments. Example using is-active will highlight the specific comment with a different shade.
 
   - # ====== Custom Attribute: Style =============================
-    id: 37503622013506995
+    id: 56681634496654233
     identification: 
       static-id: STYLE
       attribute: 12
@@ -1546,7 +1542,7 @@
 
     entries: 
     - # ====== Entry: Basic ========================================
-      id: 37504193691506995
+      id: 56682206174654233
       entry: 
         sequence: 10
         display: Basic
@@ -1556,7 +1552,7 @@
         quick-pick: false
 
     - # ====== Entry: Chat (Speech Bubbles) ========================
-      id: 37504703944506996
+      id: 56682716427654234
       entry: 
         sequence: 20
         display: Chat (Speech Bubbles)
@@ -1566,7 +1562,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Apply Theme Colors ================
-    id: 37505322899506996
+    id: 56683335382654234
     identification: 
       static-id: APPLY_THEME_COLORS
       attribute: 13
@@ -1592,7 +1588,7 @@
 
   action-positions: 
   - # ====== Action Position: Actions ============================
-    id: 1860243273706411761
+    id: 1879421286189558999
     identification: 
       name: Actions
       static-id: ACTIONS
@@ -1605,7 +1601,7 @@
       type: Template
 
   - # ====== Action Position: Avatar Link ========================
-    id: 1860298897376393640
+    id: 1879476909859540878
     identification: 
       name: Avatar Link
       static-id: AVATAR_LINK
@@ -1618,7 +1614,7 @@
       type: Link
 
   - # ====== Action Position: User Name Link =====================
-    id: 1860451115089264411
+    id: 1879629127572411649
     identification: 
       name: User Name Link
       static-id: USER_NAME_LINK
@@ -1632,19 +1628,19 @@
 
   action-templates: 
   - # ====== Action Template: Link ===============================
-    id: 1860243865211419218
+    id: 1879421877694566456
     identification: 
       name: Link
       type: Button
 
     template: 
-      action-template: '{if !IS_DISABLED/}<a {if CSS_CLASSES/}class="#CSS_CLASSES#"{endif/} href="#LINK_URL#" #LINK_ATTR!RAW#>#LABEL!RAW#</a>{endif/}'
+      action-template: '{if !IS_DISABLED/}<a {if CSS_CLASSES/}class="#CSS_CLASSES#"{endif/} href="#LINK_URL#" #LINK_ATTR#>#LABEL#</a>{endif/}'
 
     advanced: 
       translatable: false
 
 - # ====== Plugin: Content Row =================================
-  id: 34050967893153871
+  id: 53228980376301109
   identification: 
     name: Content Row
     internal-name: THEME_800$CONTENT_ROW
@@ -1656,8 +1652,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 26231849258132181 # Content Row
+      referenced-id: 26231849258132181
 
     subscribe-component-settings: true
 
@@ -1670,7 +1665,7 @@
         <div class="t-ContentRow-wrap" aria-hidden="true">
           {if ?SELECTION%assigned/}<div class="t-ContentRow-selection is-placeholder"></div>{endif/}
           {if DISPLAY_BADGE/}
-            <div class="t-ContentRow-badge #BADGE_COL_WIDTH!ATTR# #BADGE_POS!ATTR# #BADGE_ALIGNMENT!ATTR#">
+            <div class="t-ContentRow-badge #BADGE_COL_WIDTH# #BADGE_POS# #BADGE_ALIGNMENT#">
               {with/}
                 LABEL:=
                 VALUE:=
@@ -1698,11 +1693,11 @@
           </div>
         </div>
       {else/}
-        {if ?FULL_ROW_LINK/}<a class="t-ContentRow-fullLink" href="#FULL_ROW_LINK!ATTR#" #FULL_ROW_LINK_ATTR!RAW#></a>{endif/}
+        {if ?FULL_ROW_LINK/}<a class="t-ContentRow-fullLink" href="#FULL_ROW_LINK#" #FULL_ROW_LINK_ATTR#></a>{endif/}
         <div class="t-ContentRow-wrap">
           {if ?SELECTION%assigned/}<div class="t-ContentRow-selection">#SELECTION!RAW#</div>{endif/}
           {if DISPLAY_BADGE/}
-            <div class="t-ContentRow-badge #BADGE_COL_WIDTH!ATTR# #BADGE_POS!ATTR# #BADGE_ALIGNMENT!ATTR#">
+            <div class="t-ContentRow-badge #BADGE_COL_WIDTH# #BADGE_POS# #BADGE_ALIGNMENT#">
               {with/}
                 LABEL_DISPLAY:=#BADGE_LABEL_DISPLAY#
                 LABEL:=#BADGE_LABEL#
@@ -1713,7 +1708,7 @@
                 STYLE:=#BADGE_STYLE#
                 SHAPE:=#BADGE_SHAPE#
                 LINK:=#BADGE_LINK#
-                LINK_ATTR:=#BADGE_LINK_ATTR!RAW#
+                LINK_ATTR:=#BADGE_LINK_ATTR#
               {apply THEME$BADGE/}
             </div>
           {endif/}
@@ -1728,23 +1723,22 @@
                 SHAPE:=#AVATAR_SHAPE#
                 SIZE:=#AVATAR_SIZE#
                 LINK:=#AVATAR_LINK#
-                LINK_ATTR:=#AVATAR_LINK_ATTR!RAW#
+                LINK_ATTR:=#AVATAR_LINK_ATTR#
               {apply THEME$AVATAR/}
             </div>
           {endif/}
           <div class="t-ContentRow-body">
             <div class="t-ContentRow-content">
-              {if ?OVERLINE/}<div class="t-ContentRow-overline">#OVERLINE!RAW#</div>{endif/}
-              {if ?TITLE/}<h3 class="t-ContentRow-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK!ATTR#" #TITLE_LINK_ATTR!RAW#>{endif/}#TITLE!RAW#{if ?TITLE_LINK/}</a>{endif/}</h3>{endif/}
-              {if ?DESCRIPTION/}<div class="t-ContentRow-description">#DESCRIPTION!RAW#</div>{endif/}
+              {if ?OVERLINE/}<div class="t-ContentRow-overline">#OVERLINE#</div>{endif/}
+              {if ?TITLE/}<h3 class="t-ContentRow-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK#" #TITLE_LINK_ATTR#>{endif/}#TITLE#{if ?TITLE_LINK/}</a>{endif/}</h3>{endif/}
+              {if ?DESCRIPTION/}<div class="t-ContentRow-description">#DESCRIPTION#</div>{endif/}
             </div>
-            {if ?MISC%assigned/}<div class="t-ContentRow-misc">#MISC!RAW#</div>{endif/}
+            {if ?MISC%assigned/}<div class="t-ContentRow-misc">#MISC#</div>{endif/}
             {if ?PRIMARY_ACTIONS/}<div class="t-ContentRow-actions">#PRIMARY_ACTIONS#</div>{endif/}
           </div>
         </div>
       {endif/}
-      
-    report-body: '<ul class="t-ContentRow{if ?STYLE/} #STYLE!ATTR#{endif/}{if REMOVE_PADDING/} t-ContentRow--removePadding{endif/}{if HIDE_BORDERS/} t-ContentRow--hideBorders{endif/}{if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>'
+    report-body: '<ul class="t-ContentRow{if ?STYLE/} #STYLE#{endif/}{if REMOVE_PADDING/} t-ContentRow--removePadding{endif/}{if HIDE_BORDERS/} t-ContentRow--hideBorders{endif/}{if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>'
     report-row: '<li class="t-ContentRow-item{if ?ITEM_CLASSES/} #ITEM_CLASSES#{endif/}" #APEX$ROW_IDENTIFICATION#>#APEX$PARTIAL#</li>'
     translate-templates: false
     default-escape-mode: HTML
@@ -1761,26 +1755,26 @@
 
   attribute-groups: 
   - # ====== Attribute Group: Appearance =========================
-    id: 1719875318167544328
+    id: 1739053330650691566
     identification: 
       name: Appearance
       sequence: 30
 
   - # ====== Attribute Group: Badge ==============================
-    id: 1976767381897817841
+    id: 1995945394380965079
     identification: 
       name: Badge
       sequence: 20
 
   - # ====== Attribute Group: Avatar =============================
-    id: 1976767936909817842
+    id: 1995945949392965080
     identification: 
       name: Avatar
       sequence: 10
 
   custom-attributes: 
   - # ====== Custom Attribute: Overline ==========================
-    id: 37511418743507011
+    id: 56689431226654249
     identification: 
       static-id: OVERLINE
       attribute: 1
@@ -1805,7 +1799,7 @@
       demo-value: Category
 
   - # ====== Custom Attribute: Title =============================
-    id: 37511906386507011
+    id: 56689918869654249
     identification: 
       static-id: TITLE
       attribute: 2
@@ -1821,7 +1815,7 @@
       show-in-wizard: true
       required: false
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     help: 
       help-text: Enter some text and/or column substitution strings to be used as the title in each row.
@@ -1830,7 +1824,7 @@
       demo-value: Lorem ipsum dolor sit amet
 
   - # ====== Custom Attribute: Description =======================
-    id: 37512478702507012
+    id: 56690491185654250
     identification: 
       static-id: DESCRIPTION
       attribute: 3
@@ -1855,7 +1849,7 @@
       demo-value: Nunc sit amet nunc quis magna ornare suscipit. Etiam aliquet maximus sapien, at sagittis sem gravida nec.
 
   - # ====== Custom Attribute: Miscellaneous =====================
-    id: 37512974251507012
+    id: 56690986734654250
     identification: 
       static-id: MISC
       attribute: 4
@@ -1877,7 +1871,7 @@
       help-text: Enter miscellaneous content such as additional text and/or column substitution strings to display in each row.
 
   - # ====== Custom Attribute: Display Avatar ====================
-    id: 37513461007507013
+    id: 56691473490654251
     identification: 
       static-id: DISPLAY_AVATAR
       attribute: 5
@@ -1902,7 +1896,7 @@
       help-text: Specify whether to display or hide the avatar for each row. When set to Yes, an avatar will be displayed with the assigned image, icon, or initials. When set to No, no avatar will be displayed.
 
   - # ====== Custom Attribute: Display Badge =====================
-    id: 37513995249507013
+    id: 56692007732654251
     identification: 
       static-id: DISPLAY_BADGE
       attribute: 6
@@ -1927,7 +1921,7 @@
       help-text: Specify whether to display or hide the badge for each row. When set to Yes, a badge will be displayed in each row. When set to No, no badge will be displayed.
 
   - # ====== Custom Attribute: Type ==============================
-    id: 37514468969507014
+    id: 56692481452654252
     identification: 
       static-id: AVATAR_TYPE
       attribute: 7
@@ -1935,7 +1929,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1976767936909817842
+      attribute-group: Avatar # 1995945949392965080
       sequence: 70
 
     settings: 
@@ -1951,7 +1945,7 @@
       value: icon
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37513461007507013
+      depending-on-custom-attribute: Display Avatar # 56691473490654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -1964,7 +1958,7 @@
 
     entries: 
     - # ====== Entry: Image ========================================
-      id: 37514958618507014
+      id: 56692971101654252
       entry: 
         sequence: 10
         display: Image
@@ -1974,7 +1968,7 @@
         quick-pick: false
 
     - # ====== Entry: Initials =====================================
-      id: 37515540060507014
+      id: 56693552543654252
       entry: 
         sequence: 20
         display: Initials
@@ -1984,7 +1978,7 @@
         quick-pick: false
 
     - # ====== Entry: Icon =========================================
-      id: 37516164029507015
+      id: 56694176512654253
       entry: 
         sequence: 30
         display: Icon
@@ -1994,7 +1988,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Image =============================
-    id: 37516792715507015
+    id: 56694805198654253
     identification: 
       static-id: AVATAR_IMAGE
       attribute: 8
@@ -2002,7 +1996,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1976767936909817842
+      attribute-group: Avatar # 1995945949392965080
       sequence: 80
 
     settings: 
@@ -2014,7 +2008,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Type # 37514468969507014
+      depending-on-custom-attribute: Type # 56692481452654252
       depending-on-condition-type: equal to
       expression: image
       always-evaluate: true
@@ -2032,7 +2026,7 @@
         </p>
 
   - # ====== Custom Attribute: Description =======================
-    id: 37517227069507016
+    id: 56695239552654254
     identification: 
       static-id: AVATAR_DESCRIPTION
       attribute: 9
@@ -2040,7 +2034,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1976767936909817842
+      attribute-group: Avatar # 1995945949392965080
       sequence: 115
 
     settings: 
@@ -2052,7 +2046,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37513461007507013
+      depending-on-custom-attribute: Display Avatar # 56691473490654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2061,7 +2055,7 @@
       help-text: Enter a short description of the image or select a source column from the quick pick options. This will be used as alt text for the avatar image.
 
   - # ====== Custom Attribute: Initials ==========================
-    id: 37517726775507016
+    id: 56695739258654254
     identification: 
       static-id: AVATAR_INITIALS
       attribute: 10
@@ -2069,7 +2063,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1976767936909817842
+      attribute-group: Avatar # 1995945949392965080
       sequence: 100
 
     settings: 
@@ -2083,7 +2077,7 @@
       escape-mode: Strip HTML
 
     condition: 
-      depending-on-custom-attribute: Type # 37514468969507014
+      depending-on-custom-attribute: Type # 56692481452654252
       depending-on-condition-type: equal to
       expression: initials
       always-evaluate: true
@@ -2092,7 +2086,7 @@
       help-text: Select the source column to be displayed within each avatar. Only varchar2 data types are supported.
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37518239928507017
+    id: 56696252411654255
     identification: 
       static-id: AVATAR_ICON
       attribute: 11
@@ -2100,7 +2094,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1976767936909817842
+      attribute-group: Avatar # 1995945949392965080
       sequence: 110
 
     settings: 
@@ -2115,7 +2109,7 @@
       value: fa-user
 
     condition: 
-      depending-on-custom-attribute: Type # 37514468969507014
+      depending-on-custom-attribute: Type # 56692481452654252
       depending-on-condition-type: equal to
       expression: icon
       always-evaluate: true
@@ -2124,7 +2118,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the avatar.
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37518766274507017
+    id: 56696778757654255
     identification: 
       static-id: AVATAR_SHAPE
       attribute: 12
@@ -2132,7 +2126,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1976767936909817842
+      attribute-group: Avatar # 1995945949392965080
       sequence: 120
 
     settings: 
@@ -2148,7 +2142,7 @@
       value: t-Avatar--rounded
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37513461007507013
+      depending-on-custom-attribute: Display Avatar # 56691473490654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2158,7 +2152,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37519215504507018
+      id: 56697227987654256
       entry: 
         sequence: 10
         display: Rounded
@@ -2171,7 +2165,7 @@
         help-text: Displayed within a square with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37519812199507018
+      id: 56697824682654256
       entry: 
         sequence: 20
         display: Circular
@@ -2184,7 +2178,7 @@
         help-text: Displayed within a circular shape.
 
     - # ====== Entry: Square =======================================
-      id: 37520430585507019
+      id: 56698443068654257
       entry: 
         sequence: 30
         display: Square
@@ -2197,7 +2191,7 @@
         help-text: Displayed within a square shape.
 
     - # ====== Entry: No Shape =====================================
-      id: 37521086239507019
+      id: 56699098722654257
       entry: 
         sequence: 40
         display: No Shape
@@ -2210,7 +2204,7 @@
         help-text: Displayed inline without a containing shape.
 
   - # ====== Custom Attribute: Label =============================
-    id: 37521671245507020
+    id: 56699683728654258
     identification: 
       static-id: BADGE_LABEL
       attribute: 13
@@ -2218,7 +2212,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 130
 
     settings: 
@@ -2227,10 +2221,10 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2239,7 +2233,7 @@
       help-text: Enter a value for the badge label or select a source column from the quick pick options.
 
   - # ====== Custom Attribute: Value =============================
-    id: 37522158299507020
+    id: 56700170782654258
     identification: 
       static-id: BADGE_VALUE
       attribute: 14
@@ -2247,7 +2241,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 140
 
     settings: 
@@ -2262,10 +2256,10 @@
       - Date
       - Interval Year to Month
       - Interval Day to Second
-      escape-mode: HTML Attribute
+      escape-mode: Strip HTML
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2274,7 +2268,7 @@
       help-text: Select a source column for the badge value.
 
   - # ====== Custom Attribute: State =============================
-    id: 37522659137507021
+    id: 56700671620654259
     identification: 
       static-id: BADGE_STATE
       attribute: 15
@@ -2282,7 +2276,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 150
 
     settings: 
@@ -2296,7 +2290,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2305,7 +2299,7 @@
       help-text: Select the source column for the state of the badge. Substitute column value with "danger", "warning", "success" or "info" for default styling.
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37523118271507021
+    id: 56701130754654259
     identification: 
       static-id: BADGE_ICON
       attribute: 16
@@ -2313,7 +2307,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 160
 
     settings: 
@@ -2325,7 +2319,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2334,7 +2328,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the badge.
 
   - # ====== Custom Attribute: Display Label =====================
-    id: 37523647726507022
+    id: 56701660209654260
     identification: 
       static-id: BADGE_LABEL_DISPLAY
       attribute: 17
@@ -2342,7 +2336,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 170
 
     settings: 
@@ -2357,7 +2351,7 @@
       value: N
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2366,7 +2360,7 @@
       help-text: Specify whether to display or hide the badge label. When set to Yes, the badge label will be displayed in addition to the badge value. When set to No, only the badge value will be displayed.
 
   - # ====== Custom Attribute: Style =============================
-    id: 37524109459507022
+    id: 56702121942654260
     identification: 
       static-id: BADGE_STYLE
       attribute: 18
@@ -2374,7 +2368,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 180
 
     settings: 
@@ -2388,7 +2382,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2398,7 +2392,7 @@
 
     entries: 
     - # ====== Entry: Subtle =======================================
-      id: 37524501023507023
+      id: 56702513506654261
       entry: 
         sequence: 10
         display: Subtle
@@ -2408,7 +2402,7 @@
         quick-pick: false
 
     - # ====== Entry: Outline ======================================
-      id: 37525182076507023
+      id: 56703194559654261
       entry: 
         sequence: 20
         display: Outline
@@ -2418,7 +2412,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37525741747507024
+    id: 56703754230654262
     identification: 
       static-id: BADGE_SHAPE
       attribute: 19
@@ -2426,7 +2420,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 190
 
     settings: 
@@ -2440,7 +2434,7 @@
       escape-mode: HTML
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2450,7 +2444,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37526293545507024
+      id: 56704306028654262
       entry: 
         sequence: 10
         display: Rounded
@@ -2463,7 +2457,7 @@
         help-text: Displayed with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37526872830507025
+      id: 56704885313654263
       entry: 
         sequence: 20
         display: Circular
@@ -2476,7 +2470,7 @@
         help-text: Displayed with circular edges.
 
     - # ====== Entry: Square =======================================
-      id: 37527478992507025
+      id: 56705491475654263
       entry: 
         sequence: 30
         display: Square
@@ -2489,7 +2483,7 @@
         help-text: Displayed with squared edges.
 
     - # ====== Entry: No Shape =====================================
-      id: 37528005591507026
+      id: 56706018074654264
       entry: 
         sequence: 40
         display: No Shape
@@ -2502,7 +2496,7 @@
         help-text: Displayed inline without a containing shape.
 
   - # ====== Custom Attribute: Size ==============================
-    id: 37528696348507026
+    id: 56706708831654264
     identification: 
       static-id: AVATAR_SIZE
       attribute: 20
@@ -2510,7 +2504,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1976767936909817842
+      attribute-group: Avatar # 1995945949392965080
       sequence: 200
 
     settings: 
@@ -2524,7 +2518,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37513461007507013
+      depending-on-custom-attribute: Display Avatar # 56691473490654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2534,7 +2528,7 @@
 
     entries: 
     - # ====== Entry: Extra Extra Small ============================
-      id: 37529195683507027
+      id: 56707208166654265
       entry: 
         sequence: 10
         display: Extra Extra Small
@@ -2544,7 +2538,7 @@
         quick-pick: false
 
     - # ====== Entry: Extra Small ==================================
-      id: 37529799145507028
+      id: 56707811628654266
       entry: 
         sequence: 20
         display: Extra Small
@@ -2554,7 +2548,7 @@
         quick-pick: false
 
     - # ====== Entry: Small ========================================
-      id: 37530378425507028
+      id: 56708390908654266
       entry: 
         sequence: 30
         display: Small
@@ -2564,7 +2558,7 @@
         quick-pick: false
 
     - # ====== Entry: Medium =======================================
-      id: 37530940917507029
+      id: 56708953400654267
       entry: 
         sequence: 40
         display: Medium
@@ -2574,7 +2568,7 @@
         quick-pick: false
 
     - # ====== Entry: Large ========================================
-      id: 37531575149507029
+      id: 56709587632654267
       entry: 
         sequence: 50
         display: Large
@@ -2584,7 +2578,7 @@
         quick-pick: false
 
     - # ====== Entry: Extra Large ==================================
-      id: 37532153706507030
+      id: 56710166189654268
       entry: 
         sequence: 60
         display: Extra Large
@@ -2594,7 +2588,7 @@
         quick-pick: false
 
     - # ====== Entry: Extra Extra Large ============================
-      id: 37532768271507030
+      id: 56710780754654268
       entry: 
         sequence: 70
         display: Extra Extra Large
@@ -2604,7 +2598,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Size ==============================
-    id: 37533308627507031
+    id: 56711321110654269
     identification: 
       static-id: BADGE_SIZE
       attribute: 21
@@ -2612,7 +2606,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 210
 
     settings: 
@@ -2626,7 +2620,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2636,7 +2630,7 @@
 
     entries: 
     - # ====== Entry: Small ========================================
-      id: 37533809544507031
+      id: 56711822027654269
       entry: 
         sequence: 10
         display: Small
@@ -2646,7 +2640,7 @@
         quick-pick: false
 
     - # ====== Entry: Medium =======================================
-      id: 37534440693507032
+      id: 56712453176654270
       entry: 
         sequence: 20
         display: Medium
@@ -2656,7 +2650,7 @@
         quick-pick: false
 
     - # ====== Entry: Large ========================================
-      id: 37535050520507032
+      id: 56713063003654270
       entry: 
         sequence: 30
         display: Large
@@ -2666,7 +2660,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Column Width ======================
-    id: 37535688416507034
+    id: 56713700899654272
     identification: 
       static-id: BADGE_COL_WIDTH
       attribute: 22
@@ -2674,7 +2668,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 220
 
     settings: 
@@ -2691,7 +2685,7 @@
       value: t-ContentRow-badge--md
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2701,7 +2695,7 @@
 
     entries: 
     - # ====== Entry: Small ========================================
-      id: 37536119902507035
+      id: 56714132385654273
       entry: 
         sequence: 10
         display: Small
@@ -2711,7 +2705,7 @@
         quick-pick: false
 
     - # ====== Entry: Medium =======================================
-      id: 37536705994507035
+      id: 56714718477654273
       entry: 
         sequence: 20
         display: Medium
@@ -2721,7 +2715,7 @@
         quick-pick: false
 
     - # ====== Entry: Large ========================================
-      id: 37537319030507036
+      id: 56715331513654274
       entry: 
         sequence: 30
         display: Large
@@ -2731,7 +2725,7 @@
         quick-pick: false
 
     - # ====== Entry: Auto =========================================
-      id: 37537931807507037
+      id: 56715944290654275
       entry: 
         sequence: 40
         display: Auto
@@ -2741,7 +2735,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Position ==========================
-    id: 37538531429507037
+    id: 56716543912654275
     identification: 
       static-id: BADGE_POS
       attribute: 24
@@ -2749,7 +2743,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 240
 
     settings: 
@@ -2763,7 +2757,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2773,7 +2767,7 @@
 
     entries: 
     - # ====== Entry: End ==========================================
-      id: 37539081332507038
+      id: 56717093815654276
       entry: 
         sequence: 10
         display: End
@@ -2786,7 +2780,7 @@
         help-text: Positions the Badge column to the "end" of the row.
 
   - # ====== Custom Attribute: Alignment =========================
-    id: 37539695687507038
+    id: 56717708170654276
     identification: 
       static-id: BADGE_ALIGNMENT
       attribute: 25
@@ -2794,7 +2788,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1976767381897817841
+      attribute-group: Badge # 1995945394380965079
       sequence: 250
 
     settings: 
@@ -2808,7 +2802,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37513995249507013
+      depending-on-custom-attribute: Display Badge # 56692007732654251
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -2818,7 +2812,7 @@
 
     entries: 
     - # ====== Entry: Center =======================================
-      id: 37540195522507039
+      id: 56718208005654277
       entry: 
         sequence: 10
         display: Center
@@ -2831,7 +2825,7 @@
         help-text: Aligns the badge to the "center" of its column.
 
     - # ====== Entry: End ==========================================
-      id: 37540742397507039
+      id: 56718754880654277
       entry: 
         sequence: 20
         display: End
@@ -2844,7 +2838,7 @@
         help-text: Aligns the badge to the "end" of its column.
 
   - # ====== Custom Attribute: Apply Theme Colors ================
-    id: 37541343532507040
+    id: 56719356015654278
     identification: 
       static-id: APPLY_THEME_COLORS
       attribute: 23
@@ -2852,7 +2846,7 @@
       scope: Report
 
     layout: 
-      attribute-group: Appearance # 1719875318167544328
+      attribute-group: Appearance # 1739053330650691566
       sequence: 230
 
     settings: 
@@ -2870,7 +2864,7 @@
       help-text: Specify whether to use the Universal Theme colors for avatar and badge row items. When set to Yes, the u-colors class will be applied to each row. When set to No, a default color will be used instead.
 
   - # ====== Custom Attribute: Style =============================
-    id: 37541894780507040
+    id: 56719907263654278
     identification: 
       static-id: STYLE
       attribute: 27
@@ -2878,7 +2872,7 @@
       scope: Report
 
     layout: 
-      attribute-group: Appearance # 1719875318167544328
+      attribute-group: Appearance # 1739053330650691566
       sequence: 270
 
     settings: 
@@ -2893,7 +2887,7 @@
 
     entries: 
     - # ====== Entry: Compact ======================================
-      id: 37542383886507041
+      id: 56720396369654279
       entry: 
         sequence: 10
         display: Compact
@@ -2903,7 +2897,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Hide Borders ======================
-    id: 37542984136507042
+    id: 56720996619654280
     identification: 
       static-id: HIDE_BORDERS
       attribute: 28
@@ -2911,7 +2905,7 @@
       scope: Report
 
     layout: 
-      attribute-group: Appearance # 1719875318167544328
+      attribute-group: Appearance # 1739053330650691566
       sequence: 280
 
     settings: 
@@ -2926,7 +2920,7 @@
       value: N
 
   - # ====== Custom Attribute: Remove Padding ====================
-    id: 37543419863507042
+    id: 56721432346654280
     identification: 
       static-id: REMOVE_PADDING
       attribute: 30
@@ -2934,7 +2928,7 @@
       scope: Report
 
     layout: 
-      attribute-group: Appearance # 1719875318167544328
+      attribute-group: Appearance # 1739053330650691566
       sequence: 300
 
     settings: 
@@ -2950,7 +2944,7 @@
 
   action-positions: 
   - # ====== Action Position: Badge Link =========================
-    id: 1561030312229881026
+    id: 1580208324713028264
     identification: 
       name: Badge Link
       static-id: BADGE_LINK
@@ -2963,7 +2957,7 @@
       type: Link
 
   - # ====== Action Position: Title Link =========================
-    id: 1855141106328772637
+    id: 1874319118811919875
     identification: 
       name: Title Link
       static-id: TITLE_LINK
@@ -2976,7 +2970,7 @@
       type: Link
 
   - # ====== Action Position: Full Row Link ======================
-    id: 1855820407058855741
+    id: 1874998419542002979
     identification: 
       name: Full Row Link
       static-id: FULL_ROW_LINK
@@ -2989,7 +2983,7 @@
       type: Link
 
   - # ====== Action Position: Avatar Link ========================
-    id: 1868732799936134384
+    id: 1887910812419281622
     identification: 
       name: Avatar Link
       static-id: AVATAR_LINK
@@ -3002,7 +2996,7 @@
       type: Link
 
   - # ====== Action Position: Primary Actions ====================
-    id: 1868734133326148241
+    id: 1887912145809295479
     identification: 
       name: Primary Actions
       static-id: PRIMARY_ACTIONS
@@ -3016,7 +3010,7 @@
 
   action-templates: 
   - # ====== Action Template: Button =============================
-    id: 1868734735003179370
+    id: 1887912747486326608
     identification: 
       name: Button
       type: Button
@@ -3024,9 +3018,9 @@
     template: 
       action-template: |
         {with/}
-        LINK_URL:=#LINK_URL!RAW#
-        LINK_ATTR:=#LINK_ATTR!RAW#
-        LABEL:=#LABEL!RAW#
+        LINK_URL:=#LINK_URL#
+        LINK_ATTR:=#LINK_ATTR#
+        LABEL:=#LABEL#
         ICON_CLASSES:=#ICON_CLASSES#
         CSS_CLASSES:=#CSS_CLASSES#
         IS_HOT:=#IS_HOT#
@@ -3038,7 +3032,7 @@
       translatable: false
 
   - # ====== Action Template: Menu ===============================
-    id: 1868735994523183518
+    id: 1887914007006330756
     identification: 
       name: Menu
       type: Menu
@@ -3047,7 +3041,7 @@
       action-template: |
         {with/}
         MENU_ID:=#MENU_ID#
-        LABEL:=#LABEL!RAW#
+        LABEL:=#LABEL#
         ICON_CLASSES:=#ICON_CLASSES#
         CSS_CLASSES:=#CSS_CLASSES#
         IS_HOT:=#IS_HOT#
@@ -3060,7 +3054,7 @@
       translatable: false
 
 - # ====== Plugin: Media List ==================================
-  id: 34073363043153884
+  id: 53251375526301122
   identification: 
     name: Media List
     internal-name: THEME_800$MEDIA_LIST
@@ -3072,8 +3066,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 26269069508132216 # Media List
+      referenced-id: 26269069508132216
 
     subscribe-component-settings: true
 
@@ -3106,7 +3099,7 @@
           {endif/}
         </div>
       {else/}
-        {if LINK/}<a href="#LINK!ATTR#" #LINK_ATTR!RAW#{else/}<div{endif/} class="t-MediaList-itemWrap{if ?DESCRIPTION/} t-MediaList-itemWrap--showDesc{endif/}">
+        {if LINK/}<a href="#LINK#" #LINK_ATTR#{else/}<div{endif/} class="t-MediaList-itemWrap{if ?DESCRIPTION/} t-MediaList-itemWrap--showDesc{endif/}">
           {if DISPLAY_AVATAR/}
             <div class="t-MediaList-iconWrap" aria-hidden="true">
               {with/}
@@ -3121,8 +3114,8 @@
             </div>
           {endif/}
           <div class="t-MediaList-body">
-            {if ?TITLE/}<h3 class="t-MediaList-title">#TITLE!RAW#</h3>{endif/}
-            {if ?DESCRIPTION/}<p class="t-MediaList-desc">#DESCRIPTION!RAW#</p>{endif/}
+            {if ?TITLE/}<h3 class="t-MediaList-title">#TITLE#</h3>{endif/}
+            {if ?DESCRIPTION/}<p class="t-MediaList-desc">#DESCRIPTION#</p>{endif/}
           </div>
           {if DISPLAY_BADGE/}
             {with/}
@@ -3155,20 +3148,20 @@
 
   attribute-groups: 
   - # ====== Attribute Group: Badge ==============================
-    id: 1849636059414629945
+    id: 1868814071897777183
     identification: 
       name: Badge
       sequence: 20
 
   - # ====== Attribute Group: Avatar =============================
-    id: 1849636614426629946
+    id: 1868814626909777184
     identification: 
       name: Avatar
       sequence: 10
 
   custom-attributes: 
   - # ====== Custom Attribute: Title =============================
-    id: 37555124677507060
+    id: 56733137160654298
     identification: 
       static-id: TITLE
       attribute: 1
@@ -3195,7 +3188,7 @@
       demo-value: Lorem ipsum dolor sit amet
 
   - # ====== Custom Attribute: Description =======================
-    id: 37555695334507061
+    id: 56733707817654299
     identification: 
       static-id: DESCRIPTION
       attribute: 2
@@ -3222,7 +3215,7 @@
       demo-value: Nunc sit amet nunc quis magna ornare suscipit. Etiam aliquet maximus sapien, at sagittis sem gravida nec.
 
   - # ====== Custom Attribute: Display Avatar ====================
-    id: 37556196453507061
+    id: 56734208936654299
     identification: 
       static-id: DISPLAY_AVATAR
       attribute: 3
@@ -3247,7 +3240,7 @@
       help-text: Specify whether to display or hide the avatar for each row. When set to Yes, an avatar will be displayed with the assigned image, icon, or initials. When set to No, no avatar will be displayed.
 
   - # ====== Custom Attribute: Display Badge =====================
-    id: 37556676707507062
+    id: 56734689190654300
     identification: 
       static-id: DISPLAY_BADGE
       attribute: 4
@@ -3272,7 +3265,7 @@
       help-text: Specify whether to display or hide the badge for each row. When set to Yes, a badge will be displayed in each row. When set to No, no badge will be displayed.
 
   - # ====== Custom Attribute: Type ==============================
-    id: 37557135416507062
+    id: 56735147899654300
     identification: 
       static-id: AVATAR_TYPE
       attribute: 5
@@ -3280,7 +3273,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849636614426629946
+      attribute-group: Avatar # 1868814626909777184
       sequence: 50
 
     settings: 
@@ -3296,7 +3289,7 @@
       value: icon
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37556196453507061
+      depending-on-custom-attribute: Display Avatar # 56734208936654299
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3309,7 +3302,7 @@
 
     entries: 
     - # ====== Entry: Image ========================================
-      id: 37557629362507063
+      id: 56735641845654301
       entry: 
         sequence: 10
         display: Image
@@ -3319,7 +3312,7 @@
         quick-pick: false
 
     - # ====== Entry: Initials =====================================
-      id: 37558262461507063
+      id: 56736274944654301
       entry: 
         sequence: 20
         display: Initials
@@ -3329,7 +3322,7 @@
         quick-pick: false
 
     - # ====== Entry: Icon =========================================
-      id: 37558807597507064
+      id: 56736820080654302
       entry: 
         sequence: 30
         display: Icon
@@ -3339,7 +3332,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Image =============================
-    id: 37559428614507064
+    id: 56737441097654302
     identification: 
       static-id: AVATAR_IMAGE
       attribute: 6
@@ -3347,7 +3340,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849636614426629946
+      attribute-group: Avatar # 1868814626909777184
       sequence: 60
 
     settings: 
@@ -3359,7 +3352,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Type # 37557135416507062
+      depending-on-custom-attribute: Type # 56735147899654300
       depending-on-condition-type: equal to
       expression: image
       always-evaluate: true
@@ -3377,7 +3370,7 @@
         </p>
 
   - # ====== Custom Attribute: Description =======================
-    id: 37559964964507065
+    id: 56737977447654303
     identification: 
       static-id: AVATAR_DESCRIPTION
       attribute: 7
@@ -3385,7 +3378,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849636614426629946
+      attribute-group: Avatar # 1868814626909777184
       sequence: 95
 
     settings: 
@@ -3397,7 +3390,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37556196453507061
+      depending-on-custom-attribute: Display Avatar # 56734208936654299
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3406,7 +3399,7 @@
       help-text: Enter a short description of the image/icon or select a source column from the quick pick options. This will be used as title & alt text for the avatar image/icon.
 
   - # ====== Custom Attribute: Initials ==========================
-    id: 37560429646507065
+    id: 56738442129654303
     identification: 
       static-id: AVATAR_INITIALS
       attribute: 8
@@ -3414,7 +3407,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849636614426629946
+      attribute-group: Avatar # 1868814626909777184
       sequence: 80
 
     settings: 
@@ -3428,7 +3421,7 @@
       escape-mode: Strip HTML
 
     condition: 
-      depending-on-custom-attribute: Type # 37557135416507062
+      depending-on-custom-attribute: Type # 56735147899654300
       depending-on-condition-type: equal to
       expression: initials
       always-evaluate: true
@@ -3437,7 +3430,7 @@
       help-text: Select the source column to be displayed within each avatar. Only varchar2 data types are supported.
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37560931958507066
+    id: 56738944441654304
     identification: 
       static-id: AVATAR_ICON
       attribute: 9
@@ -3445,7 +3438,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849636614426629946
+      attribute-group: Avatar # 1868814626909777184
       sequence: 90
 
     settings: 
@@ -3460,7 +3453,7 @@
       value: fa-user
 
     condition: 
-      depending-on-custom-attribute: Type # 37557135416507062
+      depending-on-custom-attribute: Type # 56735147899654300
       depending-on-condition-type: equal to
       expression: icon
       always-evaluate: true
@@ -3469,7 +3462,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the avatar.
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37561441153507066
+    id: 56739453636654304
     identification: 
       static-id: AVATAR_SHAPE
       attribute: 10
@@ -3477,7 +3470,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 1849636614426629946
+      attribute-group: Avatar # 1868814626909777184
       sequence: 100
 
     settings: 
@@ -3493,7 +3486,7 @@
       value: t-Avatar--rounded
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37556196453507061
+      depending-on-custom-attribute: Display Avatar # 56734208936654299
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3503,7 +3496,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37561946326507067
+      id: 56739958809654305
       entry: 
         sequence: 10
         display: Rounded
@@ -3516,7 +3509,7 @@
         help-text: Displayed within a square with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37562599962507067
+      id: 56740612445654305
       entry: 
         sequence: 20
         display: Circular
@@ -3529,7 +3522,7 @@
         help-text: Displayed within a circular shape.
 
     - # ====== Entry: Square =======================================
-      id: 37563150602507068
+      id: 56741163085654306
       entry: 
         sequence: 30
         display: Square
@@ -3542,7 +3535,7 @@
         help-text: Displayed within a square shape.
 
     - # ====== Entry: No Shape =====================================
-      id: 37563726586507068
+      id: 56741739069654306
       entry: 
         sequence: 40
         display: No Shape
@@ -3555,7 +3548,7 @@
         help-text: Displayed inline without a containing shape.
 
   - # ====== Custom Attribute: Label =============================
-    id: 37564394436507069
+    id: 56742406919654307
     identification: 
       static-id: BADGE_LABEL
       attribute: 11
@@ -3563,7 +3556,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1849636059414629945
+      attribute-group: Badge # 1868814071897777183
       sequence: 110
 
     settings: 
@@ -3572,10 +3565,10 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37556676707507062
+      depending-on-custom-attribute: Display Badge # 56734689190654300
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3584,7 +3577,7 @@
       help-text: Enter a value for the badge label or select a source column from the quick pick options.
 
   - # ====== Custom Attribute: Value =============================
-    id: 37564813880507069
+    id: 56742826363654307
     identification: 
       static-id: BADGE_VALUE
       attribute: 12
@@ -3592,7 +3585,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1849636059414629945
+      attribute-group: Badge # 1868814071897777183
       sequence: 120
 
     settings: 
@@ -3607,10 +3600,10 @@
       - Date
       - Interval Year to Month
       - Interval Day to Second
-      escape-mode: HTML Attribute
+      escape-mode: Strip HTML
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37556676707507062
+      depending-on-custom-attribute: Display Badge # 56734689190654300
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3619,7 +3612,7 @@
       help-text: Select a source column for the badge value.
 
   - # ====== Custom Attribute: State =============================
-    id: 37565309258507070
+    id: 56743321741654308
     identification: 
       static-id: BADGE_STATE
       attribute: 13
@@ -3627,7 +3620,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1849636059414629945
+      attribute-group: Badge # 1868814071897777183
       sequence: 130
 
     settings: 
@@ -3641,7 +3634,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37556676707507062
+      depending-on-custom-attribute: Display Badge # 56734689190654300
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3650,7 +3643,7 @@
       help-text: Select the source column for the state of the badge. Substitute column value with "danger", "warning", "success" or "info" for default styling.
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37565826963507070
+    id: 56743839446654308
     identification: 
       static-id: BADGE_ICON
       attribute: 14
@@ -3658,7 +3651,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1849636059414629945
+      attribute-group: Badge # 1868814071897777183
       sequence: 140
 
     settings: 
@@ -3670,7 +3663,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37556676707507062
+      depending-on-custom-attribute: Display Badge # 56734689190654300
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3679,7 +3672,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the badge.
 
   - # ====== Custom Attribute: Display Label =====================
-    id: 37566366196507071
+    id: 56744378679654309
     identification: 
       static-id: BADGE_LABEL_DISPLAY
       attribute: 15
@@ -3687,7 +3680,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1849636059414629945
+      attribute-group: Badge # 1868814071897777183
       sequence: 150
 
     settings: 
@@ -3702,7 +3695,7 @@
       value: N
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37556676707507062
+      depending-on-custom-attribute: Display Badge # 56734689190654300
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3711,7 +3704,7 @@
       help-text: Specify whether to display or hide the badge label. When set to Yes, the badge label will be displayed in addition to the badge value. When set to No, only the badge value will be displayed.
 
   - # ====== Custom Attribute: Style =============================
-    id: 37566803173507071
+    id: 56744815656654309
     identification: 
       static-id: BADGE_STYLE
       attribute: 16
@@ -3719,7 +3712,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1849636059414629945
+      attribute-group: Badge # 1868814071897777183
       sequence: 160
 
     settings: 
@@ -3733,7 +3726,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37556676707507062
+      depending-on-custom-attribute: Display Badge # 56734689190654300
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3743,7 +3736,7 @@
 
     entries: 
     - # ====== Entry: Subtle =======================================
-      id: 37567393623507071
+      id: 56745406106654309
       entry: 
         sequence: 10
         display: Subtle
@@ -3753,7 +3746,7 @@
         quick-pick: false
 
     - # ====== Entry: Outline ======================================
-      id: 37567963348507072
+      id: 56745975831654310
       entry: 
         sequence: 20
         display: Outline
@@ -3763,7 +3756,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37568544501507072
+    id: 56746556984654310
     identification: 
       static-id: BADGE_SHAPE
       attribute: 17
@@ -3771,7 +3764,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 1849636059414629945
+      attribute-group: Badge # 1868814071897777183
       sequence: 170
 
     settings: 
@@ -3782,10 +3775,10 @@
       required: false
       translatable: false
       lov-null-text: Default
-      escape-mode: HTML
+      escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37556676707507062
+      depending-on-custom-attribute: Display Badge # 56734689190654300
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -3795,7 +3788,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37569037349507073
+      id: 56747049832654311
       entry: 
         sequence: 10
         display: Rounded
@@ -3808,7 +3801,7 @@
         help-text: Displayed with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37569660333507073
+      id: 56747672816654311
       entry: 
         sequence: 20
         display: Circular
@@ -3821,7 +3814,7 @@
         help-text: Displayed with circular edges.
 
     - # ====== Entry: Square =======================================
-      id: 37570280137507074
+      id: 56748292620654312
       entry: 
         sequence: 30
         display: Square
@@ -3834,7 +3827,7 @@
         help-text: Displayed with squared edges.
 
   - # ====== Custom Attribute: Layout ============================
-    id: 37570813293507075
+    id: 56748825776654313
     identification: 
       static-id: LAYOUT
       attribute: 18
@@ -3859,7 +3852,7 @@
 
     entries: 
     - # ====== Entry: 2 Column Grid ================================
-      id: 37571333624507075
+      id: 56749346107654313
       entry: 
         sequence: 10
         display: 2 Column Grid
@@ -3869,7 +3862,7 @@
         quick-pick: false
 
     - # ====== Entry: 3 Column Grid ================================
-      id: 37571925144507076
+      id: 56749937627654314
       entry: 
         sequence: 20
         display: 3 Column Grid
@@ -3879,7 +3872,7 @@
         quick-pick: false
 
     - # ====== Entry: 4 Column Grid ================================
-      id: 37572583188507076
+      id: 56750595671654314
       entry: 
         sequence: 30
         display: 4 Column Grid
@@ -3889,7 +3882,7 @@
         quick-pick: false
 
     - # ====== Entry: 5 Column Grid ================================
-      id: 37573145697507077
+      id: 56751158180654315
       entry: 
         sequence: 40
         display: 5 Column Grid
@@ -3899,7 +3892,7 @@
         quick-pick: false
 
     - # ====== Entry: Horizontal Span ==============================
-      id: 37573747167507077
+      id: 56751759650654315
       entry: 
         sequence: 50
         display: Horizontal Span
@@ -3909,7 +3902,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Size ==============================
-    id: 37574344245507078
+    id: 56752356728654316
     identification: 
       static-id: SIZE
       attribute: 19
@@ -3927,14 +3920,14 @@
       required: false
       translatable: false
       lov-null-text: Default
-      escape-mode: HTML
+      escape-mode: HTML Attribute
 
     help: 
       help-text: Set the size of media list items.
 
     entries: 
     - # ====== Entry: Large ========================================
-      id: 37574894020507078
+      id: 56752906503654316
       entry: 
         sequence: 10
         display: Large
@@ -3944,7 +3937,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Apply Theme Colors ================
-    id: 37575417649507078
+    id: 56753430132654316
     identification: 
       static-id: APPLY_THEME_COLORS
       attribute: 20
@@ -3970,7 +3963,7 @@
 
   action-positions: 
   - # ====== Action Position: Link ===============================
-    id: 1860564059360316378
+    id: 1879742071843463616
     identification: 
       name: Link
       static-id: LINK
@@ -3983,7 +3976,7 @@
       type: Link
 
 - # ====== Plugin: Timeline ====================================
-  id: 34090052990153895
+  id: 53268065473301133
   identification: 
     name: Timeline
     internal-name: THEME_800$TIMELINE
@@ -3995,8 +3988,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 26205872481132159 # Timeline
+      referenced-id: 26205872481132159
 
     subscribe-component-settings: true
 
@@ -4005,7 +3997,7 @@
     - Single (Partial)
     - Multiple (Report)
     partial: |
-      <div{if ?CSS_CLASSES/} class="#CSS_CLASSES#"{endif/}{if ?ATTRIBUTES/}#ATTRIBUTES!RAW#{endif/}>
+      <div{if ?CSS_CLASSES/} class="#CSS_CLASSES#"{endif/}>
         <div class="t-Timeline-wrap">
           <div class="t-Timeline-user">
             {if DISPLAY_AVATAR/}
@@ -4018,12 +4010,12 @@
                 SHAPE:=#AVATAR_SHAPE#
                 SIZE:=
                 LINK:=#AVATAR_LINK#
-                LINK_ATTR:=#AVATAR_LINK_ATTR!RAW#
+                LINK_ATTR:=#AVATAR_LINK_ATTR#
               {apply THEME$AVATAR/}
             {endif/}
             <div class="t-Timeline-userinfo">
-              <span class="t-Timeline-username">{if ?USER_NAME_LINK/}<a href="#USER_NAME_LINK!ATTR#" #USER_NAME_LINK_ATTR!RAW#>{endif/}#USER_NAME!RAW#{if ?USER_NAME_LINK/}</a>{endif/}</span>
-              <span class="t-Timeline-date">#DATE!RAW#</span>
+              <span class="t-Timeline-username">{if ?USER_NAME_LINK/}<a href="#USER_NAME_LINK#" #USER_NAME_LINK_ATTR#>{endif/}#USER_NAME#{if ?USER_NAME_LINK/}</a>{endif/}</span>
+              <span class="t-Timeline-date">#DATE#</span>
             </div>
           </div>
           <div class="t-Timeline-content">
@@ -4039,8 +4031,8 @@
               </div>
             {endif/}
             <div class="t-Timeline-body">
-              <h3 class="t-Timeline-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK!ATTR#" #TITLE_LINK_ATTR!RAW#>{endif/}#TITLE!RAW#{if ?TITLE_LINK/}</a>{endif/}</h3>
-              {if ?DESCRIPTION/}<p class="t-Timeline-desc">#DESCRIPTION!RAW#</p>{endif/}
+              <h3 class="t-Timeline-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK#" #TITLE_LINK_ATTR#>{endif/}#TITLE#{if ?TITLE_LINK/}</a>{endif/}</h3>
+              {if ?DESCRIPTION/}<p class="t-Timeline-desc">#DESCRIPTION#</p>{endif/}
             </div>
           </div>
         </div>
@@ -4064,20 +4056,20 @@
 
   attribute-groups: 
   - # ====== Attribute Group: Badge ==============================
-    id: 2196756346148853332
+    id: 2215934358632000570
     identification: 
       name: Badge
       sequence: 20
 
   - # ====== Attribute Group: Avatar =============================
-    id: 2196756901160853333
+    id: 2215934913644000571
     identification: 
       name: Avatar
       sequence: 10
 
   custom-attributes: 
   - # ====== Custom Attribute: User Name =========================
-    id: 37582797262507089
+    id: 56760809745654327
     identification: 
       static-id: USER_NAME
       attribute: 1
@@ -4104,7 +4096,7 @@
       demo-value: User
 
   - # ====== Custom Attribute: Date ==============================
-    id: 37583286014507089
+    id: 56761298497654327
     identification: 
       static-id: DATE
       attribute: 2
@@ -4135,7 +4127,7 @@
       demo-value: 1 hour ago
 
   - # ====== Custom Attribute: Title =============================
-    id: 37583776131507089
+    id: 56761788614654327
     identification: 
       static-id: TITLE
       attribute: 3
@@ -4162,7 +4154,7 @@
       demo-value: Lorem ipsum dolor sit amet
 
   - # ====== Custom Attribute: Description =======================
-    id: 37584255206507090
+    id: 56762267689654328
     identification: 
       static-id: DESCRIPTION
       attribute: 4
@@ -4189,7 +4181,7 @@
       demo-value: Nunc sit amet nunc quis magna ornare suscipit. Etiam aliquet maximus sapien, at sagittis sem gravida nec.
 
   - # ====== Custom Attribute: Display Avatar ====================
-    id: 37584761598507090
+    id: 56762774081654328
     identification: 
       static-id: DISPLAY_AVATAR
       attribute: 5
@@ -4217,7 +4209,7 @@
       demo-value: Y
 
   - # ====== Custom Attribute: Display Badge =====================
-    id: 37585204210507091
+    id: 56763216693654329
     identification: 
       static-id: DISPLAY_BADGE
       attribute: 6
@@ -4245,7 +4237,7 @@
       demo-value: Y
 
   - # ====== Custom Attribute: Type ==============================
-    id: 37585765323507091
+    id: 56763777806654329
     identification: 
       static-id: AVATAR_TYPE
       attribute: 7
@@ -4253,7 +4245,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 2196756901160853333
+      attribute-group: Avatar # 2215934913644000571
       sequence: 70
 
     settings: 
@@ -4269,7 +4261,7 @@
       value: icon
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37584761598507090
+      depending-on-custom-attribute: Display Avatar # 56762774081654328
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4282,7 +4274,7 @@
 
     entries: 
     - # ====== Entry: Image ========================================
-      id: 37586220094507092
+      id: 56764232577654330
       entry: 
         sequence: 10
         display: Image
@@ -4292,7 +4284,7 @@
         quick-pick: false
 
     - # ====== Entry: Initials =====================================
-      id: 37586867379507092
+      id: 56764879862654330
       entry: 
         sequence: 20
         display: Initials
@@ -4302,7 +4294,7 @@
         quick-pick: false
 
     - # ====== Entry: Icon =========================================
-      id: 37587474376507093
+      id: 56765486859654331
       entry: 
         sequence: 30
         display: Icon
@@ -4312,7 +4304,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Image =============================
-    id: 37588018835507093
+    id: 56766031318654331
     identification: 
       static-id: AVATAR_IMAGE
       attribute: 8
@@ -4320,7 +4312,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 2196756901160853333
+      attribute-group: Avatar # 2215934913644000571
       sequence: 80
 
     settings: 
@@ -4332,7 +4324,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Type # 37585765323507091
+      depending-on-custom-attribute: Type # 56763777806654329
       depending-on-condition-type: equal to
       expression: image
       always-evaluate: true
@@ -4350,7 +4342,7 @@
         </p>
 
   - # ====== Custom Attribute: Description =======================
-    id: 37588574053507094
+    id: 56766586536654332
     identification: 
       static-id: AVATAR_DESCRIPTION
       attribute: 9
@@ -4358,7 +4350,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 2196756901160853333
+      attribute-group: Avatar # 2215934913644000571
       sequence: 115
 
     settings: 
@@ -4370,7 +4362,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37584761598507090
+      depending-on-custom-attribute: Display Avatar # 56762774081654328
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4379,7 +4371,7 @@
       help-text: Enter a short description of the image/icon or select a source column from the quick pick options. This will be used as title & alt text for the avatar image/icon.
 
   - # ====== Custom Attribute: Initials ==========================
-    id: 37589016888507094
+    id: 56767029371654332
     identification: 
       static-id: AVATAR_INITIALS
       attribute: 10
@@ -4387,7 +4379,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 2196756901160853333
+      attribute-group: Avatar # 2215934913644000571
       sequence: 100
 
     settings: 
@@ -4401,7 +4393,7 @@
       escape-mode: Strip HTML
 
     condition: 
-      depending-on-custom-attribute: Type # 37585765323507091
+      depending-on-custom-attribute: Type # 56763777806654329
       depending-on-condition-type: equal to
       expression: initials
       always-evaluate: true
@@ -4410,7 +4402,7 @@
       help-text: Select the source column to be displayed within each avatar. Only varchar2 data types are supported.
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37589578316507095
+    id: 56767590799654333
     identification: 
       static-id: AVATAR_ICON
       attribute: 11
@@ -4418,7 +4410,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 2196756901160853333
+      attribute-group: Avatar # 2215934913644000571
       sequence: 110
 
     settings: 
@@ -4433,7 +4425,7 @@
       value: fa-user
 
     condition: 
-      depending-on-custom-attribute: Type # 37585765323507091
+      depending-on-custom-attribute: Type # 56763777806654329
       depending-on-condition-type: equal to
       expression: icon
       always-evaluate: true
@@ -4442,7 +4434,7 @@
       help-text: Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the avatar.
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37590022682507095
+    id: 56768035165654333
     identification: 
       static-id: AVATAR_SHAPE
       attribute: 12
@@ -4450,7 +4442,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Avatar # 2196756901160853333
+      attribute-group: Avatar # 2215934913644000571
       sequence: 120
 
     settings: 
@@ -4466,7 +4458,7 @@
       value: t-Avatar--circle
 
     condition: 
-      depending-on-custom-attribute: Display Avatar # 37584761598507090
+      depending-on-custom-attribute: Display Avatar # 56762774081654328
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4476,7 +4468,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37590593688507096
+      id: 56768606171654334
       entry: 
         sequence: 10
         display: Rounded
@@ -4489,7 +4481,7 @@
         help-text: Displayed within a square with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37591199115507096
+      id: 56769211598654334
       entry: 
         sequence: 20
         display: Circular
@@ -4502,7 +4494,7 @@
         help-text: Displayed within a circular shape.
 
     - # ====== Entry: Square =======================================
-      id: 37591762152507097
+      id: 56769774635654335
       entry: 
         sequence: 30
         display: Square
@@ -4515,7 +4507,7 @@
         help-text: Displayed within a square shape.
 
     - # ====== Entry: No Shape =====================================
-      id: 37592390937507097
+      id: 56770403420654335
       entry: 
         sequence: 40
         display: No Shape
@@ -4528,7 +4520,7 @@
         help-text: Displayed inline without a containing shape.
 
   - # ====== Custom Attribute: Label =============================
-    id: 37592900830507098
+    id: 56770913313654336
     identification: 
       static-id: BADGE_LABEL
       attribute: 13
@@ -4536,7 +4528,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 2196756346148853332
+      attribute-group: Badge # 2215934358632000570
       sequence: 130
 
     settings: 
@@ -4545,10 +4537,10 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37585204210507091
+      depending-on-custom-attribute: Display Badge # 56763216693654329
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4557,7 +4549,7 @@
       help-text: Enter a value for the badge label or select a source column from the quick pick options.
 
   - # ====== Custom Attribute: Value =============================
-    id: 37593407181507098
+    id: 56771419664654336
     identification: 
       static-id: BADGE_VALUE
       attribute: 14
@@ -4565,7 +4557,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 2196756346148853332
+      attribute-group: Badge # 2215934358632000570
       sequence: 140
 
     settings: 
@@ -4580,10 +4572,10 @@
       - Date
       - Interval Year to Month
       - Interval Day to Second
-      escape-mode: HTML Attribute
+      escape-mode: Strip HTML
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37585204210507091
+      depending-on-custom-attribute: Display Badge # 56763216693654329
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4595,7 +4587,7 @@
       demo-value: Closed
 
   - # ====== Custom Attribute: State =============================
-    id: 37593974684507099
+    id: 56771987167654337
     identification: 
       static-id: BADGE_STATE
       attribute: 15
@@ -4603,7 +4595,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 2196756346148853332
+      attribute-group: Badge # 2215934358632000570
       sequence: 150
 
     settings: 
@@ -4617,7 +4609,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37585204210507091
+      depending-on-custom-attribute: Display Badge # 56763216693654329
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4629,7 +4621,7 @@
       demo-value: is-removed
 
   - # ====== Custom Attribute: Icon ==============================
-    id: 37594486658507099
+    id: 56772499141654337
     identification: 
       static-id: BADGE_ICON
       attribute: 16
@@ -4637,7 +4629,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 2196756346148853332
+      attribute-group: Badge # 2215934358632000570
       sequence: 160
 
     settings: 
@@ -4649,7 +4641,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37585204210507091
+      depending-on-custom-attribute: Display Badge # 56763216693654329
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4661,7 +4653,7 @@
       demo-value: fa-check-circle-o
 
   - # ====== Custom Attribute: Display Label =====================
-    id: 37594926373507100
+    id: 56772938856654338
     identification: 
       static-id: BADGE_LABEL_DISPLAY
       attribute: 17
@@ -4669,7 +4661,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 2196756346148853332
+      attribute-group: Badge # 2215934358632000570
       sequence: 170
 
     settings: 
@@ -4684,7 +4676,7 @@
       value: N
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37585204210507091
+      depending-on-custom-attribute: Display Badge # 56763216693654329
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4693,7 +4685,7 @@
       help-text: Specify whether to display or hide the badge label. When set to Yes, the badge label will be displayed in addition to the badge value. When set to No, only the badge value will be displayed.
 
   - # ====== Custom Attribute: Style =============================
-    id: 37595478383507100
+    id: 56773490866654338
     identification: 
       static-id: BADGE_STYLE
       attribute: 18
@@ -4701,7 +4693,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 2196756346148853332
+      attribute-group: Badge # 2215934358632000570
       sequence: 180
 
     settings: 
@@ -4715,7 +4707,7 @@
       escape-mode: HTML Attribute
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37585204210507091
+      depending-on-custom-attribute: Display Badge # 56763216693654329
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4725,7 +4717,7 @@
 
     entries: 
     - # ====== Entry: Subtle =======================================
-      id: 37595945907507101
+      id: 56773958390654339
       entry: 
         sequence: 10
         display: Subtle
@@ -4735,7 +4727,7 @@
         quick-pick: false
 
     - # ====== Entry: Outline ======================================
-      id: 37596507368507101
+      id: 56774519851654339
       entry: 
         sequence: 20
         display: Outline
@@ -4745,7 +4737,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Shape =============================
-    id: 37597147734507101
+    id: 56775160217654339
     identification: 
       static-id: BADGE_SHAPE
       attribute: 19
@@ -4753,7 +4745,7 @@
       scope: Component
 
     layout: 
-      attribute-group: Badge # 2196756346148853332
+      attribute-group: Badge # 2215934358632000570
       sequence: 190
 
     settings: 
@@ -4767,7 +4759,7 @@
       escape-mode: HTML
 
     condition: 
-      depending-on-custom-attribute: Display Badge # 37585204210507091
+      depending-on-custom-attribute: Display Badge # 56763216693654329
       depending-on-condition-type: equal to
       expression: Y
       always-evaluate: true
@@ -4777,7 +4769,7 @@
 
     entries: 
     - # ====== Entry: Rounded ======================================
-      id: 37597656684507102
+      id: 56775669167654340
       entry: 
         sequence: 10
         display: Rounded
@@ -4790,7 +4782,7 @@
         help-text: Displayed with rounded corners.
 
     - # ====== Entry: Circular =====================================
-      id: 37598260562507102
+      id: 56776273045654340
       entry: 
         sequence: 20
         display: Circular
@@ -4803,7 +4795,7 @@
         help-text: Displayed with circular edges.
 
     - # ====== Entry: Square =======================================
-      id: 37598860254507103
+      id: 56776872737654341
       entry: 
         sequence: 30
         display: Square
@@ -4816,7 +4808,7 @@
         help-text: Displayed with squared edges.
 
   - # ====== Custom Attribute: Style =============================
-    id: 37599439266507103
+    id: 56777451749654341
     identification: 
       static-id: STYLE
       attribute: 20
@@ -4841,7 +4833,7 @@
 
     entries: 
     - # ====== Entry: Compact ======================================
-      id: 37599984614507103
+      id: 56777997097654341
       entry: 
         sequence: 10
         display: Compact
@@ -4851,7 +4843,7 @@
         quick-pick: false
 
   - # ====== Custom Attribute: Apply Theme Colors ================
-    id: 37600501916507104
+    id: 56778514399654342
     identification: 
       static-id: APPLY_THEME_COLORS
       attribute: 21
@@ -4880,7 +4872,7 @@
 
   action-positions: 
   - # ====== Action Position: Title Link =========================
-    id: 1855148958375601592
+    id: 1874326970858748830
     identification: 
       name: Title Link
       static-id: TITLE_LINK
@@ -4893,7 +4885,7 @@
       type: Link
 
   - # ====== Action Position: User Name Link =====================
-    id: 1969560321363865193
+    id: 1988738333847012431
     identification: 
       name: User Name Link
       static-id: USER_NAME_LINK
@@ -4906,7 +4898,7 @@
       type: Link
 
   - # ====== Action Position: Avatar Link ========================
-    id: 2088591568338169634
+    id: 2107769580821316872
     identification: 
       name: Avatar Link
       static-id: AVATAR_LINK

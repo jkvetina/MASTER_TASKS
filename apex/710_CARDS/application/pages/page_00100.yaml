@@ -5,7 +5,7 @@ identification:
   name: '#APP_NAME#'
   alias: HOME
   title: Card Crunchers
-  page-group: 1) CARDS # 23490192563159466
+  page-group: 1) CARDS # 42668205046306704
 
 appearance: 
   page-mode: Normal
@@ -23,7 +23,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -57,9 +57,9 @@ help:
 
 regions: 
 - # ====== Region: SWITCH_STATUS ===============================
-  id: 38409764767540145
+  id: 57587777250687383
   identification: 
-    title: SWITCH_STATUS
+    name: SWITCH_STATUS
     type: Dynamic Content
 
   source: 
@@ -69,7 +69,7 @@ regions:
   layout: 
     sequence: 50
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -77,7 +77,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -101,9 +101,9 @@ regions:
       lazy-loading: false
 
 - # ====== Region: SWITCH_CATEGORY =============================
-  id: 38409808522540146
+  id: 57587821005687384
   identification: 
-    title: SWITCH_CATEGORY
+    name: SWITCH_CATEGORY
     type: Dynamic Content
 
   source: 
@@ -113,7 +113,7 @@ regions:
   layout: 
     sequence: 60
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -121,7 +121,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -145,9 +145,9 @@ regions:
       lazy-loading: false
 
 - # ====== Region: SWITCH_OWNER ================================
-  id: 38409933031540147
+  id: 57587945514687385
   identification: 
-    title: SWITCH_OWNER
+    name: SWITCH_OWNER
     type: Dynamic Content
 
   source: 
@@ -157,7 +157,7 @@ regions:
   layout: 
     sequence: 70
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -165,7 +165,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -189,15 +189,15 @@ regions:
       lazy-loading: false
 
 - # ====== Region: &P100_HEADER!RAW. ===========================
-  id: 74502100937114588
+  id: 93680113420261826
   identification: 
-    title: '&P100_HEADER!RAW.'
+    name: '&P100_HEADER!RAW.'
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -205,7 +205,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -222,9 +222,6 @@ regions:
     type: Item is NOT NULL
     item: P0_BOARD_ID
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -234,9 +231,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Cards [CONTENT] =============================
-  id: 74502154509114589
+  id: 93680166992261827
   identification: 
-    title: Cards [CONTENT]
+    name: Cards [CONTENT]
     type: Dynamic Content
 
   source: 
@@ -252,7 +249,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -260,7 +257,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -289,9 +286,9 @@ regions:
       lazy-loading: false
 
 - # ====== Region: Cards [GRID] ================================
-  id: 83848777350252285
+  id: 103026789833399523
   identification: 
-    title: Cards [GRID]
+    name: Cards [GRID]
     type: Interactive Grid
 
   source: 
@@ -304,7 +301,7 @@ regions:
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -312,7 +309,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -329,14 +326,11 @@ regions:
     type: Item is NOT NULL
     item: P100_SHOW_GRID
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 26837088172020909
+    id: 46015100655168147
     edit: 
       enabled: true
       allowed-operations: 
@@ -388,14 +382,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 26870279549051726
+      id: 46048292032198964
       identification: 
         name: Primary Report
         alias: 268703
 
   columns: 
   - # ====== Column: CARD_ID =====================================
-    id: 26837166111020910
+    id: 46015178594168148
     identification: 
       column-name: CARD_ID
       type: Link
@@ -444,7 +438,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CARD_NAME ===================================
-    id: 26837289076020911
+    id: 46015301559168149
     identification: 
       column-name: CARD_NAME
       type: Text Field
@@ -499,7 +493,7 @@ regions:
       hide: true
 
   - # ====== Column: CARD_NUMBER =================================
-    id: 26837325595020912
+    id: 46015338078168150
     identification: 
       column-name: CARD_NUMBER
       type: Text Field
@@ -554,7 +548,7 @@ regions:
       hide: true
 
   - # ====== Column: CARD_LINK ===================================
-    id: 26837444618020913
+    id: 46015457101168151
     identification: 
       column-name: CARD_LINK
       type: Hidden
@@ -585,7 +579,7 @@ regions:
       sort: false
 
   - # ====== Column: CARD_PROGRESS ===============================
-    id: 26837537056020914
+    id: 46015549539168152
     identification: 
       column-name: CARD_PROGRESS
       type: Text Field
@@ -637,7 +631,7 @@ regions:
       hide: true
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 26837678279020915
+    id: 46015690762168153
     identification: 
       column-name: CLIENT_ID
       type: Select List
@@ -659,7 +653,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CLIENTS # 19917139722955396
+      list-of-values: LOV_CLIENTS # 39095152206102634
       display-extra-values: true
       display-null-value: true
 
@@ -693,7 +687,7 @@ regions:
       hide: true
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 26837773764020916
+    id: 46015786247168154
     identification: 
       column-name: PROJECT_ID
       type: Select List
@@ -715,7 +709,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_PROJECTS # 23314637906165586
+      list-of-values: LOV_PROJECTS # 42492650389312824
       display-extra-values: true
       display-null-value: true
 
@@ -749,7 +743,7 @@ regions:
       hide: true
 
   - # ====== Column: BOARD_ID ====================================
-    id: 26837819646020917
+    id: 46015832129168155
     identification: 
       column-name: BOARD_ID
       type: Select List
@@ -771,7 +765,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_BOARDS # 19916565304955390
+      list-of-values: LOV_BOARDS # 39094577788102628
       display-extra-values: true
       display-null-value: true
 
@@ -805,7 +799,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_ID ===================================
-    id: 26837915599020918
+    id: 46015928082168156
     identification: 
       column-name: STATUS_ID
       type: Select List
@@ -827,7 +821,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_STATUSES # 19918350743955397
+      list-of-values: LOV_STATUSES # 39096363227102635
       display-extra-values: true
       display-null-value: true
 
@@ -861,7 +855,7 @@ regions:
       hide: true
 
   - # ====== Column: SWIMLANE_ID =================================
-    id: 26838097792020919
+    id: 46016110275168157
     identification: 
       column-name: SWIMLANE_ID
       type: Select List
@@ -883,7 +877,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_SWIMLANES # 19919016269955397
+      list-of-values: LOV_SWIMLANES # 39097028753102635
       display-extra-values: true
       display-null-value: true
 
@@ -917,7 +911,7 @@ regions:
       hide: true
 
   - # ====== Column: CATEGORY_ID =================================
-    id: 26838124829020920
+    id: 46016137312168158
     identification: 
       column-name: CATEGORY_ID
       type: Select List
@@ -939,7 +933,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CATEGORIES # 23488253257018677
+      list-of-values: LOV_CATEGORIES # 42666265740165915
       display-extra-values: true
       display-null-value: true
 
@@ -973,7 +967,7 @@ regions:
       hide: true
 
   - # ====== Column: OWNER_ID ====================================
-    id: 26838248070020921
+    id: 46016260553168159
     identification: 
       column-name: OWNER_ID
       type: Select List
@@ -995,7 +989,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_OWNERS # 19920099360955398
+      list-of-values: LOV_OWNERS # 39098111844102636
       display-extra-values: true
       display-null-value: true
 
@@ -1029,7 +1023,7 @@ regions:
       hide: true
 
   - # ====== Column: DEADLINE_AT =================================
-    id: 26838367774020922
+    id: 46016380257168160
     identification: 
       column-name: DEADLINE_AT
       type: Date Picker
@@ -1084,7 +1078,7 @@ regions:
       hide: true
 
   - # ====== Column: TAGS ========================================
-    id: 26838467678020923
+    id: 46016480161168161
     identification: 
       column-name: TAGS
       type: Text Field
@@ -1138,7 +1132,7 @@ regions:
       hide: true
 
   - # ====== Column: COLOR_BG ====================================
-    id: 26838514944020924
+    id: 46016527427168162
     identification: 
       column-name: COLOR_BG
       type: Hidden
@@ -1169,7 +1163,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 26838642770020925
+    id: 46016655253168163
     identification: 
       column-name: UPDATED_BY
       type: Hidden
@@ -1200,7 +1194,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_AT ==================================
-    id: 26838774112020926
+    id: 46016786595168164
     identification: 
       column-name: UPDATED_AT
       type: Hidden
@@ -1231,7 +1225,7 @@ regions:
       sort: false
 
   - # ====== Column: PREV_CARD ===================================
-    id: 26838869236020927
+    id: 46016881719168165
     identification: 
       column-name: PREV_CARD
       type: Hidden
@@ -1262,7 +1256,7 @@ regions:
       sort: false
 
   - # ====== Column: NEXT_CARD ===================================
-    id: 26838928669020928
+    id: 46016941152168166
     identification: 
       column-name: NEXT_CARD
       type: Hidden
@@ -1293,7 +1287,7 @@ regions:
       sort: false
 
   - # ====== Column: SWIMLANE_ORDER# =============================
-    id: 26839021336020929
+    id: 46017033819168167
     identification: 
       column-name: SWIMLANE_ORDER#
       type: Number Field
@@ -1337,7 +1331,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_ORDER# ===============================
-    id: 26839172425020930
+    id: 46017184908168168
     identification: 
       column-name: STATUS_ORDER#
       type: Number Field
@@ -1381,7 +1375,7 @@ regions:
       hide: true
 
   - # ====== Column: CARD_ORDER# =================================
-    id: 26839206119020931
+    id: 46017218602168169
     identification: 
       column-name: CARD_ORDER#
       type: Number Field
@@ -1425,7 +1419,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 26839397103020932
+    id: 46017409586168170
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -1472,7 +1466,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 26839402891020933
+    id: 46017415374168171
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -1481,7 +1475,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 26839537464020934
+    id: 46017549947168172
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -1534,9 +1528,9 @@ regions:
       alignment: center
 
 - # ====== Region: SWITCH_SWIMLANE =============================
-  id: 106355500478253993
+  id: 125533512961401231
   identification: 
-    title: SWITCH_SWIMLANE
+    name: SWITCH_SWIMLANE
     type: Dynamic Content
 
   source: 
@@ -1546,7 +1540,7 @@ regions:
   layout: 
     sequence: 40
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1554,7 +1548,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1579,7 +1573,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P100_BOOKMARK_ICON =======================
-  id: 27232166472725509
+  id: 46410178955872747
   identification: 
     name: P100_BOOKMARK_ICON
     type: Hidden
@@ -1589,8 +1583,8 @@ page-items:
 
   layout: 
     sequence: 70
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1609,7 +1603,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_CARD_ID =============================
-  id: 27774212714313643
+  id: 46952225197460881
   identification: 
     name: P100_CARD_ID
     type: Hidden
@@ -1619,8 +1613,8 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1639,7 +1633,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_HEADER ==============================
-  id: 74882513732611307
+  id: 94060526215758545
   identification: 
     name: P100_HEADER
     type: Hidden
@@ -1649,8 +1643,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1673,7 +1667,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_SHOW_GRID ===========================
-  id: 83851260871252322
+  id: 103029273354399560
   identification: 
     name: P100_SHOW_GRID
     type: Hidden
@@ -1683,8 +1677,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1703,7 +1697,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_CARD_LINK ===========================
-  id: 83932226906589036
+  id: 103110239389736274
   identification: 
     name: P100_CARD_LINK
     type: Hidden
@@ -1713,8 +1707,8 @@ page-items:
 
   layout: 
     sequence: 40
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1733,7 +1727,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_CARDS_LINK ==========================
-  id: 84044013145168999
+  id: 103222025628316237
   identification: 
     name: P100_CARDS_LINK
     type: Hidden
@@ -1743,8 +1737,8 @@ page-items:
 
   layout: 
     sequence: 50
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1763,7 +1757,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_IS_FAVORITE =========================
-  id: 85650569920215892
+  id: 104828582403363130
   identification: 
     name: P100_IS_FAVORITE
     type: Hidden
@@ -1773,8 +1767,8 @@ page-items:
 
   layout: 
     sequence: 60
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: BODY
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1794,15 +1788,15 @@ page-items:
 
 buttons: 
 - # ====== Button: ADD_CARD ====================================
-  id: 19886491257955346
+  id: 39064503741102584
   identification: 
     button-name: ADD_CARD
     label: Add Card
 
   layout: 
     sequence: 10
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1810,7 +1804,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1828,15 +1822,15 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: SHOW_LIST ===================================
-  id: 19886880314955346
+  id: 39064892798102584
   identification: 
     button-name: SHOW_LIST
     label: Show as List
 
   layout: 
     sequence: 30
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: UP
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1844,7 +1838,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1868,15 +1862,15 @@ buttons:
       AND :P0_BOARD_ID IS NOT NULL
 
 - # ====== Button: SHOW_COLUMNS ================================
-  id: 19887298031955346
+  id: 39065310515102584
   identification: 
     button-name: SHOW_COLUMNS
     label: Show as Columns
 
   layout: 
     sequence: 40
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: UP
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1884,7 +1878,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1907,15 +1901,15 @@ buttons:
       AND :P0_BOARD_ID IS NOT NULL
 
 - # ====== Button: REFRESH =====================================
-  id: 25478645147860915
+  id: 44656657631008153
   identification: 
     button-name: REFRESH
     label: Refresh
 
   layout: 
     sequence: 40
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1923,7 +1917,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1938,15 +1932,15 @@ buttons:
     item: P100_SHOW_GRID
 
 - # ====== Button: BOOKMARK_CURRENT ============================
-  id: 27231996116725507
+  id: 46410008599872745
   identification: 
     button-name: BOOKMARK_CURRENT
     label: Bookmark Current
 
   layout: 
     sequence: 60
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: UP
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1954,7 +1948,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1963,18 +1957,19 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: BULK_OPERATIONS =============================
-  id: 27419646379258614
+  id: 46597658862405852
   identification: 
     button-name: BULK_OPERATIONS
     label: Bulk Operations
 
   layout: 
     sequence: 10
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: UP
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1982,7 +1977,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -2007,15 +2002,15 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: SWITCH_SWIMLANE =============================
-  id: 38406179091540109
+  id: 57584191574687347
   identification: 
     button-name: SWITCH_SWIMLANE
     label: Swimlane &P0_SWIMLANE_FILTER!RAW.
 
   layout: 
     sequence: 50
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2023,7 +2018,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -2041,15 +2036,15 @@ buttons:
     static-id: SWITCH_SWIMLANE
 
 - # ====== Button: SWITCH_STATUS ===============================
-  id: 38406217246540110
+  id: 57584229729687348
   identification: 
     button-name: SWITCH_STATUS
     label: Status &P0_STATUS_FILTER!RAW.
 
   layout: 
     sequence: 60
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2057,7 +2052,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -2075,15 +2070,15 @@ buttons:
     static-id: SWITCH_STATUS
 
 - # ====== Button: SWITCH_CATEGORY =============================
-  id: 38406336133540111
+  id: 57584348616687349
   identification: 
     button-name: SWITCH_CATEGORY
     label: Category &P0_CATEGORY_FILTER!RAW.
 
   layout: 
     sequence: 70
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2091,7 +2086,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -2109,15 +2104,15 @@ buttons:
     static-id: SWITCH_CATEGORY
 
 - # ====== Button: SWITCH_OWNER ================================
-  id: 38406446238540112
+  id: 57584458721687350
   identification: 
     button-name: SWITCH_OWNER
     label: Owner &P0_OWNER_FILTER!RAW.
 
   layout: 
     sequence: 80
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: RIGHT_OF_TITLE
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2125,7 +2120,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -2143,15 +2138,15 @@ buttons:
     static-id: SWITCH_OWNER
 
 - # ====== Button: SEARCH ======================================
-  id: 38406527796540113
+  id: 57584540279687351
   identification: 
     button-name: SEARCH
     label: Search
 
   layout: 
     sequence: 20
-    region: '&P100_HEADER!RAW.' # 74502100937114588
-    position: UP
+    region: '&P100_HEADER!RAW.' # 93680113420261826
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2159,7 +2154,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -2174,7 +2169,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: OPEN_DETAIL =========================
-  id: 19909045649955380
+  id: 39087058133102618
   identification: 
     name: OPEN_DETAIL
 
@@ -2183,7 +2178,7 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   server-side-condition: 
     type: Item is NOT NULL
@@ -2191,7 +2186,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 19909583278955381
+    id: 39087595762102619
     identification: 
       action: Execute JavaScript Code
 
@@ -2202,12 +2197,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: OPEN_DETAIL # 19909045649955380
+      event: OPEN_DETAIL # 39087058133102618
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: DIALOG_CLOSED =======================
-  id: 19909981721955381
+  id: 39087994205102619
   identification: 
     name: DIALOG_CLOSED
 
@@ -2217,13 +2212,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    event: Dialog Closed
     selection-type: JavaScript Expression
     javascript-expression: window
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 19910402431955381
+    id: 39088414915102619
     identification: 
       action: Execute JavaScript Code
 
@@ -2235,7 +2230,7 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: DIALOG_CLOSED # 19909981721955381
+      event: DIALOG_CLOSED # 39087994205102619
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -2243,22 +2238,22 @@ dynamic-actions:
       type: Never
 
   - # ====== Action: Refresh =====================================
-    id: 28267520567994308
+    id: 47445533051141546
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Cards [CONTENT] # 74502154509114589
+      region: Cards [CONTENT] # 93680166992261827
 
     execution: 
       sequence: 10
-      event: DIALOG_CLOSED # 19909981721955381
+      event: DIALOG_CLOSED # 39087994205102619
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: REFRESH_GRID ========================
-  id: 25478734766860916
+  id: 44656747250008154
   identification: 
     name: REFRESH_GRID
 
@@ -2268,28 +2263,28 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: REFRESH # 25478645147860915
+    button: REFRESH # 44656657631008153
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 25478884606860917
+    id: 44656897090008155
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Cards [CONTENT] # 74502154509114589
+      region: Cards [CONTENT] # 93680166992261827
 
     execution: 
       sequence: 10
-      event: REFRESH_GRID # 25478734766860916
+      event: REFRESH_GRID # 44656747250008154
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: INIT_GRID ===========================
-  id: 25478913059860918
+  id: 44656925543008156
   identification: 
     name: INIT_GRID
 
@@ -2298,11 +2293,11 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 25479070871860919
+    id: 44657083355008157
     identification: 
       action: Execute JavaScript Code
 
@@ -2313,12 +2308,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: INIT_GRID # 25478913059860918
+      event: INIT_GRID # 44656925543008156
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: AFTER_GRID_REFRESH ==================
-  id: 27419335306258611
+  id: 46597347789405849
   identification: 
     name: AFTER_GRID_REFRESH
 
@@ -2328,13 +2323,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
+    event: After Refresh
     selection-type: jQuery Selector
     jquery-selector: '#BOARD'
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 27419454012258612
+    id: 46597466495405850
     identification: 
       action: Execute JavaScript Code
 
@@ -2343,12 +2338,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: AFTER_GRID_REFRESH # 27419335306258611
+      event: AFTER_GRID_REFRESH # 46597347789405849
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 27419553722258613
+    id: 46597566205405851
     identification: 
       action: Execute JavaScript Code
 
@@ -2360,7 +2355,7 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: AFTER_GRID_REFRESH # 27419335306258611
+      event: AFTER_GRID_REFRESH # 46597347789405849
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -2368,7 +2363,7 @@ dynamic-actions:
       type: Never
 
 - # ====== Dynamic Action: REFRESH_GRID_ON_CARD_MOVE ===========
-  id: 28267794588994310
+  id: 47445807072141548
   identification: 
     name: REFRESH_GRID_ON_CARD_MOVE
 
@@ -2378,30 +2373,30 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.CUSTOM.CUSTOM
+    event: Custom
     custom-event: REFRESH_GRID
     selection-type: JavaScript Expression
     javascript-expression: document
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 28267901762994312
+    id: 47445914246141550
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Cards [CONTENT] # 74502154509114589
+      region: Cards [CONTENT] # 93680166992261827
 
     execution: 
       sequence: 10
-      event: REFRESH_GRID_ON_CARD_MOVE # 28267794588994310
+      event: REFRESH_GRID_ON_CARD_MOVE # 47445807072141548
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: UPDATE_CARD ================================
-  id: 19902606994955374
+  id: 39080619478102612
   identification: 
     name: UPDATE_CARD
     type: Execute Code
@@ -2418,12 +2413,12 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: SAVE_CARDS_GRID ============================
-  id: 26839618973020935
+  id: 46017631456168173
   identification: 
     name: SAVE_CARDS_GRID
     type: Invoke API
     execution-chain: None
-    editable-region: Cards [GRID] # 83848777350252285
+    editable-region: Cards [GRID] # 103026789833399523
 
   settings: 
     type: PL/SQL Package
@@ -2443,7 +2438,7 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: BOOKMARK_CURRENT ===========================
-  id: 27232047770725508
+  id: 46410060253872746
   identification: 
     name: BOOKMARK_CURRENT
     type: Invoke API
@@ -2467,5 +2462,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: BOOKMARK_CURRENT # 27231996116725507
+    when-button-pressed: BOOKMARK_CURRENT # 46410008599872745
 

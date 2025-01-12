@@ -5,7 +5,7 @@ identification:
   name: Commits
   alias: COMMITS
   title: Commits
-  page-group: 5) COMMITS # 26927386398126716
+  page-group: 5) COMMITS # 46105398881273954
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,15 +40,15 @@ server-cache:
 
 regions: 
 - # ====== Region: Commits =====================================
-  id: 162754731272861713
+  id: 181932743756008951
   identification: 
-    title: Commits
+    name: Commits
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -69,9 +69,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -81,15 +78,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Commits =====================================
-  id: 162754817379861714
+  id: 181932829863008952
   identification: 
-    title: Commits
+    name: Commits
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Commits # 162754731272861713
-    position: SUB_REGIONS
+    parent-region: Commits # 181932743756008951
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -97,7 +94,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -112,9 +109,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -124,9 +118,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Commits [GRID] ==============================
-  id: 231448996346808963
+  id: 250627008829956201
   identification: 
-    title: Commits [GRID]
+    name: Commits [GRID]
     type: Interactive Grid
 
   source: 
@@ -141,8 +135,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Commits # 162754731272861713
-    position: SUB_REGIONS
+    parent-region: Commits # 181932743756008951
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -150,7 +144,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -163,14 +157,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 231449133161808964
+    id: 250627145644956202
     edit: 
       enabled: true
       allowed-operations: 
@@ -224,14 +215,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 232341872898824759
+      id: 251519885381971997
       identification: 
         name: Primary Report
         alias: 347276
 
   columns: 
   - # ====== Column: CARD_ID =====================================
-    id: 92200025088849599
+    id: 111378037571996837
     identification: 
       column-name: CARD_ID
       type: Number Field
@@ -279,7 +270,7 @@ regions:
       hide: true
 
   - # ====== Column: COMMIT_SHORT ================================
-    id: 92200080742849600
+    id: 111378093225996838
     identification: 
       column-name: COMMIT_SHORT
       type: Link
@@ -333,7 +324,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COMMIT_MESSAGE ==============================
-    id: 92200180831849601
+    id: 111378193314996839
     identification: 
       column-name: COMMIT_MESSAGE
       type: Text Field
@@ -384,7 +375,7 @@ regions:
       hide: true
 
   - # ====== Column: COMMIT_URL ==================================
-    id: 92200307724849602
+    id: 111378320207996840
     identification: 
       column-name: COMMIT_URL
       type: Hidden
@@ -415,7 +406,7 @@ regions:
       sort: false
 
   - # ====== Column: CREATED_BY ==================================
-    id: 92200590347849605
+    id: 111378602830996843
     identification: 
       column-name: CREATED_BY
       type: Display Only
@@ -466,7 +457,7 @@ regions:
       hide: true
 
   - # ====== Column: CREATED_AT ==================================
-    id: 92200706320849606
+    id: 111378718803996844
     identification: 
       column-name: CREATED_AT
       type: Display Only
@@ -517,7 +508,7 @@ regions:
       hide: true
 
   - # ====== Column: TODAY =======================================
-    id: 92200787553849607
+    id: 111378800036996845
     identification: 
       column-name: TODAY
       type: Text Field
@@ -569,7 +560,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 92200902830849608
+    id: 111378915313996846
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -578,7 +569,7 @@ regions:
       sequence: 20
 
   - # ====== Column: COMMIT_ID ===================================
-    id: 92302815748679989
+    id: 111480828231827227
     identification: 
       column-name: COMMIT_ID
       type: Hidden
@@ -613,7 +604,7 @@ regions:
       control-break/aggregate: true
 
   - # ====== Column: OLD_CARD_ID =================================
-    id: 95743596507196008
+    id: 114921608990343246
     identification: 
       column-name: OLD_CARD_ID
       type: Hidden
@@ -647,7 +638,7 @@ regions:
       sort: false
 
   - # ====== Column: OLD_COMMIT_ID ===============================
-    id: 95743677130196009
+    id: 114921689613343247
     identification: 
       column-name: OLD_COMMIT_ID
       type: Hidden
@@ -721,7 +712,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P500_CLIENT_ID ===========================
-  id: 95175157707611243
+  id: 114353170190758481
   identification: 
     name: P500_CLIENT_ID
     type: Select List
@@ -732,12 +723,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
-    region: Commits # 162754817379861714
-    position: BODY
+    region: Commits # 181932829863008952
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -747,7 +740,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -757,7 +750,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CLIENTS # 19917139722955396
+    list-of-values: LOV_CLIENTS # 39095152206102634
     display-extra-values: false
     display-null-value: true
 
@@ -785,7 +778,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P500_PROJECT_ID ==========================
-  id: 95175529826612827
+  id: 114353542309760065
   identification: 
     name: P500_PROJECT_ID
     type: Select List
@@ -796,12 +789,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 20
-    region: Commits # 162754817379861714
-    position: BODY
+    region: Commits # 181932829863008952
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -811,7 +806,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -821,7 +816,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 23314637906165586
+    list-of-values: LOV_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: true
 
@@ -852,15 +847,15 @@ page-items:
 
 buttons: 
 - # ====== Button: SYNC_GITHUB =================================
-  id: 26912910332125030
+  id: 46090922815272268
   identification: 
     button-name: SYNC_GITHUB
     label: Sync GitHub
 
   layout: 
     sequence: 10
-    region: Commits # 162754817379861714
-    position: RIGHT_OF_TITLE
+    region: Commits # 181932829863008952
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -868,7 +863,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -876,11 +871,12 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_FILTERS =====================
-  id: 26920478952125039
+  id: 46098491435272277
   identification: 
     name: CHANGED_FILTERS
 
@@ -890,7 +886,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P500_CLIENT_ID
@@ -898,7 +894,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Hide ========================================
-    id: 26920926191125041
+    id: 46098938674272279
     identification: 
       action: Hide
 
@@ -907,12 +903,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_FILTERS # 26920478952125039
+      event: CHANGED_FILTERS # 46098491435272277
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Submit Page =================================
-    id: 26921413124125042
+    id: 46099425607272280
     identification: 
       action: Submit Page
 
@@ -921,18 +917,18 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: CHANGED_FILTERS # 26920478952125039
+      event: CHANGED_FILTERS # 46098491435272277
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_COMMITS ===============================
-  id: 26919507531125038
+  id: 46097520014272276
   identification: 
     name: SAVE_COMMITS
     type: Invoke API
     execution-chain: None
-    editable-region: Commits [GRID] # 231448996346808963
+    editable-region: Commits [GRID] # 250627008829956201
 
   settings: 
     type: PL/SQL Package
@@ -952,7 +948,7 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: SYNC_COMMITS ===============================
-  id: 26920069881125039
+  id: 46098082364272277
   identification: 
     name: SYNC_COMMITS
     type: Invoke API
@@ -973,5 +969,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: SYNC_GITHUB # 26912910332125030
+    when-button-pressed: SYNC_GITHUB # 46090922815272268
 

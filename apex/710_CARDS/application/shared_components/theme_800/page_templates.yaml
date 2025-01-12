@@ -1,6 +1,6 @@
 ---
 - # ====== Page Template: Standard Q23 =========================
-  id: 31385350444643949
+  id: 50563362927791187
   identification: 
     name: Standard Q23
     identifier: STANDARD_Q-NAV
@@ -8,8 +8,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63188215361701831 # Standard Q23
+      referenced-id: 63188215361701831
 
   advanced: 
     translatable: false
@@ -190,7 +189,7 @@
 
   template-options: 
   - # ====== Template Option: Sticky Header on Mobile ============
-    id: 31390880009643953
+    id: 50568892492791191
     identification: 
       name: Sticky Header on Mobile
       identifier: STICKY_HEADER_ON_MOBILE
@@ -206,9 +205,9 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
-    id: 37095795503506690
+  slots: 
+  - # ====== Slot: After Logo ====================================
+    id: 56273807986653928
     identification: 
       name: After Logo
       template-substitution: AFTER_LOGO
@@ -223,8 +222,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
-    id: 37096255047506690
+  - # ====== Slot: After Navigation Bar ==========================
+    id: 56274267530653928
     identification: 
       name: After Navigation Bar
       template-substitution: AFTER_NAVIGATION_BAR
@@ -239,8 +238,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
-    id: 37096719218506691
+  - # ====== Slot: Before Navigation Bar =========================
+    id: 56274731701653929
     identification: 
       name: Before Navigation Bar
       template-substitution: BEFORE_NAVIGATION_BAR
@@ -255,8 +254,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
-    id: 37097235510506691
+  - # ====== Slot: Body ==========================================
+    id: 56275247993653929
     identification: 
       name: Body
       template-substitution: BODY
@@ -271,8 +270,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
-    id: 37097751430506691
+  - # ====== Slot: Breadcrumb Bar ================================
+    id: 56275763913653929
     identification: 
       name: Breadcrumb Bar
       template-substitution: REGION_POSITION_01
@@ -286,8 +285,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
-    id: 37098229747506691
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
+    id: 56276242230653929
     identification: 
       name: Dialogs, Drawers and Popups
       template-substitution: REGION_POSITION_04
@@ -302,8 +301,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
-    id: 37098732164506691
+  - # ====== Slot: Footer ========================================
+    id: 56276744647653929
     identification: 
       name: Footer
       template-substitution: REGION_POSITION_05
@@ -318,8 +317,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
-    id: 37099288580506692
+  - # ====== Slot: Top Navigation ================================
+    id: 56277301063653930
     identification: 
       name: Top Navigation
       template-substitution: REGION_POSITION_06
@@ -333,8 +332,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
-    id: 37099703552506692
+  - # ====== Slot: Banner ========================================
+    id: 56277716035653930
     identification: 
       name: Banner
       template-substitution: REGION_POSITION_07
@@ -348,8 +347,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
-    id: 37100230678506692
+  - # ====== Slot: Full Width Content ============================
+    id: 56278243161653930
     identification: 
       name: Full Width Content
       template-substitution: REGION_POSITION_08
@@ -365,7 +364,7 @@
       new-row: true
 
 - # ====== Page Template: Drawer ===============================
-  id: 33838479823153702
+  id: 53016492306300940
   identification: 
     name: Drawer
     identifier: DRAWER
@@ -373,8 +372,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63289183138439042 # Drawer
+      referenced-id: 63289183138439042
 
   advanced: 
     translatable: false
@@ -522,11 +520,11 @@
 
   template-options: 
   - # ====== Template Option: Extra Large ========================
-    id: 33839941496153709
+    id: 53017953979300947
     identification: 
       name: Extra Large
       identifier: DRAWER_SIZE_EXTRA_LARGE
-      group: Size # 36900511206506575
+      group: Size
       sequence: 40
 
     settings: 
@@ -537,11 +535,11 @@
       - js-dialog-class-t-Drawer--xl
 
   - # ====== Template Option: Large ==============================
-    id: 33840107548153709
+    id: 53018120031300947
     identification: 
       name: Large
       identifier: DRAWER_SIZE_LARGE
-      group: Size # 36900511206506575
+      group: Size
       sequence: 30
 
     settings: 
@@ -552,11 +550,11 @@
       - js-dialog-class-t-Drawer--lg
 
   - # ====== Template Option: Medium =============================
-    id: 33840279893153709
+    id: 53018292376300947
     identification: 
       name: Medium
       identifier: DRAWER_SIZE_MEDIUM
-      group: Size # 36900511206506575
+      group: Size
       sequence: 20
 
     settings: 
@@ -567,11 +565,11 @@
       - js-dialog-class-t-Drawer--md
 
   - # ====== Template Option: Small ==============================
-    id: 33840532861153710
+    id: 53018545344300948
     identification: 
       name: Small
       identifier: DRAWER_SIZE_SMALL
-      group: Size # 36900511206506575
+      group: Size
       sequence: 10
 
     settings: 
@@ -582,11 +580,11 @@
       - js-dialog-class-t-Drawer--sm
 
   - # ====== Template Option: End ================================
-    id: 33840897250153710
+    id: 53018909733300948
     identification: 
       name: End
       identifier: POSITION_END
-      group: Position # 36902111105506576
+      group: Position
       sequence: 20
 
     settings: 
@@ -597,11 +595,11 @@
       - js-dialog-class-t-Drawer--pullOutEnd
 
   - # ====== Template Option: Start ==============================
-    id: 33841150553153710
+    id: 53019163036300948
     identification: 
       name: Start
       identifier: POSITION_START
-      group: Position # 36902111105506576
+      group: Position
       sequence: 10
 
     settings: 
@@ -612,7 +610,7 @@
       - js-dialog-class-t-Drawer--pullOutStart
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 33841291737153710
+    id: 53019304220300948
     identification: 
       name: Remove Body Padding
       identifier: REMOVE_BODY_PADDING
@@ -625,9 +623,9 @@
       css-classes: 
       - t-Dialog--noPadding
 
-  display-points: 
-  - # ====== Display Point: Content Body =========================
-    id: 37013185343506642
+  slots: 
+  - # ====== Slot: Content Body ==================================
+    id: 56191197826653880
     identification: 
       name: Content Body
       template-substitution: BODY
@@ -642,8 +640,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Dialog Header ========================
-    id: 37013687134506642
+  - # ====== Slot: Dialog Header =================================
+    id: 56191699617653880
     identification: 
       name: Dialog Header
       template-substitution: REGION_POSITION_01
@@ -657,8 +655,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialog Footer ========================
-    id: 37014174448506643
+  - # ====== Slot: Dialog Footer =================================
+    id: 56192186931653881
     identification: 
       name: Dialog Footer
       template-substitution: REGION_POSITION_03
@@ -673,7 +671,7 @@
       new-row: true
 
 - # ====== Page Template: Left Side Column =====================
-  id: 33841394373153710
+  id: 53019406856300948
   identification: 
     name: Left Side Column
     identifier: LEFT_SIDE_COLUMN
@@ -681,8 +679,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63292137572439056 # Left Side Column
+      referenced-id: 63292137572439056
 
   advanced: 
     translatable: false
@@ -871,7 +868,7 @@
 
   template-options: 
   - # ====== Template Option: Sticky Header on Mobile ============
-    id: 33845044142153713
+    id: 53023056625300951
     identification: 
       name: Sticky Header on Mobile
       identifier: STICKY_HEADER_ON_MOBILE
@@ -887,9 +884,9 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
-    id: 37023220853506652
+  slots: 
+  - # ====== Slot: After Logo ====================================
+    id: 56201233336653890
     identification: 
       name: After Logo
       template-substitution: AFTER_LOGO
@@ -904,8 +901,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
-    id: 37023757212506652
+  - # ====== Slot: After Navigation Bar ==========================
+    id: 56201769695653890
     identification: 
       name: After Navigation Bar
       template-substitution: AFTER_NAVIGATION_BAR
@@ -920,8 +917,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
-    id: 37024273034506653
+  - # ====== Slot: Before Navigation Bar =========================
+    id: 56202285517653891
     identification: 
       name: Before Navigation Bar
       template-substitution: BEFORE_NAVIGATION_BAR
@@ -936,8 +933,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
-    id: 37024733837506653
+  - # ====== Slot: Body ==========================================
+    id: 56202746320653891
     identification: 
       name: Body
       template-substitution: BODY
@@ -952,8 +949,8 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
-    id: 37025207224506653
+  - # ====== Slot: Breadcrumb Bar ================================
+    id: 56203219707653891
     identification: 
       name: Breadcrumb Bar
       template-substitution: REGION_POSITION_01
@@ -967,8 +964,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Left Column ==========================
-    id: 37025769738506653
+  - # ====== Slot: Left Column ===================================
+    id: 56203782221653891
     identification: 
       name: Left Column
       template-substitution: REGION_POSITION_02
@@ -983,8 +980,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
-    id: 37026274655506653
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
+    id: 56204287138653891
     identification: 
       name: Dialogs, Drawers and Popups
       template-substitution: REGION_POSITION_04
@@ -999,8 +996,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
-    id: 37026763035506654
+  - # ====== Slot: Footer ========================================
+    id: 56204775518653892
     identification: 
       name: Footer
       template-substitution: REGION_POSITION_05
@@ -1015,8 +1012,8 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
-    id: 37027215213506654
+  - # ====== Slot: Top Navigation ================================
+    id: 56205227696653892
     identification: 
       name: Top Navigation
       template-substitution: REGION_POSITION_06
@@ -1030,8 +1027,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
-    id: 37027786191506654
+  - # ====== Slot: Banner ========================================
+    id: 56205798674653892
     identification: 
       name: Banner
       template-substitution: REGION_POSITION_07
@@ -1045,8 +1042,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
-    id: 37028252823506654
+  - # ====== Slot: Full Width Content ============================
+    id: 56206265306653892
     identification: 
       name: Full Width Content
       template-substitution: REGION_POSITION_08
@@ -1062,7 +1059,7 @@
       new-row: false
 
 - # ====== Page Template: Left and Right Side Columns ==========
-  id: 33845147222153713
+  id: 53023159705300951
   identification: 
     name: Left and Right Side Columns
     identifier: LEFT_AND_RIGHT_SIDE_COLUMNS
@@ -1070,8 +1067,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63306913497439065 # Left and Right Side Columns
+      referenced-id: 63306913497439065
 
   advanced: 
     translatable: false
@@ -1266,7 +1262,7 @@
 
   template-options: 
   - # ====== Template Option: Sticky Header on Mobile ============
-    id: 33849050090153714
+    id: 53027062573300952
     identification: 
       name: Sticky Header on Mobile
       identifier: STICKY_HEADER_ON_MOBILE
@@ -1282,9 +1278,9 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
-    id: 37034151436506658
+  slots: 
+  - # ====== Slot: After Logo ====================================
+    id: 56212163919653896
     identification: 
       name: After Logo
       template-substitution: AFTER_LOGO
@@ -1299,8 +1295,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
-    id: 37034669048506658
+  - # ====== Slot: After Navigation Bar ==========================
+    id: 56212681531653896
     identification: 
       name: After Navigation Bar
       template-substitution: AFTER_NAVIGATION_BAR
@@ -1315,8 +1311,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
-    id: 37035172843506659
+  - # ====== Slot: Before Navigation Bar =========================
+    id: 56213185326653897
     identification: 
       name: Before Navigation Bar
       template-substitution: BEFORE_NAVIGATION_BAR
@@ -1331,8 +1327,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
-    id: 37035657554506659
+  - # ====== Slot: Body ==========================================
+    id: 56213670037653897
     identification: 
       name: Body
       template-substitution: BODY
@@ -1347,8 +1343,8 @@
       maximum-fixed-columns: 6
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
-    id: 37036179475506659
+  - # ====== Slot: Breadcrumb Bar ================================
+    id: 56214191958653897
     identification: 
       name: Breadcrumb Bar
       template-substitution: REGION_POSITION_01
@@ -1362,8 +1358,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Left Column ==========================
-    id: 37036634740506659
+  - # ====== Slot: Left Column ===================================
+    id: 56214647223653897
     identification: 
       name: Left Column
       template-substitution: REGION_POSITION_02
@@ -1378,8 +1374,8 @@
       maximum-fixed-columns: 3
       new-row: true
 
-  - # ====== Display Point: Right Column =========================
-    id: 37037130229506659
+  - # ====== Slot: Right Column ==================================
+    id: 56215142712653897
     identification: 
       name: Right Column
       template-substitution: REGION_POSITION_03
@@ -1394,8 +1390,8 @@
       maximum-fixed-columns: 3
       new-row: false
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
-    id: 37037628600506660
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
+    id: 56215641083653898
     identification: 
       name: Dialogs, Drawers and Popups
       template-substitution: REGION_POSITION_04
@@ -1410,8 +1406,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
-    id: 37038146679506660
+  - # ====== Slot: Footer ========================================
+    id: 56216159162653898
     identification: 
       name: Footer
       template-substitution: REGION_POSITION_05
@@ -1426,8 +1422,8 @@
       maximum-fixed-columns: 6
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
-    id: 37038611766506660
+  - # ====== Slot: Top Navigation ================================
+    id: 56216624249653898
     identification: 
       name: Top Navigation
       template-substitution: REGION_POSITION_06
@@ -1441,8 +1437,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
-    id: 37039106076506661
+  - # ====== Slot: Banner ========================================
+    id: 56217118559653899
     identification: 
       name: Banner
       template-substitution: REGION_POSITION_07
@@ -1456,8 +1452,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
-    id: 37039654662506661
+  - # ====== Slot: Full Width Content ============================
+    id: 56217667145653899
     identification: 
       name: Full Width Content
       template-substitution: REGION_POSITION_08
@@ -1473,7 +1469,7 @@
       new-row: false
 
 - # ====== Page Template: Login ================================
-  id: 33849078010153714
+  id: 53027090493300952
   identification: 
     name: Login
     identifier: LOGIN
@@ -1481,8 +1477,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63314363594439068 # Login
+      referenced-id: 63314363594439068
 
   advanced: 
     translatable: false
@@ -1617,11 +1612,11 @@
 
   template-options: 
   - # ====== Template Option: Background 1 =======================
-    id: 33850848275153715
+    id: 53028860758300953
     identification: 
       name: Background 1
       identifier: PAGE_BACKGROUND_1
-      group: Page Background # 36901372721506576
+      group: Page Background
       sequence: 10
 
     settings: 
@@ -1632,11 +1627,11 @@
       - t-LoginPage--bg1
 
   - # ====== Template Option: Background 2 =======================
-    id: 33851005538153716
+    id: 53029018021300954
     identification: 
       name: Background 2
       identifier: PAGE_BACKGROUND_2
-      group: Page Background # 36901372721506576
+      group: Page Background
       sequence: 20
 
     settings: 
@@ -1647,11 +1642,11 @@
       - t-LoginPage--bg2
 
   - # ====== Template Option: Background 3 =======================
-    id: 33851209891153716
+    id: 53029222374300954
     identification: 
       name: Background 3
       identifier: PAGE_BACKGROUND_3
-      group: Page Background # 36901372721506576
+      group: Page Background
       sequence: 30
 
     settings: 
@@ -1662,11 +1657,11 @@
       - t-LoginPage--bg3
 
   - # ====== Template Option: Split ==============================
-    id: 33851660831153716
+    id: 53029673314300954
     identification: 
       name: Split
       identifier: PAGE_LAYOUT_SPLIT
-      group: Page Layout # 36901720862506576
+      group: Page Layout
       sequence: 1
 
     settings: 
@@ -1676,9 +1671,9 @@
       css-classes: 
       - t-LoginPage--split
 
-  display-points: 
-  - # ====== Display Point: Background Image =====================
-    id: 37042364944506662
+  slots: 
+  - # ====== Slot: Background Image ==============================
+    id: 56220377427653900
     identification: 
       name: Background Image
       template-substitution: BACKGROUND_IMAGE
@@ -1693,8 +1688,8 @@
       maximum-fixed-columns: 12
       new-row: false
 
-  - # ====== Display Point: Content Body =========================
-    id: 37042851395506662
+  - # ====== Slot: Content Body ==================================
+    id: 56220863878653900
     identification: 
       name: Content Body
       template-substitution: BODY
@@ -1709,8 +1704,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Body Header ==========================
-    id: 37043329842506663
+  - # ====== Slot: Body Header ===================================
+    id: 56221342325653901
     identification: 
       name: Body Header
       template-substitution: REGION_POSITION_01
@@ -1724,8 +1719,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Body Footer ==========================
-    id: 37043846858506663
+  - # ====== Slot: Body Footer ===================================
+    id: 56221859341653901
     identification: 
       name: Body Footer
       template-substitution: REGION_POSITION_02
@@ -1740,7 +1735,7 @@
       new-row: true
 
 - # ====== Page Template: Marquee ==============================
-  id: 33851675353153716
+  id: 53029687836300954
   identification: 
     name: Marquee
     identifier: MASTER_DETAIL
@@ -1748,8 +1743,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63302965740439062 # Marquee
+      referenced-id: 63302965740439062
 
   advanced: 
     translatable: false
@@ -1946,7 +1940,7 @@
 
   template-options: 
   - # ====== Template Option: Sticky Header on Mobile ============
-    id: 33855622118153718
+    id: 53033634601300956
     identification: 
       name: Sticky Header on Mobile
       identifier: STICKY_HEADER_ON_MOBILE
@@ -1962,9 +1956,9 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
-    id: 37051818470506667
+  slots: 
+  - # ====== Slot: After Logo ====================================
+    id: 56229830953653905
     identification: 
       name: After Logo
       template-substitution: AFTER_LOGO
@@ -1979,8 +1973,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
-    id: 37052328403506668
+  - # ====== Slot: After Navigation Bar ==========================
+    id: 56230340886653906
     identification: 
       name: After Navigation Bar
       template-substitution: AFTER_NAVIGATION_BAR
@@ -1995,8 +1989,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
-    id: 37052893453506668
+  - # ====== Slot: Before Navigation Bar =========================
+    id: 56230905936653906
     identification: 
       name: Before Navigation Bar
       template-substitution: BEFORE_NAVIGATION_BAR
@@ -2011,8 +2005,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
-    id: 37053378330506668
+  - # ====== Slot: Body ==========================================
+    id: 56231390813653906
     identification: 
       name: Body
       template-substitution: BODY
@@ -2027,8 +2021,8 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
-    id: 37053853243506668
+  - # ====== Slot: Breadcrumb Bar ================================
+    id: 56231865726653906
     identification: 
       name: Breadcrumb Bar
       template-substitution: REGION_POSITION_01
@@ -2042,8 +2036,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Master Detail ========================
-    id: 37054322728506669
+  - # ====== Slot: Master Detail =================================
+    id: 56232335211653907
     identification: 
       name: Master Detail
       template-substitution: REGION_POSITION_02
@@ -2058,8 +2052,8 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Right Side Column ====================
-    id: 37054899597506669
+  - # ====== Slot: Right Side Column =============================
+    id: 56232912080653907
     identification: 
       name: Right Side Column
       template-substitution: REGION_POSITION_03
@@ -2074,8 +2068,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
-    id: 37055314459506669
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
+    id: 56233326942653907
     identification: 
       name: Dialogs, Drawers and Popups
       template-substitution: REGION_POSITION_04
@@ -2090,8 +2084,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
-    id: 37055868278506670
+  - # ====== Slot: Footer ========================================
+    id: 56233880761653908
     identification: 
       name: Footer
       template-substitution: REGION_POSITION_05
@@ -2106,8 +2100,8 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
-    id: 37056345977506670
+  - # ====== Slot: Top Navigation ================================
+    id: 56234358460653908
     identification: 
       name: Top Navigation
       template-substitution: REGION_POSITION_06
@@ -2121,8 +2115,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
-    id: 37056838387506670
+  - # ====== Slot: Banner ========================================
+    id: 56234850870653908
     identification: 
       name: Banner
       template-substitution: REGION_POSITION_07
@@ -2136,8 +2130,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
-    id: 37057387898506670
+  - # ====== Slot: Full Width Content ============================
+    id: 56235400381653908
     identification: 
       name: Full Width Content
       template-substitution: REGION_POSITION_08
@@ -2153,7 +2147,7 @@
       new-row: true
 
 - # ====== Page Template: Minimal (No Navigation) ==============
-  id: 33855748334153718
+  id: 53033760817300956
   identification: 
     name: Minimal (No Navigation)
     identifier: MINIMAL_NO_NAVIGATION
@@ -2161,8 +2155,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63310942936439067 # Minimal (No Navigation)
+      referenced-id: 63310942936439067
 
   advanced: 
     translatable: false
@@ -2349,7 +2342,7 @@
 
   template-options: 
   - # ====== Template Option: Sticky Header on Mobile ============
-    id: 33859022195153720
+    id: 53037034678300958
     identification: 
       name: Sticky Header on Mobile
       identifier: STICKY_HEADER_ON_MOBILE
@@ -2365,9 +2358,9 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
-    id: 37062403695506673
+  slots: 
+  - # ====== Slot: After Logo ====================================
+    id: 56240416178653911
     identification: 
       name: After Logo
       template-substitution: AFTER_LOGO
@@ -2382,8 +2375,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
-    id: 37062966837506673
+  - # ====== Slot: After Navigation Bar ==========================
+    id: 56240979320653911
     identification: 
       name: After Navigation Bar
       template-substitution: AFTER_NAVIGATION_BAR
@@ -2398,8 +2391,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
-    id: 37063420530506673
+  - # ====== Slot: Before Navigation Bar =========================
+    id: 56241433013653911
     identification: 
       name: Before Navigation Bar
       template-substitution: BEFORE_NAVIGATION_BAR
@@ -2414,8 +2407,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
-    id: 37063945009506674
+  - # ====== Slot: Body ==========================================
+    id: 56241957492653912
     identification: 
       name: Body
       template-substitution: BODY
@@ -2430,8 +2423,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
-    id: 37064498774506674
+  - # ====== Slot: Breadcrumb Bar ================================
+    id: 56242511257653912
     identification: 
       name: Breadcrumb Bar
       template-substitution: REGION_POSITION_01
@@ -2445,8 +2438,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
-    id: 37064976362506674
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
+    id: 56242988845653912
     identification: 
       name: Dialogs, Drawers and Popups
       template-substitution: REGION_POSITION_04
@@ -2461,8 +2454,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
-    id: 37065402459506674
+  - # ====== Slot: Footer ========================================
+    id: 56243414942653912
     identification: 
       name: Footer
       template-substitution: REGION_POSITION_05
@@ -2477,8 +2470,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
-    id: 37065955447506674
+  - # ====== Slot: Top Navigation ================================
+    id: 56243967930653912
     identification: 
       name: Top Navigation
       template-substitution: REGION_POSITION_06
@@ -2492,8 +2485,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
-    id: 37066401706506675
+  - # ====== Slot: Banner ========================================
+    id: 56244414189653913
     identification: 
       name: Banner
       template-substitution: REGION_POSITION_07
@@ -2507,8 +2500,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
-    id: 37066994415506675
+  - # ====== Slot: Full Width Content ============================
+    id: 56245006898653913
     identification: 
       name: Full Width Content
       template-substitution: REGION_POSITION_08
@@ -2524,7 +2517,7 @@
       new-row: true
 
 - # ====== Page Template: Modal Dialog =========================
-  id: 33859121557153720
+  id: 53037134040300958
   identification: 
     name: Modal Dialog
     identifier: MODAL_DIALOG
@@ -2532,8 +2525,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63316906146439070 # Modal Dialog
+      referenced-id: 63316906146439070
 
   advanced: 
     translatable: false
@@ -2677,7 +2669,7 @@
 
   template-options: 
   - # ====== Template Option: Remove Body Padding ================
-    id: 33860280794153721
+    id: 53038293277300959
     identification: 
       name: Remove Body Padding
       identifier: REMOVE_BODY_PADDING
@@ -2691,7 +2683,7 @@
       - t-Dialog--noPadding
 
   - # ====== Template Option: Stretch to Fit Window ==============
-    id: 33860475063153721
+    id: 53038487546300959
     identification: 
       name: Stretch to Fit Window
       identifier: STRETCH_TO_FIT_WINDOW
@@ -2707,9 +2699,9 @@
     help: 
       help-text: Stretch the dialog to fit the browser window.
 
-  display-points: 
-  - # ====== Display Point: Content Body =========================
-    id: 37069206892506676
+  slots: 
+  - # ====== Slot: Content Body ==================================
+    id: 56247219375653914
     identification: 
       name: Content Body
       template-substitution: BODY
@@ -2724,8 +2716,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Dialog Header ========================
-    id: 37069730285506676
+  - # ====== Slot: Dialog Header =================================
+    id: 56247742768653914
     identification: 
       name: Dialog Header
       template-substitution: REGION_POSITION_01
@@ -2739,8 +2731,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialog Footer ========================
-    id: 37070285069506677
+  - # ====== Slot: Dialog Footer =================================
+    id: 56248297552653915
     identification: 
       name: Dialog Footer
       template-substitution: REGION_POSITION_03
@@ -2755,7 +2747,7 @@
       new-row: true
 
 - # ====== Page Template: Right Side Column ====================
-  id: 33860611755153721
+  id: 53038624238300959
   identification: 
     name: Right Side Column
     identifier: RIGHT_SIDE_COLUMN
@@ -2763,8 +2755,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63295851815439059 # Right Side Column
+      referenced-id: 63295851815439059
 
   advanced: 
     translatable: false
@@ -2957,7 +2948,7 @@
 
   template-options: 
   - # ====== Template Option: Sticky Header on Mobile ============
-    id: 33864270972153722
+    id: 53042283455300960
     identification: 
       name: Sticky Header on Mobile
       identifier: STICKY_HEADER_ON_MOBILE
@@ -2973,9 +2964,9 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
-    id: 37076045528506680
+  slots: 
+  - # ====== Slot: After Logo ====================================
+    id: 56254058011653918
     identification: 
       name: After Logo
       template-substitution: AFTER_LOGO
@@ -2990,8 +2981,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
-    id: 37076596356506681
+  - # ====== Slot: After Navigation Bar ==========================
+    id: 56254608839653919
     identification: 
       name: After Navigation Bar
       template-substitution: AFTER_NAVIGATION_BAR
@@ -3006,8 +2997,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
-    id: 37077074694506681
+  - # ====== Slot: Before Navigation Bar =========================
+    id: 56255087177653919
     identification: 
       name: Before Navigation Bar
       template-substitution: BEFORE_NAVIGATION_BAR
@@ -3022,8 +3013,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
-    id: 37077568937506681
+  - # ====== Slot: Body ==========================================
+    id: 56255581420653919
     identification: 
       name: Body
       template-substitution: BODY
@@ -3038,8 +3029,8 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
-    id: 37078071431506681
+  - # ====== Slot: Breadcrumb Bar ================================
+    id: 56256083914653919
     identification: 
       name: Breadcrumb Bar
       template-substitution: REGION_POSITION_01
@@ -3053,8 +3044,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Right Column =========================
-    id: 37078522036506682
+  - # ====== Slot: Right Column ==================================
+    id: 56256534519653920
     identification: 
       name: Right Column
       template-substitution: REGION_POSITION_03
@@ -3069,8 +3060,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
-    id: 37079046187506682
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
+    id: 56257058670653920
     identification: 
       name: Dialogs, Drawers and Popups
       template-substitution: REGION_POSITION_04
@@ -3085,8 +3076,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
-    id: 37079564614506682
+  - # ====== Slot: Footer ========================================
+    id: 56257577097653920
     identification: 
       name: Footer
       template-substitution: REGION_POSITION_05
@@ -3101,8 +3092,8 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
-    id: 37080021566506682
+  - # ====== Slot: Top Navigation ================================
+    id: 56258034049653920
     identification: 
       name: Top Navigation
       template-substitution: REGION_POSITION_06
@@ -3116,8 +3107,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
-    id: 37080590124506683
+  - # ====== Slot: Banner ========================================
+    id: 56258602607653921
     identification: 
       name: Banner
       template-substitution: REGION_POSITION_07
@@ -3131,8 +3122,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
-    id: 37081012967506683
+  - # ====== Slot: Full Width Content ============================
+    id: 56259025450653921
     identification: 
       name: Full Width Content
       template-substitution: REGION_POSITION_08
@@ -3148,7 +3139,7 @@
       new-row: true
 
 - # ====== Page Template: Standard =============================
-  id: 33864324223153722
+  id: 53042336706300960
   identification: 
     name: Standard
     identifier: STANDARD
@@ -3156,8 +3147,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63299541469439061 # Standard
+      referenced-id: 63299541469439061
 
   advanced: 
     translatable: false
@@ -3346,7 +3336,7 @@
 
   template-options: 
   - # ====== Template Option: Sticky Header on Mobile ============
-    id: 33867651064153724
+    id: 53045663547300962
     identification: 
       name: Sticky Header on Mobile
       identifier: STICKY_HEADER_ON_MOBILE
@@ -3362,9 +3352,9 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
-    id: 37086186688506685
+  slots: 
+  - # ====== Slot: After Logo ====================================
+    id: 56264199171653923
     identification: 
       name: After Logo
       template-substitution: AFTER_LOGO
@@ -3379,8 +3369,8 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
-    id: 37086680544506686
+  - # ====== Slot: After Navigation Bar ==========================
+    id: 56264693027653924
     identification: 
       name: After Navigation Bar
       template-substitution: AFTER_NAVIGATION_BAR
@@ -3395,8 +3385,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
-    id: 37087121344506686
+  - # ====== Slot: Before Navigation Bar =========================
+    id: 56265133827653924
     identification: 
       name: Before Navigation Bar
       template-substitution: BEFORE_NAVIGATION_BAR
@@ -3411,8 +3401,8 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
-    id: 37087651541506686
+  - # ====== Slot: Body ==========================================
+    id: 56265664024653924
     identification: 
       name: Body
       template-substitution: BODY
@@ -3427,8 +3417,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
-    id: 37088184822506686
+  - # ====== Slot: Breadcrumb Bar ================================
+    id: 56266197305653924
     identification: 
       name: Breadcrumb Bar
       template-substitution: REGION_POSITION_01
@@ -3442,8 +3432,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
-    id: 37088632032506687
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
+    id: 56266644515653925
     identification: 
       name: Dialogs, Drawers and Popups
       template-substitution: REGION_POSITION_04
@@ -3458,8 +3448,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
-    id: 37089163121506687
+  - # ====== Slot: Footer ========================================
+    id: 56267175604653925
     identification: 
       name: Footer
       template-substitution: REGION_POSITION_05
@@ -3474,8 +3464,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
-    id: 37089636622506687
+  - # ====== Slot: Top Navigation ================================
+    id: 56267649105653925
     identification: 
       name: Top Navigation
       template-substitution: REGION_POSITION_06
@@ -3489,8 +3479,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
-    id: 37090173417506687
+  - # ====== Slot: Banner ========================================
+    id: 56268185900653925
     identification: 
       name: Banner
       template-substitution: REGION_POSITION_07
@@ -3504,8 +3494,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
-    id: 37090674036506687
+  - # ====== Slot: Full Width Content ============================
+    id: 56268686519653925
     identification: 
       name: Full Width Content
       template-substitution: REGION_POSITION_08
@@ -3521,7 +3511,7 @@
       new-row: true
 
 - # ====== Page Template: Wizard Modal Dialog ==================
-  id: 33874536455153727
+  id: 53052548938300965
   identification: 
     name: Wizard Modal Dialog
     identifier: WIZARD_MODAL_DIALOG
@@ -3529,8 +3519,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63318464847439071 # Wizard Modal Dialog
+      referenced-id: 63318464847439071
 
   advanced: 
     translatable: false
@@ -3671,7 +3660,7 @@
 
   template-options: 
   - # ====== Template Option: Remove Body Padding ================
-    id: 33875686712153728
+    id: 53053699195300966
     identification: 
       name: Remove Body Padding
       identifier: REMOVE_BODY_PADDING
@@ -3685,7 +3674,7 @@
       - t-Dialog--noPadding
 
   - # ====== Template Option: Stretch to Fit Window ==============
-    id: 33875973232153728
+    id: 53053985715300966
     identification: 
       name: Stretch to Fit Window
       identifier: STRETCH_TO_FIT_WINDOW
@@ -3701,9 +3690,9 @@
     help: 
       help-text: Stretch the dialog to fit the browser window.
 
-  display-points: 
-  - # ====== Display Point: Wizard Body ==========================
-    id: 37102571441506694
+  slots: 
+  - # ====== Slot: Wizard Body ===================================
+    id: 56280583924653932
     identification: 
       name: Wizard Body
       template-substitution: BODY
@@ -3718,8 +3707,8 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Wizard Progress Bar ==================
-    id: 37103073220506694
+  - # ====== Slot: Wizard Progress Bar ===========================
+    id: 56281085703653932
     identification: 
       name: Wizard Progress Bar
       template-substitution: REGION_POSITION_01
@@ -3733,8 +3722,8 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Wizard Buttons =======================
-    id: 37103593515506694
+  - # ====== Slot: Wizard Buttons ================================
+    id: 56281605998653932
     identification: 
       name: Wizard Buttons
       template-substitution: REGION_POSITION_03

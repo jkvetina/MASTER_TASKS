@@ -50,24 +50,52 @@ function(config) {
 }
 
 // ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: REQUESTED_STATUS > Action: Execute JavaScript Code > Settings > Code
+// Page: 105 - Card Detail > Dynamic Action: UPDATE_CARD_AND_CLOSE > Action: Execute JavaScript Code > Settings > Code
 
-apex.item('P105_STATUS_ID').setValue(apex.item('P105_STATUS_REQUESTED').getValue());
+submit_checklist(this.triggeringElement.id);
 
 // ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: DELETE_COMMENT > Action: Set Value > Settings > JavaScript Expression
+// Page: 105 - Card Detail > Dynamic Action: CHANGED_CATEGORY > Action: Execute JavaScript Code > Settings > Code
 
-this.data.comment_id
+// change styles
+var color_map   = JSON.parse(apex.item('P105_CATEGORY_JSON').getValue())[0];
+var category_id = apex.item('P105_CATEGORY_ID').getValue();
+var color       = color_map[category_id];
+//
+if (color && color.length > 0) {
+    $('select#P105_CATEGORY_ID').css('border-left', '8px solid ' + color);
+    $('label#P105_CATEGORY_ID_LABEL').css('padding-left', '0.95rem');
+}
+else {
+    $('select#P105_CATEGORY_ID').css('border-left', '1px solid var(--a-field-input-state-border-color,var(--a-field-input-border-color))');
+    $('label#P105_CATEGORY_ID_LABEL').css('padding-left', '0.5rem');
+}
+
+
+// ----------------------------------------
+// Page: 105 - Card Detail > Dynamic Action: UPDATE_AND_REFRESH > Action: Execute JavaScript Code > Settings > Code
+
+submit_checklist(this.triggeringElement.id);
+
+// ----------------------------------------
+// Page: 105 - Card Detail > Dynamic Action: CREATE_ANOTHER > Action: Execute JavaScript Code > Settings > Code
+
+submit_checklist(this.triggeringElement.id);
+
+// ----------------------------------------
+// Page: 105 - Card Detail > Dynamic Action: CREATE_CARD > Action: Execute JavaScript Code > Settings > Code
+
+submit_checklist(this.triggeringElement.id);
+
+// ----------------------------------------
+// Page: 105 - Card Detail > Dynamic Action: CREATE_CARD_AND_CLOSE > Action: Execute JavaScript Code > Settings > Code
+
+submit_checklist(this.triggeringElement.id);
 
 // ----------------------------------------
 // Page: 105 - Card Detail > Dynamic Action: RENUMBER_CHECKLIST > Action: Execute JavaScript Code > Settings > Code
 
 console.log('NEW_ROW_INIT');
-
-// ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: UPDATE_CARD_AND_CLOSE > Action: Execute JavaScript Code > Settings > Code
-
-submit_checklist(this.triggeringElement.id);
 
 // ----------------------------------------
 // Page: 105 - Card Detail > Dynamic Action: STACKED_MODAL_CLOSED > Action: REDIRECT_TO_NEW_PAGE > Settings > Code
@@ -95,39 +123,6 @@ show_message('File deleted');
 this.data.file_id
 
 // ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: CREATE_ANOTHER > Action: Execute JavaScript Code > Settings > Code
-
-submit_checklist(this.triggeringElement.id);
-
-// ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: CREATE_CARD > Action: Execute JavaScript Code > Settings > Code
-
-submit_checklist(this.triggeringElement.id);
-
-// ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: CREATE_CARD_AND_CLOSE > Action: Execute JavaScript Code > Settings > Code
-
-submit_checklist(this.triggeringElement.id);
-
-// ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: CHANGED_CATEGORY > Action: Execute JavaScript Code > Settings > Code
-
-// change styles
-var color_map   = JSON.parse(apex.item('P105_CATEGORY_JSON').getValue())[0];
-var category_id = apex.item('P105_CATEGORY_ID').getValue();
-var color       = color_map[category_id];
-//
-if (color && color.length > 0) {
-    $('select#P105_CATEGORY_ID').css('border-left', '8px solid ' + color);
-    $('label#P105_CATEGORY_ID_LABEL').css('padding-left', '0.95rem');
-}
-else {
-    $('select#P105_CATEGORY_ID').css('border-left', '1px solid var(--a-field-input-state-border-color,var(--a-field-input-border-color))');
-    $('label#P105_CATEGORY_ID_LABEL').css('padding-left', '0.5rem');
-}
-
-
-// ----------------------------------------
 // Page: 105 - Card Detail > Dynamic Action: DELETE_COMMENT > Action: Execute JavaScript Code > Settings > Code
 
 show_message(apex.item('P105_COMMENT_MESSAGE').getValue());
@@ -135,22 +130,27 @@ show_message(apex.item('P105_COMMENT_MESSAGE').getValue());
 // ----------------------------------------
 // Page: 105 - Card Detail > Dynamic Action: DELETE_COMMENT > Action: Set Value > Settings > JavaScript Expression
 
+this.data.comment_id
+
+// ----------------------------------------
+// Page: 105 - Card Detail > Dynamic Action: DELETE_COMMENT > Action: Set Value > Settings > JavaScript Expression
+
 this.data.card_id
 
 // ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: UPDATE_AND_REFRESH > Action: Execute JavaScript Code > Settings > Code
+// Page: 105 - Card Detail > Dynamic Action: REQUESTED_STATUS > Action: Execute JavaScript Code > Settings > Code
 
-submit_checklist(this.triggeringElement.id);
-
-// ----------------------------------------
-// Page: 105 - Card Detail > Dynamic Action: DELETE_FILE > When > JavaScript Expression
-
-document
+apex.item('P105_STATUS_ID').setValue(apex.item('P105_STATUS_REQUESTED').getValue());
 
 // ----------------------------------------
 // Page: 105 - Card Detail > Dynamic Action: STACKED_MODAL_CLOSED > When > JavaScript Expression
 
 window
+
+// ----------------------------------------
+// Page: 105 - Card Detail > Dynamic Action: DELETE_FILE > When > JavaScript Expression
+
+document
 
 // ----------------------------------------
 // Page: 105 - Card Detail > Dynamic Action: DELETE_COMMENT > When > JavaScript Expression

@@ -1,14 +1,18 @@
 ---
 - # ====== Build Option: NEVER =================================
-  id: 33790501555120051
+  id: 52968514038267289
   identification: 
     name: NEVER
 
   status: 
     status: Exclude
-    default-on-export: Same as Current Status
+    default-on-export: Exclude
     on-upgrade-keep-status: true
 
   subscription: 
-    version-number: 1
+    master: 
+      app: 800 # Master 25
+      referenced-id: 13997038230229689 # NEVER
+
+    version-number: 42101049256871
 

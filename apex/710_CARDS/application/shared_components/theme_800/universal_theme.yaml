@@ -5,6 +5,7 @@ identification:
   theme-number: 800
   name: Universal Theme
   identifier: UNIVERSAL_THEME
+  version: 23.2
 
 navigation: 
   type: List
@@ -20,37 +21,37 @@ css:
   - '#THEME_FILES#css/Core#MIN#.css?v=#APEX_VERSION#'
 
 component-defaults: 
-  page: Standard Q23 # 31385350444643949
-  navigation-bar-list: Navigation Q23 # 31684266225644159
+  page: Standard Q23
+  navigation-bar-list: Navigation Q23
   navigation-menu-list-position: Top
-  navigation-menu-list-(top): Navigation Q23 # 31684266225644159
-  navigation-menu-list-(side): Navigation Q23 # 31684266225644159
-  login-page: Login # 33849078010153714
-  error-page: Login # 33849078010153714
-  printer-friendly-page: Standard # 33864324223153722
-  breadcrumb: 34022993576153828
-  button: Text # 34021473197153827
-  legacy-calendar: Calendar # 34023094769153829
-  default-label: Optional - Floating # 34018942203153820
-  optional-label: Optional - Floating # 34018942203153820
-  required-label: Required - Floating # 34020184240153822
-  list: Links List # 34002469867153808
-  region: Blank with Attributes # 33881254928153735
-  classic-report: Standard # 33986064080153797
+  navigation-menu-list-(top): Navigation Q23
+  navigation-menu-list-(side): Navigation Q23
+  login-page: Login
+  error-page: Login
+  printer-friendly-page: Standard
+  breadcrumb: 53201006059301066
+  button: Text
+  legacy-calendar: Calendar
+  default-label: Optional - Floating
+  optional-label: Optional - Floating
+  required-label: Required - Floating
+  list: Links List
+  region: Blank with Attributes
+  classic-report: Standard
 
 region-defaults: 
-  breadcrumbs: Title Bar # 33960265671153779
-  charts: Standard # 33947802145153772
-  forms: Standard # 33947802145153772
-  lists: Standard # 33947802145153772
-  reports: Standard # 33947802145153772
-  wizards: Standard # 33947802145153772
-  interactive-reports: Interactive Report # 33938051529153767
+  breadcrumbs: Title Bar
+  charts: Standard
+  forms: Standard
+  lists: Standard
+  reports: Standard
+  wizards: Standard
+  interactive-reports: Interactive Report
 
 dialog-defaults: 
-  dialog-content-region: Blank with Attributes # 33881254928153735
-  dialog-button-region: Buttons Container # 33884050069153737
-  dialog-page: Modal Dialog # 33859121557153720
+  dialog-content-region: Blank with Attributes
+  dialog-button-region: Buttons Container
+  dialog-page: Modal Dialog
 
 icons: 
   library: Font APEX
@@ -60,7 +61,7 @@ files:
 
 styles: 
 - # ====== Style: Redwood Light ================================
-  id: 36721440008506475
+  id: 55899452491653713
   identification: 
     name: Redwood Light
 
@@ -80,7 +81,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Redwood-Theme#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita =========================================
-  id: 36721810504506475
+  id: 55899822987653713
   identification: 
     name: Vita
 
@@ -95,7 +96,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Dark ==================================
-  id: 36722270927506475
+  id: 55900283410653713
   identification: 
     name: Vita - Dark
 
@@ -110,7 +111,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita-Dark#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Red ===================================
-  id: 36722661875506476
+  id: 55900674358653714
   identification: 
     name: Vita - Red
 
@@ -125,7 +126,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita-Red#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Slate =================================
-  id: 36723041499506476
+  id: 55901053982653714
   identification: 
     name: Vita - Slate
 

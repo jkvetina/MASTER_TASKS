@@ -5,11 +5,11 @@ identification:
   name: Copy from Project
   alias: COPY-FROM-PROJECT
   title: Copy from Project
-  page-group: 3) PROJECTS # 78006013489194627
+  page-group: 3) PROJECTS # 97184025972341865
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Modal Dialog # 33859121557153720
+  dialog-template: Modal Dialog
   template-options: 
   - '#DEFAULT#'
 
@@ -25,7 +25,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_ADMIN # 70314575553792528
+  authorization-scheme: IS_ADMIN # 39924937074197493
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -44,9 +44,9 @@ server-cache:
 
 regions: 
 - # ====== Region: Swimlanes [GRID] ============================
-  id: 54590309752249697
+  id: 73768322235396935
   identification: 
-    title: Swimlanes [GRID]
+    name: Swimlanes [GRID]
     type: Interactive Grid
 
   source: 
@@ -64,7 +64,7 @@ regions:
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -72,7 +72,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -91,14 +91,11 @@ regions:
     item: P312_TYPE
     value: SWIMLANES
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 54590366624249698
+    id: 73768379107396936
     edit: 
       enabled: true
       allowed-operations: 
@@ -149,14 +146,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 54662689271271372
+      id: 73840701754418610
       identification: 
         name: Primary Report
         alias: 273048
 
   columns: 
   - # ====== Column: SWIMLANE_ID =================================
-    id: 27235527966725543
+    id: 46413540449872781
     identification: 
       column-name: SWIMLANE_ID
       type: Text Field
@@ -211,7 +208,7 @@ regions:
       hide: true
 
   - # ====== Column: SWIMLANE_NAME ===============================
-    id: 27235655999725544
+    id: 46413668482872782
     identification: 
       column-name: SWIMLANE_NAME
       type: Text Field
@@ -266,7 +263,7 @@ regions:
       hide: true
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 54590746187249702
+    id: 73768758670396940
     identification: 
       column-name: CLIENT_ID
       type: Hidden
@@ -300,7 +297,7 @@ regions:
       sort: false
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 54590887235249703
+    id: 73768899718396941
     identification: 
       column-name: PROJECT_ID
       type: Hidden
@@ -334,7 +331,7 @@ regions:
       sort: false
 
   - # ====== Column: ORDER# ======================================
-    id: 54591225630249706
+    id: 73769238113396944
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -381,7 +378,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 54591308752249707
+    id: 73769321235396945
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -435,7 +432,7 @@ regions:
       hide: true
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 54592215696249716
+    id: 73770228179396954
     identification: 
       column-name: UPDATED_BY
       type: Text Field
@@ -489,7 +486,7 @@ regions:
       hide: true
 
   - # ====== Column: UPDATED_AT ==================================
-    id: 54592314540249717
+    id: 73770327023396955
     identification: 
       column-name: UPDATED_AT
       type: Hidden
@@ -523,7 +520,7 @@ regions:
       sort: false
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 54592395491249718
+    id: 73770407974396956
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -532,7 +529,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 54592497229249719
+    id: 73770509712396957
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -585,9 +582,9 @@ regions:
       alignment: center
 
 - # ====== Region: Statuses [GRID] =============================
-  id: 68048248342604520
+  id: 87226260825751758
   identification: 
-    title: Statuses [GRID]
+    name: Statuses [GRID]
     type: Interactive Grid
 
   source: 
@@ -605,7 +602,7 @@ regions:
   layout: 
     sequence: 40
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -613,7 +610,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -632,14 +629,11 @@ regions:
     item: P312_TYPE
     value: STATUSES
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 68048305214604521
+    id: 87226317697751759
     edit: 
       enabled: true
       allowed-operations: 
@@ -690,14 +684,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 68120627861626195
+      id: 87298640344773433
       identification: 
         name: Primary Report
         alias: 273048
 
   columns: 
   - # ====== Column: STATUS_GROUP ================================
-    id: 40027815869814948
+    id: 59205828352962186
     identification: 
       column-name: STATUS_GROUP
       type: Text Field
@@ -752,7 +746,7 @@ regions:
       hide: true
 
   - # ====== Column: COL_ORDER# ==================================
-    id: 40027986346814949
+    id: 59205998829962187
     identification: 
       column-name: COL_ORDER#
       type: Number Field
@@ -799,7 +793,7 @@ regions:
       hide: true
 
   - # ====== Column: ROW_ORDER# ==================================
-    id: 40028076650814950
+    id: 59206089133962188
     identification: 
       column-name: ROW_ORDER#
       type: Number Field
@@ -846,7 +840,7 @@ regions:
       hide: true
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 68048684777604525
+    id: 87226697260751763
     identification: 
       column-name: CLIENT_ID
       type: Hidden
@@ -880,7 +874,7 @@ regions:
       sort: false
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 68048825825604526
+    id: 87226838308751764
     identification: 
       column-name: PROJECT_ID
       type: Hidden
@@ -914,7 +908,7 @@ regions:
       sort: false
 
   - # ====== Column: STATUS_ID ===================================
-    id: 68048890932604527
+    id: 87226903415751765
     identification: 
       column-name: STATUS_ID
       type: Text Field
@@ -969,7 +963,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_NAME =================================
-    id: 68049065989604528
+    id: 87227078472751766
     identification: 
       column-name: STATUS_NAME
       type: Text Field
@@ -1024,7 +1018,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 68049247342604530
+    id: 87227259825751768
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -1078,7 +1072,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_DEFAULT ==================================
-    id: 68049269262604531
+    id: 87227281745751769
     identification: 
       column-name: IS_DEFAULT
       type: Checkbox
@@ -1132,7 +1126,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_COLORED ==================================
-    id: 68049401497604532
+    id: 87227413980751770
     identification: 
       column-name: IS_COLORED
       type: Checkbox
@@ -1186,7 +1180,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_BADGE ====================================
-    id: 68049550516604533
+    id: 87227562999751771
     identification: 
       column-name: IS_BADGE
       type: Checkbox
@@ -1240,7 +1234,7 @@ regions:
       hide: true
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 68050154286604539
+    id: 87228166769751777
     identification: 
       column-name: UPDATED_BY
       type: Hidden
@@ -1274,7 +1268,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_AT ==================================
-    id: 68050253130604540
+    id: 87228265613751778
     identification: 
       column-name: UPDATED_AT
       type: Hidden
@@ -1308,7 +1302,7 @@ regions:
       sort: false
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 68050334081604541
+    id: 87228346564751779
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -1317,7 +1311,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 68050435819604542
+    id: 87228448302751780
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -1370,9 +1364,9 @@ regions:
       alignment: center
 
 - # ====== Region: Categories [GRID] ===========================
-  id: 95441092416403423
+  id: 114619104899550661
   identification: 
-    title: Categories [GRID]
+    name: Categories [GRID]
     type: Interactive Grid
 
   source: 
@@ -1390,7 +1384,7 @@ regions:
   layout: 
     sequence: 50
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1398,7 +1392,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1417,14 +1411,11 @@ regions:
     item: P312_TYPE
     value: CATEGORIES
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 95441149288403424
+    id: 114619161771550662
     edit: 
       enabled: true
       allowed-operations: 
@@ -1475,14 +1466,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 95513471935425098
+      id: 114691484418572336
       identification: 
         name: Primary Report
         alias: 273048
 
   columns: 
   - # ====== Column: CATEGORY_ID =================================
-    id: 68060443526613221
+    id: 87238456009760459
     identification: 
       column-name: CATEGORY_ID
       type: Text Field
@@ -1537,7 +1528,7 @@ regions:
       hide: true
 
   - # ====== Column: CATEGORY_NAME ===============================
-    id: 68060549355613222
+    id: 87238561838760460
     identification: 
       column-name: CATEGORY_NAME
       type: Text Field
@@ -1592,7 +1583,7 @@ regions:
       hide: true
 
   - # ====== Column: COLOR_BG ====================================
-    id: 68060621392613223
+    id: 87238633875760461
     identification: 
       column-name: COLOR_BG
       type: Color Picker
@@ -1646,7 +1637,7 @@ regions:
       hide: true
 
   - # ====== Column: COLOR_FG ====================================
-    id: 68060751460613224
+    id: 87238763943760462
     identification: 
       column-name: COLOR_FG
       type: Color Picker
@@ -1700,7 +1691,7 @@ regions:
       hide: true
 
   - # ====== Column: CATEGORY_GROUP ==============================
-    id: 68247913085146326
+    id: 87425925568293564
     identification: 
       column-name: CATEGORY_GROUP
       type: Text Field
@@ -1755,7 +1746,7 @@ regions:
       hide: true
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 95441528851403428
+    id: 114619541334550666
     identification: 
       column-name: CLIENT_ID
       type: Hidden
@@ -1789,7 +1780,7 @@ regions:
       sort: false
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 95441669899403429
+    id: 114619682382550667
     identification: 
       column-name: PROJECT_ID
       type: Hidden
@@ -1823,7 +1814,7 @@ regions:
       sort: false
 
   - # ====== Column: ORDER# ======================================
-    id: 95442008294403432
+    id: 114620020777550670
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -1870,7 +1861,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 95442091416403433
+    id: 114620103899550671
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -1924,7 +1915,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_DEFAULT ==================================
-    id: 95442113336403434
+    id: 114620125819550672
     identification: 
       column-name: IS_DEFAULT
       type: Checkbox
@@ -1978,7 +1969,7 @@ regions:
       hide: true
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 95442998360403442
+    id: 114621010843550680
     identification: 
       column-name: UPDATED_BY
       type: Text Field
@@ -2032,7 +2023,7 @@ regions:
       hide: true
 
   - # ====== Column: UPDATED_AT ==================================
-    id: 95443097204403443
+    id: 114621109687550681
     identification: 
       column-name: UPDATED_AT
       type: Hidden
@@ -2066,7 +2057,7 @@ regions:
       sort: false
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 95443178155403444
+    id: 114621190638550682
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -2075,7 +2066,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 95443279893403445
+    id: 114621292376550683
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -2128,15 +2119,15 @@ regions:
       alignment: center
 
 - # ====== Region: Copy &P312_NAME. from Project ===============
-  id: 175299468068538086
+  id: 194477480551685324
   identification: 
-    title: Copy &P312_NAME. from Project
+    name: Copy &P312_NAME. from Project
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2144,7 +2135,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -2157,9 +2148,6 @@ regions:
     region-display-selector: true
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -2169,15 +2157,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: FILTERS =====================================
-  id: 175299623381538087
+  id: 194477635864685325
   identification: 
-    title: FILTERS
+    name: FILTERS
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2185,7 +2173,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -2200,9 +2188,6 @@ regions:
     region-display-selector: true
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -2213,7 +2198,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P312_TYPE ================================
-  id: 40027380660814943
+  id: 59205393143962181
   identification: 
     name: P312_TYPE
     type: Hidden
@@ -2223,8 +2208,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Copy &P312_NAME. from Project # 175299468068538086
-    position: BODY
+    region: Copy &P312_NAME. from Project # 194477480551685324
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -2243,7 +2228,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P312_NAME ================================
-  id: 40846513836003001
+  id: 60024526319150239
   identification: 
     name: P312_NAME
     type: Hidden
@@ -2253,8 +2238,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Copy &P312_NAME. from Project # 175299468068538086
-    position: BODY
+    region: Copy &P312_NAME. from Project # 194477480551685324
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -2273,7 +2258,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P312_PROJECT_ID ==========================
-  id: 54599284163249711
+  id: 73777296646396949
   identification: 
     name: P312_PROJECT_ID
     type: Select List
@@ -2284,12 +2269,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
-    region: FILTERS # 175299623381538087
-    position: BODY
+    region: FILTERS # 194477635864685325
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -2299,7 +2286,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -2309,7 +2296,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 23314637906165586
+    list-of-values: LOV_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: true
 
@@ -2333,15 +2320,15 @@ page-items:
 
 buttons: 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 27365237649524199
+  id: 46543250132671437
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 20
-    region: Copy &P312_NAME. from Project # 175299468068538086
-    position: UP
+    region: Copy &P312_NAME. from Project # 194477480551685324
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2349,7 +2336,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -2363,15 +2350,15 @@ buttons:
     static-id: CLOSE_DIALOG
 
 - # ====== Button: COPY_SWIMLANES ==============================
-  id: 27366619842524201
+  id: 46544632325671439
   identification: 
     button-name: COPY_SWIMLANES
     label: Add Visible Rows to Project
 
   layout: 
     sequence: 20
-    region: FILTERS # 175299623381538087
-    position: BODY
+    region: FILTERS # 194477635864685325
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -2380,7 +2367,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -2396,15 +2383,15 @@ buttons:
     value: SWIMLANES
 
 - # ====== Button: COPY_STATUSES ===============================
-  id: 40027429997814944
+  id: 59205442480962182
   identification: 
     button-name: COPY_STATUSES
     label: Add Visible Rows to Project
 
   layout: 
     sequence: 30
-    region: FILTERS # 175299623381538087
-    position: BODY
+    region: FILTERS # 194477635864685325
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -2413,7 +2400,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -2429,15 +2416,15 @@ buttons:
     value: STATUSES
 
 - # ====== Button: COPY_CATEGORIES =============================
-  id: 40027531009814945
+  id: 59205543492962183
   identification: 
     button-name: COPY_CATEGORIES
     label: Add Visible Rows to Project
 
   layout: 
     sequence: 40
-    region: FILTERS # 175299623381538087
-    position: BODY
+    region: FILTERS # 194477635864685325
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -2446,7 +2433,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -2463,7 +2450,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_FILTERS =====================
-  id: 27368321141524203
+  id: 46546333624671441
   identification: 
     name: CHANGED_FILTERS
 
@@ -2473,59 +2460,59 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P312_PROJECT_ID
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 27368828615524204
+    id: 46546841098671442
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Swimlanes [GRID] # 54590309752249697
+      region: Swimlanes [GRID] # 73768322235396935
 
     execution: 
       sequence: 10
-      event: CHANGED_FILTERS # 27368321141524203
+      event: CHANGED_FILTERS # 46546333624671441
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh =====================================
-    id: 40027683426814946
+    id: 59205695909962184
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Statuses [GRID] # 68048248342604520
+      region: Statuses [GRID] # 87226260825751758
 
     execution: 
       sequence: 20
-      event: CHANGED_FILTERS # 27368321141524203
+      event: CHANGED_FILTERS # 46546333624671441
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Refresh =====================================
-    id: 40027714758814947
+    id: 59205727241962185
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Categories [GRID] # 95441092416403423
+      region: Categories [GRID] # 114619104899550661
 
     execution: 
       sequence: 30
-      event: CHANGED_FILTERS # 27368321141524203
+      event: CHANGED_FILTERS # 46546333624671441
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: COPY_SWIMLANES ======================
-  id: 27370180281524205
+  id: 46548192764671443
   identification: 
     name: COPY_SWIMLANES
 
@@ -2535,13 +2522,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: COPY_SWIMLANES # 27366619842524201
+    button: COPY_SWIMLANES # 46544632325671439
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 27370672640524206
+    id: 46548685123671444
     identification: 
       action: Execute JavaScript Code
 
@@ -2566,12 +2553,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: COPY_SWIMLANES # 27370180281524205
+      event: COPY_SWIMLANES # 46548192764671443
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: COPY_STATUSES =======================
-  id: 40822005268881917
+  id: 60000017752029155
   identification: 
     name: COPY_STATUSES
 
@@ -2581,13 +2568,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: COPY_STATUSES # 40027429997814944
+    button: COPY_STATUSES # 59205442480962182
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40822405835881919
+    id: 60000418319029157
     identification: 
       action: Execute JavaScript Code
 
@@ -2612,12 +2599,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: COPY_STATUSES # 40822005268881917
+      event: COPY_STATUSES # 60000017752029155
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: COPY_CATEGORIES =====================
-  id: 40823881364886644
+  id: 60001893848033882
   identification: 
     name: COPY_CATEGORIES
 
@@ -2627,13 +2614,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
-    button: COPY_CATEGORIES # 40027531009814945
+    button: COPY_CATEGORIES # 59205543492962183
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40824298771886645
+    id: 60002311255033883
     identification: 
       action: Execute JavaScript Code
 
@@ -2658,13 +2645,13 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: COPY_CATEGORIES # 40823881364886644
+      event: COPY_CATEGORIES # 60001893848033882
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P312_NAME ==============================
-  id: 40846681401003002
+  id: 60024693884150240
   identification: 
     item-name: P312_NAME
 
@@ -2679,12 +2666,12 @@ computations:
 
 processes: 
 - # ====== Process: COPY_SWIMLANES =============================
-  id: 27364581711524197
+  id: 46542594194671435
   identification: 
     name: COPY_SWIMLANES
     type: Invoke API
     execution-chain: None
-    editable-region: Swimlanes [GRID] # 54590309752249697
+    editable-region: Swimlanes [GRID] # 73768322235396935
 
   settings: 
     type: PL/SQL Package
@@ -2704,7 +2691,7 @@ processes:
     execution-scope: All Submitted Rows
 
 - # ====== Process: CLOSE_DIALOG ===============================
-  id: 27367953698524202
+  id: 46545966181671440
   identification: 
     name: CLOSE_DIALOG
     type: Close Dialog
@@ -2725,12 +2712,12 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: COPY_STATUSES ==============================
-  id: 40822868829883490
+  id: 60000881313030728
   identification: 
     name: COPY_STATUSES
     type: Invoke API
     execution-chain: None
-    editable-region: Statuses [GRID] # 68048248342604520
+    editable-region: Statuses [GRID] # 87226260825751758
 
   settings: 
     type: PL/SQL Package
@@ -2750,12 +2737,12 @@ processes:
     execution-scope: All Submitted Rows
 
 - # ====== Process: COPY_CATEGORIES ============================
-  id: 40823541981885288
+  id: 60001554465032526
   identification: 
     name: COPY_CATEGORIES
     type: Invoke API
     execution-chain: None
-    editable-region: Statuses [GRID] # 68048248342604520
+    editable-region: Statuses [GRID] # 87226260825751758
 
   settings: 
     type: PL/SQL Package

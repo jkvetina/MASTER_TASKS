@@ -1,12 +1,7 @@
 // ----------------------------------------
-// Page: 100 - #APP_NAME# > Dynamic Action: REFRESH_GRID_ON_CARD_MOVE > When > JavaScript Expression
+// Page: 100 - #APP_NAME# > Dynamic Action: DIALOG_CLOSED > When > JavaScript Expression
 
-document
-
-// ----------------------------------------
-// Page: 100 - #APP_NAME# > Dynamic Action: AFTER_GRID_REFRESH > Action: Execute JavaScript Code > Settings > Code
-
-show_success('Board refreshed');
+window
 
 // ----------------------------------------
 // Page: 100 - #APP_NAME# > Dynamic Action: AFTER_GRID_REFRESH > Action: Execute JavaScript Code > Settings > Code
@@ -14,6 +9,11 @@ show_success('Board refreshed');
 // this also works
 $('#BOARD').on('apexafterrefresh', function() {
 });
+
+// ----------------------------------------
+// Page: 100 - #APP_NAME# > Dynamic Action: AFTER_GRID_REFRESH > Action: Execute JavaScript Code > Settings > Code
+
+show_success('Board refreshed');
 
 // ----------------------------------------
 // Page: 100 - #APP_NAME# > Dynamic Action: INIT_GRID > Action: Execute JavaScript Code > Settings > Code
@@ -35,7 +35,7 @@ window.location.href = apex.item('P100_CARD_LINK').getValue();
 
 
 // ----------------------------------------
-// Page: 100 - #APP_NAME# > Dynamic Action: DIALOG_CLOSED > When > JavaScript Expression
+// Page: 100 - #APP_NAME# > Dynamic Action: REFRESH_GRID_ON_CARD_MOVE > When > JavaScript Expression
 
-window
+document
 

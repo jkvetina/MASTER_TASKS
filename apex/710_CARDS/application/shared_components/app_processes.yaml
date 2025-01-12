@@ -1,35 +1,21 @@
 ---
-- # ====== Application Process: INIT_DEFAULTS ==================
-  id: 34526926914580163
+- # ====== Application Process: AJAX_FAVORITE_SWITCH ===========
+  id: 39941581183197539
   identification: 
-    name: INIT_DEFAULTS
+    name: AJAX_FAVORITE_SWITCH
     type: NATIVE_PLSQL
 
   source: 
     location: Local Database
     language: PL/SQL
-    pl/sql-code: app.init_defaults();
-
-  execution: 
-    sequence: -10
-    point: Before Header
-
-  security: 
-    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
-
-  subscription: 
-    version-number: 1
-
-- # ====== Application Process: AJAX_PING ======================
-  id: 35361836373726315
-  identification: 
-    name: AJAX_PING
-    type: NATIVE_PLSQL
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: app.ajax_ping();
+    pl/sql-code: |
+      app.favorite_switch (
+          in_app_id           => APEX_APPLICATION.G_X01,
+          in_page_id          => APEX_APPLICATION.G_X02,
+          in_element_id       => APEX_APPLICATION.G_X03,
+          in_favorite_type    => APEX_APPLICATION.G_X04,
+          in_favorite_id      => APEX_APPLICATION.G_X05
+      );
 
   execution: 
     sequence: 0
@@ -39,5 +25,115 @@
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
 
   subscription: 
-    version-number: 1
+    master: 
+      app: 800 # Master 25
+      referenced-id: 20377427996780225 # AJAX_FAVORITE_SWITCH
+
+    version-number: 42188921969473
+
+- # ====== Application Process: AFTER_AUTH =====================
+  id: 39942704319197545
+  identification: 
+    name: AFTER_AUTH
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: master.app_auth.after_auth();
+
+  execution: 
+    sequence: -10
+    point: After Authentication
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 14906883819651706 # AFTER_AUTH
+
+    version-number: 42101121784681
+
+- # ====== Application Process: FIX_FIRST_MESSAGE ==============
+  id: 39944637886197552
+  identification: 
+    name: FIX_FIRST_MESSAGE
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      -- intercept message injected on page (typically after page submit)
+      APEX_JAVASCRIPT.ADD_INLINE_CODE (
+          p_code => '
+      var message = $("#APEX_SUCCESS_MESSAGE .t-Alert-content h2.t-Alert-title").text();
+      if (message.trim().length > 0) {
+          console.log("MESSAGE INTERCEPTED", message);
+          $("#APEX_SUCCESS_MESSAGE").html("");
+          apex.jQuery(window).on("theme42ready", function() {
+              show_success(message);
+          });
+      }'
+      );
+
+  execution: 
+    sequence: -10
+    point: Before Header
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 14981262570116587 # FIX_FIRST_MESSAGE
+
+    version-number: 42188994139633
+
+- # ====== Application Process: INIT_DEFAULTS ==================
+  id: 53704939397727401
+  identification: 
+    name: INIT_DEFAULTS
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: master.app.init_defaults();
+
+  execution: 
+    sequence: 0
+    point: Before Header
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 14906665904648711 # INIT_DEFAULTS
+
+    version-number: 42188994146240
+
+- # ====== Application Process: AJAX_PING ======================
+  id: 54539848856873553
+  identification: 
+    name: AJAX_PING
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: master.app.ajax_ping();
+
+  execution: 
+    sequence: 0
+    point: Ajax Callback
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 14976921867874615 # AJAX_PING
+
+    version-number: 42101121788143
 

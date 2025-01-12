@@ -3,19 +3,19 @@
 id: 0
 identification: 
   name: Global Page
-  page-group: __ INTERNAL # 34426432007203133
+  page-group: __ INTERNAL # 53604444490350371
 
 regions: 
 - # ====== Region: APP_CONTEXT =================================
-  id: 23517758634581608
+  id: 42695771117728846
   identification: 
-    title: APP_CONTEXT
+    name: APP_CONTEXT
     type: Static Content
 
   layout: 
-    sequence: 40
+    sequence: 20
     parent-region: No Parent
-    position: BEFORE_FOOTER
+    slot: BEFORE_FOOTER
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -23,7 +23,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -38,9 +38,6 @@ regions:
 
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -51,113 +48,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: ITEMS =======================================
-  id: 34569381861312888
+  id: 53747394344460126
   identification: 
-    title: ITEMS
+    name: ITEMS
     type: Static Content
-
-  layout: 
-    sequence: 30
-    parent-region: No Parent
-    position: BEFORE_FOOTER
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: true
-    exclude-title-from-translation: false
-
-  security: 
-    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: JS ==========================================
-  id: 83993898900359058
-  identification: 
-    title: JS
-    type: Static Content
-
-  source: 
-    html-code: |
-      <script>
-      </script>
-
-  layout: 
-    sequence: 20
-    parent-region: No Parent
-    position: BEFORE_FOOTER
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 33881254928153735
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: true
-    exclude-title-from-translation: false
-
-  security: 
-    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: CSS =========================================
-  id: 98394149213517330
-  identification: 
-    title: CSS
-    type: Static Content
-
-  source: 
-    html-code: |
-      <style>
-      </style>
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BEFORE_FOOTER
+    slot: BEFORE_FOOTER
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -165,7 +64,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -177,12 +76,6 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
-
-  security: 
-    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -194,7 +87,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P0_CLIENT_ID =============================
-  id: 23266868807120048
+  id: 42444881290267286
   identification: 
     name: P0_CLIENT_ID
     type: Hidden
@@ -204,8 +97,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -224,7 +117,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_CLIENT_NAME ===========================
-  id: 23266918615120049
+  id: 42444931098267287
   identification: 
     name: P0_CLIENT_NAME
     type: Hidden
@@ -234,8 +127,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -254,7 +147,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_PROJECT_ID ============================
-  id: 23267008283120050
+  id: 42445020766267288
   identification: 
     name: P0_PROJECT_ID
     type: Hidden
@@ -264,8 +157,8 @@ page-items:
 
   layout: 
     sequence: 40
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -284,7 +177,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_BOARD_ID ==============================
-  id: 23517052206581601
+  id: 42695064689728839
   identification: 
     name: P0_BOARD_ID
     type: Hidden
@@ -294,8 +187,8 @@ page-items:
 
   layout: 
     sequence: 70
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -314,7 +207,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_PROJECT_NAME ==========================
-  id: 23517110906581602
+  id: 42695123389728840
   identification: 
     name: P0_PROJECT_NAME
     type: Hidden
@@ -324,8 +217,8 @@ page-items:
 
   layout: 
     sequence: 50
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -344,7 +237,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_BOARD_NAME ============================
-  id: 23517261622581603
+  id: 42695274105728841
   identification: 
     name: P0_BOARD_NAME
     type: Hidden
@@ -354,8 +247,8 @@ page-items:
 
   layout: 
     sequence: 80
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -374,7 +267,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_SWIMLANE_NAME =========================
-  id: 23517310108581604
+  id: 42695322591728842
   identification: 
     name: P0_SWIMLANE_NAME
     type: Hidden
@@ -384,8 +277,8 @@ page-items:
 
   layout: 
     sequence: 110
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -404,7 +297,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_OWNER_NAME ============================
-  id: 23517486092581605
+  id: 42695498575728843
   identification: 
     name: P0_OWNER_NAME
     type: Hidden
@@ -414,8 +307,8 @@ page-items:
 
   layout: 
     sequence: 200
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -434,7 +327,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_SUCCESS_MESSAGE =======================
-  id: 27418598780258603
+  id: 46596611263405841
   identification: 
     name: P0_SUCCESS_MESSAGE
     type: Hidden
@@ -444,8 +337,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: ITEMS # 34569381861312888
-    position: BODY
+    region: ITEMS # 53747394344460126
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -467,7 +360,7 @@ page-items:
     comments: For passing messages from modal dialogs
 
 - # ====== Page Item: P0_SWIMLANE_ID ===========================
-  id: 28271224025994345
+  id: 47449236509141583
   identification: 
     name: P0_SWIMLANE_ID
     type: Hidden
@@ -477,8 +370,8 @@ page-items:
 
   layout: 
     sequence: 100
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -497,7 +390,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_OWNER_ID ==============================
-  id: 28271320355994346
+  id: 47449332839141584
   identification: 
     name: P0_OWNER_ID
     type: Hidden
@@ -507,8 +400,8 @@ page-items:
 
   layout: 
     sequence: 190
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -527,7 +420,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_STATUS_ID =============================
-  id: 28271422608994347
+  id: 47449435092141585
   identification: 
     name: P0_STATUS_ID
     type: Hidden
@@ -537,8 +430,8 @@ page-items:
 
   layout: 
     sequence: 130
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -557,7 +450,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_CATEGORY_ID ===========================
-  id: 28271508347994348
+  id: 47449520831141586
   identification: 
     name: P0_CATEGORY_ID
     type: Hidden
@@ -567,8 +460,8 @@ page-items:
 
   layout: 
     sequence: 160
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -587,7 +480,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_AJAX_PING_INTERVAL ====================
-  id: 34569222036312886
+  id: 53747234519460124
   identification: 
     name: P0_AJAX_PING_INTERVAL
     type: Hidden
@@ -597,8 +490,8 @@ page-items:
 
   layout: 
     sequence: 30
-    region: ITEMS # 34569381861312888
-    position: BODY
+    region: ITEMS # 53747394344460126
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -609,7 +502,7 @@ page-items:
 
   default: 
     type: Static
-    static-value: 0
+    static-value: 10
 
   session-state: 
     data-type: VARCHAR2
@@ -624,7 +517,7 @@ page-items:
     comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_SESSION_TIMEOUT_URL ===================
-  id: 37724466334953109
+  id: 56902478818100347
   identification: 
     name: P0_SESSION_TIMEOUT_URL
     type: Hidden
@@ -634,8 +527,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: ITEMS # 34569381861312888
-    position: BODY
+    region: ITEMS # 53747394344460126
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -654,7 +547,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_STATUS_NAME ===========================
-  id: 40025713118814927
+  id: 59203725601962165
   identification: 
     name: P0_STATUS_NAME
     type: Hidden
@@ -664,8 +557,8 @@ page-items:
 
   layout: 
     sequence: 140
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -684,7 +577,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_CATEGORY_NAME =========================
-  id: 40025853480814928
+  id: 59203865963962166
   identification: 
     name: P0_CATEGORY_NAME
     type: Hidden
@@ -694,8 +587,8 @@ page-items:
 
   layout: 
     sequence: 170
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -714,7 +607,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_SWIMLANE_FILTER =======================
-  id: 40025905185814929
+  id: 59203917668962167
   identification: 
     name: P0_SWIMLANE_FILTER
     type: Hidden
@@ -724,8 +617,8 @@ page-items:
 
   layout: 
     sequence: 120
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -744,7 +637,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_STATUS_FILTER =========================
-  id: 40026027995814930
+  id: 59204040478962168
   identification: 
     name: P0_STATUS_FILTER
     type: Hidden
@@ -754,8 +647,8 @@ page-items:
 
   layout: 
     sequence: 150
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -774,7 +667,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_CATEGORY_FILTER =======================
-  id: 40026144469814931
+  id: 59204156952962169
   identification: 
     name: P0_CATEGORY_FILTER
     type: Hidden
@@ -784,8 +677,8 @@ page-items:
 
   layout: 
     sequence: 180
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -804,7 +697,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_OWNER_FILTER ==========================
-  id: 40026241145814932
+  id: 59204253628962170
   identification: 
     name: P0_OWNER_FILTER
     type: Hidden
@@ -814,8 +707,8 @@ page-items:
 
   layout: 
     sequence: 210
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -834,7 +727,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_PROJECT_FILTER ========================
-  id: 40026316055814933
+  id: 59204328538962171
   identification: 
     name: P0_PROJECT_FILTER
     type: Hidden
@@ -844,8 +737,8 @@ page-items:
 
   layout: 
     sequence: 60
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -864,7 +757,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_BOARD_FILTER ==========================
-  id: 40026430659814934
+  id: 59204443142962172
   identification: 
     name: P0_BOARD_FILTER
     type: Hidden
@@ -874,8 +767,8 @@ page-items:
 
   layout: 
     sequence: 90
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -894,7 +787,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_CLIENT_FILTER =========================
-  id: 40026531031814935
+  id: 59204543514962173
   identification: 
     name: P0_CLIENT_FILTER
     type: Hidden
@@ -904,8 +797,8 @@ page-items:
 
   layout: 
     sequence: 30
-    region: APP_CONTEXT # 23517758634581608
-    position: BODY
+    region: APP_CONTEXT # 42695771117728846
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -925,7 +818,7 @@ page-items:
 
 dynamic-actions: 
 - # ====== Dynamic Action: DIALOG_CLOSED =======================
-  id: 27418866630258606
+  id: 46596879113405844
   identification: 
     name: DIALOG_CLOSED
 
@@ -935,13 +828,13 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    event: Dialog Closed
     selection-type: JavaScript Expression
     javascript-expression: window
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 27418949430258607
+    id: 46596961913405845
     identification: 
       action: Execute JavaScript Code
 
@@ -953,12 +846,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: DIALOG_CLOSED # 27418866630258606
+      event: DIALOG_CLOSED # 46596879113405844
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 27422588151258643
+  id: 46600600634405881
   identification: 
     name: CLOSE_DIALOG
 
@@ -968,24 +861,24 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: jQuery Selector
     jquery-selector: '#CLOSE_DIALOG'
 
   actions: 
   - # ====== Action: Close Dialog ================================
-    id: 27422640094258644
+    id: 46600652577405882
     identification: 
       action: Close Dialog
 
     execution: 
       sequence: 20
-      event: CLOSE_DIALOG # 27422588151258643
+      event: CLOSE_DIALOG # 46600600634405881
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Confirm =====================================
-    id: 27770994830313610
+    id: 46949007313460848
     identification: 
       action: Confirm
 
@@ -996,7 +889,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CLOSE_DIALOG # 27422588151258643
+      event: CLOSE_DIALOG # 46600600634405881
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -1005,7 +898,7 @@ dynamic-actions:
       javascript-expression: apex.page.isChanged()
 
 - # ====== Dynamic Action: CHECK_SESSION =======================
-  id: 40025123956814921
+  id: 59203136439962159
   identification: 
     name: CHECK_SESSION
 
@@ -1014,11 +907,11 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40025203334814922
+    id: 59203215817962160
     identification: 
       action: Execute JavaScript Code
 
@@ -1027,7 +920,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHECK_SESSION # 40025123956814921
+      event: CHECK_SESSION # 59203136439962159
       fire-when-event-result-is: True
       fire-on-initialization: false
 

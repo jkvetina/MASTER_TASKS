@@ -25,17 +25,17 @@ SELECT JSON_ARRAY(JSON_OBJECTAGG (
 FROM tsk_lov_categories_v t;
 
 -- ----------------------------------------
--- Page: 105 - Card Detail > Dynamic Action: DELETE_FILE > Action: Execute Server-side Code > Settings > PL/SQL Code
-
-tsk_p105.delete_file (
-    in_file_id      => :P105_FILE_ID
-);
-
--- ----------------------------------------
 -- Page: 105 - Card Detail > Dynamic Action: DELETE_COMMENT > Action: Execute Server-side Code > Settings > PL/SQL Code
 
 tsk_p105.delete_comment (
     in_card_id      => :P105_CARD_ID,
     in_comment_id   => :P105_COMMENT_ID
+);
+
+-- ----------------------------------------
+-- Page: 105 - Card Detail > Dynamic Action: DELETE_FILE > Action: Execute Server-side Code > Settings > PL/SQL Code
+
+tsk_p105.delete_file (
+    in_file_id      => :P105_FILE_ID
 );
 

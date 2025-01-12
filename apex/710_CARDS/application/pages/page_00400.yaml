@@ -5,7 +5,7 @@ identification:
   name: Boards
   alias: BOARDS
   title: Boards
-  page-group: 4) BOARDS # 23490292620162217
+  page-group: 4) BOARDS # 42668305103309455
 
 appearance: 
   page-mode: Normal
@@ -23,7 +23,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -42,15 +42,15 @@ server-cache:
 
 regions: 
 - # ====== Region: TABS ========================================
-  id: 38409172710540139
+  id: 57587185193687377
   identification: 
-    title: TABS
+    name: TABS
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -58,7 +58,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 33957611184153776
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -73,9 +73,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -85,15 +82,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Boards ======================================
-  id: 38409368038540141
+  id: 57587380521687379
   identification: 
-    title: Boards
+    name: Boards
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: TABS # 38409172710540139
-    position: SUB_REGIONS
+    parent-region: TABS # 57587185193687377
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -101,7 +98,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -114,9 +111,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -126,9 +120,9 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: SWITCH_BOARD ================================
-  id: 67379438085968315
+  id: 86557450569115553
   identification: 
-    title: SWITCH_BOARD
+    name: SWITCH_BOARD
     type: Dynamic Content
 
   source: 
@@ -138,7 +132,7 @@ regions:
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -146,7 +140,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -171,9 +165,9 @@ regions:
       lazy-loading: false
 
 - # ====== Region: Boards [GRID] ===============================
-  id: 115469225440223629
+  id: 134647237923370867
   identification: 
-    title: Boards [GRID]
+    name: Boards [GRID]
     type: Interactive Grid
 
   source: 
@@ -185,8 +179,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Boards # 38409368038540141
-    position: SUB_REGIONS
+    parent-region: Boards # 57587380521687379
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -194,7 +188,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 33938051529153767
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -208,14 +202,11 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 115469355284223630
+    id: 134647367767370868
     edit: 
       enabled: true
       allowed-operations: 
@@ -226,9 +217,9 @@ regions:
       add-row-if-empty: false
 
     edit-authorization: 
-      add: MASTER - IS_ADMIN # 70314575553792528
-      update: MASTER - IS_ADMIN # 70314575553792528
-      delete: MASTER - IS_ADMIN # 70314575553792528
+      add: 89492588036939766
+      update: 89492588036939766
+      delete: 89492588036939766
 
     performance: 
       lazy-loading: false
@@ -274,30 +265,30 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 115689873198104607
+      id: 134867885681251845
       identification: 
         name: Primary Report
         alias: 457399
 
   column-groups: 
   - # ====== Column Group: Counts ================================
-    id: 116122693316713923
+    id: 135300705799861161
     heading: 
       heading: Counts
 
   - # ====== Column Group: Flags =================================
-    id: 116123553164713932
+    id: 135301565647861170
     heading: 
       heading: Flags
 
   - # ====== Column Group: Board Info ============================
-    id: 116211752825695431
+    id: 135389765308842669
     heading: 
       heading: Board Info
 
   columns: 
   - # ====== Column: IS_CURRENT ==================================
-    id: 28269599455994328
+    id: 47447611939141566
     identification: 
       column-name: IS_CURRENT
       type: Hidden
@@ -328,7 +319,7 @@ regions:
       sort: false
 
   - # ====== Column: COUNT_SWIMLANES =============================
-    id: 28269606345994329
+    id: 47447618829141567
     identification: 
       column-name: COUNT_SWIMLANES
       type: Display Only
@@ -344,7 +335,7 @@ regions:
     layout: 
       sequence: 180
       column-alignment: end
-      group: Counts # 116122693316713923
+      group: Counts # 135300705799861161
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -382,7 +373,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_STATUSES ==============================
-    id: 28269780158994330
+    id: 47447792642141568
     identification: 
       column-name: COUNT_STATUSES
       type: Link
@@ -394,7 +385,7 @@ regions:
     layout: 
       sequence: 190
       column-alignment: end
-      group: Counts # 116122693316713923
+      group: Counts # 135300705799861161
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -432,7 +423,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COUNT_CATEGORIES ============================
-    id: 28269859209994331
+    id: 47447871693141569
     identification: 
       column-name: COUNT_CATEGORIES
       type: Link
@@ -444,7 +435,7 @@ regions:
     layout: 
       sequence: 200
       column-alignment: end
-      group: Counts # 116122693316713923
+      group: Counts # 135300705799861161
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -482,7 +473,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: COUNT_OWNERS ================================
-    id: 28269961155994332
+    id: 47447973639141570
     identification: 
       column-name: COUNT_OWNERS
       type: Display Only
@@ -498,7 +489,7 @@ regions:
     layout: 
       sequence: 210
       column-alignment: end
-      group: Counts # 116122693316713923
+      group: Counts # 135300705799861161
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -528,7 +519,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_CARDS =================================
-    id: 28270000857994333
+    id: 47448013341141571
     identification: 
       column-name: COUNT_CARDS
       type: Link
@@ -540,7 +531,7 @@ regions:
     layout: 
       sequence: 220
       column-alignment: end
-      group: Counts # 116122693316713923
+      group: Counts # 135300705799861161
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -582,7 +573,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: CLIENT_ID ===================================
-    id: 28270166439994334
+    id: 47448178923141572
     identification: 
       column-name: CLIENT_ID
       type: Hidden
@@ -618,7 +609,7 @@ regions:
       sort: false
 
   - # ====== Column: CLIENT_NAME =================================
-    id: 28270201704994335
+    id: 47448214188141573
     identification: 
       column-name: CLIENT_NAME
       type: Hidden
@@ -652,7 +643,7 @@ regions:
       sort: false
 
   - # ====== Column: PROJECT_ID ==================================
-    id: 28270328401994336
+    id: 47448340885141574
     identification: 
       column-name: PROJECT_ID
       type: Hidden
@@ -688,7 +679,7 @@ regions:
       sort: false
 
   - # ====== Column: PROJECT_NAME ================================
-    id: 28270499706994337
+    id: 47448512190141575
     identification: 
       column-name: PROJECT_NAME
       type: Hidden
@@ -722,7 +713,7 @@ regions:
       sort: false
 
   - # ====== Column: IS_SIMPLE ===================================
-    id: 37724329561953108
+    id: 56902342045100346
     identification: 
       column-name: IS_SIMPLE
       type: Checkbox
@@ -738,7 +729,7 @@ regions:
     layout: 
       sequence: 130
       column-alignment: center
-      group: Flags # 116123553164713932
+      group: Flags # 135301565647861170
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -778,7 +769,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 50045712622623123
+    id: 69223725105770361
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -795,7 +786,7 @@ regions:
         
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 50045795494623124
+    id: 69223807977770362
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -809,7 +800,7 @@ regions:
       sequence: 10
 
   - # ====== Column: IS_DEFAULT ==================================
-    id: 50298712051084704
+    id: 69476724534231942
     identification: 
       column-name: IS_DEFAULT
       type: Checkbox
@@ -825,7 +816,7 @@ regions:
     layout: 
       sequence: 150
       column-alignment: center
-      group: Flags # 116123553164713932
+      group: Flags # 135301565647861170
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -865,7 +856,7 @@ regions:
       hide: true
 
   - # ====== Column: SEQUENCE_ID =================================
-    id: 53174831995134696
+    id: 72352844478281934
     identification: 
       column-name: SEQUENCE_ID
       type: Select List
@@ -877,7 +868,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: start
-      group: Board Info # 116211752825695431
+      group: Board Info # 135389765308842669
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -889,7 +880,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_SEQUENCES # 26408996815154587
+      list-of-values: LOV_SEQUENCES # 45587009298301825
       display-extra-values: false
       display-null-value: true
 
@@ -923,7 +914,7 @@ regions:
       hide: true
 
   - # ====== Column: BOARD_ID ====================================
-    id: 115469798165223634
+    id: 134647810648370872
     identification: 
       column-name: BOARD_ID
       type: Number Field
@@ -939,7 +930,7 @@ regions:
     layout: 
       sequence: 90
       column-alignment: end
-      group: Board Info # 116211752825695431
+      group: Board Info # 135389765308842669
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -978,10 +969,10 @@ regions:
       execute: Once
 
     security: 
-      authorization-scheme: MASTER - IS_DEVELOPER # 68472631569287844
+      authorization-scheme: IS_DEVELOPER # 39924320669197492
 
   - # ====== Column: BOARD_NAME ==================================
-    id: 115469879937223635
+    id: 134647892420370873
     identification: 
       column-name: BOARD_NAME
       type: Text Field
@@ -997,7 +988,7 @@ regions:
     layout: 
       sequence: 100
       column-alignment: start
-      group: Board Info # 116211752825695431
+      group: Board Info # 135389765308842669
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1037,7 +1028,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 115470148770223638
+    id: 134648161253370876
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -1053,7 +1044,7 @@ regions:
     layout: 
       sequence: 160
       column-alignment: center
-      group: Flags # 116123553164713932
+      group: Flags # 135301565647861170
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1095,7 +1086,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_FAVORITE =================================
-    id: 115712820978181643
+    id: 134890833461328881
     identification: 
       column-name: IS_FAVORITE
       type: Checkbox
@@ -1111,7 +1102,7 @@ regions:
     layout: 
       sequence: 140
       column-alignment: center
-      group: Flags # 116123553164713932
+      group: Flags # 135301565647861170
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1151,7 +1142,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 116211822953695432
+    id: 135389835436842670
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -1167,7 +1158,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: end
-      group: Board Info # 116211752825695431
+      group: Board Info # 135389765308842669
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -1207,7 +1198,7 @@ regions:
       hide: true
 
   - # ====== Column: OLD_BOARD_ID ================================
-    id: 118908175716739629
+    id: 138086188199886867
     identification: 
       column-name: OLD_BOARD_ID
       type: Hidden
@@ -1280,15 +1271,15 @@ regions:
       alignment: center
 
 - # ====== Region: Boards for &P0_PROJECT_NAME. ================
-  id: 115470213237223639
+  id: 134648225720370877
   identification: 
-    title: Boards for &P0_PROJECT_NAME.
+    name: Boards for &P0_PROJECT_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Boards # 38409368038540141
-    position: SUB_REGIONS
+    parent-region: Boards # 57587380521687379
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1296,7 +1287,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1309,9 +1300,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -1322,7 +1310,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P400_CURRENT_BOARDS ======================
-  id: 40846775243003003
+  id: 60024787726150241
   identification: 
     name: P400_CURRENT_BOARDS
     type: Hidden
@@ -1332,8 +1320,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: BODY
+    region: Boards for &P0_PROJECT_NAME. # 134648225720370877
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1357,15 +1345,15 @@ page-items:
 
 buttons: 
 - # ====== Button: SWITCH_BOARD ================================
-  id: 38935607764688605
+  id: 58113620247835843
   identification: 
     button-name: SWITCH_BOARD
     label: Switch Board &P0_BOARD_FILTER!RAW.
 
   layout: 
     sequence: 20
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: RIGHT_OF_TITLE
+    region: Boards for &P0_PROJECT_NAME. # 134648225720370877
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1373,7 +1361,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 34021523429153827
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1391,15 +1379,15 @@ buttons:
     static-id: SWITCH_BOARD
 
 - # ====== Button: REORDER_BOARDS ==============================
-  id: 39042938695392161
+  id: 58220951178539399
   identification: 
     button-name: REORDER_BOARDS
     label: Reorder Boards
 
   layout: 
     sequence: 10
-    region: Boards for &P0_PROJECT_NAME. # 115470213237223639
-    position: RIGHT_OF_TITLE
+    region: Boards for &P0_PROJECT_NAME. # 134648225720370877
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1407,7 +1395,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1416,11 +1404,12 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: ONE_CHECKBOX_BOARDS =================
-  id: 40873940446673177
+  id: 60051952929820415
   identification: 
     name: ONE_CHECKBOX_BOARDS
 
@@ -1430,15 +1419,15 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Column(s)
-    interactive-grid: Boards [GRID] # 115469225440223629
+    interactive-grid: Boards [GRID] # 134647237923370867
     column(s): 
     - IS_DEFAULT
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 40874371192673183
+    id: 60052383675820421
     identification: 
       action: Execute JavaScript Code
 
@@ -1447,18 +1436,18 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: ONE_CHECKBOX_BOARDS # 40873940446673177
+      event: ONE_CHECKBOX_BOARDS # 60051952929820415
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_BOARDS ================================
-  id: 26794752428503105
+  id: 45972764911650343
   identification: 
     name: SAVE_BOARDS
     type: Invoke API
     execution-chain: None
-    editable-region: Boards [GRID] # 115469225440223629
+    editable-region: Boards [GRID] # 134647237923370867
 
   settings: 
     type: PL/SQL Package
@@ -1481,7 +1470,7 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: REORDER_BOARDS =============================
-  id: 39014380129935405
+  id: 58192392613082643
   identification: 
     name: REORDER_BOARDS
     type: Invoke API
@@ -1505,5 +1494,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_BOARDS # 39042938695392161
+    when-button-pressed: REORDER_BOARDS # 58220951178539399
 

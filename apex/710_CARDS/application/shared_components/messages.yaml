@@ -1,0 +1,58 @@
+---
+- # ====== Text Message: SESSION_INVALID =======================
+  id: 39943360584197547
+  identification: 
+    name: SESSION_INVALID
+
+  message: 
+    text: Your session has expired.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: false
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 14904637801524414 # SESSION_INVALID
+
+    version-number: 42101051523113
+
+- # ====== Text Message: SESSION_TIMEOUT =======================
+  id: 39945996145197556
+  identification: 
+    name: SESSION_TIMEOUT
+
+  message: 
+    text: Your session has ended.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 14904874577526538 # SESSION_TIMEOUT
+
+    version-number: 42101051539496
+
+- # ====== Text Message: CONSTRAINT_ERROR|APP_USERS_UQ =========
+  id: 39946500754197557
+  identification: 
+    name: CONSTRAINT_ERROR|APP_USERS_UQ
+
+  message: 
+    text: E-mail address is not unique
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: false
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 14894221798383917 # CONSTRAINT_ERROR|APP_USERS_UQ
+
+    version-number: 42101050470383
+

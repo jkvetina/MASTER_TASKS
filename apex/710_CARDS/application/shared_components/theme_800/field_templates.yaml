@@ -1,6 +1,6 @@
 ---
 - # ====== Field Template: Hidden ==============================
-  id: 34018612102153818
+  id: 53196624585301056
   identification: 
     name: Hidden
     identifier: HIDDEN
@@ -8,8 +8,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63461237820439162 # Hidden
+      referenced-id: 63461237820439162
 
   advanced: 
     translatable: false
@@ -40,7 +39,7 @@
     after-label-and-item: </div>
 
 - # ====== Field Template: Optional ============================
-  id: 34018755394153820
+  id: 53196767877301058
   identification: 
     name: Optional
     identifier: OPTIONAL
@@ -48,8 +47,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63461295391439163 # Optional
+      referenced-id: 63461295391439163
 
   advanced: 
     translatable: false
@@ -81,7 +79,7 @@
     after-label-and-item: </div>
 
 - # ====== Field Template: Optional - Above ====================
-  id: 34018832975153820
+  id: 53196845458301058
   identification: 
     name: Optional - Above
     identifier: OPTIONAL_ABOVE
@@ -89,8 +87,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63461457108439163 # Optional - Above
+      referenced-id: 63461457108439163
 
   advanced: 
     translatable: false
@@ -121,7 +118,7 @@
     after-label-and-item: </div>
 
 - # ====== Field Template: Optional - Floating =================
-  id: 34018942203153820
+  id: 53196954686301058
   identification: 
     name: Optional - Floating
     identifier: OPTIONAL_FLOATING
@@ -129,8 +126,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63461560868439163 # Optional - Floating
+      referenced-id: 63461560868439163
 
   advanced: 
     translatable: false
@@ -161,7 +157,7 @@
     after-label-and-item: </div>
 
 - # ====== Field Template: Required ============================
-  id: 34019032784153820
+  id: 53197045267301058
   identification: 
     name: Required
     identifier: REQUIRED
@@ -169,8 +165,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63461578766439163 # Required
+      referenced-id: 63461578766439163
 
   advanced: 
     translatable: false
@@ -212,11 +207,11 @@
 
   template-options: 
   - # ====== Template Option: Asterisk ===========================
-    id: 34019386202153821
+    id: 53197398685301059
     identification: 
       name: Asterisk
       identifier: INDICATOR_ASTERISK
-      group: Required Indicator # 36892570691506572
+      group: Required Indicator
       sequence: 10
 
     settings: 
@@ -230,11 +225,11 @@
       help-text: Displays an asterisk * on required items.
 
   - # ====== Template Option: Inline Label =======================
-    id: 34019651869153821
+    id: 53197664352301059
     identification: 
       name: Inline Label
       identifier: INDICATOR_LABEL
-      group: Required Indicator # 36892570691506572
+      group: Required Indicator
       sequence: 20
 
     settings: 
@@ -248,7 +243,7 @@
       help-text: Displays "Required" inline.
 
 - # ====== Field Template: Required - Above ====================
-  id: 34019682063153821
+  id: 53197694546301059
   identification: 
     name: Required - Above
     identifier: REQUIRED_ABOVE
@@ -256,8 +251,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63462305198439164 # Required - Above
+      referenced-id: 63462305198439164
 
   advanced: 
     translatable: false
@@ -299,11 +293,11 @@
 
   template-options: 
   - # ====== Template Option: Asterisk ===========================
-    id: 34019948839153821
+    id: 53197961322301059
     identification: 
       name: Asterisk
       identifier: INDICATOR_ASTERISK
-      group: Required Indicator # 36892570691506572
+      group: Required Indicator
       sequence: 10
 
     settings: 
@@ -317,11 +311,11 @@
       help-text: Displays an asterisk * on required items.
 
   - # ====== Template Option: Inline Label =======================
-    id: 34020113281153822
+    id: 53198125764301060
     identification: 
       name: Inline Label
       identifier: INDICATOR_LABEL
-      group: Required Indicator # 36892570691506572
+      group: Required Indicator
       sequence: 20
 
     settings: 
@@ -335,7 +329,7 @@
       help-text: Displays "Required" inline.
 
 - # ====== Field Template: Required - Floating =================
-  id: 34020184240153822
+  id: 53198196723301060
   identification: 
     name: Required - Floating
     identifier: REQUIRED_FLOATING
@@ -343,8 +337,7 @@
 
   subscription: 
     master: 
-      app: 800 # Master
-      referenced-id: 63462825478439165 # Required - Floating
+      referenced-id: 63462825478439165
 
   advanced: 
     translatable: false
@@ -387,11 +380,11 @@
 
   template-options: 
   - # ====== Template Option: Asterisk ===========================
-    id: 34020428181153822
+    id: 53198440664301060
     identification: 
       name: Asterisk
       identifier: INDICATOR_ASTERISK
-      group: Required Indicator # 36892570691506572
+      group: Required Indicator
       sequence: 10
 
     settings: 
@@ -405,11 +398,11 @@
       help-text: Displays an asterisk * on required items.
 
   - # ====== Template Option: Inline Label =======================
-    id: 34020612639153822
+    id: 53198625122301060
     identification: 
       name: Inline Label
       identifier: INDICATOR_LABEL
-      group: Required Indicator # 36892570691506572
+      group: Required Indicator
       sequence: 20
 
     settings: 

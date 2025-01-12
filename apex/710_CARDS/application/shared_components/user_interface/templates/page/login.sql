@@ -4,15 +4,15 @@ begin
 --     TEMPLATE: LOGIN
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
-,p_default_workspace_id=>13869170895410902
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.4'
+,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'APPS'
+,p_default_owner=>'MASTER'
 );
 wwv_flow_imp_shared.create_template(
- p_id=>wwv_flow_imp.id(33849078010153714)
+ p_id=>wwv_flow_imp.id(53027090493300952)
 ,p_theme_id=>800
 ,p_name=>'Login'
 ,p_internal_name=>'LOGIN'
@@ -138,8 +138,8 @@ wwv_flow_imp_shared.create_template(
 ,p_reference_id=>63314363594439068
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(37042364944506662)
-,p_page_template_id=>wwv_flow_imp.id(33849078010153714)
+ p_id=>wwv_flow_imp.id(56220377427653900)
+,p_page_template_id=>wwv_flow_imp.id(53027090493300952)
 ,p_name=>'Background Image'
 ,p_placeholder=>'BACKGROUND_IMAGE'
 ,p_has_grid_support=>false
@@ -150,8 +150,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(37042851395506662)
-,p_page_template_id=>wwv_flow_imp.id(33849078010153714)
+ p_id=>wwv_flow_imp.id(56220863878653900)
+,p_page_template_id=>wwv_flow_imp.id(53027090493300952)
 ,p_name=>'Content Body'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>true
@@ -162,8 +162,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(37043329842506663)
-,p_page_template_id=>wwv_flow_imp.id(33849078010153714)
+ p_id=>wwv_flow_imp.id(56221342325653901)
+,p_page_template_id=>wwv_flow_imp.id(53027090493300952)
 ,p_name=>'Body Header'
 ,p_placeholder=>'REGION_POSITION_01'
 ,p_has_grid_support=>false
@@ -173,8 +173,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(37043846858506663)
-,p_page_template_id=>wwv_flow_imp.id(33849078010153714)
+ p_id=>wwv_flow_imp.id(56221859341653901)
+,p_page_template_id=>wwv_flow_imp.id(53027090493300952)
 ,p_name=>'Body Footer'
 ,p_placeholder=>'REGION_POSITION_02'
 ,p_has_grid_support=>false

@@ -1,8 +1,11 @@
 ---
 - # ====== List of Values: LOV_BOARDS ==========================
-  id: 19916565304955390
+  id: 39094577788102628
   identification: 
     name: LOV_BOARDS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -17,9 +20,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_CLIENTS =========================
-  id: 19917139722955396
+  id: 39095152206102634
   identification: 
     name: LOV_CLIENTS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -34,9 +40,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_STATUSES ========================
-  id: 19918350743955397
+  id: 39096363227102635
   identification: 
     name: LOV_STATUSES
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -53,9 +62,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_SWIMLANES =======================
-  id: 19919016269955397
+  id: 39097028753102635
   identification: 
     name: LOV_SWIMLANES
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -70,9 +82,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_OWNERS ==========================
-  id: 19920099360955398
+  id: 39098111844102636
   identification: 
     name: LOV_OWNERS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -87,9 +102,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_PROJECTS ========================
-  id: 23314637906165586
+  id: 42492650389312824
   identification: 
     name: LOV_PROJECTS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -104,9 +122,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_CATEGORIES ======================
-  id: 23488253257018677
+  id: 42666265740165915
   identification: 
     name: LOV_CATEGORIES
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -123,9 +144,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_USERS ===========================
-  id: 23489673221151564
+  id: 42667685704298802
   identification: 
     name: LOV_USERS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -140,9 +164,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_SEQUENCES =======================
-  id: 26408996815154587
+  id: 45587009298301825
   identification: 
     name: LOV_SEQUENCES
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -157,9 +184,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_REPOS ===========================
-  id: 26957139852151500
+  id: 46135152335298738
   identification: 
     name: LOV_REPOS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -176,9 +206,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_REPO_OWNERS =====================
-  id: 26958162062151510
+  id: 46136174545298748
   identification: 
     name: LOV_REPO_OWNERS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -193,9 +226,12 @@
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_STATUSES_ALL ====================
-  id: 28297973486714089
+  id: 47475985969861327
   identification: 
     name: LOV_STATUSES_ALL
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -212,9 +248,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_BOARDS_BULK =====================
-  id: 28426482603929748
+  id: 47604495087076986
   identification: 
     name: LOV_BOARDS_BULK
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -231,9 +270,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_SWIMLANES_BULK ==================
-  id: 28442297255031943
+  id: 47620309738179181
   identification: 
     name: LOV_SWIMLANES_BULK
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -250,9 +292,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_STATUSES_BULK ===================
-  id: 28442579523033735
+  id: 47620592006180973
   identification: 
     name: LOV_STATUSES_BULK
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -269,9 +314,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_OWNERS_BULK =====================
-  id: 28444628735084001
+  id: 47622641218231239
   identification: 
     name: LOV_OWNERS_BULK
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -288,9 +336,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_CATEGORIES_BULK =================
-  id: 28445093477086550
+  id: 47623105960233788
   identification: 
     name: LOV_CATEGORIES_BULK
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -307,9 +358,12 @@
     group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_CARD_AUTOCOMPLETE ===============
-  id: 38338004600974250
+  id: 57516017084121488
   identification: 
     name: LOV_CARD_AUTOCOMPLETE
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database

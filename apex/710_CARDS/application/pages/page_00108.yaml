@@ -5,7 +5,7 @@ identification:
   name: Merge with Card
   alias: MERGE-CARD
   title: Merge with Card
-  page-group: 1) CARDS # 23490192563159466
+  page-group: 1) CARDS # 42668205046306704
 
 appearance: 
   page-mode: Modal Dialog
@@ -26,7 +26,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -45,15 +45,15 @@ server-cache:
 
 regions: 
 - # ====== Region: [FORM] ======================================
-  id: 150242513538329562
+  id: 169420526021476800
   identification: 
-    title: '[FORM]'
+    name: '[FORM]'
     type: Static Content
 
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -61,7 +61,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 33881254928153735
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -73,9 +73,6 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -86,15 +83,15 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Merge #&P108_CARD_ID. into Card =============
-  id: 214346272355845118
+  id: 233524284838992356
   identification: 
-    title: 'Merge #&P108_CARD_ID. into Card'
+    name: 'Merge #&P108_CARD_ID. into Card'
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -102,7 +99,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 33914493478153754
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -114,9 +111,6 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -128,7 +122,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P108_TARGET_CARD_ID ======================
-  id: 105947347138320070
+  id: 125125359621467308
   identification: 
     name: P108_TARGET_CARD_ID
     type: Popup LOV
@@ -140,15 +134,17 @@ page-items:
   settings: 
     display-as: Inline Popup
     initial-fetch: Automatic with Current Value
-    multiple-values: false
     manual-entry: false
     search-as-you-type: true
     minimum-characters: No minimum (0)
 
+  multiple-values: 
+    type: No
+
   layout: 
     sequence: 10
-    region: '[FORM]' # 150242513538329562
-    position: BODY
+    region: '[FORM]' # 169420526021476800
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -158,7 +154,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 34018942203153820
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -168,7 +164,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CARD_AUTOCOMPLETE # 38338004600974250
+    list-of-values: LOV_CARD_AUTOCOMPLETE # 57516017084121488
     display-extra-values: true
     display-null-value: true
 
@@ -200,7 +196,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P108_CARD_ID =============================
-  id: 105948336533320079
+  id: 125126349016467317
   identification: 
     name: P108_CARD_ID
     type: Hidden
@@ -210,8 +206,8 @@ page-items:
 
   layout: 
     sequence: 40
-    region: 'Merge #&P108_CARD_ID. into Card' # 214346272355845118
-    position: BODY
+    region: 'Merge #&P108_CARD_ID. into Card' # 233524284838992356
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -230,7 +226,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P108_CLIENT_ID ===========================
-  id: 106566239426205280
+  id: 125744251909352518
   identification: 
     name: P108_CLIENT_ID
     type: Hidden
@@ -240,8 +236,8 @@ page-items:
 
   layout: 
     sequence: 10
-    region: 'Merge #&P108_CARD_ID. into Card' # 214346272355845118
-    position: BODY
+    region: 'Merge #&P108_CARD_ID. into Card' # 233524284838992356
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -265,7 +261,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P108_PROJECT_ID ==========================
-  id: 106566388398205281
+  id: 125744400881352519
   identification: 
     name: P108_PROJECT_ID
     type: Hidden
@@ -275,8 +271,8 @@ page-items:
 
   layout: 
     sequence: 20
-    region: 'Merge #&P108_CARD_ID. into Card' # 214346272355845118
-    position: BODY
+    region: 'Merge #&P108_CARD_ID. into Card' # 233524284838992356
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -300,7 +296,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P108_BOARD_ID ============================
-  id: 106566423358205282
+  id: 125744435841352520
   identification: 
     name: P108_BOARD_ID
     type: Hidden
@@ -310,8 +306,8 @@ page-items:
 
   layout: 
     sequence: 30
-    region: 'Merge #&P108_CARD_ID. into Card' # 214346272355845118
-    position: BODY
+    region: 'Merge #&P108_CARD_ID. into Card' # 233524284838992356
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -336,15 +332,15 @@ page-items:
 
 buttons: 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 37727198315953136
+  id: 56905210799100374
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 20
-    region: 'Merge #&P108_CARD_ID. into Card' # 214346272355845118
-    position: RIGHT_OF_TITLE
+    region: 'Merge #&P108_CARD_ID. into Card' # 233524284838992356
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -352,7 +348,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 34020683404153823
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -368,15 +364,15 @@ buttons:
     static-id: CLOSE_DIALOG
 
 - # ====== Button: MERGE_CARD ==================================
-  id: 38333011647974206
+  id: 57511024131121444
   identification: 
     button-name: MERGE_CARD
     label: Merge Card
 
   layout: 
     sequence: 10
-    region: '[FORM]' # 150242513538329562
-    position: NEXT
+    region: '[FORM]' # 169420526021476800
+    slot: NEXT
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -384,7 +380,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 34021473197153827
+    button-template: Text
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -394,6 +390,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
   server-side-condition: 
@@ -402,7 +399,7 @@ buttons:
 
 processes: 
 - # ====== Process: CLOSE_DIALOG ===============================
-  id: 37727670125953141
+  id: 56905682609100379
   identification: 
     name: CLOSE_DIALOG
     type: Close Dialog
@@ -422,7 +419,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: MERGE_CARDS ================================
-  id: 38335919310974239
+  id: 57513931794121477
   identification: 
     name: MERGE_CARDS
     type: Invoke API
@@ -443,11 +440,11 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: MERGE_CARD # 38333011647974206
+    when-button-pressed: MERGE_CARD # 57511024131121444
 
   parameters: 
   - # ====== Parameter: in_source_card_id ========================
-    id: 37726285407953127
+    id: 56904297891100365
     identification: 
       name: in_source_card_id
 
@@ -464,7 +461,7 @@ processes:
       display-sequence: 10
 
   - # ====== Parameter: in_target_card_id ========================
-    id: 37726344838953128
+    id: 56904357322100366
     identification: 
       name: in_target_card_id
 
@@ -481,7 +478,7 @@ processes:
       display-sequence: 20
 
 - # ====== Process: PASS_NEW_ID_TO_PARENT ======================
-  id: 38405557012540103
+  id: 57583569495687341
   identification: 
     name: PASS_NEW_ID_TO_PARENT
     type: Execute Code
@@ -501,5 +498,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: MERGE_CARD # 38333011647974206
+    when-button-pressed: MERGE_CARD # 57511024131121444
 

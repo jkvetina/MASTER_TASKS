@@ -5,11 +5,11 @@ identification:
   name: Download File
   alias: DOWNLOAD-FILE
   title: Download File
-  page-group: 1) CARDS # 23490192563159466
+  page-group: 1) CARDS # 42668205046306704
 
 appearance: 
   page-mode: Normal
-  page-template: Minimal (No Navigation) # 33855748334153718
+  page-template: Minimal (No Navigation)
   template-options: 
   - '#DEFAULT#'
 
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MASTER - IS_USER # 70314822393792529
+  authorization-scheme: IS_USER # 39926727961197497
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 page-items: 
 - # ====== Page Item: P106_FILE_ID =============================
-  id: 105412845587338237
+  id: 124590858070485475
   identification: 
     name: P106_FILE_ID
     type: Hidden
@@ -51,7 +51,7 @@ page-items:
   layout: 
     sequence: 10
     region: No Parent
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -71,7 +71,7 @@ page-items:
 
 processes: 
 - # ====== Process: DOWNLOAD_FILE ==============================
-  id: 40022146811783282
+  id: 59200159294930520
   identification: 
     name: DOWNLOAD_FILE
     type: Execute Code
