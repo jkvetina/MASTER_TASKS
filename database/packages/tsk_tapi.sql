@@ -7,7 +7,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_client_id            tsk_clients.client_id%TYPE      := NULL
     )
     AS
-        c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR   := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -22,7 +22,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- are we renaming the primary key?
         IF c_action = 'U' AND in_client_id != rec.client_id THEN
-            gen_tapi.rename_primary_key (
+            core_tapi.rename_primary_key (
                 in_column_name  => 'CLIENT_ID',
                 in_old_key      => in_client_id,
                 in_new_key      => rec.client_id
@@ -77,7 +77,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_project_id       tsk_projects.project_id%TYPE        := NULL
     )
     AS
-        c_action            CONSTANT CHAR                       := gen_tapi.get_action(in_action);
+        c_action            CONSTANT CHAR                       := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -93,7 +93,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- are we renaming the primary key?
         IF c_action = 'U' AND in_project_id != rec.project_id THEN
-            gen_tapi.rename_primary_key (
+            core_tapi.rename_primary_key (
                 in_column_name  => 'PROJECT_ID',
                 in_old_key      => in_project_id,
                 in_new_key      => rec.project_id
@@ -154,7 +154,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_board_id         tsk_boards.board_id%TYPE        := NULL
     )
     AS
-        c_action            CONSTANT CHAR                   := gen_tapi.get_action(in_action);
+        c_action            CONSTANT CHAR                   := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -221,7 +221,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_status_id            tsk_statuses.status_id%TYPE             := NULL
     )
     AS
-        c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR                           := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -236,7 +236,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- are we renaming the primary key?
         IF c_action = 'U' AND in_status_id != rec.status_id THEN
-            gen_tapi.rename_primary_key (
+            core_tapi.rename_primary_key (
                 in_column_name  => 'STATUS_ID',
                 in_old_key      => in_status_id,
                 in_new_key      => rec.status_id
@@ -306,7 +306,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_swimlane_id          tsk_swimlanes.swimlane_id%TYPE          := NULL
     )
     AS
-        c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR                           := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -321,7 +321,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- are we renaming the primary key?
         IF c_action = 'U' AND in_swimlane_id != rec.swimlane_id THEN
-            gen_tapi.rename_primary_key (
+            core_tapi.rename_primary_key (
                 in_column_name  => 'SWIMLANE_ID',
                 in_old_key      => in_swimlane_id,
                 in_new_key      => rec.swimlane_id
@@ -382,7 +382,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_category_id          tsk_categories.category_id%TYPE         := NULL
     )
     AS
-        c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR                           := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -397,7 +397,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- are we renaming the primary key?
         IF c_action = 'U' AND in_category_id != rec.category_id THEN
-            gen_tapi.rename_primary_key (
+            core_tapi.rename_primary_key (
                 in_column_name  => 'CATEGORY_ID',
                 in_old_key      => in_category_id,
                 in_new_key      => rec.category_id
@@ -466,7 +466,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_sequence_id          tsk_sequences.sequence_id%TYPE          := NULL
     )
     AS
-        c_action                CONSTANT CHAR                           := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR                           := core_tapi.get_action(in_action);
     BEGIN
         -- overwrite some values
         rec.updated_by          := core.get_user_id();
@@ -496,7 +496,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_action                               CHAR                                := NULL
     )
     AS
-        c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR   := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -583,7 +583,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_action                               CHAR                                := NULL
     )
     AS
-        c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR   := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -622,7 +622,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_action               CHAR                            := NULL
     )
     AS
-        c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR   := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -659,7 +659,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_card_id              tsk_card_commits.card_id%TYPE   := NULL
     )
     AS
-        c_action                CONSTANT CHAR   := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR   := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -698,7 +698,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_comment_id           tsk_card_comments.comment_id%TYPE           := NULL
     )
     AS
-        c_action                CONSTANT CHAR                               := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR                               := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -744,7 +744,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_file_id          tsk_card_files.file_id%TYPE             := NULL
     )
     AS
-        c_action            CONSTANT CHAR                           := gen_tapi.get_action(in_action);
+        c_action            CONSTANT CHAR                           := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -789,7 +789,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_owner_id             tsk_repos.owner_id%TYPE             := NULL
     )
     AS
-        c_action                CONSTANT CHAR                       := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR                       := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
@@ -803,7 +803,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
 
         -- are we renaming the primary key?
         IF c_action = 'U' AND in_repo_id != rec.repo_id THEN
-            gen_tapi.rename_primary_key (
+            core_tapi.rename_primary_key (
                 in_column_name  => 'REPO_ID',
                 in_old_key      => in_repo_id,
                 in_new_key      => rec.repo_id
@@ -811,7 +811,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         END IF;
         --
         IF c_action = 'U' AND in_owner_id != rec.owner_id THEN
-            gen_tapi.rename_primary_key (
+            core_tapi.rename_primary_key (
                 in_column_name  => 'OWNER_ID',
                 in_old_key      => in_owner_id,
                 in_new_key      => rec.owner_id
@@ -868,7 +868,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
         in_owner_id             tsk_repo_endpoints.owner_id%TYPE            := NULL
     )
     AS
-        c_action                CONSTANT CHAR                               := gen_tapi.get_action(in_action);
+        c_action                CONSTANT CHAR                               := core_tapi.get_action(in_action);
     BEGIN
         -- delete record
         IF c_action = 'D' THEN
