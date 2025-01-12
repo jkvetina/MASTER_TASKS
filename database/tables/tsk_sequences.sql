@@ -10,7 +10,7 @@ CREATE TABLE tsk_sequences (
     CONSTRAINT ch_tsk_sequences_active
         CHECK (
             is_active = 'Y' OR is_active IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_sequences
         PRIMARY KEY (

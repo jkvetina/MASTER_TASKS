@@ -8,7 +8,7 @@ CREATE TABLE tsk_clients (
     CONSTRAINT ch_tsk_clients_active
         CHECK (
             is_active = 'Y' OR is_active IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_clients
         PRIMARY KEY (client_id)

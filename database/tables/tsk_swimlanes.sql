@@ -11,7 +11,7 @@ CREATE TABLE tsk_swimlanes (
     CONSTRAINT ch_tsk_swimlanes
         CHECK (
             is_active = 'Y' OR is_active IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_swimlanes
         PRIMARY KEY (

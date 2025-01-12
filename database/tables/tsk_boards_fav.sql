@@ -32,16 +32,6 @@ CREATE TABLE tsk_boards_fav (
             project_id,
             swimlane_id
         )
-        DEFERRABLE INITIALLY DEFERRED,
-    --
-    CONSTRAINT fk_tsk_boards_fav_owner
-        FOREIGN KEY (owner_id)
-        REFERENCES app_users (user_id)
-        DEFERRABLE INITIALLY DEFERRED,
-    --
-    CONSTRAINT fk_tsk_boards_fav_user
-        FOREIGN KEY (user_id)
-        REFERENCES app_users (user_id)
         DEFERRABLE INITIALLY DEFERRED
 );
 --

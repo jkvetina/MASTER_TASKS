@@ -11,7 +11,7 @@ CREATE TABLE tsk_card_checklist (
     CONSTRAINT ch_tsk_card_checklist_done
         CHECK (
             checklist_done = 'Y' OR checklist_done IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_card_checklist
         PRIMARY KEY (checklist_id),

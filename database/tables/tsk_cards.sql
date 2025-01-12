@@ -63,11 +63,6 @@ CREATE TABLE tsk_cards (
             project_id,
             category_id
         )
-        DEFERRABLE INITIALLY DEFERRED,
-    --
-    CONSTRAINT fk_tsk_cards_owner
-        FOREIGN KEY (owner_id)
-        REFERENCES app_users (user_id)
         DEFERRABLE INITIALLY DEFERRED
 );
 --

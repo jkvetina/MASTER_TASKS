@@ -14,7 +14,17 @@ CREATE TABLE tsk_boards (
     CONSTRAINT ch_tsk_boards
         CHECK (
             is_active = 'Y' OR is_active IS NULL
-        ),
+        ) ENABLE,
+    --
+    CONSTRAINT ch_tsk_boards_default
+        CHECK (
+            is_default = 'Y' OR is_default IS NULL
+        ) ENABLE,
+    --
+    CONSTRAINT ch_tsk_boards_simple
+        CHECK (
+            is_simple = 'Y' OR is_simple IS NULL
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_boards
         PRIMARY KEY (board_id),
@@ -24,16 +34,6 @@ CREATE TABLE tsk_boards (
             client_id,
             project_id,
             board_name
-        ),
-    --
-    CONSTRAINT ch_tsk_boards_default
-        CHECK (
-            is_default = 'Y' OR is_default IS NULL
-        ),
-    --
-    CONSTRAINT ch_tsk_boards_simple
-        CHECK (
-            is_simple = 'Y' OR is_simple IS NULL
         ),
     --
     CONSTRAINT fk_tsk_boards_project

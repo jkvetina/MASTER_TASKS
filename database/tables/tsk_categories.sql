@@ -15,12 +15,12 @@ CREATE TABLE tsk_categories (
     CONSTRAINT ch_tsk_categories
         CHECK (
             is_active = 'Y' OR is_active IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT ch_tsk_categories_default
         CHECK (
             is_default = 'Y' OR is_default IS NULL
-        ),
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_categories
         PRIMARY KEY (

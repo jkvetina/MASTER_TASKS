@@ -10,17 +10,17 @@ CREATE TABLE tsk_projects (
     CONSTRAINT ch_tsk_projects
         CHECK (
             is_active = 'Y' OR is_active IS NULL
-        ),
+        ) ENABLE,
+    --
+    CONSTRAINT ch_tsk_projects_default
+        CHECK (
+            is_default = 'Y' OR is_default IS NULL
+        ) ENABLE,
     --
     CONSTRAINT pk_tsk_projects
         PRIMARY KEY (
             client_id,
             project_id
-        ),
-    --
-    CONSTRAINT ch_tsk_projects_default
-        CHECK (
-            is_default = 'Y' OR is_default IS NULL
         ),
     --
     CONSTRAINT fk_tsk_projects_client
