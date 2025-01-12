@@ -1,6 +1,6 @@
 ---
 - # ====== Classic Report Template: Alerts =====================
-  id: 53145833786301021
+  id: 40275382296866020
   identification: 
     name: Alerts
     identifier: ALERTS
@@ -8,7 +8,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63410835876439126
+      app: 800 # Master 25
+      referenced-id: 12695525249084630 # Alerts
 
   advanced: 
     translatable: false
@@ -64,7 +65,7 @@
       </a>
 
 - # ====== Classic Report Template: Badge List =================
-  id: 53146021962301022
+  id: 40275520167866021
   identification: 
     name: Badge List
     identifier: BADGE_LIST
@@ -72,7 +73,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63410980983439128
+      app: 800 # Master 25
+      referenced-id: 12695744920084631 # Badge List
 
   advanced: 
     translatable: false
@@ -122,8 +124,52 @@
       </a>
 
   template-options: 
+  - # ====== Template Option: Apply Theme Colors =================
+    id: 40275896127866022
+    identification: 
+      name: Apply Theme Colors
+      identifier: APPLY_THEME_COLORS
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - u-colors
+
+  - # ====== Template Option: Circular ===========================
+    id: 40276267908866023
+    identification: 
+      name: Circular
+      identifier: CIRCULAR
+      group: Style
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-BadgeList--circular
+
+  - # ====== Template Option: Grid ===============================
+    id: 40276408561866024
+    identification: 
+      name: Grid
+      identifier: GRID
+      group: Style
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-BadgeList--dash
+
   - # ====== Template Option: 128px ==============================
-    id: 53146498647301023
+    id: 40276824530866024
     identification: 
       name: 128px
       identifier: 128PX
@@ -137,8 +183,68 @@
       css-classes: 
       - t-BadgeList--xxlarge
 
+  - # ====== Template Option: 32px ===============================
+    id: 40277011808866025
+    identification: 
+      name: 32px
+      identifier: 32PX
+      group: Badge Size
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-BadgeList--small
+
+  - # ====== Template Option: 48px ===============================
+    id: 40277246110866025
+    identification: 
+      name: 48px
+      identifier: 48PX
+      group: Badge Size
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-BadgeList--medium
+
+  - # ====== Template Option: 64px ===============================
+    id: 40277499386866026
+    identification: 
+      name: 64px
+      identifier: 64PX
+      group: Badge Size
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-BadgeList--large
+
+  - # ====== Template Option: 96px ===============================
+    id: 40277651073866026
+    identification: 
+      name: 96px
+      identifier: 96PX
+      group: Badge Size
+      sequence: 40
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-BadgeList--xlarge
+
   - # ====== Template Option: 2 Column Grid ======================
-    id: 53146946942301023
+    id: 40278015245866027
     identification: 
       name: 2 Column Grid
       identifier: 2COLUMNGRID
@@ -155,23 +261,8 @@
     help: 
       help-text: Arrange badges in a two column grid
 
-  - # ====== Template Option: 32px ===============================
-    id: 53147140064301023
-    identification: 
-      name: 32px
-      identifier: 32PX
-      group: Badge Size
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-BadgeList--small
-
   - # ====== Template Option: 3 Column Grid ======================
-    id: 53147300186301023
+    id: 40278223636866028
     identification: 
       name: 3 Column Grid
       identifier: 3COLUMNGRID
@@ -189,23 +280,8 @@
     help: 
       help-text: Arrange badges in a 3 column grid
 
-  - # ====== Template Option: 48px ===============================
-    id: 53147521120301023
-    identification: 
-      name: 48px
-      identifier: 48PX
-      group: Badge Size
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-BadgeList--medium
-
   - # ====== Template Option: 4 Column Grid ======================
-    id: 53147763978301023
+    id: 40278475230866028
     identification: 
       name: 4 Column Grid
       identifier: 4COLUMNGRID
@@ -221,7 +297,7 @@
       - t-BadgeList--4cols
 
   - # ====== Template Option: 5 Column Grid ======================
-    id: 53147920592301024
+    id: 40278671307866029
     identification: 
       name: 5 Column Grid
       identifier: 5COLUMNGRID
@@ -236,82 +312,8 @@
       - t-BadgeList--cols
       - t-BadgeList--5cols
 
-  - # ====== Template Option: 64px ===============================
-    id: 53148142552301024
-    identification: 
-      name: 64px
-      identifier: 64PX
-      group: Badge Size
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-BadgeList--large
-
-  - # ====== Template Option: 96px ===============================
-    id: 53148304906301024
-    identification: 
-      name: 96px
-      identifier: 96PX
-      group: Badge Size
-      sequence: 40
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-BadgeList--xlarge
-
-  - # ====== Template Option: Apply Theme Colors =================
-    id: 53148537575301024
-    identification: 
-      name: Apply Theme Colors
-      identifier: APPLY_THEME_COLORS
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - u-colors
-
-  - # ====== Template Option: Circular ===========================
-    id: 53148909685301024
-    identification: 
-      name: Circular
-      identifier: CIRCULAR
-      group: Style
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-BadgeList--circular
-
-  - # ====== Template Option: Span Horizontally ==================
-    id: 53149161603301024
-    identification: 
-      name: Span Horizontally
-      identifier: FIXED
-      group: Layout
-      sequence: 60
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-BadgeList--fixed
-
   - # ====== Template Option: Flexible Box =======================
-    id: 53149384626301024
+    id: 40278889585866029
     identification: 
       name: Flexible Box
       identifier: FLEXIBLEBOX
@@ -326,7 +328,7 @@
       - t-BadgeList--flex
 
   - # ====== Template Option: Float Items ========================
-    id: 53149510325301025
+    id: 40279063743866029
     identification: 
       name: Float Items
       identifier: FLOATITEMS
@@ -340,23 +342,23 @@
       css-classes: 
       - t-BadgeList--float
 
-  - # ====== Template Option: Grid ===============================
-    id: 53149772038301025
+  - # ====== Template Option: Span Horizontally ==================
+    id: 40279210312866030
     identification: 
-      name: Grid
-      identifier: GRID
-      group: Style
-      sequence: 30
+      name: Span Horizontally
+      identifier: FIXED
+      group: Layout
+      sequence: 60
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-BadgeList--dash
+      - t-BadgeList--fixed
 
   - # ====== Template Option: Stacked ============================
-    id: 53149935275301025
+    id: 40279468052866030
     identification: 
       name: Stacked
       identifier: STACKED
@@ -371,7 +373,7 @@
       - t-BadgeList--stacked
 
 - # ====== Classic Report Template: Cards ======================
-  id: 53150023169301025
+  id: 40279513832866030
   identification: 
     name: Cards
     identifier: CARDS
@@ -379,7 +381,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63415046328439130
+      app: 800 # Master 25
+      referenced-id: 12699745074084640 # Cards
 
   advanced: 
     translatable: false
@@ -454,128 +457,8 @@
       </a>
 
   template-options: 
-  - # ====== Template Option: 2 Columns ==========================
-    id: 53150310423301025
-    identification: 
-      name: 2 Columns
-      identifier: 2_COLUMNS
-      group: Layout
-      sequence: 15
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--cols
-
-  - # ====== Template Option: 2 Lines ============================
-    id: 53150698770301025
-    identification: 
-      name: 2 Lines
-      identifier: 2_LINES
-      group: Body Text
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--desc-2ln
-
-  - # ====== Template Option: 3 Columns ==========================
-    id: 53150986891301026
-    identification: 
-      name: 3 Columns
-      identifier: 3_COLUMNS
-      group: Layout
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--3cols
-
-  - # ====== Template Option: 3 Lines ============================
-    id: 53151145670301026
-    identification: 
-      name: 3 Lines
-      identifier: 3_LINES
-      group: Body Text
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--desc-3ln
-
-  - # ====== Template Option: 4 Columns ==========================
-    id: 53151328626301026
-    identification: 
-      name: 4 Columns
-      identifier: 4_COLUMNS
-      group: Layout
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--4cols
-
-  - # ====== Template Option: 4 Lines ============================
-    id: 53151533860301026
-    identification: 
-      name: 4 Lines
-      identifier: 4_LINES
-      group: Body Text
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--desc-4ln
-
-  - # ====== Template Option: 5 Columns ==========================
-    id: 53151725152301026
-    identification: 
-      name: 5 Columns
-      identifier: 5_COLUMNS
-      group: Layout
-      sequence: 50
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--5cols
-
-  - # ====== Template Option: Basic ==============================
-    id: 53151970541301026
-    identification: 
-      name: Basic
-      identifier: BASIC
-      group: Style
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--basic
-
   - # ====== Template Option: Block ==============================
-    id: 53152169654301026
+    id: 40279887727866031
     identification: 
       name: Block
       identifier: BLOCK
@@ -591,86 +474,8 @@
       - t-Cards--block
       - force-fa-lg
 
-  - # ====== Template Option: Color Fill =========================
-    id: 53152536671301026
-    identification: 
-      name: Color Fill
-      identifier: CARDS_COLOR_FILL
-      group: Animation
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--animColorFill
-
-  - # ====== Template Option: Raise Card =========================
-    id: 53152754982301027
-    identification: 
-      name: Raise Card
-      identifier: CARD_RAISE_CARD
-      group: Animation
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--animRaiseCard
-
-  - # ====== Template Option: Compact ============================
-    id: 53152979752301027
-    identification: 
-      name: Compact
-      identifier: COMPACT
-      group: Style
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--compact
-
-    help: 
-      help-text: Use this option when you want to show smaller cards.
-
-  - # ====== Template Option: Display Icons ======================
-    id: 53153381491301027
-    identification: 
-      name: Display Icons
-      identifier: DISPLAY_ICONS
-      group: Icons
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--displayIcons
-
-  - # ====== Template Option: Display Initials ===================
-    id: 53153556260301027
-    identification: 
-      name: Display Initials
-      identifier: DISPLAY_INITIALS
-      group: Icons
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--displayInitials
-
   - # ====== Template Option: Display Subtitle ===================
-    id: 53153719579301027
+    id: 40280091045866032
     identification: 
       name: Display Subtitle
       identifier: DISPLAY_SUBTITLE
@@ -683,75 +488,8 @@
       css-classes: 
       - t-Cards--displaySubtitle
 
-  - # ====== Template Option: Featured ===========================
-    id: 53153911369301027
-    identification: 
-      name: Featured
-      identifier: FEATURED
-      group: Style
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--featured
-      - force-fa-lg
-
-  - # ====== Template Option: Float ==============================
-    id: 53154154620301027
-    identification: 
-      name: Float
-      identifier: FLOAT
-      group: Layout
-      sequence: 60
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--float
-
-  - # ====== Template Option: Hidden =============================
-    id: 53154375751301027
-    identification: 
-      name: Hidden
-      identifier: HIDDEN_BODY_TEXT
-      group: Body Text
-      sequence: 50
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--hideBody
-
-    help: 
-      help-text: This option hides the card body which contains description and subtext.
-
-  - # ====== Template Option: Rounded Corners ====================
-    id: 53154750892301028
-    identification: 
-      name: Rounded Corners
-      identifier: ICONS_ROUNDED
-      group: Icon Shape
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Cards--iconsRounded
-
-    help: 
-      help-text: The icons are displayed within a square with rounded corners.
-
   - # ====== Template Option: Square =============================
-    id: 53154892783301028
+    id: 40280408468866033
     identification: 
       name: Square
       identifier: ICONS_SQUARE
@@ -768,8 +506,131 @@
     help: 
       help-text: The icons are displayed within a square shape.
 
+  - # ====== Template Option: Rounded Corners ====================
+    id: 40280673021866033
+    identification: 
+      name: Rounded Corners
+      identifier: ICONS_ROUNDED
+      group: Icon Shape
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--iconsRounded
+
+    help: 
+      help-text: The icons are displayed within a square with rounded corners.
+
+  - # ====== Template Option: Color Fill =========================
+    id: 40281013699866034
+    identification: 
+      name: Color Fill
+      identifier: CARDS_COLOR_FILL
+      group: Animation
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--animColorFill
+
+  - # ====== Template Option: Raise Card =========================
+    id: 40281214272866035
+    identification: 
+      name: Raise Card
+      identifier: CARD_RAISE_CARD
+      group: Animation
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--animRaiseCard
+
+  - # ====== Template Option: 2 Columns ==========================
+    id: 40281414417866035
+    identification: 
+      name: 2 Columns
+      identifier: 2_COLUMNS
+      group: Layout
+      sequence: 15
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--cols
+
+  - # ====== Template Option: 3 Columns ==========================
+    id: 40281602033866036
+    identification: 
+      name: 3 Columns
+      identifier: 3_COLUMNS
+      group: Layout
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--3cols
+
+  - # ====== Template Option: 4 Columns ==========================
+    id: 40281842915866036
+    identification: 
+      name: 4 Columns
+      identifier: 4_COLUMNS
+      group: Layout
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--4cols
+
+  - # ====== Template Option: 5 Columns ==========================
+    id: 40282085351866037
+    identification: 
+      name: 5 Columns
+      identifier: 5_COLUMNS
+      group: Layout
+      sequence: 50
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--5cols
+
+  - # ====== Template Option: Float ==============================
+    id: 40282214910866037
+    identification: 
+      name: Float
+      identifier: FLOAT
+      group: Layout
+      sequence: 60
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--float
+
   - # ====== Template Option: Span Horizontally ==================
-    id: 53155124136301028
+    id: 40282473419866038
     identification: 
       name: Span Horizontally
       identifier: SPAN_HORIZONTALLY
@@ -783,8 +644,53 @@
       css-classes: 
       - t-Cards--spanHorizontally
 
+  - # ====== Template Option: 2 Lines ============================
+    id: 40282874153866038
+    identification: 
+      name: 2 Lines
+      identifier: 2_LINES
+      group: Body Text
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--desc-2ln
+
+  - # ====== Template Option: 3 Lines ============================
+    id: 40283061695866039
+    identification: 
+      name: 3 Lines
+      identifier: 3_LINES
+      group: Body Text
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--desc-3ln
+
+  - # ====== Template Option: 4 Lines ============================
+    id: 40283269009866039
+    identification: 
+      name: 4 Lines
+      identifier: 4_LINES
+      group: Body Text
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--desc-4ln
+
   - # ====== Template Option: Apply Theme Colors =================
-    id: 53155321694301028
+    id: 40283436938866040
     identification: 
       name: Apply Theme Colors
       identifier: USE_THEME_COLORS
@@ -797,8 +703,105 @@
       css-classes: 
       - u-colors
 
+  - # ====== Template Option: Display Icons ======================
+    id: 40283800430866041
+    identification: 
+      name: Display Icons
+      identifier: DISPLAY_ICONS
+      group: Icons
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--displayIcons
+
+  - # ====== Template Option: Display Initials ===================
+    id: 40284087822866041
+    identification: 
+      name: Display Initials
+      identifier: DISPLAY_INITIALS
+      group: Icons
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--displayInitials
+
+  - # ====== Template Option: Featured ===========================
+    id: 40284231419866042
+    identification: 
+      name: Featured
+      identifier: FEATURED
+      group: Style
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--featured
+      - force-fa-lg
+
+  - # ====== Template Option: Basic ==============================
+    id: 40284491458866042
+    identification: 
+      name: Basic
+      identifier: BASIC
+      group: Style
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--basic
+
+  - # ====== Template Option: Compact ============================
+    id: 40284638090866042
+    identification: 
+      name: Compact
+      identifier: COMPACT
+      group: Style
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--compact
+
+    help: 
+      help-text: Use this option when you want to show smaller cards.
+
+  - # ====== Template Option: Hidden =============================
+    id: 40284811385866043
+    identification: 
+      name: Hidden
+      identifier: HIDDEN_BODY_TEXT
+      group: Body Text
+      sequence: 50
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Cards--hideBody
+
+    help: 
+      help-text: This option hides the card body which contains description and subtext.
+
 - # ====== Classic Report Template: Comments ===================
-  id: 53155415532301028
+  id: 40284996843866043
   identification: 
     name: Comments
     identifier: COMMENTS
@@ -806,7 +809,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63424470034439136
+      app: 800 # Master 25
+      referenced-id: 12705190063084653 # Comments
 
   advanced: 
     translatable: false
@@ -862,41 +866,8 @@
       </a>
 
   template-options: 
-  - # ====== Template Option: Basic ==============================
-    id: 53155942015301028
-    identification: 
-      name: Basic
-      identifier: BASIC
-      group: Comments Style
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Comments--basic
-
-  - # ====== Template Option: Rounded Corners ====================
-    id: 53156155256301028
-    identification: 
-      name: Rounded Corners
-      identifier: ICONS_ROUNDED
-      group: Icon Shape
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Comments--iconsRounded
-
-    help: 
-      help-text: The icons are displayed within a square with rounded corners.
-
   - # ====== Template Option: Square =============================
-    id: 53156293383301028
+    id: 40285233702866044
     identification: 
       name: Square
       identifier: ICONS_SQUARE
@@ -913,8 +884,41 @@
     help: 
       help-text: The icons are displayed within a square shape.
 
+  - # ====== Template Option: Rounded Corners ====================
+    id: 40285402333866044
+    identification: 
+      name: Rounded Corners
+      identifier: ICONS_ROUNDED
+      group: Icon Shape
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Comments--iconsRounded
+
+    help: 
+      help-text: The icons are displayed within a square with rounded corners.
+
+  - # ====== Template Option: Basic ==============================
+    id: 40285894403866045
+    identification: 
+      name: Basic
+      identifier: BASIC
+      group: Comments Style
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Comments--basic
+
   - # ====== Template Option: Speech Bubbles =====================
-    id: 53156570753301029
+    id: 40286088579866046
     identification: 
       name: Speech Bubbles
       identifier: SPEECH_BUBBLES
@@ -929,7 +933,7 @@
       - t-Comments--chat
 
 - # ====== Classic Report Template: Content Row ================
-  id: 53156665546301029
+  id: 40286153536866046
   identification: 
     name: Content Row
     identifier: CONTENT_ROW
@@ -937,7 +941,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63429215121439139
+      app: 800 # Master 25
+      referenced-id: 12706351862084656 # Content Row
 
   advanced: 
     translatable: false
@@ -992,61 +997,43 @@
 
   template-options: 
   - # ====== Template Option: Hidden =============================
-    id: 53157106825301031
+    id: 40286699507866047
     identification: 
       name: Hidden
-      identifier: ACTIONS_HIDDEN
-      group: Actions
-      sequence: 60
+      identifier: TITLE_HIDDEN
+      group: Title
+      sequence: 30
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-ContentRow--hideActions
+      - t-ContentRow--hideTitle
 
     help: 
-      help-text: Hides the Actions column from being rendered on the screen.
-
-  - # ====== Template Option: Top ================================
-    id: 53157581313301031
-    identification: 
-      name: Top
-      identifier: ALIGNMENT_TOP
-      group: Content Alignment
-      sequence: 100
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-ContentRow--alignTop
-
-    help: 
-      help-text: Aligns the content to the top of the row. This is useful when you expect that yours rows will vary in height (e.g. some rows will have longer descriptions than others).
+      help-text: Hides the Title from being rendered on the screen.
 
   - # ====== Template Option: Hidden =============================
-    id: 53157971197301031
+    id: 40287013506866048
     identification: 
       name: Hidden
-      identifier: DESCRIPTION_HIDDEN
-      group: Description
-      sequence: 40
+      identifier: SELECTION_HIDDEN
+      group: Selection
+      sequence: 10
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-ContentRow--hideDescription
+      - t-ContentRow--hideSelection
 
     help: 
-      help-text: Hides the Description from being rendered on the screen.
+      help-text: Hides the Selection column from being rendered on the screen.
 
   - # ====== Template Option: Hidden =============================
-    id: 53158300604301031
+    id: 40287455863866049
     identification: 
       name: Hidden
       identifier: ICON_HIDDEN
@@ -1064,7 +1051,25 @@
       help-text: Hides the Icon from being rendered on the screen.
 
   - # ====== Template Option: Hidden =============================
-    id: 53158782444301032
+    id: 40287868535866050
+    identification: 
+      name: Hidden
+      identifier: DESCRIPTION_HIDDEN
+      group: Description
+      sequence: 40
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-ContentRow--hideDescription
+
+    help: 
+      help-text: Hides the Description from being rendered on the screen.
+
+  - # ====== Template Option: Hidden =============================
+    id: 40288249053866051
     identification: 
       name: Hidden
       identifier: MISC_HIDDEN
@@ -1082,25 +1087,43 @@
       help-text: Hides the Misc column from being rendered on the screen.
 
   - # ====== Template Option: Hidden =============================
-    id: 53159106249301032
+    id: 40288618798866051
     identification: 
       name: Hidden
-      identifier: SELECTION_HIDDEN
-      group: Selection
-      sequence: 10
+      identifier: ACTIONS_HIDDEN
+      group: Actions
+      sequence: 60
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-ContentRow--hideSelection
+      - t-ContentRow--hideActions
 
     help: 
-      help-text: Hides the Selection column from being rendered on the screen.
+      help-text: Hides the Actions column from being rendered on the screen.
+
+  - # ====== Template Option: Top ================================
+    id: 40289067744866052
+    identification: 
+      name: Top
+      identifier: ALIGNMENT_TOP
+      group: Content Alignment
+      sequence: 100
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-ContentRow--alignTop
+
+    help: 
+      help-text: Aligns the content to the top of the row. This is useful when you expect that yours rows will vary in height (e.g. some rows will have longer descriptions than others).
 
   - # ====== Template Option: Compact ============================
-    id: 53159332784301032
+    id: 40289273640866053
     identification: 
       name: Compact
       identifier: STYLE_COMPACT
@@ -1117,26 +1140,8 @@
     help: 
       help-text: This option reduces the padding and font sizes to present a compact display of the same information.
 
-  - # ====== Template Option: Hidden =============================
-    id: 53159699971301032
-    identification: 
-      name: Hidden
-      identifier: TITLE_HIDDEN
-      group: Title
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-ContentRow--hideTitle
-
-    help: 
-      help-text: Hides the Title from being rendered on the screen.
-
 - # ====== Classic Report Template: Contextual Info ============
-  id: 53159840581301032
+  id: 40289312925866053
   identification: 
     name: Contextual Info
     identifier: CONTEXTUAL_INFO
@@ -1144,7 +1149,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63425642597439136
+      app: 800 # Master 25
+      referenced-id: 12709581329084663 # Contextual Info
 
   advanced: 
     translatable: false
@@ -1186,8 +1192,25 @@
       </a>
 
   template-options: 
+  - # ====== Template Option: Hide Empty Values ==================
+    id: 40289642109866054
+    identification: 
+      name: Hide Empty Values
+      identifier: HIDE_EMPTY_VALUES
+      sequence: 1
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-ContextualInfo--hideNulls
+
+    help: 
+      help-text: 'This option will hide the null rows. Note: This only works in browsers that supports :has() pseudo-class.'
+
   - # ====== Template Option: Stacked ============================
-    id: 53160356743301032
+    id: 40290037863866055
     identification: 
       name: Stacked
       identifier: DISPLAY_ITEMS_STACKED
@@ -1202,7 +1225,7 @@
       - t-ContextualInfo-item--stacked
 
   - # ====== Template Option: Stacked ============================
-    id: 53160769392301033
+    id: 40290413957866055
     identification: 
       name: Stacked
       identifier: DISPLAY_LABELS_STACKED
@@ -1217,7 +1240,7 @@
       - t-ContextualInfo-label--stacked
 
 - # ====== Classic Report Template: Media List =================
-  id: 53160871752301033
+  id: 40290565645866056
   identification: 
     name: Media List
     identifier: MEDIA_LIST
@@ -1225,7 +1248,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63432799814439141
+      app: 800 # Master 25
+      referenced-id: 12710795514084666 # Media List
 
   advanced: 
     translatable: false
@@ -1308,104 +1332,8 @@
     comments: ' (SELECT link_text, link_target, detail1, detail2, last_modified)'
 
   template-options: 
-  - # ====== Template Option: 2 Column Grid ======================
-    id: 53161086989301033
-    identification: 
-      name: 2 Column Grid
-      identifier: 2_COLUMN_GRID
-      group: Layout
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-MediaList--cols
-      - t-MediaList--2cols
-
-  - # ====== Template Option: 3 Column Grid ======================
-    id: 53161305114301033
-    identification: 
-      name: 3 Column Grid
-      identifier: 3_COLUMN_GRID
-      group: Layout
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-MediaList--cols
-      - t-MediaList--3cols
-
-  - # ====== Template Option: 4 Column Grid ======================
-    id: 53161581695301034
-    identification: 
-      name: 4 Column Grid
-      identifier: 4_COLUMN_GRID
-      group: Layout
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-MediaList--cols
-      - t-MediaList--4cols
-
-  - # ====== Template Option: 5 Column Grid ======================
-    id: 53161696460301034
-    identification: 
-      name: 5 Column Grid
-      identifier: 5_COLUMN_GRID
-      group: Layout
-      sequence: 40
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-MediaList--cols
-      - t-MediaList--5cols
-
-  - # ====== Template Option: Apply Theme Colors =================
-    id: 53161949571301034
-    identification: 
-      name: Apply Theme Colors
-      identifier: APPLY_THEME_COLORS
-      sequence: 40
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - u-colors
-
-  - # ====== Template Option: Rounded Corners ====================
-    id: 53162091075301034
-    identification: 
-      name: Rounded Corners
-      identifier: ICONS_ROUNDED
-      group: Icon Shape
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-MediaList--iconsRounded
-
-    help: 
-      help-text: The icons are displayed within a square with rounded corners.
-
   - # ====== Template Option: Square =============================
-    id: 53162360664301034
+    id: 40290859491866057
     identification: 
       name: Square
       identifier: ICONS_SQUARE
@@ -1422,8 +1350,26 @@
     help: 
       help-text: The icons are displayed within a square shape.
 
+  - # ====== Template Option: Rounded Corners ====================
+    id: 40291098649866057
+    identification: 
+      name: Rounded Corners
+      identifier: ICONS_ROUNDED
+      group: Icon Shape
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-MediaList--iconsRounded
+
+    help: 
+      help-text: The icons are displayed within a square with rounded corners.
+
   - # ====== Template Option: Large ==============================
-    id: 53162759425301034
+    id: 40291416434866058
     identification: 
       name: Large
       identifier: LARGE
@@ -1441,39 +1387,12 @@
     help: 
       help-text: Increases the size of the text and icons in the list.
 
-  - # ====== Template Option: Show Badges ========================
-    id: 53162889847301034
+  - # ====== Template Option: 2 Column Grid ======================
+    id: 40291642973866059
     identification: 
-      name: Show Badges
-      identifier: SHOW_BADGES
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-MediaList--showBadges
-
-  - # ====== Template Option: Show Description ===================
-    id: 53163136970301034
-    identification: 
-      name: Show Description
-      identifier: SHOW_DESCRIPTION
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-MediaList--showDesc
-
-  - # ====== Template Option: Show Icons =========================
-    id: 53163332789301034
-    identification: 
-      name: Show Icons
-      identifier: SHOW_ICONS
+      name: 2 Column Grid
+      identifier: 2_COLUMN_GRID
+      group: Layout
       sequence: 10
 
     settings: 
@@ -1481,25 +1400,59 @@
 
     appearance: 
       css-classes: 
-      - t-MediaList--showIcons
+      - t-MediaList--cols
+      - t-MediaList--2cols
 
-  - # ====== Template Option: Span Horizontal ====================
-    id: 53163498467301035
+  - # ====== Template Option: 3 Column Grid ======================
+    id: 40291843659866059
     identification: 
-      name: Span Horizontal
-      identifier: SPAN_HORIZONTAL
+      name: 3 Column Grid
+      identifier: 3_COLUMN_GRID
       group: Layout
-      sequence: 50
+      sequence: 20
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-MediaList--horizontal
+      - t-MediaList--cols
+      - t-MediaList--3cols
+
+  - # ====== Template Option: 4 Column Grid ======================
+    id: 40292045338866060
+    identification: 
+      name: 4 Column Grid
+      identifier: 4_COLUMN_GRID
+      group: Layout
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-MediaList--cols
+      - t-MediaList--4cols
+
+  - # ====== Template Option: 5 Column Grid ======================
+    id: 40292238892866060
+    identification: 
+      name: 5 Column Grid
+      identifier: 5_COLUMN_GRID
+      group: Layout
+      sequence: 40
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-MediaList--cols
+      - t-MediaList--5cols
 
   - # ====== Template Option: Stack ==============================
-    id: 53163779068301035
+    id: 40292494606866060
     identification: 
       name: Stack
       identifier: STACK
@@ -1513,8 +1466,79 @@
       css-classes: 
       - t-MediaList--stack
 
+  - # ====== Template Option: Span Horizontal ====================
+    id: 40292626804866061
+    identification: 
+      name: Span Horizontal
+      identifier: SPAN_HORIZONTAL
+      group: Layout
+      sequence: 50
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-MediaList--horizontal
+
+  - # ====== Template Option: Show Icons =========================
+    id: 40292836856866061
+    identification: 
+      name: Show Icons
+      identifier: SHOW_ICONS
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-MediaList--showIcons
+
+  - # ====== Template Option: Show Description ===================
+    id: 40293077070866062
+    identification: 
+      name: Show Description
+      identifier: SHOW_DESCRIPTION
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-MediaList--showDesc
+
+  - # ====== Template Option: Show Badges ========================
+    id: 40293208416866062
+    identification: 
+      name: Show Badges
+      identifier: SHOW_BADGES
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-MediaList--showBadges
+
+  - # ====== Template Option: Apply Theme Colors =================
+    id: 40293406389866063
+    identification: 
+      name: Apply Theme Colors
+      identifier: APPLY_THEME_COLORS
+      sequence: 40
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - u-colors
+
 - # ====== Classic Report Template: Search Results =============
-  id: 53163870731301035
+  id: 40293570125866063
   identification: 
     name: Search Results
     identifier: SEARCH_RESULTS
@@ -1522,7 +1546,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63420417293439133
+      app: 800 # Master 25
+      referenced-id: 12713748361084673 # Search Results
 
   advanced: 
     translatable: false
@@ -1615,7 +1640,7 @@
     comments: ' (SELECT link_text, link_target, detail1, detail2, last_modified)'
 
 - # ====== Classic Report Template: Standard ===================
-  id: 53164076563301035
+  id: 40293783336866064
   identification: 
     name: Standard
     identifier: STANDARD
@@ -1623,7 +1648,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63426602573439137
+      app: 800 # Master 25
+      referenced-id: 12713948768084673 # Standard
 
   advanced: 
     translatable: false
@@ -1687,8 +1713,52 @@
       </a>
 
   template-options: 
+  - # ====== Template Option: No Borders =========================
+    id: 40294292518866065
+    identification: 
+      name: No Borders
+      identifier: REMOVEALLBORDERS
+      group: Report Border
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Report--noBorders
+
+  - # ====== Template Option: Stretch Report =====================
+    id: 40294438240866066
+    identification: 
+      name: Stretch Report
+      identifier: STRETCHREPORT
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Report--stretch
+
+  - # ====== Template Option: No Outer Borders ===================
+    id: 40294667032866066
+    identification: 
+      name: No Outer Borders
+      identifier: REMOVEOUTERBORDERS
+      group: Report Border
+      sequence: 40
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Report--inline
+
   - # ====== Template Option: Disable ============================
-    id: 53164551554301036
+    id: 40295020911866067
     identification: 
       name: Disable
       identifier: ALTROWCOLORSDISABLE
@@ -1703,7 +1773,7 @@
       - t-Report--staticRowColors
 
   - # ====== Template Option: Enable =============================
-    id: 53164716884301036
+    id: 40295209943866068
     identification: 
       name: Enable
       identifier: ALTROWCOLORSENABLE
@@ -1717,8 +1787,38 @@
       css-classes: 
       - t-Report--altRowsDefault
 
+  - # ====== Template Option: Horizontal Only ====================
+    id: 40295478980866068
+    identification: 
+      name: Horizontal Only
+      identifier: HORIZONTALBORDERS
+      group: Report Border
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Report--horizontalBorders
+
+  - # ====== Template Option: Vertical Only ======================
+    id: 40295686393866068
+    identification: 
+      name: Vertical Only
+      identifier: VERTICALBORDERS
+      group: Report Border
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Report--verticalBorders
+
   - # ====== Template Option: Enable =============================
-    id: 53165182819301036
+    id: 40296076420866069
     identification: 
       name: Enable
       identifier: ENABLE
@@ -1735,53 +1835,8 @@
     help: 
       help-text: Enable row highlighting on mouse over
 
-  - # ====== Template Option: Horizontal Only ====================
-    id: 53165502996301036
-    identification: 
-      name: Horizontal Only
-      identifier: HORIZONTALBORDERS
-      group: Report Border
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Report--horizontalBorders
-
-  - # ====== Template Option: No Borders =========================
-    id: 53165756989301036
-    identification: 
-      name: No Borders
-      identifier: REMOVEALLBORDERS
-      group: Report Border
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Report--noBorders
-
-  - # ====== Template Option: No Outer Borders ===================
-    id: 53165939258301036
-    identification: 
-      name: No Outer Borders
-      identifier: REMOVEOUTERBORDERS
-      group: Report Border
-      sequence: 40
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Report--inline
-
   - # ====== Template Option: Disable ============================
-    id: 53166129587301036
+    id: 40296229844866070
     identification: 
       name: Disable
       identifier: ROWHIGHLIGHTDISABLE
@@ -1798,37 +1853,8 @@
     help: 
       help-text: Disable row highlighting on mouse over
 
-  - # ====== Template Option: Stretch Report =====================
-    id: 53166357979301037
-    identification: 
-      name: Stretch Report
-      identifier: STRETCHREPORT
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Report--stretch
-
-  - # ====== Template Option: Vertical Only ======================
-    id: 53166578570301037
-    identification: 
-      name: Vertical Only
-      identifier: VERTICALBORDERS
-      group: Report Border
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Report--verticalBorders
-
 - # ====== Classic Report Template: Timeline ===================
-  id: 53166668104301037
+  id: 40296364798866070
   identification: 
     name: Timeline
     identifier: TIMELINE
@@ -1836,7 +1862,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63432461722439140
+      app: 800 # Master 25
+      referenced-id: 12716584450084679 # Timeline
 
   advanced: 
     translatable: false
@@ -1932,7 +1959,7 @@
 
   template-options: 
   - # ====== Template Option: Compact ============================
-    id: 53166935878301037
+    id: 40296678514866071
     identification: 
       name: Compact
       identifier: COMPACT
@@ -1950,7 +1977,7 @@
       help-text: Displays a compact version of timeline with smaller text and fewer columns.
 
 - # ====== Classic Report Template: Value Attribute Pairs - Colu
-  id: 53167072344301037
+  id: 40296749318866071
   identification: 
     name: Value Attribute Pairs - Column
     identifier: VALUE_ATTRIBUTE_PAIRS_COLUMN
@@ -1958,7 +1985,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63420615315439134
+      app: 800 # Master 25
+      referenced-id: 12716924112084680 # Value Attribute Pairs - Column
 
   advanced: 
     translatable: false
@@ -1978,12 +2006,8 @@
 
   column-template-1: 
     template: |
-      <dt class="t-AVPList-label">
-        #COLUMN_HEADER#
-      </dt>
-      <dd class="t-AVPList-value">
-        #COLUMN_VALUE#
-      </dd>
+      <dt class="t-AVPList-label">#COLUMN_HEADER#</dt>
+      <dd class="t-AVPList-value">#COLUMN_VALUE#</dd>
     condition: 0
 
   pagination-subtemplates: 
@@ -2006,53 +2030,25 @@
       </a>
 
   template-options: 
-  - # ====== Template Option: Fixed - Large ======================
-    id: 53167510610301038
+  - # ====== Template Option: Hide Empty Values ==================
+    id: 40297059049866072
     identification: 
-      name: Fixed - Large
-      identifier: FIXED_LARGE
-      group: Label Width
-      sequence: 30
+      name: Hide Empty Values
+      identifier: HIDE_EMPTY_VALUES
+      sequence: 70
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-AVPList--fixedLabelLarge
+      - t-AVPList--hideNulls
 
-  - # ====== Template Option: Fixed - Medium =====================
-    id: 53167727142301038
-    identification: 
-      name: Fixed - Medium
-      identifier: FIXED_MEDIUM
-      group: Label Width
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-AVPList--fixedLabelMedium
-
-  - # ====== Template Option: Fixed - Small ======================
-    id: 53167961185301038
-    identification: 
-      name: Fixed - Small
-      identifier: FIXED_SMALL
-      group: Label Width
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-AVPList--fixedLabelSmall
+    help: 
+      help-text: 'This option will hide the null rows. Note: This only works in browsers that supports :has() pseudo-class.'
 
   - # ====== Template Option: Left Aligned Details ===============
-    id: 53168099534301038
+    id: 40297270550866072
     identification: 
       name: Left Aligned Details
       identifier: LEFT_ALIGNED_DETAILS
@@ -2067,7 +2063,7 @@
       - t-AVPList--leftAligned
 
   - # ====== Template Option: Right Aligned Details ==============
-    id: 53168305604301038
+    id: 40297456698866073
     identification: 
       name: Right Aligned Details
       identifier: RIGHT_ALIGNED_DETAILS
@@ -2081,38 +2077,53 @@
       css-classes: 
       - t-AVPList--rightAligned
 
-  - # ====== Template Option: Variable - Large ===================
-    id: 53168530675301038
+  - # ====== Template Option: Fixed - Small ======================
+    id: 40297878889866074
     identification: 
-      name: Variable - Large
-      identifier: VARIABLE_LARGE
+      name: Fixed - Small
+      identifier: FIXED_SMALL
       group: Label Width
-      sequence: 60
+      sequence: 10
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-AVPList--variableLabelLarge
+      - t-AVPList--fixedLabelSmall
 
-  - # ====== Template Option: Variable - Medium ==================
-    id: 53168735850301038
+  - # ====== Template Option: Fixed - Medium =====================
+    id: 40298056908866074
     identification: 
-      name: Variable - Medium
-      identifier: VARIABLE_MEDIUM
+      name: Fixed - Medium
+      identifier: FIXED_MEDIUM
       group: Label Width
-      sequence: 50
+      sequence: 20
 
     settings: 
       advanced: false
 
     appearance: 
       css-classes: 
-      - t-AVPList--variableLabelMedium
+      - t-AVPList--fixedLabelMedium
+
+  - # ====== Template Option: Fixed - Large ======================
+    id: 40298223718866075
+    identification: 
+      name: Fixed - Large
+      identifier: FIXED_LARGE
+      group: Label Width
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-AVPList--fixedLabelLarge
 
   - # ====== Template Option: Variable - Small ===================
-    id: 53168985511301038
+    id: 40298463366866075
     identification: 
       name: Variable - Small
       identifier: VARIABLE_SMALL
@@ -2126,8 +2137,38 @@
       css-classes: 
       - t-AVPList--variableLabelSmall
 
+  - # ====== Template Option: Variable - Medium ==================
+    id: 40298632472866076
+    identification: 
+      name: Variable - Medium
+      identifier: VARIABLE_MEDIUM
+      group: Label Width
+      sequence: 50
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-AVPList--variableLabelMedium
+
+  - # ====== Template Option: Variable - Large ===================
+    id: 40298856346866076
+    identification: 
+      name: Variable - Large
+      identifier: VARIABLE_LARGE
+      group: Label Width
+      sequence: 60
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-AVPList--variableLabelLarge
+
 - # ====== Classic Report Template: Value Attribute Pairs - Row 
-  id: 53169062304301038
+  id: 40298966909866076
   identification: 
     name: Value Attribute Pairs - Row
     identifier: VALUE_ATTRIBUTE_PAIRS_ROW
@@ -2135,7 +2176,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63422664168439135
+      app: 800 # Master 25
+      referenced-id: 12719145427084685 # Value Attribute Pairs - Row
 
   advanced: 
     translatable: false
@@ -2183,38 +2225,8 @@
       </a>
 
   template-options: 
-  - # ====== Template Option: Fixed - Large ======================
-    id: 53169378469301039
-    identification: 
-      name: Fixed - Large
-      identifier: FIXED_LARGE
-      group: Label Width
-      sequence: 30
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-AVPList--fixedLabelLarge
-
-  - # ====== Template Option: Fixed - Medium =====================
-    id: 53169531693301039
-    identification: 
-      name: Fixed - Medium
-      identifier: FIXED_MEDIUM
-      group: Label Width
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-AVPList--fixedLabelMedium
-
   - # ====== Template Option: Fixed - Small ======================
-    id: 53169711759301039
+    id: 40299236771866077
     identification: 
       name: Fixed - Small
       identifier: FIXED_SMALL
@@ -2228,27 +2240,12 @@
       css-classes: 
       - t-AVPList--fixedLabelSmall
 
-  - # ====== Template Option: Left Aligned Details ===============
-    id: 53169893976301039
+  - # ====== Template Option: Fixed - Medium =====================
+    id: 40299401387866078
     identification: 
-      name: Left Aligned Details
-      identifier: LEFT_ALIGNED_DETAILS
-      group: Layout
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-AVPList--leftAligned
-
-  - # ====== Template Option: Right Aligned Details ==============
-    id: 53170135572301039
-    identification: 
-      name: Right Aligned Details
-      identifier: RIGHT_ALIGNED_DETAILS
-      group: Layout
+      name: Fixed - Medium
+      identifier: FIXED_MEDIUM
+      group: Label Width
       sequence: 20
 
     settings: 
@@ -2256,10 +2253,25 @@
 
     appearance: 
       css-classes: 
-      - t-AVPList--rightAligned
+      - t-AVPList--fixedLabelMedium
+
+  - # ====== Template Option: Fixed - Large ======================
+    id: 40299638829866078
+    identification: 
+      name: Fixed - Large
+      identifier: FIXED_LARGE
+      group: Label Width
+      sequence: 30
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-AVPList--fixedLabelLarge
 
   - # ====== Template Option: Variable - Large ===================
-    id: 53170302310301039
+    id: 40299826162866079
     identification: 
       name: Variable - Large
       identifier: VARIABLE_LARGE
@@ -2274,7 +2286,7 @@
       - t-AVPList--variableLabelLarge
 
   - # ====== Template Option: Variable - Medium ==================
-    id: 53170529349301039
+    id: 40300017491866079
     identification: 
       name: Variable - Medium
       identifier: VARIABLE_MEDIUM
@@ -2289,7 +2301,7 @@
       - t-AVPList--variableLabelMedium
 
   - # ====== Template Option: Variable - Small ===================
-    id: 53170749741301039
+    id: 40300228526866079
     identification: 
       name: Variable - Small
       identifier: VARIABLE_SMALL
@@ -2302,4 +2314,34 @@
     appearance: 
       css-classes: 
       - t-AVPList--variableLabelSmall
+
+  - # ====== Template Option: Left Aligned Details ===============
+    id: 40300421234866080
+    identification: 
+      name: Left Aligned Details
+      identifier: LEFT_ALIGNED_DETAILS
+      group: Layout
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-AVPList--leftAligned
+
+  - # ====== Template Option: Right Aligned Details ==============
+    id: 40300629077866080
+    identification: 
+      name: Right Aligned Details
+      identifier: RIGHT_ALIGNED_DETAILS
+      group: Layout
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-AVPList--rightAligned
 

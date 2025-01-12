@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(53156665546301029)
+ p_id=>wwv_flow_imp.id(40286153536866046)
 ,p_row_template_name=>'Content Row'
 ,p_internal_name=>'CONTENT_ROW'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -60,7 +60,7 @@ wwv_flow_imp_shared.create_row_template(
 '</a>'))
 ,p_theme_id=>800
 ,p_theme_class_id=>4
-,p_reference_id=>63429215121439139
+,p_reference_id=>12706351862084656
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp.component_end;

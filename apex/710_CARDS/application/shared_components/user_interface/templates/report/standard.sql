@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(53164076563301035)
+ p_id=>wwv_flow_imp.id(40293783336866064)
 ,p_row_template_name=>'Standard'
 ,p_internal_name=>'STANDARD'
 ,p_row_template1=>'<td class="t-Report-cell" #ALIGNMENT# #ACCESSIBLE_HEADERS#>#COLUMN_VALUE#</td>'
@@ -62,7 +62,7 @@ wwv_flow_imp_shared.create_row_template(
 ,p_theme_id=>800
 ,p_theme_class_id=>4
 ,p_preset_template_options=>'t-Report--altRowsDefault:t-Report--rowHighlight'
-,p_reference_id=>63426602573439137
+,p_reference_id=>12713948768084673
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp.component_end;

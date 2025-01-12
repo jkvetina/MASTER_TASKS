@@ -2804,19 +2804,6 @@
 
     version-number: 42190085519951
 
-- # ====== Application Item: G_APP_NAME ========================
-  id: 42440062480974562
-  identification: 
-    name: G_APP_NAME
-    scope: Global
-
-  security: 
-    session-state-protection: Restricted - May not be set from browser
-    escape-special-characters: true
-
-  subscription: 
-    version-number: 1
-
 - # ====== Application Item: G_TODAY ===========================
   id: 52932779267495183
   identification: 
@@ -2830,10 +2817,10 @@
   subscription: 
     version-number: 1
 
-- # ====== Application Item: G_CONTEXT_ID ======================
+- # ====== Application Item: CONTEXT_ID ========================
   id: 52932969427496030
   identification: 
-    name: G_CONTEXT_ID
+    name: CONTEXT_ID
     scope: Global
 
   security: 
@@ -2841,20 +2828,11 @@
     escape-special-characters: true
 
   subscription: 
-    version-number: 1
+    master: 
+      app: 800 # Master 25
+      referenced-id: 40782518161014981 # CONTEXT_ID
 
-- # ====== Application Item: G_APP_ID ==========================
-  id: 52933439940503533
-  identification: 
-    name: G_APP_ID
-    scope: Global
-
-  security: 
-    session-state-protection: Restricted - May not be set from browser
-    escape-special-characters: true
-
-  subscription: 
-    version-number: 1
+    version-number: 42190260735986
 
 - # ====== Application Item: FORMAT_NUMBER_CURRENCY ============
   id: 52934001356533112
@@ -3008,56 +2986,4 @@
       referenced-id: 16632711026102127 # FORMAT_DATE_TIME
 
     version-number: 42101190415345
-
-- # ====== Application Item: G_USER_FIRST_NAME =================
-  id: 56944985036079586
-  identification: 
-    name: G_USER_FIRST_NAME
-    scope: Global
-
-  security: 
-    session-state-protection: Restricted - May not be set from browser
-    escape-special-characters: true
-
-  subscription: 
-    version-number: 1
-
-- # ====== Application Item: G_USER_NAME =======================
-  id: 56945149855080676
-  identification: 
-    name: G_USER_NAME
-    scope: Global
-
-  security: 
-    session-state-protection: Restricted - May not be set from browser
-    escape-special-characters: true
-
-  subscription: 
-    version-number: 1
-
-- # ====== Application Item: G_ENV =============================
-  id: 56945355745081419
-  identification: 
-    name: G_ENV
-    scope: Global
-
-  security: 
-    session-state-protection: Restricted - May not be set from browser
-    escape-special-characters: true
-
-  subscription: 
-    version-number: 1
-
-- # ====== Application Item: G_WORKSPACE =======================
-  id: 56945595943082434
-  identification: 
-    name: G_WORKSPACE
-    scope: Global
-
-  security: 
-    session-state-protection: Restricted - May not be set from browser
-    escape-special-characters: true
-
-  subscription: 
-    version-number: 1
 

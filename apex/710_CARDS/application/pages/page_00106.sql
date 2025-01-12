@@ -9,7 +9,7 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page(
  p_id=>106
@@ -17,8 +17,8 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'DOWNLOAD-FILE'
 ,p_step_title=>'Download File'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(42668205046306704)  -- PAGE GROUP: 1) CARDS
-,p_step_template=>wwv_flow_imp.id(53033760817300956)
+,p_group_id=>wwv_flow_imp.id(42668205046306704)  -- PAGE GROUP: 1) Cards
+,p_step_template=>wwv_flow_imp.id(40166640587865792)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(39926727961197497)  -- AUTHORIZATION: IS_USER
 ,p_protection_level=>'C'

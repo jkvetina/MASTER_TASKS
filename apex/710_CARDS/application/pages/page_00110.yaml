@@ -5,7 +5,7 @@ identification:
   name: Bulk Operations
   alias: BULK-OPERATIONS
   title: Bulk Operations
-  page-group: 1) CARDS # 42668205046306704
+  page-group: 1) Cards # 42668205046306704
 
 appearance: 
   page-mode: Modal Dialog
@@ -873,7 +873,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -934,7 +934,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -995,7 +995,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1065,7 +1065,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1143,7 +1143,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 42492650389312824
+    list-of-values: TSK_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: false
 
@@ -1194,7 +1194,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1211,7 +1211,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_BOARDS # 39094577788102628
+    list-of-values: TSK_BOARDS # 39094577788102628
     display-extra-values: false
     display-null-value: false
 
@@ -1279,7 +1279,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 42492650389312824
+    list-of-values: TSK_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: false
 
@@ -1327,7 +1327,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1399,7 +1399,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1468,7 +1468,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1537,7 +1537,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -1598,7 +1598,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic

@@ -1,7 +1,7 @@
-prompt --application/shared_components/navigation/lists/navigation
+prompt --application/shared_components/navigation/lists/navigation_vpd
 begin
 --   Manifest
---     LIST: NAVIGATION
+--     LIST: NAVIGATION_VPD
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.05.31'
@@ -12,8 +12,8 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list(
- p_id=>wwv_flow_imp.id(47980209142432734)  -- LIST: NAVIGATION
-,p_name=>'NAVIGATION'
+ p_id=>wwv_flow_imp.id(40056462880331034)  -- LIST: NAVIGATION_VPD
+,p_name=>'NAVIGATION_VPD'
 ,p_list_type=>'SQL_QUERY'
 ,p_list_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT',
@@ -37,12 +37,12 @@ wwv_flow_imp_shared.create_list(
 '    t.attribute09,',
 '    t.attribute10',
 '    --',
-'FROM master.app_navigation_v t',
+'FROM master.app_navigation_VPD_v t',
 'ORDER BY',
 '    t.order# NULLS FIRST;'))
 ,p_list_status=>'PUBLIC'
-,p_reference_id=>13154021299338235
-,p_version_scn=>42101135209027
+,p_reference_id=>40056882291338182
+,p_version_scn=>42190255210303
 );
 wwv_flow_imp.component_end;
 end;

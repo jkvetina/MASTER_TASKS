@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(53195210691301054)
+ p_id=>wwv_flow_imp.id(40325797666866141)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-WizardSteps-step is-active" aria-current="step" id="#LIST_ITEM_ID#">',
 '  <div class="t-WizardSteps-wrap" data-link="#LINK#">',
@@ -35,7 +35,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_preset_template_options=>'t-WizardSteps--displayLabels'
 ,p_list_template_before_rows=>'<ul aria-label="#CURRENT_PROGRESS#" class="t-WizardSteps #COMPONENT_CSS_CLASSES#" id="#LIST_ID#">'
 ,p_list_template_after_rows=>'</ul>'
-,p_reference_id=>63456035086439158
+,p_reference_id=>12744905467084748
 );
 wwv_flow_imp.component_end;
 end;

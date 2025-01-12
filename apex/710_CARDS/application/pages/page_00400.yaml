@@ -5,7 +5,7 @@ identification:
   name: Boards
   alias: BOARDS
   title: Boards
-  page-group: 4) BOARDS # 42668305103309455
+  page-group: 2) Clients and Projects Setup # 45948121457602853
 
 appearance: 
   page-mode: Normal
@@ -48,7 +48,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 10
+    sequence: 20
     parent-region: No Parent
     slot: BODY
     start-new-layout: false
@@ -61,8 +61,9 @@ regions:
     template: Tabs Container
     template-options: 
     - '#DEFAULT#'
-    - js-useLocalStorage
     - t-TabsRegion-mod--simple
+    css-classes: 
+    - TABS
     render-components: Above Content
 
   accessibility: 
@@ -118,51 +119,6 @@ regions:
     settings: 
       output-as: HTML
       expand-shortcuts: false
-
-- # ====== Region: SWITCH_BOARD ================================
-  id: 86557450569115553
-  identification: 
-    name: SWITCH_BOARD
-    type: Dynamic Content
-
-  source: 
-    language: PL/SQL
-    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_board();
-
-  layout: 
-    sequence: 30
-    parent-region: No Parent
-    slot: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    static-id: SWITCH_BOARD
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    performance: 
-      lazy-loading: false
 
 - # ====== Region: Boards [GRID] ===============================
   id: 134647237923370867
@@ -541,7 +497,7 @@ regions:
     link: 
       target: 
         url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:100:P0_CLIENT_ID,P0_PROJECT_ID,P0_BOARD_ID:&CLIENT_ID.,&PROJECT_ID.,&BOARD_ID.'
-        page: 100 # #APP_NAME#
+        page: 100 # &APP_NAME.
         clear-cache: 100
         values: 
           p0_client_id: '&CLIENT_ID.'
@@ -1270,16 +1226,16 @@ regions:
       font-color: '#000000'
       alignment: center
 
-- # ====== Region: Boards for &P0_PROJECT_NAME. ================
+- # ====== Region: Boards ======================================
   id: 134648225720370877
   identification: 
-    name: Boards for &P0_PROJECT_NAME.
+    name: Boards
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Boards # 57587380521687379
-    slot: SUB_REGIONS
+    parent-region: No Parent
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1309,19 +1265,55 @@ regions:
       expand-shortcuts: false
 
 page-items: 
-- # ====== Page Item: P400_CURRENT_BOARDS ======================
-  id: 60024787726150241
+- # ====== Page Item: P400_ACTIVE_BOARD ========================
+  id: 35708814438708531
   identification: 
-    name: P400_CURRENT_BOARDS
-    type: Hidden
+    name: P400_ACTIVE_BOARD
+    type: Select List
+
+  label: 
+    label: Active Board
+    alignment: Left
 
   settings: 
-    value-protected: true
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
 
   layout: 
-    sequence: 10
-    region: Boards for &P0_PROJECT_NAME. # 134648225720370877
+    sequence: 30
+    region: Boards # 134648225720370877
     slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - SUBMIT
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: TSK_BOARDS # 39094577788102628
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P400_ACTIVE_PROJECT
+    parent-required: true
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1330,82 +1322,143 @@ page-items:
     type: Null
     used: Only when current value in session state is null
 
-  default: 
-    type: Item
-    item: P0_BOARD_ID
-
   session-state: 
-    data-type: VARCHAR2
     storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
 
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-buttons: 
-- # ====== Button: SWITCH_BOARD ================================
-  id: 58113620247835843
+- # ====== Page Item: P400_ACTIVE_CLIENT =======================
+  id: 40779864196921908
   identification: 
-    button-name: SWITCH_BOARD
-    label: Switch Board &P0_BOARD_FILTER!RAW.
+    name: P400_ACTIVE_CLIENT
+    type: Select List
 
-  layout: 
-    sequence: 20
-    region: Boards for &P0_PROJECT_NAME. # 134648225720370877
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
+  label: 
+    label: Active Client
+    alignment: Left
 
-  appearance: 
-    button-template: Text with Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    css-classes: 
-    - ACTION_MENU
-    - TRANSPARENT
-    icon: fa-chevron-down
+  settings: 
+    page-action-on-selection: None
 
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  advanced: 
-    static-id: SWITCH_BOARD
-
-- # ====== Button: REORDER_BOARDS ==============================
-  id: 58220951178539399
-  identification: 
-    button-name: REORDER_BOARDS
-    label: Reorder Boards
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
-    region: Boards for &P0_PROJECT_NAME. # 134648225720370877
-    slot: RIGHT_OF_TITLE
+    region: Boards # 134648225720370877
+    slot: BODY
+    alignment: Left
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
     new-column: true
-    column-span: Automatic
+    column-span: 2
+    label-column-span: Page Template Default
 
   appearance: 
-    button-template: Icon
-    hot: false
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
-    icon: fa-sequence
+    height: 1
 
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    show-processing: false
-    warn-on-unsaved-changes: Do Not Check
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: TSK_CLIENTS # 39095152206102634
+    display-extra-values: false
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P400_ACTIVE_PROJECT ======================
+  id: 40780109580923759
+  identification: 
+    name: P400_ACTIVE_PROJECT
+    type: Select List
+
+  label: 
+    label: Active Project
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: Boards # 134648225720370877
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: TSK_PROJECTS # 42492650389312824
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P400_ACTIVE_CLIENT
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
 
 dynamic-actions: 
 - # ====== Dynamic Action: ONE_CHECKBOX_BOARDS =================
@@ -1494,5 +1547,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_BOARDS # 58220951178539399
+    type: Never
 

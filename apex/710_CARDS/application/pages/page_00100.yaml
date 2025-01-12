@@ -1,11 +1,11 @@
 ---
-# ====== Page: #APP_NAME# ====================================
+# ====== Page: &APP_NAME. ====================================
 id: 100
 identification: 
-  name: '#APP_NAME#'
+  name: '&APP_NAME.'
   alias: HOME
-  title: Card Crunchers
-  page-group: 1) CARDS # 42668205046306704
+  title: '&APP_NAME.'
+  page-group: 1) Cards # 42668205046306704
 
 appearance: 
   page-mode: Normal
@@ -21,6 +21,12 @@ navigation-menu:
 navigation: 
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    #APPLY_FILTERS .BADGE {
+        background: #666;
+    }
 
 security: 
   authorization-scheme: IS_USER # 39926727961197497
@@ -56,142 +62,10 @@ help:
     
 
 regions: 
-- # ====== Region: SWITCH_STATUS ===============================
-  id: 57587777250687383
+- # ====== Region: NO_BOARD ====================================
+  id: 35709300614708536
   identification: 
-    name: SWITCH_STATUS
-    type: Dynamic Content
-
-  source: 
-    language: PL/SQL
-    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_status();
-
-  layout: 
-    sequence: 50
-    parent-region: No Parent
-    slot: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    performance: 
-      lazy-loading: false
-
-- # ====== Region: SWITCH_CATEGORY =============================
-  id: 57587821005687384
-  identification: 
-    name: SWITCH_CATEGORY
-    type: Dynamic Content
-
-  source: 
-    language: PL/SQL
-    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_category();
-
-  layout: 
-    sequence: 60
-    parent-region: No Parent
-    slot: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    performance: 
-      lazy-loading: false
-
-- # ====== Region: SWITCH_OWNER ================================
-  id: 57587945514687385
-  identification: 
-    name: SWITCH_OWNER
-    type: Dynamic Content
-
-  source: 
-    language: PL/SQL
-    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_owner();
-
-  layout: 
-    sequence: 70
-    parent-region: No Parent
-    slot: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    performance: 
-      lazy-loading: false
-
-- # ====== Region: &P100_HEADER!RAW. ===========================
-  id: 93680113420261826
-  identification: 
-    name: '&P100_HEADER!RAW.'
+    name: NO_BOARD
     type: Static Content
 
   layout: 
@@ -205,7 +79,87 @@ regions:
     column-span: Automatic
 
   appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P0_BOARD_ID
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Select Board ================================
+  id: 35709441598708537
+  identification: 
+    name: Select Board
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: NO_BOARD # 35709300614708536
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
     template: Hero
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: KNOWN_BOARD =================================
+  id: 35709616011708539
+  identification: 
+    name: KNOWN_BOARD
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -230,10 +184,48 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Cards [CONTENT] =============================
+- # ====== Region: &P100_HEADER. ===============================
+  id: 93680113420261826
+  identification: 
+    name: '&P100_HEADER.'
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: KNOWN_BOARD # 35709616011708539
+    slot: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: COLUMNS [CONTENT] ===========================
   id: 93680166992261827
   identification: 
-    name: Cards [CONTENT]
+    name: COLUMNS [CONTENT]
     type: Dynamic Content
 
   source: 
@@ -248,8 +240,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: No Parent
-    slot: BODY
+    parent-region: KNOWN_BOARD # 35709616011708539
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -272,8 +264,9 @@ regions:
     exclude-title-from-translation: false
 
   server-side-condition: 
-    type: Item is NULL
-    item: P100_SHOW_GRID
+    type: Item = Value
+    item: P100_SHOW
+    value: COLUMNS
 
   server-cache: 
     caching: Disabled
@@ -285,10 +278,10 @@ regions:
     performance: 
       lazy-loading: false
 
-- # ====== Region: Cards [GRID] ================================
+- # ====== Region: LIST [GRID] =================================
   id: 103026789833399523
   identification: 
-    name: Cards [GRID]
+    name: LIST [GRID]
     type: Interactive Grid
 
   source: 
@@ -300,8 +293,8 @@ regions:
 
   layout: 
     sequence: 30
-    parent-region: No Parent
-    slot: BODY
+    parent-region: KNOWN_BOARD # 35709616011708539
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -323,8 +316,9 @@ regions:
     exclude-title-from-translation: false
 
   server-side-condition: 
-    type: Item is NOT NULL
-    item: P100_SHOW_GRID
+    type: Item = Value
+    item: P100_SHOW
+    value: LIST
 
   customization: 
     customizable: Not Customizable By End Users
@@ -653,7 +647,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CLIENTS # 39095152206102634
+      list-of-values: TSK_CLIENTS # 39095152206102634
       display-extra-values: true
       display-null-value: true
 
@@ -709,7 +703,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_PROJECTS # 42492650389312824
+      list-of-values: TSK_PROJECTS # 42492650389312824
       display-extra-values: true
       display-null-value: true
 
@@ -765,7 +759,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_BOARDS # 39094577788102628
+      list-of-values: TSK_BOARDS # 39094577788102628
       display-extra-values: true
       display-null-value: true
 
@@ -1527,51 +1521,326 @@ regions:
       font-color: '#000000'
       alignment: center
 
-- # ====== Region: SWITCH_SWIMLANE =============================
-  id: 125533512961401231
+page-items: 
+- # ====== Page Item: P100_ACTIVE_CLIENT =======================
+  id: 35709802330708541
   identification: 
-    name: SWITCH_SWIMLANE
-    type: Dynamic Content
+    name: P100_ACTIVE_CLIENT
+    type: Select List
 
-  source: 
-    language: PL/SQL
-    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_swimlane();
+  label: 
+    label: Active Client
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
 
   layout: 
-    sequence: 40
-    parent-region: No Parent
+    sequence: 10
+    region: Select Board # 35709441598708537
     slot: BODY
+    alignment: Left
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
     new-column: true
-    column-span: Automatic
+    column-span: 2
+    label-column-span: Page Template Default
 
   appearance: 
-    template: Blank with Attributes
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
-    render-components: Above Content
+    height: 1
 
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: TSK_CLIENTS # 39095152206102634
+    display-extra-values: false
+    display-null-value: true
 
   advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
+    warn-on-unsaved-changes: Page Default
 
-  server-cache: 
-    caching: Disabled
+  source: 
+    type: Null
+    used: Only when current value in session state is null
 
-  customization: 
-    customizable: Not Customizable By End Users
+  session-state: 
+    storage: Per Session (Persistent)
 
-  attributes: 
-    performance: 
-      lazy-loading: false
+  quick-picks: 
+    show-quick-picks: false
 
-page-items: 
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_ACTIVE_PROJECT ======================
+  id: 35709995305708542
+  identification: 
+    name: P100_ACTIVE_PROJECT
+    type: Select List
+
+  label: 
+    label: Active Project
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 20
+    region: Select Board # 35709441598708537
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: TSK_PROJECTS # 42492650389312824
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P100_ACTIVE_CLIENT
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_ACTIVE_BOARD ========================
+  id: 35710015160708543
+  identification: 
+    name: P100_ACTIVE_BOARD
+    type: Select List
+
+  label: 
+    label: Active Board
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
+
+  layout: 
+    sequence: 30
+    region: Select Board # 35709441598708537
+    slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - SUBMIT
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: TSK_BOARDS # 39094577788102628
+    display-extra-values: false
+    display-null-value: true
+
+  cascading-list-of-values: 
+    parent-item(s): 
+    - P100_ACTIVE_PROJECT
+    parent-required: true
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_DISABLE_COLUMNS =====================
+  id: 35710474232708547
+  identification: 
+    name: P100_DISABLE_COLUMNS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 90
+    region: KNOWN_BOARD # 35709616011708539
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_DISABLE_LIST ========================
+  id: 35710598329708548
+  identification: 
+    name: P100_DISABLE_LIST
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 100
+    region: KNOWN_BOARD # 35709616011708539
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_DISABLE_CARDS =======================
+  id: 35710699463708549
+  identification: 
+    name: P100_DISABLE_CARDS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 110
+    region: KNOWN_BOARD # 35709616011708539
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_APPLY_FILTERS_BADGE =================
+  id: 40889327843180303
+  identification: 
+    name: P100_APPLY_FILTERS_BADGE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 120
+    region: KNOWN_BOARD # 35709616011708539
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 2
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P100_BOOKMARK_ICON =======================
   id: 46410178955872747
   identification: 
@@ -1582,8 +1851,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 70
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    sequence: 60
+    region: KNOWN_BOARD # 35709616011708539
     slot: BODY
 
   advanced: 
@@ -1592,6 +1861,10 @@ page-items:
   source: 
     type: Null
     used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: fa-bookmark-o
 
   session-state: 
     data-type: VARCHAR2
@@ -1613,7 +1886,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    region: KNOWN_BOARD # 35709616011708539
     slot: BODY
 
   advanced: 
@@ -1642,8 +1915,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 20
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    sequence: 10
+    region: KNOWN_BOARD # 35709616011708539
     slot: BODY
 
   advanced: 
@@ -1652,10 +1925,6 @@ page-items:
   source: 
     type: Null
     used: Only when current value in session state is null
-
-  default: 
-    type: Static
-    static-value: Cards
 
   session-state: 
     data-type: VARCHAR2
@@ -1666,18 +1935,18 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P100_SHOW_GRID ===========================
+- # ====== Page Item: P100_SHOW ================================
   id: 103029273354399560
   identification: 
-    name: P100_SHOW_GRID
+    name: P100_SHOW
     type: Hidden
 
   settings: 
     value-protected: true
 
   layout: 
-    sequence: 10
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    sequence: 20
+    region: KNOWN_BOARD # 35709616011708539
     slot: BODY
 
   advanced: 
@@ -1707,7 +1976,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    region: KNOWN_BOARD # 35709616011708539
     slot: BODY
 
   advanced: 
@@ -1737,7 +2006,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    region: KNOWN_BOARD # 35709616011708539
     slot: BODY
 
   advanced: 
@@ -1766,8 +2035,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 60
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    sequence: 80
+    region: KNOWN_BOARD # 35709616011708539
     slot: BODY
 
   advanced: 
@@ -1787,15 +2056,53 @@ page-items:
     restricted-characters: All characters can be saved.
 
 buttons: 
-- # ====== Button: ADD_CARD ====================================
-  id: 39064503741102584
+- # ====== Button: SHOW_CARDS ==================================
+  id: 35710235261708545
   identification: 
-    button-name: ADD_CARD
-    label: Add Card
+    button-name: SHOW_CARDS
+    label: Show as Cards
 
   layout: 
-    sequence: 10
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    sequence: 40
+    region: '&P100_HEADER.' # 93680113420261826
+    slot: UP
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-cards
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW:CARDS'
+      page: 100 # &APP_NAME.
+      values: 
+        p100_show: CARDS
+
+    warn-on-unsaved-changes: Do Not Check
+
+  advanced: 
+    static-id: SHOW_CARDS
+    custom-attributes: 
+    - '&P100_DISABLE_CARDS.'
+
+- # ====== Button: APPLY_FILTERS ===============================
+  id: 35710372511708546
+  identification: 
+    button-name: APPLY_FILTERS
+    label: Apply Filters
+
+  layout: 
+    sequence: 30
+    region: '&P100_HEADER.' # 93680113420261826
     slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1804,10 +2111,44 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-filter
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: APPLY_FILTERS
+    custom-attributes: 
+    - '&P100_APPLY_FILTERS_BADGE!RAW.'
+
+- # ====== Button: CREATE_NEW_CARD =============================
+  id: 39064503741102584
+  identification: 
+    button-name: CREATE_NEW_CARD
+    label: Create New Card
+
+  layout: 
+    sequence: 10
+    region: '&P100_HEADER.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
     icon: fa-plus
 
   behavior: 
@@ -1821,6 +2162,9 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
+  advanced: 
+    static-id: CREATE_NEW_CARD
+
 - # ====== Button: SHOW_LIST ===================================
   id: 39064892798102584
   identification: 
@@ -1828,8 +2172,8 @@ buttons:
     label: Show as List
 
   layout: 
-    sequence: 30
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    sequence: 20
+    region: '&P100_HEADER.' # 93680113420261826
     slot: UP
     start-new-layout: false
     start-new-row: true
@@ -1847,19 +2191,17 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:Y'
-      page: 100 # #APP_NAME#
+      url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW:LIST'
+      page: 100 # &APP_NAME.
       values: 
-        p100_show_grid: Y
+        p100_show: LIST
 
     warn-on-unsaved-changes: Do Not Check
 
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: |
-      :P100_SHOW_GRID IS NULL
-      AND :P0_BOARD_ID IS NOT NULL
+  advanced: 
+    static-id: SHOW_LIST
+    custom-attributes: 
+    - '&P100_DISABLE_LIST.'
 
 - # ====== Button: SHOW_COLUMNS ================================
   id: 39065310515102584
@@ -1868,8 +2210,8 @@ buttons:
     label: Show as Columns
 
   layout: 
-    sequence: 40
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    sequence: 10
+    region: '&P100_HEADER.' # 93680113420261826
     slot: UP
     start-new-layout: false
     start-new-row: true
@@ -1887,18 +2229,17 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW_GRID:'
-      page: 100 # #APP_NAME#
+      url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.::P100_SHOW:COLUMNS'
+      page: 100 # &APP_NAME.
       values: 
+        p100_show: COLUMNS
 
     warn-on-unsaved-changes: Do Not Check
 
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: |
-      :P100_SHOW_GRID IS NOT NULL
-      AND :P0_BOARD_ID IS NOT NULL
+  advanced: 
+    static-id: SHOW_COLUMNS
+    custom-attributes: 
+    - '&P100_DISABLE_COLUMNS.'
 
 - # ====== Button: REFRESH =====================================
   id: 44656657631008153
@@ -1907,9 +2248,9 @@ buttons:
     label: Refresh
 
   layout: 
-    sequence: 40
-    region: '&P100_HEADER!RAW.' # 93680113420261826
-    slot: RIGHT_OF_TITLE
+    sequence: 50
+    region: '&P100_HEADER.' # 93680113420261826
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1917,19 +2258,19 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
     icon: fa-refresh
 
   behavior: 
     action: Defined by Dynamic Action
     execute-validations: false
 
-  server-side-condition: 
-    type: Item is NULL
-    item: P100_SHOW_GRID
+  advanced: 
+    static-id: REFRESH
 
 - # ====== Button: BOOKMARK_CURRENT ============================
   id: 46410008599872745
@@ -1939,7 +2280,7 @@ buttons:
 
   layout: 
     sequence: 60
-    region: '&P100_HEADER!RAW.' # 93680113420261826
+    region: '&P100_HEADER.' # 93680113420261826
     slot: UP
     start-new-layout: false
     start-new-row: true
@@ -1960,6 +2301,9 @@ buttons:
     show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
+  advanced: 
+    static-id: BOOKMARK_CURRENT
+
 - # ====== Button: BULK_OPERATIONS =============================
   id: 46597658862405852
   identification: 
@@ -1967,9 +2311,9 @@ buttons:
     label: Bulk Operations
 
   layout: 
-    sequence: 10
-    region: '&P100_HEADER!RAW.' # 93680113420261826
-    slot: UP
+    sequence: 20
+    region: '&P100_HEADER.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1977,10 +2321,11 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
     icon: fa-bolt
 
   behavior: 
@@ -2001,141 +2346,8 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
-- # ====== Button: SWITCH_SWIMLANE =============================
-  id: 57584191574687347
-  identification: 
-    button-name: SWITCH_SWIMLANE
-    label: Swimlane &P0_SWIMLANE_FILTER!RAW.
-
-  layout: 
-    sequence: 50
-    region: '&P100_HEADER!RAW.' # 93680113420261826
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    css-classes: 
-    - ACTION_MENU
-    - TRANSPARENT
-    icon: fa-chevron-down
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
   advanced: 
-    static-id: SWITCH_SWIMLANE
-
-- # ====== Button: SWITCH_STATUS ===============================
-  id: 57584229729687348
-  identification: 
-    button-name: SWITCH_STATUS
-    label: Status &P0_STATUS_FILTER!RAW.
-
-  layout: 
-    sequence: 60
-    region: '&P100_HEADER!RAW.' # 93680113420261826
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    css-classes: 
-    - ACTION_MENU
-    - TRANSPARENT
-    icon: fa-chevron-down
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  advanced: 
-    static-id: SWITCH_STATUS
-
-- # ====== Button: SWITCH_CATEGORY =============================
-  id: 57584348616687349
-  identification: 
-    button-name: SWITCH_CATEGORY
-    label: Category &P0_CATEGORY_FILTER!RAW.
-
-  layout: 
-    sequence: 70
-    region: '&P100_HEADER!RAW.' # 93680113420261826
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    css-classes: 
-    - ACTION_MENU
-    - TRANSPARENT
-    icon: fa-chevron-down
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  advanced: 
-    static-id: SWITCH_CATEGORY
-
-- # ====== Button: SWITCH_OWNER ================================
-  id: 57584458721687350
-  identification: 
-    button-name: SWITCH_OWNER
-    label: Owner &P0_OWNER_FILTER!RAW.
-
-  layout: 
-    sequence: 80
-    region: '&P100_HEADER!RAW.' # 93680113420261826
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    css-classes: 
-    - ACTION_MENU
-    - TRANSPARENT
-    icon: fa-chevron-down
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  advanced: 
-    static-id: SWITCH_OWNER
+    static-id: BULK_OPERATIONS
 
 - # ====== Button: SEARCH ======================================
   id: 57584540279687351
@@ -2144,9 +2356,9 @@ buttons:
     label: Search
 
   layout: 
-    sequence: 20
-    region: '&P100_HEADER!RAW.' # 93680113420261826
-    slot: UP
+    sequence: 40
+    region: '&P100_HEADER.' # 93680113420261826
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2154,18 +2366,19 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
     icon: fa-search
 
   behavior: 
     action: Defined by Dynamic Action
     execute-validations: true
 
-  server-side-condition: 
-    type: Never
+  advanced: 
+    static-id: SEARCH
 
 dynamic-actions: 
 - # ====== Dynamic Action: OPEN_DETAIL =========================
@@ -2244,7 +2457,7 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Cards [CONTENT] # 93680166992261827
+      region: COLUMNS [CONTENT] # 93680166992261827
 
     execution: 
       sequence: 10
@@ -2275,7 +2488,7 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Cards [CONTENT] # 93680166992261827
+      region: COLUMNS [CONTENT] # 93680166992261827
 
     execution: 
       sequence: 10
@@ -2386,7 +2599,7 @@ dynamic-actions:
 
     affected-elements: 
       selection-type: Region
-      region: Cards [CONTENT] # 93680166992261827
+      region: COLUMNS [CONTENT] # 93680166992261827
 
     execution: 
       sequence: 10
@@ -2418,7 +2631,7 @@ processes:
     name: SAVE_CARDS_GRID
     type: Invoke API
     execution-chain: None
-    editable-region: Cards [GRID] # 103026789833399523
+    editable-region: LIST [GRID] # 103026789833399523
 
   settings: 
     type: PL/SQL Package

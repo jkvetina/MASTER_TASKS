@@ -9,7 +9,7 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page(
  p_id=>500
@@ -17,31 +17,19 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'COMMITS'
 ,p_step_title=>'Commits'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(46105398881273954)  -- PAGE GROUP: 5) COMMITS
+,p_group_id=>wwv_flow_imp.id(46105398881273954)  -- PAGE GROUP: 5) Commits
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(39926727961197497)  -- AUTHORIZATION: IS_USER
 ,p_protection_level=>'C'
 ,p_page_component_map=>'21'
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(181932743756008951)
-,p_plug_name=>'Commits'
-,p_region_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53059267411300973)
-,p_plug_display_sequence=>10
-,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
-  'expand_shortcuts', 'N',
-  'output_as', 'HTML')).to_clob
-);
-wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(181932829863008952)
 ,p_plug_name=>'Commits'
-,p_parent_plug_id=>wwv_flow_imp.id(181932743756008951)
-,p_region_css_classes=>'FILTERS'
 ,p_region_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53092505961300992)
+,p_plug_template=>wwv_flow_imp.id(40222089463865910)
 ,p_plug_display_sequence=>10
-,p_plug_display_point=>'SUB_REGIONS'
+,p_location=>null
 ,p_attributes=>wwv_flow_t_plugin_attributes(wwv_flow_t_varchar2(
   'expand_shortcuts', 'N',
   'output_as', 'HTML')).to_clob
@@ -49,14 +37,10 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(250627008829956201)
 ,p_plug_name=>'Commits [GRID]'
-,p_parent_plug_id=>wwv_flow_imp.id(181932743756008951)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53116064012301005)
+,p_plug_template=>wwv_flow_imp.id(40245523432865959)
 ,p_plug_display_sequence=>20
-,p_plug_new_grid_row=>false
-,p_plug_new_grid_column=>false
-,p_plug_display_point=>'SUB_REGIONS'
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TSK_P500_COMMITS_V'
 ,p_include_rowid_column=>false
@@ -494,26 +478,25 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_name=>'SYNC_GITHUB'
 ,p_button_action=>'SUBMIT'
 ,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(53199485680301065)
+,p_button_template_id=>wwv_flow_imp.id(40329918987866155)
 ,p_button_image_alt=>'Sync GitHub'
 ,p_button_position=>'RIGHT_OF_TITLE'
-,p_button_alignment=>'RIGHT'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(114353170190758481)
 ,p_name=>'P500_CLIENT_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(181932829863008952)
-,p_item_default=>'tsk_app.get_client_id()'
-,p_item_default_type=>'EXPRESSION'
-,p_item_default_language=>'PLSQL'
+,p_item_default=>'P0_CLIENT_ID'
+,p_item_default_type=>'ITEM'
 ,p_prompt=>'Client'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_CLIENTS'
+,p_named_lov=>'TSK_CLIENTS'
 ,p_lov_display_null=>'YES'
 ,p_cHeight=>1
+,p_begin_on_new_line=>'N'
 ,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(53196954686301058)
+,p_field_template=>wwv_flow_imp.id(40327496873866147)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_lov_display_extra=>'NO'
@@ -527,7 +510,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(181932829863008952)
 ,p_prompt=>'Project'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_PROJECTS'
+,p_named_lov=>'TSK_PROJECTS'
 ,p_lov_display_null=>'YES'
 ,p_lov_cascade_parent_items=>'P500_CLIENT_ID'
 ,p_ajax_items_to_submit=>'P500_CLIENT_ID'
@@ -535,7 +518,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_cHeight=>1
 ,p_begin_on_new_line=>'N'
 ,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(53196954686301058)
+,p_field_template=>wwv_flow_imp.id(40327496873866147)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_lov_display_extra=>'NO'

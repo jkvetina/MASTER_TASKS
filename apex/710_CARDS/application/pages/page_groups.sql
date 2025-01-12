@@ -9,27 +9,19 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(42668205046306704)  -- PAGE GROUP: 1) CARDS
-,p_group_name=>'1) CARDS'
+ p_id=>wwv_flow_imp.id(42668205046306704)  -- PAGE GROUP: 1) Cards
+,p_group_name=>'1) Cards'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(45948121457602853)  -- PAGE GROUP: 2) CLIENTS
-,p_group_name=>'2) CLIENTS'
+ p_id=>wwv_flow_imp.id(45948121457602853)  -- PAGE GROUP: 2) Clients and Projects Setup
+,p_group_name=>'2) Clients and Projects Setup'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(97184025972341865)  -- PAGE GROUP: 3) PROJECTS
-,p_group_name=>'3) PROJECTS'
-);
-wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(42668305103309455)  -- PAGE GROUP: 4) BOARDS
-,p_group_name=>'4) BOARDS'
-);
-wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(46105398881273954)  -- PAGE GROUP: 5) COMMITS
-,p_group_name=>'5) COMMITS'
+ p_id=>wwv_flow_imp.id(46105398881273954)  -- PAGE GROUP: 5) Commits
+,p_group_name=>'5) Commits'
 );
 wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(53604444490350371)  -- PAGE GROUP: __ INTERNAL

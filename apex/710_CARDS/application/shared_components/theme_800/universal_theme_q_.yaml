@@ -1,0 +1,90 @@
+---
+# ====== Theme: Universal Theme [Q] ==========================
+id: 800
+identification: 
+  theme-number: 800
+  name: Universal Theme [Q]
+  identifier: UNIVERSAL_THEME
+  version: 24.1
+
+navigation: 
+  type: List
+  navigation-bar-type: List
+
+javascript: 
+  file-urls: 
+  - '#APEX_FILES#libraries/apex/#MIN_DIRECTORY#widget.stickyWidget#MIN#.js?v=#APEX_VERSION#'
+  - '#THEME_FILES#js/theme42#MIN#.js?v=#APEX_VERSION#'
+  - 
+  - '#WORKSPACE_FILES#master_app#MIN#.js?ver=#APP_VERSION#'
+  - '#APP_FILES#app#MIN#.js?ver=#APP_VERSION#'
+
+css: 
+  file-urls: 
+  - '#THEME_FILES#css/Core#MIN#.css?v=#APEX_VERSION#'
+  - 
+  - '#WORKSPACE_FILES#master_fonts#MIN#.css?ver=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.css?ver=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?ver=#APP_VERSION#'
+  - '#APP_FILES#app#MIN#.css?ver=#APP_VERSION#'
+
+component-defaults: 
+  page: Standard [Q]
+  navigation-bar-list: Navigation [Q]
+  navigation-menu-list-position: Top
+  navigation-menu-list-(top): Navigation [Q]
+  navigation-menu-list-(side): Navigation [Q]
+  login-page: Login
+  error-page: Login
+  printer-friendly-page: Standard [Q]
+  breadcrumb: 40331515369866159
+  button: Text
+  legacy-calendar: Calendar
+  default-label: Optional - Floating
+  optional-label: Optional - Floating
+  required-label: Required - Floating
+  list: Links List
+  region: Blank with Attributes
+  classic-report: Standard
+
+region-defaults: 
+  breadcrumbs: Title Bar
+  charts: Standard
+  forms: Standard
+  lists: Standard
+  reports: Standard
+  wizards: Standard
+  interactive-reports: Interactive Report
+
+dialog-defaults: 
+  dialog-content-region: Blank with Attributes
+  dialog-button-region: Buttons Container
+  dialog-page: Modal Dialog
+
+icons: 
+  library: Font APEX
+
+files: 
+  file-prefix: '#APEX_FILES#themes/theme_42/24.1/'
+
+styles: 
+- # ====== Style: Redwood Light ================================
+  id: 40419197952866481
+  identification: 
+    name: Redwood Light
+
+  settings: 
+    is-current: true
+    is-public: true
+    accessibility-tested: false
+
+  css: 
+    file-urls: 
+    - '#APEX_FILES#libraries/oracle-fonts/oraclesans-apex#MIN#.css?v=#APEX_VERSION#'
+    - '#THEME_FILES#css/Redwood#MIN#.css?v=#APEX_VERSION#'
+
+  theme-roller-attributes: 
+    read-only: true
+    input-parameter-file-urls: '#THEME_FILES#less/theme/Redwood-Theme.less'
+    output-css-file-url: '#THEME_FILES#css/Redwood-Theme#MIN#.css?v=#APEX_VERSION#'
+

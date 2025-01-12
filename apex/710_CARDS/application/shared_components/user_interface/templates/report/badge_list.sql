@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(53146021962301022)
+ p_id=>wwv_flow_imp.id(40275520167866021)
 ,p_row_template_name=>'Badge List'
 ,p_internal_name=>'BADGE_LIST'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -51,7 +51,7 @@ wwv_flow_imp_shared.create_row_template(
 ,p_theme_id=>800
 ,p_theme_class_id=>6
 ,p_preset_template_options=>'t-BadgeList--large:t-BadgeList--fixed:t-BadgeList--circular'
-,p_reference_id=>63410980983439128
+,p_reference_id=>12695744920084631
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp.component_end;

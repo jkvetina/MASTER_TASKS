@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(53193650682301054)
+ p_id=>wwv_flow_imp.id(40324199999866138)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-NavTabs-item #A03# is-active" aria-current="page" id="#A01#">',
 '  <a href="#LINK#" class="t-NavTabs-link #A04# " title="#TEXT_ESC_SC#">',
@@ -41,7 +41,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_a03_label=>'List Item Class'
 ,p_a04_label=>'Link Class'
 ,p_a05_label=>'Badge Class'
-,p_reference_id=>63449771905439153
+,p_reference_id=>12743397065084744
 );
 wwv_flow_imp.component_end;
 end;

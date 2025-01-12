@@ -1,7 +1,7 @@
-prompt --application/shared_components/user_interface/templates/page/standard_q_nav
+prompt --application/shared_components/user_interface/templates/page/standard_q
 begin
 --   Manifest
---     TEMPLATE: STANDARD_Q-NAV
+--     TEMPLATE: STANDARD_Q
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.05.31'
@@ -9,13 +9,13 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_template(
- p_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40178692949865817)
 ,p_theme_id=>800
-,p_name=>'Standard Q23'
-,p_internal_name=>'STANDARD_Q-NAV'
+,p_name=>'Standard [Q]'
+,p_internal_name=>'STANDARD_Q'
 ,p_is_popup=>false
 ,p_javascript_code_onload=>'apex.theme42.initializePage.noSideCol();'
 ,p_header_template=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -41,6 +41,9 @@ wwv_flow_imp_shared.create_template(
 '<header class="t-Header" id="t_Header" role="banner">',
 '  #REGION_POSITION_07#',
 '  <div id="top_header">',
+'    <a href="f?p=800:100:&APP_SESSION." class="ENV_BANNER &ENV." title="Launchpad [&ENV.]"><span class="fa fa-long-arrow-up"></span></a>',
+'    <!--<a href="f?p=&CONTEXT_APP.:HOME:&APP_SESSION." id="CLIENT_LOGO"><img src="#WORKSPACE_FILES#&APP_GROUP./&APP_GROUP.-logo-header.png" /></a>-->',
+'    <a href="f?p=&CONTEXT_APP.:HOME:&APP_SESSION." id="APP_LOGO" class="t-Header-logo-link">#LOGO#</a>#AFTER_LOGO#',
 '    <nav class="tabs">',
 '    #NAVIGATION_BAR#',
 '    </nav>',
@@ -68,8 +71,7 @@ wwv_flow_imp_shared.create_template(
 '            #BUILT_WITH_LOVE_USING_APEX#',
 '          </div>',
 '        </div>',
-'        <div class="t-Footer-top" style="display: flex;">',
-'          <a href="f?p=800:985:&APP_SESSION.:::::" class="t-Footer-topButton BUTTON" title="" id="BUTTON_FEEDBACK">Feedback</a>',
+'        <div class="t-Footer-top">',
 '          <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="&"APP_TEXT$APEX.UI.BACK_TO_TOP"." aria-label="&"APP_TEXT$APEX.UI.BACK_TO_TOP"."><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>',
 '        </div>',
 '      </footer>',
@@ -110,16 +112,19 @@ wwv_flow_imp_shared.create_template(
 '</div>'))
 ,p_notification_message=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="t-Body-alert">',
-'  <div class="t-Alert t-Alert--defaultIcons t-Alert--warning t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Notification" role="alert" style="display: none;">',
+'  <div class="t-Alert t-Alert--defaultIcons t-Alert--warning t-Alert--horizontal t-Alert--page t-Alert--colorBG" id="t_Alert_Notification" role="region" aria-labelledby="page_warning_id">',
 '    <div class="t-Alert-wrap">',
 '      <div class="t-Alert-icon">',
-'        <span class="t-Icon"></span>',
+'        <span class="t-Icon" role="img" aria-label=''&"APP_TEXT$WARNING"!HTML.''></span>',
 '      </div>',
 '      <div class="t-Alert-content">',
-'        <div class="t-Alert-body">#MESSAGE#</div>',
+'        <div class="t-Alert-header">',
+'          <h2 id="page_warning_id" class="u-vh">#ERROR_MESSAGE_HEADING#</h2>',
+'        </div>',
+'        <div class="t-Alert-body" role="alert">#MESSAGE#</div>',
 '      </div>',
 '      <div class="t-Alert-buttons">',
-'        <button class="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" title="#CLOSE_NOTIFICATION#"><span class="t-Icon icon-close"></span></button>',
+'        <button class="t-Button t-Button--noUI t-Button--icon t-Button--closeAlert" type="button" aria-label="#CLOSE_NOTIFICATION#" title="#CLOSE_NOTIFICATION#"><span class="t-Icon icon-close"></span></button>',
 '      </div>',
 '    </div>',
 '  </div>',
@@ -157,7 +162,7 @@ wwv_flow_imp_shared.create_template(
 '      </div>',
 '    </div>',
 '    <div class="t-Alert-buttons">',
-'      <button onclick="#BACK_LINK#" class="t-Button t-Button--hot w50p t-Button--large" type="button">#OK#</button>',
+'      <button class="a-Error-back t-Button t-Button--hot w50p t-Button--large" type="button">#OK#</button>',
 '    </div>',
 '  </div>',
 '</div>'))
@@ -181,11 +186,11 @@ wwv_flow_imp_shared.create_template(
 ,p_grid_first_column_attributes=>'col-start'
 ,p_grid_last_column_attributes=>'col-end'
 ,p_dialog_browser_frame=>'MODAL'
-,p_reference_id=>63188215361701831
+,p_reference_id=>13144403600163236
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56273807986653928)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40178938395865818)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'After Logo'
 ,p_placeholder=>'AFTER_LOGO'
 ,p_has_grid_support=>false
@@ -196,8 +201,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>4
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56274267530653928)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40179249022865818)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'After Navigation Bar'
 ,p_placeholder=>'AFTER_NAVIGATION_BAR'
 ,p_has_grid_support=>false
@@ -208,8 +213,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>4
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56274731701653929)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40179594901865819)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Before Navigation Bar'
 ,p_placeholder=>'BEFORE_NAVIGATION_BAR'
 ,p_has_grid_support=>false
@@ -220,8 +225,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>4
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56275247993653929)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40179833799865819)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Body'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>true
@@ -232,8 +237,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56275763913653929)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40180127376865820)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Breadcrumb Bar'
 ,p_placeholder=>'REGION_POSITION_01'
 ,p_has_grid_support=>false
@@ -243,8 +248,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56276242230653929)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40180486264865820)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Dialogs, Drawers and Popups'
 ,p_placeholder=>'REGION_POSITION_04'
 ,p_has_grid_support=>true
@@ -255,8 +260,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56276744647653929)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40180728277865821)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Footer'
 ,p_placeholder=>'REGION_POSITION_05'
 ,p_has_grid_support=>true
@@ -267,8 +272,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56277301063653930)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40181074740865821)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Top Navigation'
 ,p_placeholder=>'REGION_POSITION_06'
 ,p_has_grid_support=>false
@@ -278,8 +283,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56277716035653930)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40181326366865822)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Banner'
 ,p_placeholder=>'REGION_POSITION_07'
 ,p_has_grid_support=>false
@@ -289,8 +294,8 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56278243161653930)
-,p_page_template_id=>wwv_flow_imp.id(50563362927791187)
+ p_id=>wwv_flow_imp.id(40181683907865822)
+,p_page_template_id=>wwv_flow_imp.id(40178692949865817)
 ,p_name=>'Full Width Content'
 ,p_placeholder=>'REGION_POSITION_08'
 ,p_has_grid_support=>true

@@ -9,7 +9,7 @@
       app: 800 # Master 25
       referenced-id: 13993288442216437 # MASTER
 
-    version-number: 42190236178286
+    version-number: 42190260745817
 
   components: 
   - # ====== Component:  =========================================
@@ -211,6 +211,16 @@
     id: 39946857717197558
     component: 
       text-message: CONSTRAINT_ERROR|APP_USERS_UQ # 39946500754197557
+
+  - # ====== Component:  =========================================
+    id: 40058568093346700
+    component: 
+      list: NAVIGATION_VPD # 40056462880331034
+
+  - # ====== Component:  =========================================
+    id: 40795494890017861
+    component: 
+      application-item: CONTEXT_ID # 52932969427496030
 
 - # ====== Component Group: GRID_ITEMS =========================
   id: 39947213638199513

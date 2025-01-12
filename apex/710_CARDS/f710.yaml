@@ -58,6 +58,7 @@ security:
 
 database-session: 
   parsing-schema: MASTER
+  initialization-pl/sql-code: master.app.init_session();
 
 globalization: 
   primary-language: English (en)
@@ -77,7 +78,6 @@ character-value-comparison:
 
 logo: 
   type: Text
-  text: '&APP_NAME.'
 
 progressive-web-app: 
   enable: true
@@ -93,11 +93,11 @@ navigation:
     page: HOME
 
   login-url: 
-    url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
+    url: 'f?p=&APP_ID.:LOGIN:0'
     page: LOGIN
 
 navigation-menu: 
-  list-template: Top Navigation Menu
+  list-template: Navigation [Q]
   template-options: 
   - '#DEFAULT#'
   - js-tabLike
@@ -105,26 +105,17 @@ navigation-menu:
 
 navigation-bar: 
   implementation: List
-  list: NAVIGATION # 47980209142432734
-  list-template: Navigation Q23
+  list: NAVIGATION_VPD # 40056462880331034
+  list-template: Navigation [Q]
   template-options: 
   - '#DEFAULT#'
+  - js-tabLike
 
 javascript: 
-  file-urls: 
-  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
-  - '#APP_FILES#tsk_app#MIN#.js?version=#APP_VERSION#'
   include-jquery-migrate: false
 
-css: 
-  file-urls: 
-  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
-  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
-  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
-  - '#APP_FILES#tsk_app#MIN#.css?version=#APP_VERSION#'
-
 attributes: 
-  theme: Universal Theme # 800
+  theme: Universal Theme [Q] # 800
   global-page: 0
   enable-end-users-to-choose-theme-style: false
   add-"built-with-apex"-to-footer: false

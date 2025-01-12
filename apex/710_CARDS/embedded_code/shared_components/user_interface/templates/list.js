@@ -1,5 +1,5 @@
 // ----------------------------------------
-// Theme: Universal Theme > List Template: Menu Bar > JavaScript > Execute when Page Loads
+// Theme: Universal Theme [Q] > List Template: Menu Bar > JavaScript > Execute when Page Loads
 
 var e = apex.jQuery("##PARENT_STATIC_ID#_menubar", apex.gPageContext$);
 if (e.hasClass("js-addActions")) {
@@ -15,7 +15,7 @@ e.menu({
 });
 
 // ----------------------------------------
-// Theme: Universal Theme > List Template: Menu Popup > JavaScript > Execute when Page Loads
+// Theme: Universal Theme [Q] > List Template: Menu Popup > JavaScript > Execute when Page Loads
 
 var e = apex.jQuery("##PARENT_STATIC_ID#_menu", apex.gPageContext$);
 if (e.hasClass("js-addActions")) {
@@ -24,12 +24,12 @@ if (e.hasClass("js-addActions")) {
 e.menu({ iconType: 'fa', callout: e.hasClass("js-menu-callout")});
 
 // ----------------------------------------
-// Theme: Universal Theme > List Template: Side Navigation Menu > JavaScript > Execute when Page Loads
+// Theme: Universal Theme [Q] > List Template: Side Navigation Menu > JavaScript > Execute when Page Loads
 
 apex.jQuery('body').addClass('t-PageBody--leftNav');
 
 // ----------------------------------------
-// Theme: Universal Theme > List Template: Top Navigation Menu > JavaScript > Execute when Page Loads
+// Theme: Universal Theme [Q] > List Template: Top Navigation Menu > JavaScript > Execute when Page Loads
 
 var e = apex.jQuery("#t_MenuNav", apex.gPageContext$);
 if (e.hasClass("js-addActions")) {
@@ -45,7 +45,7 @@ e.menu({
 
 
 // ----------------------------------------
-// Theme: Universal Theme > List Template: Wizard Progress > JavaScript > Execute when Page Loads
+// Theme: Universal Theme [Q] > List Template: Wizard Progress > JavaScript > Execute when Page Loads
 
 apex.theme.initWizardProgressBar();
 

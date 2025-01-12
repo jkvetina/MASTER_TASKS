@@ -1,7 +1,7 @@
-prompt --application/shared_components/logic/application_items/g_workspace
+prompt --application/shared_components/logic/application_items/context_id
 begin
 --   Manifest
---     APPLICATION ITEM: G_WORKSPACE
+--     APPLICATION ITEM: CONTEXT_ID
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2024.05.31'
@@ -9,14 +9,15 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(56945595943082434)
-,p_name=>'G_WORKSPACE'
+ p_id=>wwv_flow_imp.id(52932969427496030)
+,p_name=>'CONTEXT_ID'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
-,p_version_scn=>1
+,p_reference_id=>40782518161014981
+,p_version_scn=>42190260735986
 );
 wwv_flow_imp.component_end;
 end;

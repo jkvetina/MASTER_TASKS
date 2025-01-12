@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(53174795868301043)
+ p_id=>wwv_flow_imp.id(40304704138866091)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-Cards-item is-active #A04#" aria-current="page">',
 '  <div class="t-Card">',
@@ -61,7 +61,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_a05_label=>'Link Attributes'
 ,p_a06_label=>'Card Color Class'
 ,p_a07_label=>'Subtitle'
-,p_reference_id=>63439844624439147
+,p_reference_id=>12724925910084700
 );
 wwv_flow_imp.component_end;
 end;

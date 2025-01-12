@@ -1,6 +1,6 @@
 ---
 - # ====== Button Template: Icon ===============================
-  id: 53198695887301061
+  id: 40329256648866153
   identification: 
     name: Icon
     identifier: ICON
@@ -8,36 +8,19 @@
 
   subscription: 
     master: 
-      referenced-id: 63463317880439166
+      app: 800 # Master 25
+      referenced-id: 12748475170084758 # Icon
 
   advanced: 
     translatable: false
 
   templates: 
-    normal: '<button class="t-Button t-Button--noLabel  t-Button--icon #BUTTON_CSS_CLASSES#" #BUTTON_ATTRIBUTES# onclick="#JAVASCRIPT#" type="button" id="#BUTTON_ID#" title="#LABEL!ATTR#" aria-label="#LABEL!ATTR#"><span class="t-Icon #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
-    hot: '<button class="t-Button t-Button--noLabel t-Button--icon #BUTTON_CSS_CLASSES# t-Button--hot" #BUTTON_ATTRIBUTES# onclick="#JAVASCRIPT#" type="button" id="#BUTTON_ID#" title="#LABEL!ATTR#" aria-label="#LABEL!ATTR#"><span class="t-Icon #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
+    normal: '<button class="t-Button t-Button--noLabel  t-Button--icon #BUTTON_CSS_CLASSES#" #BUTTON_ATTRIBUTES# #ONCLICK# type="button" id="#BUTTON_ID#" title="#LABEL!ATTR#" aria-label="#LABEL!ATTR#"><span class="t-Icon #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
+    hot: '<button class="t-Button t-Button--noLabel t-Button--icon #BUTTON_CSS_CLASSES# t-Button--hot" #BUTTON_ATTRIBUTES# #ONCLICK# type="button" id="#BUTTON_ID#" title="#LABEL!ATTR#" aria-label="#LABEL!ATTR#"><span class="t-Icon #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
 
   template-options: 
-  - # ====== Template Option: Push ===============================
-    id: 53199091675301065
-    identification: 
-      name: Push
-      identifier: PUSH
-      group: Icon Hover Animation
-      sequence: 20
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Button--hoverIconPush
-
-    help: 
-      help-text: The icon will animate to the right or left on button hover or focus.
-
   - # ====== Template Option: Spin ===============================
-    id: 53199337650301065
+    id: 40329617042866154
     identification: 
       name: Spin
       identifier: SPIN
@@ -54,8 +37,26 @@
     help: 
       help-text: The icon will spin on button hover or focus.
 
+  - # ====== Template Option: Push ===============================
+    id: 40329884939866155
+    identification: 
+      name: Push
+      identifier: PUSH
+      group: Icon Hover Animation
+      sequence: 20
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Button--hoverIconPush
+
+    help: 
+      help-text: The icon will animate to the right or left on button hover or focus.
+
 - # ====== Button Template: Text ===============================
-  id: 53199485680301065
+  id: 40329918987866155
   identification: 
     name: Text
     identifier: TEXT
@@ -63,17 +64,18 @@
 
   subscription: 
     master: 
-      referenced-id: 63463978601439167
+      app: 800 # Master 25
+      referenced-id: 12749148650084760 # Text
 
   advanced: 
     translatable: false
 
   templates: 
-    normal: '<button onclick="#JAVASCRIPT#" class="t-Button #BUTTON_CSS_CLASSES#" type="button" #BUTTON_ATTRIBUTES# id="#BUTTON_ID#"><span class="t-Button-label">#LABEL#</span></button>'
-    hot: '<button onclick="#JAVASCRIPT#" class="t-Button t-Button--hot #BUTTON_CSS_CLASSES#" type="button" #BUTTON_ATTRIBUTES# id="#BUTTON_ID#"><span class="t-Button-label">#LABEL#</span></button>'
+    normal: '<button class="t-Button #BUTTON_CSS_CLASSES#" type="button" #BUTTON_ATTRIBUTES# #ONCLICK# id="#BUTTON_ID#"><span class="t-Button-label">#LABEL#</span></button>'
+    hot: '<button class="t-Button t-Button--hot #BUTTON_CSS_CLASSES#" type="button" #BUTTON_ATTRIBUTES# #ONCLICK# id="#BUTTON_ID#"><span class="t-Button-label">#LABEL#</span></button>'
 
 - # ====== Button Template: Text with Icon =====================
-  id: 53199535912301065
+  id: 40330034306866155
   identification: 
     name: Text with Icon
     identifier: TEXT_WITH_ICON
@@ -81,7 +83,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63464158031439167
+      app: 800 # Master 25
+      referenced-id: 12749241091084760 # Text with Icon
 
   advanced: 
     translatable: false
@@ -91,12 +94,12 @@
     - t-Button--iconLeft
 
   templates: 
-    normal: '<button class="t-Button t-Button--icon #BUTTON_CSS_CLASSES#" #BUTTON_ATTRIBUTES# onclick="#JAVASCRIPT#" type="button" id="#BUTTON_ID#"><span class="t-Icon t-Icon--left #ICON_CSS_CLASSES#" aria-hidden="true"></span><span class="t-Button-label">#LABEL#</span><span class="t-Icon t-Icon--right #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
-    hot: '<button class="t-Button t-Button--icon #BUTTON_CSS_CLASSES# t-Button--hot" #BUTTON_ATTRIBUTES# onclick="#JAVASCRIPT#" type="button" id="#BUTTON_ID#"><span class="t-Icon t-Icon--left #ICON_CSS_CLASSES#" aria-hidden="true"></span><span class="t-Button-label">#LABEL#</span><span class="t-Icon t-Icon--right #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
+    normal: '<button class="t-Button t-Button--icon #BUTTON_CSS_CLASSES#" #BUTTON_ATTRIBUTES# #ONCLICK# type="button" id="#BUTTON_ID#"><span class="t-Icon t-Icon--left #ICON_CSS_CLASSES#" aria-hidden="true"></span><span class="t-Button-label">#LABEL#</span><span class="t-Icon t-Icon--right #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
+    hot: '<button class="t-Button t-Button--icon #BUTTON_CSS_CLASSES# t-Button--hot" #BUTTON_ATTRIBUTES# #ONCLICK# type="button" id="#BUTTON_ID#"><span class="t-Icon t-Icon--left #ICON_CSS_CLASSES#" aria-hidden="true"></span><span class="t-Button-label">#LABEL#</span><span class="t-Icon t-Icon--right #ICON_CSS_CLASSES#" aria-hidden="true"></span></button>'
 
   template-options: 
   - # ====== Template Option: Hide Icon on Desktop ===============
-    id: 53199782301301065
+    id: 40330271928866156
     identification: 
       name: Hide Icon on Desktop
       identifier: HIDE_ICON_ON_DESKTOP
@@ -113,7 +116,7 @@
       help-text: This template options hides the button icon on large screens.
 
   - # ====== Template Option: Hide Label on Mobile ===============
-    id: 53199940956301065
+    id: 40330478741866156
     identification: 
       name: Hide Label on Mobile
       identifier: HIDE_LABEL_ON_MOBILE
@@ -129,12 +132,12 @@
     help: 
       help-text: This template options hides the button label on small screens.
 
-  - # ====== Template Option: Left ===============================
-    id: 53200290730301065
+  - # ====== Template Option: Spin ===============================
+    id: 40330688070866157
     identification: 
-      name: Left
-      identifier: LEFTICON
-      group: Icon Position
+      name: Spin
+      identifier: SPIN
+      group: Icon Hover Animation
       sequence: 10
 
     settings: 
@@ -142,10 +145,13 @@
 
     appearance: 
       css-classes: 
-      - t-Button--iconLeft
+      - t-Button--hoverIconSpin
+
+    help: 
+      help-text: The icon will spin on button hover or focus.
 
   - # ====== Template Option: Push ===============================
-    id: 53200543832301065
+    id: 40330847164866157
     identification: 
       name: Push
       identifier: PUSH
@@ -162,8 +168,23 @@
     help: 
       help-text: The icon will animate to the right or left on button hover or focus.
 
+  - # ====== Template Option: Left ===============================
+    id: 40331292927866158
+    identification: 
+      name: Left
+      identifier: LEFTICON
+      group: Icon Position
+      sequence: 10
+
+    settings: 
+      advanced: false
+
+    appearance: 
+      css-classes: 
+      - t-Button--iconLeft
+
   - # ====== Template Option: Right ==============================
-    id: 53200701457301065
+    id: 40331454926866159
     identification: 
       name: Right
       identifier: RIGHTICON
@@ -176,22 +197,4 @@
     appearance: 
       css-classes: 
       - t-Button--iconRight
-
-  - # ====== Template Option: Spin ===============================
-    id: 53200969210301066
-    identification: 
-      name: Spin
-      identifier: SPIN
-      group: Icon Hover Animation
-      sequence: 10
-
-    settings: 
-      advanced: false
-
-    appearance: 
-      css-classes: 
-      - t-Button--hoverIconSpin
-
-    help: 
-      help-text: The icon will spin on button hover or focus.
 

@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(53169062304301038)
+ p_id=>wwv_flow_imp.id(40298966909866076)
 ,p_row_template_name=>'Value Attribute Pairs - Row'
 ,p_internal_name=>'VALUE_ATTRIBUTE_PAIRS_ROW'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -51,7 +51,7 @@ wwv_flow_imp_shared.create_row_template(
 ,p_theme_id=>800
 ,p_theme_class_id=>7
 ,p_preset_template_options=>'t-AVPList--leftAligned'
-,p_reference_id=>63422664168439135
+,p_reference_id=>12719145427084685
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp.component_end;

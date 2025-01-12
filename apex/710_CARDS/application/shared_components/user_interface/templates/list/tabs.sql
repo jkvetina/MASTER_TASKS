@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(53189074579301051)
+ p_id=>wwv_flow_imp.id(40319594518866127)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-Tabs-item is-active #A03#" aria-current="page" id="#A01#">',
 '  <a href="#LINK#" class="t-Tabs-link #A04#">',
@@ -38,7 +38,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_a01_label=>'List Item ID'
 ,p_a03_label=>'List Item Class'
 ,p_a04_label=>'Link Class'
-,p_reference_id=>63448230474439152
+,p_reference_id=>12738792671084734
 );
 wwv_flow_imp.component_end;
 end;

@@ -1,4 +1,44 @@
 ---
+- # ====== List: NAVIGATION_VPD ================================
+  id: 40056462880331034
+  identification: 
+    name: NAVIGATION_VPD
+
+  subscription: 
+    master: 
+      app: 800 # Master 25
+      referenced-id: 40056882291338182 # NAVIGATION_VPD
+
+    version-number: 42190255210303
+
+  source: 
+    type: SQL Query
+    sql-query: |
+      SELECT
+          t.lvl,
+          --
+          NULL AS label,
+          NULL AS target,
+          NULL AS is_current_list_entry,
+          NULL AS image,
+          NULL AS image_attribute,
+          NULL AS image_alt_attribute,
+          --
+          t.attribute01,
+          t.attribute02,
+          t.attribute03,
+          t.attribute04,
+          t.attribute05,
+          t.attribute06,
+          t.attribute07,
+          t.attribute08,
+          t.attribute09,
+          t.attribute10
+          --
+      FROM master.app_navigation_VPD_v t
+      ORDER BY
+          t.order# NULLS FIRST;
+
 - # ====== List: NAVIGATION ====================================
   id: 47980209142432734
   identification: 

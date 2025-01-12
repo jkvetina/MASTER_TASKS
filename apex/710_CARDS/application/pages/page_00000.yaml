@@ -6,10 +6,10 @@ identification:
   page-group: __ INTERNAL # 53604444490350371
 
 regions: 
-- # ====== Region: APP_CONTEXT =================================
+- # ====== Region: ACTIVE_FILTERS ==============================
   id: 42695771117728846
   identification: 
-    name: APP_CONTEXT
+    name: ACTIVE_FILTERS
     type: Static Content
 
   layout: 
@@ -35,9 +35,6 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
-
-  security: 
-    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
 
   customization: 
     customizable: Not Customizable By End Users
@@ -97,37 +94,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_CLIENT_NAME ===========================
-  id: 42444931098267287
-  identification: 
-    name: P0_CLIENT_NAME
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 20
-    region: APP_CONTEXT # 42695771117728846
+    region: ACTIVE_FILTERS # 42695771117728846
     slot: BODY
 
   advanced: 
@@ -156,8 +123,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 40
-    region: APP_CONTEXT # 42695771117728846
+    sequence: 20
+    region: ACTIVE_FILTERS # 42695771117728846
     slot: BODY
 
   advanced: 
@@ -186,128 +153,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 70
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_PROJECT_NAME ==========================
-  id: 42695123389728840
-  identification: 
-    name: P0_PROJECT_NAME
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 50
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_BOARD_NAME ============================
-  id: 42695274105728841
-  identification: 
-    name: P0_BOARD_NAME
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 80
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_SWIMLANE_NAME =========================
-  id: 42695322591728842
-  identification: 
-    name: P0_SWIMLANE_NAME
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 110
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_OWNER_NAME ============================
-  id: 42695498575728843
-  identification: 
-    name: P0_OWNER_NAME
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 200
-    region: APP_CONTEXT # 42695771117728846
+    sequence: 30
+    region: ACTIVE_FILTERS # 42695771117728846
     slot: BODY
 
   advanced: 
@@ -369,8 +216,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 100
-    region: APP_CONTEXT # 42695771117728846
+    sequence: 40
+    region: ACTIVE_FILTERS # 42695771117728846
     slot: BODY
 
   advanced: 
@@ -399,8 +246,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 190
-    region: APP_CONTEXT # 42695771117728846
+    sequence: 70
+    region: ACTIVE_FILTERS # 42695771117728846
     slot: BODY
 
   advanced: 
@@ -429,8 +276,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 130
-    region: APP_CONTEXT # 42695771117728846
+    sequence: 50
+    region: ACTIVE_FILTERS # 42695771117728846
     slot: BODY
 
   advanced: 
@@ -459,8 +306,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 160
-    region: APP_CONTEXT # 42695771117728846
+    sequence: 60
+    region: ACTIVE_FILTERS # 42695771117728846
     slot: BODY
 
   advanced: 
@@ -489,7 +336,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 30
+    sequence: 20
     region: ITEMS # 53747394344460126
     slot: BODY
 
@@ -499,10 +346,6 @@ page-items:
   source: 
     type: Null
     used: Only when current value in session state is null
-
-  default: 
-    type: Static
-    static-value: 10
 
   session-state: 
     data-type: VARCHAR2
@@ -526,7 +369,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 20
+    sequence: 30
     region: ITEMS # 53747394344460126
     slot: BODY
 
@@ -546,277 +389,76 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P0_STATUS_NAME ===========================
-  id: 59203725601962165
-  identification: 
-    name: P0_STATUS_NAME
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 140
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_CATEGORY_NAME =========================
-  id: 59203865963962166
-  identification: 
-    name: P0_CATEGORY_NAME
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 170
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_SWIMLANE_FILTER =======================
-  id: 59203917668962167
-  identification: 
-    name: P0_SWIMLANE_FILTER
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 120
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_STATUS_FILTER =========================
-  id: 59204040478962168
-  identification: 
-    name: P0_STATUS_FILTER
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 150
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_CATEGORY_FILTER =======================
-  id: 59204156952962169
-  identification: 
-    name: P0_CATEGORY_FILTER
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 180
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_OWNER_FILTER ==========================
-  id: 59204253628962170
-  identification: 
-    name: P0_OWNER_FILTER
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 210
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_PROJECT_FILTER ========================
-  id: 59204328538962171
-  identification: 
-    name: P0_PROJECT_FILTER
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 60
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_BOARD_FILTER ==========================
-  id: 59204443142962172
-  identification: 
-    name: P0_BOARD_FILTER
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 90
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
-- # ====== Page Item: P0_CLIENT_FILTER =========================
-  id: 59204543514962173
-  identification: 
-    name: P0_CLIENT_FILTER
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 30
-    region: APP_CONTEXT # 42695771117728846
-    slot: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 dynamic-actions: 
+- # ====== Dynamic Action: SUBMIT_AND_DISABLE_BUTTON ===========
+  id: 35708924462708532
+  identification: 
+    name: SUBMIT_AND_DISABLE_BUTTON
+
+  execution: 
+    sequence: 50
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Click
+    selection-type: jQuery Selector
+    jquery-selector: button.SUBMIT_DISABLE
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 35709099605708533
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var button_id = this.triggeringElement.getAttribute('id');
+        console.log('SUBMIT_AND_DISABLE_BUTTON:', button_id, this);
+        document.getElementById(button_id).disabled = true;
+        apex.submit(button_id);
+        
+
+    execution: 
+      sequence: 10
+      event: SUBMIT_AND_DISABLE_BUTTON # 35708924462708532
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SUBMIT_CHANGED_SELECTBOX ============
+  id: 35709139220708534
+  identification: 
+    name: SUBMIT_CHANGED_SELECTBOX
+
+  execution: 
+    sequence: 40
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: Change
+    selection-type: jQuery Selector
+    jquery-selector: .SUBMIT select
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 35709285480708535
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        var item_id = this.triggeringElement.getAttribute('id');
+        console.log('SUBMIT_CHANGED_SELECTBOX:', item_id);
+        apex.submit(item_id);
+        
+
+    execution: 
+      sequence: 10
+      event: SUBMIT_CHANGED_SELECTBOX # 35709139220708534
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 - # ====== Dynamic Action: DIALOG_CLOSED =======================
   id: 46596879113405844
   identification: 

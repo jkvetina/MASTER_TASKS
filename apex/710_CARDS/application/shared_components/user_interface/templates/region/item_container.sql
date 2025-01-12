@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_plug_template(
- p_id=>wwv_flow_imp.id(53118096737301006)
+ p_id=>wwv_flow_imp.id(40247685752865963)
 ,p_layout=>'TABLE'
 ,p_template=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div class="t-ItemContainer #REGION_CSS_CLASSES#" id="#REGION_STATIC_ID#" #REGION_LANDMARK_ATTRIBUTES# #REGION_ATTRIBUTES#>',
@@ -26,12 +26,12 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_theme_class_id=>21
 ,p_default_label_alignment=>'RIGHT'
 ,p_default_field_alignment=>'LEFT'
-,p_reference_id=>63357591795439099
+,p_reference_id=>12667883446084574
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56447863209654030)
-,p_plug_template_id=>wwv_flow_imp.id(53118096737301006)
+ p_id=>wwv_flow_imp.id(40247965656865963)
+,p_plug_template_id=>wwv_flow_imp.id(40247685752865963)
 ,p_name=>'Item'
 ,p_placeholder=>'BODY'
 ,p_has_grid_support=>false
@@ -41,8 +41,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56448397879654030)
-,p_plug_template_id=>wwv_flow_imp.id(53118096737301006)
+ p_id=>wwv_flow_imp.id(40248227239865964)
+,p_plug_template_id=>wwv_flow_imp.id(40247685752865963)
 ,p_name=>'Button End'
 ,p_placeholder=>'BUTTON_END'
 ,p_has_grid_support=>false
@@ -52,8 +52,8 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(56448897815654030)
-,p_plug_template_id=>wwv_flow_imp.id(53118096737301006)
+ p_id=>wwv_flow_imp.id(40248549870865964)
+,p_plug_template_id=>wwv_flow_imp.id(40247685752865963)
 ,p_name=>'Button Start'
 ,p_placeholder=>'BUTTON_START'
 ,p_has_grid_support=>false

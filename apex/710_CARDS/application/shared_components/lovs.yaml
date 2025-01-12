@@ -1,11 +1,11 @@
 ---
-- # ====== List of Values: LOV_BOARDS ==========================
+- # ====== List of Values: TSK_BOARDS ==========================
   id: 39094577788102628
   identification: 
-    name: LOV_BOARDS
+    name: TSK_BOARDS
 
   subscription: 
-    version-number: 1
+    version-number: 42190258846410
 
   source: 
     location: Local Database
@@ -19,13 +19,13 @@
     default-sort: ORDER#
     sort-direction: Ascending (Nulls Last)
 
-- # ====== List of Values: LOV_CLIENTS =========================
+- # ====== List of Values: TSK_CLIENTS =========================
   id: 39095152206102634
   identification: 
-    name: LOV_CLIENTS
+    name: TSK_CLIENTS
 
   subscription: 
-    version-number: 1
+    version-number: 42190258826652
 
   source: 
     location: Local Database
@@ -101,13 +101,13 @@
     default-sort: USER_NAME
     sort-direction: Ascending (Nulls Last)
 
-- # ====== List of Values: LOV_PROJECTS ========================
+- # ====== List of Values: TSK_PROJECTS ========================
   id: 42492650389312824
   identification: 
-    name: LOV_PROJECTS
+    name: TSK_PROJECTS
 
   subscription: 
-    version-number: 1
+    version-number: 42190258832928
 
   source: 
     location: Local Database

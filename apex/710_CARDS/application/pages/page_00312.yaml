@@ -5,7 +5,7 @@ identification:
   name: Copy from Project
   alias: COPY-FROM-PROJECT
   title: Copy from Project
-  page-group: 3) PROJECTS # 97184025972341865
+  page-group: 2) Clients and Projects Setup # 45948121457602853
 
 appearance: 
   page-mode: Modal Dialog
@@ -56,7 +56,7 @@ regions:
     table-name: TSK_SWIMLANES
     include-rowid-column: false
     where-clause: |
-      client_id = tsk_app.get_client_id()
+      client_id = :P0_CLIENT_ID
       AND project_id = :P312_PROJECT_ID
     page-items-to-submit: 
     - P312_PROJECT_ID
@@ -594,7 +594,7 @@ regions:
     table-name: TSK_STATUSES
     include-rowid-column: false
     where-clause: |
-      client_id = tsk_app.get_client_id()
+      client_id = :P0_CLIENT_ID
       AND project_id = :P312_PROJECT_ID
     page-items-to-submit: 
     - P312_PROJECT_ID
@@ -1376,7 +1376,7 @@ regions:
     table-name: TSK_CATEGORIES
     include-rowid-column: false
     where-clause: |
-      client_id = tsk_app.get_client_id()
+      client_id = :P0_CLIENT_ID
       AND project_id = :P312_PROJECT_ID
     page-items-to-submit: 
     - P312_PROJECT_ID
@@ -2282,7 +2282,7 @@ page-items:
     start-new-row: true
     column: Automatic
     new-column: true
-    column-span: 3
+    column-span: Automatic
     label-column-span: Page Template Default
 
   appearance: 
@@ -2296,7 +2296,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 42492650389312824
+    list-of-values: TSK_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: true
 

@@ -1,579 +1,6 @@
 ---
-- # ====== Template Option Group: Button Set ===================
-  id: 56063340809653806
-  identification: 
-    template-type: Button
-    name: Button Set
-    identifier: BUTTON_SET
-    sequence: 40
-
-  help: 
-    help-text: Enables you to group many buttons together into a pill. You can use this option to specify where the button is within this set. Set the option to Default if this button is not part of a button set.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Icon Hover Animation =========
-  id: 56063791664653807
-  identification: 
-    template-type: Button
-    name: Icon Hover Animation
-    identifier: ICON_HOVER_ANIMATION
-    sequence: 55
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Icon Position ================
-  id: 56064152857653807
-  identification: 
-    template-type: Button
-    name: Icon Position
-    identifier: ICON_POSITION
-    sequence: 50
-
-  help: 
-    help-text: Sets the position of the icon relative to the label.
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Size =========================
-  id: 56064558257653807
-  identification: 
-    template-type: Button
-    name: Size
-    identifier: SIZE
-    sequence: 10
-
-  help: 
-    help-text: Sets the size of the button.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Spacing Bottom ===============
-  id: 56064958679653807
-  identification: 
-    template-type: Button
-    name: Spacing Bottom
-    identifier: SPACING_BOTTOM
-    sequence: 100
-
-  help: 
-    help-text: Controls the spacing to the bottom of the button.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Spacing Left =================
-  id: 56065340511653807
-  identification: 
-    template-type: Button
-    name: Spacing Left
-    identifier: SPACING_LEFT
-    sequence: 70
-
-  help: 
-    help-text: Controls the spacing to the left of the button.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Spacing Right ================
-  id: 56065783990653807
-  identification: 
-    template-type: Button
-    name: Spacing Right
-    identifier: SPACING_RIGHT
-    sequence: 80
-
-  help: 
-    help-text: Controls the spacing to the right of the button.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Spacing Top ==================
-  id: 56066210112653808
-  identification: 
-    template-type: Button
-    name: Spacing Top
-    identifier: SPACING_TOP
-    sequence: 90
-
-  help: 
-    help-text: Controls the spacing to the top of the button.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Style ========================
-  id: 56066572245653808
-  identification: 
-    template-type: Button
-    name: Style
-    identifier: STYLE
-    sequence: 30
-
-  help: 
-    help-text: Sets the style of the button. Use the "Simple" option for secondary actions or sets of buttons. Use the "Remove UI Decoration" option to make the button appear as text.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Type =========================
-  id: 56066924161653808
-  identification: 
-    template-type: Button
-    name: Type
-    identifier: TYPE
-    sequence: 20
-
-  settings: 
-    null-text: Normal
-    advanced: false
-
-- # ====== Template Option Group: Width ========================
-  id: 56067384735653808
-  identification: 
-    template-type: Button
-    name: Width
-    identifier: WIDTH
-    sequence: 60
-
-  help: 
-    help-text: Sets the width of the button.
-
-  settings: 
-    null-text: Auto - Default
-    advanced: true
-
-- # ====== Template Option Group: Bottom Margin ================
-  id: 56067764956653808
-  identification: 
-    template-type: Item
-    name: Bottom Margin
-    identifier: BOTTOM_MARGIN
-    sequence: 220
-
-  help: 
-    help-text: Set the bottom margin for this field.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Display Text Style ===========
-  id: 56068206621653808
-  identification: 
-    template-type: Item
-    name: Display Text Style
-    identifier: DISPLAY_TEXT_STYLE
-    sequence: 400
-
-  help: 
-    help-text: Determines the display style for Display Only & Read Only display items.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Item Post Text ===============
-  id: 56068591404653809
-  identification: 
-    template-type: Item
-    name: Item Post Text
-    identifier: ITEM_POST_TEXT
-    sequence: 30
-
-  help: 
-    help-text: Adjust the display of the Item Post Text
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Item Pre Text ================
-  id: 56069000579653809
-  identification: 
-    template-type: Item
-    name: Item Pre Text
-    identifier: ITEM_PRE_TEXT
-    sequence: 20
-
-  help: 
-    help-text: Adjust the display of the Item Pre Text
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Left Margin ==================
-  id: 56069391222653809
-  identification: 
-    template-type: Item
-    name: Left Margin
-    identifier: LEFT_MARGIN
-    sequence: 220
-
-  help: 
-    help-text: Set the left margin for this field.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Preserve Label Spacing =======
-  id: 56069769451653809
-  identification: 
-    template-type: Item
-    name: Preserve Label Spacing
-    identifier: PRESERVE_LABEL_SPACING
-    sequence: 1
-
-  help: 
-    help-text: Preserves the label space and enables use of the Label Column Span property.
-
-  settings: 
-    null-text: Yes
-    advanced: false
-
-- # ====== Template Option Group: Item Group Display ===========
-  id: 56070157331653809
-  identification: 
-    template-type: Item
-    name: Item Group Display
-    identifier: RADIO_GROUP_DISPLAY
-    sequence: 300
-
-  help: 
-    help-text: Determines the display style for radio and check box items.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Required Indicator ===========
-  id: 56070583174653810
-  identification: 
-    template-type: Item
-    name: Required Indicator
-    identifier: REQUIRED_INDICATOR
-    sequence: 1
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Right Margin =================
-  id: 56070914019653810
-  identification: 
-    template-type: Item
-    name: Right Margin
-    identifier: RIGHT_MARGIN
-    sequence: 230
-
-  help: 
-    help-text: Set the right margin for this field.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Size =========================
-  id: 56071362686653810
-  identification: 
-    template-type: Item
-    name: Size
-    identifier: SIZE
-    sequence: 10
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Top Margin ===================
-  id: 56071777247653810
-  identification: 
-    template-type: Item
-    name: Top Margin
-    identifier: TOP_MARGIN
-    sequence: 200
-
-  help: 
-    help-text: Set the top margin for this field.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Animation ====================
-  id: 56072146567653810
-  identification: 
-    template-type: List
-    name: Animation
-    identifier: ANIMATION
-    sequence: 80
-
-  help: 
-    help-text: Sets the hover and focus animation.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Badge Size ===================
-  id: 56072590737653811
-  identification: 
-    template-type: List
-    name: Badge Size
-    identifier: BADGE_SIZE
-    sequence: 70
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Body Text ====================
-  id: 56072929256653811
-  identification: 
-    template-type: List
-    name: Body Text
-    identifier: BODY_TEXT
-    sequence: 40
-
-  help: 
-    help-text: Determines the height of the card body.
-
-  settings: 
-    null-text: Auto
-    advanced: false
-
-- # ====== Template Option Group: Collapse Mode ================
-  id: 56073405345653811
-  identification: 
-    template-type: List
-    name: Collapse Mode
-    identifier: COLLAPSE_STYLE
-    sequence: 30
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Color Accents ================
-  id: 56073783675653811
-  identification: 
-    template-type: List
-    name: Color Accents
-    identifier: COLOR_ACCENTS
-    sequence: 50
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Desktop ======================
-  id: 56074202174653811
-  identification: 
-    template-type: List
-    name: Desktop
-    identifier: DESKTOP
-    sequence: 90
-
-  help: 
-    help-text: Determines the display for a desktop-sized screen
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Display Icons ================
-  id: 56074531980653811
-  identification: 
-    template-type: List
-    name: Display Icons
-    identifier: DISPLAY_ICONS
-    sequence: 30
-
-  settings: 
-    null-text: No Icons
-    advanced: false
-
-- # ====== Template Option Group: Icons ========================
-  id: 56074983639653812
-  identification: 
-    template-type: List
-    name: Icons
-    identifier: ICONS
-    sequence: 20
-
-  settings: 
-    null-text: No Icons
-    advanced: false
-
-- # ====== Template Option Group: Icon Shape ===================
-  id: 56075317562653812
-  identification: 
-    template-type: List
-    name: Icon Shape
-    identifier: ICON_SHAPE
-    sequence: 60
-
-  help: 
-    help-text: Determines the shape of the icon.
-
-  settings: 
-    null-text: Circle
-    advanced: false
-
-- # ====== Template Option Group: Icon Style ===================
-  id: 56075789865653812
-  identification: 
-    template-type: List
-    name: Icon Style
-    identifier: ICON_STYLE
-    sequence: 35
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Label Display ================
-  id: 56076113781653812
-  identification: 
-    template-type: List
-    name: Label Display
-    identifier: LABEL_DISPLAY
-    sequence: 50
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Layout =======================
-  id: 56076523380653812
-  identification: 
-    template-type: List
-    name: Layout
-    identifier: LAYOUT
-    sequence: 30
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Mobile =======================
-  id: 56076937182653813
-  identification: 
-    template-type: List
-    name: Mobile
-    identifier: MOBILE
-    sequence: 100
-
-  help: 
-    help-text: Determines the display for a mobile-sized screen
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Size =========================
-  id: 56077328647653813
-  identification: 
-    template-type: List
-    name: Size
-    identifier: SIZE
-    sequence: 1
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Style ========================
-  id: 56077795363653813
-  identification: 
-    template-type: List
-    name: Style
-    identifier: STYLE
-    sequence: 10
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Content Padding ==============
-  id: 56078129569653813
-  identification: 
-    template-type: Page
-    name: Content Padding
-    identifier: CONTENT_PADDING
-    sequence: 1
-
-  help: 
-    help-text: Sets the Content Body padding for the page.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Size =========================
-  id: 56078523689653813
-  identification: 
-    template-type: Page
-    name: Size
-    identifier: DIALOG_SIZE
-    sequence: 1
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Display Mode =================
-  id: 56079001643653813
-  identification: 
-    template-type: Page
-    name: Display Mode
-    identifier: DISPLAY_MODE
-    sequence: 30
-
-  help: 
-    help-text: Determines the default display appearance and positioning of the dialog. The default opens a floating dialog position at the center of the screen.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Page Background ==============
-  id: 56079385204653814
-  identification: 
-    template-type: Page
-    name: Page Background
-    identifier: PAGE_BACKGROUND
-    sequence: 20
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Page Layout ==================
-  id: 56079733345653814
-  identification: 
-    template-type: Page
-    name: Page Layout
-    identifier: PAGE_LAYOUT
-    sequence: 10
-
-  settings: 
-    null-text: Floating (Default)
-    advanced: false
-
 - # ====== Template Option Group: Position =====================
-  id: 56080123588653814
+  id: 40150811919865761
   identification: 
     template-type: Page
     name: Position
@@ -586,23 +13,43 @@
   settings: 
     advanced: false
 
-- # ====== Template Option Group: Accent =======================
-  id: 56080588788653814
+- # ====== Template Option Group: Size =========================
+  id: 40151428204865762
   identification: 
-    template-type: Region
-    name: Accent
-    identifier: ACCENT
-    sequence: 30
+    template-type: Page
+    name: Size
+    identifier: DIALOG_SIZE
+    sequence: 1
 
-  help: 
-    help-text: Set the Region's accent. This accent corresponds to a Theme-Rollable color and sets the background of the Region's Header.
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Page Background ==============
+  id: 40161594054865782
+  identification: 
+    template-type: Page
+    name: Page Background
+    identifier: PAGE_BACKGROUND
+    sequence: 20
 
   settings: 
     null-text: Default
     advanced: false
 
+- # ====== Template Option Group: Page Layout ==================
+  id: 40161903559865783
+  identification: 
+    template-type: Page
+    name: Page Layout
+    identifier: PAGE_LAYOUT
+    sequence: 10
+
+  settings: 
+    null-text: Floating (Default)
+    advanced: false
+
 - # ====== Template Option Group: Alert Display ================
-  id: 56080922950653815
+  id: 40185630099865832
   identification: 
     template-type: Region
     name: Alert Display
@@ -615,8 +62,22 @@
   settings: 
     advanced: false
 
+- # ====== Template Option Group: Alert Type ===================
+  id: 40186205895865834
+  identification: 
+    template-type: Region
+    name: Alert Type
+    identifier: ALERT_TYPE
+    sequence: 3
+
+  help: 
+    help-text: Sets the type of alert which can be used to determine the icon, icon color, and the background color.
+
+  settings: 
+    advanced: false
+
 - # ====== Template Option Group: Alert Icons ==================
-  id: 56081351801653815
+  id: 40187404053865836
   identification: 
     template-type: Region
     name: Alert Icons
@@ -631,7 +92,7 @@
     advanced: false
 
 - # ====== Template Option Group: Alert Title ==================
-  id: 56081802979653815
+  id: 40187881183865837
   identification: 
     template-type: Region
     name: Alert Title
@@ -645,81 +106,23 @@
     null-text: Visible - Default
     advanced: false
 
-- # ====== Template Option Group: Alert Type ===================
-  id: 56082126997653815
+- # ====== Template Option Group: Style ========================
+  id: 40194520208865850
   identification: 
     template-type: Region
-    name: Alert Type
-    identifier: ALERT_TYPE
-    sequence: 3
+    name: Style
+    identifier: STYLE
+    sequence: 40
 
   help: 
-    help-text: Sets the type of alert which can be used to determine the icon, icon color, and the background color.
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Alignment ====================
-  id: 56082589379653815
-  identification: 
-    template-type: Region
-    name: Alignment
-    identifier: ALIGNMENT
-    sequence: 1
-
-  help: 
-    help-text: This sets the vertical alignment of the region.
+    help-text: Determines how the region is styled. Use the "Remove Borders" template option to remove the region's borders and shadows.
 
   settings: 
     null-text: Default
     advanced: false
 
-- # ====== Template Option Group: Animation ====================
-  id: 56082951586653815
-  identification: 
-    template-type: Region
-    name: Animation
-    identifier: ANIMATION
-    sequence: 10
-
-  help: 
-    help-text: Sets the animation when navigating within the Carousel Region.
-
-  settings: 
-    null-text: Fade
-    advanced: false
-
-- # ====== Template Option Group: Body Height ==================
-  id: 56083409475653816
-  identification: 
-    template-type: Region
-    name: Body Height
-    identifier: BODY_HEIGHT
-    sequence: 10
-
-  help: 
-    help-text: Sets the Region Body height. You can also specify a custom height by modifying the Region's CSS Classes and using the height helper classes "i-hXXX" where XXX is any increment of 10 from 100 to 800.
-
-  settings: 
-    null-text: Auto - Default
-    advanced: false
-
-- # ====== Template Option Group: Body Overflow ================
-  id: 56083716631653816
-  identification: 
-    template-type: Region
-    name: Body Overflow
-    identifier: BODY_OVERFLOW
-    sequence: 2
-
-  help: 
-    help-text: Determines the scroll behavior when the region contents are larger than their container.
-
-  settings: 
-    advanced: true
-
 - # ====== Template Option Group: Body Padding =================
-  id: 56084195987653816
+  id: 40195100401865851
   identification: 
     template-type: Region
     name: Body Padding
@@ -733,38 +136,97 @@
     null-text: Default
     advanced: false
 
-- # ====== Template Option Group: Body Style ===================
-  id: 56084564680653816
+- # ====== Template Option Group: Timer ========================
+  id: 40201772559865866
   identification: 
     template-type: Region
-    name: Body Style
-    identifier: BODY_STYLE
-    sequence: 20
+    name: Timer
+    identifier: TIMER
+    sequence: 2
 
   help: 
-    help-text: Controls the display of the region's body container.
+    help-text: Sets the timer for when to automatically navigate to the next region within the Carousel Region.
 
   settings: 
-    null-text: Default
+    null-text: No Timer
     advanced: false
 
-- # ====== Template Option Group: Callout Position =============
-  id: 56084965352653816
+- # ====== Template Option Group: Body Height ==================
+  id: 40202538124865868
   identification: 
     template-type: Region
-    name: Callout Position
-    identifier: CALLOUT_POSITION
+    name: Body Height
+    identifier: BODY_HEIGHT
     sequence: 10
 
   help: 
-    help-text: Determines where the callout for the popup will be positioned relative to its parent.
+    help-text: Sets the Region Body height. You can also specify a custom height by modifying the Region's CSS Classes and using the height helper classes "i-hXXX" where XXX is any increment of 10 from 100 to 800.
+
+  settings: 
+    null-text: Auto - Default
+    advanced: false
+
+- # ====== Template Option Group: Accent =======================
+  id: 40203774483865870
+  identification: 
+    template-type: Region
+    name: Accent
+    identifier: ACCENT
+    sequence: 30
+
+  help: 
+    help-text: Set the Region's accent. This accent corresponds to a Theme-Rollable color and sets the background of the Region's Header.
 
   settings: 
     null-text: Default
     advanced: false
 
+- # ====== Template Option Group: Header =======================
+  id: 40204908980865873
+  identification: 
+    template-type: Region
+    name: Header
+    identifier: HEADER
+    sequence: 20
+
+  help: 
+    help-text: Determines the display of the Region Header which also contains the Region Title.
+
+  settings: 
+    null-text: Visible - Default
+    advanced: false
+
+- # ====== Template Option Group: Body Overflow ================
+  id: 40205353947865874
+  identification: 
+    template-type: Region
+    name: Body Overflow
+    identifier: BODY_OVERFLOW
+    sequence: 2
+
+  help: 
+    help-text: Determines the scroll behavior when the region contents are larger than their container.
+
+  settings: 
+    advanced: true
+
+- # ====== Template Option Group: Animation ====================
+  id: 40206782373865877
+  identification: 
+    template-type: Region
+    name: Animation
+    identifier: ANIMATION
+    sequence: 10
+
+  help: 
+    help-text: Sets the animation when navigating within the Carousel Region.
+
+  settings: 
+    null-text: Fade
+    advanced: false
+
 - # ====== Template Option Group: Collapsible Button Icons =====
-  id: 56085406248653816
+  id: 40210952137865885
   identification: 
     template-type: Region
     name: Collapsible Button Icons
@@ -779,7 +241,7 @@
     advanced: false
 
 - # ====== Template Option Group: Collapsible Icon Position ====
-  id: 56085766235653817
+  id: 40211390115865886
   identification: 
     template-type: Region
     name: Collapsible Icon Position
@@ -794,7 +256,7 @@
     advanced: false
 
 - # ====== Template Option Group: Default State ================
-  id: 56086124853653817
+  id: 40216512272865898
   identification: 
     template-type: Region
     name: Default State
@@ -807,64 +269,8 @@
   settings: 
     advanced: false
 
-- # ====== Template Option Group: Size =========================
-  id: 56086608519653817
-  identification: 
-    template-type: Region
-    name: Size
-    identifier: DIALOG_SIZE
-    sequence: 1
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Display Icon =================
-  id: 56086993468653817
-  identification: 
-    template-type: Region
-    name: Display Icon
-    identifier: DISPLAY_ICON
-    sequence: 50
-
-  help: 
-    help-text: Display the Hero Region icon.
-
-  settings: 
-    null-text: Yes (Default)
-    advanced: false
-
-- # ====== Template Option Group: Display Mode =================
-  id: 56087402271653817
-  identification: 
-    template-type: Region
-    name: Display Mode
-    identifier: DISPLAY_MODE
-    sequence: 1
-
-  help: 
-    help-text: Determines the default display appearance and positioning of the dialog. The default opens a floating dialog position at the center of the screen.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Header =======================
-  id: 56087792133653817
-  identification: 
-    template-type: Region
-    name: Header
-    identifier: HEADER
-    sequence: 20
-
-  help: 
-    help-text: Determines the display of the Region Header which also contains the Region Title.
-
-  settings: 
-    null-text: Visible - Default
-    advanced: false
-
 - # ====== Template Option Group: Heading Font =================
-  id: 56088125350653818
+  id: 40220182905865905
   identification: 
     template-type: Region
     name: Heading Font
@@ -878,31 +284,37 @@
     null-text: Default
     advanced: false
 
-- # ====== Template Option Group: Heading Level ================
-  id: 56088531950653818
+- # ====== Template Option Group: Region Title =================
+  id: 40220522731865906
   identification: 
     template-type: Region
-    name: Heading Level
-    identifier: HEADING_LEVEL
+    name: Region Title
+    identifier: REGION_TITLE
     sequence: 1
 
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Hide Steps For ===============
-  id: 56089005492653818
-  identification: 
-    template-type: Region
-    name: Hide Steps For
-    identifier: HIDE_STEPS_FOR
-    sequence: 1
+  help: 
+    help-text: Sets the source of the Title Bar region's title.
 
   settings: 
     advanced: false
 
+- # ====== Template Option Group: Body Style ===================
+  id: 40221502762865909
+  identification: 
+    template-type: Region
+    name: Body Style
+    identifier: BODY_STYLE
+    sequence: 20
+
+  help: 
+    help-text: Controls the display of the region's body container.
+
+  settings: 
+    null-text: Default
+    advanced: false
+
 - # ====== Template Option Group: Icon Shape ===================
-  id: 56089344254653818
+  id: 40223869947865913
   identification: 
     template-type: Region
     name: Icon Shape
@@ -916,20 +328,23 @@
     null-text: Rounded Corners
     advanced: false
 
-- # ====== Template Option Group: Icon Size ====================
-  id: 56089745413653818
+- # ====== Template Option Group: Display Icon =================
+  id: 40225069324865916
   identification: 
     template-type: Region
-    name: Icon Size
-    identifier: ICON_SIZE
-    sequence: 3
+    name: Display Icon
+    identifier: DISPLAY_ICON
+    sequence: 50
+
+  help: 
+    help-text: Display the Hero Region icon.
 
   settings: 
-    null-text: Initial
+    null-text: Yes (Default)
     advanced: false
 
 - # ====== Template Option Group: Filter =======================
-  id: 56090198158653819
+  id: 40226490398865919
   identification: 
     template-type: Region
     name: Filter
@@ -940,7 +355,7 @@
     advanced: false
 
 - # ====== Template Option Group: Ratio ========================
-  id: 56090581096653819
+  id: 40227898470865922
   identification: 
     template-type: Region
     name: Ratio
@@ -951,7 +366,7 @@
     advanced: false
 
 - # ====== Template Option Group: Scale ========================
-  id: 56090955808653819
+  id: 40229094289865925
   identification: 
     template-type: Region
     name: Scale
@@ -962,7 +377,7 @@
     advanced: false
 
 - # ====== Template Option Group: Shape ========================
-  id: 56091355972653819
+  id: 40230003601865927
   identification: 
     template-type: Region
     name: Shape
@@ -972,95 +387,63 @@
   settings: 
     advanced: false
 
-- # ====== Template Option Group: Item Spacing =================
-  id: 56091770332653819
+- # ====== Template Option Group: Size =========================
+  id: 40233647384865934
   identification: 
     template-type: Region
-    name: Item Spacing
-    identifier: ITEM_PADDING
-    sequence: 100
-
-  help: 
-    help-text: Sets the padding around items within this region.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Item Size ====================
-  id: 56092170721653820
-  identification: 
-    template-type: Region
-    name: Item Size
-    identifier: ITEM_SIZE
-    sequence: 110
-
-  help: 
-    help-text: Sets the size of the form items within this region.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Item Width ===================
-  id: 56092524606653820
-  identification: 
-    template-type: Region
-    name: Item Width
-    identifier: ITEM_WIDTH
-    sequence: 120
-
-  help: 
-    help-text: Sets the width of the form items within this region.
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Label Alignment ==============
-  id: 56092985002653820
-  identification: 
-    template-type: Region
-    name: Label Alignment
-    identifier: LABEL_ALIGNMENT
-    sequence: 130
-
-  help: 
-    help-text: Set the label text alignment for items within this region.
-
-  settings: 
-    null-text: Right
-    advanced: true
-
-- # ====== Template Option Group: Label Position ===============
-  id: 56093386064653820
-  identification: 
-    template-type: Region
-    name: Label Position
-    identifier: LABEL_POSITION
-    sequence: 140
-
-  help: 
-    help-text: Sets the position of the label relative to the form item.
-
-  settings: 
-    null-text: Inline - Default
-    advanced: true
-
-- # ====== Template Option Group: Layout =======================
-  id: 56093723723653820
-  identification: 
-    template-type: Region
-    name: Layout
-    identifier: LAYOUT
+    name: Size
+    identifier: DIALOG_SIZE
     sequence: 1
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Position =====================
+  id: 40238863405865945
+  identification: 
+    template-type: Region
+    name: Position
+    identifier: REGION_POSITION
+    sequence: 1
+
+  help: 
+    help-text: Sets the position of the region.
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Callout Position =============
+  id: 40243080351865953
+  identification: 
+    template-type: Region
+    name: Callout Position
+    identifier: CALLOUT_POSITION
+    sequence: 10
+
+  help: 
+    help-text: Determines where the callout for the popup will be positioned relative to its parent.
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Alignment ====================
+  id: 40249289142865966
+  identification: 
+    template-type: Region
+    name: Alignment
+    identifier: ALIGNMENT
+    sequence: 1
+
+  help: 
+    help-text: This sets the vertical alignment of the region.
 
   settings: 
     null-text: Default
     advanced: false
 
 - # ====== Template Option Group: Login Header =================
-  id: 56094140719653820
+  id: 40251925599865972
   identification: 
     template-type: Region
     name: Login Header
@@ -1074,8 +457,602 @@
     null-text: Icon and Title (Default)
     advanced: false
 
+- # ====== Template Option Group: Result Appearance ============
+  id: 40254071902865976
+  identification: 
+    template-type: Region
+    name: Result Appearance
+    identifier: RESULT_APPEARANCE
+    sequence: 1
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Icon Size ====================
+  id: 40254622870865978
+  identification: 
+    template-type: Region
+    name: Icon Size
+    identifier: ICON_SIZE
+    sequence: 3
+
+  settings: 
+    null-text: Initial
+    advanced: false
+
+- # ====== Template Option Group: Layout =======================
+  id: 40266206489866002
+  identification: 
+    template-type: Region
+    name: Layout
+    identifier: LAYOUT
+    sequence: 1
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Tab Style ====================
+  id: 40266612841866003
+  identification: 
+    template-type: Region
+    name: Tab Style
+    identifier: TAB_STYLE
+    sequence: 1
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Tabs Size ====================
+  id: 40267245790866004
+  identification: 
+    template-type: Region
+    name: Tabs Size
+    identifier: TABS_SIZE
+    sequence: 1
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Hide Steps For ===============
+  id: 40274889032866019
+  identification: 
+    template-type: Region
+    name: Hide Steps For
+    identifier: HIDE_STEPS_FOR
+    sequence: 1
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Style ========================
+  id: 40276099860866023
+  identification: 
+    template-type: Report
+    name: Style
+    identifier: STYLE
+    sequence: 10
+
+  help: 
+    help-text: Determines the overall style for the component.
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Badge Size ===================
+  id: 40276628609866024
+  identification: 
+    template-type: Report
+    name: Badge Size
+    identifier: BADGE_SIZE
+    sequence: 10
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Layout =======================
+  id: 40277851976866027
+  identification: 
+    template-type: Report
+    name: Layout
+    identifier: LAYOUT
+    sequence: 30
+
+  help: 
+    help-text: Determines the layout of Cards in the report.
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Icon Shape ===================
+  id: 40280217309866033
+  identification: 
+    template-type: Report
+    name: Icon Shape
+    identifier: ICON_SHAPE
+    sequence: 60
+
+  help: 
+    help-text: Determines the shape of the icon.
+
+  settings: 
+    null-text: Circle
+    advanced: false
+
+- # ====== Template Option Group: Animation ====================
+  id: 40280852926866034
+  identification: 
+    template-type: Report
+    name: Animation
+    identifier: ANIMATION
+    sequence: 70
+
+  help: 
+    help-text: Sets the hover and focus animation.
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Body Text ====================
+  id: 40282681794866038
+  identification: 
+    template-type: Report
+    name: Body Text
+    identifier: BODY_TEXT
+    sequence: 40
+
+  help: 
+    help-text: Determines the height of the card body.
+
+  settings: 
+    null-text: Auto
+    advanced: false
+
+- # ====== Template Option Group: Icons ========================
+  id: 40283660348866040
+  identification: 
+    template-type: Report
+    name: Icons
+    identifier: ICONS
+    sequence: 20
+
+  help: 
+    help-text: Controls how to handle icons in the report.
+
+  settings: 
+    null-text: No Icons
+    advanced: false
+
+- # ====== Template Option Group: Comments Style ===============
+  id: 40285603516866045
+  identification: 
+    template-type: Report
+    name: Comments Style
+    identifier: COMMENTS_STYLE
+    sequence: 10
+
+  help: 
+    help-text: Determines the style in which comments are displayed.
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Title ========================
+  id: 40286422727866047
+  identification: 
+    template-type: Report
+    name: Title
+    identifier: COL_CONTENT_TITLE
+    sequence: 120
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Selection ====================
+  id: 40286811848866048
+  identification: 
+    template-type: Report
+    name: Selection
+    identifier: COL_SELECTION
+    sequence: 100
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Icon =========================
+  id: 40287257249866048
+  identification: 
+    template-type: Report
+    name: Icon
+    identifier: COL_ICON
+    sequence: 110
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Description ==================
+  id: 40287679083866049
+  identification: 
+    template-type: Report
+    name: Description
+    identifier: COL_CONTENT_DESCRIPTION
+    sequence: 130
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Misc =========================
+  id: 40288079410866050
+  identification: 
+    template-type: Report
+    name: Misc
+    identifier: COL_MISC
+    sequence: 140
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Actions ======================
+  id: 40288449124866051
+  identification: 
+    template-type: Report
+    name: Actions
+    identifier: COL_ACTIONS
+    sequence: 150
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Content Alignment ============
+  id: 40288828419866052
+  identification: 
+    template-type: Report
+    name: Content Alignment
+    identifier: CONTENT_ALIGNMENT
+    sequence: 90
+
+  settings: 
+    null-text: Center (Default)
+    advanced: false
+
+- # ====== Template Option Group: Display Items ================
+  id: 40289828654866054
+  identification: 
+    template-type: Report
+    name: Display Items
+    identifier: DISPLAY_ITEMS
+    sequence: 20
+
+  settings: 
+    null-text: Inline (Default)
+    advanced: false
+
+- # ====== Template Option Group: Display Labels ===============
+  id: 40290214169866055
+  identification: 
+    template-type: Report
+    name: Display Labels
+    identifier: DISPLAY_LABELS
+    sequence: 30
+
+  settings: 
+    null-text: Inline (Default)
+    advanced: false
+
+- # ====== Template Option Group: Size =========================
+  id: 40291236533866058
+  identification: 
+    template-type: Report
+    name: Size
+    identifier: SIZE
+    sequence: 35
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Report Border ================
+  id: 40294056265866065
+  identification: 
+    template-type: Report
+    name: Report Border
+    identifier: REPORT_BORDER
+    sequence: 30
+
+  help: 
+    help-text: Controls the display of the Report's borders.
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Alternating Rows =============
+  id: 40294881822866067
+  identification: 
+    template-type: Report
+    name: Alternating Rows
+    identifier: ALTERNATING_ROWS
+    sequence: 10
+
+  help: 
+    help-text: Shades alternate rows in the report with slightly different background colors.
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Row Highlighting =============
+  id: 40295893386866069
+  identification: 
+    template-type: Report
+    name: Row Highlighting
+    identifier: ROW_HIGHLIGHTING
+    sequence: 20
+
+  help: 
+    help-text: Determines whether you want the row to be highlighted on hover.
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Label Width ==================
+  id: 40297604464866073
+  identification: 
+    template-type: Report
+    name: Label Width
+    identifier: LABEL_WIDTH
+    sequence: 10
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Badge Size ===================
+  id: 40301024729866082
+  identification: 
+    template-type: List
+    name: Badge Size
+    identifier: BADGE_SIZE
+    sequence: 70
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Style ========================
+  id: 40301856357866084
+  identification: 
+    template-type: List
+    name: Style
+    identifier: STYLE
+    sequence: 10
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Layout =======================
+  id: 40302471378866086
+  identification: 
+    template-type: List
+    name: Layout
+    identifier: LAYOUT
+    sequence: 30
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Icon Shape ===================
+  id: 40305486174866093
+  identification: 
+    template-type: List
+    name: Icon Shape
+    identifier: ICON_SHAPE
+    sequence: 60
+
+  help: 
+    help-text: Determines the shape of the icon.
+
+  settings: 
+    null-text: Circle
+    advanced: false
+
+- # ====== Template Option Group: Animation ====================
+  id: 40306256262866095
+  identification: 
+    template-type: List
+    name: Animation
+    identifier: ANIMATION
+    sequence: 80
+
+  help: 
+    help-text: Sets the hover and focus animation.
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Icons ========================
+  id: 40308608962866100
+  identification: 
+    template-type: List
+    name: Icons
+    identifier: ICONS
+    sequence: 20
+
+  settings: 
+    null-text: No Icons
+    advanced: false
+
+- # ====== Template Option Group: Body Text ====================
+  id: 40309244015866101
+  identification: 
+    template-type: List
+    name: Body Text
+    identifier: BODY_TEXT
+    sequence: 40
+
+  help: 
+    help-text: Determines the height of the card body.
+
+  settings: 
+    null-text: Auto
+    advanced: false
+
+- # ====== Template Option Group: Display Icons ================
+  id: 40310638483866105
+  identification: 
+    template-type: List
+    name: Display Icons
+    identifier: DISPLAY_ICONS
+    sequence: 30
+
+  settings: 
+    null-text: No Icons
+    advanced: false
+
+- # ====== Template Option Group: Size =========================
+  id: 40313869406866112
+  identification: 
+    template-type: List
+    name: Size
+    identifier: SIZE
+    sequence: 1
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Collapse Mode ================
+  id: 40318293047866124
+  identification: 
+    template-type: List
+    name: Collapse Mode
+    identifier: COLLAPSE_STYLE
+    sequence: 30
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Desktop ======================
+  id: 40324401742866138
+  identification: 
+    template-type: List
+    name: Desktop
+    identifier: DESKTOP
+    sequence: 90
+
+  help: 
+    help-text: Determines the display for a desktop-sized screen
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Mobile =======================
+  id: 40325258409866140
+  identification: 
+    template-type: List
+    name: Mobile
+    identifier: MOBILE
+    sequence: 100
+
+  help: 
+    help-text: Determines the display for a mobile-sized screen
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Label Display ================
+  id: 40326443122866143
+  identification: 
+    template-type: List
+    name: Label Display
+    identifier: LABEL_DISPLAY
+    sequence: 50
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Required Indicator ===========
+  id: 40327740456866148
+  identification: 
+    template-type: Item
+    name: Required Indicator
+    identifier: REQUIRED_INDICATOR
+    sequence: 1
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Icon Hover Animation =========
+  id: 40329400253866154
+  identification: 
+    template-type: Button
+    name: Icon Hover Animation
+    identifier: ICON_HOVER_ANIMATION
+    sequence: 55
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Icon Position ================
+  id: 40331097302866158
+  identification: 
+    template-type: Button
+    name: Icon Position
+    identifier: ICON_POSITION
+    sequence: 50
+
+  help: 
+    help-text: Sets the position of the icon relative to the label.
+
+  settings: 
+    advanced: false
+
+- # ====== Template Option Group: Heading Level ================
+  id: 40419545559866488
+  identification: 
+    template-type: Region
+    name: Heading Level
+    identifier: HEADING_LEVEL
+    sequence: 1
+
+  settings: 
+    null-text: Default
+    advanced: true
+
 - # ====== Template Option Group: Bottom Margin ================
-  id: 56094563676653821
+  id: 40422352779866494
+  identification: 
+    template-type: Item
+    name: Bottom Margin
+    identifier: BOTTOM_MARGIN
+    sequence: 220
+
+  help: 
+    help-text: Set the bottom margin for this field.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Bottom Margin ================
+  id: 40423109717866496
   identification: 
     template-type: Region
     name: Bottom Margin
@@ -1090,7 +1067,22 @@
     advanced: true
 
 - # ====== Template Option Group: Left Margin ==================
-  id: 56094923269653821
+  id: 40426352556866503
+  identification: 
+    template-type: Item
+    name: Left Margin
+    identifier: LEFT_MARGIN
+    sequence: 220
+
+  help: 
+    help-text: Set the left margin for this field.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Left Margin ==================
+  id: 40427156317866504
   identification: 
     template-type: Region
     name: Left Margin
@@ -1104,22 +1096,23 @@
     null-text: Default
     advanced: true
 
-- # ====== Template Option Group: Position =====================
-  id: 56095335206653821
+- # ====== Template Option Group: Right Margin =================
+  id: 40430335159866511
   identification: 
-    template-type: Region
-    name: Position
-    identifier: REGION_POSITION
-    sequence: 1
+    template-type: Item
+    name: Right Margin
+    identifier: RIGHT_MARGIN
+    sequence: 230
 
   help: 
-    help-text: Sets the position of the region.
+    help-text: Set the right margin for this field.
 
   settings: 
-    advanced: false
+    null-text: Default
+    advanced: true
 
 - # ====== Template Option Group: Right Margin =================
-  id: 56095739060653821
+  id: 40431105001866513
   identification: 
     template-type: Region
     name: Right Margin
@@ -1133,22 +1126,23 @@
     null-text: Default
     advanced: true
 
-- # ====== Template Option Group: Region Title =================
-  id: 56096182932653821
+- # ====== Template Option Group: Top Margin ===================
+  id: 40434383907866520
   identification: 
-    template-type: Region
-    name: Region Title
-    identifier: REGION_TITLE
-    sequence: 1
+    template-type: Item
+    name: Top Margin
+    identifier: TOP_MARGIN
+    sequence: 200
 
   help: 
-    help-text: Sets the source of the Title Bar region's title.
+    help-text: Set the top margin for this field.
 
   settings: 
-    advanced: false
+    null-text: Default
+    advanced: true
 
 - # ====== Template Option Group: Top Margin ===================
-  id: 56096560829653821
+  id: 40435162774866521
   identification: 
     template-type: Region
     name: Top Margin
@@ -1162,32 +1156,302 @@
     null-text: Default
     advanced: true
 
-- # ====== Template Option Group: Result Appearance ============
-  id: 56096928938653822
+- # ====== Template Option Group: Type =========================
+  id: 40438303537866529
   identification: 
-    template-type: Region
-    name: Result Appearance
-    identifier: RESULT_APPEARANCE
-    sequence: 1
+    template-type: Button
+    name: Type
+    identifier: TYPE
+    sequence: 20
+
+  settings: 
+    null-text: Normal
+    advanced: false
+
+- # ====== Template Option Group: Spacing Bottom ===============
+  id: 40439153675866531
+  identification: 
+    template-type: Button
+    name: Spacing Bottom
+    identifier: SPACING_BOTTOM
+    sequence: 100
+
+  help: 
+    help-text: Controls the spacing to the bottom of the button.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Spacing Left =================
+  id: 40439997484866533
+  identification: 
+    template-type: Button
+    name: Spacing Left
+    identifier: SPACING_LEFT
+    sequence: 70
+
+  help: 
+    help-text: Controls the spacing to the left of the button.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Spacing Right ================
+  id: 40440711524866535
+  identification: 
+    template-type: Button
+    name: Spacing Right
+    identifier: SPACING_RIGHT
+    sequence: 80
+
+  help: 
+    help-text: Controls the spacing to the right of the button.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Spacing Top ==================
+  id: 40441536651866537
+  identification: 
+    template-type: Button
+    name: Spacing Top
+    identifier: SPACING_TOP
+    sequence: 90
+
+  help: 
+    help-text: Controls the spacing to the top of the button.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Size =========================
+  id: 40442335552866539
+  identification: 
+    template-type: Button
+    name: Size
+    identifier: SIZE
+    sequence: 10
+
+  help: 
+    help-text: Sets the size of the button.
 
   settings: 
     null-text: Default
     advanced: false
 
-- # ====== Template Option Group: Result Separator =============
-  id: 56097327373653822
+- # ====== Template Option Group: Style ========================
+  id: 40443133999866541
   identification: 
-    template-type: Region
-    name: Result Separator
-    identifier: RESULT_SEPARATOR
-    sequence: 2
+    template-type: Button
+    name: Style
+    identifier: STYLE
+    sequence: 30
+
+  help: 
+    help-text: Sets the style of the button. Use the "Simple" option for secondary actions or sets of buttons. Use the "Remove UI Decoration" option to make the button appear as text.
 
   settings: 
-    null-text: Show
+    null-text: Default
     advanced: false
 
+- # ====== Template Option Group: Button Set ===================
+  id: 40445917532866546
+  identification: 
+    template-type: Button
+    name: Button Set
+    identifier: BUTTON_SET
+    sequence: 40
+
+  help: 
+    help-text: Enables you to group many buttons together into a pill. You can use this option to specify where the button is within this set. Set the option to Default if this button is not part of a button set.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Width ========================
+  id: 40448752961866552
+  identification: 
+    template-type: Button
+    name: Width
+    identifier: WIDTH
+    sequence: 60
+
+  help: 
+    help-text: Sets the width of the button.
+
+  settings: 
+    null-text: Auto - Default
+    advanced: true
+
+- # ====== Template Option Group: Label Position ===============
+  id: 40451172301866557
+  identification: 
+    template-type: Region
+    name: Label Position
+    identifier: LABEL_POSITION
+    sequence: 140
+
+  help: 
+    help-text: Sets the position of the label relative to the form item.
+
+  settings: 
+    null-text: Inline - Default
+    advanced: true
+
+- # ====== Template Option Group: Item Size ====================
+  id: 40451953295866559
+  identification: 
+    template-type: Region
+    name: Item Size
+    identifier: ITEM_SIZE
+    sequence: 110
+
+  help: 
+    help-text: Sets the size of the form items within this region.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Label Alignment ==============
+  id: 40452718370866560
+  identification: 
+    template-type: Region
+    name: Label Alignment
+    identifier: LABEL_ALIGNMENT
+    sequence: 130
+
+  help: 
+    help-text: Set the label text alignment for items within this region.
+
+  settings: 
+    null-text: Right
+    advanced: true
+
+- # ====== Template Option Group: Item Spacing =================
+  id: 40453527713866562
+  identification: 
+    template-type: Region
+    name: Item Spacing
+    identifier: ITEM_PADDING
+    sequence: 100
+
+  help: 
+    help-text: Sets the padding around items within this region.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Item Width ===================
+  id: 40455124222866565
+  identification: 
+    template-type: Region
+    name: Item Width
+    identifier: ITEM_WIDTH
+    sequence: 120
+
+  help: 
+    help-text: Sets the width of the form items within this region.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Display Text Style ===========
+  id: 40456383575866568
+  identification: 
+    template-type: Item
+    name: Display Text Style
+    identifier: DISPLAY_TEXT_STYLE
+    sequence: 400
+
+  help: 
+    help-text: Determines the display style for Display Only & Read Only display items.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Size =========================
+  id: 40457171549866569
+  identification: 
+    template-type: Item
+    name: Size
+    identifier: SIZE
+    sequence: 10
+
+  settings: 
+    null-text: Default
+    advanced: false
+
+- # ====== Template Option Group: Item Post Text ===============
+  id: 40458378818866572
+  identification: 
+    template-type: Item
+    name: Item Post Text
+    identifier: ITEM_POST_TEXT
+    sequence: 30
+
+  help: 
+    help-text: Adjust the display of the Item Post Text
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Item Pre Text ================
+  id: 40459179517866573
+  identification: 
+    template-type: Item
+    name: Item Pre Text
+    identifier: ITEM_PRE_TEXT
+    sequence: 20
+
+  help: 
+    help-text: Adjust the display of the Item Pre Text
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Item Group Display ===========
+  id: 40459968879866575
+  identification: 
+    template-type: Item
+    name: Item Group Display
+    identifier: RADIO_GROUP_DISPLAY
+    sequence: 300
+
+  help: 
+    help-text: Determines the display style for radio and check box items.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
+- # ====== Template Option Group: Content Padding ==============
+  id: 40461424980866579
+  identification: 
+    template-type: Page
+    name: Content Padding
+    identifier: CONTENT_PADDING
+    sequence: 1
+
+  help: 
+    help-text: Sets the Content Body padding for the page.
+
+  settings: 
+    null-text: Default
+    advanced: true
+
 - # ====== Template Option Group: Sort Order Alignment =========
-  id: 56097767123653822
+  id: 40462296264866580
   identification: 
     template-type: Region
     name: Sort Order Alignment
@@ -1201,308 +1465,8 @@
     null-text: Default (Start)
     advanced: true
 
-- # ====== Template Option Group: Style ========================
-  id: 56098181366653822
-  identification: 
-    template-type: Region
-    name: Style
-    identifier: STYLE
-    sequence: 40
-
-  help: 
-    help-text: Determines how the region is styled. Use the "Remove Borders" template option to remove the region's borders and shadows.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Tabs Size ====================
-  id: 56098590268653822
-  identification: 
-    template-type: Region
-    name: Tabs Size
-    identifier: TABS_SIZE
-    sequence: 1
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Tab Style ====================
-  id: 56098943237653823
-  identification: 
-    template-type: Region
-    name: Tab Style
-    identifier: TAB_STYLE
-    sequence: 1
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Timer ========================
-  id: 56099411083653823
-  identification: 
-    template-type: Region
-    name: Timer
-    identifier: TIMER
-    sequence: 2
-
-  help: 
-    help-text: Sets the timer for when to automatically navigate to the next region within the Carousel Region.
-
-  settings: 
-    null-text: No Timer
-    advanced: false
-
-- # ====== Template Option Group: Alternating Rows =============
-  id: 56099724887653823
-  identification: 
-    template-type: Report
-    name: Alternating Rows
-    identifier: ALTERNATING_ROWS
-    sequence: 10
-
-  help: 
-    help-text: Shades alternate rows in the report with slightly different background colors.
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Animation ====================
-  id: 56100203679653823
-  identification: 
-    template-type: Report
-    name: Animation
-    identifier: ANIMATION
-    sequence: 70
-
-  help: 
-    help-text: Sets the hover and focus animation.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Badge Size ===================
-  id: 56100512944653823
-  identification: 
-    template-type: Report
-    name: Badge Size
-    identifier: BADGE_SIZE
-    sequence: 10
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Body Text ====================
-  id: 56100995990653823
-  identification: 
-    template-type: Report
-    name: Body Text
-    identifier: BODY_TEXT
-    sequence: 40
-
-  help: 
-    help-text: Determines the height of the card body.
-
-  settings: 
-    null-text: Auto
-    advanced: false
-
-- # ====== Template Option Group: Color Accents ================
-  id: 56101392828653824
-  identification: 
-    template-type: Report
-    name: Color Accents
-    identifier: COLOR_ACCENTS
-    sequence: 50
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Actions ======================
-  id: 56101754273653824
-  identification: 
-    template-type: Report
-    name: Actions
-    identifier: COL_ACTIONS
-    sequence: 150
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Description ==================
-  id: 56102133355653824
-  identification: 
-    template-type: Report
-    name: Description
-    identifier: COL_CONTENT_DESCRIPTION
-    sequence: 130
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Title ========================
-  id: 56102599110653824
-  identification: 
-    template-type: Report
-    name: Title
-    identifier: COL_CONTENT_TITLE
-    sequence: 120
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Icon =========================
-  id: 56102978103653824
-  identification: 
-    template-type: Report
-    name: Icon
-    identifier: COL_ICON
-    sequence: 110
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Misc =========================
-  id: 56103412139653824
-  identification: 
-    template-type: Report
-    name: Misc
-    identifier: COL_MISC
-    sequence: 140
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Selection ====================
-  id: 56103756610653825
-  identification: 
-    template-type: Report
-    name: Selection
-    identifier: COL_SELECTION
-    sequence: 100
-
-  settings: 
-    null-text: Default
-    advanced: true
-
-- # ====== Template Option Group: Comments Style ===============
-  id: 56104128113653825
-  identification: 
-    template-type: Report
-    name: Comments Style
-    identifier: COMMENTS_STYLE
-    sequence: 10
-
-  help: 
-    help-text: Determines the style in which comments are displayed.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Content Alignment ============
-  id: 56104520087653825
-  identification: 
-    template-type: Report
-    name: Content Alignment
-    identifier: CONTENT_ALIGNMENT
-    sequence: 90
-
-  settings: 
-    null-text: Center (Default)
-    advanced: false
-
-- # ====== Template Option Group: Display Items ================
-  id: 56104950871653825
-  identification: 
-    template-type: Report
-    name: Display Items
-    identifier: DISPLAY_ITEMS
-    sequence: 20
-
-  settings: 
-    null-text: Inline (Default)
-    advanced: false
-
-- # ====== Template Option Group: Display Labels ===============
-  id: 56105366784653825
-  identification: 
-    template-type: Report
-    name: Display Labels
-    identifier: DISPLAY_LABELS
-    sequence: 30
-
-  settings: 
-    null-text: Inline (Default)
-    advanced: false
-
-- # ====== Template Option Group: Icons ========================
-  id: 56105742489653826
-  identification: 
-    template-type: Report
-    name: Icons
-    identifier: ICONS
-    sequence: 20
-
-  help: 
-    help-text: Controls how to handle icons in the report.
-
-  settings: 
-    null-text: No Icons
-    advanced: false
-
-- # ====== Template Option Group: Icon Shape ===================
-  id: 56106136763653826
-  identification: 
-    template-type: Report
-    name: Icon Shape
-    identifier: ICON_SHAPE
-    sequence: 60
-
-  help: 
-    help-text: Determines the shape of the icon.
-
-  settings: 
-    null-text: Circle
-    advanced: false
-
-- # ====== Template Option Group: Label Width ==================
-  id: 56106545087653826
-  identification: 
-    template-type: Report
-    name: Label Width
-    identifier: LABEL_WIDTH
-    sequence: 10
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Layout =======================
-  id: 56106998309653826
-  identification: 
-    template-type: Report
-    name: Layout
-    identifier: LAYOUT
-    sequence: 30
-
-  help: 
-    help-text: Determines the layout of Cards in the report.
-
-  settings: 
-    advanced: false
-
 - # ====== Template Option Group: Pagination Display ===========
-  id: 56107317239653826
+  id: 40463481322866583
   identification: 
     template-type: Report
     name: Pagination Display
@@ -1515,60 +1479,4 @@
   settings: 
     null-text: Default
     advanced: true
-
-- # ====== Template Option Group: Report Border ================
-  id: 56107787406653826
-  identification: 
-    template-type: Report
-    name: Report Border
-    identifier: REPORT_BORDER
-    sequence: 30
-
-  help: 
-    help-text: Controls the display of the Report's borders.
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Row Highlighting =============
-  id: 56108168504653827
-  identification: 
-    template-type: Report
-    name: Row Highlighting
-    identifier: ROW_HIGHLIGHTING
-    sequence: 20
-
-  help: 
-    help-text: Determines whether you want the row to be highlighted on hover.
-
-  settings: 
-    advanced: false
-
-- # ====== Template Option Group: Size =========================
-  id: 56108513152653827
-  identification: 
-    template-type: Report
-    name: Size
-    identifier: SIZE
-    sequence: 35
-
-  settings: 
-    null-text: Default
-    advanced: false
-
-- # ====== Template Option Group: Style ========================
-  id: 56109008367653827
-  identification: 
-    template-type: Report
-    name: Style
-    identifier: STYLE
-    sequence: 10
-
-  help: 
-    help-text: Determines the overall style for the component.
-
-  settings: 
-    null-text: Default
-    advanced: false
 

@@ -1,26 +1,35 @@
 ---
-- # ====== Static Application File: tsk_app.css ================
-  id: 43038737955587013
+- # ====== Static Application File: app.min.js =================
+  id: 40775379132884253
   identification: 
-    file-name: tsk_app.css
-
-  attributes: 
-    mime-type: text/css
-    file-character-set: Unicode UTF-8
-
-- # ====== Static Application File: tsk_app.js =================
-  id: 45030161174453391
-  identification: 
-    file-name: tsk_app.js
+    file-name: app.min.js
 
   attributes: 
     mime-type: text/javascript
     file-character-set: Unicode UTF-8
 
-- # ====== Static Application File: tsk_app.min.js =============
-  id: 47632621060079650
+- # ====== Static Application File: app.min.css ================
+  id: 40888157295008259
   identification: 
-    file-name: tsk_app.min.js
+    file-name: app.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app.css ====================
+  id: 43038737955587013
+  identification: 
+    file-name: app.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app.js =====================
+  id: 45030161174453391
+  identification: 
+    file-name: app.js
 
   attributes: 
     mime-type: text/javascript
@@ -42,15 +51,6 @@
 
   attributes: 
     mime-type: image/png
-    file-character-set: Unicode UTF-8
-
-- # ====== Static Application File: tsk_app.min.css ============
-  id: 59218373418280747
-  identification: 
-    file-name: tsk_app.min.css
-
-  attributes: 
-    mime-type: text/css
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-32.png ======

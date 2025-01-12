@@ -1,6 +1,6 @@
 ---
 - # ====== Popup LOV Template: Search Dialog ===================
-  id: 53201262963301068
+  id: 40331708571866162
   identification: 
     name: Search Dialog
     identifier: winlov
@@ -10,7 +10,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63465831427439173
+      app: 800 # Master 25
+      referenced-id: 12750926375084764 # Search Dialog
 
   advanced: 
     translatable: false
@@ -20,7 +21,7 @@
     after-field: </div>
     width: 20
     maximum-width: 100
-    filter-text-attributes: class="apex-item-text"
+    filter-text-attributes: class="apex-item-text" autofocus
 
   find-button: 
     text: Search
@@ -65,5 +66,5 @@
       #THEME_JAVASCRIPT#
       <meta name="viewport" content="width=device-width,initial-scale=1.0" />
       </head>
-    body-attributes: onload="first_field()" class="t-Page t-Page--popupLOV"
+    body-attributes: class="t-Page t-Page--popupLOV"
 

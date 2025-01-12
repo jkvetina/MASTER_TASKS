@@ -9,13 +9,13 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_component_group(
  p_id=>wwv_flow_imp.id(39921677760197482)
 ,p_name=>'MASTER'
 ,p_reference_id=>13993288442216437
-,p_version_scn=>42190236178286
+,p_version_scn=>42190260745817
 );
 wwv_flow_imp_shared.create_comp_grp_component(
  p_id=>wwv_flow_imp.id(39933207593197517)
@@ -64,6 +64,10 @@ wwv_flow_imp_shared.create_comp_grp_component(
 wwv_flow_imp_shared.create_comp_grp_component(
  p_id=>wwv_flow_imp.id(39940583356197533)
 ,p_app_item_id=>wwv_flow_imp.id(39940277520197533)
+);
+wwv_flow_imp_shared.create_comp_grp_component(
+ p_id=>wwv_flow_imp.id(40795494890017861)
+,p_app_item_id=>wwv_flow_imp.id(52932969427496030)
 );
 wwv_flow_imp_shared.create_comp_grp_component(
  p_id=>wwv_flow_imp.id(39927750211197500)
@@ -160,6 +164,10 @@ wwv_flow_imp_shared.create_comp_grp_component(
 wwv_flow_imp_shared.create_comp_grp_component(
  p_id=>wwv_flow_imp.id(39922296122197487)
 ,p_build_option_id=>wwv_flow_imp.id(52968514038267289)
+);
+wwv_flow_imp_shared.create_comp_grp_component(
+ p_id=>wwv_flow_imp.id(40058568093346700)
+,p_list_id=>wwv_flow_imp.id(40056462880331034)  -- LIST: NAVIGATION_VPD
 );
 wwv_flow_imp_shared.create_comp_grp_component(
  p_id=>wwv_flow_imp.id(39941252936197537)

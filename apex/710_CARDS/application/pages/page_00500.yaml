@@ -5,7 +5,7 @@ identification:
   name: Commits
   alias: COMMITS
   title: Commits
-  page-group: 5) COMMITS # 46105398881273954
+  page-group: 5) Commits # 46105398881273954
 
 appearance: 
   page-mode: Normal
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Commits =====================================
-  id: 181932743756008951
+  id: 181932829863008952
   identification: 
     name: Commits
     type: Static Content
@@ -56,49 +56,9 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Commits =====================================
-  id: 181932829863008952
-  identification: 
-    name: Commits
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: Commits # 181932743756008951
-    slot: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
     template: Hero
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - FILTERS
     render-components: Above Content
 
   accessibility: 
@@ -135,12 +95,12 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Commits # 181932743756008951
-    slot: SUB_REGIONS
+    parent-region: No Parent
+    slot: BODY
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
@@ -733,7 +693,7 @@ page-items:
     slot: BODY
     alignment: Left
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
     new-column: true
     column-span: 2
@@ -750,7 +710,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_CLIENTS # 39095152206102634
+    list-of-values: TSK_CLIENTS # 39095152206102634
     display-extra-values: false
     display-null-value: true
 
@@ -762,9 +722,8 @@ page-items:
     used: Only when current value in session state is null
 
   default: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: tsk_app.get_client_id()
+    type: Item
+    item: P0_CLIENT_ID
 
   session-state: 
     storage: Per Session (Persistent)
@@ -816,7 +775,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_PROJECTS # 42492650389312824
+    list-of-values: TSK_PROJECTS # 42492650389312824
     display-extra-values: false
     display-null-value: true
 

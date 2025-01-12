@@ -9,7 +9,7 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page(
  p_id=>312
@@ -18,8 +18,8 @@ wwv_flow_imp_page.create_page(
 ,p_page_mode=>'MODAL'
 ,p_step_title=>'Copy from Project'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(97184025972341865)  -- PAGE GROUP: 3) PROJECTS
-,p_step_template=>wwv_flow_imp.id(53037134040300958)
+,p_group_id=>wwv_flow_imp.id(45948121457602853)  -- PAGE GROUP: 2) Clients and Projects Setup
+,p_step_template=>wwv_flow_imp.id(40170070310865798)
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(39924937074197493)  -- AUTHORIZATION: IS_ADMIN
 ,p_dialog_width=>'80%'
@@ -33,12 +33,12 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_name=>'SWIMLANES'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53116064012301005)
+,p_plug_template=>wwv_flow_imp.id(40245523432865959)
 ,p_plug_display_sequence=>30
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TSK_SWIMLANES'
 ,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'client_id = tsk_app.get_client_id()',
+'client_id = :P0_CLIENT_ID',
 'AND project_id = :P312_PROJECT_ID'))
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
@@ -424,12 +424,12 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_name=>'STATUSES'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53116064012301005)
+,p_plug_template=>wwv_flow_imp.id(40245523432865959)
 ,p_plug_display_sequence=>40
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TSK_STATUSES'
 ,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'client_id = tsk_app.get_client_id()',
+'client_id = :P0_CLIENT_ID',
 'AND project_id = :P312_PROJECT_ID'))
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
@@ -1000,12 +1000,12 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_name=>'CATEGORIES'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53116064012301005)
+,p_plug_template=>wwv_flow_imp.id(40245523432865959)
 ,p_plug_display_sequence=>50
 ,p_query_type=>'TABLE'
 ,p_query_table=>'TSK_CATEGORIES'
 ,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'client_id = tsk_app.get_client_id()',
+'client_id = :P0_CLIENT_ID',
 'AND project_id = :P312_PROJECT_ID'))
 ,p_include_rowid_column=>false
 ,p_plug_source_type=>'NATIVE_IG'
@@ -1546,7 +1546,7 @@ wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(194477480551685324)
 ,p_plug_name=>'Copy &P312_NAME. from Project'
 ,p_region_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53092505961300992)
+,p_plug_template=>wwv_flow_imp.id(40222089463865910)
 ,p_plug_display_sequence=>10
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'REGION_POSITION_01'
@@ -1560,7 +1560,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'FILTERS'
 ,p_region_css_classes=>'FILTERS'
 ,p_region_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(53059267411300973)
+,p_plug_template=>wwv_flow_imp.id(40188776166865839)
 ,p_plug_display_sequence=>20
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_location=>null
@@ -1575,7 +1575,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_name=>'COPY_SWIMLANES'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(53199485680301065)
+,p_button_template_id=>wwv_flow_imp.id(40329918987866155)
 ,p_button_is_hot=>'Y'
 ,p_button_image_alt=>'Add Visible Rows to Project'
 ,p_warn_on_unsaved_changes=>null
@@ -1593,7 +1593,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_name=>'COPY_STATUSES'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(53199485680301065)
+,p_button_template_id=>wwv_flow_imp.id(40329918987866155)
 ,p_button_is_hot=>'Y'
 ,p_button_image_alt=>'Add Visible Rows to Project'
 ,p_warn_on_unsaved_changes=>null
@@ -1611,7 +1611,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_name=>'COPY_CATEGORIES'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(53199485680301065)
+,p_button_template_id=>wwv_flow_imp.id(40329918987866155)
 ,p_button_is_hot=>'Y'
 ,p_button_image_alt=>'Add Visible Rows to Project'
 ,p_warn_on_unsaved_changes=>null
@@ -1630,7 +1630,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_static_id=>'CLOSE_DIALOG'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(53198695887301061)
+,p_button_template_id=>wwv_flow_imp.id(40329256648866153)
 ,p_button_image_alt=>'Close Dialog'
 ,p_button_position=>'UP'
 ,p_button_execute_validations=>'N'
@@ -1662,11 +1662,10 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_plug_id=>wwv_flow_imp.id(194477635864685325)
 ,p_prompt=>'Project'
 ,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'LOV_PROJECTS'
+,p_named_lov=>'TSK_PROJECTS'
 ,p_lov_display_null=>'YES'
 ,p_cHeight=>1
-,p_colspan=>3
-,p_field_template=>wwv_flow_imp.id(53196954686301058)
+,p_field_template=>wwv_flow_imp.id(40327496873866147)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_lov_display_extra=>'NO'

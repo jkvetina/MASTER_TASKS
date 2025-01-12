@@ -5,15 +5,13 @@ identification:
   name: Clients
   alias: CLIENTS
   title: Clients
-  page-group: 2) CLIENTS # 45948121457602853
+  page-group: 2) Clients and Projects Setup # 45948121457602853
 
 appearance: 
   page-mode: Normal
   page-template: Theme Default
   template-options: 
   - '#DEFAULT#'
-  css-classes: 
-  - MULTICOLUMN
 
 navigation-menu: 
   override-user-interface-level: false
@@ -41,6 +39,44 @@ server-cache:
   caching: Disabled
 
 regions: 
+- # ====== Region: Clients =====================================
+  id: 35708435235708527
+  identification: 
+    name: Clients
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 - # ====== Region: Clients [GRID] ==============================
   id: 41959986083748287
   identification: 
@@ -55,13 +91,13 @@ regions:
     include-rowid-column: false
 
   layout: 
-    sequence: 20
+    sequence: 10
     parent-region: Clients # 57585315468687359
     slot: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
@@ -798,7 +834,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 10
+    sequence: 20
     parent-region: No Parent
     slot: BODY
     start-new-layout: false
@@ -811,8 +847,9 @@ regions:
     template: Tabs Container
     template-options: 
     - '#DEFAULT#'
-    - js-useLocalStorage
     - t-TabsRegion-mod--simple
+    css-classes: 
+    - TABS
     render-components: Above Content
 
   accessibility: 
@@ -899,163 +936,9 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Repositories ================================
-  id: 57585553962687361
-  identification: 
-    name: Repositories
-    type: Static Content
-
-  layout: 
-    sequence: 30
-    parent-region: TABS # 57585261012687358
-    slot: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Clients =====================================
-  id: 155977146443072612
-  identification: 
-    name: Clients
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: Clients # 57585315468687359
-    slot: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Hero
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: SWITCH_CLIENT ===============================
-  id: 164515893192838321
-  identification: 
-    name: SWITCH_CLIENT
-    type: Dynamic Content
-
-  source: 
-    language: PL/SQL
-    pl/sql-function-body-returning-a-clob: RETURN tsk_nav.get_switch_client();
-
-  layout: 
-    sequence: 20
-    parent-region: No Parent
-    slot: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    performance: 
-      lazy-loading: false
-
-- # ====== Region: Sequences for &P0_CLIENT_NAME. ==============
-  id: 296954541547344581
-  identification: 
-    name: Sequences for &P0_CLIENT_NAME.
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: Sequences # 57585506541687360
-    slot: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Hero
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P200_ACTIVE_CLIENT
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1079,13 +962,13 @@ regions:
     include-rowid-column: false
 
   layout: 
-    sequence: 20
+    sequence: 10
     parent-region: Sequences # 57585506541687360
     slot: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
@@ -1394,7 +1277,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: LOV_CLIENTS # 39095152206102634
+      list-of-values: TSK_CLIENTS # 39095152206102634
       display-extra-values: true
       display-null-value: true
 
@@ -1406,9 +1289,8 @@ regions:
       primary-key: false
 
     default: 
-      type: Expression
-      language: PL/SQL
-      pl/sql-expression: tsk_app.get_client_id()
+      type: Item
+      item: P0_CLIENT_ID
       duplicate-copies-existing-value: true
 
     column-filter: 
@@ -1573,134 +1455,68 @@ regions:
       alignment: center
 
 page-items: 
-- # ====== Page Item: P200_CURRENT_CLIENTS =====================
-  id: 60098781034607025
+- # ====== Page Item: P200_ACTIVE_CLIENT =======================
+  id: 35708539183708528
   identification: 
-    name: P200_CURRENT_CLIENTS
-    type: Hidden
+    name: P200_ACTIVE_CLIENT
+    type: Select List
+
+  label: 
+    label: Active Client
+    alignment: Left
 
   settings: 
-    value-protected: true
+    page-action-on-selection: None
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
-    region: Clients # 155977146443072612
+    region: Clients # 35708435235708527
     slot: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - SUBMIT
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: TSK_CLIENTS # 39095152206102634
+    display-extra-values: false
+    display-null-value: true
 
   advanced: 
-    warn-on-unsaved-changes: Page Default
+    warn-on-unsaved-changes: Ignore
 
   source: 
     type: Null
     used: Only when current value in session state is null
 
-  default: 
-    type: Item
-    item: P0_CLIENT_ID
-
   session-state: 
-    data-type: VARCHAR2
     storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
 
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
-
-buttons: 
-- # ====== Button: ADD_CLIENT_WIZARD ===========================
-  id: 42388341281552407
-  identification: 
-    button-name: ADD_CLIENT_WIZARD
-    label: Add Client Wizard
-
-  layout: 
-    sequence: 10
-    region: Clients # 155977146443072612
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    icon: fa-wizard
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  security: 
-    authorization-scheme: IS_ADMIN # 39924937074197493
-
-- # ====== Button: SWITCH_CLIENT ===============================
-  id: 58082664743390692
-  identification: 
-    button-name: SWITCH_CLIENT
-    label: Switch Client &P0_CLIENT_FILTER!RAW.
-
-  layout: 
-    sequence: 20
-    region: Clients # 155977146443072612
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    css-classes: 
-    - ACTION_MENU
-    - TRANSPARENT
-    icon: fa-chevron-down
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  advanced: 
-    static-id: SWITCH_CLIENT
-
-- # ====== Button: REORDER_SEQUENCES ===========================
-  id: 58218938822257311
-  identification: 
-    button-name: REORDER_SEQUENCES
-    label: Reorder Sequences
-
-  layout: 
-    sequence: 10
-    region: Sequences for &P0_CLIENT_NAME. # 296954541547344581
-    slot: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    icon: fa-sequence
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    show-processing: false
-    warn-on-unsaved-changes: Do Not Check
 
 processes: 
 - # ====== Process: SAVE_CLIENTS ===============================
@@ -1784,5 +1600,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_SEQUENCES # 58218938822257311
+    type: Never
 

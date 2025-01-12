@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(53180482350301046)
+ p_id=>wwv_flow_imp.id(40310358120866104)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-LinksList-item is-current #A03#" aria-current="page">',
 '  <a href="#LINK#" class="t-LinksList-link" #A02#>',
@@ -76,7 +76,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_a01_label=>'Badge Value'
 ,p_a02_label=>'Link Attributes'
 ,p_a03_label=>'List Item CSS Classes'
-,p_reference_id=>63451441965439154
+,p_reference_id=>12730592156084713
 );
 wwv_flow_imp.component_end;
 end;

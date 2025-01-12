@@ -5,7 +5,7 @@ identification:
   name: Card Detail
   alias: CARD
   title: Card Detail
-  page-group: 1) CARDS # 42668205046306704
+  page-group: 1) Cards # 42668205046306704
 
 appearance: 
   page-mode: Modal Dialog
@@ -167,6 +167,44 @@ help:
     Under the [...] button there are hidden some less used actions. Arrows will save the changes and move you to the prev/next card in the same order as you saw them on the Board.
 
 regions: 
+- # ====== Region: BUTTONS =====================================
+  id: 35710156580708544
+  identification: 
+    name: BUTTONS
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    slot: REGION_POSITION_03
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 - # ====== Region: Checklist &P105_BADGE_CHECKLIST. ============
   id: 44242711670877264
   identification: 
@@ -265,8 +303,9 @@ regions:
     template: Tabs Container
     template-options: 
     - '#DEFAULT#'
-    - js-useLocalStorage
     - t-TabsRegion-mod--simple
+    css-classes: 
+    - TABS
     render-components: Above Content
 
   accessibility: 
@@ -274,6 +313,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TABS_LEFT
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -460,8 +500,9 @@ regions:
     template: Tabs Container
     template-options: 
     - '#DEFAULT#'
-    - js-useLocalStorage
     - t-TabsRegion-mod--simple
+    css-classes: 
+    - TABS
     render-components: Above Content
 
   accessibility: 
@@ -469,6 +510,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: TABS_RIGHT
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -684,8 +726,6 @@ regions:
       template-options: 
       - '#DEFAULT#'
       - t-Comments--chat
-      - t-Comments--iconsRounded
-      - t-Report--hideNoPagination
 
     pagination: 
       type: No Pagination (Show All Rows)
@@ -1263,8 +1303,6 @@ regions:
       template-options: 
       - '#DEFAULT#'
       - t-Comments--chat
-      - t-Comments--iconsRounded
-      - t-Report--hideNoPagination
 
     pagination: 
       type: No Pagination (Show All Rows)
@@ -2398,6 +2436,66 @@ regions:
       lost-update-type: Row Values
 
 page-items: 
+- # ====== Page Item: P105_DISABLE_PREV ========================
+  id: 35710731373708550
+  identification: 
+    name: P105_DISABLE_PREV
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 150
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P105_DISABLE_NEXT ========================
+  id: 40889118601180301
+  identification: 
+    name: P105_DISABLE_NEXT
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 160
+    region: '&P105_HEADER.' # 127494529654555268
+    slot: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P105_CARD_NUMBER =========================
   id: 44656592318008152
   identification: 
@@ -2666,7 +2764,7 @@ page-items:
     start-new-row: false
     column: Automatic
     new-column: true
-    column-span: 3
+    column-span: Automatic
     label-column-span: Page Template Default
 
   appearance: 
@@ -3055,7 +3153,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating
+    template: Required - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -3114,7 +3212,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating
+    template: Required - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3124,7 +3222,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_BOARDS # 39094577788102628
+    list-of-values: TSK_BOARDS # 39094577788102628
     display-extra-values: true
     display-null-value: false
 
@@ -3252,7 +3350,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating
+    template: Required - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3325,7 +3423,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating
+    template: Required - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -3787,7 +3885,7 @@ page-items:
     start-new-row: false
     column: Automatic
     new-column: true
-    column-span: 3
+    column-span: Automatic
     label-column-span: Page Template Default
 
   appearance: 
@@ -3844,19 +3942,19 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating
+    template: Required - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
 
   validation: 
-    value-required: false
+    value-required: true
 
   list-of-values: 
     type: Shared Component
     list-of-values: LOV_CATEGORIES # 42666265740165915
     display-extra-values: false
-    display-null-value: true
+    display-null-value: false
 
   cascading-list-of-values: 
     parent-item(s): 
@@ -4090,12 +4188,12 @@ buttons:
   id: 44434057267991801
   identification: 
     button-name: CREATE_ANOTHER
-    label: Create and Another
+    label: and Another
 
   layout: 
-    sequence: 30
-    region: '&P105_HEADER.' # 127494529654555268
-    slot: RIGHT_OF_TITLE
+    sequence: 10
+    region: BUTTONS # 35710156580708544
+    slot: NEXT
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4103,11 +4201,14 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
-    icon: fa-plus
+    - t-Button--iconLeft
+    css-classes: 
+    - u-pullRight
+    icon: fa-save
 
   behavior: 
     action: Defined by Dynamic Action
@@ -4125,12 +4226,12 @@ buttons:
   id: 44434430741991801
   identification: 
     button-name: CREATE_CARD_AND_CLOSE
-    label: Create New Card
+    label: and Close
 
   layout: 
-    sequence: 10
-    region: '&P105_HEADER.' # 127494529654555268
-    slot: RIGHT_OF_TITLE
+    sequence: 20
+    region: BUTTONS # 35710156580708544
+    slot: NEXT
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4139,10 +4240,12 @@ buttons:
 
   appearance: 
     button-template: Text with Icon
-    hot: true
+    hot: false
     template-options: 
     - '#DEFAULT#'
     - t-Button--iconLeft
+    css-classes: 
+    - u-pullRight
     icon: fa-save
 
   behavior: 
@@ -4165,8 +4268,8 @@ buttons:
 
   layout: 
     sequence: 50
-    region: '&P105_HEADER.' # 127494529654555268
-    slot: RIGHT_OF_TITLE
+    region: BUTTONS # 35710156580708544
+    slot: NEXT
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4179,6 +4282,8 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     - t-Button--iconLeft
+    css-classes: 
+    - u-pullRight
     icon: fa-save
 
   behavior: 
@@ -4230,9 +4335,9 @@ buttons:
     label: Save changes and go to next card
 
   layout: 
-    sequence: 30
+    sequence: 20
     region: '&P105_HEADER.' # 127494529654555268
-    slot: UP
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4253,9 +4358,13 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
 
+  advanced: 
+    custom-attributes: 
+    - '&P105_DISABLE_NEXT.'
+
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_NEXT_CARD_ID
+    item: P105_CARD_ID
 
 - # ====== Button: GOTO_PREV_CARD ==============================
   id: 44438472867991804
@@ -4264,9 +4373,9 @@ buttons:
     label: Save changes and go to previous card
 
   layout: 
-    sequence: 20
+    sequence: 10
     region: '&P105_HEADER.' # 127494529654555268
-    slot: UP
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4287,9 +4396,13 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
 
+  advanced: 
+    custom-attributes: 
+    - '&P105_DISABLE_PREV.'
+
   server-side-condition: 
     type: Item is NOT NULL
-    item: P105_PREV_CARD_ID
+    item: P105_CARD_ID
 
 - # ====== Button: UPDATE_AND_REFRESH ==========================
   id: 46018001553168176
@@ -4298,9 +4411,9 @@ buttons:
     label: Save Changes
 
   layout: 
-    sequence: 40
-    region: '&P105_HEADER.' # 127494529654555268
-    slot: RIGHT_OF_TITLE
+    sequence: 60
+    region: BUTTONS # 35710156580708544
+    slot: NEXT
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4313,6 +4426,8 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     - t-Button--iconLeft
+    css-classes: 
+    - u-pullRight
     icon: fa-save
 
   behavior: 
@@ -4334,7 +4449,7 @@ buttons:
     label: More Actions
 
   layout: 
-    sequence: 60
+    sequence: 40
     region: '&P105_HEADER.' # 127494529654555268
     slot: RIGHT_OF_TITLE
     start-new-layout: false
@@ -4409,12 +4524,12 @@ buttons:
   id: 57584109329687346
   identification: 
     button-name: CREATE_CARD
-    label: Create New Card
+    label: Create Card
 
   layout: 
-    sequence: 20
-    region: '&P105_HEADER.' # 127494529654555268
-    slot: RIGHT_OF_TITLE
+    sequence: 30
+    region: BUTTONS # 35710156580708544
+    slot: NEXT
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -4422,15 +4537,18 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon
-    hot: false
+    button-template: Text with Icon
+    hot: true
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
+    css-classes: 
+    - u-pullRight
     icon: fa-save
 
   behavior: 
     action: Defined by Dynamic Action
-    execute-validations: true
+    execute-validations: false
     database-action: SQL INSERT action
 
   advanced: 
@@ -5223,7 +5341,7 @@ branches:
     type: Page or URL (Redirect)
     target: 
       url: 'f?p=&APP_ID.:100:&SESSION.::&DEBUG.:::&success_msg=#SUCCESS_MSG#'
-      page: 100 # #APP_NAME#
+      page: 100 # &APP_NAME.
 
   server-side-condition: 
     type: No Rows returned

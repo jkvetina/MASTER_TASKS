@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(53190681375301052)
+ p_id=>wwv_flow_imp.id(40321132433866131)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-MegaMenu-item t-MegaMenu-item--top t-MegaMenu-item--noSub is-active #A04#" data-current="true" data-id="#A01#" data-shortcut="#A05#">',
 '  <span class="a-Menu-item t-MegaMenu-itemBody #A08#">',
@@ -40,7 +40,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_theme_id=>800
 ,p_theme_class_id=>20
 ,p_list_template_before_rows=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<div class="t-MegaMenu #COMPONENT_CSS_CLASSES#" id="t_MenuNav" style="display:none;">',
+'<div class="t-MegaMenu #COMPONENT_CSS_CLASSES#" id="t_MenuNav" #APEX_CSP_DISPLAY_NONE#>',
 '  <div class="a-Menu-content t-MegaMenu-container">',
 '    <div class="t-MegaMenu-body">',
 '    <ul class="t-MegaMenu-list t-MegaMenu-list--top">'))
@@ -118,7 +118,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_a06_label=>'Link Target'
 ,p_a07_label=>'Badge Class'
 ,p_a08_label=>'Menu Item Class'
-,p_reference_id=>63453990249439156
+,p_reference_id=>12740346787084737
 );
 wwv_flow_imp.component_end;
 end;

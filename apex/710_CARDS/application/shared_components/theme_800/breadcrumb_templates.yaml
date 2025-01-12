@@ -1,6 +1,6 @@
 ---
 - # ====== Breadcrumb Template: Breadcrumb =====================
-  id: 53201006059301066
+  id: 40331515369866159
   identification: 
     name: Breadcrumb
     identifier: BREADCRUMB
@@ -8,7 +8,8 @@
 
   subscription: 
     master: 
-      referenced-id: 63465614388439169
+      app: 800 # Master 25
+      referenced-id: 12750754895084764 # Breadcrumb
 
   advanced: 
     translatable: false

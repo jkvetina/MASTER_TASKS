@@ -9,10 +9,10 @@ wwv_flow_imp.component_begin (
 ,p_default_workspace_id=>1000000000000
 ,p_default_application_id=>710
 ,p_default_id_offset=>0
-,p_default_owner=>'MASTER'
+,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(53182011794301047)
+ p_id=>wwv_flow_imp.id(40311951780866107)
 ,p_list_template_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="t-MediaList-item is-active #A04#">',
 '  <a href="#LINK#" class="t-MediaList-itemWrap #A05#" #A03#>',
@@ -56,7 +56,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_a04_label=>'List Item CSS Classes'
 ,p_a05_label=>'Link Class'
 ,p_a06_label=>'Icon Color Class'
-,p_reference_id=>63445387979439150
+,p_reference_id=>12732162760084717
 );
 wwv_flow_imp.component_end;
 end;
