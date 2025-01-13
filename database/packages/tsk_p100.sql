@@ -90,6 +90,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         FROM tsk_statuses s
         WHERE s.client_id       = in_client_id
             AND s.project_id    = in_project_id
+            AND (s.row_order#   IS NULL OR s.row_order# = 1)
             AND s.is_active     = 'Y';
 
         -- calculate number of swimlanes
@@ -141,11 +142,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     d.count_checks,
                     d.count_done,
                     --
-                    SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS user_name,
-                    --ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST) AS row#,
-                    --GREATEST(COUNT(s.order#) OVER (), 1) AS row_count
-                    1 AS row#,
-                    1 AS row_count
+                    ROW_NUMBER() OVER (ORDER BY s.order# NULLS LAST)    AS r#,
+                    ROW_NUMBER() OVER (PARTITION BY s.col_order# ORDER BY s.row_order# NULLS LAST) AS row#,
+                    GREATEST(COUNT(s.row_order#) OVER (PARTITION BY s.col_order#), 1) AS row_count
                     --
                 FROM tsk_lov_statuses_v s
                 LEFT JOIN app_users_vpd_v u

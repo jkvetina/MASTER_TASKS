@@ -13,7 +13,8 @@ SELECT
             t.client_id,
             t.project_id
         ORDER BY
-            t.order# NULLS LAST,
+            t.col_order# NULLS LAST,
+            t.row_order# NULLS LAST,
             t.status_id
         ), '0') AS order#
     --

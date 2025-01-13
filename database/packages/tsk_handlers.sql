@@ -162,7 +162,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');
         rec.is_badge            := core.get_grid_data('IS_BADGE');
-        rec.order#              := core.get_grid_data('ORDER#');
+        rec.col_order#          := core.get_grid_data('COL_ORDER#');
+        rec.row_order#          := core.get_grid_data('ROW_ORDER#');
         --
         tsk_tapi.statuses (rec,
             in_action               => in_action,
@@ -321,7 +322,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.is_colored          := core.get_grid_data('IS_COLORED');
         rec.is_badge            := core.get_grid_data('IS_BADGE');
-        rec.order#              := core.get_grid_data('ORDER#');
+        rec.col_order#          := core.get_grid_data('COL_ORDER#');
+        rec.row_order#          := core.get_grid_data('ROW_ORDER#');
         --
         BEGIN
             INSERT INTO tsk_statuses
@@ -493,41 +495,92 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
                 t.status_id,
                 t.client_id,
                 t.project_id,
-                c.old_order#,
-                c.new_order#
+                c.old_col_order#,
+                c.new_col_order#
                 --
             FROM tsk_statuses t
             JOIN (
                 SELECT
                     t.client_id,
                     t.project_id,
-                    t.order#    AS old_order#,
+                    t.col_order#    AS old_col_order#,
                     --
                     ROW_NUMBER() OVER (
                         PARTITION BY t.client_id, t.project_id
-                        ORDER BY t.order#
-                    ) AS new_order#
+                        ORDER BY t.col_order#
+                    ) AS new_col_order#
                     --
                 FROM tsk_statuses t
                 WHERE 1 = 1
                     AND t.client_id     = in_client_id
                     AND t.project_id    = in_project_id
-                    AND t.order#        IS NOT NULL
+                    AND t.col_order#    IS NOT NULL
                 GROUP BY
                     t.client_id,
-                    t.project_id
+                    t.project_id,
+                    t.col_order#
             ) c
                 ON c.client_id          = t.client_id
                 AND c.project_id        = t.project_id
-                AND c.old_order#        = t.order#
+                AND c.old_col_order#    = t.col_order#
             WHERE 1 = 1
                 AND t.client_id         = in_client_id
                 AND t.project_id        = in_project_id
-                AND t.order#            IS NOT NULL
-                AND c.old_order#        != c.new_order#
+                AND t.col_order#        IS NOT NULL
+                AND c.old_col_order#    != c.new_col_order#
         ) LOOP
             UPDATE tsk_statuses t
-            SET t.order#            = s.new_order#
+            SET t.col_order#        = s.new_col_order#
+            WHERE t.status_id       = s.status_id
+                AND t.client_id     = s.client_id
+                AND t.project_id    = s.project_id;
+        END LOOP;
+
+        -- fix rows
+        FOR s IN (
+            SELECT
+                t.status_id,
+                t.client_id,
+                t.project_id,
+                c.old_row_order#,
+                c.new_row_order#
+                --
+            FROM tsk_statuses t
+            JOIN (
+                SELECT
+                    t.client_id,
+                    t.project_id,
+                    t.col_order#,
+                    t.row_order#    AS old_row_order#,
+                    --
+                    ROW_NUMBER() OVER (
+                        PARTITION BY t.client_id, t.project_id, t.col_order#
+                        ORDER BY t.row_order#
+                    ) AS new_row_order#
+                    --
+                FROM tsk_statuses t
+                WHERE 1 = 1
+                    AND t.client_id     = in_client_id
+                    AND t.project_id    = in_project_id
+                    AND t.row_order#    IS NOT NULL
+                GROUP BY
+                    t.client_id,
+                    t.project_id,
+                    t.col_order#,
+                    t.row_order#
+            ) c
+                ON c.client_id          = t.client_id
+                AND c.project_id        = t.project_id
+                AND c.col_order#        = t.col_order#
+                AND c.old_row_order#    = t.row_order#
+            WHERE 1 = 1
+                AND t.client_id         = in_client_id
+                AND t.project_id        = in_project_id
+                AND t.row_order#        IS NOT NULL
+                AND c.old_row_order#    != c.new_row_order#
+        ) LOOP
+            UPDATE tsk_statuses t
+            SET t.row_order#        = s.new_row_order#
             WHERE t.status_id       = s.status_id
                 AND t.client_id     = s.client_id
                 AND t.project_id    = s.project_id;
