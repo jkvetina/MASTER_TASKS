@@ -15,7 +15,7 @@ COMPOUND TRIGGER
 
             -- check client name
             IF NOT REGEXP_LIKE(:NEW.client_id, '^[A-Za-z0-9_-]{1,32}$') THEN
-                core.raise_error('WRONG_CLIENT', :NEW.client_id);
+                core.raise_error('WRONG_CLIENT_ID', :NEW.client_id);
             END IF;
         END IF;
         --
@@ -25,19 +25,6 @@ COMPOUND TRIGGER
     WHEN OTHERS THEN
         core.raise_error(c_table_name || '_UPSERT_FAILED');
     END BEFORE EACH ROW;
-
-
-
-    AFTER STATEMENT IS
-    BEGIN
-        NULL;
-        --
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error(c_table_name || '_FOLLOWUP_FAILED');
-    END AFTER STATEMENT;
 
 END;
 /

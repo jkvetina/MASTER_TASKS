@@ -21,19 +21,6 @@ COMPOUND TRIGGER
         core.raise_error(c_table_name || '_UPSERT_FAILED');
     END BEFORE EACH ROW;
 
-
-
-    AFTER STATEMENT IS
-    BEGIN
-        NULL;
-        --
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error(c_table_name || '_FOLLOWUP_FAILED');
-    END AFTER STATEMENT;
-
 END;
 /
 

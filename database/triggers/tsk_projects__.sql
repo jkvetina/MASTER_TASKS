@@ -20,11 +20,6 @@ COMPOUND TRIGGER
             --
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
-
-            -- check project name
-            IF NOT REGEXP_LIKE(:NEW.project_id, '^[A-Za-z0-9_-]{1,32}$') THEN
-                core.raise_error('WRONG_PROJECT', :NEW.project_id);
-            END IF;
         END IF;
         --
         IF INSERTING THEN
@@ -34,7 +29,7 @@ COMPOUND TRIGGER
                 VALUES (
                     :NEW.client_id,
                     :NEW.project_id,
-                    tsk_board_id.NEXTVAL,
+                    NULL,                   -- generated
                     'Default Board',
                     10,
                     'Y',
@@ -45,14 +40,14 @@ COMPOUND TRIGGER
                 NULL;
             END;
 
-            -- make sure every project has at least one swimlane
+            -- make sure every project has at least one milestone
             BEGIN
-                INSERT INTO tsk_swimlanes (client_id, project_id, swimlane_id, swimlane_name, order#, is_active)
+                INSERT INTO tsk_milestones (client_id, project_id, milestone_id, milestone_name, order#, is_active)
                 VALUES (
                     :NEW.client_id,
                     :NEW.project_id,
-                    'DEFAULT',
-                    'Default Swimlane',
+                    NULL,                   -- generated
+                    'Default Milestone',
                     10,
                     'Y'
                 );
@@ -67,7 +62,7 @@ COMPOUND TRIGGER
                 VALUES (
                     :NEW.client_id,
                     :NEW.project_id,
-                    'DEFAULT',
+                    NULL,                   -- generated
                     'Default Status',
                     'Y',
                     'Y'
@@ -83,7 +78,7 @@ COMPOUND TRIGGER
                 VALUES (
                     :NEW.client_id,
                     :NEW.project_id,
-                    'DEFAULT',
+                    NULL,                   -- generated
                     'Default Category',
                     10,
                     'Y',

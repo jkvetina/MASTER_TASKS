@@ -12,8 +12,6 @@ COMPOUND TRIGGER
         IF NOT DELETING THEN
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
-            --:NEW.created_by := COALESCE(:NEW.created_by, :NEW.updated_by);
-            --:NEW.created_at := COALESCE(:NEW.created_at, :NEW.updated_at);
 
             -- check sequence name
             IF NOT REGEXP_LIKE(:NEW.sequence_id, '^[A-Za-z0-9_-]{1,32}$') THEN
@@ -26,19 +24,6 @@ COMPOUND TRIGGER
     WHEN OTHERS THEN
         core.raise_error(c_table_name || '_UPSERT_FAILED');
     END BEFORE EACH ROW;
-
-
-
-    AFTER STATEMENT IS
-    BEGIN
-        NULL;
-        --
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error(c_table_name || '_FOLLOWUP_FAILED');
-    END AFTER STATEMENT;
 
 END;
 /

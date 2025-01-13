@@ -12,11 +12,6 @@ COMPOUND TRIGGER
         IF NOT DELETING THEN
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
-
-            -- check status name
-            IF NOT REGEXP_LIKE(:NEW.status_id, '^[A-Za-z0-9_-]{1,32}$') THEN
-                core.raise_error('WRONG_STATUS', :NEW.status_id);
-            END IF;
         END IF;
         --
     EXCEPTION
@@ -25,19 +20,6 @@ COMPOUND TRIGGER
     WHEN OTHERS THEN
         core.raise_error(c_table_name || '_UPSERT_FAILED');
     END BEFORE EACH ROW;
-
-
-
-    AFTER STATEMENT IS
-    BEGIN
-        NULL;
-        --
-    EXCEPTION
-    WHEN core.app_exception THEN
-        RAISE;
-    WHEN OTHERS THEN
-        core.raise_error(c_table_name || '_FOLLOWUP_FAILED');
-    END AFTER STATEMENT;
 
 END;
 /

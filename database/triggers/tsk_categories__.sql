@@ -22,11 +22,6 @@ COMPOUND TRIGGER
             --
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
-
-            -- check category name
-            IF NOT REGEXP_LIKE(:NEW.category_id, '^[A-Za-z0-9_-]{1,32}$') THEN
-                core.raise_error('WRONG_CATEGORY', :NEW.category_id);
-            END IF;
         END IF;
         --
     EXCEPTION
