@@ -413,6 +413,10 @@ div.a-FileDrop.a-FileDrop--dropzone > div.a-FileDrop-action > span.a-Button.a-Fi
     margin-top          : -0.5rem;  /* to compensate for badge */
     margin-bottom       : 1.2rem;
 }
+body.t-Dialog-page .TABS ul.t-Tabs,
+body.t-Drawer-page .TABS ul.t-Tabs {
+    margin-top          : 0;
+}
 .TABS ul.t-Tabs::selection {
     user-select         : none !important;
 }
