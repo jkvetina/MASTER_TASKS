@@ -181,7 +181,7 @@ h1.t-HeroRegion-title {
 .t-HeroRegion-col--beforeIcon,
 .t-HeroRegion-col--beforeIcon {
     order               : 5;
-    margin              : 1px 0 0;
+    margin              : -0.425rem 0 0;
     gap                 : 0.13rem;
 }
 
