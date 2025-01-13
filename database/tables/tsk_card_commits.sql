@@ -1,28 +1,41 @@
 CREATE TABLE tsk_card_commits (
-    card_id                         NUMBER(10,0)          CONSTRAINT nn_tsk_card_commits_card NOT NULL,
-    commit_id                       VARCHAR2(64)          CONSTRAINT nn_tsk_card_commits_commit NOT NULL,
+    tenant_id                       VARCHAR2(64)          CONSTRAINT tsk_card_commits_tenant_nn NOT NULL,
+    card_id                         NUMBER(10,0)          CONSTRAINT tsk_card_commits_card_nn NOT NULL,
+    commit_id                       VARCHAR2(64)          CONSTRAINT tsk_card_commits_commit_nn NOT NULL,
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
-    CONSTRAINT pk_tsk_card_commits
+    CONSTRAINT tsk_card_commits_pk
         PRIMARY KEY (
+            tenant_id,
             card_id,
             commit_id
         ),
     --
-    CONSTRAINT fk_tsk_card_commits_commit
-        FOREIGN KEY (commit_id)
-        REFERENCES tsk_commits (commit_id)
-        DEFERRABLE INITIALLY DEFERRED,
+    CONSTRAINT tsk_card_commits_commit_fk
+        FOREIGN KEY (
+            tenant_id,
+            commit_id
+        )
+        REFERENCES tsk_commits (
+            tenant_id,
+            commit_id
+        ),
     --
-    CONSTRAINT fk_tsk_card_commits_card
-        FOREIGN KEY (card_id)
-        REFERENCES tsk_cards (card_id)
-        DEFERRABLE INITIALLY DEFERRED
+    CONSTRAINT tsk_card_commits_card_fk
+        FOREIGN KEY (
+            tenant_id,
+            card_id
+        )
+        REFERENCES tsk_cards (
+            tenant_id,
+            card_id
+        )
 );
 --
 COMMENT ON TABLE tsk_card_commits IS '';
 --
+COMMENT ON COLUMN tsk_card_commits.tenant_id    IS '';
 COMMENT ON COLUMN tsk_card_commits.card_id      IS '';
 COMMENT ON COLUMN tsk_card_commits.commit_id    IS '';
 

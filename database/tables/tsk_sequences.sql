@@ -1,32 +1,45 @@
 CREATE TABLE tsk_sequences (
-    client_id                       VARCHAR2(32)          CONSTRAINT nn_tsk_sequences_client NOT NULL,
-    sequence_id                     VARCHAR2(32)          CONSTRAINT nn_tsk_sequences_id NOT NULL,
+    tenant_id                       VARCHAR2(64)          CONSTRAINT tsk_sequences_tenant_nn NOT NULL,
+    client_id                       NUMBER(10,0)          CONSTRAINT tsk_sequences_client_nn NOT NULL,
+    project_id                      NUMBER(10,0)          CONSTRAINT tsk_sequences_project_nn NOT NULL,
+    sequence_id                     VARCHAR2(32)          CONSTRAINT tsk_sequences_id_nn NOT NULL,
     sequence_desc                   VARCHAR2(256),
     is_active                       CHAR(1),
     order#                          NUMBER(4,0),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
-    CONSTRAINT ch_tsk_sequences_active
+    CONSTRAINT tsk_sequences_active_ch
         CHECK (
             is_active = 'Y' OR is_active IS NULL
         ) ENABLE,
     --
-    CONSTRAINT pk_tsk_sequences
+    CONSTRAINT tsk_sequences_pk
         PRIMARY KEY (
+            tenant_id,
             client_id,
+            project_id,
             sequence_id
         ),
     --
-    CONSTRAINT fk_tsk_sequences_client
-        FOREIGN KEY (client_id)
-        REFERENCES tsk_clients (client_id)
-        DEFERRABLE INITIALLY DEFERRED
+    CONSTRAINT tsk_sequences_project_fk
+        FOREIGN KEY (
+            tenant_id,
+            client_id,
+            project_id
+        )
+        REFERENCES tsk_projects (
+            tenant_id,
+            client_id,
+            project_id
+        )
 );
 --
 COMMENT ON TABLE tsk_sequences IS '';
 --
+COMMENT ON COLUMN tsk_sequences.tenant_id       IS '';
 COMMENT ON COLUMN tsk_sequences.client_id       IS '';
+COMMENT ON COLUMN tsk_sequences.project_id      IS '';
 COMMENT ON COLUMN tsk_sequences.sequence_id     IS '';
 COMMENT ON COLUMN tsk_sequences.sequence_desc   IS '';
 COMMENT ON COLUMN tsk_sequences.is_active       IS '';
