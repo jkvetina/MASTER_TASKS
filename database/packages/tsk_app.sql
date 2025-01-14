@@ -75,7 +75,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
     FUNCTION get_card_next_sequence (
         in_sequence_id      tsk_sequences.sequence_id%TYPE,
-        in_client_id        tsk_sequences.client_id%TYPE        := NULL
+        in_client_id        tsk_sequences.client_id%TYPE        := NULL,
+        in_project_id       tsk_sequences.project_id%TYPE       := NULL
     )
     RETURN tsk_cards.card_number%TYPE
     AS
@@ -85,10 +86,13 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         SELECT
             MAX(t.card_number),
             REGEXP_SUBSTR(REPLACE(MAX(t.card_number), in_sequence_id, ''), '\d+$')
-        INTO v_max, v_value
+        INTO
+            v_max,
+            v_value
         FROM tsk_cards t
         WHERE 1 = 1
             AND t.client_id     = COALESCE(in_client_id,    core.get_number_item('P0_CLIENT_ID'))
+            AND t.project_id    = COALESCE(in_project_id,   core.get_number_item('P0_PROJECT_ID'))
             AND t.card_number   LIKE in_sequence_id || '%';
         --
         IF v_max IS NULL AND v_value IS NULL THEN   -- first value
@@ -105,7 +109,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
 
     FUNCTION get_card_sequence (
         in_card_number      tsk_cards.card_number%TYPE,
-        in_client_id        tsk_cards.client_id%TYPE        := NULL
+        in_client_id        tsk_sequences.client_id%TYPE        := NULL,
+        in_project_id       tsk_sequences.project_id%TYPE       := NULL
     )
     RETURN tsk_sequences.sequence_id%TYPE
     AS
@@ -116,6 +121,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         FROM tsk_sequences t
         WHERE 1 = 1
             AND t.client_id     = COALESCE(in_client_id,    core.get_number_item('P0_CLIENT_ID'))
+            AND t.project_id    = COALESCE(in_project_id,   core.get_number_item('P0_PROJECT_ID'))
             AND REGEXP_REPLACE(in_card_number, '\d+$', '') LIKE t.sequence_id || '%';
         --
         RETURN v_sequence_id;

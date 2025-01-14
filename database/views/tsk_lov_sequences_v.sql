@@ -15,6 +15,7 @@ SELECT
 FROM tsk_sequences t
 JOIN x
     ON x.client_id      = t.client_id
+    AND x.project_id    = t.project_id
 WHERE t.is_active       = 'Y';
 /
 
