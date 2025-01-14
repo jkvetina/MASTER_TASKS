@@ -6,6 +6,8 @@ COMPOUND TRIGGER
     --
     v_client_id         tsk_projects.client_id%TYPE;
     v_project_id        tsk_projects.project_id%TYPE;
+    --
+    v_new_project       tsk_projects.client_id%TYPE;
 
 
 
@@ -23,71 +25,7 @@ COMPOUND TRIGGER
         END IF;
         --
         IF INSERTING THEN
-            -- make sure every project has at least one default board
-            BEGIN
-                INSERT INTO tsk_boards (client_id, project_id, board_id, board_name, order#, is_active, is_default)
-                VALUES (
-                    :NEW.client_id,
-                    :NEW.project_id,
-                    NULL,                   -- generated
-                    'Default Board',
-                    10,
-                    'Y',
-                    'Y'
-                );
-            EXCEPTION
-            WHEN DUP_VAL_ON_INDEX THEN
-                NULL;
-            END;
-
-            -- make sure every project has at least one milestone
-            BEGIN
-                INSERT INTO tsk_milestones (client_id, project_id, milestone_id, milestone_name, order#, is_active)
-                VALUES (
-                    :NEW.client_id,
-                    :NEW.project_id,
-                    NULL,                   -- generated
-                    'Default Milestone',
-                    10,
-                    'Y'
-                );
-            EXCEPTION
-            WHEN DUP_VAL_ON_INDEX THEN
-                NULL;
-            END;
-
-            -- make sure every project has at least one status
-            BEGIN
-                INSERT INTO tsk_statuses (client_id, project_id, status_id, status_name, is_active, is_default)
-                VALUES (
-                    :NEW.client_id,
-                    :NEW.project_id,
-                    NULL,                   -- generated
-                    'Default Status',
-                    'Y',
-                    'Y'
-                );
-            EXCEPTION
-            WHEN DUP_VAL_ON_INDEX THEN
-                NULL;
-            END;
-
-            -- make sure every project has at least one category
-            BEGIN
-                INSERT INTO tsk_categories (client_id, project_id, category_id, category_name, order#, is_active, is_default)
-                VALUES (
-                    :NEW.client_id,
-                    :NEW.project_id,
-                    NULL,                   -- generated
-                    'Default Category',
-                    10,
-                    'Y',
-                    'Y'
-                );
-            EXCEPTION
-            WHEN DUP_VAL_ON_INDEX THEN
-                NULL;
-            END;
+            v_new_project := :NEW.client_id;
         END IF;
         --
     EXCEPTION
@@ -113,6 +51,26 @@ COMPOUND TRIGGER
                 t.updated_by        = 'STOP'        -- a hacky way how to stop recursion
             WHERE t.client_id       = v_client_id
                 AND t.project_id    = v_project_id;
+        END IF;
+
+        -- create default project structure
+        IF v_new_project IS NOT NULL THEN
+            -- find client projects without boards
+            FOR c IN (
+                SELECT DISTINCT
+                    p.project_id
+                FROM tsk_projects p
+                LEFT JOIN tsk_boards b
+                    ON b.client_id      = p.client_id
+                    AND b.project_id    = p.project_id
+                WHERE p.client_id       = v_new_project
+                    AND b.board_id      IS NULL
+            ) LOOP
+                tsk_handlers.init_project (
+                    in_client_id    => v_new_project,
+                    in_project_id   => c.project_id
+                );
+            END LOOP;
         END IF;
         --
     EXCEPTION

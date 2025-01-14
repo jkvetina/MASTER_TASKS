@@ -1,5 +1,86 @@
 CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
+    PROCEDURE init_project (
+        in_client_id        tsk_cards.client_id%TYPE,
+        in_project_id       tsk_cards.project_id%TYPE
+    )
+    AS
+    BEGIN
+        -- make sure every project has at least one default board
+        BEGIN
+            INSERT INTO tsk_boards (client_id, project_id, board_id, board_name, order#, is_active, is_default)
+            VALUES (
+                in_client_id,
+                in_project_id,
+                NULL,                   -- generated
+                'Default Board',
+                10,
+                'Y',
+                'Y'
+            );
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            NULL;
+        END;
+
+        -- make sure every project has at least one milestone
+        BEGIN
+            INSERT INTO tsk_milestones (client_id, project_id, milestone_id, milestone_name, order#, is_active)
+            VALUES (
+                in_client_id,
+                in_project_id,
+                NULL,                   -- generated
+                'Default Milestone',
+                10,
+                'Y'
+            );
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            NULL;
+        END;
+
+        -- make sure every project has at least one status
+        BEGIN
+            INSERT INTO tsk_statuses (client_id, project_id, status_id, status_name, is_active, is_default)
+            VALUES (
+                in_client_id,
+                in_project_id,
+                NULL,                   -- generated
+                'Default Status',
+                'Y',
+                'Y'
+            );
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            NULL;
+        END;
+
+        -- make sure every project has at least one category
+        BEGIN
+            INSERT INTO tsk_categories (client_id, project_id, category_id, category_name, order#, is_active, is_default)
+            VALUES (
+                in_client_id,
+                in_project_id,
+                NULL,                   -- generated
+                'Default Category',
+                10,
+                'Y',
+                'Y'
+            );
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            NULL;
+        END;
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE save_clients
     AS
         rec                 tsk_clients%ROWTYPE;

@@ -1,5 +1,12 @@
 CREATE OR REPLACE PACKAGE tsk_handlers AS
 
+    PROCEDURE init_project (
+        in_client_id        tsk_cards.client_id%TYPE,
+        in_project_id       tsk_cards.project_id%TYPE
+    );
+
+
+
     PROCEDURE save_clients;
 
 
