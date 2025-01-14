@@ -1,14 +1,14 @@
 CREATE OR REPLACE FORCE VIEW tsk_p110_cards_v AS
 WITH x AS (
     SELECT
-        core.get_item('P0_CLIENT_ID')   AS client_id,
-        core.get_item('P0_PROJECT_ID')  AS project_id,
+        core.get_number_item('P0_CLIENT_ID')    AS client_id,
+        core.get_number_item('P0_PROJECT_ID')   AS project_id,
         --
-        core.get_number_item('P110_SOURCE_BOARD')   AS board_id,
-        core.get_item('P110_SOURCE_SWIMLANE')       AS swimlane_id,
-        core.get_item('P110_SOURCE_STATUS')         AS status_id,
-        core.get_item('P110_SOURCE_CATEGORY')       AS category_id,
-        core.get_item('P110_SOURCE_OWNER')          AS owner_id
+        core.get_number_item('$SOURCE_BOARD')   AS board_id,
+        core.get_item('$SOURCE_MILESTONE')      AS milestone_id,
+        core.get_item('$SOURCE_STATUS')         AS status_id,
+        core.get_item('$SOURCE_CATEGORY')       AS category_id,
+        core.get_item('$SOURCE_OWNER')          AS owner_id
     FROM DUAL
 )
 SELECT

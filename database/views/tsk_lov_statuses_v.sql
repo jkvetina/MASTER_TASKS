@@ -1,7 +1,7 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_statuses_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_item('P0_STATUS_ID')   AS status_id
+        core.get_number_item('P0_STATUS_ID') AS status_id
     FROM DUAL
 )
 SELECT

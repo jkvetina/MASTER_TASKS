@@ -1,7 +1,7 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_categories_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_item('P0_CATEGORY_ID') AS category_id
+        core.get_number_item('P0_CATEGORY_ID') AS category_id
     FROM DUAL
 )
 SELECT

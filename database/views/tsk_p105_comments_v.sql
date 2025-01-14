@@ -4,7 +4,7 @@ WITH x AS (
         t.card_id,
         core.get_user_id()              AS user_id
     FROM tsk_p100_cards_v t
-    WHERE t.card_id = core.get_item('P105_CARD_ID')
+    WHERE t.card_id = core.get_number_item('$CARD_ID')
 )
 SELECT
     -- https://apex.oracle.com/pls/apex/apex_pm/r/ut/comments-report

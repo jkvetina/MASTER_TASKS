@@ -1,8 +1,9 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_owners_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_item('P0_CLIENT_ID')   AS client_id,
-        core.get_item('P0_PROJECT_ID')  AS project_id,
+        core.get_number_item('P0_CLIENT_ID')    AS client_id,
+        core.get_number_item('P0_PROJECT_ID')   AS project_id,
+        core.get_number_item('P0_BOARD_ID')     AS board_id,
         --
         NULL AS owner_id
     FROM DUAL

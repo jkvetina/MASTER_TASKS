@@ -31,7 +31,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 b.board_name,
                 b.is_favorite
             FROM tsk_available_boards_v b
-            WHERE b.board_id = core.get_item('P0_BOARD_ID')
+            WHERE b.board_id = core.get_number_item('P0_BOARD_ID')
         ) LOOP
             core.set_item('P100_HEADER',            'Cards on ' || b.board_name);
             core.set_item('P100_IS_FAVORITE',       b.is_favorite);
@@ -72,11 +72,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
     FUNCTION generate_board
     RETURN CLOB
     AS
-        in_client_id        CONSTANT tsk_cards.client_id%TYPE       := core.get_item('P0_CLIENT_ID');
-        in_project_id       CONSTANT tsk_cards.project_id%TYPE      := core.get_item('P0_PROJECT_ID');
-        in_board_id         CONSTANT tsk_cards.board_id%TYPE        := core.get_item('P0_BOARD_ID');
-        in_swimlane_id      CONSTANT tsk_cards.swimlane_id%TYPE     := core.get_item('P0_SWIMLANE_ID');
-        in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_item('P0_OWNER_ID');
+        in_client_id        CONSTANT tsk_cards.client_id%TYPE       := core.get_number_item('P0_CLIENT_ID');
+        in_project_id       CONSTANT tsk_cards.project_id%TYPE      := core.get_number_item('P0_PROJECT_ID');
+        in_board_id         CONSTANT tsk_cards.board_id%TYPE        := core.get_number_item('P0_BOARD_ID');
+        in_milestone_id     CONSTANT tsk_cards.milestone_id%TYPE    := core.get_number_item('P0_MILESTONE_ID');
+        in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_number_item('P0_OWNER_ID');
         --
         v_statuses          PLS_INTEGER;
         v_swimlanes         PLS_INTEGER;
@@ -294,11 +294,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         rec                 tsk_boards_fav%ROWTYPE;
     BEGIN
         rec.user_id         := core.get_user_id();
-        rec.client_id       := core.get_item('P0_CLIENT_ID');
-        rec.project_id      := core.get_item('P0_PROJECT_ID');
-        rec.board_id        := core.get_item('P0_BOARD_ID');
         rec.swimlane_id     := core.get_item('P0_SWIMLANE_ID');
         rec.owner_id        := core.get_item('P0_OWNER_ID');
+        rec.client_id       := core.get_number_item('P0_CLIENT_ID');
+        rec.project_id      := core.get_number_item('P0_PROJECT_ID');
+        rec.board_id        := core.get_number_item('P0_BOARD_ID');
         --
         BEGIN
             SELECT t.*

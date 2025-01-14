@@ -1,10 +1,10 @@
 CREATE OR REPLACE FORCE VIEW tsk_p515_endpoints_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_item('$CLIENT_ID')     AS client_id,
-        core.get_item('$PROJECT_ID')    AS project_id,
-        core.get_item('$OWNER_ID')      AS owner_id,
-        core.get_item('$REPO_ID')       AS repo_id
+        core.get_number_item('P0_CLIENT_ID')    AS client_id,
+        core.get_number_item('P0_PROJECT_ID')   AS project_id,
+        core.get_number_item('P0_BOARD_ID')     AS board_id,
+        core.get_number_item('$REPO_ID')        AS repo_id
     FROM DUAL
 )
 SELECT

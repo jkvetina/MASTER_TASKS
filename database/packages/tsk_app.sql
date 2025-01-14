@@ -10,9 +10,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         v_new_project_id        tsk_projects.project_id%TYPE;
         v_new_board_id          tsk_boards.board_id%TYPE;
     BEGIN
-        v_old_client_id         := core.get_item('P0_CLIENT_ID');
-        v_old_project_id        := core.get_item('P0_PROJECT_ID');
-        v_old_board_id          := core.get_item('P0_BOARD_ID');
+        v_old_client_id         := core.get_number_item('P0_CLIENT_ID');
+        v_old_project_id        := core.get_number_item('P0_PROJECT_ID');
+        v_old_board_id          := core.get_number_item('P0_BOARD_ID');
         --
         v_new_client_id         := NVL(core.get_item('$ACTIVE_CLIENT'),     v_old_client_id);
         v_new_project_id        := NVL(core.get_item('$ACTIVE_PROJECT'),    v_old_project_id);
@@ -49,7 +49,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         core.set_item('P0_STATUS_ID',       v_status_id);
         core.set_item('P0_CATEGORY_ID',     v_category_id);
 
-                core.set_item('P0_CLIENT_ID',       COALESCE(core.get_item('$ACTIVE_CLIENT'),   core.get_item('P0_CLIENT_ID')));
+                core.set_item('P0_CLIENT_ID',       COALESCE(core.get_item('$ACTIVE_CLIENT'),   core.get_number_item('P0_CLIENT_ID')));
                 core.set_item('P0_PROJECT_ID',      '');
                 core.set_item('P0_BOARD_ID',        '');
                 core.set_item('P0_SWIMLANE_ID',     '');
@@ -87,7 +87,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
             REGEXP_SUBSTR(REPLACE(MAX(t.card_number), in_sequence_id, ''), '\d+$')
         INTO v_max, v_value
         FROM tsk_cards t
-        WHERE t.client_id       = COALESCE(in_client_id, core.get_item('P0_CLIENT_ID'))
+        WHERE 1 = 1
+            AND t.client_id     = COALESCE(in_client_id,    core.get_number_item('P0_CLIENT_ID'))
             AND t.card_number   LIKE in_sequence_id || '%';
         --
         IF v_max IS NULL AND v_value IS NULL THEN   -- first value
@@ -113,7 +114,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_app AS
         SELECT MAX(t.sequence_id)
         INTO v_sequence_id
         FROM tsk_sequences t
-        WHERE t.client_id   = COALESCE(in_client_id, core.get_item('P0_CLIENT_ID'))
+        WHERE 1 = 1
+            AND t.client_id     = COALESCE(in_client_id,    core.get_number_item('P0_CLIENT_ID'))
             AND REGEXP_REPLACE(in_card_number, '\d+$', '') LIKE t.sequence_id || '%';
         --
         RETURN v_sequence_id;

@@ -1,9 +1,10 @@
 CREATE OR REPLACE FORCE VIEW tsk_lov_boards_bulk_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_item('P0_CLIENT_ID')       AS client_id,
-        core.get_item('$PROJECT_ID')        AS project_id,
-        core.get_number_item('$BOARD_ID')   AS board_id
+        core.get_number_item('P0_CLIENT_ID')    AS client_id,
+        --
+        core.get_number_item('$PROJECT_ID')     AS project_id,
+        core.get_number_item('$BOARD_ID')       AS board_id
     FROM DUAL
 )
 SELECT

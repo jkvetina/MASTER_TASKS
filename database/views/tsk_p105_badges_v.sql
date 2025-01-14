@@ -3,7 +3,7 @@ WITH x AS (
     SELECT /*+ MATERIALIZE */
         t.card_id
     FROM tsk_p100_cards_v t
-    WHERE t.card_id = core.get_item('P105_CARD_ID')
+    WHERE t.card_id = core.get_number_item('$CARD_ID')
 )
 SELECT
     'P105_BADGE_CHECKLIST'              AS item_name,
