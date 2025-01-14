@@ -189,25 +189,20 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
-    PROCEDURE save_swimlanes
+    PROCEDURE save_milestones
     AS
-        rec                     tsk_swimlanes%ROWTYPE;
+        rec                     tsk_milestones%ROWTYPE;
         in_action               CONSTANT CHAR := core.get_grid_action();
     BEGIN
         -- change record in table
         rec.client_id           := core.get_grid_data('CLIENT_ID');
         rec.project_id          := core.get_grid_data('PROJECT_ID');
-        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
-        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
+        rec.milestone_id        := core.get_grid_data('MILESTONE_ID');
+        rec.milestone_name      := core.get_grid_data('MILESTONE_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.order#              := core.get_grid_data('ORDER#');
         --
-        tsk_tapi.swimlanes (rec,
-            in_action               => in_action,
-            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
-            in_project_id           => NVL(core.get_grid_data('OLD_PROJECT_ID'), rec.project_id),
-            in_swimlane_id          => NVL(core.get_grid_data('OLD_SWIMLANE_ID'), rec.swimlane_id)
-        );
+        tsk_tapi.milestones(rec, in_action);
         --
         IF in_action = 'D' THEN
             RETURN;     -- exit this procedure
@@ -353,9 +348,9 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
-    PROCEDURE copy_swimlanes
+    PROCEDURE copy_milestones
     AS
-        rec                     tsk_swimlanes%ROWTYPE;
+        rec                     tsk_milestones%ROWTYPE;
         v_affected              PLS_INTEGER := 0;
     BEGIN
         IF core.get_grid_action() = 'D' THEN
@@ -365,22 +360,22 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         -- change record in table
         rec.client_id           := core.get_item('P0_CLIENT_ID');
         rec.project_id          := core.get_item('P0_PROJECT_ID');
-        rec.swimlane_id         := core.get_grid_data('SWIMLANE_ID');
-        rec.swimlane_name       := core.get_grid_data('SWIMLANE_NAME');
+        rec.milestone_id        := core.get_grid_data('MILESTONE_ID');
+        rec.milestone_name      := core.get_grid_data('MILESTONE_NAME');
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.order#              := core.get_grid_data('ORDER#');
         --
         BEGIN
-            INSERT INTO tsk_swimlanes
+            INSERT INTO tsk_milestones
             VALUES rec;
             --
             v_affected := v_affected + SQL%ROWCOUNT;
             --
         EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN
-            UPDATE tsk_swimlanes t
+            UPDATE tsk_milestones t
             SET ROW = rec
-            WHERE t.swimlane_id     = rec.swimlane_id
+            WHERE t.milestone_id    = rec.milestone_id
                 AND t.client_id     = rec.client_id
                 AND t.project_id    = rec.project_id;
             --
@@ -447,30 +442,30 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
 
 
 
-    PROCEDURE reorder_swimlanes
+    PROCEDURE reorder_milestones
     AS
         in_client_id            CONSTANT tsk_cards.client_id%TYPE   := core.get_item('P0_CLIENT_ID');
         in_project_id           CONSTANT tsk_cards.project_id%TYPE  := core.get_item('P0_PROJECT_ID');
     BEGIN
         FOR s IN (
             SELECT
-                t.swimlane_id,
+                t.milestone_id,
                 t.client_id,
                 t.project_id,
                 --
                 ROW_NUMBER() OVER (
                     PARTITION BY t.client_id, t.project_id
-                    ORDER BY t.order# NULLS LAST, t.swimlane_name, t.swimlane_id
+                    ORDER BY t.order# NULLS LAST, t.milestone_name, t.milestone_id
                 ) * 10 AS order#
                 --
-            FROM tsk_swimlanes t
+            FROM tsk_milestones t
             WHERE 1 = 1
                 AND t.client_id     = in_client_id
                 AND t.project_id    = in_project_id
         ) LOOP
-            UPDATE tsk_swimlanes t
+            UPDATE tsk_milestones t
             SET t.order#            = s.order#
-            WHERE t.swimlane_id     = s.swimlane_id
+            WHERE t.milestone_id    = s.milestone_id
                 AND t.client_id     = s.client_id
                 AND t.project_id    = s.project_id
                 AND (t.order#       != s.order# OR t.order# IS NULL);

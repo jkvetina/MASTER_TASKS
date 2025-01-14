@@ -12,7 +12,7 @@ t AS (
         t.board_id,
         --
         COUNT(DISTINCT t.board_id)      AS count_boards,
-        COUNT(DISTINCT t.swimlane_id)   AS count_swimlanes,
+        COUNT(DISTINCT t.milestone_id)  AS count_milestones,
         COUNT(DISTINCT t.status_id)     AS count_statuses,
         COUNT(DISTINCT t.category_id)   AS count_categories,
         COUNT(DISTINCT t.owner_id)      AS count_owners,
@@ -48,7 +48,7 @@ SELECT
     a.order#,
     --
     --t.count_boards,
-    t.count_swimlanes,
+    t.count_milestones,
     t.count_statuses,
     t.count_categories,
     t.count_owners,

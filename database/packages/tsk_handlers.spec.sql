@@ -16,7 +16,7 @@ CREATE OR REPLACE PACKAGE tsk_handlers AS
 
 
 
-    PROCEDURE save_swimlanes;
+    PROCEDURE save_milestones;
 
 
 
@@ -32,7 +32,7 @@ CREATE OR REPLACE PACKAGE tsk_handlers AS
 
 
 
-    PROCEDURE copy_swimlanes;
+    PROCEDURE copy_milestones;
 
 
 
@@ -40,7 +40,7 @@ CREATE OR REPLACE PACKAGE tsk_handlers AS
 
 
 
-    PROCEDURE reorder_swimlanes;
+    PROCEDURE reorder_milestones;
 
 
 

@@ -7,7 +7,7 @@ WITH t AS (
         t.client_id,
         t.project_id,
         t.board_id,
-        t.swimlane_id,
+        t.milestone_id,
         t.status_id,
         t.category_id,
         t.owner_id,
@@ -24,7 +24,7 @@ WITH t AS (
         ON x.client_id      = t.client_id
         AND x.project_id    = t.project_id
         AND x.board_id      = t.board_id
-        AND (x.swimlane_id  = t.swimlane_id     OR x.swimlane_id    IS NULL)
+        AND (x.milestone_id = t.milestone_id    OR x.milestone_id   IS NULL)
         AND (x.status_id    = t.status_id       OR x.status_id      IS NULL)
         AND (x.category_id  = t.category_id     OR x.category_id    IS NULL OR (x.category_id = '!' AND t.category_id   IS NULL))
         AND (x.owner_id     = t.owner_id        OR x.owner_id       IS NULL OR (x.owner_id    = '!' AND t.owner_id      IS NULL))
@@ -57,7 +57,7 @@ SELECT
     t.client_id,
     t.project_id,
     t.board_id,
-    t.swimlane_id,
+    t.milestone_id,
     t.status_id,
     t.category_id,
     t.owner_id,
@@ -81,7 +81,7 @@ SELECT
         ORDER BY w.order# NULLS LAST, s.order# NULLS LAST, t.order# NULLS LAST, t.card_id
     ) AS next_card,
     --
-    w.order#            AS swimlane_order#,
+    w.order#            AS milestone_order#,
     s.order#            AS status_order#,
     t.order#            AS card_order#,
     --
@@ -90,8 +90,8 @@ SELECT
 FROM t
 JOIN tsk_lov_statuses_v s
     ON s.status_id      = t.status_id
-JOIN tsk_lov_swimlanes_v w
-    ON w.swimlane_id    = t.swimlane_id
+JOIN tsk_lov_milestones_v w
+    ON w.milestone_id    = t.milestone_id
 LEFT JOIN tsk_lov_categories_v g
     ON g.category_id    = t.category_id
     AND g.color_bg      IS NOT NULL

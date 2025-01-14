@@ -79,7 +79,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         in_owner_id         CONSTANT tsk_cards.owner_id%TYPE        := core.get_number_item('P0_OWNER_ID');
         --
         v_statuses          PLS_INTEGER;
-        v_swimlanes         PLS_INTEGER;
+        v_milestones        PLS_INTEGER;
         out_clob            CLOB;
     BEGIN
         DBMS_LOB.CREATETEMPORARY(out_clob, cache => TRUE);
@@ -93,44 +93,44 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             AND (s.row_order#   IS NULL OR s.row_order# = 1)
             AND s.is_active     = 'Y';
 
-        -- calculate number of swimlanes
-        SELECT COUNT(w.swimlane_id)
-        INTO v_swimlanes
-        FROM tsk_swimlanes w
+        -- calculate number of milestones
+        SELECT COUNT(w.milestone_id)
+        INTO v_milestones
+        FROM tsk_milestones w
         WHERE w.client_id       = in_client_id
             AND w.project_id    = in_project_id
-            AND (w.swimlane_id  = in_swimlane_id OR in_swimlane_id IS NULL)
+            AND (w.milestone_id = in_milestone_id OR in_milestone_id IS NULL)
             AND w.is_active     = 'Y';
 
         -- generate grid
         clob_append(out_clob,
             '<div class="BOARD" style="' ||
-            'grid-template-columns: ' || CASE WHEN v_swimlanes > 1 THEN '0 ' END || 'repeat(' || v_statuses || ', minmax(320px, 1fr));' ||
+            'grid-template-columns: ' || CASE WHEN v_milestones > 1 THEN '0 ' END || 'repeat(' || v_statuses || ', minmax(320px, 1fr));' ||
             '">');
         --
         FOR w IN (
             SELECT
-                w.swimlane_id,
-                w.swimlane_name,
-                ROW_NUMBER() OVER (ORDER BY CASE WHEN w.swimlane_id = '-' THEN NULL ELSE w.order# END NULLS LAST) AS r#,
-                COUNT(w.swimlane_id) OVER() AS swimlanes,
+                w.milestone_id,
+                w.milestone_name,
+                ROW_NUMBER() OVER (ORDER BY CASE WHEN w.milestone_id = '-' THEN NULL ELSE w.order# END NULLS LAST) AS r#,
+                COUNT(w.milestone_id) OVER() AS milestones,
                 b.is_simple
-            FROM tsk_swimlanes w
+            FROM tsk_milestones w
             LEFT JOIN tsk_boards b
                 ON b.client_id      = in_client_id
                 AND b.board_id      = in_board_id
             WHERE w.client_id       = in_client_id
                 AND w.project_id    = in_project_id
-                AND (w.swimlane_id  = in_swimlane_id OR in_swimlane_id IS NULL)
+                AND (w.milestone_id = in_milestone_id OR in_milestone_id IS NULL)
                 AND w.is_active     = 'Y'
             ORDER BY r#
         ) LOOP
-            -- add swimlane name
-            IF v_swimlanes > 1 THEN
-                clob_append(out_clob, '<div class="SWIMLANE" id="SWIMLANE_' || w.swimlane_id || '"><span>' || w.swimlane_name || '</span></div>');
+            -- add milestone name
+            IF v_milestones > 1 THEN
+                clob_append(out_clob, '<div class="milestone" id="milestone_' || w.milestone_id || '"><span>' || w.milestone_name || '</span></div>');
             END IF;
 
-            -- create status columns (card holders) for each swimlanes
+            -- create status columns (card holders) for each milestones
             FOR s IN (
                 SELECT
                     s.status_id,
@@ -162,7 +162,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                     WHERE t.client_id       = in_client_id
                         AND t.project_id    = in_project_id
                         AND t.board_id      = in_board_id
-                        AND t.swimlane_id   = w.swimlane_id
+                        AND t.milestone_id  = w.milestone_id
                     GROUP BY t.status_id
                 ) d
                     ON d.status_id = s.status_id
@@ -193,7 +193,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                 );
 
                 -- generate status content/cards
-                clob_append(out_clob, '<div class="TARGET" id="STATUS_' || s.status_id || '_SWIMLANE_' || w.swimlane_id || '">');
+                clob_append(out_clob, '<div class="TARGET" id="STATUS_' || s.status_id || '_MILESTONE_' || w.milestone_id || '">');
                 --
                 FOR t IN (
                     SELECT
@@ -209,7 +209,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
                         AND t.project_id    = in_project_id
                         AND t.board_id      = in_board_id
                         AND t.status_id     = s.status_id
-                        AND t.swimlane_id   = w.swimlane_id
+                        AND t.milestone_id  = w.milestone_id
                     ORDER BY t.order#
                 ) LOOP
                     clob_append(out_clob,
@@ -259,7 +259,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         -- update card status (column)
         UPDATE tsk_cards t
         SET t.status_id     = APEX_APPLICATION.G_X02,
-            t.swimlane_id   = APEX_APPLICATION.G_X03
+            t.milestone_id  = APEX_APPLICATION.G_X03
         WHERE t.card_id     = APEX_APPLICATION.G_X01;
         --
         IF SQL%ROWCOUNT = 1 THEN

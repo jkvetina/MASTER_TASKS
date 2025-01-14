@@ -17,7 +17,7 @@ SELECT
     NVL(t.card_number, '#' || t.card_id) AS card_id__,
     t.card_name,
     t.status_id,
-    t.swimlane_id,
+    t.milestone_id,
     t.category_id,
     t.owner_id,
     t.deadline_at,
@@ -42,9 +42,9 @@ WHERE 1 = 1
     AND x.project_id    = t.project_id
     AND x.board_id      = t.board_id
     --
-    AND (x.swimlane_id  = t.swimlane_id OR x.swimlane_id IS NULL)
-    AND (x.status_id    = t.status_id   OR x.status_id IS NULL)
-    AND (x.category_id  = t.category_id OR x.category_id IS NULL)
     AND (x.owner_id     = t.owner_id    OR x.owner_id IS NULL);
+    AND (x.milestone_id = t.milestone_id    OR x.milestone_id IS NULL)
+    AND (x.status_id    = t.status_id       OR x.status_id IS NULL)
+    AND (x.category_id  = t.category_id     OR x.category_id IS NULL);
 /
 

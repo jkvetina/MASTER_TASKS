@@ -303,7 +303,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_tapi AS
             WHERE c.column_name = 'CARD_ID'
             ORDER BY 1;
             */
-    
+
             DELETE FROM tsk_card_comments t
             WHERE t.card_id = rec.card_id;
             --
