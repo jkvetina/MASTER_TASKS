@@ -23,10 +23,6 @@ c AS (
     GROUP BY t.status_id
 )
 SELECT
-    t.client_id         AS old_client_id,
-    t.project_id        AS old_project_id,
-    t.status_id         AS old_status_id,
-    --
     t.client_id,
     t.project_id,
     t.status_id,

@@ -25,9 +25,6 @@ t AS (
 )
 --
 SELECT
-    a.project_id        AS old_project_id,      -- to allow PK changes
-    a.client_id         AS old_client_id,       -- to allow PK changes
-    --
     a.client_id,
     a.project_id,
     a.project_name,

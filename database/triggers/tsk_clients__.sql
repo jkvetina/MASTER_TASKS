@@ -12,11 +12,6 @@ COMPOUND TRIGGER
         IF NOT DELETING THEN
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
-
-            -- check client name
-            IF NOT REGEXP_LIKE(:NEW.client_id, '^[A-Za-z0-9_-]{1,32}$') THEN
-                core.raise_error('WRONG_CLIENT_ID', :NEW.client_id);
-            END IF;
         END IF;
         --
     EXCEPTION

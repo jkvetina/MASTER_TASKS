@@ -7,10 +7,6 @@ WITH x AS (
     FROM DUAL
 )
 SELECT
-    t.client_id         AS old_client_id,
-    t.project_id        AS old_project_id,
-    t.category_id       AS old_category_id,
-    --
     t.client_id,
     t.project_id,
     t.category_id,

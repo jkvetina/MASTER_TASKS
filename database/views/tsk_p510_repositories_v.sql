@@ -7,9 +7,6 @@ WITH x AS (
     FROM DUAL
 )
 SELECT
-    t.repo_id           AS old_repo_id,
-    t.owner_id          AS old_owner_id,
-    --
     t.client_id,
     t.project_id,
     t.repo_id,

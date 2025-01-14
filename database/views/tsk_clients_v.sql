@@ -17,8 +17,6 @@ WITH t AS (
 )
 --
 SELECT
-    a.client_id         AS old_client_id,       -- to allow PK changes
-    --
     a.client_id,
     a.client_name,
     a.is_active,

@@ -10,18 +10,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.client_name     := core.get_grid_data('CLIENT_NAME');
         rec.is_active       := core.get_grid_data('IS_ACTIVE');
         --
-        tsk_tapi.clients (rec,
-            in_action       => in_action,
-            in_client_id    => core.get_grid_data('OLD_CLIENT_ID')
-        );
-        --
-        IF in_action = 'D' THEN
-            COMMIT;     -- commit to catch possible error here, because all foreign keys are deferred
-            RETURN;     -- exit this procedure
-        END IF;
-
-        -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_CLIENT_ID',     rec.client_id);
+        tsk_tapi.clients(rec, in_action);
         --
         IF in_action = 'C' THEN
             core.set_item('P0_CLIENT_ID', rec.client_id);
@@ -45,23 +34,10 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.client_id       := core.get_grid_data('CLIENT_ID');
         rec.project_id      := core.get_grid_data('PROJECT_ID');
         rec.project_name    := core.get_grid_data('PROJECT_NAME');
-        rec.is_active       := core.get_grid_data('IS_ACTIVE');
         rec.is_default      := core.get_grid_data('IS_DEFAULT');
+        rec.is_active       := core.get_grid_data('IS_ACTIVE');
         --
-        tsk_tapi.projects (rec,
-            in_action           => in_action,
-            in_client_id        => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
-            in_project_id       => NVL(core.get_grid_data('OLD_PROJECT_ID'), rec.project_id)
-        );
-        --
-        IF in_action = 'D' THEN
-            COMMIT;     -- commit to catch possible error here, because all foreign keys are deferred
-            RETURN;     -- exit this procedure
-        END IF;
-
-        -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_CLIENT_ID',     rec.client_id);
-        core.set_grid_data('OLD_PROJECT_ID',    rec.project_id);
+        tsk_tapi.projects(rec, in_action);
         --
         IF in_action = 'C' THEN
             core.set_item('P0_CLIENT_ID',   rec.client_id);
@@ -89,28 +65,22 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.board_name      := core.get_grid_data('BOARD_NAME');
         rec.sequence_id     := core.get_grid_data('SEQUENCE_ID');
         rec.is_simple       := core.get_grid_data('IS_SIMPLE');
-        rec.is_active       := core.get_grid_data('IS_ACTIVE');
         rec.is_default      := core.get_grid_data('IS_DEFAULT');
+        rec.is_active       := core.get_grid_data('IS_ACTIVE');
         rec.order#          := core.get_grid_data('ORDER#');
         --
-        tsk_tapi.boards (rec,
-            in_action           => in_action,
-            in_board_id         => NVL(core.get_grid_data('OLD_BOARD_ID'), rec.board_id)
-        );
+        tsk_tapi.boards(rec, in_action);
         --
         IF in_action = 'D' THEN
             RETURN;     -- exit this procedure
         END IF;
-
-        -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_BOARD_ID',          rec.board_id);
 
         -- add board to favorites
         DELETE FROM tsk_boards_fav t
         WHERE t.user_id         = core.get_user_id()
             AND t.client_id     = rec.client_id
             AND t.project_id    = rec.project_id
-            AND t.board_id      = NVL(core.get_grid_data('OLD_BOARD_ID'), rec.board_id);
+            AND t.board_id      = NVL(core.get_grid_data('BOARD_ID'), rec.board_id);
         --
         IF SQL%ROWCOUNT > 0 THEN
             app.set_success_message('Current board removed from favorites');
@@ -158,28 +128,15 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.status_id           := core.get_grid_data('STATUS_ID');
         rec.status_name         := core.get_grid_data('STATUS_NAME');
         rec.status_group        := core.get_grid_data('STATUS_GROUP');
-        rec.is_active           := core.get_grid_data('IS_ACTIVE');
-        rec.is_default          := core.get_grid_data('IS_DEFAULT');
-        rec.is_colored          := core.get_grid_data('IS_COLORED');
-        rec.is_badge            := core.get_grid_data('IS_BADGE');
         rec.col_order#          := core.get_grid_data('COL_ORDER#');
         rec.row_order#          := core.get_grid_data('ROW_ORDER#');
+        rec.is_colored          := core.get_grid_data('IS_COLORED');
+        rec.is_badge            := core.get_grid_data('IS_BADGE');
+        rec.is_default          := core.get_grid_data('IS_DEFAULT');
+        rec.is_active           := core.get_grid_data('IS_ACTIVE');
         --
-        tsk_tapi.statuses (rec,
-            in_action               => in_action,
-            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
-            in_project_id           => NVL(core.get_grid_data('OLD_PROJECT_ID'), rec.project_id),
-            in_status_id            => NVL(core.get_grid_data('OLD_STATUS_ID'), rec.status_id)
-        );
+        tsk_tapi.statuses(rec, in_action);
         --
-        IF in_action = 'D' THEN
-            RETURN;     -- exit this procedure
-        END IF;
-
-        -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
-        core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
-        core.set_grid_data('OLD_STATUS_ID',         rec.status_id);
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -204,14 +161,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         --
         tsk_tapi.milestones(rec, in_action);
         --
-        IF in_action = 'D' THEN
-            RETURN;     -- exit this procedure
-        END IF;
-
-        -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
-        core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
-        core.set_grid_data('OLD_SWIMLANE_ID',       rec.swimlane_id);
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -238,21 +187,11 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.is_default          := core.get_grid_data('IS_DEFAULT');
         rec.order#              := core.get_grid_data('ORDER#');
         --
-        tsk_tapi.categories (rec,
-            in_action               => in_action,
-            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
-            in_project_id           => NVL(core.get_grid_data('OLD_PROJECT_ID'), rec.project_id),
-            in_category_id          => NVL(core.get_grid_data('OLD_CATEGORY_ID'), rec.category_id)
-        );
+        tsk_tapi.categories(rec, in_action);
         --
         IF in_action = 'D' THEN
             RETURN;     -- exit this procedure
         END IF;
-
-        -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
-        core.set_grid_data('OLD_PROJECT_ID',        rec.project_id);
-        core.set_grid_data('OLD_CATEGORY_ID',       rec.category_id);
         --
         app.set_success_message('Categories updated');
         --
@@ -277,19 +216,8 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         rec.is_active           := core.get_grid_data('IS_ACTIVE');
         rec.order#              := core.get_grid_data('ORDER#');
         --
-        tsk_tapi.sequences (rec,
-            in_action               => in_action,
-            in_client_id            => NVL(core.get_grid_data('OLD_CLIENT_ID'), rec.client_id),
-            in_sequence_id          => NVL(core.get_grid_data('OLD_SEQUENCE_ID'), rec.sequence_id)
-        );
+        tsk_tapi.sequences(rec, in_action);
         --
-        IF in_action = 'D' THEN
-            RETURN;     -- exit this procedure
-        END IF;
-
-        -- update primary key back to APEX grid for proper row refresh
-        core.set_grid_data('OLD_CLIENT_ID',         rec.client_id);
-        core.set_grid_data('OLD_SEQUENCE_ID',       rec.sequence_id);
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
