@@ -5,7 +5,7 @@ WITH x AS (
         core.get_number_item('P0_PROJECT_ID')   AS project_id,
         core.get_number_item('P0_BOARD_ID')     AS board_id,
         --
-        NULL AS owner_id
+        core.get_user_id() AS owner_id
     FROM DUAL
 )
 SELECT DISTINCT

@@ -7,7 +7,6 @@ WITH x AS (
     FROM DUAL
 )
 SELECT
-    r.owner_id,
     r.repo_id
 FROM tsk_repos r
 JOIN tsk_lov_projects_v p   -- using tsk_auth_available_projects_v

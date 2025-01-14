@@ -16,6 +16,7 @@ d AS (
         c.created_by,
         TO_CHAR(c.created_at, 'YYYY-MM-DD HH24:MI') AS created_at,
         TO_CHAR(c.created_at, 'YYYY-MM-DD')         AS today
+        --
     FROM tsk_commits c
     CROSS JOIN x
     JOIN tsk_repos r

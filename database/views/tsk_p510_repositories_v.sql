@@ -10,20 +10,14 @@ SELECT
     t.client_id,
     t.project_id,
     t.repo_id,
-    t.owner_id,
     t.branch_id,
     t.api_type,
     t.api_token,
     t.last_synced_at
+    --
 FROM tsk_repos t
 JOIN x
     ON x.client_id      = t.client_id
-    AND (x.project_id   = t.project_id  OR x.project_id IS NULL)
-ORDER BY
-    t.client_id,
-    t.project_id,
-    t.owner_id,
-    t.repo_id,
-    t.project_id;
+    AND (x.project_id   = t.project_id  OR x.project_id IS NULL);
 /
 
