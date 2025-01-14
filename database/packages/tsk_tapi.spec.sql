@@ -1,20 +1,10 @@
 CREATE OR REPLACE PACKAGE tsk_tapi AS
 
-    g_app_prefix            CONSTANT VARCHAR2(16)   := 'TSK';
-
-
-
     PROCEDURE clients (
         rec                     IN OUT NOCOPY   tsk_clients%ROWTYPE,
         --
         in_action               CHAR                            := NULL,
         in_client_id            tsk_clients.client_id%TYPE      := NULL
-    );
-
-
-
-    PROCEDURE clients_d (
-        in_client_id            tsk_clients.client_id%TYPE
     );
 
 
@@ -29,24 +19,11 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
 
 
 
-    PROCEDURE projects_d (
-        in_client_id        tsk_projects.client_id%TYPE,
-        in_project_id       tsk_projects.project_id%TYPE
-    );
-
-
-
     PROCEDURE boards (
         rec                 IN OUT NOCOPY   tsk_boards%ROWTYPE,
         --
         in_action           CHAR                            := NULL,
         in_board_id         tsk_boards.board_id%TYPE        := NULL
-    );
-
-
-
-    PROCEDURE boards_d (
-        in_board_id         tsk_boards.board_id%TYPE
     );
 
 
@@ -62,29 +39,13 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
 
 
 
-    PROCEDURE statuses_d (
-        in_client_id            tsk_statuses.client_id%TYPE,
-        in_project_id           tsk_statuses.project_id%TYPE,
-        in_status_id            tsk_statuses.status_id%TYPE
-    );
-
-
-
-    PROCEDURE swimlanes (
-        rec                     IN OUT NOCOPY   tsk_swimlanes%ROWTYPE,
+    PROCEDURE milestones (
+        rec                     IN OUT NOCOPY   tsk_milestones%ROWTYPE,
         --
         in_action               CHAR                                    := NULL,
-        in_client_id            tsk_swimlanes.client_id%TYPE            := NULL,
-        in_project_id           tsk_swimlanes.project_id%TYPE           := NULL,
-        in_swimlane_id          tsk_swimlanes.swimlane_id%TYPE          := NULL
-    );
-
-
-
-    PROCEDURE swimlanes_d (
-        in_client_id            tsk_swimlanes.client_id%TYPE,
-        in_project_id           tsk_swimlanes.project_id%TYPE,
-        in_swimlane_id          tsk_swimlanes.swimlane_id%TYPE
+        in_client_id            tsk_milestones.client_id%TYPE           := NULL,
+        in_project_id           tsk_milestones.project_id%TYPE          := NULL,
+        in_milestone_id         tsk_milestones.milestone_id%TYPE        := NULL
     );
 
 
@@ -96,14 +57,6 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
         in_client_id            tsk_categories.client_id%TYPE           := NULL,
         in_project_id           tsk_categories.project_id%TYPE          := NULL,
         in_category_id          tsk_categories.category_id%TYPE         := NULL
-    );
-
-
-
-    PROCEDURE categories_d (
-        in_client_id            tsk_categories.client_id%TYPE,
-        in_project_id           tsk_categories.project_id%TYPE,
-        in_category_id          tsk_categories.category_id%TYPE
     );
 
 
@@ -121,12 +74,6 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
     PROCEDURE cards (
         rec                     IN OUT NOCOPY   tsk_cards%ROWTYPE,
         in_action                               CHAR                                := NULL
-    );
-
-
-
-    PROCEDURE cards_delete (
-        in_card_id              tsk_cards.card_id%TYPE
     );
 
 
@@ -179,15 +126,7 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
         rec                     IN OUT NOCOPY   tsk_repos%ROWTYPE,
         --
         in_action               CHAR                                := NULL,
-        in_repo_id              tsk_repos.repo_id%TYPE              := NULL,
-        in_owner_id             tsk_repos.owner_id%TYPE             := NULL
-    );
-
-
-
-    PROCEDURE repos_d (
-        in_repo_id              tsk_repos.repo_id%TYPE,
-        in_owner_id             tsk_repos.owner_id%TYPE
+        in_repo_id              tsk_repos.repo_id%TYPE              := NULL
     );
 
 
@@ -196,15 +135,7 @@ CREATE OR REPLACE PACKAGE tsk_tapi AS
         rec                     IN OUT NOCOPY   tsk_repo_endpoints%ROWTYPE,
         --
         in_action               CHAR                                        := NULL,
-        in_repo_id              tsk_repo_endpoints.repo_id%TYPE             := NULL,
-        in_owner_id             tsk_repo_endpoints.owner_id%TYPE            := NULL
-    );
-
-
-
-    PROCEDURE repo_endpoints_d (
-        in_repo_id              tsk_repo_endpoints.repo_id%TYPE,
-        in_owner_id             tsk_repo_endpoints.owner_id%TYPE
+        in_repo_id              tsk_repo_endpoints.repo_id%TYPE             := NULL
     );
 
 END;
