@@ -75,6 +75,7 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
             RETURN;     -- exit this procedure
         END IF;
 
+        /*
         -- add board to favorites
         DELETE FROM tsk_boards_fav t
         WHERE t.user_id         = core.get_user_id()
@@ -87,20 +88,19 @@ CREATE OR REPLACE PACKAGE BODY tsk_handlers AS
         END IF;
         --
         IF core.get_grid_data('IS_FAVORITE') = 'Y' THEN
-            INSERT INTO tsk_boards_fav (user_id, client_id, project_id, board_id, swimlane_id, owner_id)
+            INSERT INTO tsk_boards_fav (user_id, client_id, project_id, board_id)
             VALUES (
                 core.get_user_id(),
                 rec.client_id,
                 rec.project_id,
-                rec.board_id,
-                NULL,
-                NULL
+                rec.board_id
             );
             --
             IF SQL%ROWCOUNT > 0 THEN
                 app.set_success_message('Current board added to the favorites');
             END IF;
         END IF;
+        */
         --
         IF in_action = 'C' THEN
             core.set_item('P0_CLIENT_ID',   rec.client_id);

@@ -294,8 +294,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
         rec                 tsk_boards_fav%ROWTYPE;
     BEGIN
         rec.user_id         := core.get_user_id();
-        rec.swimlane_id     := core.get_item('P0_SWIMLANE_ID');
-        rec.owner_id        := core.get_item('P0_OWNER_ID');
         rec.client_id       := core.get_number_item('P0_CLIENT_ID');
         rec.project_id      := core.get_number_item('P0_PROJECT_ID');
         rec.board_id        := core.get_number_item('P0_BOARD_ID');
@@ -313,9 +311,6 @@ CREATE OR REPLACE PACKAGE BODY tsk_p100 AS
             --
         EXCEPTION
         WHEN NO_DATA_FOUND THEN
-            --rec.swimlanes     := core.get_item('$SWIMLANE_ID');
-            --rec.owners        := core.get_item('$OWNER_ID');
-            --
             tsk_tapi.user_fav_boards(rec, 'C');     -- add
         END;
         --
