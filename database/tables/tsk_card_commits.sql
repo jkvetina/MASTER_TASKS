@@ -1,7 +1,7 @@
 CREATE TABLE tsk_card_commits (
-    tenant_id                       VARCHAR2(64)          CONSTRAINT tsk_card_commits_tenant_nn NOT NULL,
-    card_id                         NUMBER(10,0)          CONSTRAINT tsk_card_commits_card_nn NOT NULL,
-    commit_id                       VARCHAR2(64)          CONSTRAINT tsk_card_commits_commit_nn NOT NULL,
+    tenant_id                       VARCHAR2(64)          CONSTRAINT tsk_card_commits_nn_tenant_id NOT NULL,
+    card_id                         NUMBER(10,0)          CONSTRAINT tsk_card_commits_nn_card_id NOT NULL,
+    commit_id                       VARCHAR2(64)          CONSTRAINT tsk_card_commits_nn_commit_id NOT NULL,
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
@@ -12,7 +12,7 @@ CREATE TABLE tsk_card_commits (
             commit_id
         ),
     --
-    CONSTRAINT tsk_card_commits_commit_fk
+    CONSTRAINT tsk_card_commits_fk_commits
         FOREIGN KEY (
             tenant_id,
             commit_id
@@ -22,7 +22,7 @@ CREATE TABLE tsk_card_commits (
             commit_id
         ),
     --
-    CONSTRAINT tsk_card_commits_card_fk
+    CONSTRAINT tsk_card_commits_fk_cards
         FOREIGN KEY (
             tenant_id,
             card_id

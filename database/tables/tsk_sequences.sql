@@ -1,15 +1,15 @@
 CREATE TABLE tsk_sequences (
-    tenant_id                       VARCHAR2(64)          CONSTRAINT tsk_sequences_tenant_nn NOT NULL,
-    client_id                       NUMBER(10,0)          CONSTRAINT tsk_sequences_client_nn NOT NULL,
-    project_id                      NUMBER(10,0)          CONSTRAINT tsk_sequences_project_nn NOT NULL,
-    sequence_id                     VARCHAR2(32)          CONSTRAINT tsk_sequences_id_nn NOT NULL,
+    tenant_id                       VARCHAR2(64)          CONSTRAINT tsk_sequences_nn_tenant_id NOT NULL,
+    client_id                       NUMBER(10,0)          CONSTRAINT tsk_sequences_nn_client_id NOT NULL,
+    project_id                      NUMBER(10,0)          CONSTRAINT tsk_sequences_nn_project_id NOT NULL,
+    sequence_id                     VARCHAR2(32)          CONSTRAINT tsk_sequences_nn_sequence_id NOT NULL,
     sequence_desc                   VARCHAR2(256),
     is_active                       CHAR(1),
     order#                          NUMBER(4,0),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
-    CONSTRAINT tsk_sequences_active_ch
+    CONSTRAINT tsk_sequences_ch_is_active
         CHECK (
             is_active = 'Y' OR is_active IS NULL
         ) ENABLE,
@@ -22,7 +22,7 @@ CREATE TABLE tsk_sequences (
             sequence_id
         ),
     --
-    CONSTRAINT tsk_sequences_project_fk
+    CONSTRAINT tsk_sequences_fk_projects
         FOREIGN KEY (
             tenant_id,
             client_id,
